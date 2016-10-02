@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
+		A9FD527C1DA16E96005DFE5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD527B1DA16E96005DFE5D /* ViewController.swift */; };
+		A9FD527F1DA16E96005DFE5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD527D1DA16E96005DFE5D /* Main.storyboard */; };
+		A9FD52811DA16E96005DFE5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9FD52801DA16E96005DFE5D /* Assets.xcassets */; };
+		A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */; };
+		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
+		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9FD528B1DA16E96005DFE5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9FD526E1DA16E95005DFE5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9FD52751DA16E95005DFE5D;
+			remoteInfo = "Trivia Patente";
+		};
+		A9FD52961DA16E96005DFE5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9FD526E1DA16E95005DFE5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9FD52751DA16E95005DFE5D;
+			remoteInfo = "Trivia Patente";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A9FD52761DA16E96005DFE5D /* Trivia Patente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trivia Patente.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9FD52791DA16E96005DFE5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A9FD527B1DA16E96005DFE5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9FD527E1DA16E96005DFE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A9FD52801DA16E96005DFE5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9FD52831DA16E96005DFE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A9FD52851DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9FD528A1DA16E96005DFE5D /* Trivia PatenteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteTests.swift; sourceTree = "<group>"; };
+		A9FD52901DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
+		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9FD52731DA16E95005DFE5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52871DA16E96005DFE5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52921DA16E96005DFE5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9FD526D1DA16E95005DFE5D = {
+			isa = PBXGroup;
+			children = (
+				A9FD52781DA16E96005DFE5D /* Trivia Patente */,
+				A9FD528D1DA16E96005DFE5D /* Trivia PatenteTests */,
+				A9FD52981DA16E96005DFE5D /* Trivia PatenteUITests */,
+				A9FD52771DA16E96005DFE5D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9FD52771DA16E96005DFE5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD52761DA16E96005DFE5D /* Trivia Patente.app */,
+				A9FD528A1DA16E96005DFE5D /* Trivia PatenteTests.xctest */,
+				A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
+				A9FD527B1DA16E96005DFE5D /* ViewController.swift */,
+				A9FD527D1DA16E96005DFE5D /* Main.storyboard */,
+				A9FD52801DA16E96005DFE5D /* Assets.xcassets */,
+				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
+				A9FD52851DA16E96005DFE5D /* Info.plist */,
+			);
+			path = "Trivia Patente";
+			sourceTree = "<group>";
+		};
+		A9FD528D1DA16E96005DFE5D /* Trivia PatenteTests */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */,
+				A9FD52901DA16E96005DFE5D /* Info.plist */,
+			);
+			path = "Trivia PatenteTests";
+			sourceTree = "<group>";
+		};
+		A9FD52981DA16E96005DFE5D /* Trivia PatenteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */,
+				A9FD529B1DA16E96005DFE5D /* Info.plist */,
+			);
+			path = "Trivia PatenteUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9FD52751DA16E95005DFE5D /* Trivia Patente */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9FD529E1DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia Patente" */;
+			buildPhases = (
+				A9FD52721DA16E95005DFE5D /* Sources */,
+				A9FD52731DA16E95005DFE5D /* Frameworks */,
+				A9FD52741DA16E95005DFE5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Trivia Patente";
+			productName = "Trivia Patente";
+			productReference = A9FD52761DA16E96005DFE5D /* Trivia Patente.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A9FD52891DA16E96005DFE5D /* Trivia PatenteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9FD52A11DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteTests" */;
+			buildPhases = (
+				A9FD52861DA16E96005DFE5D /* Sources */,
+				A9FD52871DA16E96005DFE5D /* Frameworks */,
+				A9FD52881DA16E96005DFE5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9FD528C1DA16E96005DFE5D /* PBXTargetDependency */,
+			);
+			name = "Trivia PatenteTests";
+			productName = "Trivia PatenteTests";
+			productReference = A9FD528A1DA16E96005DFE5D /* Trivia PatenteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A9FD52941DA16E96005DFE5D /* Trivia PatenteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9FD52A41DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteUITests" */;
+			buildPhases = (
+				A9FD52911DA16E96005DFE5D /* Sources */,
+				A9FD52921DA16E96005DFE5D /* Frameworks */,
+				A9FD52931DA16E96005DFE5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9FD52971DA16E96005DFE5D /* PBXTargetDependency */,
+			);
+			name = "Trivia PatenteUITests";
+			productName = "Trivia PatenteUITests";
+			productReference = A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9FD526E1DA16E95005DFE5D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Terpin e Donadel";
+				TargetAttributes = {
+					A9FD52751DA16E95005DFE5D = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					A9FD52891DA16E96005DFE5D = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A9FD52751DA16E95005DFE5D;
+					};
+					A9FD52941DA16E96005DFE5D = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A9FD52751DA16E95005DFE5D;
+					};
+				};
+			};
+			buildConfigurationList = A9FD52711DA16E95005DFE5D /* Build configuration list for PBXProject "Trivia Patente" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9FD526D1DA16E95005DFE5D;
+			productRefGroup = A9FD52771DA16E96005DFE5D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9FD52751DA16E95005DFE5D /* Trivia Patente */,
+				A9FD52891DA16E96005DFE5D /* Trivia PatenteTests */,
+				A9FD52941DA16E96005DFE5D /* Trivia PatenteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9FD52741DA16E95005DFE5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */,
+				A9FD52811DA16E96005DFE5D /* Assets.xcassets in Resources */,
+				A9FD527F1DA16E96005DFE5D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52881DA16E96005DFE5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52931DA16E96005DFE5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9FD52721DA16E95005DFE5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9FD527C1DA16E96005DFE5D /* ViewController.swift in Sources */,
+				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52861DA16E96005DFE5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9FD52911DA16E96005DFE5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9FD528C1DA16E96005DFE5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9FD52751DA16E95005DFE5D /* Trivia Patente */;
+			targetProxy = A9FD528B1DA16E96005DFE5D /* PBXContainerItemProxy */;
+		};
+		A9FD52971DA16E96005DFE5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9FD52751DA16E95005DFE5D /* Trivia Patente */;
+			targetProxy = A9FD52961DA16E96005DFE5D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A9FD527D1DA16E96005DFE5D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9FD527E1DA16E96005DFE5D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9FD52831DA16E96005DFE5D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9FD529C1DA16E96005DFE5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9FD529D1DA16E96005DFE5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9FD529F1DA16E96005DFE5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Trivia Patente/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A9FD52A01DA16E96005DFE5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Trivia Patente/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A9FD52A21DA16E96005DFE5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Trivia PatenteTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-PatenteTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trivia Patente.app/Trivia Patente";
+			};
+			name = Debug;
+		};
+		A9FD52A31DA16E96005DFE5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Trivia PatenteTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-PatenteTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trivia Patente.app/Trivia Patente";
+			};
+			name = Release;
+		};
+		A9FD52A51DA16E96005DFE5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Trivia PatenteUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-PatenteUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Trivia Patente";
+			};
+			name = Debug;
+		};
+		A9FD52A61DA16E96005DFE5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Trivia PatenteUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-PatenteUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Trivia Patente";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9FD52711DA16E95005DFE5D /* Build configuration list for PBXProject "Trivia Patente" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9FD529C1DA16E96005DFE5D /* Debug */,
+				A9FD529D1DA16E96005DFE5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9FD529E1DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia Patente" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9FD529F1DA16E96005DFE5D /* Debug */,
+				A9FD52A01DA16E96005DFE5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A9FD52A11DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9FD52A21DA16E96005DFE5D /* Debug */,
+				A9FD52A31DA16E96005DFE5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A9FD52A41DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9FD52A51DA16E96005DFE5D /* Debug */,
+				A9FD52A61DA16E96005DFE5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9FD526E1DA16E95005DFE5D /* Project object */;
+}
