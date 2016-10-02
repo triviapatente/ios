@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
+		A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */; };
 		A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
 		A9FD527C1DA16E96005DFE5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD527B1DA16E96005DFE5D /* ViewController.swift */; };
 		A9FD527F1DA16E96005DFE5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD527D1DA16E96005DFE5D /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */; };
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
+		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33CDB0096DE779647D28C433 /* Pods-Trivia Patente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.release.xcconfig"; sourceTree = "<group>"; };
+		46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_Patente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48DE9B1DCEF267A80CC8CEEF /* Pods-Trivia PatenteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteTests/Pods-Trivia PatenteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4DAAA0E2451D583FCD42AE9A /* Pods-Trivia PatenteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteTests/Pods-Trivia PatenteTests.release.xcconfig"; sourceTree = "<group>"; };
+		6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.release.xcconfig"; sourceTree = "<group>"; };
+		81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
+		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52761DA16E96005DFE5D /* Trivia Patente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trivia Patente.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52791DA16E96005DFE5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FD527B1DA16E96005DFE5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3950FB9A55E6AD8BBF2D5752 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */,
+				8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */,
+				81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61E200B9C7A4C6DFB5D427CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */,
+				33CDB0096DE779647D28C433 /* Pods-Trivia Patente.release.xcconfig */,
+				48DE9B1DCEF267A80CC8CEEF /* Pods-Trivia PatenteTests.debug.xcconfig */,
+				4DAAA0E2451D583FCD42AE9A /* Pods-Trivia PatenteTests.release.xcconfig */,
+				87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */,
+				6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A9FD526D1DA16E95005DFE5D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				A9FD528D1DA16E96005DFE5D /* Trivia PatenteTests */,
 				A9FD52981DA16E96005DFE5D /* Trivia PatenteUITests */,
 				A9FD52771DA16E96005DFE5D /* Products */,
+				61E200B9C7A4C6DFB5D427CB /* Pods */,
+				3950FB9A55E6AD8BBF2D5752 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9FD529E1DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia Patente" */;
 			buildPhases = (
+				DA5FEA247FE54C15BD06D77E /* [CP] Check Pods Manifest.lock */,
 				A9FD52721DA16E95005DFE5D /* Sources */,
 				A9FD52731DA16E95005DFE5D /* Frameworks */,
 				A9FD52741DA16E95005DFE5D /* Resources */,
+				995481357A0A90A0FE8E756F /* [CP] Embed Pods Frameworks */,
+				F7BB0F67FBA249986B9BFD30 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9FD52A11DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteTests" */;
 			buildPhases = (
+				13622C4890E01ADA1FCDD368 /* [CP] Check Pods Manifest.lock */,
 				A9FD52861DA16E96005DFE5D /* Sources */,
 				A9FD52871DA16E96005DFE5D /* Frameworks */,
 				A9FD52881DA16E96005DFE5D /* Resources */,
+				E3CB3DDB1FAD472BF077CBA2 /* [CP] Embed Pods Frameworks */,
+				74B9021586D38D52F3EE52C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9FD52A41DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteUITests" */;
 			buildPhases = (
+				317B9D4B4A9FB304A8DEDBF3 /* [CP] Check Pods Manifest.lock */,
 				A9FD52911DA16E96005DFE5D /* Sources */,
 				A9FD52921DA16E96005DFE5D /* Frameworks */,
 				A9FD52931DA16E96005DFE5D /* Resources */,
+				EAD718D8A0DEEC0199642BF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +301,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13622C4890E01ADA1FCDD368 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		317B9D4B4A9FB304A8DEDBF3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		74B9021586D38D52F3EE52C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia PatenteTests/Pods-Trivia PatenteTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		995481357A0A90A0FE8E756F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA5FEA247FE54C15BD06D77E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E3CB3DDB1FAD472BF077CBA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia PatenteTests/Pods-Trivia PatenteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAD718D8A0DEEC0199642BF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7BB0F67FBA249986B9BFD30 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9FD52721DA16E95005DFE5D /* Sources */ = {
@@ -410,6 +581,7 @@
 		};
 		A9FD529F1DA16E96005DFE5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
@@ -422,6 +594,7 @@
 		};
 		A9FD52A01DA16E96005DFE5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33CDB0096DE779647D28C433 /* Pods-Trivia Patente.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
@@ -434,6 +607,7 @@
 		};
 		A9FD52A21DA16E96005DFE5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48DE9B1DCEF267A80CC8CEEF /* Pods-Trivia PatenteTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,6 +622,7 @@
 		};
 		A9FD52A31DA16E96005DFE5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DAAA0E2451D583FCD42AE9A /* Pods-Trivia PatenteTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,6 +637,7 @@
 		};
 		A9FD52A51DA16E96005DFE5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Trivia PatenteUITests/Info.plist";
@@ -475,6 +651,7 @@
 		};
 		A9FD52A61DA16E96005DFE5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Trivia PatenteUITests/Info.plist";
@@ -505,6 +682,7 @@
 				A9FD52A01DA16E96005DFE5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9FD52A11DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +691,7 @@
 				A9FD52A31DA16E96005DFE5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9FD52A41DA16E96005DFE5D /* Build configuration list for PBXNativeTarget "Trivia PatenteUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +700,7 @@
 				A9FD52A61DA16E96005DFE5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
