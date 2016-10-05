@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
 		A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */; };
+		A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */; };
+		A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */; };
+		A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34F1DA5594A00557DC9 /* RegistrationViewController.swift */; };
+		A9D1D3521DA5595600557DC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D3511DA5595600557DC9 /* MainViewController.swift */; };
 		A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
 		A9FD527C1DA16E96005DFE5D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD527B1DA16E96005DFE5D /* ViewController.swift */; };
 		A9FD527F1DA16E96005DFE5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD527D1DA16E96005DFE5D /* Main.storyboard */; };
@@ -46,6 +50,10 @@
 		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
+		A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A9D1D34F1DA5594A00557DC9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		A9D1D3511DA5595600557DC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A9FD52761DA16E96005DFE5D /* Trivia Patente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trivia Patente.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52791DA16E96005DFE5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FD527B1DA16E96005DFE5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +151,10 @@
 				A9FD52801DA16E96005DFE5D /* Assets.xcassets */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
 				A9FD52851DA16E96005DFE5D /* Info.plist */,
+				A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */,
+				A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */,
+				A9D1D34F1DA5594A00557DC9 /* RegistrationViewController.swift */,
+				A9D1D3511DA5595600557DC9 /* MainViewController.swift */,
 			);
 			path = "Trivia Patente";
 			sourceTree = "<group>";
@@ -430,8 +442,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				A9FD527C1DA16E96005DFE5D /* ViewController.swift in Sources */,
+				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
+				A9D1D3521DA5595600557DC9 /* MainViewController.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
+				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

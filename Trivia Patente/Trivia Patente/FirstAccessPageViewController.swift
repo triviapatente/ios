@@ -10,10 +10,21 @@ import UIKit
 
 class FirstAccessPageViewController: UIPageViewController {
 
+    lazy var controllers: [UIViewController] = {
+        return [self.instantiateController(name: "MainViewController"),
+                self.instantiateController(name: "LoginViewController"),
+                self.instantiateController(name: "RegistrationViewController")]
+    }()
+    
+    private func instantiateController(name: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: name)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        dataSource = self
+        let first = controllers.first!
+        setViewControllers([first], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +43,15 @@ class FirstAccessPageViewController: UIPageViewController {
     }
     */
 
+}
+
+extension FirstAccessPageViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        // TODO
+        return self.controllers[1]
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        // TODO
+        return self.controllers[2]
+    }
 }
