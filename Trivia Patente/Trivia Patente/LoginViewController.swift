@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIPageViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

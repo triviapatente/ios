@@ -47,11 +47,24 @@ class FirstAccessPageViewController: UIPageViewController {
 
 extension FirstAccessPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        // TODO
-        return self.controllers[1]
+        //guard non fa altro che controllare se la condizione è verificata, se non lo è returna nil
+        guard let index = controllers.index(of: viewController) else {
+            return nil
+        }
+        if index == 0 {
+            return nil
+        }
+        return self.controllers[index - 1]
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         // TODO
-        return self.controllers[2]
+        //guard non fa altro che controllare se la condizione è verificata, se non lo è returna nil
+        guard let index = controllers.index(of: viewController) else {
+            return nil
+        }
+        if index >= (controllers.count - 1) {
+            return nil
+        }
+        return self.controllers[index + 1]
     }
 }
