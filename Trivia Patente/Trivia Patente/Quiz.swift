@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Quiz: Base, CommonPK {
+open class Quiz: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kQuizImageIdKey: String = "image_id"
@@ -18,10 +18,10 @@ public class Quiz: Base, CommonPK {
 
 
     // MARK: Properties
-	public var imageId: Int?
-	public var question: String?
-	public var answer: Bool = false
-	public var categoryId: Int?
+	open var imageId: Int?
+	open var question: String?
+	open var answer: Bool = false
+	open var categoryId: Int?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -39,7 +39,8 @@ public class Quiz: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		imageId = json[kQuizImageIdKey].int
 		question = json[kQuizQuestionKey].string
 		answer = json[kQuizAnswerKey].boolValue
@@ -52,18 +53,18 @@ public class Quiz: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if imageId != nil {
-			dictionary.updateValue(imageId!, forKey: kQuizImageIdKey)
+			dictionary.updateValue(imageId! as AnyObject, forKey: kQuizImageIdKey)
 		}
 		if question != nil {
-			dictionary.updateValue(question!, forKey: kQuizQuestionKey)
+			dictionary.updateValue(question! as AnyObject, forKey: kQuizQuestionKey)
 		}
-		dictionary.updateValue(answer, forKey: kQuizAnswerKey)
+		dictionary.updateValue(answer as AnyObject, forKey: kQuizAnswerKey)
 		if categoryId != nil {
-			dictionary.updateValue(categoryId!, forKey: kQuizCategoryIdKey)
+			dictionary.updateValue(categoryId! as AnyObject, forKey: kQuizCategoryIdKey)
 		}
 
         return dictionary
@@ -71,18 +72,20 @@ public class Quiz: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.imageId = aDecoder.decodeObjectForKey(kQuizImageIdKey) as? Int
-		self.question = aDecoder.decodeObjectForKey(kQuizQuestionKey) as? String
-		self.answer = aDecoder.decodeBoolForKey(kQuizAnswerKey)
-		self.categoryId = aDecoder.decodeObjectForKey(kQuizCategoryIdKey) as? Int
+        super.init(coder: aDecoder)
+		self.imageId = aDecoder.decodeObject(forKey: kQuizImageIdKey) as? Int
+		self.question = aDecoder.decodeObject(forKey: kQuizQuestionKey) as? String
+		self.answer = aDecoder.decodeBool(forKey: kQuizAnswerKey)
+		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(imageId, forKey: kQuizImageIdKey)
-		aCoder.encodeObject(question, forKey: kQuizQuestionKey)
-		aCoder.encodeBool(answer, forKey: kQuizAnswerKey)
-		aCoder.encodeObject(categoryId, forKey: kQuizCategoryIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(imageId, forKey: kQuizImageIdKey)
+		aCoder.encode(question, forKey: kQuizQuestionKey)
+		aCoder.encode(answer, forKey: kQuizAnswerKey)
+		aCoder.encode(categoryId, forKey: kQuizCategoryIdKey)
 
     }
 

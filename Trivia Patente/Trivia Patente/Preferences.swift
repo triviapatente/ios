@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Preferences: Base, CommonPK {
+open class Preferences: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kPreferencesStatsKey: String = "stats"
@@ -21,13 +21,13 @@ public class Preferences: Base, CommonPK {
 
 
     // MARK: Properties
-	public var stats: String? //TODO: make enum
-	public var notificationMessage: Bool = false
-    public var chat: String? //TODO: make enum
-	public var notificationRound: Bool = false
-	public var userId: Int?
-	public var notificationNewGame: Bool = false
-	public var notificationFullHearts: Bool = false
+	open var stats: String? //TODO: make enum
+	open var notificationMessage: Bool = false
+    open var chat: String? //TODO: make enum
+	open var notificationRound: Bool = false
+	open var userId: Int?
+	open var notificationNewGame: Bool = false
+	open var notificationFullHearts: Bool = false
 
 
     // MARK: SwiftyJSON Initalizers
@@ -45,10 +45,11 @@ public class Preferences: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
-		stats = Stats(json: json[kPreferencesStatsKey])
+    public override init(json: JSON) {
+        super.init(json: json)
+		stats = json[kPreferencesStatsKey].string
 		notificationMessage = json[kPreferencesNotificationMessageKey].boolValue
-		chat = Chat(json: json[kPreferencesChatKey])
+		chat = json[kPreferencesChatKey].string
 		notificationRound = json[kPreferencesNotificationRoundKey].boolValue
 		userId = json[kPreferencesUserIdKey].int
 		notificationNewGame = json[kPreferencesNotificationNewGameKey].boolValue
@@ -61,55 +62,51 @@ public class Preferences: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		
 		if stats != nil {
-			dictionary.updateValue(stats!.dictionaryRepresentation(), forKey: kPreferencesStatsKey)
+			dictionary.updateValue(stats as AnyObject, forKey: kPreferencesStatsKey)
 		}
-		dictionary.updateValue(notificationMessage, forKey: kPreferencesNotificationMessageKey)
+		dictionary.updateValue(notificationMessage as AnyObject, forKey: kPreferencesNotificationMessageKey)
 		
 		if chat != nil {
-			dictionary.updateValue(chat!.dictionaryRepresentation(), forKey: kPreferencesChatKey)
+			dictionary.updateValue(chat as AnyObject, forKey: kPreferencesChatKey)
 		}
-		dictionary.updateValue(notificationRound, forKey: kPreferencesNotificationRoundKey)
+		dictionary.updateValue(notificationRound as AnyObject, forKey: kPreferencesNotificationRoundKey)
 		if userId != nil {
-			dictionary.updateValue(userId!, forKey: kPreferencesUserIdKey)
+			dictionary.updateValue(userId! as AnyObject, forKey: kPreferencesUserIdKey)
 		}
-		dictionary.updateValue(notificationNewGame, forKey: kPreferencesNotificationNewGameKey)
+		dictionary.updateValue(notificationNewGame as AnyObject, forKey: kPreferencesNotificationNewGameKey)
 		
-		dictionary.updateValue(notificationFullHearts, forKey: kPreferencesNotificationFullHeartsKey)
+		dictionary.updateValue(notificationFullHearts as AnyObject, forKey: kPreferencesNotificationFullHeartsKey)
 
         return dictionary
     }
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.updatedAt = aDecoder.decodeObjectForKey(kPreferencesUpdatedAtKey) as? String
-		self.stats = aDecoder.decodeObjectForKey(kPreferencesStatsKey) as? Stats
-		self.notificationMessage = aDecoder.decodeBoolForKey(kPreferencesNotificationMessageKey)
-		self.internalIdentifier = aDecoder.decodeObjectForKey(kPreferencesInternalIdentifierKey) as? Int
-		self.chat = aDecoder.decodeObjectForKey(kPreferencesChatKey) as? Chat
-		self.notificationRound = aDecoder.decodeBoolForKey(kPreferencesNotificationRoundKey)
-		self.userId = aDecoder.decodeObjectForKey(kPreferencesUserIdKey) as? Int
-		self.notificationNewGame = aDecoder.decodeBoolForKey(kPreferencesNotificationNewGameKey)
-		self.createdAt = aDecoder.decodeObjectForKey(kPreferencesCreatedAtKey) as? String
-		self.notificationFullHearts = aDecoder.decodeBoolForKey(kPreferencesNotificationFullHeartsKey)
+        super.init(coder: aDecoder)
+		self.stats = aDecoder.decodeObject(forKey: kPreferencesStatsKey) as! String?
+		self.notificationMessage = aDecoder.decodeBool(forKey: kPreferencesNotificationMessageKey)
+		self.chat = aDecoder.decodeObject(forKey: kPreferencesChatKey) as! String?
+		self.notificationRound = aDecoder.decodeBool(forKey: kPreferencesNotificationRoundKey)
+		self.userId = aDecoder.decodeObject(forKey: kPreferencesUserIdKey) as? Int
+		self.notificationNewGame = aDecoder.decodeBool(forKey: kPreferencesNotificationNewGameKey)
+		self.notificationFullHearts = aDecoder.decodeBool(forKey: kPreferencesNotificationFullHeartsKey)
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(updatedAt, forKey: kPreferencesUpdatedAtKey)
-		aCoder.encodeObject(stats, forKey: kPreferencesStatsKey)
-		aCoder.encodeBool(notificationMessage, forKey: kPreferencesNotificationMessageKey)
-		aCoder.encodeObject(internalIdentifier, forKey: kPreferencesInternalIdentifierKey)
-		aCoder.encodeObject(chat, forKey: kPreferencesChatKey)
-		aCoder.encodeBool(notificationRound, forKey: kPreferencesNotificationRoundKey)
-		aCoder.encodeObject(userId, forKey: kPreferencesUserIdKey)
-		aCoder.encodeBool(notificationNewGame, forKey: kPreferencesNotificationNewGameKey)
-		aCoder.encodeObject(createdAt, forKey: kPreferencesCreatedAtKey)
-		aCoder.encodeBool(notificationFullHearts, forKey: kPreferencesNotificationFullHeartsKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(stats, forKey: kPreferencesStatsKey)
+		aCoder.encode(notificationMessage, forKey: kPreferencesNotificationMessageKey)
+		aCoder.encode(chat, forKey: kPreferencesChatKey)
+		aCoder.encode(notificationRound, forKey: kPreferencesNotificationRoundKey)
+		aCoder.encode(userId, forKey: kPreferencesUserIdKey)
+		aCoder.encode(notificationNewGame, forKey: kPreferencesNotificationNewGameKey)
+		aCoder.encode(notificationFullHearts, forKey: kPreferencesNotificationFullHeartsKey)
 
     }
 

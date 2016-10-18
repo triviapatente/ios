@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Round: Base, CommonPK {
+open class Round: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kRoundNumberKey: String = "number"
@@ -18,10 +18,10 @@ public class Round: Base, CommonPK {
 
 
     // MARK: Properties
-	public var number: Int?
-	public var gameId: Int?
-	public var catId: Int?
-	public var dealerId: Int?
+	open var number: Int?
+	open var gameId: Int?
+	open var catId: Int?
+	open var dealerId: Int?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -39,7 +39,8 @@ public class Round: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		number = json[kRoundNumberKey].int
 		gameId = json[kRoundGameIdKey].int
 		catId = json[kRoundCatIdKey].int
@@ -52,20 +53,20 @@ public class Round: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if number != nil {
-			dictionary.updateValue(number!, forKey: kRoundNumberKey)
+			dictionary.updateValue(number! as AnyObject, forKey: kRoundNumberKey)
 		}
 		if gameId != nil {
-			dictionary.updateValue(gameId!, forKey: kRoundGameIdKey)
+			dictionary.updateValue(gameId! as AnyObject, forKey: kRoundGameIdKey)
 		}
 		if catId != nil {
-			dictionary.updateValue(catId!, forKey: kRoundCatIdKey)
+			dictionary.updateValue(catId! as AnyObject, forKey: kRoundCatIdKey)
 		}
 		if dealerId != nil {
-			dictionary.updateValue(dealerId!, forKey: kRoundDealerIdKey)
+			dictionary.updateValue(dealerId! as AnyObject, forKey: kRoundDealerIdKey)
 		}
 
         return dictionary
@@ -73,18 +74,20 @@ public class Round: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.number = aDecoder.decodeObjectForKey(kRoundNumberKey) as? Int
-		self.gameId = aDecoder.decodeObjectForKey(kRoundGameIdKey) as? Int
-		self.catId = aDecoder.decodeObjectForKey(kRoundCatIdKey) as? Int
-		self.dealerId = aDecoder.decodeObjectForKey(kRoundDealerIdKey) as? Int
+        super.init(coder: aDecoder)
+		self.number = aDecoder.decodeObject(forKey: kRoundNumberKey) as? Int
+		self.gameId = aDecoder.decodeObject(forKey: kRoundGameIdKey) as? Int
+		self.catId = aDecoder.decodeObject(forKey: kRoundCatIdKey) as? Int
+		self.dealerId = aDecoder.decodeObject(forKey: kRoundDealerIdKey) as? Int
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(number, forKey: kRoundNumberKey)
-		aCoder.encodeObject(gameId, forKey: kRoundGameIdKey)
-		aCoder.encodeObject(catId, forKey: kRoundCatIdKey)
-		aCoder.encodeObject(dealerId, forKey: kRoundDealerIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(number, forKey: kRoundNumberKey)
+		aCoder.encode(gameId, forKey: kRoundGameIdKey)
+		aCoder.encode(catId, forKey: kRoundCatIdKey)
+		aCoder.encode(dealerId, forKey: kRoundDealerIdKey)
 
     }
 

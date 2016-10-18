@@ -8,16 +8,15 @@
 
 import Foundation
 import SwiftyJSON
-import ObjectMapper
 
-public class CommonPK: Mappable, NSCoding {
+open class CommonPK: Base {
     
     // MARK: Declaration for string constants to be used to decode and also serialize.
     internal let kIdKey: String = "id"
     
     
     // MARK: Properties
-    public var id: Int?
+    open var id: Int?
     
     
     // MARK: SwiftyJSON Initalizers
@@ -35,7 +34,8 @@ public class CommonPK: Mappable, NSCoding {
      - parameter json: JSON object from SwiftyJSON.
      - returns: An initalized instance of the class.
      */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
         id = json[kIdKey].int
         
     }
@@ -44,11 +44,11 @@ public class CommonPK: Mappable, NSCoding {
      Generates description of the object in the form of a NSDictionary.
      - returns: A Key value pair containing all valid values in the object.
      */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
         
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
         if id != nil {
-            dictionary.updateValue(id!, forKey: kIdKey)
+            dictionary.updateValue(id! as AnyObject, forKey: kIdKey)
         }
         
         return dictionary
@@ -56,12 +56,14 @@ public class CommonPK: Mappable, NSCoding {
     
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-        self.id = aDecoder.decodeObjectForKey(kIdKey) as? Int
+        super.init(coder: aDecoder)
+        self.id = aDecoder.decodeObject(forKey: kIdKey) as? Int
         
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(id, forKey: kIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(id, forKey: kIdKey)
         
     }
     

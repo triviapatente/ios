@@ -387,15 +387,18 @@
 				TargetAttributes = {
 					A9FD52751DA16E95005DFE5D = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					A9FD52891DA16E96005DFE5D = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A9FD52751DA16E95005DFE5D;
 					};
 					A9FD52941DA16E96005DFE5D = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A9FD52751DA16E95005DFE5D;
 					};

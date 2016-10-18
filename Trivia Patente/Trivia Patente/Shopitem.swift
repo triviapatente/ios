@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Shopitem: Base, CommonPK {
+open class Shopitem: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kShopitemPriceKey: String = "price"
@@ -17,9 +17,9 @@ public class Shopitem: Base, CommonPK {
 
 
     // MARK: Properties
-	public var price: String?
-	public var emoji: String?
-	public var name: String?
+	open var price: String?
+	open var emoji: String?
+	open var name: String?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -37,8 +37,9 @@ public class Shopitem: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
-		price = Price(json: json[kShopitemPriceKey])
+    public override init(json: JSON) {
+        super.init(json: json)
+		price = json[kShopitemPriceKey].string
 		emoji = json[kShopitemEmojiKey].string
 		name = json[kShopitemNameKey].string
 
@@ -49,17 +50,17 @@ public class Shopitem: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if price != nil {
-			dictionary.updateValue(price!.dictionaryRepresentation(), forKey: kShopitemPriceKey)
+			dictionary.updateValue(price! as AnyObject, forKey: kShopitemPriceKey)
 		}
 		if emoji != nil {
-			dictionary.updateValue(emoji!, forKey: kShopitemEmojiKey)
+			dictionary.updateValue(emoji! as AnyObject, forKey: kShopitemEmojiKey)
 		}
 		if name != nil {
-			dictionary.updateValue(name!, forKey: kShopitemNameKey)
+			dictionary.updateValue(name! as AnyObject, forKey: kShopitemNameKey)
 		}
 
         return dictionary
@@ -67,16 +68,18 @@ public class Shopitem: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.price = aDecoder.decodeObjectForKey(kShopitemPriceKey) as? Price
-		self.emoji = aDecoder.decodeObjectForKey(kShopitemEmojiKey) as? String
-		self.name = aDecoder.decodeObjectForKey(kShopitemNameKey) as? String
+        super.init(coder: aDecoder)
+        self.price = aDecoder.decodeObject(forKey: kShopitemPriceKey) as? String
+		self.emoji = aDecoder.decodeObject(forKey: kShopitemEmojiKey) as? String
+		self.name = aDecoder.decodeObject(forKey: kShopitemNameKey) as? String
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(price, forKey: kShopitemPriceKey)
-		aCoder.encodeObject(emoji, forKey: kShopitemEmojiKey)
-		aCoder.encodeObject(name, forKey: kShopitemNameKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(price, forKey: kShopitemPriceKey)
+		aCoder.encode(emoji, forKey: kShopitemEmojiKey)
+		aCoder.encode(name, forKey: kShopitemNameKey)
 
     }
 

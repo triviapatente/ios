@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Base: NSObject, NSCoding {
+open class Base: NSObject, NSCoding {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kCreatedAtKey: String = "createdAt"
@@ -16,8 +16,8 @@ public class Base: NSObject, NSCoding {
 
 
     // MARK: Properties
-    public var updatedAt: Date?
-    public var createdAt: Date?
+    open var updatedAt: Date?
+    open var createdAt: Date?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -36,8 +36,8 @@ public class Base: NSObject, NSCoding {
     - returns: An initalized instance of the class.
     */
     public init(json: JSON) {
-        createdAt = (json[kCreatedAtKey] as! String).dateFromISO8601()
-        updatedAt = (json[kupdatedAtKey] as! String).dateFromISO8601()
+        createdAt = json[kCreatedAtKey].stringValue.dateFromISO8601
+        updatedAt = json[kUpdatedAtKey].stringValue.dateFromISO8601
 
     }
 
@@ -46,14 +46,14 @@ public class Base: NSObject, NSCoding {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open func dictionaryRepresentation() -> [String : AnyObject ] {
 
         var dictionary: [String : AnyObject ] = [ : ]
 		if updatedAt != nil {
-			dictionary.updateValue(updatedAt, forKey: kUpdatedAtKey)
+			dictionary.updateValue(updatedAt as AnyObject, forKey: kUpdatedAtKey)
 		}
 		if createdAt != nil {
-			dictionary.updateValue(createdAt, forKey: kCreatedAtKey)
+			dictionary.updateValue(createdAt as AnyObject, forKey: kCreatedAtKey)
 		}
 		
         return dictionary
@@ -61,13 +61,13 @@ public class Base: NSObject, NSCoding {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.createdAt = (aDecoder.decodeObjectForKey(kCreatedAtKey) as! String).dateFromISO8601
-        self.updatedAt = (aDecoder.decodeObjectForKey(kUpdatedAtKey) as! String).dateFromISO8601
+		self.createdAt = (aDecoder.decodeObject(forKey: kCreatedAtKey) as! String).dateFromISO8601
+        self.updatedAt = (aDecoder.decodeObject(forKey: kUpdatedAtKey) as! String).dateFromISO8601
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(createdAt, forKey: kCreatedAtKey)
-		aCoder.encodeObject(updatedAt, forKey: kUpdatedAtKey)
+    open func encode(with aCoder: NSCoder) {
+		aCoder.encode(createdAt, forKey: kCreatedAtKey)
+		aCoder.encode(updatedAt, forKey: kUpdatedAtKey)
 
     }
 

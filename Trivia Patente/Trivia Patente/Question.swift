@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Question: Base {
+open class Question: Base {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kQuestionAnswerKey: String = "answer"
@@ -18,10 +18,10 @@ public class Question: Base {
 
 
     // MARK: Properties
-	public var answer: Bool = false
-	public var userId: Int?
-	public var quizId: Int?
-	public var roundId: Int?
+	open var answer: Bool = false
+	open var userId: Int?
+	open var quizId: Int?
+	open var roundId: Int?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -39,7 +39,8 @@ public class Question: Base {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		answer = json[kQuestionAnswerKey].boolValue
 		userId = json[kQuestionUserIdKey].int
 		quizId = json[kQuestionQuizIdKey].int
@@ -52,18 +53,18 @@ public class Question: Base {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
-		dictionary.updateValue(answer, forKey: kQuestionAnswerKey)
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
+		dictionary.updateValue(answer as AnyObject, forKey: kQuestionAnswerKey)
 		if userId != nil {
-			dictionary.updateValue(userId!, forKey: kQuestionUserIdKey)
+			dictionary.updateValue(userId! as AnyObject, forKey: kQuestionUserIdKey)
 		}
 		if quizId != nil {
-			dictionary.updateValue(quizId!, forKey: kQuestionQuizIdKey)
+			dictionary.updateValue(quizId! as AnyObject, forKey: kQuestionQuizIdKey)
 		}
 		if roundId != nil {
-			dictionary.updateValue(roundId!, forKey: kQuestionRoundIdKey)
+			dictionary.updateValue(roundId! as AnyObject, forKey: kQuestionRoundIdKey)
 		}
 
         return dictionary
@@ -71,18 +72,20 @@ public class Question: Base {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.answer = aDecoder.decodeBoolForKey(kQuestionAnswerKey)
-		self.userId = aDecoder.decodeObjectForKey(kQuestionUserIdKey) as? Int
-		self.quizId = aDecoder.decodeObjectForKey(kQuestionQuizIdKey) as? Int
-		self.roundId = aDecoder.decodeObjectForKey(kQuestionRoundIdKey) as? Int
+        super.init(coder: aDecoder)
+		self.answer = aDecoder.decodeBool(forKey: kQuestionAnswerKey)
+		self.userId = aDecoder.decodeObject(forKey: kQuestionUserIdKey) as? Int
+		self.quizId = aDecoder.decodeObject(forKey: kQuestionQuizIdKey) as? Int
+		self.roundId = aDecoder.decodeObject(forKey: kQuestionRoundIdKey) as? Int
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeBool(answer, forKey: kQuestionAnswerKey)
-		aCoder.encodeObject(userId, forKey: kQuestionUserIdKey)
-		aCoder.encodeObject(quizId, forKey: kQuestionQuizIdKey)
-		aCoder.encodeObject(roundId, forKey: kQuestionRoundIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(answer, forKey: kQuestionAnswerKey)
+		aCoder.encode(userId, forKey: kQuestionUserIdKey)
+		aCoder.encode(quizId, forKey: kQuestionQuizIdKey)
+		aCoder.encode(roundId, forKey: kQuestionRoundIdKey)
 
     }
 

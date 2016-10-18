@@ -8,14 +8,14 @@
 import Foundation
 import SwiftyJSON
 
-public class Category: Base, CommonPK {
+open class Category: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kCategoryNameKey: String = "name"
 
 
     // MARK: Properties
-	public var name: String?
+	open var name: String?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -33,8 +33,9 @@ public class Category: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
-		name = json[kCategoryNameKey]
+    public override init(json: JSON) {
+        super.init(json: json)
+		name = json[kCategoryNameKey].string
 
     }
 
@@ -43,11 +44,11 @@ public class Category: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if name != nil {
-			dictionary.updateValue(name!.dictionaryRepresentation(), forKey: kCategoryNameKey)
+			dictionary.updateValue(name as AnyObject, forKey: kCategoryNameKey)
 		}
 
         return dictionary
@@ -55,12 +56,14 @@ public class Category: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.name = aDecoder.decodeObjectForKey(kCategoryNameKey) as? Name
+        super.init(coder: aDecoder)
+        self.name = aDecoder.decodeObject(forKey: kCategoryNameKey) as? String
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(name, forKey: kCategoryNameKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(name, forKey: kCategoryNameKey)
 
     }
 

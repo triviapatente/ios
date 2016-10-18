@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class User: Base, CommonPK {
+open class User: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kUserUsernameKey: String = "username"
@@ -20,12 +20,12 @@ public class User: Base, CommonPK {
 
 
     // MARK: Properties
-	public var username: String?
-	public var score: Int?
-	public var image: String?
-	public var surname: String?
-	public var email: String?
-	public var name: String?
+	open var username: String?
+	open var score: Int?
+	open var image: String?
+	open var surname: String?
+	open var email: String?
+	open var name: String?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -43,12 +43,13 @@ public class User: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		username = json[kUserUsernameKey].string
 		score = json[kUserScoreKey].int
 		image = json[kUserImageKey].string
 		surname = json[kUserSurnameKey].string
-		email = Email(json: json[kUserEmailKey])
+		email = json[kUserEmailKey].string
 		name = json[kUserNameKey].string
 
     }
@@ -58,26 +59,26 @@ public class User: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if username != nil {
-			dictionary.updateValue(username!, forKey: kUserUsernameKey)
+			dictionary.updateValue(username! as AnyObject, forKey: kUserUsernameKey)
 		}
 		if score != nil {
-			dictionary.updateValue(score!, forKey: kUserScoreKey)
+			dictionary.updateValue(score! as AnyObject, forKey: kUserScoreKey)
 		}
 		if image != nil {
-			dictionary.updateValue(image!, forKey: kUserImageKey)
+			dictionary.updateValue(image! as AnyObject, forKey: kUserImageKey)
 		}
 		if surname != nil {
-			dictionary.updateValue(surname!, forKey: kUserSurnameKey)
+			dictionary.updateValue(surname! as AnyObject, forKey: kUserSurnameKey)
 		}
 		if email != nil {
-			dictionary.updateValue(email!.dictionaryRepresentation(), forKey: kUserEmailKey)
+			dictionary.updateValue(email! as AnyObject, forKey: kUserEmailKey)
 		}
 		if name != nil {
-			dictionary.updateValue(name!, forKey: kUserNameKey)
+			dictionary.updateValue(name! as AnyObject, forKey: kUserNameKey)
 		}
 
         return dictionary
@@ -85,22 +86,24 @@ public class User: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.username = aDecoder.decodeObjectForKey(kUserUsernameKey) as? String
-		self.score = aDecoder.decodeObjectForKey(kUserScoreKey) as? Int
-		self.image = aDecoder.decodeObjectForKey(kUserImageKey) as? String
-		self.surname = aDecoder.decodeObjectForKey(kUserSurnameKey) as? String
-		self.email = aDecoder.decodeObjectForKey(kUserEmailKey) as? Email
-		self.name = aDecoder.decodeObjectForKey(kUserNameKey) as? String
+        super.init(coder: aDecoder)
+		self.username = aDecoder.decodeObject(forKey: kUserUsernameKey) as? String
+		self.score = aDecoder.decodeObject(forKey: kUserScoreKey) as? Int
+		self.image = aDecoder.decodeObject(forKey: kUserImageKey) as? String
+		self.surname = aDecoder.decodeObject(forKey: kUserSurnameKey) as? String
+        self.email = aDecoder.decodeObject(forKey: kUserEmailKey) as? String
+		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(username, forKey: kUserUsernameKey)
-		aCoder.encodeObject(score, forKey: kUserScoreKey)
-		aCoder.encodeObject(image, forKey: kUserImageKey)
-		aCoder.encodeObject(surname, forKey: kUserSurnameKey)
-		aCoder.encodeObject(email, forKey: kUserEmailKey)
-		aCoder.encodeObject(name, forKey: kUserNameKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(username, forKey: kUserUsernameKey)
+		aCoder.encode(score, forKey: kUserScoreKey)
+		aCoder.encode(image, forKey: kUserImageKey)
+		aCoder.encode(surname, forKey: kUserSurnameKey)
+		aCoder.encode(email, forKey: kUserEmailKey)
+		aCoder.encode(name, forKey: kUserNameKey)
 
     }
 

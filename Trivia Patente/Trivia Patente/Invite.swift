@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Invite: Base {
+open class Invite: Base {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kInviteAcceptedKey: String = "accepted"
@@ -18,10 +18,10 @@ public class Invite: Base {
 
 
     // MARK: Properties
-	public var accepted: Bool = false
-	public var receiverId: Int?
-	public var senderId: Int?
-	public var gameId: Int?
+	open var accepted: Bool = false
+	open var receiverId: Int?
+	open var senderId: Int?
+	open var gameId: Int?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -39,7 +39,8 @@ public class Invite: Base {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		accepted = json[kInviteAcceptedKey].boolValue
 		receiverId = json[kInviteReceiverIdKey].int
 		senderId = json[kInviteSenderIdKey].int
@@ -52,18 +53,18 @@ public class Invite: Base {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
-		dictionary.updateValue(accepted, forKey: kInviteAcceptedKey)
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
+		dictionary.updateValue(accepted as AnyObject, forKey: kInviteAcceptedKey)
 		if receiverId != nil {
-			dictionary.updateValue(receiverId!, forKey: kInviteReceiverIdKey)
+			dictionary.updateValue(receiverId! as AnyObject, forKey: kInviteReceiverIdKey)
 		}
 		if senderId != nil {
-			dictionary.updateValue(senderId!, forKey: kInviteSenderIdKey)
+			dictionary.updateValue(senderId! as AnyObject, forKey: kInviteSenderIdKey)
 		}
 		if gameId != nil {
-			dictionary.updateValue(gameId!, forKey: kInviteGameIdKey)
+			dictionary.updateValue(gameId! as AnyObject, forKey: kInviteGameIdKey)
 		}
 
         return dictionary
@@ -71,18 +72,20 @@ public class Invite: Base {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.accepted = aDecoder.decodeBoolForKey(kInviteAcceptedKey)
-		self.receiverId = aDecoder.decodeObjectForKey(kInviteReceiverIdKey) as? Int
-		self.senderId = aDecoder.decodeObjectForKey(kInviteSenderIdKey) as? Int
-		self.gameId = aDecoder.decodeObjectForKey(kInviteGameIdKey) as? Int
+        super.init(coder: aDecoder)
+		self.accepted = aDecoder.decodeBool(forKey: kInviteAcceptedKey)
+		self.receiverId = aDecoder.decodeObject(forKey: kInviteReceiverIdKey) as? Int
+		self.senderId = aDecoder.decodeObject(forKey: kInviteSenderIdKey) as? Int
+		self.gameId = aDecoder.decodeObject(forKey: kInviteGameIdKey) as? Int
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeBool(accepted, forKey: kInviteAcceptedKey)
-		aCoder.encodeObject(receiverId, forKey: kInviteReceiverIdKey)
-		aCoder.encodeObject(senderId, forKey: kInviteSenderIdKey)
-		aCoder.encodeObject(gameId, forKey: kInviteGameIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(accepted, forKey: kInviteAcceptedKey)
+		aCoder.encode(receiverId, forKey: kInviteReceiverIdKey)
+		aCoder.encode(senderId, forKey: kInviteSenderIdKey)
+		aCoder.encode(gameId, forKey: kInviteGameIdKey)
 
     }
 

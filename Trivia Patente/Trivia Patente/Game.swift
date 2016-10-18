@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Game: Base, CommonPK {
+open class Game: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kGameCreatorIdKey: String = "creator_id"
@@ -17,9 +17,9 @@ public class Game: Base, CommonPK {
 
 
     // MARK: Properties
-	public var creatorId: Int?
-	public var winnerId: Int?
-	public var ended: Bool = false
+	open var creatorId: Int?
+	open var winnerId: Int?
+	open var ended: Bool = false
 
 
     // MARK: SwiftyJSON Initalizers
@@ -37,7 +37,8 @@ public class Game: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		creatorId = json[kGameCreatorIdKey].int
 		winnerId = json[kGameWinnerIdKey].int
 		ended = json[kGameEndedKey].boolValue
@@ -49,33 +50,35 @@ public class Game: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		
 		if creatorId != nil {
-			dictionary.updateValue(creatorId!, forKey: kGameCreatorIdKey)
+			dictionary.updateValue(creatorId! as AnyObject, forKey: kGameCreatorIdKey)
 		}
 		if winnerId != nil {
-			dictionary.updateValue(winnerId!, forKey: kGameWinnerIdKey)
+			dictionary.updateValue(winnerId! as AnyObject, forKey: kGameWinnerIdKey)
 		}
-		dictionary.updateValue(ended, forKey: kGameEndedKey)
+		dictionary.updateValue(ended as AnyObject, forKey: kGameEndedKey)
 
         return dictionary
     }
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.winnerId = aDecoder.decodeObjectForKey(kGameWinnerIdKey) as? Int
-		self.createdAt = aDecoder.decodeObjectForKey(kGameCreatedAtKey) as? String
-		self.ended = aDecoder.decodeBoolForKey(kGameEndedKey)
+        super.init(coder: aDecoder)
+		self.winnerId = aDecoder.decodeObject(forKey: kGameWinnerIdKey) as? Int
+        self.creatorId = aDecoder.decodeObject(forKey: kGameCreatorIdKey) as? Int
+		self.ended = aDecoder.decodeBool(forKey: kGameEndedKey)
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(creatorId, forKey: kGameCreatorIdKey)
-		aCoder.encodeObject(winnerId, forKey: kGameWinnerIdKey)
-		aCoder.encodeBool(ended, forKey: kGameEndedKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(creatorId, forKey: kGameCreatorIdKey)
+		aCoder.encode(winnerId, forKey: kGameWinnerIdKey)
+		aCoder.encode(ended, forKey: kGameEndedKey)
 
     }
 

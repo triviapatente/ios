@@ -11,12 +11,12 @@ import UIKit
 class FirstAccessPageViewController: UIPageViewController {
 
     lazy var controllers: [UIViewController] = {
-        return [self.instantiateController(name: "MainViewController"),
-                self.instantiateController(name: "LoginViewController"),
-                self.instantiateController(name: "RegistrationViewController")]
+        return [self.instantiateController("MainViewController"),
+                self.instantiateController("LoginViewController"),
+                self.instantiateController("RegistrationViewController")]
     }()
     
-    private func instantiateController(name: String) -> UIViewController {
+    fileprivate func instantiateController(_ name: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: name)
     }
     

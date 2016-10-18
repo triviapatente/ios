@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public class Message: Base, CommonPK {
+open class Message: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kMessageContentKey: String = "content"
@@ -17,9 +17,9 @@ public class Message: Base, CommonPK {
 
 
     // MARK: Properties
-	public var content: String?
-	public var userId: Int?
-	public var gameId: Int?
+	open var content: String?
+	open var userId: Int?
+	open var gameId: Int?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -37,7 +37,8 @@ public class Message: Base, CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public override init(json: JSON) {
+        super.init(json: json)
 		content = json[kMessageContentKey].string
 		userId = json[kMessageUserIdKey].int
 		gameId = json[kMessageGameIdKey].int
@@ -49,17 +50,17 @@ public class Message: Base, CommonPK {
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
     */
-    public func dictionaryRepresentation() -> [String : AnyObject ] {
+    open override func dictionaryRepresentation() -> [String : AnyObject ] {
 
-        var dictionary: [String : AnyObject ] = [ : ]
+        var dictionary: [String : AnyObject ] = super.dictionaryRepresentation()
 		if content != nil {
-			dictionary.updateValue(content!, forKey: kMessageContentKey)
+			dictionary.updateValue(content! as AnyObject, forKey: kMessageContentKey)
 		}
 		if userId != nil {
-			dictionary.updateValue(userId!, forKey: kMessageUserIdKey)
+			dictionary.updateValue(userId! as AnyObject, forKey: kMessageUserIdKey)
 		}
 		if gameId != nil {
-			dictionary.updateValue(gameId!, forKey: kMessageGameIdKey)
+			dictionary.updateValue(gameId! as AnyObject, forKey: kMessageGameIdKey)
 		}
 
         return dictionary
@@ -67,16 +68,18 @@ public class Message: Base, CommonPK {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.content = aDecoder.decodeObjectForKey(kMessageContentKey) as? String
-		self.userId = aDecoder.decodeObjectForKey(kMessageUserIdKey) as? Int
-		self.gameId = aDecoder.decodeObjectForKey(kMessageGameIdKey) as? Int
+        super.init(coder: aDecoder)
+		self.content = aDecoder.decodeObject(forKey: kMessageContentKey) as? String
+		self.userId = aDecoder.decodeObject(forKey: kMessageUserIdKey) as? Int
+		self.gameId = aDecoder.decodeObject(forKey: kMessageGameIdKey) as? Int
 
     }
 
-    public func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(content, forKey: kMessageContentKey)
-		aCoder.encodeObject(userId, forKey: kMessageUserIdKey)
-		aCoder.encodeObject(gameId, forKey: kMessageGameIdKey)
+    open override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+		aCoder.encode(content, forKey: kMessageContentKey)
+		aCoder.encode(userId, forKey: kMessageUserIdKey)
+		aCoder.encode(gameId, forKey: kMessageGameIdKey)
 
     }
 
