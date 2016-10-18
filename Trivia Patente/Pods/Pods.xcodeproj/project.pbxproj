@@ -8,32 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		0E763870BFE48551D4A2957F0EB5FF0B /* Pods-Trivia PatenteUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2895C4B57DE64B2E61E1CB8E24AA978 /* Pods-Trivia PatenteUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		371D6B7AE446275B066181B5083C1DED /* Pods-Trivia Patente-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2756BE6365B93304DC210A0FCF290B7E /* Pods-Trivia Patente-dummy.m */; };
-		3808259B2F160523D41336655169C815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		3AB38325801BC02605260239E09715A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		5DDB524D9F881D99134862ECE02D05A7 /* Pods-Trivia Patente-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE94430CCB51DFDB557319E38D0CBB7 /* Pods-Trivia Patente-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C5EF88F9846255D6566140EC06FCCA3 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */; };
+		958A7B988AA9B1B99AD478A04544C5B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		9874A421DD9DE1CF6E5EA9F5C485C589 /* Pods-Trivia PatenteTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5476862F057A193BA454A948944A553D /* Pods-Trivia PatenteTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD46D15504FB2782DCE6F80A59E738B /* Pods-Trivia PatenteTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B31886D91ABE387962993912F85AADD5 /* Pods-Trivia PatenteTests-dummy.m */; };
+		BBB845C089FF88DD6362808CAAE97AE7 /* Pods-Trivia Patente-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2756BE6365B93304DC210A0FCF290B7E /* Pods-Trivia Patente-dummy.m */; };
 		C9531FA033871D141AFB2FD319E9EBF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		D2CFADE099359536075809820FEBBDA0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */; };
+		D9EC1B7D3EE84A82CA3F8AAD32E4879D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		DB2421D1BC9DED447D3D863D9B8F40B4 /* Pods-Trivia PatenteUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D9E740772A484142FD4711A1BAC39F /* Pods-Trivia PatenteUITests-dummy.m */; };
+		E93CA179AC98A7503699948F3CEEF954 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F66690DFA14C974554FBB89EDEE80100 /* Pods-Trivia Patente-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE94430CCB51DFDB557319E38D0CBB7 /* Pods-Trivia Patente-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C89C65E619482CF4758CA43B6DAC631 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D5FEF37B3D60B05F95760D2DDC443E4;
+			remoteInfo = SwiftyJSON;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		045F361992895FEEFEB720B7E972D139 /* Pods-Trivia PatenteTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Trivia PatenteTests.modulemap"; sourceTree = "<group>"; };
+		05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		116419818BE07799B2EFEFE07C70D660 /* Pods-Trivia PatenteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trivia PatenteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1F55D881C9D7B3047BE8F6F2761CCBC8 /* Pods-Trivia PatenteUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Trivia PatenteUITests.modulemap"; sourceTree = "<group>"; };
 		22708132500795C5C6CB797CA713DB7F /* Pods-Trivia PatenteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trivia PatenteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2756BE6365B93304DC210A0FCF290B7E /* Pods-Trivia Patente-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Trivia Patente-dummy.m"; sourceTree = "<group>"; };
+		28FE5FFA1F0729984FC8AAD5B38196B8 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
 		35D9E740772A484142FD4711A1BAC39F /* Pods-Trivia PatenteUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Trivia PatenteUITests-dummy.m"; sourceTree = "<group>"; };
 		401BCDD165722957E649E5BE2989A073 /* Pods-Trivia Patente.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Trivia Patente.modulemap"; sourceTree = "<group>"; };
 		4C30893FCE846F54C340712BB6D97BD1 /* Pods-Trivia Patente-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trivia Patente-frameworks.sh"; sourceTree = "<group>"; };
-		4D0D7394DC8C7CE8B12233204C3C7769 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEDE470BCDCFCAE2695867B18432FD4 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5476862F057A193BA454A948944A553D /* Pods-Trivia PatenteTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Trivia PatenteTests-umbrella.h"; sourceTree = "<group>"; };
 		6129186DFC3EF7AB158B3AAE16EE8688 /* Pods-Trivia Patente-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Trivia Patente-acknowledgements.plist"; sourceTree = "<group>"; };
+		6848EB0AE703A049CAD35F08D08DAD5E /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		714467EEE40EF705A9BA13A4C81E5A33 /* Pods_Trivia_Patente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_Patente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7661F5C2157B57F3D85A4E7D681DE4DD /* Pods-Trivia Patente-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Trivia Patente-acknowledgements.markdown"; sourceTree = "<group>"; };
 		787F862C71BD652334FE30A0273BF88F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AE94430CCB51DFDB557319E38D0CBB7 /* Pods-Trivia Patente-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Trivia Patente-umbrella.h"; sourceTree = "<group>"; };
-		7CC22D2A481BF0352D49C737C4BF5589 /* Pods_Trivia_Patente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_Patente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		820CDC8AD8C069E2A6D6270EE0146000 /* Pods-Trivia PatenteTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trivia PatenteTests-frameworks.sh"; sourceTree = "<group>"; };
 		866723E78ACF95087B4C3730E57B2299 /* Pods-Trivia PatenteTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trivia PatenteTests-resources.sh"; sourceTree = "<group>"; };
 		86F09CD4BCFDF3BB3AB77080933CFF97 /* Pods-Trivia PatenteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trivia PatenteTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -45,18 +64,29 @@
 		AAC62F0C60D418C4D18EA51D06B5797A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB48C525B1C540DD6B0423DBCF709913 /* Pods-Trivia PatenteUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Trivia PatenteUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B31886D91ABE387962993912F85AADD5 /* Pods-Trivia PatenteTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Trivia PatenteTests-dummy.m"; sourceTree = "<group>"; };
+		BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7E66EC7E73BD0A70D202B49397E7082 /* Pods-Trivia Patente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trivia Patente.release.xcconfig"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		D5515C18E6D1383103C21D1D1DA678C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE8331E9A031E45A8386F12E85CAD379 /* Pods-Trivia Patente-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trivia Patente-resources.sh"; sourceTree = "<group>"; };
 		E422DDA5A756627CDC05CFDC3DEC2786 /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E911C64C897E6D0FAE87FEB51221FDCF /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED41031D7C95553C19E7500F33589D64 /* Pods-Trivia PatenteUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trivia PatenteUITests-resources.sh"; sourceTree = "<group>"; };
 		F2895C4B57DE64B2E61E1CB8E24AA978 /* Pods-Trivia PatenteUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Trivia PatenteUITests-umbrella.h"; sourceTree = "<group>"; };
 		FCA31398643D2A7A7DCB9AD992D53792 /* Pods-Trivia PatenteTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Trivia PatenteTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3EC685A0F8AEAEDBDE71AEBB33555AB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				958A7B988AA9B1B99AD478A04544C5B7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		420D6C4F4AE2EADFA558824E4C4D1C7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,11 +103,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC6069FBB2EDE5DEE6DA36A842918B77 /* Frameworks */ = {
+		E03A6DC49DAF4673B31731822FB781F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3808259B2F160523D41336655169C815 /* Foundation.framework in Frameworks */,
+				D9EC1B7D3EE84A82CA3F8AAD32E4879D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +120,26 @@
 				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */,
+				8EC39E1DC11846207722B71AAFE40F98 /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		74931C181C8D4A98C5C03EEAD88B2421 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				714467EEE40EF705A9BA13A4C81E5A33 /* Pods_Trivia_Patente.framework */,
+				28FE5FFA1F0729984FC8AAD5B38196B8 /* Pods_Trivia_PatenteTests.framework */,
+				4EEDE470BCDCFCAE2695867B18432FD4 /* Pods_Trivia_PatenteUITests.framework */,
+				6848EB0AE703A049CAD35F08D08DAD5E /* SwiftyJSON.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		79762ADD618070D6F9F4430279CF0A6A /* Pods-Trivia PatenteUITests */ = {
@@ -125,19 +175,24 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9277F9B802C2F5313FD1F215306C151A /* Products */,
+				BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */,
+				74931C181C8D4A98C5C03EEAD88B2421 /* Products */,
 				79D22AFF68C66B0C045F440B2358C4B3 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9277F9B802C2F5313FD1F215306C151A /* Products */ = {
+		8EC39E1DC11846207722B71AAFE40F98 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7CC22D2A481BF0352D49C737C4BF5589 /* Pods_Trivia_Patente.framework */,
-				4D0D7394DC8C7CE8B12233204C3C7769 /* Pods_Trivia_PatenteTests.framework */,
-				E911C64C897E6D0FAE87FEB51221FDCF /* Pods_Trivia_PatenteUITests.framework */,
+				C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */,
+				D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */,
+				2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */,
+				32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */,
+				BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */,
+				05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -146,6 +201,14 @@
 				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		E59A76699B09F38C18F910F1BA6B1FA3 /* Pods-Trivia PatenteTests */ = {
@@ -203,17 +266,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3C16989182C1BBD52FCF37626047311 /* Headers */ = {
+		B9394DE418AB7937B64556BB5432FA24 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DDB524D9F881D99134862ECE02D05A7 /* Pods-Trivia Patente-umbrella.h in Headers */,
+				F66690DFA14C974554FBB89EDEE80100 /* Pods-Trivia Patente-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1B5161AC6C8FAF014FDCC0BC4ED3441 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E93CA179AC98A7503699948F3CEEF954 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1C8EE7F95833060FBDAB3A03F324699E /* Pods-Trivia Patente */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AF8120CA12115C7299D0FCB875A2C68 /* Build configuration list for PBXNativeTarget "Pods-Trivia Patente" */;
+			buildPhases = (
+				E515A370D7B85169947315478B225749 /* Sources */,
+				3EC685A0F8AEAEDBDE71AEBB33555AB7 /* Frameworks */,
+				B9394DE418AB7937B64556BB5432FA24 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F13007CC264167732C6F4ED6FD717C42 /* PBXTargetDependency */,
+			);
+			name = "Pods-Trivia Patente";
+			productName = "Pods-Trivia Patente";
+			productReference = 714467EEE40EF705A9BA13A4C81E5A33 /* Pods_Trivia_Patente.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		48A1FC3B3CC5A84AE0000E0703C3BE9F /* Pods-Trivia PatenteUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458EBE897842CC2B1254661E00BB3353 /* Build configuration list for PBXNativeTarget "Pods-Trivia PatenteUITests" */;
@@ -228,24 +317,24 @@
 			);
 			name = "Pods-Trivia PatenteUITests";
 			productName = "Pods-Trivia PatenteUITests";
-			productReference = E911C64C897E6D0FAE87FEB51221FDCF /* Pods_Trivia_PatenteUITests.framework */;
+			productReference = 4EEDE470BCDCFCAE2695867B18432FD4 /* Pods_Trivia_PatenteUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B3DCF3D56682CDE9CDE3F871AB0903E4 /* Pods-Trivia Patente */ = {
+		7D5FEF37B3D60B05F95760D2DDC443E4 /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4F83313CA4F1786A1021DB9055199B6A /* Build configuration list for PBXNativeTarget "Pods-Trivia Patente" */;
+			buildConfigurationList = 92427B94C49EB5160CD373663D5021E2 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				886F34C0FAEF50E3CD0E5AD2DE5725E3 /* Sources */,
-				BC6069FBB2EDE5DEE6DA36A842918B77 /* Frameworks */,
-				E3C16989182C1BBD52FCF37626047311 /* Headers */,
+				E92A738618873DE03BA9A033564EC70F /* Sources */,
+				E03A6DC49DAF4673B31731822FB781F2 /* Frameworks */,
+				C1B5161AC6C8FAF014FDCC0BC4ED3441 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-Trivia Patente";
-			productName = "Pods-Trivia Patente";
-			productReference = 7CC22D2A481BF0352D49C737C4BF5589 /* Pods_Trivia_Patente.framework */;
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = 6848EB0AE703A049CAD35F08D08DAD5E /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C13B0E0AABA81CA2DB1BAB4795418D9F /* Pods-Trivia PatenteTests */ = {
@@ -262,7 +351,7 @@
 			);
 			name = "Pods-Trivia PatenteTests";
 			productName = "Pods-Trivia PatenteTests";
-			productReference = 4D0D7394DC8C7CE8B12233204C3C7769 /* Pods_Trivia_PatenteTests.framework */;
+			productReference = 28FE5FFA1F0729984FC8AAD5B38196B8 /* Pods_Trivia_PatenteTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -282,13 +371,14 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 9277F9B802C2F5313FD1F215306C151A /* Products */;
+			productRefGroup = 74931C181C8D4A98C5C03EEAD88B2421 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3DCF3D56682CDE9CDE3F871AB0903E4 /* Pods-Trivia Patente */,
+				1C8EE7F95833060FBDAB3A03F324699E /* Pods-Trivia Patente */,
 				C13B0E0AABA81CA2DB1BAB4795418D9F /* Pods-Trivia PatenteTests */,
 				48A1FC3B3CC5A84AE0000E0703C3BE9F /* Pods-Trivia PatenteUITests */,
+				7D5FEF37B3D60B05F95760D2DDC443E4 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
@@ -302,14 +392,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		886F34C0FAEF50E3CD0E5AD2DE5725E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				371D6B7AE446275B066181B5083C1DED /* Pods-Trivia Patente-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CB33239A0CA1E459DCDF418E01C03CD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,42 +400,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E515A370D7B85169947315478B225749 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBB845C089FF88DD6362808CAAE97AE7 /* Pods-Trivia Patente-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E92A738618873DE03BA9A033564EC70F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C5EF88F9846255D6566140EC06FCCA3 /* SwiftyJSON-dummy.m in Sources */,
+				D2CFADE099359536075809820FEBBDA0 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCBuildConfiguration section */
-		0C21AE7AE127D3225044ED8B87C6F05F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7E66EC7E73BD0A70D202B49397E7082 /* Pods-Trivia Patente.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Trivia Patente/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Trivia_Patente;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
+/* Begin PBXTargetDependency section */
+		F13007CC264167732C6F4ED6FD717C42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = 7D5FEF37B3D60B05F95760D2DDC443E4 /* SwiftyJSON */;
+			targetProxy = 3C89C65E619482CF4758CA43B6DAC631 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
 		3D83925CCB0E7D27A393604E92F3D2A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E422DDA5A756627CDC05CFDC3DEC2786 /* Pods-Trivia PatenteUITests.debug.xcconfig */;
@@ -425,6 +500,69 @@
 			};
 			name = Release;
 		};
+		58EE24ADDA43FF6C36312E8AB381EFBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7E66EC7E73BD0A70D202B49397E7082 /* Pods-Trivia Patente.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Trivia Patente/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Trivia_Patente;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9ACEE29215E8660DDC469337E5BEF5C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -467,7 +605,7 @@
 			};
 			name = Debug;
 		};
-		D330E5590FE54B10EE7328A52E9758EA /* Debug */ = {
+		BC2631D331CC6C65E2C3A299A544A35C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D76ACFD5637031EF33457D66AF4FEEB /* Pods-Trivia Patente.debug.xcconfig */;
 			buildSettings = {
@@ -494,6 +632,7 @@
 				PRODUCT_NAME = Pods_Trivia_Patente;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -599,6 +738,35 @@
 			};
 			name = Debug;
 		};
+		FB0E070CD70CB904BAEE30D8E2FC2601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -620,11 +788,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4F83313CA4F1786A1021DB9055199B6A /* Build configuration list for PBXNativeTarget "Pods-Trivia Patente" */ = {
+		5AF8120CA12115C7299D0FCB875A2C68 /* Build configuration list for PBXNativeTarget "Pods-Trivia Patente" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D330E5590FE54B10EE7328A52E9758EA /* Debug */,
-				0C21AE7AE127D3225044ED8B87C6F05F /* Release */,
+				BC2631D331CC6C65E2C3A299A544A35C /* Debug */,
+				58EE24ADDA43FF6C36312E8AB381EFBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -634,6 +802,15 @@
 			buildConfigurations = (
 				E36D82D43A7BCB4920BAA7E3D53CED4E /* Debug */,
 				D7B8BDB24D5DA5BF6457541DF3F53682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92427B94C49EB5160CD373663D5021E2 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ACEE29215E8660DDC469337E5BEF5C9 /* Debug */,
+				FB0E070CD70CB904BAEE30D8E2FC2601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
