@@ -11,7 +11,9 @@ import Alamofire
 
 class HTTPManager {
     let kTokenKey = "tp-session-auth"
-    let baseURL = "http://192.168.33.10:8000"
+    class func getBaseURL() -> String {
+        return "http://192.168.33.10:8000"
+    }
     func setToken(token : String) {
         let defaults = UserDefaults.standard
         defaults.set(token, forKey: kTokenKey)
@@ -29,7 +31,7 @@ class HTTPManager {
                 headers[kTokenKey] = token
             }
         }
-        let destination = baseURL + url
+        let destination = HTTPManager.getBaseURL() + url
         _ = Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])

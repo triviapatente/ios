@@ -13,6 +13,8 @@
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
 		8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F71DBB72B600143497 /* TPAuthResponse.swift */; };
 		8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F91DBB75CE00143497 /* HTTPAuth.swift */; };
+		8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132FC1DBB8E6F00143497 /* SocketManager.swift */; };
+		8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133001DBBA69B00143497 /* SocketAuth.swift */; };
 		8BCF8C291DB6A3C900EC637C /* FirstAccess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */; };
 		8BCF8C2C1DB6A3DE00EC637C /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */; };
 		8BCF8C2E1DB6A40900EC637C /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */; };
@@ -77,6 +79,8 @@
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
 		8B5132F71DBB72B600143497 /* TPAuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPAuthResponse.swift; sourceTree = "<group>"; };
 		8B5132F91DBB75CE00143497 /* HTTPAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPAuth.swift; sourceTree = "<group>"; };
+		8B5132FC1DBB8E6F00143497 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		8B5133001DBBA69B00143497 /* SocketAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAuth.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstAccess.storyboard; sourceTree = "<group>"; };
 		8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchases.storyboard; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 		8B5132D61DBB5B8700143497 /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132FE1DBBA62200143497 /* socket */,
 				8B5132F51DBB728500143497 /* http */,
 				8B5132DC1DBB5BE700143497 /* ui */,
 				8B5132DD1DBB5BEC00143497 /* models */,
@@ -352,6 +357,7 @@
 		8B5132E91DBB5D9E00143497 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132F31DBB726700143497 /* responses */,
 				8B5132FB1DBB8B9500143497 /* socket */,
 				8B5132EC1DBB5EE500143497 /* http */,
 			);
@@ -361,7 +367,6 @@
 		8B5132EC1DBB5EE500143497 /* http */ = {
 			isa = PBXGroup;
 			children = (
-				8B5132F31DBB726700143497 /* responses */,
 				8B5132EE1DBB5EFF00143497 /* estensions */,
 				8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */,
 			);
@@ -404,8 +409,25 @@
 		8B5132FB1DBB8B9500143497 /* socket */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132FC1DBB8E6F00143497 /* SocketManager.swift */,
 			);
 			name = socket;
+			sourceTree = "<group>";
+		};
+		8B5132FE1DBBA62200143497 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132FF1DBBA69000143497 /* responses */,
+				8B5133001DBBA69B00143497 /* SocketAuth.swift */,
+			);
+			name = socket;
+			sourceTree = "<group>";
+		};
+		8B5132FF1DBBA69000143497 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = responses;
 			sourceTree = "<group>";
 		};
 		8BCF8C341DB6A44400EC637C /* first-access */ = {
@@ -791,9 +813,11 @@
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
+				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
+				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,

@@ -27,7 +27,7 @@ class TPResponse : CustomStringConvertible {
      - parameter json: JSON object from SwiftyJSON.
      - returns: An initalized instance of the class.
      */
-    required init(object : Data?, statusCode : Int) {
+    required init(object : Data?, statusCode : Int? = nil) {
         if let data = object {
             self.load(json: JSON(data: data))
         } else {
@@ -54,6 +54,9 @@ class TPResponse : CustomStringConvertible {
             self.success = success
         } else {
             self.success = true
+        }
+        if let statusCode = self.json["status_code"].int {
+            self.statusCode = statusCode
         }
     }
 }
