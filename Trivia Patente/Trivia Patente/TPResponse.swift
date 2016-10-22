@@ -10,12 +10,16 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class TPResponse {
+class TPResponse : CustomStringConvertible {
     var statusCode : Int!
     var message : String!
     var parameters : [String]!
     var success : Bool!
     var json : JSON!
+    
+    var description: String {
+        return "Response (\(statusCode)) success = \(success) message = \(message) json = \(json)"
+    }
     // MARK: SwiftyJSON Initalizers
     
     /**
@@ -41,8 +45,15 @@ class TPResponse {
         }
     }
     func load(json : JSON) {
+        self.json = json
         self.message = self.json["message"].stringValue
-        self.parameters = self.json["parameters"].arrayObject as! [String]
-        self.success = self.json["success"].boolValue
+        if let parameters = self.json["parameters"].arrayObject {
+            self.parameters = parameters as! [String]
+        }
+        if let success = self.json["success"].bool {
+            self.success = success
+        } else {
+            self.success = true
+        }
     }
 }

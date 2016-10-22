@@ -39,8 +39,8 @@ class HTTPManager {
                         } else if response.response == nil {
                             let response = T(error: "No response from server")
                             handler(response)
-                        } else if let error = response.result.error{
-                            let response = T(error: error.localizedDescription, statusCode: response.response?.statusCode)
+                        } else if let message = (response.result.error as? BackendError)?.message {
+                            let response = T(error: message, statusCode: response.response?.statusCode)
                             handler(response)
                         } else {
                             let response = T(error: "Unknown error")

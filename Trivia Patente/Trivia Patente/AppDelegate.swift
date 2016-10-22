@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let handler = HTTPAuth()
+        handler.login(user: "user0", password: "user0") { (response : TPAuthResponse) in
+            print("Token: \(response.token!)")
+            print("User: \(response.user!.email!)")
+        }
         return true
     }
 

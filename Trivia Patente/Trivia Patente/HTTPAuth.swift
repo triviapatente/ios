@@ -12,6 +12,6 @@ import Alamofire
 class HTTPAuth : HTTPManager {
     func login(user : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["user": user, "password": password]
-        request(url: "/auth/login", method: .post, params: parameters, handler: handler)
+        request(url: "/auth/login", method: .post, params: parameters, auth: false, handler: handler)
     }
 }
