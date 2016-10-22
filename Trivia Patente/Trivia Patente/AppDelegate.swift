@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        SocketManager.connect {
+        /*SocketManager.connect {
             let httpHandler = HTTPAuth()
             let socketHandler = SocketAuth()
             httpHandler.login(user: "user0", password: "user0") { (response : TPAuthResponse) in
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
             }
             
-        }
+        }*/
         return true
     }
 

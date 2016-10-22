@@ -22,4 +22,14 @@ class HTTPAuth : HTTPManager {
     func user(handler : @escaping (TPAuthResponse) -> Void) {
         request(url: "/auth/user", method: .get, params: nil, handler: handler)
     }
+    
+    func register(username : String, email : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {
+        let parameters = ["username": username, "password": password, "email": email]
+        request(url: "/auth/register", method: .post, params: parameters, auth: false) { (response : TPAuthResponse) in
+            if let token = response.token {
+                self.setToken(token: token)
+            }
+            handler(response)
+        }
+    }
 }

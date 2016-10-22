@@ -12,7 +12,7 @@ import Alamofire
 class HTTPManager {
     let kTokenKey = "tp-session-auth"
     class func getBaseURL() -> String {
-        return "http://192.168.33.10:8000"
+        return "http://192.168.1.8:8000"
     }
     func setToken(token : String) {
         let defaults = UserDefaults.standard

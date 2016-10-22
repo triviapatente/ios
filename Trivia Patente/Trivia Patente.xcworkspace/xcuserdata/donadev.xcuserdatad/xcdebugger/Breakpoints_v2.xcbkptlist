@@ -2,4 +2,86 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/SocketManager.swift"
+            timestampString = "498838106.953796"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "emit(path:values:handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/SocketManager.swift"
+            timestampString = "498837114.98306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "listen(event:handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/SocketManager.swift"
+            timestampString = "498837483.438158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "listen(event:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Trivia_Patente.SocketManager.listen &lt;A where A: Trivia_Patente.TPResponse&gt; (event : Swift.String, handler : (Swift.Optional&lt;A&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Trivia Patente"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/donadev/Desktop/Projects/TriviaPatente/iOS/Trivia%20Patente/Trivia%20Patente/SocketManager.swift"
+                  timestampString = "498859077.814931"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "43">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Trivia_Patente.SocketManager.(listen &lt;A where A: Trivia_Patente.TPResponse&gt; (event : Swift.String, handler : (Swift.Optional&lt;A&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Trivia Patente"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/donadev/Desktop/Projects/TriviaPatente/iOS/Trivia%20Patente/Trivia%20Patente/SocketManager.swift"
+                  timestampString = "498859077.816721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
