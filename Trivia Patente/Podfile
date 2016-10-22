@@ -6,7 +6,8 @@ target 'Trivia Patente' do
   use_frameworks!
   # Pods for Trivia Patente
   pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
-
+  pod 'Alamofire', '~> 4.0'
+  
   target 'Trivia PatenteTests' do
     inherit! :search_paths
     # Pods for testing
