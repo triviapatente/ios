@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handler = HTTPAuth()
         handler.login(user: "user0", password: "user0") { (response : TPAuthResponse) in
             print("Token: \(response.token!)")
-            print("User: \(response.user!.email!)")
+            handler.user(handler: { (response2 : TPAuthResponse) in
+                print("User: \(response.user!.email!)")
+            })
         }
         return true
     }
