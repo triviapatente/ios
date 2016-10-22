@@ -36,8 +36,8 @@ open class Base: NSObject, NSCoding {
     - returns: An initalized instance of the class.
     */
     public required init(json: JSON) {
-        createdAt = json[kCreatedAtKey].stringValue.dateFromISO8601
-        updatedAt = json[kUpdatedAtKey].stringValue.dateFromISO8601
+        createdAt = json[kCreatedAtKey].stringValue.dateFromGMT
+        updatedAt = json[kUpdatedAtKey].stringValue.dateFromGMT
 
     }
 
@@ -61,13 +61,13 @@ open class Base: NSObject, NSCoding {
 
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
-		self.createdAt = (aDecoder.decodeObject(forKey: kCreatedAtKey) as! String).dateFromISO8601
-        self.updatedAt = (aDecoder.decodeObject(forKey: kUpdatedAtKey) as! String).dateFromISO8601
+		self.createdAt = (aDecoder.decodeObject(forKey: kCreatedAtKey) as! String).dateFromGMT
+        self.updatedAt = (aDecoder.decodeObject(forKey: kUpdatedAtKey) as! String).dateFromGMT
     }
 
     open func encode(with aCoder: NSCoder) {
-		aCoder.encode(createdAt, forKey: kCreatedAtKey)
-		aCoder.encode(updatedAt, forKey: kUpdatedAtKey)
+		aCoder.encode(createdAt!.gmt, forKey: kCreatedAtKey)
+		aCoder.encode(updatedAt!.gmt, forKey: kUpdatedAtKey)
 
     }
 

@@ -10,25 +10,16 @@ import UIKit
 import Alamofire
 
 class HTTPManager {
-    let kTokenKey = "tp-session-auth"
     class func getBaseURL() -> String {
         return "http://192.168.1.8:8000"
     }
-    func setToken(token : String) {
-        let defaults = UserDefaults.standard
-        defaults.set(token, forKey: kTokenKey)
-        defaults.synchronize()
-    }
-    func getToken() -> String? {
-        let defaults = UserDefaults.standard
-        return defaults.string(forKey: kTokenKey)
-    }
+    
     
     func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, handler: @escaping (T) -> Void) {
         var headers = HTTPHeaders()
         if auth == true {
-            if let token = self.getToken() {
-                headers[kTokenKey] = token
+            if let token = SessionManager.getToken() {
+                headers[SessionManager.kTokenKey] = token
             }
         }
         let destination = HTTPManager.getBaseURL() + url

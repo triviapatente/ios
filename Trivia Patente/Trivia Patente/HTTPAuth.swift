@@ -14,7 +14,11 @@ class HTTPAuth : HTTPManager {
         let parameters = ["user": user, "password": password]
         request(url: "/auth/login", method: .post, params: parameters, auth: false) { (response : TPAuthResponse) in
             if let token = response.token {
-                self.setToken(token: token)
+                SessionManager.set(token: token)
+            }
+            if let user = response.user {
+                print(user.dictionaryRepresentation())
+                SessionManager.set(user: user)
             }
             handler(response)
         }
@@ -27,7 +31,10 @@ class HTTPAuth : HTTPManager {
         let parameters = ["username": username, "password": password, "email": email]
         request(url: "/auth/register", method: .post, params: parameters, auth: false) { (response : TPAuthResponse) in
             if let token = response.token {
-                self.setToken(token: token)
+                SessionManager.set(token: token)
+            }
+            if let user = response.user {
+                SessionManager.set(user: user)
             }
             handler(response)
         }
