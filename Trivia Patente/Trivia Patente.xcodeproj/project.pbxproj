@@ -352,6 +352,7 @@
 		8B5132E91DBB5D9E00143497 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132FB1DBB8B9500143497 /* socket */,
 				8B5132EC1DBB5EE500143497 /* http */,
 			);
 			name = network;
@@ -398,6 +399,13 @@
 				8B5132F71DBB72B600143497 /* TPAuthResponse.swift */,
 			);
 			name = responses;
+			sourceTree = "<group>";
+		};
+		8B5132FB1DBB8B9500143497 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = socket;
 			sourceTree = "<group>";
 		};
 		8BCF8C341DB6A44400EC637C /* first-access */ = {
