@@ -10,8 +10,8 @@
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
 		8BCF8C291DB6A3C900EC637C /* FirstAccess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */; };
 		8BCF8C2C1DB6A3DE00EC637C /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */; };
-		8BCF8C2E1DB6A40900EC637C /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2D1DB6A40900EC637C /* Ranking.storyboard */; };
-		8BCF8C301DB6A41300EC637C /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2F1DB6A41300EC637C /* Stats.storyboard */; };
+		8BCF8C2E1DB6A40900EC637C /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */; };
+		8BCF8C301DB6A41300EC637C /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2F1DB6A41300EC637C /* Chat.storyboard */; };
 		8BCF8C321DB6A42500EC637C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C311DB6A42500EC637C /* Settings.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
 		8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C801DB6A6BA00EC637C /* Category.swift */; };
@@ -69,8 +69,8 @@
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstAccess.storyboard; sourceTree = "<group>"; };
 		8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
-		8BCF8C2D1DB6A40900EC637C /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
-		8BCF8C2F1DB6A41300EC637C /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
+		8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchases.storyboard; sourceTree = "<group>"; };
+		8BCF8C2F1DB6A41300EC637C /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8BCF8C311DB6A42500EC637C /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		8BCF8C801DB6A6BA00EC637C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -156,55 +156,185 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8BCF8C241DB6A35D00EC637C /* socket */ = {
+		8B5132D41DBB5B5300143497 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132E01DBB5C6D00143497 /* ui */,
+				8B5132DF1DBB5C6900143497 /* models */,
 			);
-			name = socket;
+			name = base;
 			sourceTree = "<group>";
 		};
-		8BCF8C251DB6A36100EC637C /* http */ = {
+		8B5132D51DBB5B5800143497 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132E21DBB5C7500143497 /* ui */,
+				8B5132E11DBB5C7100143497 /* models */,
 			);
-			name = http;
+			name = game;
 			sourceTree = "<group>";
 		};
-		8BCF8C261DB6A36D00EC637C /* ui */ = {
+		8B5132D61DBB5B8700143497 /* auth */ = {
 			isa = PBXGroup;
 			children = (
-				8BCF8C2A1DB6A3CE00EC637C /* custom views */,
-				A9FD527D1DA16E96005DFE5D /* Main.storyboard */,
+				8B5132DC1DBB5BE700143497 /* ui */,
+				8B5132DD1DBB5BEC00143497 /* models */,
+			);
+			name = auth;
+			sourceTree = "<group>";
+		};
+		8B5132D71DBB5B8F00143497 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132E41DBB5C7C00143497 /* ui */,
+				8B5132E31DBB5C7800143497 /* models */,
+			);
+			name = message;
+			sourceTree = "<group>";
+		};
+		8B5132D81DBB5B9500143497 /* preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132E61DBB5C8400143497 /* ui */,
+				8B5132E51DBB5C8000143497 /* models */,
+			);
+			name = preferences;
+			sourceTree = "<group>";
+		};
+		8B5132D91DBB5B9A00143497 /* purchases */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132E81DBB5C8E00143497 /* ui */,
+				8B5132E71DBB5C8800143497 /* models */,
+			);
+			name = purchases;
+			sourceTree = "<group>";
+		};
+		8B5132DA1DBB5BC400143497 /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132DE1DBB5C3700143497 /* ui */,
+				8B5132DB1DBB5BD000143497 /* utils */,
+			);
+			name = shared;
+			sourceTree = "<group>";
+		};
+		8B5132DB1DBB5BD000143497 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8CA61DB6AB1300EC637C /* extensions */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		8B5132DC1DBB5BE700143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
 				8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */,
+				8BCF8C341DB6A44400EC637C /* first-access */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B5132DD1DBB5BEC00143497 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C901DB6A6BA00EC637C /* User.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8B5132DE1DBB5C3700143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B5132DF1DBB5C6900143497 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C7F1DB6A6BA00EC637C /* Base.swift */,
+				8BCF8CA41DB6A88700EC637C /* CommonPK.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8B5132E01DBB5C6D00143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				A9FD527D1DA16E96005DFE5D /* Main.storyboard */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B5132E11DBB5C7100143497 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C801DB6A6BA00EC637C /* Category.swift */,
+				8BCF8C811DB6A6BA00EC637C /* Game.swift */,
+				8BCF8C841DB6A6BA00EC637C /* Invite.swift */,
+				8BCF8C8B1DB6A6BA00EC637C /* Question.swift */,
+				8BCF8C8C1DB6A6BA00EC637C /* Quiz.swift */,
+				8BCF8C8D1DB6A6BA00EC637C /* Round.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8B5132E21DBB5C7500143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
 				8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */,
-				8BCF8C2D1DB6A40900EC637C /* Ranking.storyboard */,
-				8BCF8C2F1DB6A41300EC637C /* Stats.storyboard */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B5132E31DBB5C7800143497 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C861DB6A6BA00EC637C /* Message.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8B5132E41DBB5C7C00143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C2F1DB6A41300EC637C /* Chat.storyboard */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B5132E51DBB5C8000143497 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				8BCF8C881DB6A6BA00EC637C /* Preferences.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		8B5132E61DBB5C8400143497 /* ui */ = {
+			isa = PBXGroup;
+			children = (
 				8BCF8C311DB6A42500EC637C /* Settings.storyboard */,
 			);
 			name = ui;
 			sourceTree = "<group>";
 		};
-		8BCF8C271DB6A38300EC637C /* assets */ = {
+		8B5132E71DBB5C8800143497 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				8BCF8C8E1DB6A6BA00EC637C /* Shopitem.swift */,
 			);
-			name = assets;
+			name = models;
 			sourceTree = "<group>";
 		};
-		8BCF8C2A1DB6A3CE00EC637C /* custom views */ = {
+		8B5132E81DBB5C8E00143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */,
 			);
-			name = "custom views";
-			sourceTree = "<group>";
-		};
-		8BCF8C331DB6A43B00EC637C /* app */ = {
-			isa = PBXGroup;
-			children = (
-				8BCF8C341DB6A44400EC637C /* first-access */,
-				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
-			);
-			name = app;
+			name = ui;
 			sourceTree = "<group>";
 		};
 		8BCF8C341DB6A44400EC637C /* first-access */ = {
@@ -216,33 +346,6 @@
 				A9D1D3511DA5595600557DC9 /* MainViewController.swift */,
 			);
 			name = "first-access";
-			sourceTree = "<group>";
-		};
-		8BCF8C7E1DB6A67900EC637C /* models */ = {
-			isa = PBXGroup;
-			children = (
-				8BCF8CA31DB6A76D00EC637C /* base */,
-				8BCF8C801DB6A6BA00EC637C /* Category.swift */,
-				8BCF8C811DB6A6BA00EC637C /* Game.swift */,
-				8BCF8C841DB6A6BA00EC637C /* Invite.swift */,
-				8BCF8C861DB6A6BA00EC637C /* Message.swift */,
-				8BCF8C881DB6A6BA00EC637C /* Preferences.swift */,
-				8BCF8C8B1DB6A6BA00EC637C /* Question.swift */,
-				8BCF8C8C1DB6A6BA00EC637C /* Quiz.swift */,
-				8BCF8C8D1DB6A6BA00EC637C /* Round.swift */,
-				8BCF8C8E1DB6A6BA00EC637C /* Shopitem.swift */,
-				8BCF8C901DB6A6BA00EC637C /* User.swift */,
-			);
-			name = models;
-			sourceTree = "<group>";
-		};
-		8BCF8CA31DB6A76D00EC637C /* base */ = {
-			isa = PBXGroup;
-			children = (
-				8BCF8C7F1DB6A6BA00EC637C /* Base.swift */,
-				8BCF8CA41DB6A88700EC637C /* CommonPK.swift */,
-			);
-			name = base;
 			sourceTree = "<group>";
 		};
 		8BCF8CA61DB6AB1300EC637C /* extensions */ = {
@@ -279,13 +382,14 @@
 		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
 			isa = PBXGroup;
 			children = (
-				8BCF8CA61DB6AB1300EC637C /* extensions */,
-				8BCF8C7E1DB6A67900EC637C /* models */,
-				8BCF8C331DB6A43B00EC637C /* app */,
-				8BCF8C271DB6A38300EC637C /* assets */,
-				8BCF8C261DB6A36D00EC637C /* ui */,
-				8BCF8C251DB6A36100EC637C /* http */,
-				8BCF8C241DB6A35D00EC637C /* socket */,
+				8B5132D61DBB5B8700143497 /* auth */,
+				8B5132D41DBB5B5300143497 /* base */,
+				8B5132D51DBB5B5800143497 /* game */,
+				8B5132D71DBB5B8F00143497 /* message */,
+				8B5132D81DBB5B9500143497 /* preferences */,
+				8B5132D91DBB5B9A00143497 /* purchases */,
+				8B5132DA1DBB5BC400143497 /* shared */,
+				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
 				A9FD52801DA16E96005DFE5D /* Assets.xcassets */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
 				A9FD52851DA16E96005DFE5D /* Info.plist */,
@@ -430,11 +534,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */,
-				8BCF8C2E1DB6A40900EC637C /* Ranking.storyboard in Resources */,
+				8BCF8C2E1DB6A40900EC637C /* Purchases.storyboard in Resources */,
 				A9FD52811DA16E96005DFE5D /* Assets.xcassets in Resources */,
 				8BCF8C321DB6A42500EC637C /* Settings.storyboard in Resources */,
 				A9FD527F1DA16E96005DFE5D /* Main.storyboard in Resources */,
-				8BCF8C301DB6A41300EC637C /* Stats.storyboard in Resources */,
+				8BCF8C301DB6A41300EC637C /* Chat.storyboard in Resources */,
 				8BCF8C2C1DB6A3DE00EC637C /* Game.storyboard in Resources */,
 				8BCF8C291DB6A3C900EC637C /* FirstAccess.storyboard in Resources */,
 			);
