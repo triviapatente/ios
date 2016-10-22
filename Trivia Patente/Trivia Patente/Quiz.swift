@@ -39,7 +39,7 @@ open class Quiz: CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public override init(json: JSON) {
+    public required init(json: JSON) {
         super.init(json: json)
 		imageId = json[kQuizImageIdKey].int
 		question = json[kQuizQuestionKey].string

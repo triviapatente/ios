@@ -43,7 +43,7 @@ open class User: CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public override init(json: JSON) {
+    public required init(json: JSON) {
         super.init(json: json)
 		username = json[kUserUsernameKey].string
 		score = json[kUserScoreKey].int

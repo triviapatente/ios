@@ -10,6 +10,9 @@
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
+		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
+		8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F71DBB72B600143497 /* TPAuthResponse.swift */; };
+		8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F91DBB75CE00143497 /* HTTPAuth.swift */; };
 		8BCF8C291DB6A3C900EC637C /* FirstAccess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */; };
 		8BCF8C2C1DB6A3DE00EC637C /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */; };
 		8BCF8C2E1DB6A40900EC637C /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */; };
@@ -71,6 +74,9 @@
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
+		8B5132F71DBB72B600143497 /* TPAuthResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPAuthResponse.swift; sourceTree = "<group>"; };
+		8B5132F91DBB75CE00143497 /* HTTPAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPAuth.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* FirstAccess.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstAccess.storyboard; sourceTree = "<group>"; };
 		8BCF8C2B1DB6A3DE00EC637C /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 		8BCF8C2D1DB6A40900EC637C /* Purchases.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchases.storyboard; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 		8B5132D61DBB5B8700143497 /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132F51DBB728500143497 /* http */,
 				8B5132DC1DBB5BE700143497 /* ui */,
 				8B5132DD1DBB5BEC00143497 /* models */,
 			);
@@ -353,6 +360,7 @@
 		8B5132EC1DBB5EE500143497 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				8B5132F31DBB726700143497 /* responses */,
 				8B5132EE1DBB5EFF00143497 /* estensions */,
 				8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */,
 			);
@@ -365,6 +373,31 @@
 				8B5132EF1DBB5F1500143497 /* DataRequest.swift */,
 			);
 			name = estensions;
+			sourceTree = "<group>";
+		};
+		8B5132F31DBB726700143497 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132F11DBB662700143497 /* TPResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
+		8B5132F51DBB728500143497 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132F61DBB728C00143497 /* responses */,
+				8B5132F91DBB75CE00143497 /* HTTPAuth.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8B5132F61DBB728C00143497 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B5132F71DBB72B600143497 /* TPAuthResponse.swift */,
+			);
+			name = responses;
 			sourceTree = "<group>";
 		};
 		8BCF8C341DB6A44400EC637C /* first-access */ = {
@@ -736,10 +769,13 @@
 			files = (
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
+				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,
+				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
+				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,

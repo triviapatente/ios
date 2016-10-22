@@ -39,7 +39,7 @@ open class Invite: Base {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public override init(json: JSON) {
+    public required init(json: JSON) {
         super.init(json: json)
 		accepted = json[kInviteAcceptedKey].boolValue
 		receiverId = json[kInviteReceiverIdKey].int

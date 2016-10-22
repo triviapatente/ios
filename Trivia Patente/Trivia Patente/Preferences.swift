@@ -45,7 +45,7 @@ open class Preferences: CommonPK {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public override init(json: JSON) {
+    public required init(json: JSON) {
         super.init(json: json)
 		stats = json[kPreferencesStatsKey].string
 		notificationMessage = json[kPreferencesNotificationMessageKey].boolValue

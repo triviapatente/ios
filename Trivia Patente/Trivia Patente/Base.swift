@@ -35,7 +35,7 @@ open class Base: NSObject, NSCoding {
     - parameter json: JSON object from SwiftyJSON.
     - returns: An initalized instance of the class.
     */
-    public init(json: JSON) {
+    public required init(json: JSON) {
         createdAt = json[kCreatedAtKey].stringValue.dateFromISO8601
         updatedAt = json[kUpdatedAtKey].stringValue.dateFromISO8601
 
