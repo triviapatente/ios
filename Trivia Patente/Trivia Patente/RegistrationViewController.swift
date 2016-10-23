@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class RegistrationViewController: UIViewController {
     @IBOutlet var nameField : UITextField!
@@ -47,9 +48,8 @@ class RegistrationViewController: UIViewController {
                 let controller = UIViewController.root()
                 self.present(controller, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "indietro", style: .cancel, handler: nil))
-                self.show(alert, sender: nil)
+                MBProgressHUD.error(response.message!, view: self.view)
+
             }
         }
     }

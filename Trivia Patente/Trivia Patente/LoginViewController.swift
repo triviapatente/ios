@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameField : UITextField!
@@ -15,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var facebookButton : TPButton!
     
     let httpAuth = HTTPAuth()
+    
     @IBAction func login() {
         let username = nameField.text!
         let password = passwordField.text!
@@ -32,9 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let controller = UIViewController.root()
                 self.present(controller, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "indietro", style: .cancel, handler: nil))
-                self.show(alert, sender: nil)
+                MBProgressHUD.error(response.message!, view: self.view)
             }
         }
     }
