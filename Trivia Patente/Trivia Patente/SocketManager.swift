@@ -8,6 +8,8 @@
 
 import Foundation
 import SocketIO
+import SwiftyJSON
+
 class SocketManager {
     static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(true)])
     
@@ -35,8 +37,9 @@ class SocketManager {
     }
     func listen<T: TPResponse>(event : String, handler : @escaping (T?) -> Void) {
         SocketManager.socket.on(event) { (data, ack) in
-            if let json = data.first as? Data {
-                let response = T(object: json)
+            if let object = data.first as? [String : AnyObject] {
+                let json = JSON.fromDict(dict: object)
+                let response = T(json: json)
                 handler(response)
             } else {
                 handler(nil)

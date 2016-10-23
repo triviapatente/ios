@@ -13,7 +13,8 @@ extension DataRequest {
     func responseModel<T : TPResponse>(queue: DispatchQueue? = nil, completionHandler : @escaping (DataResponse<T>) -> Void) -> Self {
         let serializer = DataResponseSerializer<T> { request, response, data, error in
             if let _ = response {
-                let tpResponse = T(object: data, statusCode: response!.statusCode)
+                let json = JSON.fromData(data: data)
+                let tpResponse = T(json: json, statusCode: response!.statusCode)
                 if tpResponse.success == true {
                     return .success(tpResponse)
                 } else {

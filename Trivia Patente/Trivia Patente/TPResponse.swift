@@ -27,9 +27,9 @@ class TPResponse : CustomStringConvertible {
      - parameter json: JSON object from SwiftyJSON.
      - returns: An initalized instance of the class.
      */
-    required init(object : Data?, statusCode : Int? = nil) {
-        if let data = object {
-            self.load(json: JSON(data: data))
+    required init(json : JSON?, statusCode : Int? = nil) {
+        if let data = json {
+            self.load(json: data)
         } else {
             self.success = false
             self.message = "No message from server"
