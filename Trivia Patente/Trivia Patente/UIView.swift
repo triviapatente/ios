@@ -11,8 +11,18 @@ import QuartzCore
 
 extension UIView {
 
-    func smallRounded() {
-        self.layer.cornerRadius = 5
+    func smallRounded(corners : UIRectCorner = .allCorners) {
+        self.createCorners(radius: 5, corners: corners)
+    }
+    func createCorners(radius : CGFloat, corners : UIRectCorner) {
+        let path = UIBezierPath(roundedRect: self.bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height:  radius))
+        
+        let maskLayer = CAShapeLayer()
+        
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
     }
 
 }

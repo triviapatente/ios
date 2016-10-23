@@ -9,23 +9,57 @@
 import UIKit
 import QuartzCore
 
-class TPInputView: TPView {
+class TPInputView: UIViewController {
     
-    @IBOutlet var field : UITextField!
-    @IBOutlet var errorView : UITextView!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.normalState()
+    @IBOutlet var field : TPTextField!
+    @IBOutlet var errorView : UILabel!
+    var isError : Bool = false
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    func isCorrect() -> Bool {
+        return !isError
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.field.layer.borderWidth = 1
+        if isError == false {
+            self.normalState()
+        }
+        
+    }
+    func validate(condition : Bool, error : String) {
+        //if an edittext has never been touched by the user, why display errors?
+        if !field.alreadyFocused || field.isEditing || condition {
+            normalState()
+        } else {
+            errorState(error: error)
+        }
     }
     func errorState(error : String) {
+        isError = true
+        self.errorView.smallRounded(corners: [.topLeft, .topRight])
+        self.field.smallRounded(corners: [.bottomLeft, .bottomRight])
         self.errorView.text = error
-        self.errorView.layer.cornerRadius = 5
         self.errorView.isHidden = false
-        self.field.layer.borderColor = UIColor.clear.cgColor
+        self.field.layer.borderColor = UIColor.red.cgColor
     }
     func normalState() {
+        isError = false
+        self.field.smallRounded()
         self.errorView.isHidden = true
-        self.field.layer.borderColor = UIColor.red.cgColor
+        self.field.layer.borderColor = UIColor.clear.cgColor
+    }
+    func getText() -> String {
+        return field.text!
+    }
+    func initValues(hint : String, delegate : UITextFieldDelegate) {
+        self.field.placeholder = hint
+        self.field.delegate = delegate
+    }
+    override func becomeFirstResponder() -> Bool {
+        _ = self.field.becomeFirstResponder()
+        return super.becomeFirstResponder()
     }
 }

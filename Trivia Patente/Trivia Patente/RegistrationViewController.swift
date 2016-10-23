@@ -9,40 +9,37 @@
 import UIKit
 import MBProgressHUD
 
-class RegistrationViewController: UIViewController {
-    @IBOutlet var nameField : UITextField!
-    @IBOutlet var emailField : UITextField!
-    @IBOutlet var passwordField : UITextField!
-    @IBOutlet var repeatPasswordField : UITextField!
+class RegistrationViewController: UIViewController, UITextFieldDelegate {
+    var nameField : TPInputView!
+    var emailField : TPInputView!
+    var passwordField : TPInputView!
+    var repeatPasswordField : TPInputView!
     
     @IBOutlet var registerButton : TPButton!
     @IBOutlet var fbButton : TPButton!
     
     let http = HTTPAuth()
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let username = nameField.getText()
+        let email = emailField.getText()
+        let password = passwordField.getText()
+        let repeatPassword = repeatPasswordField.getText()
+        
+        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username")
+        emailField.validate(condition: !email.isEmpty, error: "Inserisci l'email")
+        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password")
+        repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password")
+        repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono")
+        
+        registerButton.isEnabled = nameField.isCorrect() && emailField.isCorrect() && passwordField.isCorrect() && repeatPasswordField.isCorrect()
+        fbButton.isEnabled = registerButton.isEnabled
+    }
+    
     @IBAction func normalRegistration() {
-        let username = nameField.text!
-        let email = emailField.text!
-        let password = passwordField.text!
-        let repeatPassword = repeatPasswordField.text!
-        guard !username.isEmpty else {
-            fatalError("Not implemented")
-        }
-        guard !email.isEmpty else {
-            fatalError("Not implemented")
-        }
-        guard !password.isEmpty else {
-            fatalError("Not implemented")
-        }
-        guard !repeatPassword.isEmpty else {
-            fatalError("Not implemented")
-        }
-        guard password == repeatPassword else {
-            fatalError("Not implemented")
-        }
         
         registerButton.load()
-        http.register(username: username, email: email, password: password) { (response : TPAuthResponse) in
+        http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.registerButton.stopLoading()
             if response.success == true {
                 let controller = UIViewController.root()
@@ -55,16 +52,16 @@ class RegistrationViewController: UIViewController {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case nameField:
-            emailField.becomeFirstResponder()
+        case nameField.field:
+            _ = emailField.becomeFirstResponder()
             break
-        case emailField:
-            passwordField.becomeFirstResponder()
+        case emailField.field:
+            _ = passwordField.becomeFirstResponder()
             break
-        case passwordField:
-            repeatPasswordField.becomeFirstResponder()
+        case passwordField.field:
+            _ = repeatPasswordField.becomeFirstResponder()
             break
-        case repeatPasswordField:
+        case repeatPasswordField.field:
             //programmatically touch login button
             registerButton.sendActions(for: .touchUpInside)
             break
@@ -78,11 +75,10 @@ class RegistrationViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameField.smallRounded()
-        emailField.smallRounded()
-        passwordField.smallRounded()
-        repeatPasswordField.smallRounded()
-        registerButton.smallRounded()
+        self.nameField.initValues(hint: "Username", delegate: self)
+        self.emailField.initValues(hint: "Email", delegate: self)
+        self.passwordField.initValues(hint: "Password", delegate: self)
+        self.repeatPasswordField.initValues(hint: "Ripeti password", delegate: self)
         // Do any additional setup after loading the view.
     }
 
@@ -92,14 +88,27 @@ class RegistrationViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? TPInputView {
+            if let identifier = segue.identifier {
+                switch identifier {
+                    case "username":
+                        self.nameField = destination
+                        break
+                    case "email":
+                        self.emailField = destination
+                        break
+                    case "password":
+                        self.passwordField = destination
+                        break
+                    case "repeat_password":
+                        self.repeatPasswordField = destination
+                        break
+                    default: break
+            
+                }
+            }
+        }
     }
-    */
 
 }
