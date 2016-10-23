@@ -10,7 +10,7 @@ import UIKit
 
 class SessionManager {
     static let kTokenKey = "tp-session-auth"
-    static let kUserkey = "tp-current-user"
+    static let kUserKey = "tp-current-user"
 
     class func set(token : String) {
         let defaults = UserDefaults.standard
@@ -20,12 +20,12 @@ class SessionManager {
     class func set(user : User) {
         let defaults = UserDefaults.standard
         let object = NSKeyedArchiver.archivedData(withRootObject: user)
-        defaults.set(object, forKey: kUserkey)
+        defaults.set(object, forKey: kUserKey)
         defaults.synchronize()
     }
     static var currentUser : User? {
         let defaults = UserDefaults.standard
-        let object = defaults.object(forKey: kUserkey) as! Data
+        let object = defaults.object(forKey: kUserKey) as! Data
         if let user = NSKeyedUnarchiver.unarchiveObject(with: object) as? User {
             return user
         }
@@ -34,5 +34,19 @@ class SessionManager {
     class func getToken() -> String? {
         let defaults = UserDefaults.standard
         return defaults.string(forKey: kTokenKey)
+    }
+    class func drop() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: kTokenKey)
+        defaults.removeObject(forKey: kUserKey)
+        defaults.synchronize()
+    }
+    class func authenticateSocket(handler : @escaping (TPResponse?) -> Void) {
+        let socketAuth = SocketAuth()
+        if let token = SessionManager.getToken() {
+            SocketManager.connect {
+                socketAuth.authenticate(token: token, handler: handler)
+            }
+        }
     }
 }

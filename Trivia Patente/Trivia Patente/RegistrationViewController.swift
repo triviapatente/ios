@@ -43,9 +43,14 @@ class RegistrationViewController: UIViewController {
         registerButton.load()
         http.register(username: username, email: email, password: password) { (response : TPAuthResponse) in
             self.registerButton.stopLoading()
-            let alert = UIAlertController(title: "Response", message: response.description, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "indietro", style: .cancel, handler: nil))
-            self.show(alert, sender: nil)
+            if response.success == true {
+                let controller = UIViewController.root()
+                self.present(controller, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Error", message: response.message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "indietro", style: .cancel, handler: nil))
+                self.show(alert, sender: nil)
+            }
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -16,19 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        /*SocketManager.connect {
-            let httpHandler = HTTPAuth()
-            let socketHandler = SocketAuth()
-            httpHandler.login(user: "user0", password: "user0") { (response : TPAuthResponse) in
-                print("Token: \(response.token!)")
-                socketHandler.authenticate(token: response.token!, handler: { (response1 : TPResponse?) in
-                    if let output = response1 {
-                        print("Success: \(output.success)")
-                    }
-                })
-            }
-            
-        }*/
+        self.window?.rootViewController = UIViewController.root()
         return true
     }
 

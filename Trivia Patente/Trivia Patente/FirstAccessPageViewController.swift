@@ -12,7 +12,7 @@ class FirstAccessPageViewController: UIPageViewController {
 
     lazy var controllers: [UIViewController] = {
         return [self.instantiateController("RegistrationViewController"),
-                self.instantiateController("MainViewController"),
+                self.instantiateController("WelcomeViewController"),
                 self.instantiateController("LoginViewController")]
     }()
     var mainController : UIViewController {

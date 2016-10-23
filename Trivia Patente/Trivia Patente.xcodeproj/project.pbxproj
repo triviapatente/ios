@@ -27,6 +27,9 @@
 		8B51331E1DBBE80100143497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51331D1DBBE80100143497 /* UIView.swift */; };
 		8B5133221DBBEB4600143497 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133211DBBEB4600143497 /* UiButton.swift */; };
 		8B5133241DBC027000143497 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133231DBC027000143497 /* SessionManager.swift */; };
+		8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133251DBCBA6900143497 /* MainViewController.swift */; };
+		8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133271DBCBEF200143497 /* UIStoryboard.swift */; };
+		8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133291DBCC14800143497 /* UIViewController.swift */; };
 		8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* Main.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
 		8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C801DB6A6BA00EC637C /* Category.swift */; };
@@ -46,7 +49,7 @@
 		A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */; };
 		A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */; };
 		A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34F1DA5594A00557DC9 /* RegistrationViewController.swift */; };
-		A9D1D3521DA5595600557DC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D3511DA5595600557DC9 /* MainViewController.swift */; };
+		A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D3511DA5595600557DC9 /* WelcomeViewController.swift */; };
 		A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
 		A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD527D1DA16E96005DFE5D /* FirstAccess.storyboard */; };
 		A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */; };
@@ -100,6 +103,9 @@
 		8B51331D1DBBE80100143497 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8B5133211DBBEB4600143497 /* UiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
 		8B5133231DBC027000143497 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		8B5133251DBCBA6900143497 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8B5133271DBCBEF200143497 /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		8B5133291DBCC14800143497 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		8BCF8C801DB6A6BA00EC637C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -119,7 +125,7 @@
 		A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
 		A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A9D1D34F1DA5594A00557DC9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		A9D1D3511DA5595600557DC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A9D1D3511DA5595600557DC9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A9FD52761DA16E96005DFE5D /* Trivia Patente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trivia Patente.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52791DA16E96005DFE5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9FD527E1DA16E96005DFE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FirstAccess.storyboard; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCF8C281DB6A3C900EC637C /* Main.storyboard */,
+				8B5133251DBCBA6900143497 /* MainViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -463,12 +470,12 @@
 			name = registration;
 			sourceTree = "<group>";
 		};
-		8B5133101DBBACB900143497 /* main */ = {
+		8B5133101DBBACB900143497 /* welcome */ = {
 			isa = PBXGroup;
 			children = (
-				A9D1D3511DA5595600557DC9 /* MainViewController.swift */,
+				A9D1D3511DA5595600557DC9 /* WelcomeViewController.swift */,
 			);
-			name = main;
+			name = welcome;
 			sourceTree = "<group>";
 		};
 		8B5133131DBBB4FC00143497 /* TPInputView */ = {
@@ -487,7 +494,7 @@
 				8B5133111DBBADEB00143497 /* Datasource.swift */,
 				8B51330E1DBBACAB00143497 /* login */,
 				8B51330F1DBBACB200143497 /* registration */,
-				8B5133101DBBACB900143497 /* main */,
+				8B5133101DBBACB900143497 /* welcome */,
 			);
 			name = pagecontroller;
 			sourceTree = "<group>";
@@ -499,6 +506,8 @@
 				8BCF8CA91DB6AB3400EC637C /* Date.swift */,
 				8B51331D1DBBE80100143497 /* UIView.swift */,
 				8B5133211DBBEB4600143497 /* UiButton.swift */,
+				8B5133271DBCBEF200143497 /* UIStoryboard.swift */,
+				8B5133291DBCC14800143497 /* UIViewController.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -863,11 +872,14 @@
 				8B5133221DBBEB4600143497 /* UiButton.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
+				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
+				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
+				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
-				A9D1D3521DA5595600557DC9 /* MainViewController.swift in Sources */,
+				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,

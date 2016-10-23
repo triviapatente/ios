@@ -12,16 +12,26 @@ class SocketManager {
     static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(true)])
     
     class func connect(handler : @escaping () -> Void) {
-        socket.on("connect") { (data, ack) in
+        if socket.status == .connected {
             handler()
+        } else {
+            socket.on("connect") { (data, ack) in
+                self.socket.off("connect")
+                handler()
+            }
+            socket.connect()
         }
-        socket.connect()
     }
     class func disconnect(handler : @escaping () -> Void) {
-        socket.on("disconnect") { (data, ack) in
+        if socket.status == .disconnected {
             handler()
+        } else {
+            socket.on("disconnect") { (data, ack) in
+                self.socket.off("disconnect")
+                handler()
+            }
+            socket.disconnect()
         }
-        socket.disconnect()
     }
     func listen<T: TPResponse>(event : String, handler : @escaping (T?) -> Void) {
         SocketManager.socket.on(event) { (data, ack) in
@@ -34,13 +44,9 @@ class SocketManager {
         }
     }
     func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T?) -> Void) {
-        SocketManager.socket.on(path) { (data, ack) in
-            if let json = data.first as? Data {
-                let response = T(object: json)
-                handler(response)
-            } else {
-                handler(nil)
-            }
+        listen(event: path) { (response:  T?) in
+            SocketManager.socket.off(path)
+            handler(response)
         }
         SocketManager.socket.emit(path, values)
     }

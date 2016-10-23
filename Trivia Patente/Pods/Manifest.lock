@@ -1,10 +1,12 @@
 PODS:
   - Alamofire (4.0.1)
+  - MBProgressHUD (1.0.0)
   - Socket.IO-Client-Swift (8.0.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - MBProgressHUD (~> 1.0.0)
   - Socket.IO-Client-Swift (~> 8.0.2)
   - SwiftyJSON (from `https://github.com/BaiduHiDeviOS/SwiftyJSON.git`, branch `swift3`)
 
@@ -20,9 +22,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Socket.IO-Client-Swift: 136598e4a81a42b0e6855e7f94a0e5a6efdc5ff8
   SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
 
-PODFILE CHECKSUM: 1e55f5128a4ed55dfdddf1de8ada3455fa94c278
+PODFILE CHECKSUM: f40c9b05f0c46424b1bc4250bbe97459ef7acfb2
 
 COCOAPODS: 1.1.1
