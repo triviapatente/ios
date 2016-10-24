@@ -14,7 +14,7 @@ class TPInputView: UIViewController {
     @IBOutlet var field : TPTextField!
     @IBOutlet var errorView : UILabel!
     var isError : Bool = false
-
+    var ignoreValidation = true
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,13 +29,18 @@ class TPInputView: UIViewController {
         }
         
     }
-    func validate(condition : Bool, error : String) {
-        //if an edittext has never been touched by the user, why display errors?
-        if !field.alreadyFocused || field.isEditing || condition {
+    func validate(condition : Bool, error : String, force: Bool = false) {
+        if ignoreValidation || condition {
             normalState()
         } else {
             errorState(error: error)
         }
+    }
+    func enableValidation() {
+        self.set(ignoreValidation: false)
+    }
+    func set(ignoreValidation : Bool) {
+        self.ignoreValidation = ignoreValidation
     }
     func errorState(error : String) {
         isError = true

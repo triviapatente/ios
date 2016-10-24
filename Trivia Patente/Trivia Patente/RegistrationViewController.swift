@@ -21,23 +21,40 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     let http = HTTPAuth()
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        checkValues()
+    }
+    func checkValues() {
         let username = nameField.getText()
         let email = emailField.getText()
         let password = passwordField.getText()
         let repeatPassword = repeatPasswordField.getText()
         
         nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username")
-        emailField.validate(condition: !email.isEmpty, error: "Inserisci l'email")
+        emailField.validate(condition: email.isEmail && !email.isEmpty, error: "Inserisci un'indirizzo email corretto")
         passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password")
         repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password")
         repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono")
         
-        registerButton.isEnabled = nameField.isCorrect() && emailField.isCorrect() && passwordField.isCorrect() && repeatPasswordField.isCorrect()
-        fbButton.isEnabled = registerButton.isEnabled
+        registerButton.isEnabled = formIsCorrect()
+        fbButton.isEnabled = formIsCorrect()
+    }
+    func formIsCorrect() -> Bool {
+        return nameField.isCorrect() && emailField.isCorrect() && passwordField.isCorrect() && repeatPasswordField.isCorrect()
+    }
+    
+    func enableValidation() {
+        nameField.enableValidation()
+        emailField.enableValidation()
+        passwordField.enableValidation()
+        repeatPasswordField.enableValidation()
     }
     
     @IBAction func normalRegistration() {
-        
+        self.enableValidation()
+        self.checkValues()
+        guard self.formIsCorrect() else {
+            return
+        }
         registerButton.load()
         http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.registerButton.stopLoading()
@@ -77,8 +94,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.nameField.initValues(hint: "Username", delegate: self)
         self.emailField.initValues(hint: "Email", delegate: self)
+        self.emailField.field.keyboardType = .emailAddress
         self.passwordField.initValues(hint: "Password", delegate: self)
+        self.passwordField.field.isSecureTextEntry = true
         self.repeatPasswordField.initValues(hint: "Ripeti password", delegate: self)
+        self.repeatPasswordField.field.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
 
