@@ -12,7 +12,10 @@ import QuartzCore
 extension UIView {
 
     func smallRounded(corners : UIRectCorner = .allCorners) {
-        self.createCorners(radius: 5, corners: corners)
+        self.createCorners(radius: 3, corners: corners)
+    }
+    func mediumRounded(corners : UIRectCorner = .allCorners) {
+        self.createCorners(radius: 10, corners: corners)
     }
     func createCorners(radius : CGFloat, corners : UIRectCorner) {
         let path = UIBezierPath(roundedRect: self.bounds,

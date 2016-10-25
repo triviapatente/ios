@@ -14,15 +14,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     var emailField : TPInputView!
     var passwordField : TPInputView!
     var repeatPasswordField : TPInputView!
+    var errorView : TPErrorView!
     
     @IBOutlet var registerButton : TPButton!
     @IBOutlet var fbButton : TPButton!
-    
+    @IBOutlet var errorViewContainer : UIView!
+
     let http = HTTPAuth()
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        checkValues()
-    }
     func checkValues() {
         let username = nameField.getText()
         let email = emailField.getText()
@@ -36,7 +35,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono")
         
         registerButton.isEnabled = formIsCorrect()
-        fbButton.isEnabled = formIsCorrect()
     }
     func formIsCorrect() -> Bool {
         return nameField.isCorrect() && emailField.isCorrect() && passwordField.isCorrect() && repeatPasswordField.isCorrect()
@@ -62,8 +60,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                 let controller = UIViewController.root()
                 self.present(controller, animated: true, completion: nil)
             } else {
-                MBProgressHUD.error(response.message!, view: self.view)
-
+                self.errorView.set(error: response.message)
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.errorViewContainer.isHidden = false
+                })
             }
         }
     }
@@ -93,12 +93,20 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameField.initValues(hint: "Username", delegate: self)
+        self.nameField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))
+
         self.emailField.initValues(hint: "Email", delegate: self)
         self.emailField.field.keyboardType = .emailAddress
+        self.emailField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))
+
         self.passwordField.initValues(hint: "Password", delegate: self)
         self.passwordField.field.isSecureTextEntry = true
+        self.passwordField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))
+        
         self.repeatPasswordField.initValues(hint: "Ripeti password", delegate: self)
         self.repeatPasswordField.field.isSecureTextEntry = true
+        self.repeatPasswordField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))
+
         // Do any additional setup after loading the view.
     }
 
@@ -109,24 +117,25 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TPInputView {
-            if let identifier = segue.identifier {
-                switch identifier {
-                    case "username":
-                        self.nameField = destination
-                        break
-                    case "email":
-                        self.emailField = destination
-                        break
-                    case "password":
-                        self.passwordField = destination
-                        break
-                    case "repeat_password":
-                        self.repeatPasswordField = destination
-                        break
-                    default: break
+        let destination = segue.destination
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "username":
+                    self.nameField = destination as! TPInputView
+                    break
+                case "email":
+                    self.emailField = destination as! TPInputView
+                    break
+                case "password":
+                    self.passwordField = destination as! TPInputView
+                    break
+                case "repeat_password":
+                    self.repeatPasswordField = destination as! TPInputView
+                    break
+                case "error":
+                    self.errorView = destination as! TPErrorView
+                default: break
             
-                }
             }
         }
     }

@@ -10,38 +10,56 @@ import UIKit
 import MBProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var nameField : UITextField!
-    @IBOutlet var passwordField : UITextField!
+    var nameField : TPInputView!
+    var passwordField : TPInputView!
+    var errorView : TPErrorView!
+
     @IBOutlet var loginButton : TPButton!
     @IBOutlet var facebookButton : TPButton!
+    @IBOutlet var errorViewContainer : UIView!
     
     let httpAuth = HTTPAuth()
     
+    func formIsCorrect() -> Bool {
+        return nameField.isCorrect() && passwordField.isCorrect()
+    }
+    func enableValidation() {
+        nameField.enableValidation()
+        passwordField.enableValidation()
+    }
     @IBAction func login() {
-        let username = nameField.text!
-        let password = passwordField.text!
-        
-        guard !username.isEmpty else {
-            fatalError("Not implemented")
-        }
-        guard !password.isEmpty else {
-            fatalError("Not implemented")
+        self.enableValidation()
+        self.checkValues()
+        guard self.formIsCorrect() else {
+            return
         }
         loginButton.load()
-        httpAuth.login(user: username, password: password) { (response : TPAuthResponse) in
+        httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.loginButton.stopLoading()
             if response.success == true {
                 let controller = UIViewController.root()
                 self.present(controller, animated: true, completion: nil)
             } else {
-                MBProgressHUD.error(response.message!, view: self.view)
+                self.errorView.set(error: response.message)
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.errorViewContainer.isHidden = false
+                })
             }
         }
+    }
+    func checkValues() {
+        let username = nameField.getText()
+        let password = passwordField.getText()
+        
+        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email")
+        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password")
+        
+        loginButton.isEnabled = formIsCorrect()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case nameField:
-            passwordField.becomeFirstResponder()
+            _ = passwordField.becomeFirstResponder()
             break
         case passwordField:
             //programmatically touch login button
@@ -58,10 +76,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameField.smallRounded()
-        passwordField.smallRounded()
         loginButton.smallRounded()
-
+        
+        self.nameField.initValues(hint: "Username o email", delegate: self)
+        self.nameField.add(target: self, changeValueHandler: #selector(checkValues))
+        
+        self.passwordField.initValues(hint: "Password", delegate: self)
+        self.passwordField.add(target: self, changeValueHandler: #selector(checkValues))
+        self.passwordField.field.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
 
@@ -71,14 +93,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destination
+        if let identifier = segue.identifier {
+            switch identifier {
+                case "username":
+                    self.nameField = destination as! TPInputView
+                    break
+                case "password":
+                    self.passwordField = destination as! TPInputView
+                    break
+                case "error":
+                    self.errorView = destination as! TPErrorView
+                default: break
+                
+            }
+        }
     }
-    */
 
 }

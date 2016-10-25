@@ -36,6 +36,9 @@ class TPInputView: UIViewController {
             errorState(error: error)
         }
     }
+    func add(target : Any?, changeValueHandler: Selector) {
+        self.field.addTarget(target, action: changeValueHandler, for: UIControlEvents.editingChanged)
+    }
     func enableValidation() {
         self.set(ignoreValidation: false)
     }
@@ -56,8 +59,12 @@ class TPInputView: UIViewController {
         self.errorView.isHidden = true
         self.field.layer.borderColor = UIColor.clear.cgColor
     }
-    func getText() -> String {
-        return field.text!
+    func getText(trimming : Bool = true) -> String {
+        var output = field.text!
+        if trimming {
+            output = output.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return output
     }
     func initValues(hint : String, delegate : UITextFieldDelegate) {
         self.field.placeholder = hint

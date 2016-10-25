@@ -29,6 +29,14 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
                                 <subviews>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="J9V-5l-dZ3"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="GER-WT-r58" kind="embed" identifier="error" id="Zdm-RU-yT4"/>
+                                        </connections>
+                                    </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-di-1yK">
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-9H-a0N">
@@ -112,6 +120,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AgN-di-1yK" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" id="BUC-dw-m9T"/>
+                                    <constraint firstAttribute="trailing" secondItem="6a8-Ba-Ass" secondAttribute="trailing" constant="50" id="Hp2-sG-3f5"/>
+                                    <constraint firstItem="6a8-Ba-Ass" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" constant="50" id="UFr-vF-19A"/>
                                     <constraint firstAttribute="trailing" secondItem="h7Y-Hh-ssX" secondAttribute="trailing" constant="50" id="XCb-ph-OQM"/>
                                     <constraint firstItem="AgN-di-1yK" firstAttribute="centerX" secondItem="oZT-Ko-9ZK" secondAttribute="centerX" id="mbE-YQ-r8u"/>
                                     <constraint firstItem="h7Y-Hh-ssX" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" constant="50" id="sK5-MM-R62"/>
@@ -120,16 +130,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" id="5QF-si-fCR"/>
+                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="EmY-4l-zf8"/>
+                            <constraint firstItem="hYj-bA-OW3" firstAttribute="top" secondItem="oZT-Ko-9ZK" secondAttribute="bottom" constant="92" id="K6o-7p-Erq"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="leading" secondItem="LSC-2Z-bgl" secondAttribute="leading" id="QRc-TU-1Ka"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="UBr-s2-kpI"/>
                             <constraint firstAttribute="trailing" secondItem="oZT-Ko-9ZK" secondAttribute="trailing" id="bKk-4R-ipj"/>
                             <constraint firstAttribute="trailing" secondItem="oZT-Ko-9ZK" secondAttribute="trailing" id="eDx-pd-jnA"/>
-                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" id="eb8-q4-BiQ"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="leading" secondItem="LSC-2Z-bgl" secondAttribute="leading" id="zGN-BC-IQL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorViewContainer" destination="6a8-Ba-Ass" id="hlh-cz-uTv"/>
                         <outlet property="fbButton" destination="Ega-FS-B72" id="s33-rg-CP5"/>
                         <outlet property="registerButton" destination="h7Y-Hh-ssX" id="A0F-qC-oiI"/>
                     </connections>
@@ -192,32 +203,34 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ChK-kz-Cwr">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Rxr-H9-8Yw"/>
-                                            <constraint firstAttribute="height" constant="35" id="vQb-hO-1tJ"/>
+                                            <constraint firstAttribute="height" constant="88" id="ZyO-A2-Jws"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <outlet property="delegate" destination="ptR-KN-xUF" id="hEY-bv-Eb0"/>
+                                            <segue destination="GER-WT-r58" kind="embed" identifier="error" id="Ama-cG-z4s"/>
                                         </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jr-03-KFC">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="T0j-4G-Y63"/>
-                                            <constraint firstAttribute="height" constant="35" id="Utd-Wy-Ica"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="ptR-KN-xUF" id="YSX-xY-MKw"/>
-                                        </connections>
-                                    </textField>
+                                    </containerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXb-E5-Iaf">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="S6Y-IT-Elj"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="6Xa-dn-wX6" kind="embed" identifier="username" id="V6P-bK-GXB"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abT-te-gpY">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="F8y-Cb-fi5"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="6Xa-dn-wX6" kind="embed" identifier="password" id="iCr-yz-zFN"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -253,12 +266,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="14Y-Gw-Zgt" secondAttribute="trailing" constant="50" id="3g5-Tc-gnr"/>
                                     <constraint firstAttribute="trailing" secondItem="JDy-jQ-2nk" secondAttribute="trailing" constant="50" id="KwL-rk-jP2"/>
                                     <constraint firstItem="JDy-jQ-2nk" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="OGP-5j-zh5"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Jr-03-KFC" secondAttribute="trailing" constant="50" id="SrT-zm-shA"/>
-                                    <constraint firstAttribute="trailing" secondItem="ChK-kz-Cwr" secondAttribute="trailing" constant="50" id="XbH-An-6Xk"/>
-                                    <constraint firstItem="ChK-kz-Cwr" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="fv6-Ch-gRS"/>
-                                    <constraint firstItem="4Jr-03-KFC" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="xmf-FZ-kMX"/>
+                                    <constraint firstItem="l0a-gp-FOc" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="xNy-SJ-7QS"/>
+                                    <constraint firstAttribute="trailing" secondItem="l0a-gp-FOc" secondAttribute="trailing" constant="50" id="ypK-Ew-C60"/>
+                                    <constraint firstItem="14Y-Gw-Zgt" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="z1r-Mf-JQf"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -271,10 +284,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorViewContainer" destination="14Y-Gw-Zgt" id="zmj-wg-uxk"/>
                         <outlet property="facebookButton" destination="Cpj-OV-08t" id="oZx-Mv-fiD"/>
                         <outlet property="loginButton" destination="JDy-jQ-2nk" id="lrH-HV-H6j"/>
-                        <outlet property="nameField" destination="ChK-kz-Cwr" id="5h1-R6-FaT"/>
-                        <outlet property="passwordField" destination="4Jr-03-KFC" id="W9D-Xr-FUI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18C-ER-zLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,13 +345,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Du-FP-XhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-167" y="1286"/>
+            <point key="canvasLocation" x="574" y="1550"/>
+        </scene>
+        <!--Error View-->
+        <scene sceneID="e3H-gC-czh">
+            <objects>
+                <viewController id="GER-WT-r58" customClass="TPErrorView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MJs-hg-cax">
+                        <rect key="frame" x="0.0" y="0.0" width="275" height="88"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.50492554903030396" green="0.37762138247489929" blue="0.25387939810752869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="L5G-l6-yiv">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1m6-W1-DX8"/>
+                                    <constraint firstAttribute="height" constant="40" id="f9a-QO-Abe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.94854682683944702" blue="0.7009081244468689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="87Q-2h-jCR" secondAttribute="bottom" constant="12" id="6ll-cM-D49"/>
+                            <constraint firstItem="L5G-l6-yiv" firstAttribute="leading" secondItem="MJs-hg-cax" secondAttribute="leading" constant="10" id="G0G-2J-azT"/>
+                            <constraint firstItem="L5G-l6-yiv" firstAttribute="centerY" secondItem="MJs-hg-cax" secondAttribute="centerY" id="JGi-np-i1H"/>
+                            <constraint firstItem="87Q-2h-jCR" firstAttribute="top" secondItem="MJs-hg-cax" secondAttribute="top" constant="12" id="bZi-Mp-QcD"/>
+                            <constraint firstAttribute="trailing" secondItem="87Q-2h-jCR" secondAttribute="trailing" constant="16" id="cES-lT-LkM"/>
+                            <constraint firstItem="87Q-2h-jCR" firstAttribute="leading" secondItem="L5G-l6-yiv" secondAttribute="trailing" constant="8" id="cvi-Hb-sHE"/>
+                            <constraint firstItem="87Q-2h-jCR" firstAttribute="centerY" secondItem="MJs-hg-cax" secondAttribute="centerY" id="rX2-GS-aDg"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="275" height="88"/>
+                    <connections>
+                        <outlet property="errorTextView" destination="87Q-2h-jCR" id="qOz-xv-fas"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ptf-HU-Ctc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="1285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="alert" width="430" height="402"/>
         <image name="fb_logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lRD-Cs-HH9"/>
+        <segue reference="Zdm-RU-yT4"/>
+        <segue reference="iCr-yz-zFN"/>
     </inferredMetricsTieBreakers>
 </document>

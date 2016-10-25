@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
+		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -23,7 +24,7 @@
 		8B5133151DBBB55300143497 /* TPInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133141DBBB55300143497 /* TPInputView.swift */; };
 		8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B51331A1DBBDFAB00143497 /* Assets.xcassets */; };
 		8B51331E1DBBE80100143497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51331D1DBBE80100143497 /* UIView.swift */; };
-		8B5133221DBBEB4600143497 /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133211DBBEB4600143497 /* UiButton.swift */; };
+		8B5133221DBBEB4600143497 /* TPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133211DBBEB4600143497 /* TPButton.swift */; };
 		8B5133241DBC027000143497 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133231DBC027000143497 /* SessionManager.swift */; };
 		8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133251DBCBA6900143497 /* MainViewController.swift */; };
 		8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133271DBCBEF200143497 /* UIStoryboard.swift */; };
@@ -85,6 +86,7 @@
 		81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 		8B5133141DBBB55300143497 /* TPInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInputView.swift; sourceTree = "<group>"; };
 		8B51331B1DBBDFAB00143497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		8B51331D1DBBE80100143497 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		8B5133211DBBEB4600143497 /* UiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
+		8B5133211DBBEB4600143497 /* TPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPButton.swift; sourceTree = "<group>"; };
 		8B5133231DBC027000143497 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		8B5133251DBCBA6900143497 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8B5133271DBCBEF200143497 /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
@@ -287,7 +289,8 @@
 		8B5132DE1DBB5C3700143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8B5133131DBBB4FC00143497 /* TPInputView */,
+				8B5133141DBBB55300143497 /* TPInputView.swift */,
+				8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -480,17 +483,10 @@
 			name = welcome;
 			sourceTree = "<group>";
 		};
-		8B5133131DBBB4FC00143497 /* TPInputView */ = {
-			isa = PBXGroup;
-			children = (
-				8B5133141DBBB55300143497 /* TPInputView.swift */,
-			);
-			name = TPInputView;
-			sourceTree = "<group>";
-		};
 		8B8662651DBD5D3C004D266E /* subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				8B5133211DBBEB4600143497 /* TPButton.swift */,
 				8B8662631DBD5D38004D266E /* TPTextField.swift */,
 			);
 			name = subclasses;
@@ -514,7 +510,6 @@
 				8BCF8CA71DB6AB2700EC637C /* String.swift */,
 				8BCF8CA91DB6AB3400EC637C /* Date.swift */,
 				8B51331D1DBBE80100143497 /* UIView.swift */,
-				8B5133211DBBEB4600143497 /* UiButton.swift */,
 				8B5133271DBCBEF200143497 /* UIStoryboard.swift */,
 				8B5133291DBCC14800143497 /* UIViewController.swift */,
 				8B51332B1DBCCA9C00143497 /* JSON.swift */,
@@ -881,7 +876,7 @@
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
-				8B5133221DBBEB4600143497 /* UiButton.swift in Sources */,
+				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
@@ -903,6 +898,7 @@
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
+				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,
