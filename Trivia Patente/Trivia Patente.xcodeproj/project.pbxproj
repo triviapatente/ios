@@ -31,6 +31,8 @@
 		8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133291DBCC14800143497 /* UIViewController.swift */; };
 		8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51332B1DBCCA9C00143497 /* JSON.swift */; };
 		8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51332D1DBCD52900143497 /* MBProgressHUD.swift */; };
+		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
+		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
 		8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* Main.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
@@ -47,6 +49,8 @@
 		8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA41DB6A88700EC637C /* CommonPK.swift */; };
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
+		8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273421DC0D0390094F0F6 /* TPMainButton.swift */; };
+		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */; };
 		A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */; };
 		A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */; };
@@ -109,6 +113,8 @@
 		8B5133291DBCC14800143497 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8B51332B1DBCCA9C00143497 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		8B51332D1DBCD52900143497 /* MBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUD.swift; sourceTree = "<group>"; };
+		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
+		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
@@ -125,6 +131,8 @@
 		8BCF8CA41DB6A88700EC637C /* CommonPK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonPK.swift; sourceTree = "<group>"; };
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		8BE273421DC0D0390094F0F6 /* TPMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainButton.swift; sourceTree = "<group>"; };
+		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
 		A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +271,7 @@
 		8B5132DB1DBB5BD000143497 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				8B8142CA1DC0C81700E60B06 /* generals */,
 				8BCF8CA61DB6AB1300EC637C /* extensions */,
 				8B8662651DBD5D3C004D266E /* subclasses */,
 			);
@@ -309,6 +318,7 @@
 			children = (
 				8BCF8C281DB6A3C900EC637C /* Main.storyboard */,
 				8B5133251DBCBA6900143497 /* MainViewController.swift */,
+				8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -483,11 +493,20 @@
 			name = welcome;
 			sourceTree = "<group>";
 		};
+		8B8142CA1DC0C81700E60B06 /* generals */ = {
+			isa = PBXGroup;
+			children = (
+				8B8142CB1DC0C82F00E60B06 /* Colors.swift */,
+			);
+			name = generals;
+			sourceTree = "<group>";
+		};
 		8B8662651DBD5D3C004D266E /* subclasses */ = {
 			isa = PBXGroup;
 			children = (
 				8B5133211DBBEB4600143497 /* TPButton.swift */,
 				8B8662631DBD5D38004D266E /* TPTextField.swift */,
+				8BE273421DC0D0390094F0F6 /* TPMainButton.swift */,
 			);
 			name = subclasses;
 			sourceTree = "<group>";
@@ -514,6 +533,7 @@
 				8B5133291DBCC14800143497 /* UIViewController.swift */,
 				8B51332B1DBCCA9C00143497 /* JSON.swift */,
 				8B51332D1DBCD52900143497 /* MBProgressHUD.swift */,
+				8BE273441DC0D6FA0094F0F6 /* UILabel.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -866,6 +886,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
+				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,
 				8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */,
@@ -880,6 +901,8 @@
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
+				8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */,
+				8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
@@ -891,6 +914,7 @@
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
+				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
@@ -1015,6 +1039,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1065,6 +1090,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1094,6 +1120,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1107,6 +1134,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33CDB0096DE779647D28C433 /* Pods-Trivia Patente.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -16,4 +16,10 @@ extension UIViewController {
             return UIStoryboard.getFirstController(storyboard: "FirstAccess")
         }
     }
+    func set(backgroundGradientColors colors: [CGColor]) {
+        let layer = CAGradientLayer()
+        layer.frame = self.view.bounds
+        layer.colors = colors
+        self.view.layer.insertSublayer(layer, at: 0)
+    }
 }

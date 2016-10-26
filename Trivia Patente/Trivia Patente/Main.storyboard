@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XeD-ax-umb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Trivia Patente-->
         <scene sceneID="yOm-jS-mzn">
             <objects>
                 <viewController id="XeD-ax-umb" customClass="MainViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,12 +18,144 @@
                     <view key="view" contentMode="scaleToFill" id="7Nf-wm-jer">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhW-kG-2tD">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="i3B-cf-9WD"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="O44-px-sm6" kind="embed" identifier="play" id="B6J-yy-Imj"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwY-yn-XAG">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5BJ-za-JfA"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="O44-px-sm6" kind="embed" identifier="rank" id="QXG-z2-RIt"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5A-mF-NZn">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="h8S-Gp-Dqz"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="O44-px-sm6" kind="embed" identifier="stats" id="KDU-W3-X0A"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZB-Yu-P7Q">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gQu-M8-9T3"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="O44-px-sm6" kind="embed" identifier="shop" id="n4A-43-lvl"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="SAF-6L-kJf"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.6705882352941176" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9Ka-ZU-snF" secondAttribute="trailing" constant="20" id="1go-0f-hEh"/>
+                            <constraint firstItem="9Ka-ZU-snF" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="30" id="RgR-sa-fLX"/>
+                            <constraint firstItem="9Ka-ZU-snF" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" constant="20" id="TFw-Q2-md3"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Trivia Patente" id="12x-rm-0HG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="604" y="-150.67466266866569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qd4-T5-GQg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x85-ip-iaX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Own-LW-HZd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.68149840831756592" blue="0.9560888409614563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XeD-ax-umb" kind="relationship" relationship="rootViewController" id="mUJ-We-grm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="-335.19999999999999" y="-150.67466266866569"/>
         </scene>
+        <!--Main Button-->
+        <scene sceneID="vZS-eu-Izu">
+            <objects>
+                <viewController id="O44-px-sm6" customClass="TPMainButton" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sfe-dI-hPV"/>
+                        <viewControllerLayoutGuide type="bottom" id="S3P-Qv-v2J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WR0-Zg-XSY">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OBE-o1-HO1">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Vwa-SB-OQE"/>
+                                    <constraint firstAttribute="height" constant="30" id="gzp-i1-y7M"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAe-P9-O0r">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="3pp-Qo-0y5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmv-o8-PAm">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Mgb-lN-JAZ"/>
+                                    <constraint firstAttribute="width" constant="120" id="MzN-wJ-QIZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Wgw-yB-zQb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.83423382043838501" blue="0.39689299464225769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OBE-o1-HO1" firstAttribute="leading" secondItem="WR0-Zg-XSY" secondAttribute="leadingMargin" constant="15" id="5KV-on-KJ2"/>
+                            <constraint firstItem="OBE-o1-HO1" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="MSa-am-fLW"/>
+                            <constraint firstItem="Qmv-o8-PAm" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="UqP-ps-nmD"/>
+                            <constraint firstItem="vAe-P9-O0r" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="VY9-kG-MTt"/>
+                            <constraint firstItem="vAe-P9-O0r" firstAttribute="leading" secondItem="OBE-o1-HO1" secondAttribute="trailing" constant="20" id="dHg-De-0p3"/>
+                            <constraint firstItem="Qmv-o8-PAm" firstAttribute="leading" secondItem="vAe-P9-O0r" secondAttribute="trailing" constant="20" id="u9o-QV-P2d"/>
+                            <constraint firstAttribute="trailing" secondItem="Qmv-o8-PAm" secondAttribute="trailing" constant="10" id="ztb-1S-upT"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="50"/>
+                    <connections>
+                        <outlet property="hintView" destination="Qmv-o8-PAm" id="vc2-kj-37A"/>
+                        <outlet property="imageView" destination="OBE-o1-HO1" id="h5j-hu-6Of"/>
+                        <outlet property="titleView" destination="vAe-P9-O0r" id="700-Cz-OAI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEi-4r-oeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1496" y="-151.12443778110946"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QXG-z2-RIt"/>
+    </inferredMetricsTieBreakers>
 </document>
