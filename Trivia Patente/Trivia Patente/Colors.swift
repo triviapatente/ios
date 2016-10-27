@@ -9,7 +9,7 @@
 import UIKit
 
 class Colors {
-    static let primary = UIColor(red: 0/255, green: 174/255, blue: 244/255, alpha: 1)
+    static let primary = UIColor(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
     static let secondary = UIColor(red: 0/255, green: 141/255, blue: 255/255, alpha: 1)
     
     static let playColor = UIColor(red: 0/255, green: 213/255, blue: 101/255, alpha: 1)
