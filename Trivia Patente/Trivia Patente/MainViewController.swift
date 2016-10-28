@@ -67,9 +67,12 @@ class MainViewController: UIViewController {
     }
     func getPlayHint(response : TPConnectResponse) -> String? {
         if let count = response.invitesCount {
-            guard count == 0 else {
+            if count > 1  {
                 return "\(count) inviti a giocare"
+            } else if count == 1 {
+                return "\(count) invito a giocare"
             }
+        
         }
         return nil
     }
