@@ -39,16 +39,57 @@ class MainViewController: UIViewController {
     func connectToSocket() {
         loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingView.mode = .indeterminate
-        SessionManager.authenticateSocket { (response : TPResponse?) in
+        SessionManager.authenticateSocket { (response : TPConnectResponse?) in
             self.loadingView.hide(animated: true)
             if response?.success != true {
                 SessionManager.drop()
                 self.goToFirstAccess()
             } else {
-                //TODO: remove and add proper values from server
-                self.playButton.display(hint: "3 inviti a giocare")
+                self.setHints(candidateResponse: response)
             }
         }
+    }
+    func setHints(candidateResponse : TPConnectResponse?) {
+        if let response = candidateResponse {
+            if let playHint = getPlayHint(response: response) {
+                self.playButton.display(hint: playHint)
+            }
+            
+            let rankHints = getRankHints(response: response)
+            self.rankButton.display(hints: rankHints)
+            let statsHints = getStatsHints(response: response)
+            self.statsButton.display(hints: statsHints)
+            
+            if let shopHint = getShopHint(response: response) {
+                self.shopButton.display(hint: shopHint)
+            }
+        }
+    }
+    func getPlayHint(response : TPConnectResponse) -> String? {
+        if let count = response.invitesCount {
+            guard count == 0 else {
+                return "\(count) inviti a giocare"
+            }
+        }
+        return nil
+    }
+    func getRankHints(response : TPConnectResponse) -> [String] {
+        var output : [String] = []
+        if let global = response.globalRankPosition {
+            output.append("Globale: \(global)")
+        }
+        if let friends = response.friendsRankPosition {
+            output.append("Amici: \(friends)")
+        }
+        return output
+    }
+    func getStatsHints(response : TPConnectResponse) -> [String] {
+        return response.stats.map { (category : Category) -> String in
+            return "\(category.name.capitalized): \(category.stats!)%"
+        }
+    }
+    func getShopHint(response : TPConnectResponse) -> String? {
+        return nil
     }
     func goToFirstAccess() {
         let controller = UIViewController.root()

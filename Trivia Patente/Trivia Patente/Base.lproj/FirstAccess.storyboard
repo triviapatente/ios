@@ -351,11 +351,15 @@
         <scene sceneID="e3H-gC-czh">
             <objects>
                 <viewController id="GER-WT-r58" customClass="TPErrorView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xaV-r1-TfL"/>
+                        <viewControllerLayoutGuide type="bottom" id="nbH-Kb-Y3N"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MJs-hg-cax">
                         <rect key="frame" x="0.0" y="0.0" width="275" height="88"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.50492554903030396" green="0.37762138247489929" blue="0.25387939810752869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -396,7 +400,7 @@
         <image name="fb_logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zdm-RU-yT4"/>
+        <segue reference="Ama-cG-z4s"/>
         <segue reference="iCr-yz-zFN"/>
     </inferredMetricsTieBreakers>
 </document>

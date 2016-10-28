@@ -12,10 +12,12 @@ open class Category: CommonPK {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kCategoryNameKey: String = "name"
+    internal let kCategoryStatsKey: String = "stats"
 
 
     // MARK: Properties
-	open var name: String?
+	open var name: String!
+    open var stats: Int!
 
 
     // MARK: SwiftyJSON Initalizers
@@ -36,6 +38,7 @@ open class Category: CommonPK {
     public required init(json: JSON) {
         super.init(json: json)
 		name = json[kCategoryNameKey].string
+        stats = json[kCategoryStatsKey].intValue
 
     }
 
@@ -50,6 +53,9 @@ open class Category: CommonPK {
 		if name != nil {
 			dictionary.updateValue(name as AnyObject, forKey: kCategoryNameKey)
 		}
+        if stats != nil {
+            dictionary.updateValue(stats as AnyObject, forKey: kCategoryStatsKey)
+        }
 
         return dictionary
     }
@@ -58,12 +64,14 @@ open class Category: CommonPK {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.name = aDecoder.decodeObject(forKey: kCategoryNameKey) as? String
+        self.stats = aDecoder.decodeObject(forKey: kCategoryStatsKey) as! Int
 
     }
 
     open override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
 		aCoder.encode(name, forKey: kCategoryNameKey)
+        aCoder.encode(stats, forKey: kCategoryStatsKey)
 
     }
 

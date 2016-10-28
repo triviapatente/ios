@@ -77,7 +77,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x85-ip-iaX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Own-LW-HZd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Own-LW-HZd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.68627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -120,7 +120,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmv-o8-PAm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmv-o8-PAm">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Mgb-lN-JAZ"/>
                                     <constraint firstAttribute="width" constant="120" id="MzN-wJ-QIZ"/>
@@ -133,13 +133,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.83423382043838501" blue="0.39689299464225769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qmv-o8-PAm" secondAttribute="trailing" constant="30" id="0ce-st-i1p"/>
                             <constraint firstItem="OBE-o1-HO1" firstAttribute="leading" secondItem="WR0-Zg-XSY" secondAttribute="leadingMargin" constant="15" id="5KV-on-KJ2"/>
                             <constraint firstItem="OBE-o1-HO1" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="MSa-am-fLW"/>
                             <constraint firstItem="Qmv-o8-PAm" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="UqP-ps-nmD"/>
                             <constraint firstItem="vAe-P9-O0r" firstAttribute="centerY" secondItem="WR0-Zg-XSY" secondAttribute="centerY" id="VY9-kG-MTt"/>
                             <constraint firstItem="vAe-P9-O0r" firstAttribute="leading" secondItem="OBE-o1-HO1" secondAttribute="trailing" constant="20" id="dHg-De-0p3"/>
                             <constraint firstItem="Qmv-o8-PAm" firstAttribute="leading" secondItem="vAe-P9-O0r" secondAttribute="trailing" constant="20" id="u9o-QV-P2d"/>
-                            <constraint firstAttribute="trailing" secondItem="Qmv-o8-PAm" secondAttribute="trailing" constant="10" id="ztb-1S-upT"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

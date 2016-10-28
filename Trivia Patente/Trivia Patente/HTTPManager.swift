@@ -11,7 +11,7 @@ import Alamofire
 
 class HTTPManager {
     class func getBaseURL() -> String {
-        return "http://192.168.33.10:8000"
+        return "http://192.168.1.10:8000"
     }
     
     

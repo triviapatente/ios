@@ -10,7 +10,7 @@ import Foundation
 
 class SocketAuth : SocketManager {
     
-    func authenticate(token : String, handler : @escaping (TPResponse?) -> Void) {
+    func authenticate(token : String, handler : @escaping (TPConnectResponse?) -> Void) {
         let params : [String : AnyObject] = ["token": token as AnyObject]
         self.emit(path: "auth", values: params, handler: handler)
     }

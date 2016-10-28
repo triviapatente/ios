@@ -13,6 +13,10 @@ class TPMainButton: UIViewController {
     @IBOutlet var titleView : UILabel!
     @IBOutlet var hintView : UILabel!
     
+    var hints : [String] = []
+    var currentHintIndex : Int!
+    let HINT_CHANGE_DELAY : Double = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,6 +42,24 @@ class TPMainButton: UIViewController {
             self.hintView.alpha = 1
             self.hintView.frame.origin.y = oldOrigin
         }
+    }
+    func display(hints : [String]) {
+        self.hints = hints
+        if let first = self.hints.first {
+            self.display(hint: first)
+            self.currentHintIndex = 1
+            Timer.scheduledTimer(withTimeInterval: HINT_CHANGE_DELAY, repeats: true, block: changeHint)
+        }
+    
+    }
+    func changeHint(timer : Timer) {
+        guard self.currentHintIndex < self.hints.count else {
+            timer.invalidate()
+            return
+        }
+        let newHint = self.hints[self.currentHintIndex]
+        self.currentHintIndex = self.currentHintIndex + 1
+        self.display(hint: newHint)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

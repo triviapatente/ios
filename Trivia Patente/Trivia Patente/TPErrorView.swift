@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TPErrorView : UIViewController {
-    @IBOutlet var errorTextView : UITextView!
+    @IBOutlet var errorTextView : TPTextView!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.view.mediumRounded()
