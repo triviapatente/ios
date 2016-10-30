@@ -10,6 +10,8 @@
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
+		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
+		8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82D1DC63D8100C36DDA /* Rank.storyboard */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -94,6 +96,8 @@
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
+		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
+		8B42E82D1DC63D8100C36DDA /* Rank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -204,6 +208,38 @@
 				6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B42E8271DC63D4700C36DDA /* stats */ = {
+			isa = PBXGroup;
+			children = (
+				8B42E82A1DC63D6D00C36DDA /* ui */,
+			);
+			name = stats;
+			sourceTree = "<group>";
+		};
+		8B42E8281DC63D4C00C36DDA /* rank */ = {
+			isa = PBXGroup;
+			children = (
+				8B42E8291DC63D6900C36DDA /* ui */,
+			);
+			name = rank;
+			sourceTree = "<group>";
+		};
+		8B42E8291DC63D6900C36DDA /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				8B42E82D1DC63D8100C36DDA /* Rank.storyboard */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		8B42E82A1DC63D6D00C36DDA /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				8B42E82B1DC63D7900C36DDA /* Stats.storyboard */,
+			);
+			name = ui;
 			sourceTree = "<group>";
 		};
 		8B5132D41DBB5B5300143497 /* base */ = {
@@ -575,6 +611,8 @@
 				8B5132D71DBB5B8F00143497 /* message */,
 				8B5132D81DBB5B9500143497 /* preferences */,
 				8B5132D91DBB5B9A00143497 /* purchases */,
+				8B42E8281DC63D4C00C36DDA /* rank */,
+				8B42E8271DC63D4700C36DDA /* stats */,
 				8B5132DA1DBB5BC400143497 /* shared */,
 				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
@@ -721,6 +759,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */,
+				8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */,
 				8B5133071DBBAC2100143497 /* Chat.storyboard in Resources */,
 				8B51330D1DBBAC4400143497 /* Purchases.storyboard in Resources */,
 				A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */,
