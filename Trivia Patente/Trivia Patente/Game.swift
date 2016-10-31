@@ -14,12 +14,19 @@ open class Game: CommonPK {
 	internal let kGameCreatorIdKey: String = "creator_id"
 	internal let kGameWinnerIdKey: String = "winner_id"
 	internal let kGameEndedKey: String = "ended"
+    internal let kGameMyTurnKey: String = "my_turn"
+    internal let kGameOpponentNameKey: String = "opponent_name"
+    internal let kGameOpponentIdKey: String = "opponent_id"
+    internal let kGameOpponentAvatarKey: String = "opponent_avatar"
+    internal let kGameOpponentKey: String = "opponent"
 
 
     // MARK: Properties
 	open var creatorId: Int?
 	open var winnerId: Int?
 	open var ended: Bool = false
+    open var my_turn : Bool!
+    open var opponent : User!
 
 
     // MARK: SwiftyJSON Initalizers
@@ -41,11 +48,14 @@ open class Game: CommonPK {
         super.init(json: json)
 		creatorId = json[kGameCreatorIdKey].int
 		winnerId = json[kGameWinnerIdKey].int
-		ended = json[kGameEndedKey].boolValue
-
+        ended = json[kGameEndedKey].boolValue
+        my_turn = json[kGameMyTurnKey].boolValue
+        opponent = User(username: json[kGameOpponentNameKey].string, id: json[kGameOpponentIdKey].int, avatar: json[kGameOpponentAvatarKey].string)
     }
 
-
+    override init(id: Int?) {
+        super.init(id: id)
+    }
     /**
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
@@ -61,7 +71,11 @@ open class Game: CommonPK {
 			dictionary.updateValue(winnerId! as AnyObject, forKey: kGameWinnerIdKey)
 		}
 		dictionary.updateValue(ended as AnyObject, forKey: kGameEndedKey)
-
+        dictionary.updateValue(my_turn as AnyObject, forKey: kGameMyTurnKey)
+        dictionary.updateValue(opponent.username as AnyObject, forKey: kGameOpponentNameKey)
+        dictionary.updateValue(opponent.id as AnyObject, forKey: kGameOpponentIdKey)
+        dictionary.updateValue(opponent.image as AnyObject, forKey: kGameOpponentAvatarKey)
+        
         return dictionary
     }
 
@@ -71,6 +85,8 @@ open class Game: CommonPK {
 		self.winnerId = aDecoder.decodeObject(forKey: kGameWinnerIdKey) as? Int
         self.creatorId = aDecoder.decodeObject(forKey: kGameCreatorIdKey) as? Int
 		self.ended = aDecoder.decodeBool(forKey: kGameEndedKey)
+        self.my_turn = aDecoder.decodeBool(forKey: kGameMyTurnKey)
+        self.opponent = aDecoder.decodeObject(forKey: kGameOpponentKey) as? User
 
     }
 
@@ -79,6 +95,8 @@ open class Game: CommonPK {
 		aCoder.encode(creatorId, forKey: kGameCreatorIdKey)
 		aCoder.encode(winnerId, forKey: kGameWinnerIdKey)
 		aCoder.encode(ended, forKey: kGameEndedKey)
+        aCoder.encode(my_turn, forKey: kGameMyTurnKey)
+        aCoder.encode(opponent, forKey: kGameOpponentKey)
 
     }
 

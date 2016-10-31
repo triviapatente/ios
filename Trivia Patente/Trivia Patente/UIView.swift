@@ -17,15 +17,23 @@ extension UIView {
     func mediumRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: 10, corners: corners)
     }
+    func circleRounded(corners : UIRectCorner = .allCorners) {
+        self.createCorners(radius: self.frame.size.height / 2, corners: corners)
+    }
     func createCorners(radius : CGFloat, corners : UIRectCorner) {
-        let path = UIBezierPath(roundedRect: self.bounds,
-                                byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius, height:  radius))
+        self.layer.masksToBounds = true
+        if corners != .allCorners {
+            let path = UIBezierPath(roundedRect: self.bounds,
+                                    byRoundingCorners: corners,
+                                    cornerRadii: CGSize(width: radius, height:  radius))
+            
+            let maskLayer = CAShapeLayer()
         
-        let maskLayer = CAShapeLayer()
-        
-        maskLayer.path = path.cgPath
-        self.layer.mask = maskLayer
+            maskLayer.path = path.cgPath
+            self.layer.mask = maskLayer
+        } else {
+            self.layer.cornerRadius = radius
+        }
     }
 
 }

@@ -40,6 +40,10 @@ open class Base: NSObject, NSCoding {
         updatedAt = json[kUpdatedAtKey].stringValue.dateFromGMT
 
     }
+    public override init() {
+        createdAt = Date()
+        updatedAt = Date()
+    }
 
 
     /**

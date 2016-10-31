@@ -16,9 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Nln-vB-sjl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7Nf-wm-jer">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
+                                <connections>
+                                    <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
+                                </connections>
+                            </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhW-kG-2tD">
@@ -62,8 +67,13 @@
                         <color key="backgroundColor" red="0.0" green="0.6705882352941176" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9Ka-ZU-snF" secondAttribute="trailing" constant="20" id="1go-0f-hEh"/>
+                            <constraint firstItem="Nln-vB-sjl" firstAttribute="top" secondItem="vpA-SX-xhq" secondAttribute="bottom" id="40M-9t-BrC"/>
+                            <constraint firstAttribute="trailing" secondItem="vpA-SX-xhq" secondAttribute="trailing" id="LkM-Bj-yNL"/>
+                            <constraint firstItem="Nln-vB-sjl" firstAttribute="top" secondItem="vpA-SX-xhq" secondAttribute="bottom" id="N5M-pY-XCa"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="30" id="RgR-sa-fLX"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" constant="20" id="TFw-Q2-md3"/>
+                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="9Ka-ZU-snF" secondAttribute="bottom" constant="20" id="gfC-4I-1lq"/>
+                            <constraint firstItem="vpA-SX-xhq" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="zQ5-Kc-uoa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trivia Patente" id="12x-rm-0HG"/>
@@ -77,10 +87,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x85-ip-iaX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Own-LW-HZd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="Own-LW-HZd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.68627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.6705882352941176" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -152,6 +162,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEi-4r-oeb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1496" y="-151.12443778110946"/>
+        </scene>
+        <!--Recent View-->
+        <scene sceneID="IIF-zq-Juc">
+            <objects>
+                <viewController id="3Zs-38-1kc" customClass="TPRecentView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q3N-y5-gRN">
+                        <rect key="frame" x="0.0" y="0.0" width="329" height="219"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAL-s7-7YC">
+                                <color key="backgroundColor" red="1" green="1" blue="0.71834309895833337" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Wit-h9-3qq"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.50980392156862742" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="Title" id="ZDG-zM-K26"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recent_cell" id="t2q-7m-MfY">
+                                        <rect key="frame" x="0.0" y="28" width="329" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t2q-7m-MfY" id="SaY-4A-Ml7">
+                                            <frame key="frameInset" width="329" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Zs-38-1kc" id="a2b-Ng-uyo"/>
+                                    <outlet property="delegate" destination="3Zs-38-1kc" id="3m0-Jk-K8c"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="yAL-s7-7YC" secondAttribute="bottom" id="6tt-aC-9PC"/>
+                            <constraint firstAttribute="trailing" secondItem="yAL-s7-7YC" secondAttribute="trailing" id="ddi-eI-28j"/>
+                            <constraint firstAttribute="trailing" secondItem="EI8-w6-YFR" secondAttribute="trailing" id="fXx-He-TJ9"/>
+                            <constraint firstAttribute="bottom" secondItem="EI8-w6-YFR" secondAttribute="bottom" id="jdl-mC-IAC"/>
+                            <constraint firstItem="EI8-w6-YFR" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="sB3-IZ-Q7M"/>
+                            <constraint firstItem="yAL-s7-7YC" firstAttribute="top" secondItem="Q3N-y5-gRN" secondAttribute="top" id="weh-xj-QuE"/>
+                            <constraint firstItem="yAL-s7-7YC" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="wzo-Cy-yRH"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="XhF-lm-a05" appends="YES" id="Pa8-QR-oDg"/>
+                        </connections>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="329" height="219"/>
+                    <connections>
+                        <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
+                        <outlet property="tableView" destination="EI8-w6-YFR" id="QJe-0D-bRd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-XP-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="XhF-lm-a05">
+                    <connections>
+                        <action selector="triggerFullScreenWithSender:" destination="3Zs-38-1kc" id="j0f-Y1-gTD"/>
+                        <outlet property="delegate" destination="3Zs-38-1kc" id="p8m-zq-tix"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="940" y="407.0464767616192"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

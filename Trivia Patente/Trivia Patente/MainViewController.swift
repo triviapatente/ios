@@ -17,10 +17,13 @@ class MainViewController: UIViewController {
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
     
+    var recentGamesView : TPRecentView!
+    
     var buttonClickListener = { (button : TPMainButton) in
         print("ciao")
     }
     let socketAuth = SocketAuth()
+    let httpGame = HTTPGame()
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSocket()
@@ -28,6 +31,7 @@ class MainViewController: UIViewController {
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
+        self.recentGamesView.headerView.topItem?.title = "Partite recenti"
 
         // Do any additional setup after loading the view.
     }
@@ -47,6 +51,9 @@ class MainViewController: UIViewController {
                 self.goToFirstAccess()
             } else {
                 self.setHints(candidateResponse: response)
+                self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
+                    self.recentGamesView.items = response.games
+                })
             }
         }
     }
@@ -121,6 +128,9 @@ class MainViewController: UIViewController {
                     break
                 case "shop":
                     self.shopButton = destination as! TPMainButton
+                    break
+                case "recent_view":
+                    self.recentGamesView = destination as! TPRecentView
                     break
                 default: break
                 

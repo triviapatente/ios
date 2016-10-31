@@ -53,7 +53,11 @@ open class User: CommonPK {
 		name = json[kUserNameKey].string
 
     }
-
+    public init(username : String?, id : Int?, avatar : String?) {
+        super.init(id: id)
+        self.username = username
+        self.image = avatar
+    }
 
     /**
     Generates description of the object in the form of a NSDictionary.

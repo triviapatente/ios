@@ -37,6 +37,12 @@
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
+		8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */; };
+		8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */; };
+		8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */; };
+		8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */; };
+		8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */; };
+		8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8571DC798A500B433F2 /* UIImageView.swift */; };
 		8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* Main.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
 		8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C801DB6A6BA00EC637C /* Category.swift */; };
@@ -123,6 +129,12 @@
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
+		8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPGame.swift; sourceTree = "<group>"; };
+		8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameListResponse.swift; sourceTree = "<group>"; };
+		8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentView.swift; sourceTree = "<group>"; };
+		8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGameTableViewCell.swift; sourceTree = "<group>"; };
+		8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGameTableViewCell.xib; sourceTree = "<group>"; };
+		8BBBE8571DC798A500B433F2 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		8BCF8C801DB6A6BA00EC637C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -254,6 +266,7 @@
 		8B5132D51DBB5B5800143497 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				8BBBE8491DC7690200B433F2 /* http */,
 				8B5132E21DBB5C7500143497 /* ui */,
 				8B5132E11DBB5C7100143497 /* models */,
 			);
@@ -357,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCF8C281DB6A3C900EC637C /* Main.storyboard */,
-				8B5133251DBCBA6900143497 /* MainViewController.swift */,
+				8BBBE8511DC76FF100B433F2 /* main */,
 				8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */,
 			);
 			name = ui;
@@ -547,10 +560,46 @@
 			children = (
 				8B5133211DBBEB4600143497 /* TPButton.swift */,
 				8B8662631DBD5D38004D266E /* TPTextField.swift */,
+				8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */,
 				8BE273421DC0D0390094F0F6 /* TPMainButton.swift */,
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 			);
 			name = subclasses;
+			sourceTree = "<group>";
+		};
+		8BBBE8491DC7690200B433F2 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8BBBE84A1DC7694200B433F2 /* responses */,
+				8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8BBBE84A1DC7694200B433F2 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
+		8BBBE8511DC76FF100B433F2 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				8BBBE8521DC7700500B433F2 /* recent_games */,
+				8B5133251DBCBA6900143497 /* MainViewController.swift */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		8BBBE8521DC7700500B433F2 /* recent_games */ = {
+			isa = PBXGroup;
+			children = (
+				8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */,
+				8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */,
+			);
+			name = recent_games;
 			sourceTree = "<group>";
 		};
 		8BCF8C341DB6A44400EC637C /* pagecontroller */ = {
@@ -576,6 +625,7 @@
 				8B51332B1DBCCA9C00143497 /* JSON.swift */,
 				8B51332D1DBCD52900143497 /* MBProgressHUD.swift */,
 				8BE273441DC0D6FA0094F0F6 /* UILabel.swift */,
+				8BBBE8571DC798A500B433F2 /* UIImageView.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -764,6 +814,7 @@
 				8B5133071DBBAC2100143497 /* Chat.storyboard in Resources */,
 				8B51330D1DBBAC4400143497 /* Purchases.storyboard in Resources */,
 				A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */,
+				8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */,
 				8B51330A1DBBAC3000143497 /* Settings.storyboard in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
@@ -931,6 +982,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
@@ -939,6 +991,7 @@
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
+				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
@@ -951,6 +1004,7 @@
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
 				8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */,
 				8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */,
+				8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
@@ -972,7 +1026,9 @@
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
+				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
+				8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
 			);

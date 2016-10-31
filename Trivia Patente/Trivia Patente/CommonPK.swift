@@ -39,6 +39,10 @@ open class CommonPK: Base {
         id = json[kIdKey].int
         
     }
+    init(id : Int?) {
+        super.init()
+        self.id = id
+    }
     
     /**
      Generates description of the object in the form of a NSDictionary.

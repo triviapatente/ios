@@ -10,8 +10,10 @@ import UIKit
 import Alamofire
 
 class HTTPManager {
+    let TIMEOUT = 6.0
+    
     class func getBaseURL() -> String {
-        return "http://192.168.1.10:8000"
+        return "http://192.168.1.160:8000"
     }
     
     
@@ -23,6 +25,11 @@ class HTTPManager {
             }
         }
         let destination = HTTPManager.getBaseURL() + url
+        //TODO: add timeouts
+        //let configuration = URLSessionConfiguration.default
+        //configuration.timeoutIntervalForRequest = TIMEOUT
+        //configuration.timeoutIntervalForResource = TIMEOUT
+        //let manager = Alamofire.SessionManager(configuration: configuration)
         _ = Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
