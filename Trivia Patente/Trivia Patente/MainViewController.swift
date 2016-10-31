@@ -41,7 +41,8 @@ class MainViewController: UIViewController {
         loadingView.mode = .indeterminate
         SessionManager.authenticateSocket { (response : TPConnectResponse?) in
             self.loadingView.hide(animated: true)
-            if response?.success != true {
+            //check if login was forbidden
+            if response?.statusCode == 401 {
                 SessionManager.drop()
                 self.goToFirstAccess()
             } else {
