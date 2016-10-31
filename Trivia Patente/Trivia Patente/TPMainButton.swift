@@ -15,7 +15,7 @@ class TPMainButton: UIViewController {
     
     var hints : [String] = []
     var currentHintIndex : Int!
-    let HINT_CHANGE_DELAY : Double = 10
+    let HINT_CHANGE_DELAY : Double = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -89,7 +89,7 @@ class MainViewController: UIViewController {
     }
     func getStatsHints(response : TPConnectResponse) -> [String] {
         return response.stats.map { (category : Category) -> String in
-            return "\(category.name.capitalized): \(category.stats!)%"
+            return "\(category.hint!): \(category.progress!)%"
         }
     }
     func getShopHint(response : TPConnectResponse) -> String? {

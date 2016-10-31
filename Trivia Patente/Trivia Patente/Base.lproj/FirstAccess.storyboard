@@ -120,8 +120,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AgN-di-1yK" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" id="BUC-dw-m9T"/>
-                                    <constraint firstAttribute="trailing" secondItem="6a8-Ba-Ass" secondAttribute="trailing" constant="50" id="Hp2-sG-3f5"/>
-                                    <constraint firstItem="6a8-Ba-Ass" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" constant="50" id="UFr-vF-19A"/>
+                                    <constraint firstAttribute="trailing" secondItem="6a8-Ba-Ass" secondAttribute="trailing" constant="40" id="Hp2-sG-3f5"/>
+                                    <constraint firstItem="6a8-Ba-Ass" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" constant="40" id="UFr-vF-19A"/>
                                     <constraint firstAttribute="trailing" secondItem="h7Y-Hh-ssX" secondAttribute="trailing" constant="50" id="XCb-ph-OQM"/>
                                     <constraint firstItem="AgN-di-1yK" firstAttribute="centerX" secondItem="oZT-Ko-9ZK" secondAttribute="centerX" id="mbE-YQ-r8u"/>
                                     <constraint firstItem="h7Y-Hh-ssX" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" constant="50" id="sK5-MM-R62"/>
@@ -266,12 +266,12 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="14Y-Gw-Zgt" secondAttribute="trailing" constant="50" id="3g5-Tc-gnr"/>
+                                    <constraint firstAttribute="trailing" secondItem="14Y-Gw-Zgt" secondAttribute="trailing" constant="40" id="3g5-Tc-gnr"/>
                                     <constraint firstAttribute="trailing" secondItem="JDy-jQ-2nk" secondAttribute="trailing" constant="50" id="KwL-rk-jP2"/>
                                     <constraint firstItem="JDy-jQ-2nk" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="OGP-5j-zh5"/>
                                     <constraint firstItem="l0a-gp-FOc" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="xNy-SJ-7QS"/>
                                     <constraint firstAttribute="trailing" secondItem="l0a-gp-FOc" secondAttribute="trailing" constant="50" id="ypK-Ew-C60"/>
-                                    <constraint firstItem="14Y-Gw-Zgt" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="50" id="z1r-Mf-JQf"/>
+                                    <constraint firstItem="14Y-Gw-Zgt" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="40" id="z1r-Mf-JQf"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -359,12 +359,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="275" height="88"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.50492554903030396" green="0.37762138247489929" blue="0.25387939810752869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="rect" keyPath="textContainerInset">
+                                        <rect key="value" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="L5G-l6-yiv">
                                 <constraints>
@@ -400,7 +405,7 @@
         <image name="fb_logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ama-cG-z4s"/>
         <segue reference="iCr-yz-zFN"/>
+        <segue reference="Ama-cG-z4s"/>
     </inferredMetricsTieBreakers>
 </document>
