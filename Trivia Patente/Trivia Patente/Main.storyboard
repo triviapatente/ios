@@ -223,7 +223,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-XP-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="XhF-lm-a05">
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="XhF-lm-a05">
                     <connections>
                         <action selector="triggerFullScreenWithSender:" destination="3Zs-38-1kc" id="j0f-Y1-gTD"/>
                         <outlet property="delegate" destination="3Zs-38-1kc" id="p8m-zq-tix"/>

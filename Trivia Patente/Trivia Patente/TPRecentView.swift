@@ -11,7 +11,10 @@ import UIKit
 class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var headerView : UINavigationBar!
     @IBOutlet var tableView : UITableView!
-    
+    var containerView : UIView!
+    var mainView : UIView!
+
+    var scrollOffset : CGFloat!
     var items : [Game] = [] {
         didSet {
             self.tableView.reloadData()
@@ -25,9 +28,10 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let mainView = self.view.superview?.superview {
-            mainView.bringSubview(toFront: self.view.superview!)
-        }
+        containerView = self.view.superview!
+        mainView = self.containerView.superview!
+        mainView.bringSubview(toFront: containerView)
+        scrollOffset = self.view.convert(self.view.frame, to: mainView).origin.y
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,13 +47,19 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
-
-        if let mainView = self.view.superview?.superview {
+        let up_pan = sender.velocity(in: self.view).y < 0
+        
+        if let mainView = containerView.superview {
             let frame = self.view.convert(self.view.frame, to: mainView)
+            let now_offset = frame.origin.y
+            guard (up_pan && now_offset > 0) || (!up_pan && now_offset <= 0) else {
+                return
+            }
+            let offset = (up_pan == true) ? scrollOffset : -scrollOffset
             UIView.animate(withDuration: 0.4) {
                 //TODO: expand the view to full screen
-                self.view.frame.origin.y = self.view.frame.origin.y - frame.origin.y
-                self.view.frame.size.height = self.view.frame.size.height + frame.origin.y
+                self.containerView.frame.origin.y = self.containerView.frame.origin.y - offset!
+                self.containerView.frame.size.height = self.containerView.frame.size.height + offset!
             }
         }
     }
