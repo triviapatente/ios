@@ -11,7 +11,7 @@ import UIKit
 class HTTPGame: HTTPManager {
     func recent_games(handler : @escaping (TPGameListResponse) -> Void) {
         let user = SessionManager.currentUser!
-        user.image = "https://httpbin.org/image/png"
+        user.image = "http://www.w3schools.com/css/img_fjords.jpg"
         let game1 = Game(id: 1)
         game1.opponent = user
         game1.my_turn = true

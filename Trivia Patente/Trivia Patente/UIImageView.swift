@@ -13,11 +13,7 @@ extension UIImageView {
     func load(path : URL?, placeholder : String) {
         self.image = UIImage(named: placeholder)
         if let url = path {
-            Alamofire.download(url).downloadProgress(closure: { (progress : Progress) in
-                //TODO: add circular animation
-                
-                print("Download Progress: \(progress.fractionCompleted)")
-            }).responseData(completionHandler: { response in
+            Alamofire.request(url).responseData(completionHandler: { response in
                 if let data = response.result.value {
                     self.image = UIImage(data: data)
                 }
