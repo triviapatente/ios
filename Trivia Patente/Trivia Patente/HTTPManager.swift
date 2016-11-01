@@ -41,7 +41,12 @@ class HTTPManager {
                             handler(response)
                         } else if let message = (response.result.error as? BackendError)?.message {
                             let response = T(error: message, statusCode: response.response?.statusCode)
-                            handler(response)
+                            if response.statusCode == 403 {
+                                SessionManager.drop()
+                                UIViewController.goToFirstAccess()
+                            } else {
+                                handler(response)
+                            }
                         } else {
                             let response = T(error: "Errore sconosciuto. Riprova più tardi!")
                             handler(response)

@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
             //check if login was forbidden
             if response?.statusCode == 401 {
                 SessionManager.drop()
-                self.goToFirstAccess()
+                UIViewController.goToFirstAccess(from: self)
             } else {
                 self.setHints(candidateResponse: response)
                 self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
@@ -101,10 +101,6 @@ class MainViewController: UIViewController {
     }
     func getShopHint(response : TPConnectResponse) -> String? {
         return nil
-    }
-    func goToFirstAccess() {
-        let controller = UIViewController.root()
-        self.present(controller, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
