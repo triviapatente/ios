@@ -14,7 +14,7 @@ class TPGameListResponse: TPResponse {
     
     override func load(json: JSON) {
         super.load(json: json)
-        if let rawGames = json["games"].array {
+        if let rawGames = json["recent_games"].array {
             for item in rawGames {
                 games.append(Game(json: item))
             }

@@ -15,9 +15,9 @@ open class Game: CommonPK {
 	internal let kGameWinnerIdKey: String = "winner_id"
 	internal let kGameEndedKey: String = "ended"
     internal let kGameMyTurnKey: String = "my_turn"
-    internal let kGameOpponentNameKey: String = "opponent_name"
+    internal let kGameOpponentNameKey: String = "opponent_username"
     internal let kGameOpponentIdKey: String = "opponent_id"
-    internal let kGameOpponentAvatarKey: String = "opponent_avatar"
+    internal let kGameOpponentAvatarKey: String = "opponent_image"
     internal let kGameOpponentKey: String = "opponent"
 
 
