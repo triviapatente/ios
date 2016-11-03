@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuButtonItem: UIBarButtonItem {
+class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
     
     lazy var imageView : UIImageView = {
         let rect = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -41,15 +41,23 @@ class MenuButtonItem: UIBarButtonItem {
             presentController(sender: self.sender)
         }
     }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
     func presentController(sender : TPNavigationController) {
         controller.modalPresentationStyle = .popover
-        controller.modalTransitionStyle = .crossDissolve
-        sender.present(controller, animated: true, completion: nil)
+        controller.modalTransitionStyle = .coverVertical
         
         if let presentationController = controller.popoverPresentationController {
-            presentationController.sourceView = self.imageView
-            presentationController.sourceRect = CGRect(x: 0, y: 0, width: self.imageView.bounds.size.width, height: self.imageView.bounds.size.width)
+            presentationController.delegate = self
+            presentationController.backgroundColor = UIColor.clear
+            //presentationController.permittedArrowDirections = []
+            presentationController.barButtonItem = self
         }
+        
+        sender.present(controller, animated: true, completion: nil)
+
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
