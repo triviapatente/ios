@@ -25,9 +25,10 @@ class SessionManager {
     }
     static var currentUser : User? {
         let defaults = UserDefaults.standard
-        let object = defaults.object(forKey: kUserKey) as! Data
-        if let user = NSKeyedUnarchiver.unarchiveObject(with: object) as? User {
-            return user
+        if let object = defaults.data(forKey: kUserKey) {
+            if let user = NSKeyedUnarchiver.unarchiveObject(with: object) as? User {
+                return user
+            }
         }
         return nil
     }
@@ -46,6 +47,23 @@ class SessionManager {
         if let token = SessionManager.getToken() {
             SocketManager.connect {
                 socketAuth.authenticate(token: token, handler: handler)
+            }
+        }
+    }
+    class func logout() {
+        let auth = HTTPAuth()
+        auth.logout { (response : TPAuthResponse) in
+            if response.success == true {
+                UIViewController.goToFirstAccess(expired_session: false)
+            } else if let controller = UIViewController.getVisible() {
+                let alertController = UIAlertController(title: "Errore", message: "Non è stato possibile scollegarti dal gioco", preferredStyle: .alert)
+                let retryAction = UIAlertAction(title: "Riprova", style: .default, handler: { action in
+                    self.logout()
+                })
+                let cancelAction = UIAlertAction(title: "Indietro", style: .cancel, handler: nil)
+                alertController.addAction(retryAction)
+                alertController.addAction(cancelAction)
+                controller.present(alertController, animated: true, completion: nil)
             }
         }
     }

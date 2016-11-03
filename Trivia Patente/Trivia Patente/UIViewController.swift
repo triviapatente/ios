@@ -25,23 +25,26 @@ extension UIViewController {
         return UIStoryboard.getFirstController(storyboard: "Main") as! UINavigationController
     }
     
-    class func goToFirstAccess(from : UIViewController? = nil) {
+    class func goToFirstAccess(from : UIViewController? = nil, expired_session : Bool = true) {
         var sender = from
         if sender == nil {
             sender = self.getVisible()
         }
         if let visibleViewController = sender {
             let destination = self.firstAccessController()
-            
-            let controller = UIAlertController(title: "Sessione scaduta", message: "Riaccedi per continuare", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Continua", style: .default, handler: { action in
+            if expired_session == true {
+                let controller = UIAlertController(title: "Sessione scaduta", message: "Riaccedi per continuare", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Continua", style: .default, handler: { action in
                 
-                visibleViewController.present(destination, animated: true, completion: {
-                    destination.gotoLogin()
+                    visibleViewController.present(destination, animated: true, completion: {
+                        destination.gotoLogin()
+                    })
                 })
-            })
-            controller.addAction(action)
-            visibleViewController.present(controller, animated: true, completion: nil)
+                controller.addAction(action)
+                visibleViewController.present(controller, animated: true, completion: nil)
+            } else {
+                visibleViewController.present(destination, animated: true, completion: nil)
+            }
 
         }
     }

@@ -20,9 +20,9 @@ extension UIImageView {
             })
         }
     }
-    func loadAvatar(user: User) {
+    func loadAvatar(candidate: User?) {
         var url : URL? = nil
-        if let image = user.image {
+        if let image = candidate?.image {
             url = URL(string: image)
         }
         self.load(path: url, placeholder: "default_avatar")

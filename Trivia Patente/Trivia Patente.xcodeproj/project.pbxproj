@@ -37,6 +37,11 @@
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
+		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
+		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
+		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
+		8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */; };
+		8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */; };
 		8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */; };
 		8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */; };
 		8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */; };
@@ -129,6 +134,11 @@
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
+		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
+		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
+		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
+		8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMenuViewController.swift; sourceTree = "<group>"; };
+		8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuAction.swift; sourceTree = "<group>"; };
 		8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPGame.swift; sourceTree = "<group>"; };
 		8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameListResponse.swift; sourceTree = "<group>"; };
 		8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentView.swift; sourceTree = "<group>"; };
@@ -371,7 +381,7 @@
 			children = (
 				8BCF8C281DB6A3C900EC637C /* Main.storyboard */,
 				8BBBE8511DC76FF100B433F2 /* main */,
-				8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */,
+				8BBAB4921DCA1CF3004AB6B0 /* navigation */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -565,6 +575,27 @@
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 			);
 			name = subclasses;
+			sourceTree = "<group>";
+		};
+		8BBAB4921DCA1CF3004AB6B0 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */,
+				8BBAB4991DCA2125004AB6B0 /* items */,
+				8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */,
+			);
+			name = navigation;
+			sourceTree = "<group>";
+		};
+		8BBAB4991DCA2125004AB6B0 /* items */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */,
+				8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */,
+				8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */,
+				8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */,
+			);
+			name = items;
 			sourceTree = "<group>";
 		};
 		8BBBE8491DC7690200B433F2 /* http */ = {
@@ -994,6 +1025,7 @@
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
+				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
@@ -1009,6 +1041,7 @@
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
+				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
 				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
@@ -1018,6 +1051,7 @@
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
+				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
@@ -1025,7 +1059,9 @@
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
+				8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
+				8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */,

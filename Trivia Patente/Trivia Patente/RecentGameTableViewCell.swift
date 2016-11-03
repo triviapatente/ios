@@ -20,7 +20,7 @@ class RecentGameTableViewCell: UITableViewCell {
             changeState(ended: game.ended, my_turn: game.my_turn)
             usernameView.text = game.opponent.username
             //TODO: load async with cache
-            avatarView.loadAvatar(user: game.opponent)
+            avatarView.loadAvatar(candidate: game.opponent)
         }
     }
     

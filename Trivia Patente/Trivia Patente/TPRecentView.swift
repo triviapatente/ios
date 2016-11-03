@@ -17,7 +17,10 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     var scrollOffset : CGFloat!
     var items : [Game] = [] {
         didSet {
+            print(headerView.frame.size.height)
+            print(self.tableView.rowHeight)
             self.tableView.reloadData()
+           // self.containerView.bounds.size.height = headerView.frame.size.height + CGFloat(items.count) * self.tableView.rowHeight
         }
     }
     override func viewDidLoad() {

@@ -26,6 +26,15 @@ class HTTPAuth : HTTPManager {
     func user(handler : @escaping (TPAuthResponse) -> Void) {
         request(url: "/auth/user", method: .get, params: nil, handler: handler)
     }
+    func logout(handler : @escaping (TPAuthResponse) -> Void) {
+        request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in
+            if response.success == true {
+                SessionManager.drop()
+                SocketManager.disconnect {}
+            }
+            handler(response)
+        }
+    }
     
     func register(username : String, email : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["username": username, "password": password, "email": email]

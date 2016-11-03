@@ -13,7 +13,7 @@ class HTTPManager {
     let TIMEOUT = 6.0
     
     class func getBaseURL() -> String {
-        return "http://192.168.1.160:8000"
+        return "http://192.168.3.160:8000"
     }
     
     

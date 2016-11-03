@@ -19,11 +19,28 @@ class MainViewController: UIViewController {
     
     var recentGamesView : TPRecentView!
     
-    var buttonClickListener = { (button : TPMainButton) in
-        print("ciao")
-    }
+    var buttonClickListener : ((TPMainButton) -> Void)!
     let socketAuth = SocketAuth()
     let httpGame = HTTPGame()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.buttonClickListener = { button in
+            if let identifier = self.getSegueIdentifier(for: button) {
+                self.performSegue(withIdentifier: identifier, sender: self)
+            }
+        }
+    }
+    func getSegueIdentifier(for button: TPMainButton) -> String? {
+        switch(button) {
+            case self.playButton: return "play_segue"
+            case self.rankButton: return "rank_segue"
+            case self.statsButton: return "stats_segue"
+            case self.shopButton: return "shop_segue"
+
+            default: return nil
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToSocket()
@@ -32,7 +49,6 @@ class MainViewController: UIViewController {
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
         self.recentGamesView.headerView.topItem?.title = "Partite recenti"
-
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
