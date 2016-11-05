@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
+		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
+		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
@@ -105,6 +107,8 @@
 		81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
@@ -230,6 +234,33 @@
 				6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B28D26A1DCDE9FE00C65122 /* avatar */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */,
+			);
+			name = avatar;
+			sourceTree = "<group>";
+		};
+		8B28D26B1DCDEA0400C65122 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */,
+				8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */,
+				8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */,
+			);
+			name = menu;
+			sourceTree = "<group>";
+		};
+		8B28D26C1DCDEA0800C65122 /* lifes */ = {
+			isa = PBXGroup;
+			children = (
+				8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */,
+				8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */,
+			);
+			name = lifes;
 			sourceTree = "<group>";
 		};
 		8B42E8271DC63D4700C36DDA /* stats */ = {
@@ -561,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				8B8142CB1DC0C82F00E60B06 /* Colors.swift */,
+				8B28D26D1DCDEA7100C65122 /* Constants.swift */,
 			);
 			name = generals;
 			sourceTree = "<group>";
@@ -582,7 +614,6 @@
 			children = (
 				8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */,
 				8BBAB4991DCA2125004AB6B0 /* items */,
-				8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */,
 			);
 			name = navigation;
 			sourceTree = "<group>";
@@ -590,10 +621,9 @@
 		8BBAB4991DCA2125004AB6B0 /* items */ = {
 			isa = PBXGroup;
 			children = (
-				8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */,
-				8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */,
-				8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */,
-				8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */,
+				8B28D26C1DCDEA0800C65122 /* lifes */,
+				8B28D26B1DCDEA0400C65122 /* menu */,
+				8B28D26A1DCDE9FE00C65122 /* avatar */,
 			);
 			name = items;
 			sourceTree = "<group>";
@@ -850,6 +880,7 @@
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
+				8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1027,6 +1058,7 @@
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
+				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,

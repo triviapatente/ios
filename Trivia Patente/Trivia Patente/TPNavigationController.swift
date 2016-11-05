@@ -30,7 +30,11 @@ class TPNavigationController: UINavigationController {
                               break
             }
         }, sender: self)
-        lifesItem = LifesButtonItem()
+        lifesItem = LifesButtonItem(callback: {
+            self.goTo(identifier: "shop_segue")
+        })
+        //TODO: edit with correct informations
+        lifesItem.initCounter(lifes: 0)
     }
     func goTo(identifier : String) {
         self.performSegue(withIdentifier: identifier, sender: self)

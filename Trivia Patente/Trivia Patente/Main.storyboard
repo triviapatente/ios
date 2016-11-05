@@ -107,7 +107,6 @@
                     <connections>
                         <segue destination="Pg1-qu-Iu1" kind="show" identifier="rank_segue" id="tCy-Ka-lFQ"/>
                         <segue destination="uvQ-D6-uuu" kind="show" identifier="stats_segue" id="mIb-q4-JFX"/>
-                        <segue destination="cQu-aq-fpA" kind="show" identifier="shop_segue" id="bXI-hE-qLG"/>
                         <segue destination="uPf-mW-c5f" kind="show" identifier="play_segue" id="7uF-fV-Icy"/>
                     </connections>
                 </viewController>
@@ -153,6 +152,7 @@
                         <segue destination="vbh-Xb-T5x" kind="show" identifier="profile_segue" id="eOo-uJ-bw2"/>
                         <segue destination="4yY-Qi-7gY" kind="show" identifier="credits_segue" id="VMl-V1-Csf"/>
                         <segue destination="nwh-fE-bFX" kind="show" identifier="settings_segue" id="jVj-0f-jiV"/>
+                        <segue destination="cQu-aq-fpA" kind="show" identifier="shop_segue" id="SZg-Yn-g5r"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDP-hS-OLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2046" y="776"/>
+            <point key="canvasLocation" x="369" y="959"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="PIO-ad-1Zz">
