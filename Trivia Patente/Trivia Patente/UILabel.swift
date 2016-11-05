@@ -12,6 +12,6 @@ extension UILabel {
 
     override open func copy() -> Any {
         let archivedData = NSKeyedArchiver.archivedData(withRootObject: self)
-        return NSKeyedUnarchiver.unarchiveObject(with: archivedData)
+        return NSKeyedUnarchiver.unarchiveObject(with: archivedData)!
     }
 }

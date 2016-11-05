@@ -17,8 +17,17 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         return view
     }()
     
-    var controller : UIMenuViewController!
-    var sender : TPNavigationController!
+    var optionsOrigin : CGPoint! {
+        didSet {
+            controller.view.frame.origin = optionsOrigin
+        }
+    }
+    var optionsFrame : CGSize! {
+        get {
+            return controller.view.frame.size
+        }
+    }
+    var controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "UIMenuViewController") as! UIMenuViewController
     
     lazy var tapRecognizer : UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(imagePressed))
@@ -29,36 +38,25 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         imageView.addGestureRecognizer(tapRecognizer)
         self.customView = imageView
 
-        self.sender = sender
-        controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "UIMenuViewController") as! UIMenuViewController
-        controller.callback = callback
+        controller.view.isHidden = true
+        controller.callback = { action in
+            self.toggleMenuState(visible: false)
+            callback(action)
+        }
+        
+        sender.view.addSubview(controller.view)
 
+    }
+    func toggleMenuState(visible : Bool) {
+        controller.view.isHidden = !visible
+    }
+    func isVisible() -> Bool {
+        return !controller.view.isHidden
     }
     func imagePressed() {
-        if controller.isBeingPresented {
-            controller.dismiss(animated: true, completion: nil)
-        } else {
-            presentController(sender: self.sender)
-        }
-    }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
+        toggleMenuState(visible: !isVisible())
     }
     
-    func presentController(sender : TPNavigationController) {
-        controller.modalPresentationStyle = .popover
-        controller.modalTransitionStyle = .coverVertical
-        
-        if let presentationController = controller.popoverPresentationController {
-            presentationController.delegate = self
-            presentationController.backgroundColor = UIColor.clear
-            //presentationController.permittedArrowDirections = []
-            presentationController.barButtonItem = self
-        }
-        
-        sender.present(controller, animated: true, completion: nil)
-
-    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

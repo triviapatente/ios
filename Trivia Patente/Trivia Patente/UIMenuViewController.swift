@@ -14,14 +14,12 @@ class UIMenuViewController: UITableViewController {
     var callback : ((MenuAction) -> Void)!
     let CELL_HEIGHT : CGFloat = 50
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        //size in popover
-        let dimension = CELL_HEIGHT * CGFloat(options.count)
-        self.preferredContentSize = CGSize(width: dimension, height: dimension)
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //size in popover
+        let dimension = CELL_HEIGHT * CGFloat(options.count)
+        self.view.frame.size = CGSize(width: dimension, height: dimension)
         // Do any additional setup after loading the view.
     }
 

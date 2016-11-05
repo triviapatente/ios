@@ -37,15 +37,26 @@ class TPNavigationController: UINavigationController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         self.configureBar()
     }
     func configureBar() {
-        if let controller = self.topViewController {
-            controller.navigationItem.rightBarButtonItems = [menuItem, avatarItem]
-            controller.navigationItem.leftBarButtonItem = lifesItem
+        configureOptionsFrame()
+        if let navigationItem = self.topViewController?.navigationItem {
+            navigationItem.rightBarButtonItems = [menuItem, avatarItem]
+            if self.viewControllers.count == 1 {
+                navigationItem.leftBarButtonItem = lifesItem
+            }
         }
         
+    }
+    func configureOptionsFrame() {
+        if let window = self.view.window {
+            let frame = window.convert(self.navigationBar.frame, to: window)
+            let y = frame.height + frame.origin.y
+            let x = (frame.width + frame.origin.x) - menuItem.optionsFrame.width
+            menuItem.optionsOrigin = CGPoint(x: x, y: y)
+        }
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
