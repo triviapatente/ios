@@ -38,7 +38,7 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         imageView.addGestureRecognizer(tapRecognizer)
         self.customView = imageView
 
-        controller.view.isHidden = true
+        toggleMenuState(visible: false, animate: false)
         controller.callback = { action in
             self.toggleMenuState(visible: false)
             callback(action)
@@ -47,11 +47,21 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         sender.view.addSubview(controller.view)
 
     }
-    func toggleMenuState(visible : Bool) {
-        controller.view.isHidden = !visible
+    func toggleMenuState(visible : Bool, animate : Bool = true) {
+        let endAlpha = CGFloat(visible ? 1 : 0)
+        guard endAlpha != controller.view.alpha else {
+            return
+        }
+        if animate == true {
+            UIView.animate(withDuration: 0.2) {
+                self.controller.view.alpha = endAlpha
+            }
+        } else {
+            self.controller.view.alpha = endAlpha
+        }
     }
     func isVisible() -> Bool {
-        return !controller.view.isHidden
+        return controller.view.alpha > 0
     }
     func imagePressed() {
         toggleMenuState(visible: !isVisible())
