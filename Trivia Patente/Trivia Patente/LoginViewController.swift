@@ -58,15 +58,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case nameField:
-            _ = passwordField.becomeFirstResponder()
-            break
-        case passwordField:
-            //programmatically touch login button
-            loginButton.sendActions(for: .touchUpInside)
-            break
-        default: break
-            
+            case nameField.field:
+                _ = passwordField.becomeFirstResponder()
+                break
+            case passwordField.field:
+                //programmatically touch login button
+                loginButton.sendActions(for: .touchUpInside)
+                break
+            default: break
         }
         return true
     }
