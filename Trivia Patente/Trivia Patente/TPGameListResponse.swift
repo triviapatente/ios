@@ -20,7 +20,4 @@ class TPGameListResponse: TPResponse {
             }
         }
     }
-    convenience init() {
-        self.init(error: "", statusCode: 200)
-    }
 }
