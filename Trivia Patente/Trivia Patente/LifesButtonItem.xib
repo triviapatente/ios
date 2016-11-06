@@ -61,6 +61,7 @@
                     </connections>
                 </button>
             </subviews>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="rNz-uc-yPc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="A6g-Jb-cbP"/>
                 <constraint firstItem="rNz-uc-yPc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="JzB-c4-XZb"/>
@@ -75,8 +76,16 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="g6W-Gp-W5u" appends="YES" id="VJr-VV-n0y"/>
+            </connections>
             <point key="canvasLocation" x="-106" y="-253.5"/>
         </view>
+        <tapGestureRecognizer id="g6W-Gp-W5u">
+            <connections>
+                <action selector="moreLifes" destination="-1" id="ych-vj-sAm"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="red_heart" width="84" height="72"/>
