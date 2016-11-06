@@ -47,9 +47,11 @@ class TPNavigationController: UINavigationController {
     func configureBar() {
         configureOptionsFrame()
         if let navigationItem = self.topViewController?.navigationItem {
-            navigationItem.rightBarButtonItems = [menuItem, avatarItem]
+            let negativeSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            negativeSpacer.width = -15
+            navigationItem.rightBarButtonItems = [negativeSpacer, menuItem, avatarItem]
             if self.viewControllers.count == 1 {
-                navigationItem.leftBarButtonItem = lifesItem
+                navigationItem.leftBarButtonItems = [negativeSpacer, lifesItem]
             }
         }
         
