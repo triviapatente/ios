@@ -9,7 +9,10 @@
 import UIKit
 import MBProgressHUD
 
-class ShopViewController: UITableViewController {
+class ShopViewController: UIViewController {
+
+    @IBOutlet var tableView : UITableView!
+    @IBOutlet var alreadyInfinityView : UIView!
 
     var items : [Shopitem] = [] {
         didSet {
@@ -24,19 +27,38 @@ class ShopViewController: UITableViewController {
     let MIN_CELL_HEIGHT = CGFloat(100)
     
     var loadingView : MBProgressHUD!
-
+    
+    //TODO: set this variable from user info
+    var alreadyInfinity = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "ShopItemTableViewCell", bundle: Bundle.main)
-        self.tableView.register(nib, forCellReuseIdentifier: "shopitem_cell")
         self.buttonCallback = { item in
             //TODO: implement shop request callback
             print(item)
         }
+        let nib = UINib(nibName: "ShopItemTableViewCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: "shopitem_cell")
         
+        if !alreadyInfinity {
+            preparePurchaseView()
+        } else {
+            prepareMockView()
+        }
+        alreadyInfinityView.isHidden = !alreadyInfinity
+        
+    }
+    func prepareMockView() {
+        let a = Shopitem(id: 1, name: "Sei", price: 1.99, emoji: "❤️")
+        let b = Shopitem(id: 2, name: "un", price: 1.99, emoji: "❤️")
+        let c = Shopitem(id: 3, name: "fantastico", price: 1.99, emoji: "❤️")
+        let d = Shopitem(id: 4, name: "utente!", price: 1.99, emoji: "❤️")
+        self.items = [a, b, c, d]
+    }
+    func preparePurchaseView() {
+        self.tableView.rowHeight = MIN_CELL_HEIGHT
         loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingView.mode = .indeterminate
-        self.tableView.rowHeight = MIN_CELL_HEIGHT
         handler.shop_items { response in
             self.loadingView.hide(animated: true)
             if response.success == true {
@@ -45,10 +67,12 @@ class ShopViewController: UITableViewController {
                 //TODO: handle error
             }
         }
-        
     }
     
     func configureCellHeight() {
+        guard self.items.count > 0 else {
+            return
+        }
         let candidate = self.view.frame.size.height / CGFloat(self.items.count)
         //se la dimensione candidata è minore del minimo, non la posso accettare, quindi devo abilitare lo scroll in quanto la somma delle altezze delle celle supererà l'altezza della view
         self.tableView.isScrollEnabled = candidate < MIN_CELL_HEIGHT
@@ -62,15 +86,15 @@ class ShopViewController: UITableViewController {
     }
 }
 
-extension ShopViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension ShopViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shopitem_cell") as! ShopItemTableViewCell
         cell.item = items[indexPath.row]
         cell.callback = self.buttonCallback

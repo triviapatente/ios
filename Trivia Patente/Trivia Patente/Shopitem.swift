@@ -31,7 +31,12 @@ open class Shopitem: CommonPK {
     convenience public init(object: AnyObject) {
         self.init(json: JSON(object))
     }
-
+    init(id: Int?, name : String?, price : Float?, emoji : String?) {
+        super.init(id: id)
+        self.name = name
+        self.price = price
+        self.emoji = emoji
+    }
     /**
     Initates the class based on the JSON that was passed.
     - parameter json: JSON object from SwiftyJSON.
