@@ -11,7 +11,7 @@ import SocketIO
 import SwiftyJSON
 
 class SocketManager {
-    static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(true)])
+    static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(false)])
     
     class func connect(handler : @escaping () -> Void) {
         if socket.status == .connected {
