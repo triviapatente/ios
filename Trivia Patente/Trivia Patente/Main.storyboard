@@ -23,13 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
-                                <rect key="frame" x="0.0" y="325" width="375" height="278"/>
+                                <rect key="frame" x="0.0" y="295" width="375" height="308"/>
                                 <connections>
                                     <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
                                 </connections>
                             </containerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
-                                <rect key="frame" x="20" y="30" width="335" height="275"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
+                                <rect key="frame" x="20" y="30" width="335" height="245"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhW-kG-2tD">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -41,36 +41,33 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwY-yn-XAG">
-                                        <rect key="frame" x="0.0" y="75" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="65" width="335" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5BJ-za-JfA"/>
+                                            <constraint firstAttribute="height" constant="50" id="5BJ-za-JfA"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="O44-px-sm6" kind="embed" identifier="rank" id="kdO-BA-QoT"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5A-mF-NZn">
-                                        <rect key="frame" x="0.0" y="150" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="130" width="335" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="h8S-Gp-Dqz"/>
+                                            <constraint firstAttribute="height" constant="50" id="h8S-Gp-Dqz"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="O44-px-sm6" kind="embed" identifier="stats" id="KDU-W3-X0A"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZB-Yu-P7Q">
-                                        <rect key="frame" x="0.0" y="225" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="195" width="335" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gQu-M8-9T3"/>
+                                            <constraint firstAttribute="height" constant="50" id="gQu-M8-9T3"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="O44-px-sm6" kind="embed" identifier="shop" id="n4A-43-lvl"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="275" id="SAF-6L-kJf"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.6705882352941176" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -384,7 +381,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5II-cs-oTT"/>
         <segue reference="B6J-yy-Imj"/>
+        <segue reference="NhK-dZ-dty"/>
     </inferredMetricsTieBreakers>
 </document>

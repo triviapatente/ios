@@ -15,9 +15,10 @@ class TPRecentView: UIViewController {
     var items : [Game] = [] {
         didSet {
             self.view.frame.size.height = headerHeight + tableHeight
-
-            if items.count < 3 {
-                self.view.frame.origin.y = self.containerSize.height - viewSize.height
+            
+            let candidate_y = self.containerSize.height - viewSize.height
+            if items.count < 3 && candidate_y > 0 {
+                self.view.frame.origin.y = candidate_y
             }
 
             self.tableView.reloadData()
