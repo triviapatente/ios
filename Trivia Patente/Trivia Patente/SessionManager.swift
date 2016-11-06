@@ -50,15 +50,18 @@ class SessionManager {
             }
         }
     }
-    class func logout() {
+    class func logout(cb : ((TPAuthResponse) -> Void)? = nil) {
         let auth = HTTPAuth()
         auth.logout { (response : TPAuthResponse) in
+            if let handler = cb {
+                handler(response)
+            }
             if response.success == true {
                 UIViewController.goToFirstAccess(expired_session: false)
             } else if let controller = UIViewController.getVisible() {
                 let alertController = UIAlertController(title: "Errore", message: "Non è stato possibile scollegarti dal gioco", preferredStyle: .alert)
                 let retryAction = UIAlertAction(title: "Riprova", style: .default, handler: { action in
-                    self.logout()
+                    self.logout(cb: cb)
                 })
                 let cancelAction = UIAlertAction(title: "Indietro", style: .cancel, handler: nil)
                 alertController.addAction(retryAction)

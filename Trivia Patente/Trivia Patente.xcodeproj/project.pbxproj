@@ -15,6 +15,7 @@
 		8B28D2771DCF610E00C65122 /* ShopItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D2751DCF610E00C65122 /* ShopItemTableViewCell.xib */; };
 		8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */; };
 		8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27C1DCF62B200C65122 /* HTTPShop.swift */; };
+		8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
@@ -119,6 +120,7 @@
 		8B28D2751DCF610E00C65122 /* ShopItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopItemTableViewCell.xib; sourceTree = "<group>"; };
 		8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPShopItemsResponse.swift; sourceTree = "<group>"; };
 		8B28D27C1DCF62B200C65122 /* HTTPShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPShop.swift; sourceTree = "<group>"; };
+		8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */,
 				8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */,
 				8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */,
+				8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */,
 			);
 			name = menu;
 			sourceTree = "<group>";
@@ -1127,6 +1130,7 @@
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
+				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,
 				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,

@@ -26,7 +26,7 @@ class TPNavigationController: UINavigationController {
                                 break
                 case .credits: self.goTo(identifier: "credits_segue")
                                break
-                case .logout: SessionManager.logout()
+                case .logout: self.goTo(identifier: "logout_segue")
                               break
             }
         }, sender: self)

@@ -22,12 +22,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
-                                <rect key="frame" x="0.0" y="295" width="375" height="308"/>
-                                <connections>
-                                    <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
-                                </connections>
-                            </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
                                 <rect key="frame" x="20" y="30" width="335" height="245"/>
                                 <subviews>
@@ -69,6 +63,12 @@
                                     </containerView>
                                 </subviews>
                             </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
+                                <rect key="frame" x="0.0" y="295" width="375" height="308"/>
+                                <connections>
+                                    <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.6705882352941176" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -139,6 +139,7 @@
                         <segue destination="4yY-Qi-7gY" kind="show" identifier="credits_segue" id="VMl-V1-Csf"/>
                         <segue destination="OOv-13-APl" kind="show" identifier="shop_segue" id="5II-cs-oTT"/>
                         <segue destination="Tac-14-TFZ" kind="show" identifier="settings_segue" id="oWh-Er-0wF"/>
+                        <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="8Lg-qo-Ol3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,6 +189,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXk-iU-gND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="662" y="-1251"/>
+        </scene>
+        <!--Logout View Controller-->
+        <scene sceneID="Zqi-Lb-YkV">
+            <objects>
+                <viewController id="H6P-hP-e0H" customClass="LogoutViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Wy-Ym-G3w"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ytl-k3-S5l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gxB-Ny-FMu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5E-YV-JGV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gYp-g0-Uea">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-3K-3Jz">
+                                <rect key="frame" x="36" y="283.5" width="303" height="100.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vuoi veramente disconnettere il tuo account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-hA-HHQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="49.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-jL-ZTW">
+                                        <rect key="frame" x="0.0" y="60.5" width="303" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43h-Gj-FlC">
+                                                <rect key="frame" x="20" y="5" width="80" height="30"/>
+                                                <color key="backgroundColor" red="0.26684302090000001" green="0.8567373157" blue="0.36566528679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="7mp-sq-H6i"/>
+                                                    <constraint firstAttribute="width" constant="80" id="GG1-o5-uQi"/>
+                                                </constraints>
+                                                <state key="normal" title="Rimani">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="remain" destination="H6P-hP-e0H" eventType="touchUpInside" id="mCX-Aq-jeH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcH-cr-l8v">
+                                                <rect key="frame" x="203" y="5" width="80" height="30"/>
+                                                <color key="backgroundColor" red="0.91774743795394897" green="0.29291564226150513" blue="0.20606052875518799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="UeL-DU-Wcm"/>
+                                                </constraints>
+                                                <state key="normal" title="Esci">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="leave" destination="H6P-hP-e0H" eventType="touchUpInside" id="fac-BG-sn2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="43h-Gj-FlC" firstAttribute="centerY" secondItem="xRe-jL-ZTW" secondAttribute="centerY" id="8Yt-FT-pU9"/>
+                                            <constraint firstItem="43h-Gj-FlC" firstAttribute="leading" secondItem="xRe-jL-ZTW" secondAttribute="leading" constant="20" id="aeS-cE-gRi"/>
+                                            <constraint firstItem="FcH-cr-l8v" firstAttribute="centerY" secondItem="xRe-jL-ZTW" secondAttribute="centerY" id="bie-o4-oNg"/>
+                                            <constraint firstAttribute="height" constant="40" id="sfA-Vw-BD7"/>
+                                            <constraint firstAttribute="trailing" secondItem="FcH-cr-l8v" secondAttribute="trailing" constant="20" id="zGc-F0-xrj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xRe-jL-ZTW" firstAttribute="centerX" secondItem="Xfe-3K-3Jz" secondAttribute="centerX" id="48V-KB-alF"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="y5E-YV-JGV" secondAttribute="trailing" id="F2E-oH-MEK"/>
+                            <constraint firstItem="Ytl-k3-S5l" firstAttribute="top" secondItem="y5E-YV-JGV" secondAttribute="bottom" id="FUn-Vi-pU6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xfe-3K-3Jz" secondAttribute="trailing" constant="20" id="KVN-vz-P5N"/>
+                            <constraint firstItem="Xfe-3K-3Jz" firstAttribute="leading" secondItem="gxB-Ny-FMu" secondAttribute="leadingMargin" constant="20" id="ZNx-Tb-PRZ"/>
+                            <constraint firstItem="y5E-YV-JGV" firstAttribute="top" secondItem="gxB-Ny-FMu" secondAttribute="top" id="ZU7-16-VmN"/>
+                            <constraint firstItem="Xfe-3K-3Jz" firstAttribute="centerX" secondItem="gxB-Ny-FMu" secondAttribute="centerX" id="iDG-M4-nO9"/>
+                            <constraint firstItem="y5E-YV-JGV" firstAttribute="leading" secondItem="gxB-Ny-FMu" secondAttribute="leading" id="jFY-Fh-iI1"/>
+                            <constraint firstItem="Xfe-3K-3Jz" firstAttribute="centerY" secondItem="gxB-Ny-FMu" secondAttribute="centerY" id="wP5-7Y-gUn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="leaveButton" destination="FcH-cr-l8v" id="BOp-vX-UYI"/>
+                        <outlet property="remainButton" destination="43h-Gj-FlC" id="Ybg-vG-qbs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qaL-9e-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954.39999999999998" y="-838.83058470764627"/>
         </scene>
         <!--Main Button-->
         <scene sceneID="vZS-eu-Izu">
@@ -276,7 +372,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
                                 <rect key="frame" x="0.0" y="44" width="329" height="175"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -296,7 +392,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="yAL-s7-7YC" secondAttribute="bottom" id="6tt-aC-9PC"/>
@@ -381,7 +477,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="5II-cs-oTT"/>
         <segue reference="B6J-yy-Imj"/>
-        <segue reference="NhK-dZ-dty"/>
     </inferredMetricsTieBreakers>
 </document>
