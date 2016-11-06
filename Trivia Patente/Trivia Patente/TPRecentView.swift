@@ -14,8 +14,8 @@ class TPRecentView: UIViewController {
 
     var items : [Game] = [] {
         didSet {
-            self.view.frame.size.height = headerHeight + tableHeight
-            
+            minimize(origin: false)
+            self.tableView.tableFooterView?.isHidden = false
             let candidate_y = self.containerSize.height - viewSize.height
             if items.count < 3 && candidate_y > 0 {
                 self.view.frame.origin.y = candidate_y
@@ -45,16 +45,28 @@ class TPRecentView: UIViewController {
     var headerHeight : CGFloat {
         return headerView.frame.size.height
     }
+    var footerView : UIView {
+        let frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80)
+        let label = UILabel(frame: frame)
+        label.text = "Nessun'altra partita recente.\nGioca di più 😉"
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.isHidden = true
+        label.numberOfLines = 2
+        return label
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "RecentGameTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
+        //per evitare che vengano mostrate anche le celle vuote
+        self.tableView.tableFooterView = footerView
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //TODO: fix bug.. the view is over the loading view
-        mainView.bringSubview(toFront: self.view)
         mainView.bringSubview(toFront: self.containerView)
+        self.containerView.bringSubview(toFront: self.view)
     }
     
     
@@ -70,17 +82,26 @@ class TPRecentView: UIViewController {
         self.view.removeGestureRecognizer(sender)
         UIView.animate(withDuration: 0.4, animations: {
             if up_pan == true {
-                self.containerView.frame.origin.y = up_thresold
-                self.view.frame.size.height = self.mainSize.height
+                self.expand(up_thresold)
             } else {
-                self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
-                self.view.frame.size.height = self.headerHeight + self.tableHeight
-
+                self.minimize()
             }
         }) { finish in
             self.view.addGestureRecognizer(sender)
 
         }
+    }
+    func expand(_ thresold : CGFloat) {
+        self.tableView.isScrollEnabled = true
+        self.containerView.frame.origin.y = thresold
+        self.view.frame.size.height = self.mainSize.height
+    }
+    func minimize(origin : Bool = true) {
+        self.tableView.isScrollEnabled = false
+        if origin == true {
+            self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
+        }
+        self.view.frame.size.height = self.headerHeight + self.tableHeight
     }
 }
 extension TPRecentView : UIGestureRecognizerDelegate {
@@ -96,6 +117,14 @@ extension TPRecentView : UITableViewDataSource, UITableViewDelegate {
     
     @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        //se sono arrivato all'inizio, faccio il minimize
+        if scrollView.contentOffset.y < -20 {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.minimize()
+            })
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
