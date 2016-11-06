@@ -36,6 +36,7 @@ class ShopViewController: UITableViewController {
         
         loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingView.mode = .indeterminate
+        self.tableView.rowHeight = MIN_CELL_HEIGHT
         handler.shop_items { response in
             self.loadingView.hide(animated: true)
             if response.success == true {

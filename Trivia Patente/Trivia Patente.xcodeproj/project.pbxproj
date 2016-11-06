@@ -867,6 +867,7 @@
 				TargetAttributes = {
 					A9FD52751DA16E95005DFE5D = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = S5GD6XDXR4;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -1338,6 +1339,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S5GD6XDXR4;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";
@@ -1353,6 +1355,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S5GD6XDXR4;
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";

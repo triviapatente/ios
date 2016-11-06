@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmA-Kz-M2k">
-                        <rect key="frame" x="194" y="22.5" width="100" height="37"/>
+                        <rect key="frame" x="200" y="22.5" width="100" height="37"/>
                         <color key="backgroundColor" red="0.26684302091598511" green="0.85673731565475464" blue="0.36566528677940369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="jiF-fS-III"/>
@@ -34,8 +34,8 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh8-8G-FHl">
-                        <rect key="frame" x="8" y="21" width="156" height="40"/>
-                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="29"/>
+                        <rect key="frame" x="8" y="23.5" width="167" height="36"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="26"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -43,8 +43,8 @@
                 <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="Fh8-8G-FHl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0D2-YD-JuO"/>
-                    <constraint firstAttribute="trailing" secondItem="LmA-Kz-M2k" secondAttribute="trailing" constant="26" id="3as-x4-X9O"/>
-                    <constraint firstItem="LmA-Kz-M2k" firstAttribute="leading" secondItem="Fh8-8G-FHl" secondAttribute="trailing" constant="30" id="QPm-ss-dI2"/>
+                    <constraint firstAttribute="trailing" secondItem="LmA-Kz-M2k" secondAttribute="trailing" constant="20" id="3as-x4-X9O"/>
+                    <constraint firstItem="LmA-Kz-M2k" firstAttribute="leading" secondItem="Fh8-8G-FHl" secondAttribute="trailing" constant="25" id="QPm-ss-dI2"/>
                     <constraint firstItem="Fh8-8G-FHl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ioe-yN-fFL"/>
                     <constraint firstItem="LmA-Kz-M2k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="v9W-8U-9J3"/>
                 </constraints>
