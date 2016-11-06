@@ -21,8 +21,8 @@ extension Date {
         static let gmt : DateFormatter = {
             let formatter = DateFormatter()
             formatter.calendar = Calendar.current
-            formatter.timeZone = TimeZone(abbreviation: "GMT")
-            formatter.dateFormat = "E, dd MM yyyy HH:mm:ss Z"
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss ZZZZ"
             return formatter
         }()
     }
