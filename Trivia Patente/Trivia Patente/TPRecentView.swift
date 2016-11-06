@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
+class TPRecentView: UIViewController {
     @IBOutlet var headerView : UINavigationBar!
     @IBOutlet var tableView : UITableView!
 
@@ -56,12 +56,7 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
         mainView.bringSubview(toFront: self.containerView)
     }
     
-    func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
-        guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
-        
-        let velocity = gestureRecognizer.velocity(in: self.view)
-        return abs(velocity.y) > 40
-    }
+    
     
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
         let up_pan = sender.velocity(in: self.view).y < 0
@@ -85,6 +80,14 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
             self.view.addGestureRecognizer(sender)
 
         }
+    }
+}
+extension TPRecentView : UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
+        guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
+        
+        let velocity = gestureRecognizer.velocity(in: self.view)
+        return abs(velocity.y) > 40
     }
 }
 
