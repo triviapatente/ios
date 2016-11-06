@@ -17,7 +17,7 @@ open class Shopitem: CommonPK {
 
 
     // MARK: Properties
-	open var price: String?
+	open var price: Float?
 	open var emoji: String?
 	open var name: String?
 
@@ -39,7 +39,7 @@ open class Shopitem: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
-		price = json[kShopitemPriceKey].string
+		price = json[kShopitemPriceKey].float
 		emoji = json[kShopitemEmojiKey].string
 		name = json[kShopitemNameKey].string
 
@@ -69,7 +69,7 @@ open class Shopitem: CommonPK {
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.price = aDecoder.decodeObject(forKey: kShopitemPriceKey) as? String
+        self.price = aDecoder.decodeObject(forKey: kShopitemPriceKey) as? Float
 		self.emoji = aDecoder.decodeObject(forKey: kShopitemEmojiKey) as? String
 		self.name = aDecoder.decodeObject(forKey: kShopitemNameKey) as? String
 

@@ -10,6 +10,11 @@
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
+		8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */; };
+		8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2741DCF610E00C65122 /* ShopItemTableViewCell.swift */; };
+		8B28D2771DCF610E00C65122 /* ShopItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D2751DCF610E00C65122 /* ShopItemTableViewCell.xib */; };
+		8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */; };
+		8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27C1DCF62B200C65122 /* HTTPShop.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
@@ -109,6 +114,11 @@
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
+		8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		8B28D2741DCF610E00C65122 /* ShopItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopItemTableViewCell.swift; sourceTree = "<group>"; };
+		8B28D2751DCF610E00C65122 /* ShopItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopItemTableViewCell.xib; sourceTree = "<group>"; };
+		8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPShopItemsResponse.swift; sourceTree = "<group>"; };
+		8B28D27C1DCF62B200C65122 /* HTTPShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPShop.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
@@ -263,6 +273,32 @@
 			name = lifes;
 			sourceTree = "<group>";
 		};
+		8B28D2731DCF60F800C65122 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B28D2741DCF610E00C65122 /* ShopItemTableViewCell.swift */,
+				8B28D2751DCF610E00C65122 /* ShopItemTableViewCell.xib */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		8B28D2781DCF622F00C65122 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8B28D2791DCF623600C65122 /* responses */,
+				8B28D27C1DCF62B200C65122 /* HTTPShop.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8B28D2791DCF623600C65122 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
 		8B42E8271DC63D4700C36DDA /* stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +382,7 @@
 		8B5132D91DBB5B9A00143497 /* purchases */ = {
 			isa = PBXGroup;
 			children = (
+				8B28D2781DCF622F00C65122 /* http */,
 				8B5132E81DBB5C8E00143497 /* ui */,
 				8B5132E71DBB5C8800143497 /* models */,
 			);
@@ -481,7 +518,9 @@
 		8B5132E81DBB5C8E00143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B28D2731DCF60F800C65122 /* cell */,
 				8B51330B1DBBAC4400143497 /* Purchases.storyboard */,
+				8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -870,6 +909,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B28D2771DCF610E00C65122 /* ShopItemTableViewCell.xib in Resources */,
 				8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */,
 				8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */,
 				8B5133071DBBAC2100143497 /* Chat.storyboard in Resources */,
@@ -1051,11 +1091,13 @@
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,
 				8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
+				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
+				8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */,
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
@@ -1071,6 +1113,7 @@
 				8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
+				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
 				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
@@ -1095,6 +1138,7 @@
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
 				8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
+				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,

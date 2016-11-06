@@ -68,7 +68,11 @@ class MainViewController: UIViewController {
             } else {
                 self.setHints(candidateResponse: response)
                 self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
-                    self.recentGamesView.items = response.games
+                    if response.success == true {
+                        self.recentGamesView.items = response.games
+                    } else {
+                        //TODO: handle error
+                    }
                 })
             }
         }
