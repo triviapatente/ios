@@ -108,6 +108,7 @@
                         <segue destination="Pg1-qu-Iu1" kind="show" identifier="rank_segue" id="tCy-Ka-lFQ"/>
                         <segue destination="uvQ-D6-uuu" kind="show" identifier="stats_segue" id="mIb-q4-JFX"/>
                         <segue destination="uPf-mW-c5f" kind="show" identifier="play_segue" id="7uF-fV-Icy"/>
+                        <segue destination="cQu-aq-fpA" kind="show" identifier="shop_segue" id="kQ5-is-d5N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,7 +362,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-XP-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="XhF-lm-a05">
                     <connections>
-                        <action selector="triggerFullScreenWithSender:" destination="3Zs-38-1kc" id="j0f-Y1-gTD"/>
+                        <action selector="triggerFullScreenWithSender:" destination="3Zs-38-1kc" id="cJK-NT-dhC"/>
                         <outlet property="delegate" destination="3Zs-38-1kc" id="p8m-zq-tix"/>
                     </connections>
                 </panGestureRecognizer>
@@ -384,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDP-hS-OLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="959"/>
+            <point key="canvasLocation" x="1201" y="758"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="PIO-ad-1Zz">
@@ -432,5 +433,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="B6J-yy-Imj"/>
+        <segue reference="kQ5-is-d5N"/>
     </inferredMetricsTieBreakers>
 </document>

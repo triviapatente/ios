@@ -11,59 +11,77 @@ import UIKit
 class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var headerView : UINavigationBar!
     @IBOutlet var tableView : UITableView!
-    var containerView : UIView!
-    var mainView : UIView!
 
-    var scrollOffset : CGFloat!
     var items : [Game] = [] {
         didSet {
-            print(headerView.frame.size.height)
-            print(self.tableView.rowHeight)
+            self.view.frame.size.height = headerHeight + tableHeight
+
+            if items.count < 3 {
+                self.view.frame.origin.y = self.containerSize.height - viewSize.height
+            }
+
             self.tableView.reloadData()
-           // self.containerView.bounds.size.height = headerView.frame.size.height + CGFloat(items.count) * self.tableView.rowHeight
         }
+    }
+    var containerView : UIView {
+        return self.view.superview!
+    }
+    var tableHeight : CGFloat {
+        return CGFloat(items.count) * self.tableView.rowHeight
+    }
+    var viewSize : CGSize {
+        return self.view.frame.size
+    }
+    var containerSize : CGSize {
+        return self.containerView.frame.size
+    }
+    var mainSize : CGSize {
+        return mainView.frame.size
+    }
+    var mainView : UIView {
+        return parent!.view
+    }
+    var headerHeight : CGFloat {
+        return headerView.frame.size.height
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "RecentGameTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        containerView = self.view.superview!
-        mainView = self.containerView.superview!
-        mainView.bringSubview(toFront: containerView)
-        scrollOffset = self.view.convert(self.view.frame, to: mainView).origin.y
+        //TODO: fix bug.. the view is over the loading view
+        mainView.bringSubview(toFront: self.containerView)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
         guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
         
-        // Ensure it's a vertical drag
         let velocity = gestureRecognizer.velocity(in: self.view)
-        print(velocity)
         return abs(velocity.y) > 40
     }
     
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
         let up_pan = sender.velocity(in: self.view).y < 0
         
-        if let mainView = containerView.superview {
-            let frame = self.view.convert(self.view.frame, to: mainView)
-            let now_offset = frame.origin.y
-            guard (up_pan && now_offset > 0) || (!up_pan && now_offset <= 0) else {
-                return
+        let now_offset = self.containerView.frame.origin.y
+        guard (up_pan && now_offset > 0) || (!up_pan && now_offset <= 0) else {
+            return
+        }
+        self.view.removeGestureRecognizer(sender)
+        UIView.animate(withDuration: 0.4, animations: {
+            if up_pan == true {
+                self.containerView.frame.origin.y = -self.view.frame.origin.y
+                self.view.frame.size.height = self.mainSize.height
+            } else {
+                self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
+                self.view.frame.size.height = self.headerHeight + self.tableHeight
+
             }
-            let offset = (up_pan == true) ? scrollOffset : -scrollOffset
-            UIView.animate(withDuration: 0.4) {
-                //TODO: expand the view to full screen
-                self.containerView.frame.origin.y = self.containerView.frame.origin.y - offset!
-                self.containerView.frame.size.height = self.containerView.frame.size.height + offset!
-            }
+        }) { finish in
+            self.view.addGestureRecognizer(sender)
+
         }
     }
 }
