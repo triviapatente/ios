@@ -52,6 +52,7 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //TODO: fix bug.. the view is over the loading view
+        mainView.bringSubview(toFront: self.view)
         mainView.bringSubview(toFront: self.containerView)
     }
     
@@ -66,13 +67,14 @@ class TPRecentView: UIViewController, UIGestureRecognizerDelegate {
         let up_pan = sender.velocity(in: self.view).y < 0
         
         let now_offset = self.containerView.frame.origin.y
-        guard (up_pan && now_offset > 0) || (!up_pan && now_offset <= 0) else {
+        let up_thresold = -self.view.frame.origin.y
+        guard (up_pan && now_offset > up_thresold) || (!up_pan && now_offset <= up_thresold) else {
             return
         }
         self.view.removeGestureRecognizer(sender)
         UIView.animate(withDuration: 0.4, animations: {
             if up_pan == true {
-                self.containerView.frame.origin.y = -self.view.frame.origin.y
+                self.containerView.frame.origin.y = up_thresold
                 self.view.frame.size.height = self.mainSize.height
             } else {
                 self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
