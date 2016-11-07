@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1sd-zi-ypU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1sd-zi-ypU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,8 +31,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
+                                <rect key="frame" x="0.0" y="207" width="375" height="368"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
+                                        <rect key="frame" x="40" y="0.0" width="295" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="J9V-5l-dZ3"/>
                                         </constraints>
@@ -38,8 +43,10 @@
                                         </connections>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-di-1yK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-9H-a0N">
+                                                <rect key="frame" x="50" y="0.0" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9DF-wd-JlY"/>
                                                 </constraints>
@@ -48,6 +55,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIz-b5-uyO">
+                                                <rect key="frame" x="50" y="53" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="wKY-WE-lhz"/>
                                                 </constraints>
@@ -56,6 +64,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-kA-Ncg">
+                                                <rect key="frame" x="50" y="106" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cQW-H1-2E2"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="kFD-fx-VVc"/>
@@ -65,6 +74,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-Gg-e70">
+                                                <rect key="frame" x="50" y="159" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="iU6-Fr-cZe"/>
                                                 </constraints>
@@ -87,6 +97,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7Y-Hh-ssX" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="224" width="275" height="40"/>
                                         <color key="backgroundColor" red="0.0039215686274509803" green="0.50980392156862742" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Aow-xc-6nE"/>
@@ -100,6 +111,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— oppure ——" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm5-Xv-WsA">
+                                        <rect key="frame" x="123" y="279" width="130" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="8FT-ZB-kU0"/>
                                         </constraints>
@@ -108,6 +120,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ega-FS-B72" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
+                                        <rect key="frame" x="163" y="318" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="Pgj-P9-e8Y"/>
                                             <constraint firstAttribute="height" constant="50" id="y7v-TY-L6q"/>
@@ -162,13 +175,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Zdv-aj-DN4">
+                                <rect key="frame" x="16" y="284" width="343" height="99"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ciao!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K16-nE-OW5">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iniziamo?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9l0-vW-2Aa">
+                                        <rect key="frame" x="0.0" y="64.5" width="343" height="34.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -202,8 +218,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
+                                <rect key="frame" x="16" y="203" width="343" height="262"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
+                                        <rect key="frame" x="40" y="0.0" width="263" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="ZyO-A2-Jws"/>
                                         </constraints>
@@ -212,8 +230,10 @@
                                         </connections>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
+                                        <rect key="frame" x="50" y="0.0" width="243" height="103"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXb-E5-Iaf">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="S6Y-IT-Elj"/>
                                                 </constraints>
@@ -222,6 +242,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abT-te-gpY">
+                                                <rect key="frame" x="0.0" y="53" width="243" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="F8y-Cb-fi5"/>
                                                 </constraints>
@@ -232,6 +253,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="118" width="243" height="40"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="We6-hV-UrX"/>
@@ -246,6 +268,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— oppure ——" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT9-dZ-YmM">
+                                        <rect key="frame" x="107" y="173" width="130" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="EC6-Ye-0R9"/>
                                         </constraints>
@@ -254,6 +277,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpj-OV-08t" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
+                                        <rect key="frame" x="147" y="212" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4N7-cs-ZJa"/>
                                             <constraint firstAttribute="width" constant="50" id="dmL-zh-t0X"/>
@@ -306,12 +330,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLH-a6-DEr">
+                                <rect key="frame" x="0.0" y="1" width="275" height="16.5"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEo-J8-YOj" customClass="TPTextField" customModule="Trivia_Patente" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="15" width="275" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Awj-Ht-o7P"/>
@@ -319,7 +345,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="ptR-KN-xUF" id="HmG-yb-WD4"/>
                                 </connections>
@@ -360,6 +386,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
+                                <rect key="frame" x="58" y="12" width="201" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.50492554903030396" green="0.37762138247489929" blue="0.25387939810752869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -372,6 +399,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="L5G-l6-yiv">
+                                <rect key="frame" x="10" y="24" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="1m6-W1-DX8"/>
                                     <constraint firstAttribute="height" constant="40" id="f9a-QO-Abe"/>
@@ -405,7 +433,7 @@
         <image name="fb_logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iCr-yz-zFN"/>
         <segue reference="Ama-cG-z4s"/>
+        <segue reference="iCr-yz-zFN"/>
     </inferredMetricsTieBreakers>
 </document>
