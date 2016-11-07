@@ -26,6 +26,15 @@ open class User: CommonPK {
 	open var surname: String?
 	open var email: String?
 	open var name: String?
+    
+    var fullName : String? {
+        get {
+            guard name != nil && surname != nil else {
+                return nil
+            }
+            return "\(name) \(surname)"
+        }
+    }
 
 
     // MARK: SwiftyJSON Initalizers

@@ -16,6 +16,7 @@
 		8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */; };
 		8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27C1DCF62B200C65122 /* HTTPShop.swift */; };
 		8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */; };
+		8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2801DD0770800C65122 /* RankViewController.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
@@ -71,6 +72,11 @@
 		8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA41DB6A88700EC637C /* CommonPK.swift */; };
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
+		8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */; };
+		8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA251DD121180099C3E2 /* HTTPRank.swift */; };
+		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
+		8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */; };
+		8BDCEA301DD12A580099C3E2 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */; };
 		8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273421DC0D0390094F0F6 /* TPMainButton.swift */; };
 		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273461DC0DEA40094F0F6 /* TPTextView.swift */; };
@@ -121,6 +127,7 @@
 		8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPShopItemsResponse.swift; sourceTree = "<group>"; };
 		8B28D27C1DCF62B200C65122 /* HTTPShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPShop.swift; sourceTree = "<group>"; };
 		8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		8B28D2801DD0770800C65122 /* RankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
@@ -176,6 +183,11 @@
 		8BCF8CA41DB6A88700EC637C /* CommonPK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonPK.swift; sourceTree = "<group>"; };
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankResponse.swift; sourceTree = "<group>"; };
+		8BDCEA251DD121180099C3E2 /* HTTPRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRank.swift; sourceTree = "<group>"; };
+		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
+		8BDCEA2D1DD124AC0099C3E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RankTableViewCell.xib; sourceTree = "<group>"; };
+		8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
 		8BE273421DC0D0390094F0F6 /* TPMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainButton.swift; sourceTree = "<group>"; };
 		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8BE273461DC0DEA40094F0F6 /* TPTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextView.swift; sourceTree = "<group>"; };
@@ -313,7 +325,9 @@
 		8B42E8281DC63D4C00C36DDA /* rank */ = {
 			isa = PBXGroup;
 			children = (
+				8BDCEA211DD120590099C3E2 /* http */,
 				8B42E8291DC63D6900C36DDA /* ui */,
+				8BDCEA271DD121A00099C3E2 /* RankMode.swift */,
 			);
 			name = rank;
 			sourceTree = "<group>";
@@ -321,7 +335,9 @@
 		8B42E8291DC63D6900C36DDA /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8BDCEA291DD124970099C3E2 /* cell */,
 				8B42E82D1DC63D8100C36DDA /* Rank.storyboard */,
+				8B28D2801DD0770800C65122 /* RankViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -733,6 +749,32 @@
 			name = extensions;
 			sourceTree = "<group>";
 		};
+		8BDCEA211DD120590099C3E2 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8BDCEA221DD120810099C3E2 /* responses */,
+				8BDCEA251DD121180099C3E2 /* HTTPRank.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8BDCEA221DD120810099C3E2 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
+		8BDCEA291DD124970099C3E2 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */,
+				8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
 		A9FD526D1DA16E95005DFE5D = {
 			isa = PBXGroup;
 			children = (
@@ -924,6 +966,7 @@
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
+				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
 				8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 			);
@@ -1109,13 +1152,17 @@
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
+				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
+				8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */,
+				8BDCEA301DD12A580099C3E2 /* RankTableViewCell.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
 				8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */,
 				8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */,
 				8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
+				8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
@@ -1133,6 +1180,7 @@
 				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,
 				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
+				8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
@@ -1221,6 +1269,14 @@
 				8B51331B1DBBDFAB00143497 /* Base */,
 			);
 			name = Assets.xcassets;
+			sourceTree = "<group>";
+		};
+		8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BDCEA2D1DD124AC0099C3E2 /* Base */,
+			);
+			name = RankTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		A9FD527D1DA16E96005DFE5D /* FirstAccess.storyboard */ = {

@@ -12,7 +12,7 @@
         <!--Classifica-->
         <scene sceneID="aqP-QK-0fQ">
             <objects>
-                <viewController title="Classifica" id="I8V-Qm-EmO" sceneMemberID="viewController">
+                <viewController title="Classifica" id="I8V-Qm-EmO" customClass="RankViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KwU-kO-zzv"/>
                         <viewControllerLayoutGuide type="bottom" id="qML-cU-Rx7"/>
@@ -20,12 +20,56 @@
                     <view key="view" contentMode="scaleToFill" id="Vq6-A7-b8A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gP6-Oj-cdX">
+                                <rect key="frame" x="16" y="28" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="8g2-gR-wzb"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Italiana"/>
+                                    <segment title="Amici"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeRankTypeWithSender:" destination="I8V-Qm-EmO" eventType="valueChanged" id="T5a-Qw-bEe"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kT1-29-7Ir">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="prominent" placeholder="Cerca" id="X3e-Db-ljh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <connections>
+                                    <outlet property="dataSource" destination="I8V-Qm-EmO" id="pmz-3i-XPF"/>
+                                    <outlet property="delegate" destination="I8V-Qm-EmO" id="8yZ-YB-nHQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gP6-Oj-cdX" secondAttribute="trailing" constant="16" id="2Kw-Vh-NRf"/>
+                            <constraint firstItem="qML-cU-Rx7" firstAttribute="top" secondItem="kT1-29-7Ir" secondAttribute="bottom" id="4YE-BM-lfa"/>
+                            <constraint firstItem="kT1-29-7Ir" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="5ds-l5-UAt"/>
+                            <constraint firstAttribute="trailing" secondItem="kT1-29-7Ir" secondAttribute="trailing" id="DLE-tO-Pwq"/>
+                            <constraint firstItem="gP6-Oj-cdX" firstAttribute="top" secondItem="KwU-kO-zzv" secondAttribute="bottom" constant="8" id="IBr-Vz-OuB"/>
+                            <constraint firstItem="kT1-29-7Ir" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="ZQt-qD-nbV"/>
+                            <constraint firstItem="gP6-Oj-cdX" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" constant="16" id="ciS-Fa-o0j"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="control" destination="gP6-Oj-cdX" id="Ymp-1A-ChN"/>
+                        <outlet property="searchBar" destination="X3e-Db-ljh" id="FTp-IM-YAH"/>
+                        <outlet property="tableView" destination="kT1-29-7Ir" id="f5y-Yl-Ngr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULD-Dt-rtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="13"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="12.143928035982009"/>
         </scene>
     </scenes>
 </document>
