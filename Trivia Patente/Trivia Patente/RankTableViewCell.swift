@@ -15,14 +15,30 @@ class RankTableViewCell: UITableViewCell {
     @IBOutlet var detailView : UILabel!
     @IBOutlet var scoreView : UILabel!
     
+    @IBOutlet var infoDisclosure : UIButton!
+    
+    @IBOutlet var infoBar : UINavigationBar!
+    
+    let ANIMATION_DURATION = 0.2
+    @IBAction func dismissInfoBox() {
+        UIView.animate(withDuration: ANIMATION_DURATION) {
+            self.infoBar.alpha = 0
+        }
+    }
+    @IBAction func presentInfoBox() {
+        UIView.animate(withDuration: ANIMATION_DURATION) {
+            self.infoBar.alpha = 1
+        }
+    }
+    
     var user : User! {
         didSet {
+            self.setAppearance(for: user)
             if let fullName = user.fullName {
                 self.nameView.text = fullName
             } else {
                 self.nameView.text = user.username
             }
-            self.setAppearance(for: user)
             self.scoreView.text = "\(user.score!)"
             self.avatarView.loadAvatar(candidate: user)
         }
@@ -31,12 +47,32 @@ class RankTableViewCell: UITableViewCell {
         self.nameView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
         self.detailView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
         self.scoreView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
+        self.infoDisclosure.tintColor = (user.isMe()) ? UIColor.white : Colors.primary
         self.contentView.backgroundColor = (user.isMe()) ? Colors.primary : UIColor.white
+        
+        self.infoBar.titleColor = (user.isMe()) ? UIColor.white : Colors.primary
+
+        if let top_item = self.infoBar.topItem {
+            self
+            if let item = top_item.backBarButtonItem {
+                item.tintColor = (user.isMe()) ? UIColor.white : Colors.primary
+            }
+        }
+        self.infoBar.barTintColor = (user.isMe()) ? Colors.primary : UIColor.white
+
     }
     var position : Int! {
         didSet {
             self.detailView.text = self.positionText
+            self.infoBar.topItem?.title = "Posizione: \(infoPositionText)"
+            self.detailView.isHidden = (position > 99)
+            self.infoDisclosure.isHidden = !self.detailView.isHidden
         }
+    }
+    var infoPositionText : String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: position as NSNumber)!
     }
     var positionText : String {
         get {
@@ -54,12 +90,6 @@ class RankTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.avatarView.circleRounded()
         // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

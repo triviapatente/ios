@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAn-6C-iJ8">
-                        <rect key="frame" x="322" y="17" width="56" height="37"/>
+                        <rect key="frame" x="322" y="16" width="56" height="37"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="37" id="ZaN-BT-6R0"/>
                             <constraint firstAttribute="width" constant="56" id="j6e-jJ-Ylj"/>
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bv1-85-OJB">
-                        <rect key="frame" x="19" y="18" width="35" height="35"/>
+                        <rect key="frame" x="19" y="17" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="Mt3-bD-W5X"/>
                             <constraint firstAttribute="height" constant="35" id="kfx-Ma-adY"/>
@@ -59,20 +59,57 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzI-HA-CmM">
+                        <rect key="frame" x="339" y="24" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="NN3-DZ-7II"/>
+                            <constraint firstAttribute="height" constant="22" id="mBB-p1-2Sc"/>
+                        </constraints>
+                        <color key="tintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <action selector="presentInfoBox" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kgc-TH-Rb5"/>
+                        </connections>
+                    </button>
+                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6C-B4-nxz">
+                        <rect key="frame" x="0.0" y="0.0" width="386" height="69.5"/>
+                        <color key="barTintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
+                        <items>
+                            <navigationItem title="123,234" id="PNA-ei-9Jk">
+                                <barButtonItem key="backBarButtonItem" title="Indietro" id="8nh-tS-PVJ">
+                                    <connections>
+                                        <action selector="dismissInfoBox" destination="KGk-i7-Jjw" id="7wy-gA-Qz2"/>
+                                    </connections>
+                                </barButtonItem>
+                            </navigationItem>
+                        </items>
+                    </navigationBar>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pAn-6C-iJ8" firstAttribute="leading" secondItem="CiK-8R-XDV" secondAttribute="trailing" constant="40" id="58s-Jn-cHa"/>
                     <constraint firstItem="CiK-8R-XDV" firstAttribute="leading" secondItem="Bv1-85-OJB" secondAttribute="trailing" constant="8" id="9IY-as-tY3"/>
                     <constraint firstItem="Bv1-85-OJB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="CKr-pu-vDD"/>
                     <constraint firstItem="pAn-6C-iJ8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="E4f-4I-2SF"/>
+                    <constraint firstItem="r6C-B4-nxz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Mq7-al-VEZ"/>
+                    <constraint firstAttribute="bottom" secondItem="r6C-B4-nxz" secondAttribute="bottom" id="MzQ-hp-coj"/>
                     <constraint firstItem="pAn-6C-iJ8" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Wbv-r6-vcC"/>
                     <constraint firstItem="Bv1-85-OJB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aau-LR-Jkr"/>
+                    <constraint firstItem="r6C-B4-nxz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f1v-mG-4we"/>
                     <constraint firstItem="CiK-8R-XDV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="i20-Mq-fDc"/>
+                    <constraint firstItem="hzI-HA-CmM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kaO-7d-amu"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hzI-HA-CmM" secondAttribute="trailing" constant="17" id="pzF-GP-ac6"/>
+                    <constraint firstAttribute="trailing" secondItem="r6C-B4-nxz" secondAttribute="trailing" id="raJ-Ez-PnU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarView" destination="Bv1-85-OJB" id="S1G-kk-ffK"/>
                 <outlet property="detailView" destination="pAn-6C-iJ8" id="qXM-ta-Y00"/>
+                <outlet property="infoBar" destination="r6C-B4-nxz" id="ACI-J0-fPA"/>
+                <outlet property="infoDisclosure" destination="hzI-HA-CmM" id="JvF-Cz-5HH"/>
                 <outlet property="nameView" destination="Txl-rf-qjp" id="fbC-FK-ncz"/>
                 <outlet property="scoreView" destination="D8c-5B-9vH" id="I9n-Gc-CtF"/>
             </connections>

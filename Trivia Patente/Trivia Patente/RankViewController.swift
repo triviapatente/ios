@@ -14,21 +14,54 @@ class RankViewController: UIViewController {
     @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()
         self.mode = (sender.selectedSegmentIndex == 0) ? .italian : .friends
-        self.loadData()
+        if (self.mode == .italian && italianResponse != nil) || (self.mode == .friends && friendsResponse != nil) {
+            self.tableView.reloadData()
+        } else {
+            self.loadData()
+        }
     }
     @IBOutlet var tableView : UITableView!
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     
+    var italianRankMap : [String : Int]?
+    var friendsRankMap : [String : Int]?
 
+    func computeMap(response : TPRankResponse?) -> [String : Int]? {
+        if let users = response?.users {
+            var output : [String : Int] = [:]
+            var lastScore = -1
+            var currentPosition = 1
+            for user in users {
+                if user.score != lastScore {
+                    lastScore = user.score!
+                    output["\(lastScore)"] = currentPosition
+                    currentPosition += 1
+                }
+            }
+            return output
+        }
+        return nil
+    }
     var italianResponse : TPRankResponse? {
         didSet {
+            checkAndAddUser(response: &italianResponse!)
+            italianRankMap = self.computeMap(response: italianResponse)
             self.tableView.reloadData()
         }
     }
     var friendsResponse : TPRankResponse?{
         didSet {
+            checkAndAddUser(response: &friendsResponse!)
+            friendsRankMap = self.computeMap(response: friendsResponse)
             self.tableView.reloadData()
+        }
+    }
+    func checkAndAddUser(response : inout TPRankResponse) {
+        if let user = SessionManager.currentUser {
+            if !response.users.contains(user) {
+                response.users.append(user)
+            }
         }
     }
     var mode = RankMode.italian
@@ -44,6 +77,12 @@ class RankViewController: UIViewController {
             return italianResponse?.userPosition
         }
         return friendsResponse?.userPosition
+    }
+    func getContextualMap() -> [String : Int]? {
+        if mode == .italian {
+            return italianRankMap
+        }
+        return friendsRankMap
     }
     
     
@@ -101,7 +140,11 @@ extension RankViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rank_cell") as! RankTableViewCell
         cell.user = getContextualUsers()![indexPath.row]
-        cell.position = indexPath.row + 1
+        if cell.user!.isMe() {
+            cell.position = getContextualUserPosition()!
+        } else {
+            cell.position = getContextualMap()!["\(cell.user.score!)"]
+        }
         return cell
     }
 }

@@ -67,10 +67,11 @@ open class User: CommonPK {
 		name = json[kUserNameKey].string
 
     }
-    public init(username : String?, id : Int?, avatar : String?) {
+    public init(username : String?, id : Int?, avatar : String?, score : Int? = nil) {
         super.init(id: id)
         self.username = username
         self.image = avatar
+        self.score = score
     }
 
     /**

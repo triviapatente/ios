@@ -80,6 +80,7 @@
 		8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273421DC0D0390094F0F6 /* TPMainButton.swift */; };
 		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273461DC0DEA40094F0F6 /* TPTextView.swift */; };
+		8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */; };
 		A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */; };
 		A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */; };
 		A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */; };
@@ -191,6 +192,7 @@
 		8BE273421DC0D0390094F0F6 /* TPMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainButton.swift; sourceTree = "<group>"; };
 		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8BE273461DC0DEA40094F0F6 /* TPTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextView.swift; sourceTree = "<group>"; };
+		8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
 		A9D1D34D1DA5593F00557DC9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				8B51332D1DBCD52900143497 /* MBProgressHUD.swift */,
 				8BE273441DC0D6FA0094F0F6 /* UILabel.swift */,
 				8BBBE8571DC798A500B433F2 /* UIImageView.swift */,
+				8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 			children = (
 				8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */,
 				8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */,
+				8BFC94F31DD2749300D4CE86 /* UIRankPositionDetailViewController.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1146,6 +1150,7 @@
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */,
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
+				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
