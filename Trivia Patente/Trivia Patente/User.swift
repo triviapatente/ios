@@ -35,7 +35,12 @@ open class User: CommonPK {
             return "\(name) \(surname)"
         }
     }
-
+    func isMe() -> Bool {
+        if let current = SessionManager.currentUser {
+            return self.isEqual(current)
+        }
+        return false
+    }
 
     // MARK: SwiftyJSON Initalizers
     /**

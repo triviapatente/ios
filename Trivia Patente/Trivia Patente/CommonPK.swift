@@ -28,7 +28,12 @@ open class CommonPK: Base {
     convenience public init(object: AnyObject) {
         self.init(json: JSON(object))
     }
-    
+    open override func isEqual(_ object: Any?) -> Bool {
+        if let instance = object as? CommonPK {
+            return type(of: instance) == type(of: self) && instance.id == self.id
+        }
+        return false
+    }
     /**
      Initates the class based on the JSON that was passed.
      - parameter json: JSON object from SwiftyJSON.

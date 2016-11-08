@@ -13,6 +13,7 @@ class RankTableViewCell: UITableViewCell {
     @IBOutlet var avatarView : UIImageView!
     @IBOutlet var nameView : UILabel!
     @IBOutlet var detailView : UILabel!
+    @IBOutlet var scoreView : UILabel!
     
     var user : User! {
         didSet {
@@ -21,8 +22,16 @@ class RankTableViewCell: UITableViewCell {
             } else {
                 self.nameView.text = user.username
             }
+            self.setAppearance(for: user)
+            self.scoreView.text = "\(user.score!)"
             self.avatarView.loadAvatar(candidate: user)
         }
+    }
+    func setAppearance(for user: User) {
+        self.nameView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
+        self.detailView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
+        self.scoreView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
+        self.contentView.backgroundColor = (user.isMe()) ? Colors.primary : UIColor.white
     }
     var position : Int! {
         didSet {
