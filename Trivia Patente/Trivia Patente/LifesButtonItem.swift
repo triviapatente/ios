@@ -23,7 +23,10 @@ class LifesButtonItem: UIBarButtonItem {
     }
     var remainingTime : Int = Constants.life_seconds_value {
         didSet {
-            timeLabel.text = "\(remainingTime / 60):\(remainingTime % 60)"
+            let formatter = DateFormatter()
+            formatter.dateFormat = "mm:ss"
+            let date = Date(timeIntervalSince1970: TimeInterval(remainingTime))
+            timeLabel.text = formatter.string(from: date)
         }
     }
     @IBAction func moreLifes() {
