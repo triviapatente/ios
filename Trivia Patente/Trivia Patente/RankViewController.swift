@@ -26,6 +26,7 @@ class RankViewController: UIViewController {
     
     var italianRankMap : [String : Int]?
     var friendsRankMap : [String : Int]?
+    
 
     func computeMap(response : TPRankResponse?) -> [String : Int]? {
         if let users = response?.users {
@@ -50,10 +51,20 @@ class RankViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    var italianSearchResponse : TPRankSearchResponse? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     var friendsResponse : TPRankResponse?{
         didSet {
             checkAndAddUser(response: &friendsResponse!)
             friendsRankMap = self.computeMap(response: friendsResponse)
+            self.tableView.reloadData()
+        }
+    }
+    var friendsSearchResponse : TPRankSearchResponse? {
+        didSet {
             self.tableView.reloadData()
         }
     }
@@ -64,10 +75,21 @@ class RankViewController: UIViewController {
             }
         }
     }
-    var mode = RankMode.italian
+    var searching : Bool {
+        get {
+            if let text = self.searchBar.text {
+                return !text.isEmpty
+            }
+            return false
+        }
+    }
     
+    var mode = RankMode.italian
+   
     func getContextualUsers() -> [User]? {
-        if mode == .italian {
+        if searching {
+            return italianSearchResponse?.users
+        } else if mode == .italian {
             return italianResponse?.users
         }
         return friendsResponse?.users
@@ -88,8 +110,8 @@ class RankViewController: UIViewController {
     
     let handler = HTTPRank()
     
-    
     func loadData() {
+        
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         let callback = { (response : TPRankResponse) in
             loadingView.hide(animated: true)
@@ -114,19 +136,47 @@ class RankViewController: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "RankTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "rank_cell")
-        
         self.changeRankType(sender: control)
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
+    func search(query: String) {
+        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        handler.search(query: query) { (response : TPRankSearchResponse) in
+            loadingView.hide(animated: true)
+            if response.success == true {
+                if self.mode == .italian {
+                    self.italianSearchResponse = response
+                } else {
+                    self.friendsSearchResponse = response
+                }
+            } else {
+                //TODO error handler
+            }
+        }
+    }
+    @IBAction func dismissSearch() {
+        self.searchBar.resignFirstResponder()
     }
 
 }
-
+extension RankViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.search(query: searchBar.text!)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.tableView.reloadData()
+        }
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searching {
+            self.search(query: searchBar.text!)
+        } else {
+            self.tableView.reloadData()
+        }
+    }
+}
 extension RankViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -140,7 +190,9 @@ extension RankViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rank_cell") as! RankTableViewCell
         cell.user = getContextualUsers()![indexPath.row]
-        if cell.user!.isMe() {
+        if searching {
+            cell.position = cell.user.position
+        } else if cell.user!.isMe() {
             cell.position = getContextualUserPosition()!
         } else {
             cell.position = getContextualMap()!["\(cell.user.score!)"]

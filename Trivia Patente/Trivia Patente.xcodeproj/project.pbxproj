@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
+		8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
 		8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */; };
@@ -120,6 +121,7 @@
 		81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankSearchResponse.swift; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
 		8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -765,6 +767,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */,
+				8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -774,7 +777,6 @@
 			children = (
 				8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */,
 				8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */,
-				8BFC94F31DD2749300D4CE86 /* UIRankPositionDetailViewController.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1172,6 +1174,7 @@
 				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
+				8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */,
 				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,

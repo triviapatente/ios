@@ -30,4 +30,8 @@ class HTTPRank: HTTPManager {
     func friends_rank(handler : @escaping (TPRankResponse) -> Void) {
         italian_rank(handler: handler)
     }
+    func search(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
+        sleep(3)
+        self.request(url: "/rank/search", method: .get, params: ["query": query], handler: handler)
+    }
 }

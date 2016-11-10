@@ -16,7 +16,8 @@ open class User: CommonPK {
 	internal let kUserImageKey: String = "image"
 	internal let kUserSurnameKey: String = "surname"
 	internal let kUserEmailKey: String = "email"
-	internal let kUserNameKey: String = "name"
+    internal let kUserNameKey: String = "name"
+    internal let kPositionKey: String = "position"
 
 
     // MARK: Properties
@@ -24,8 +25,9 @@ open class User: CommonPK {
 	open var score: Int?
 	open var image: String?
 	open var surname: String?
-	open var email: String?
-	open var name: String?
+    open var email: String?
+    open var name: String?
+    open var position: Int?
     
     var fullName : String? {
         get {
@@ -64,7 +66,8 @@ open class User: CommonPK {
 		image = json[kUserImageKey].string
 		surname = json[kUserSurnameKey].string
 		email = json[kUserEmailKey].string
-		name = json[kUserNameKey].string
+        name = json[kUserNameKey].string
+        position = json[kPositionKey].int
 
     }
     public init(username : String?, id : Int?, avatar : String?, score : Int? = nil) {
@@ -99,6 +102,9 @@ open class User: CommonPK {
 		if name != nil {
 			dictionary.updateValue(name! as AnyObject, forKey: kUserNameKey)
 		}
+        if position != nil {
+            dictionary.updateValue(position! as AnyObject, forKey: kUserNameKey)
+        }
 
         return dictionary
     }
@@ -112,6 +118,7 @@ open class User: CommonPK {
 		self.surname = aDecoder.decodeObject(forKey: kUserSurnameKey) as? String
         self.email = aDecoder.decodeObject(forKey: kUserEmailKey) as? String
 		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
+        self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int
 
     }
 
