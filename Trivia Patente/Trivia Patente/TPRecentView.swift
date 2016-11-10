@@ -14,16 +14,11 @@ class TPRecentView: UIViewController {
 
     var items : [Game] = [] {
         didSet {
-            minimize(origin: false)
-            self.tableView.tableFooterView?.isHidden = false
-            let candidate_y = self.containerSize.height - viewSize.height
-            if items.count < 3 && candidate_y > 0 {
-                self.view.frame.origin.y = candidate_y
-            }
-
-            self.tableView.reloadData()
+            dataLoaded = true
+            adaptToItems()
         }
     }
+    var dataLoaded = false
     var containerView : UIView {
         return self.view.superview!
     }
@@ -59,7 +54,6 @@ class TPRecentView: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "RecentGameTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
-        //per evitare che vengano mostrate anche le celle vuote
         self.tableView.tableFooterView = footerView
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -67,9 +61,21 @@ class TPRecentView: UIViewController {
         //TODO: fix bug.. the view is over the loading view
         mainView.bringSubview(toFront: self.containerView)
         self.containerView.bringSubview(toFront: self.view)
+        //enforce only the first initialization of the view position
+        if dataLoaded == false {
+            adaptToItems()
+        }
     }
     
-    
+    func adaptToItems() {
+        minimize(origin: false)
+        self.tableView.tableFooterView?.isHidden = false
+        let candidate_y = self.containerSize.height - viewSize.height
+        if items.count < 3 && candidate_y > 0 {
+            self.view.frame.origin.y = candidate_y
+        }
+        self.tableView.reloadData()
+    }
     
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
         let up_pan = sender.velocity(in: self.view).y < 0
@@ -107,7 +113,7 @@ class TPRecentView: UIViewController {
 extension TPRecentView : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
         guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
-        
+        guard items.count > 0 else { return false }
         let velocity = gestureRecognizer.velocity(in: self.view)
         return abs(velocity.y) > 40
     }
