@@ -19,4 +19,14 @@ class TPRankSearchResponse: TPResponse {
             }
         }
     }
+    func limitToFit(in tableView : UITableView) {
+        guard tableView.rowHeight > 0 else { return }
+        var height = tableView.frame.size.height
+        if let header = tableView.tableHeaderView {
+            height -= header.frame.size.height
+        }
+        let dimension = height / tableView.rowHeight
+        let limit = Int(dimension)
+        self.users.removeSubrange(limit..<self.users.count)
+    }
 }

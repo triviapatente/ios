@@ -24,6 +24,7 @@ class RankViewController: UIViewController {
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     
+    
     var italianRankMap : [String : Int]?
     var friendsRankMap : [String : Int]?
     
@@ -46,6 +47,7 @@ class RankViewController: UIViewController {
     }
     var italianResponse : TPRankResponse? {
         didSet {
+            italianResponse?.limitToFit(in: self.tableView)
             checkAndAddUser(response: &italianResponse!)
             italianRankMap = self.computeMap(response: italianResponse)
             self.tableView.reloadData()
@@ -53,11 +55,13 @@ class RankViewController: UIViewController {
     }
     var italianSearchResponse : TPRankSearchResponse? {
         didSet {
+            italianSearchResponse?.limitToFit(in: self.tableView)
             self.tableView.reloadData()
         }
     }
     var friendsResponse : TPRankResponse?{
         didSet {
+            friendsResponse?.limitToFit(in: self.tableView)
             checkAndAddUser(response: &friendsResponse!)
             friendsRankMap = self.computeMap(response: friendsResponse)
             self.tableView.reloadData()
@@ -65,6 +69,7 @@ class RankViewController: UIViewController {
     }
     var friendsSearchResponse : TPRankSearchResponse? {
         didSet {
+            friendsSearchResponse?.limitToFit(in: self.tableView)
             self.tableView.reloadData()
         }
     }
@@ -136,6 +141,8 @@ class RankViewController: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "RankTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "rank_cell")
+        self.tableView.rowHeight = 50
+
         self.changeRankType(sender: control)
 
     }

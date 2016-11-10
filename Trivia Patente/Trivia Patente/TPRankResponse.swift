@@ -21,4 +21,17 @@ class TPRankResponse: TPResponse {
         }
         userPosition = json["my_position"].int
     }
+    func limitToFit(in tableView : UITableView) {
+        guard tableView.rowHeight > 0 else { return }
+        var height = tableView.frame.size.height
+        if let header = tableView.tableHeaderView {
+            height -= header.frame.size.height
+        }
+        let dimension = height / tableView.rowHeight
+        var limit = Int(dimension)
+        if !users.contains(SessionManager.currentUser!) {
+            limit -= 1
+        }
+        self.users.removeSubrange(limit..<self.users.count)
+    }
 }
