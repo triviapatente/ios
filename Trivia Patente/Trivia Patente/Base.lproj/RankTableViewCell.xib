@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="386" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="386" height="69"/>
+                <rect key="frame" x="0.0" y="0.0" width="386" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAn-6C-iJ8">
@@ -80,9 +80,11 @@
                         </textAttributes>
                         <items>
                             <navigationItem title="123,234" id="PNA-ei-9Jk">
-                                <barButtonItem key="backBarButtonItem" title="Indietro" id="8nh-tS-PVJ">
+                                <barButtonItem key="backBarButtonItem" title="Indietro" id="8nh-tS-PVJ"/>
+                                <barButtonItem key="leftBarButtonItem" image="back_button" id="PdK-GX-YIg">
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
-                                        <action selector="dismissInfoBox" destination="KGk-i7-Jjw" id="7wy-gA-Qz2"/>
+                                        <action selector="dismissInfoBox" destination="KGk-i7-Jjw" id="ZGp-oj-L2q"/>
                                     </connections>
                                 </barButtonItem>
                             </navigationItem>
@@ -108,6 +110,7 @@
             <connections>
                 <outlet property="avatarView" destination="Bv1-85-OJB" id="S1G-kk-ffK"/>
                 <outlet property="detailView" destination="pAn-6C-iJ8" id="qXM-ta-Y00"/>
+                <outlet property="infoBackButton" destination="PdK-GX-YIg" id="oCi-YL-Fss"/>
                 <outlet property="infoBar" destination="r6C-B4-nxz" id="ACI-J0-fPA"/>
                 <outlet property="infoDisclosure" destination="hzI-HA-CmM" id="JvF-Cz-5HH"/>
                 <outlet property="nameView" destination="Txl-rf-qjp" id="fbC-FK-ncz"/>
@@ -116,4 +119,7 @@
             <point key="canvasLocation" x="67" y="67"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="back_button" width="36" height="36"/>
+    </resources>
 </document>

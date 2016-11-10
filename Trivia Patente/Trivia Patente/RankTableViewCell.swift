@@ -18,6 +18,7 @@ class RankTableViewCell: UITableViewCell {
     @IBOutlet var infoDisclosure : UIButton!
     
     @IBOutlet var infoBar : UINavigationBar!
+    @IBOutlet var infoBackButton : UIBarButtonItem!
     
     let ANIMATION_DURATION = 0.2
     @IBAction func dismissInfoBox() {
@@ -43,22 +44,26 @@ class RankTableViewCell: UITableViewCell {
             self.avatarView.loadAvatar(candidate: user)
         }
     }
-    func setAppearance(for user: User) {
-        self.nameView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
-        self.detailView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
-        self.scoreView.textColor = (user.isMe()) ? UIColor.white : Colors.primary
-        self.infoDisclosure.tintColor = (user.isMe()) ? UIColor.white : Colors.primary
-        self.contentView.backgroundColor = (user.isMe()) ? Colors.primary : UIColor.white
-        
-        self.infoBar.titleColor = (user.isMe()) ? UIColor.white : Colors.primary
-
-        if let top_item = self.infoBar.topItem {
-            self
-            if let item = top_item.backBarButtonItem {
-                item.tintColor = (user.isMe()) ? UIColor.white : Colors.primary
-            }
+    var infoBackgroundColor : UIColor {
+        get {
+            return (user.isMe()) ? Colors.primary : UIColor.white
         }
-        self.infoBar.barTintColor = (user.isMe()) ? Colors.primary : UIColor.white
+    }
+    var infoContentColor : UIColor {
+        get {
+            return (user.isMe()) ? UIColor.white : Colors.primary
+        }
+    }
+    func setAppearance(for user: User) {
+        self.nameView.textColor = infoContentColor
+        self.detailView.textColor = infoContentColor
+        self.scoreView.textColor = infoContentColor
+        self.infoDisclosure.tintColor = infoContentColor
+        self.contentView.backgroundColor = infoBackgroundColor
+        
+        self.infoBar.titleColor = infoContentColor
+        self.infoBackButton.tintColor = infoContentColor
+        self.infoBar.barTintColor = infoBackgroundColor
 
     }
     var position : Int! {
