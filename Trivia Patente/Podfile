@@ -9,6 +9,7 @@ target 'Trivia Patente' do
   pod 'Alamofire', '~> 4.0'
   pod 'Socket.IO-Client-Swift', '~> 8.0.2' # Or latest version
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'Charts'
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths
