@@ -16,7 +16,7 @@ class StatsTableViewCell: UITableViewCell {
     var category : Category! {
         didSet {
             self.nameView.text = category.hint!
-            self.percentageView.text = "\(category.progress!)%"
+            self.percentageView.text = "\(category.progress)%"
             self.backgroundLayer.backgroundColor = category.color
         }
     }
