@@ -47,9 +47,11 @@
 		8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */; };
 		8B5EE0DF1DD5C23100745A54 /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DD1DD5C23100745A54 /* StatsTableViewCell.swift */; };
 		8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DE1DD5C23100745A54 /* StatsTableViewCell.xib */; };
-		8B5EE0E31DD5C7AA00745A54 /* TPStatsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */; };
 		8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E41DD5C7BA00745A54 /* HTTPStats.swift */; };
 		8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E71DD5C92C00745A54 /* Shared.swift */; };
+		8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0EB1DD5DF3A00745A54 /* SingleStatViewController.swift */; };
+		8B5EE0F01DD655C000745A54 /* CategoryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0EF1DD655C000745A54 /* CategoryStatus.swift */; };
+		8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0F11DD65E2300745A54 /* TPStatsDetailResponse.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -166,9 +168,12 @@
 		8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		8B5EE0DD1DD5C23100745A54 /* StatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		8B5EE0DE1DD5C23100745A54 /* StatsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsTableViewCell.xib; sourceTree = "<group>"; };
-		8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPStatsListResponse.swift; sourceTree = "<group>"; };
 		8B5EE0E41DD5C7BA00745A54 /* HTTPStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStats.swift; sourceTree = "<group>"; };
 		8B5EE0E71DD5C92C00745A54 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		8B5EE0EB1DD5DF3A00745A54 /* SingleStatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStatViewController.swift; sourceTree = "<group>"; };
+		8B5EE0ED1DD652C200745A54 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Trivia_Patente-ccbayityymapjyaejukfmgymoxki/Build/Products/Debug-iphonesimulator/Charts/Charts.framework"; sourceTree = "<group>"; };
+		8B5EE0EF1DD655C000745A54 /* CategoryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryStatus.swift; sourceTree = "<group>"; };
+		8B5EE0F11DD65E2300745A54 /* TPStatsDetailResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPStatsDetailResponse.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -256,6 +261,7 @@
 		3950FB9A55E6AD8BBF2D5752 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B5EE0ED1DD652C200745A54 /* Charts.framework */,
 				46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */,
 				8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */,
 				81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */,
@@ -333,6 +339,7 @@
 		8B42E8271DC63D4700C36DDA /* stats */ = {
 			isa = PBXGroup;
 			children = (
+				8B5EE0E11DD5C78F00745A54 /* http */,
 				8B42E82A1DC63D6D00C36DDA /* ui */,
 			);
 			name = stats;
@@ -353,7 +360,6 @@
 			children = (
 				8BDCEA291DD124970099C3E2 /* cell */,
 				8B42E82D1DC63D8100C36DDA /* Rank.storyboard */,
-				8B28D2801DD0770800C65122 /* RankViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -361,10 +367,10 @@
 		8B42E82A1DC63D6D00C36DDA /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8B5EE0E11DD5C78F00745A54 /* http */,
-				8B5EE0DC1DD5C20E00745A54 /* cell */,
+				8B5EE0E91DD5DE0800745A54 /* all categories */,
+				8B5EE0EA1DD5DE1200745A54 /* single category */,
 				8B42E82B1DC63D7900C36DDA /* Stats.storyboard */,
-				8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */,
+				8B5EE0EF1DD655C000745A54 /* CategoryStatus.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -686,9 +692,26 @@
 		8B5EE0E61DD5C7BE00745A54 /* responses */ = {
 			isa = PBXGroup;
 			children = (
-				8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */,
+				8B5EE0F11DD65E2300745A54 /* TPStatsDetailResponse.swift */,
 			);
 			name = responses;
+			sourceTree = "<group>";
+		};
+		8B5EE0E91DD5DE0800745A54 /* all categories */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0DC1DD5C20E00745A54 /* cell */,
+				8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */,
+			);
+			name = "all categories";
+			sourceTree = "<group>";
+		};
+		8B5EE0EA1DD5DE1200745A54 /* single category */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0EB1DD5DF3A00745A54 /* SingleStatViewController.swift */,
+			);
+			name = "single category";
 			sourceTree = "<group>";
 		};
 		8B8142CA1DC0C81700E60B06 /* generals */ = {
@@ -817,6 +840,7 @@
 		8BDCEA291DD124970099C3E2 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				8B28D2801DD0770800C65122 /* RankViewController.swift */,
 				8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */,
 				8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */,
 			);
@@ -1191,6 +1215,7 @@
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
+				8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */,
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
@@ -1201,7 +1226,9 @@
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
+				8B5EE0F01DD655C000745A54 /* CategoryStatus.swift in Sources */,
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
+				8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
@@ -1236,7 +1263,6 @@
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
-				8B5EE0E31DD5C7AA00745A54 /* TPStatsListResponse.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,

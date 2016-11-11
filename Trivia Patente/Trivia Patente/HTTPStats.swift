@@ -9,5 +9,7 @@
 import UIKit
 
 class HTTPStats: HTTPManager {
-
+    func category_stats(category : Category, handler : @escaping (TPStatsDetailResponse) -> Void) {
+        self.request(url: "/stats/detail/\(category.id!)", method: .get, params: nil, handler: handler)
+    }
 }

@@ -149,7 +149,6 @@
         <!--Profilo-->
         <scene sceneID="ALH-jz-Yjg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Baa-CJ-NGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Profilo" id="vbh-Xb-T5x" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zHq-Fk-4sE"/>
@@ -161,13 +160,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Baa-CJ-NGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-2400"/>
         </scene>
         <!--Chi siamo-->
         <scene sceneID="rQJ-B9-LgW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yoQ-o7-FGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Chi siamo" id="4yY-Qi-7gY" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="toL-rP-N37"/>
@@ -179,6 +178,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yoQ-o7-FGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-1699"/>
         </scene>
@@ -350,7 +350,7 @@
         <!--Recent View-->
         <scene sceneID="IIF-zq-Juc">
             <objects>
-                <viewController id="3Zs-38-1kc" customClass="TPRecentView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recentView" id="3Zs-38-1kc" customClass="TPRecentView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fLM-nx-AY0"/>
                         <viewControllerLayoutGuide type="bottom" id="zUY-p6-Xra"/>
@@ -477,7 +477,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5II-cs-oTT"/>
         <segue reference="B6J-yy-Imj"/>
+        <segue reference="NhK-dZ-dty"/>
     </inferredMetricsTieBreakers>
 </document>

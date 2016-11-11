@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,10 +35,93 @@
                             <outlet property="delegate" destination="E4p-xQ-18Z" id="JsM-oI-QN8"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="N6h-o7-Zp7" kind="show" identifier="single_view_segue" id="xpD-Xq-GO0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjN-gK-KlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="356" y="13"/>
+        </scene>
+        <!--Statistica-->
+        <scene sceneID="Fw5-M0-Pwe">
+            <objects>
+                <viewController title="Statistica" id="N6h-o7-Zp7" customClass="SingleStatViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mIx-g0-HR7"/>
+                        <viewControllerLayoutGuide type="bottom" id="wt6-ZJ-ZrG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yV9-Nb-Ifj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPl-0i-HAc" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="38" y="35" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6kj-T7-54C"/>
+                                    <constraint firstAttribute="width" constant="300" id="A2m-4g-O9t"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FC-0h-Nw0">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hYl-JT-bDv"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PV1-ps-mTo" kind="embed" identifier="errors_view" id="ISA-Pf-Ly8"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Cb-f71">
+                                <rect key="frame" x="0.0" y="335" width="375" height="288"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How deep is your love? How deep is your love?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD2-80-VhM">
+                                        <rect key="frame" x="8" y="89" width="359" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="8ZX-M9-vOK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="jD2-80-VhM" firstAttribute="centerY" secondItem="Omx-Cb-f71" secondAttribute="centerY" id="1xk-xY-vOQ"/>
+                                    <constraint firstItem="jD2-80-VhM" firstAttribute="leading" secondItem="Omx-Cb-f71" secondAttribute="leadingMargin" id="Tpw-vT-nqy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jD2-80-VhM" secondAttribute="trailing" id="ljN-LB-iGl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91774743800000003" green="0.2929156423" blue="0.2060605288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Omx-Cb-f71" secondAttribute="trailing" id="3rY-EH-2po"/>
+                            <constraint firstItem="BPl-0i-HAc" firstAttribute="centerX" secondItem="yV9-Nb-Ifj" secondAttribute="centerX" id="4CA-XX-XrY"/>
+                            <constraint firstItem="0FC-0h-Nw0" firstAttribute="top" secondItem="Omx-Cb-f71" secondAttribute="bottom" id="84f-UU-iXo"/>
+                            <constraint firstItem="0FC-0h-Nw0" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="DAJ-9M-st0"/>
+                            <constraint firstItem="Omx-Cb-f71" firstAttribute="top" secondItem="BPl-0i-HAc" secondAttribute="bottom" id="L1P-pt-JcT"/>
+                            <constraint firstAttribute="trailing" secondItem="0FC-0h-Nw0" secondAttribute="trailing" id="aOy-gs-67o"/>
+                            <constraint firstItem="wt6-ZJ-ZrG" firstAttribute="top" secondItem="0FC-0h-Nw0" secondAttribute="bottom" id="ija-dK-jx8"/>
+                            <constraint firstItem="Omx-Cb-f71" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="mEm-tF-rPb"/>
+                            <constraint firstItem="BPl-0i-HAc" firstAttribute="top" secondItem="mIx-g0-HR7" secondAttribute="bottom" constant="15" id="wWI-xh-gaN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="BPl-0i-HAc" id="lrV-fn-6cK"/>
+                        <outlet property="descriptionLabel" destination="jD2-80-VhM" id="po0-Bl-5nM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D2e-px-5j0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1141.5999999999999" y="11.244377811094454"/>
+        </scene>
+        <!--recentView-->
+        <scene sceneID="Gdx-UA-md0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="recentView" id="PV1-ps-mTo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDE-4J-f6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="455"/>
         </scene>
     </scenes>
 </document>

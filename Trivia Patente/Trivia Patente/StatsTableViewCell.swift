@@ -17,7 +17,7 @@ class StatsTableViewCell: UITableViewCell {
         didSet {
             self.nameView.text = category.hint!
             self.percentageView.text = "\(category.progress)%"
-            self.backgroundLayer.backgroundColor = category.color
+            self.backgroundLayer.backgroundColor = category.status.color
         }
     }
     override func awakeFromNib() {

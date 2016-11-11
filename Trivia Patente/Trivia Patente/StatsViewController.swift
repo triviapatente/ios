@@ -35,5 +35,16 @@ class StatsViewController: UITableViewController {
         cell.category = Shared.categories![indexPath.row]
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "single_view_segue", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "single_view_segue" {
+            let destination = segue.destination as! SingleStatViewController
+            if let path = self.tableView.indexPathForSelectedRow {
+                destination.category = Shared.categories![path.row]
+            }
+        }
+    }
 
 }

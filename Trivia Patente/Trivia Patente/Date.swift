@@ -15,7 +15,7 @@ extension Date {
             formatter.calendar = Calendar(identifier: .iso8601)
             formatter.locale = Locale.current
             formatter.timeZone = TimeZone.current
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             return formatter
         }()
         static let gmt : DateFormatter = {
