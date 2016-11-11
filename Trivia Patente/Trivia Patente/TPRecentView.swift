@@ -18,6 +18,7 @@ class TPRecentView: UIViewController {
             adaptToItems()
         }
     }
+    
     var dataLoaded = false
     var containerView : UIView {
         return self.view.superview!
@@ -55,6 +56,7 @@ class TPRecentView: UIViewController {
         let nib = UINib(nibName: "RecentGameTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         self.tableView.tableFooterView = footerView
+        headerView.topItem?.title = title
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
