@@ -18,7 +18,7 @@ class TPRecentView: UIViewController {
             adaptToItems()
         }
     }
-    
+
     var dataLoaded = false
     var containerView : UIView {
         return self.view.superview!
@@ -70,6 +70,7 @@ class TPRecentView: UIViewController {
     }
     
     func adaptToItems() {
+        self.view.frame.size.height = self.headerHeight + self.tableHeight
         minimize(origin: false)
         self.tableView.tableFooterView?.isHidden = false
         let candidate_y = self.containerSize.height - viewSize.height
@@ -109,7 +110,6 @@ class TPRecentView: UIViewController {
         if origin == true {
             self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
         }
-        self.view.frame.size.height = self.headerHeight + self.tableHeight
     }
 }
 extension TPRecentView : UIGestureRecognizerDelegate {
