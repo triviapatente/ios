@@ -44,6 +44,12 @@
 		8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133291DBCC14800143497 /* UIViewController.swift */; };
 		8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51332B1DBCCA9C00143497 /* JSON.swift */; };
 		8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51332D1DBCD52900143497 /* MBProgressHUD.swift */; };
+		8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */; };
+		8B5EE0DF1DD5C23100745A54 /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DD1DD5C23100745A54 /* StatsTableViewCell.swift */; };
+		8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EE0DE1DD5C23100745A54 /* StatsTableViewCell.xib */; };
+		8B5EE0E31DD5C7AA00745A54 /* TPStatsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */; };
+		8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E41DD5C7BA00745A54 /* HTTPStats.swift */; };
+		8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0E71DD5C92C00745A54 /* Shared.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -157,6 +163,12 @@
 		8B5133291DBCC14800143497 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8B51332B1DBCCA9C00143497 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		8B51332D1DBCD52900143497 /* MBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUD.swift; sourceTree = "<group>"; };
+		8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		8B5EE0DD1DD5C23100745A54 /* StatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		8B5EE0DE1DD5C23100745A54 /* StatsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsTableViewCell.xib; sourceTree = "<group>"; };
+		8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPStatsListResponse.swift; sourceTree = "<group>"; };
+		8B5EE0E41DD5C7BA00745A54 /* HTTPStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStats.swift; sourceTree = "<group>"; };
+		8B5EE0E71DD5C92C00745A54 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -349,7 +361,10 @@
 		8B42E82A1DC63D6D00C36DDA /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B5EE0E11DD5C78F00745A54 /* http */,
+				8B5EE0DC1DD5C20E00745A54 /* cell */,
 				8B42E82B1DC63D7900C36DDA /* Stats.storyboard */,
+				8B5EE0DA1DD5C20A00745A54 /* StatsViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -650,11 +665,38 @@
 			name = welcome;
 			sourceTree = "<group>";
 		};
+		8B5EE0DC1DD5C20E00745A54 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0DD1DD5C23100745A54 /* StatsTableViewCell.swift */,
+				8B5EE0DE1DD5C23100745A54 /* StatsTableViewCell.xib */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		8B5EE0E11DD5C78F00745A54 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0E61DD5C7BE00745A54 /* responses */,
+				8B5EE0E41DD5C7BA00745A54 /* HTTPStats.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8B5EE0E61DD5C7BE00745A54 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0E21DD5C7AA00745A54 /* TPStatsListResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
 		8B8142CA1DC0C81700E60B06 /* generals */ = {
 			isa = PBXGroup;
 			children = (
 				8B8142CB1DC0C82F00E60B06 /* Colors.swift */,
 				8B28D26D1DCDEA7100C65122 /* Constants.swift */,
+				8B5EE0E71DD5C92C00745A54 /* Shared.swift */,
 			);
 			name = generals;
 			sourceTree = "<group>";
@@ -970,6 +1012,7 @@
 				8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */,
 				8B51330A1DBBAC3000143497 /* Settings.storyboard in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
+				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
 				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
@@ -1143,6 +1186,7 @@
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,
 				8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */,
+				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
@@ -1162,6 +1206,7 @@
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
 				8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */,
+				8B5EE0DF1DD5C23100745A54 /* StatsTableViewCell.swift in Sources */,
 				8BDCEA301DD12A580099C3E2 /* RankTableViewCell.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,
@@ -1185,11 +1230,13 @@
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
+				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,
 				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,
 				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
+				8B5EE0E31DD5C7AA00745A54 /* TPStatsListResponse.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
@@ -1199,6 +1246,7 @@
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
 				8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
+				8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPRecentView.swift in Sources */,

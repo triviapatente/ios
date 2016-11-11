@@ -21,7 +21,17 @@ open class Category: CommonPK {
     open var hint: String!
     open var progress: Int!
 
-
+    var color : UIColor {
+        get {
+            switch progress {
+            case _ where progress <= 50: return Colors.red_default
+            case _ where progress <= 75: return Colors.orange_default
+            case _ where progress <= 90: return Colors.yellow_default
+            case _ where progress <= 100: return Colors.green_default
+            default: return UIColor.gray
+            }
+        }
+    }
     // MARK: SwiftyJSON Initalizers
     /**
     Initates the class based on the object

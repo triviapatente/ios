@@ -25,5 +25,6 @@ class TPConnectResponse: TPResponse {
                 stats.append(Category(json: item))
             }
         }
+        Shared.categories = stats
     }
 }
