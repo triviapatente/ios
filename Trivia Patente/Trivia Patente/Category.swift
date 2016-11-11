@@ -29,13 +29,13 @@ open class Category: CommonPK {
             return correct_answers * 100 / total_answers
         }
     }
-    var color : UIColor {
+    var status : CategoryStatus {
         get {
             switch progress {
-                case _ where progress <= 50: return Colors.red_default
-                case _ where progress <= 75: return Colors.orange_default
-                case _ where progress <= 90: return Colors.yellow_default
-                default: return Colors.green_default
+                case _ where progress < 75: return .bad
+                case _ where progress < 90: return .medium
+                case _ where progress < 95: return .good
+                default: return .perfect
             }
         }
     }
