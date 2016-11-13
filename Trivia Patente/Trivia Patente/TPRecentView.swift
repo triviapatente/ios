@@ -10,14 +10,18 @@ import UIKit
 
 class TPRecentView: UIViewController {
     @IBOutlet var headerView : UINavigationBar!
+    @IBOutlet var counterLabel : UILabel!
     @IBOutlet var tableView : UITableView!
 
-    var items : [Game] = [] {
+    var items : [Base] = [] {
         didSet {
             dataLoaded = true
             adaptToItems()
         }
     }
+    var cellNibName : String!
+    var footerText : String = ""
+    var rowHeight : CGFloat?
 
     var dataLoaded = false
     var containerView : UIView {
@@ -44,23 +48,38 @@ class TPRecentView: UIViewController {
     var footerView : UIView {
         let frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80)
         let label = UILabel(frame: frame)
-        label.text = "Nessun'altra partita recente.\nGioca di più 😉"
+        label.text = footerText
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.isHidden = true
         label.numberOfLines = 2
         return label
     }
+    var separatorColor : UIColor?
+    var separatorStyle : UITableViewCellSeparatorStyle?
+    var separatorInset : UIEdgeInsets?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "RecentGameTableViewCell", bundle: Bundle.main)
+        let nib = UINib(nibName: cellNibName, bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         self.tableView.tableFooterView = footerView
+        if let height = rowHeight {
+            self.tableView.rowHeight = height
+        }
+        if let inset = separatorInset {
+            self.tableView.separatorInset = inset
+        }
+        if let style = separatorStyle {
+            self.tableView.separatorStyle = style
+        }
+        if let color = separatorColor {
+            self.tableView.separatorColor = color
+        }
         headerView.topItem?.title = title
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //TODO: fix bug.. the view is over the loading view
         mainView.bringSubview(toFront: self.containerView)
         self.containerView.bringSubview(toFront: self.view)
         //enforce only the first initialization of the view position
@@ -135,11 +154,12 @@ extension TPRecentView : UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        counterLabel.text = items.isEmpty ? "" : "\(items.count)"
         return items.count
     }
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! RecentGameTableViewCell
-        cell.game = items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPRecentTableViewCell
+        cell.item = items[indexPath.row]
         return cell
     }
 }

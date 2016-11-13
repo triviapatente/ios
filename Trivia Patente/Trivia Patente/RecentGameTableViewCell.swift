@@ -8,13 +8,18 @@
 
 import UIKit
 
-class RecentGameTableViewCell: UITableViewCell {
+class RecentGameTableViewCell: TPRecentTableViewCell {
     @IBOutlet var controlLights : UIImageView!
     @IBOutlet var avatarView : UIImageView!
     @IBOutlet var usernameView : UILabel!
     @IBOutlet var hintView : UILabel!
     @IBOutlet var buttonView : UIButton!
     
+    override var item : Base! {
+        didSet {
+            self.game = item as! Game
+        }
+    }
     var game : Game! {
         didSet {
             changeState(ended: game.ended, my_turn: game.my_turn)

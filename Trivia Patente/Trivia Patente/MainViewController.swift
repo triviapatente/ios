@@ -17,7 +17,14 @@ class MainViewController: UIViewController {
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
     
-    var recentGamesView : TPRecentView!
+    var recentGamesView : TPRecentView! {
+        didSet {
+            recentGamesView.cellNibName = "RecentGameTableViewCell"
+            recentGamesView.footerText = "Nessun'altra partita recente.\nGioca di più 😉"
+            recentGamesView.separatorColor = Colors.primary
+            recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
     
     var buttonClickListener : ((TPMainButton) -> Void)!
     let socketAuth = SocketAuth()

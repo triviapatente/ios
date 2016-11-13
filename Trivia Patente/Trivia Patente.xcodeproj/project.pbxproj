@@ -52,6 +52,9 @@
 		8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0EB1DD5DF3A00745A54 /* SingleStatViewController.swift */; };
 		8B5EE0F01DD655C000745A54 /* CategoryStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0EF1DD655C000745A54 /* CategoryStatus.swift */; };
 		8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0F11DD65E2300745A54 /* TPStatsDetailResponse.swift */; };
+		8B5EE0F51DD767C500745A54 /* TPRecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0F41DD767C500745A54 /* TPRecentTableViewCell.swift */; };
+		8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE0F81DD76F1100745A54 /* WrongAnswerTableViewCell.swift */; };
+		8B5EE0FB1DD76F1100745A54 /* WrongAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EE0F91DD76F1100745A54 /* WrongAnswerTableViewCell.xib */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -174,6 +177,9 @@
 		8B5EE0ED1DD652C200745A54 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/Trivia_Patente-ccbayityymapjyaejukfmgymoxki/Build/Products/Debug-iphonesimulator/Charts/Charts.framework"; sourceTree = "<group>"; };
 		8B5EE0EF1DD655C000745A54 /* CategoryStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryStatus.swift; sourceTree = "<group>"; };
 		8B5EE0F11DD65E2300745A54 /* TPStatsDetailResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPStatsDetailResponse.swift; sourceTree = "<group>"; };
+		8B5EE0F41DD767C500745A54 /* TPRecentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentTableViewCell.swift; sourceTree = "<group>"; };
+		8B5EE0F81DD76F1100745A54 /* WrongAnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrongAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		8B5EE0F91DD76F1100745A54 /* WrongAnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WrongAnswerTableViewCell.xib; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -709,9 +715,28 @@
 		8B5EE0EA1DD5DE1200745A54 /* single category */ = {
 			isa = PBXGroup;
 			children = (
+				8B5EE0F71DD76F0000745A54 /* cell */,
 				8B5EE0EB1DD5DF3A00745A54 /* SingleStatViewController.swift */,
 			);
 			name = "single category";
+			sourceTree = "<group>";
+		};
+		8B5EE0F61DD76EEE00745A54 /* recent_view */ = {
+			isa = PBXGroup;
+			children = (
+				8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */,
+				8B5EE0F41DD767C500745A54 /* TPRecentTableViewCell.swift */,
+			);
+			name = recent_view;
+			sourceTree = "<group>";
+		};
+		8B5EE0F71DD76F0000745A54 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B5EE0F81DD76F1100745A54 /* WrongAnswerTableViewCell.swift */,
+				8B5EE0F91DD76F1100745A54 /* WrongAnswerTableViewCell.xib */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 		8B8142CA1DC0C81700E60B06 /* generals */ = {
@@ -729,7 +754,7 @@
 			children = (
 				8B5133211DBBEB4600143497 /* TPButton.swift */,
 				8B8662631DBD5D38004D266E /* TPTextField.swift */,
-				8BBBE84F1DC76BA400B433F2 /* TPRecentView.swift */,
+				8B5EE0F61DD76EEE00745A54 /* recent_view */,
 				8BE273421DC0D0390094F0F6 /* TPMainButton.swift */,
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 			);
@@ -1040,6 +1065,7 @@
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
 				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
+				8B5EE0FB1DD76F1100745A54 /* WrongAnswerTableViewCell.xib in Resources */,
 				8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 			);
@@ -1213,6 +1239,7 @@
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
+				8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */,
@@ -1230,6 +1257,7 @@
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
 				8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
+				8B5EE0F51DD767C500745A54 /* TPRecentTableViewCell.swift in Sources */,
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
 				8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */,

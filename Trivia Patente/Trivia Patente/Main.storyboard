@@ -373,8 +373,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
                                 <rect key="frame" x="0.0" y="44" width="329" height="175"/>
                                 <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recent_cell" id="t2q-7m-MfY">
                                         <rect key="frame" x="0.0" y="28" width="329" height="80"/>
@@ -391,17 +391,30 @@
                                     <outlet property="delegate" destination="3Zs-38-1kc" id="3m0-Jk-K8c"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W4-Af-Qvk">
+                                <rect key="frame" x="290" y="12" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Buc-cg-HbT"/>
+                                    <constraint firstAttribute="height" constant="21" id="cjo-Zq-fGI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="yAL-s7-7YC" secondAttribute="bottom" id="6tt-aC-9PC"/>
+                            <constraint firstItem="5W4-Af-Qvk" firstAttribute="top" secondItem="fLM-nx-AY0" secondAttribute="bottom" constant="11.5" id="HE2-iG-Gie"/>
+                            <constraint firstAttribute="trailing" secondItem="5W4-Af-Qvk" secondAttribute="trailing" constant="18" id="YWq-18-oPf"/>
                             <constraint firstAttribute="trailing" secondItem="yAL-s7-7YC" secondAttribute="trailing" id="ddi-eI-28j"/>
                             <constraint firstAttribute="trailing" secondItem="EI8-w6-YFR" secondAttribute="trailing" id="fXx-He-TJ9"/>
                             <constraint firstAttribute="bottom" secondItem="EI8-w6-YFR" secondAttribute="bottom" id="jdl-mC-IAC"/>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="sB3-IZ-Q7M"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="top" secondItem="Q3N-y5-gRN" secondAttribute="top" id="weh-xj-QuE"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="wzo-Cy-yRH"/>
+                            <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="5W4-Af-Qvk" secondAttribute="bottom" constant="11.5" id="zRv-AD-9Qo"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XhF-lm-a05" appends="YES" id="Pa8-QR-oDg"/>
@@ -410,6 +423,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="329" height="219"/>
                     <connections>
+                        <outlet property="counterLabel" destination="5W4-Af-Qvk" id="tPl-So-fow"/>
                         <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
                         <outlet property="tableView" destination="EI8-w6-YFR" id="QJe-0D-bRd"/>
                     </connections>
@@ -422,7 +436,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="604" y="447"/>
+            <point key="canvasLocation" x="604" y="446.62668665667172"/>
         </scene>
         <!--Purchases-->
         <scene sceneID="1Dj-eA-fmk">

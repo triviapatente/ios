@@ -20,6 +20,12 @@ extension UIView {
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
+    func shadow(radius : CGFloat, color : UIColor = .black) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = radius
+    }
     func createCorners(radius : CGFloat, corners : UIRectCorner) {
         self.layer.masksToBounds = true
         if corners != .allCorners {

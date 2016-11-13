@@ -14,7 +14,12 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     @IBOutlet var chartView : LineChartView!
     @IBOutlet var descriptionLabel : UILabel!
     
-    var errorsView : TPRecentView!
+    var errorsView : TPRecentView! {
+        didSet {
+            errorsView.cellNibName = "WrongAnswerTableViewCell"
+            errorsView.rowHeight = 100
+        }
+    }
     var category : Category!
     var response : TPStatsDetailResponse!
     var dateFormatter : DateFormatter {
@@ -30,6 +35,7 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     func setupView() {
         self.view.backgroundColor = category.status.color
         self.descriptionLabel.text = category.status.rawValue
+        self.chartView.mediumRounded()
         configureChart()
     }
     func loadData() {
@@ -45,7 +51,8 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     }
     func populateViews(response : TPStatsDetailResponse) {
         self.response = response
-        //TODO add errors
+        
+        errorsView.items = response.wrong_answers
         
         let data = LineChartData(dataSet: chartDataSet)
         chartView.data = data
@@ -97,7 +104,7 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     var chartDataSet : LineChartDataSet {
         get {
             let dataSet = LineChartDataSet(values: chartDataEntries, label: "Progresso")
-            dataSet.drawFilledEnabled = true
+            dataSet.drawFilledEnabled = false
             dataSet.drawCirclesEnabled = false
             dataSet.mode = .linear
             dataSet.drawValuesEnabled = false
