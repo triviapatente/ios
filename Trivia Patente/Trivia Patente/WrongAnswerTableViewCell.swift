@@ -10,6 +10,8 @@ import UIKit
 
 class WrongAnswerTableViewCell: TPRecentTableViewCell {
     @IBOutlet var quizImageView : UIImageView!
+    @IBOutlet var imageContainerView : UIView!
+
     @IBOutlet var questionView : UILabel!
     
     @IBOutlet var trueButton : UIButton!
@@ -25,8 +27,7 @@ class WrongAnswerTableViewCell: TPRecentTableViewCell {
     }
     var quiz : Quiz! {
         didSet {
-            self.quizImageView.isHidden = (quiz.imageId == nil)
-            
+            self.imageContainerView.isHidden = (quiz.imageId == nil)
             if let _ = quiz.imageId {
                 self.quizImageView.loadQuizImage(quiz: quiz)
             }
