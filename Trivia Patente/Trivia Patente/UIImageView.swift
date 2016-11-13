@@ -20,11 +20,22 @@ extension UIImageView {
             })
         }
     }
-    func loadAvatar(candidate: User?) {
+    func getUrl(path : String?) -> URL? {
         var url : URL? = nil
-        if let image = candidate?.image {
+        if let image = path {
             url = URL(string: image)
         }
+        return url
+    }
+    func loadQuizImage(quiz : Quiz?) {
+        let path = quiz?.imagePath
+        let url = getUrl(path: path)
         self.load(path: url, placeholder: "default_avatar")
+        
+    }
+    func loadAvatar(user: User?) {
+        let url = getUrl(path: user?.image)
+
+        self.load(path: url, placeholder: "")
     }
 }

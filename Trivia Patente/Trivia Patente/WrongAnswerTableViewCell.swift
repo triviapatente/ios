@@ -25,20 +25,20 @@ class WrongAnswerTableViewCell: TPRecentTableViewCell {
     }
     var quiz : Quiz! {
         didSet {
+            self.quizImageView.isHidden = (quiz.imageId == nil)
+            
             if let _ = quiz.imageId {
-                //TODO: load image
-            } else {
-                self.quizImageView.frame.size.width = 0
+                self.quizImageView.loadQuizImage(quiz: quiz)
             }
             self.questionView.text = quiz.question
             if quiz.answer == true {
                 setEnabled(button: self.trueButton)
                 setDisabled(button: self.falseButton)
-                self.falseAvatar.loadAvatar(candidate: SessionManager.currentUser)
+                self.falseAvatar.loadAvatar(user: SessionManager.currentUser)
             } else {
                 setDisabled(button: self.trueButton)
                 setEnabled(button: self.falseButton)
-                self.trueAvatar.loadAvatar(candidate: SessionManager.currentUser)
+                self.trueAvatar.loadAvatar(user: SessionManager.currentUser)
             }
             self.trueAvatar.alpha = quiz.answer ? 0 : 1
             self.falseAvatar.alpha = quiz.answer ? 1 : 0

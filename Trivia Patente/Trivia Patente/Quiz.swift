@@ -23,6 +23,14 @@ open class Quiz: CommonPK {
 	open var answer: Bool = false
 	open var categoryId: Int?
 
+    var imagePath : String? {
+        get {
+            if let id = imageId {
+                return HTTPManager.getBaseURL() + "/quiz/image/\(id)"
+            }
+            return nil
+        }
+    }
 
     // MARK: SwiftyJSON Initalizers
     /**
