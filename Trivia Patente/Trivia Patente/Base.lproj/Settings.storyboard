@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ckW-kG-p0z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wTU-Kl-7uW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,22 +10,84 @@
     </dependencies>
     <scenes>
         <!--Preferenze-->
-        <scene sceneID="y5g-DY-2Mp">
+        <scene sceneID="gQA-Lw-OrB">
             <objects>
-                <viewController title="Preferenze" id="ckW-kG-p0z" sceneMemberID="viewController">
+                <tableViewController title="Preferenze" id="wTU-Kl-7uW" customClass="SettingsViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ItZ-cF-PJc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <outlet property="dataSource" destination="wTU-Kl-7uW" id="y1C-I3-9hc"/>
+                            <outlet property="delegate" destination="wTU-Kl-7uW" id="PW4-23-xXr"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="ksd-XF-Ta1" kind="show" identifier="account_segue" id="JPn-WK-Z3M"/>
+                        <segue destination="WoF-hb-FDO" kind="show" identifier="change_password_segue" id="0OJ-f4-6IT"/>
+                        <segue destination="YOW-oR-mJ7" kind="show" identifier="tell_a_friend_segue" id="93k-fb-Gyk"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LUH-qb-Yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-134" y="207"/>
+        </scene>
+        <!--Cambia password-->
+        <scene sceneID="UlX-W1-LaE">
+            <objects>
+                <viewController title="Cambia password" id="WoF-hb-FDO" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Dz-lC-T5h"/>
-                        <viewControllerLayoutGuide type="bottom" id="n8V-dZ-3lp"/>
+                        <viewControllerLayoutGuide type="top" id="wRo-bl-d3v"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gw9-Sm-xl9"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bKp-OB-osK">
+                    <view key="view" contentMode="scaleToFill" id="h0T-tr-mC9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i1i-RZ-glV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9MN-a6-zph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="50"/>
+            <point key="canvasLocation" x="894" y="-457"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="XDS-wb-gMj">
+            <objects>
+                <viewController title="Account" id="ksd-XF-Ta1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p1x-wm-d1P"/>
+                        <viewControllerLayoutGuide type="bottom" id="e1a-Q8-cFs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bnm-hw-TLr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofS-ph-lpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="894" y="224"/>
+        </scene>
+        <!--Dillo a un amico!-->
+        <scene sceneID="pBB-fF-gqE">
+            <objects>
+                <viewController title="Dillo a un amico!" id="YOW-oR-mJ7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l3Q-Ki-J2s"/>
+                        <viewControllerLayoutGuide type="bottom" id="GwA-H2-Sfx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ez1-DF-8KA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xU2-Vk-Kpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890" y="903"/>
         </scene>
     </scenes>
 </document>
