@@ -36,6 +36,9 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
         self.view.backgroundColor = category.status.color
         self.descriptionLabel.text = category.status.rawValue
         self.chartView.mediumRounded()
+        //Se la categoria è complessivo, non li mostro
+        self.errorsView.isHidden = category.isOverall
+        
         configureChart()
     }
     func loadData() {
@@ -51,9 +54,9 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     }
     func populateViews(response : TPStatsDetailResponse) {
         self.response = response
-        
-        errorsView.items = response.wrong_answers
-        
+        if !category.isOverall {
+            errorsView.items = response.wrong_answers
+        }
         let data = LineChartData(dataSet: chartDataSet)
         chartView.data = data
 

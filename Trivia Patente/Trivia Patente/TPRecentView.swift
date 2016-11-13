@@ -19,13 +19,17 @@ class TPRecentView: UIViewController {
             adaptToItems()
         }
     }
-    var cellNibName : String!
+    var cellNibName : String?
     var footerText : String = ""
-    var rowHeight : CGFloat?
 
     var dataLoaded = false
     var containerView : UIView {
         return self.view.superview!
+    }
+    var isHidden : Bool = false {
+        didSet {
+            self.containerView.isHidden = isHidden
+        }
     }
     var tableHeight : CGFloat {
         return CGFloat(items.count) * self.tableView.rowHeight
@@ -55,17 +59,16 @@ class TPRecentView: UIViewController {
         label.numberOfLines = 2
         return label
     }
+    var rowHeight : CGFloat?
     var separatorColor : UIColor?
     var separatorStyle : UITableViewCellSeparatorStyle?
     var separatorInset : UIEdgeInsets?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: cellNibName, bundle: Bundle.main)
-        self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
-        self.tableView.tableFooterView = footerView
-        if let height = rowHeight {
-            self.tableView.rowHeight = height
+        if let name = cellNibName {
+            let nib = UINib(nibName: name, bundle: Bundle.main)
+            self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         }
         if let inset = separatorInset {
             self.tableView.separatorInset = inset

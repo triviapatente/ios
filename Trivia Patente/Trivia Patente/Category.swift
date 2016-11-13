@@ -39,6 +39,12 @@ open class Category: CommonPK {
             }
         }
     }
+    //Convenzione: se l'id della categoria è nullo, allora si tratta della categoria complessiva
+    var isOverall : Bool {
+        get {
+            return id == nil
+        }
+    }
     // MARK: SwiftyJSON Initalizers
     /**
     Initates the class based on the object
