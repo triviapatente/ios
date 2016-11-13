@@ -89,15 +89,16 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
         get {
             guard !response.percentages.isEmpty else { return [] }
             var entries : [ChartDataEntry] = []
-            var i = response.percentages.count - 1, currentValue = category.progress
+            let sum = response.percentages.values.reduce(0) {$0 + $1}
+            var i = 0, currentValue = category.progress - sum
             let progresses = response.percentages.sorted { (first, second) -> Bool in
                 return first.key < second.key
             }
             for (_, value) in progresses {
-                currentValue -= value
+                currentValue += value
                 let dataEntry = ChartDataEntry(x: Double(i), y: Double(currentValue))
-                entries.insert(dataEntry, at: 0)
-                i -= 1
+                entries.append(dataEntry)
+                i += 1
             }
             return entries
         }
