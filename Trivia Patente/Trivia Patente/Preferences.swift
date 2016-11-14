@@ -21,9 +21,9 @@ open class Preferences: CommonPK {
 
 
     // MARK: Properties
-	open var stats: String? //TODO: make enum
+    var stats: PreferenceVisibility?
 	open var notificationMessage: Bool = false
-    open var chat: String? //TODO: make enum
+    var chat: PreferenceVisibility?
 	open var notificationRound: Bool = false
 	open var userId: Int?
 	open var notificationNewGame: Bool = false
@@ -47,9 +47,9 @@ open class Preferences: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
-		stats = json[kPreferencesStatsKey].string
+		stats = PreferenceVisibility(rawValue: json[kPreferencesStatsKey].stringValue)
 		notificationMessage = json[kPreferencesNotificationMessageKey].boolValue
-		chat = json[kPreferencesChatKey].string
+        chat = PreferenceVisibility(rawValue: json[kPreferencesChatKey].stringValue)
 		notificationRound = json[kPreferencesNotificationRoundKey].boolValue
 		userId = json[kPreferencesUserIdKey].int
 		notificationNewGame = json[kPreferencesNotificationNewGameKey].boolValue
@@ -88,9 +88,9 @@ open class Preferences: CommonPK {
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-		self.stats = aDecoder.decodeObject(forKey: kPreferencesStatsKey) as! String?
+		self.stats = aDecoder.decodeObject(forKey: kPreferencesStatsKey) as! PreferenceVisibility?
 		self.notificationMessage = aDecoder.decodeBool(forKey: kPreferencesNotificationMessageKey)
-		self.chat = aDecoder.decodeObject(forKey: kPreferencesChatKey) as! String?
+		self.chat = aDecoder.decodeObject(forKey: kPreferencesChatKey) as! PreferenceVisibility?
 		self.notificationRound = aDecoder.decodeBool(forKey: kPreferencesNotificationRoundKey)
 		self.userId = aDecoder.decodeObject(forKey: kPreferencesUserIdKey) as? Int
 		self.notificationNewGame = aDecoder.decodeBool(forKey: kPreferencesNotificationNewGameKey)
