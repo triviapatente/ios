@@ -45,7 +45,11 @@ open class Base: NSObject, NSCoding {
         updatedAt = Date()
     }
 
-
+    subscript(key: String) -> AnyObject? {
+        get {
+            return self.dictionaryRepresentation()[key]
+        }
+    }
     /**
     Generates description of the object in the form of a NSDictionary.
     - returns: A Key value pair containing all valid values in the object.
