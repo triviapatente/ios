@@ -11,13 +11,13 @@ import UIKit
 class SettingsViewController: UITableViewController {
 
     var profileItems =      [PreferenceItem(type: .profile, segue: "account_segue", height: 100)]
-    var privacyItems =      [PreferenceItem(title: "Condividi le mie statistiche", image: "preference_stats", type: .dropdown),
+    var privacyItems =      [PreferenceItem(title: "Condividi le mie statistiche", image: "preference_stats", type: .dropdown, key: "stats"),
                              PreferenceItem(title: "Cambia password", image: "preference_password", type: .normal, segue: "change_password_segue")]
-    var chatItems =         [PreferenceItem(title: "Chi mi può contattare:", image: "preference_chat", type: .dropdown)]
-    var notificationItems = [PreferenceItem(title: "Inviti alle partite", image: "preference_new_invite", type: .switchable),
-                             PreferenceItem(title: "E' il mio turno", image: "preference_my_turn", type: .switchable),
-                             PreferenceItem(title: "Ho un nuovo messaggio", image: "preference_new_message", type: .switchable),
-                             PreferenceItem(title: "Ho tutte le vite disponibili", image: "preference_full_hearts", type: .switchable)]
+    var chatItems =         [PreferenceItem(title: "Chi mi può contattare:", image: "preference_chat", type: .dropdown, key: "chat")]
+    var notificationItems = [PreferenceItem(title: "Inviti alle partite", image: "preference_new_invite", type: .switchable, key: "notification_new_game"),
+                             PreferenceItem(title: "E' il mio turno", image: "preference_my_turn", type: .switchable, key: "notification_round"),
+                             PreferenceItem(title: "Ho un nuovo messaggio", image: "preference_new_message", type: .switchable, key: "notification_message"),
+                             PreferenceItem(title: "Ho tutte le vite disponibili", image: "preference_full_hearts", type: .switchable, key: "notification_full_hearts")]
     var inviteItems =       [PreferenceItem(title: "Dillo a un amico!", image: "preference_tell_a_friend", type: .normal, segue: "tell_a_friend_segue")]
     
     var items : [[PreferenceItem]] {

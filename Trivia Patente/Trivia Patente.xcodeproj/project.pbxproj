@@ -99,6 +99,7 @@
 		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
 		8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */; };
 		8BDCEA301DD12A580099C3E2 /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */; };
+		8BE20C601DD9DEA10048DA0A /* PreferenceVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE20C5F1DD9DEA10048DA0A /* PreferenceVisibility.swift */; };
 		8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273421DC0D0390094F0F6 /* TPMainButton.swift */; };
 		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273461DC0DEA40094F0F6 /* TPTextView.swift */; };
@@ -234,6 +235,7 @@
 		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
 		8BDCEA2D1DD124AC0099C3E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RankTableViewCell.xib; sourceTree = "<group>"; };
 		8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
+		8BE20C5F1DD9DEA10048DA0A /* PreferenceVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceVisibility.swift; sourceTree = "<group>"; };
 		8BE273421DC0D0390094F0F6 /* TPMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainButton.swift; sourceTree = "<group>"; };
 		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8BE273461DC0DEA40094F0F6 /* TPTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextView.swift; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCF8C881DB6A6BA00EC637C /* Preferences.swift */,
+				8BE20C5F1DD9DEA10048DA0A /* PreferenceVisibility.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1369,6 +1372,7 @@
 				8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */,
 				8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
+				8BE20C601DD9DEA10048DA0A /* PreferenceVisibility.swift in Sources */,
 				8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,

@@ -15,8 +15,9 @@ class PreferenceItem {
     var type : PreferenceType!
     var segue : String?
     var height : CGFloat!
+    var key : String?
     
-    init(title : String? = nil, image : String? = nil, type : PreferenceType = .normal, dropdownValues : [String]? = nil, segue : String? = nil, height : CGFloat = 50) {
+    init(title : String? = nil, image : String? = nil, type : PreferenceType = .normal, dropdownValues : [String]? = nil, segue : String? = nil, height : CGFloat = 50, key : String? = nil) {
         self.title = title
         self.image = image
         self.type = type
@@ -25,5 +26,6 @@ class PreferenceItem {
         }
         self.segue = segue
         self.height = height
+        self.key = key
     }
 }

@@ -15,15 +15,17 @@ class SwitchableSettingsTableViewCell: SettingsTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.accessoryView = switchView
     }
+    override func initValues() {
+        super.initValues()
+        if let preference = Shared.preferences {
+            let key = self.item.key!
+            self.switchView.isOn = preference[key] as! Bool
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
 
 }

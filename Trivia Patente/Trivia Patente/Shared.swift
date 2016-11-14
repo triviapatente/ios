@@ -10,4 +10,9 @@ import UIKit
 
 class Shared {
     static var categories : [Category]?
+    static var preferences : Preferences? {
+        didSet {
+            print(preferences!.dictionaryRepresentation())
+        }
+    }
 }
