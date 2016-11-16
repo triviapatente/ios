@@ -48,4 +48,14 @@ class HTTPAuth : HTTPManager {
             handler(response)
         }
     }
+    func changePassword(old : String, new : String, handler : @escaping (TPTokenResponse) -> Void) {
+        let parameters = ["old_value": old, "new_value": new]
+        request(url: "/auth/password/edit", method: .post, params: parameters){ (response : TPTokenResponse) in
+            if let token = response.token {
+                SessionManager.set(token: token)
+            }
+            handler(response)
+        }
+
+    }
 }

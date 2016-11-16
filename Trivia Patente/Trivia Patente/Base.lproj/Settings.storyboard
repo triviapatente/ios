@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,7 +39,7 @@
         <!--Cambia password-->
         <scene sceneID="UlX-W1-LaE">
             <objects>
-                <viewController title="Cambia password" id="WoF-hb-FDO" sceneMemberID="viewController">
+                <viewController title="Cambia password" id="WoF-hb-FDO" customClass="ChangePasswordViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wRo-bl-d3v"/>
                         <viewControllerLayoutGuide type="bottom" id="Gw9-Sm-xl9"/>
@@ -46,12 +47,108 @@
                     <view key="view" contentMode="scaleToFill" id="h0T-tr-mC9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4CV-qW-SMr">
+                                <rect key="frame" x="16" y="176.5" width="343" height="314"/>
+                                <subviews>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWZ-0x-THM">
+                                        <rect key="frame" x="40" y="0.0" width="263" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="qGq-B4-ND4"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="zAR-kt-Ta1" kind="embed" identifier="error_view" id="4Cd-Ff-Qla"/>
+                                        </connections>
+                                    </containerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="115-2R-rXy">
+                                        <rect key="frame" x="50" y="103" width="243" height="156"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66l-S9-jjF">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="1Cw-dw-B51"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="P4W-Xd-ePy" kind="embed" identifier="old_password" id="kzG-R7-TdB"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7t-0r-tDN">
+                                                <rect key="frame" x="0.0" y="53" width="243" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="15m-r9-UWd"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vDQ-ma-Egh"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="P4W-Xd-ePy" kind="embed" identifier="new_password" id="5Bg-oM-UXX"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qU3-AU-PQS">
+                                                <rect key="frame" x="0.0" y="106" width="243" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="yjG-xl-mob"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="P4W-Xd-ePy" kind="embed" identifier="repeat_password" id="CNj-Lo-Zu5"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoT-CR-oN2" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="274" width="243" height="40"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="DSe-lU-v6W"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="yGx-7D-pzF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                        <state key="normal" title="Conferma">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changePassword" destination="WoF-hb-FDO" eventType="touchUpInside" id="ysA-Hx-3fh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="115-2R-rXy" secondAttribute="trailing" constant="50" id="6RA-aA-VTk"/>
+                                    <constraint firstAttribute="trailing" secondItem="NWZ-0x-THM" secondAttribute="trailing" constant="40" id="8UZ-Dm-Afc"/>
+                                    <constraint firstItem="OoT-CR-oN2" firstAttribute="leading" secondItem="4CV-qW-SMr" secondAttribute="leading" constant="50" id="NDT-hI-cjw"/>
+                                    <constraint firstAttribute="trailing" secondItem="OoT-CR-oN2" secondAttribute="trailing" constant="50" id="bgL-Ae-aPz"/>
+                                    <constraint firstItem="NWZ-0x-THM" firstAttribute="leading" secondItem="4CV-qW-SMr" secondAttribute="leading" constant="40" id="gm4-dQ-ErV"/>
+                                    <constraint firstItem="115-2R-rXy" firstAttribute="leading" secondItem="4CV-qW-SMr" secondAttribute="leading" constant="50" id="tNG-Mw-INz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4CV-qW-SMr" firstAttribute="leading" secondItem="h0T-tr-mC9" secondAttribute="leadingMargin" id="8Fz-UL-gUI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4CV-qW-SMr" secondAttribute="trailing" id="lQm-Ek-dl9"/>
+                            <constraint firstItem="4CV-qW-SMr" firstAttribute="centerY" secondItem="h0T-tr-mC9" secondAttribute="centerY" id="mjM-u0-P9j"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="OoT-CR-oN2" id="77q-6b-kDz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MN-a6-zph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="-457"/>
+            <point key="canvasLocation" x="893.60000000000002" y="-457.42128935532236"/>
+        </scene>
+        <!--TPInputView-->
+        <scene sceneID="HZf-Nq-efk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FirstAccess" referencedIdentifier="TPInputView" id="P4W-Xd-ePy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUl-9f-9zK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="-444"/>
+        </scene>
+        <!--TPErrorView-->
+        <scene sceneID="Jyz-OL-1nf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FirstAccess" referencedIdentifier="TPErrorView" id="zAR-kt-Ta1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CG-Lf-Qj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1445" y="-597"/>
         </scene>
         <!--Account-->
         <scene sceneID="XDS-wb-gMj">
@@ -90,4 +187,7 @@
             <point key="canvasLocation" x="890" y="903"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CNj-Lo-Zu5"/>
+    </inferredMetricsTieBreakers>
 </document>

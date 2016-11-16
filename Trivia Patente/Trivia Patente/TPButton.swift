@@ -18,7 +18,6 @@ class TPButton : UIButton {
         view.tag = LOADING_VIEW_TAG
         let dim = self.bounds.size.height - 10
         view.frame = CGRect(x: self.bounds.size.width / 2 - dim / 2, y: self.bounds.size.height / 2 - dim / 2, width: dim, height: dim)
-        print(view.frame)
         self.addSubview(view)
         self.bringSubview(toFront: view)
     }

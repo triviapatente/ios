@@ -57,7 +57,6 @@ extension UIViewController {
         if let presented = root?.presentedViewController {
             if presented.isKind(of: UINavigationController.self) {
                 let navigationController = presented as! UINavigationController
-                print(navigationController.viewControllers)
                 return navigationController.viewControllers.last!
             }
             
