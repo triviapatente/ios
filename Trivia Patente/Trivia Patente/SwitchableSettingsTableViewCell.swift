@@ -36,7 +36,6 @@ class SwitchableSettingsTableViewCell: SettingsTableViewCell {
         self.accessoryView = loadingView
         self.loadingView.startAnimating()
         handler.change_notifications(key: self.item.key!, value: sender.isOn) { response in
-            sleep(3)
             self.accessoryView = sender
             if response.success == false {
                 sender.isOn = !sender.isOn
