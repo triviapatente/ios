@@ -15,7 +15,8 @@ class ShopItemTableViewCell: UITableViewCell {
     var item : Shopitem! {
         didSet {
             titleLabel.text = "\(item.name!) \(item.emoji!)"
-            purchaseButton.setTitle("€ \(item.price!)", for: .normal)
+            let price_title = item.price == 0 ? "Gratis" : "€ \(item.price!)"
+            purchaseButton.setTitle(price_title, for: .normal)
         }
     }
     var callback : ((Shopitem) -> Void)!

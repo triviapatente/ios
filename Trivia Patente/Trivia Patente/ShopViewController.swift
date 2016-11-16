@@ -31,6 +31,12 @@ class ShopViewController: UIViewController {
     //TODO: set this variable from user info
     var alreadyInfinity = false
     
+    @IBAction func toggleInfinityView() {
+        if alreadyInfinity {
+            alreadyInfinityView.isHidden = !alreadyInfinityView.isHidden
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.buttonCallback = { item in
@@ -46,13 +52,14 @@ class ShopViewController: UIViewController {
             prepareMockView()
         }
         alreadyInfinityView.isHidden = !alreadyInfinity
+        self.tableView.isUserInteractionEnabled = !alreadyInfinity
         
     }
     func prepareMockView() {
-        let a = Shopitem(id: 1, name: "Sei", price: 1.99, emoji: "❤️")
-        let b = Shopitem(id: 2, name: "un", price: 1.99, emoji: "❤️")
-        let c = Shopitem(id: 3, name: "fantastico", price: 1.99, emoji: "❤️")
-        let d = Shopitem(id: 4, name: "utente!", price: 1.99, emoji: "❤️")
+        let a = Shopitem(id: 1, name: "Sei", price: 0, emoji: "❤️")
+        let b = Shopitem(id: 2, name: "un", price: 0, emoji: "❤️")
+        let c = Shopitem(id: 3, name: "fantastico", price: 0, emoji: "❤️")
+        let d = Shopitem(id: 4, name: "utente!", price: 0, emoji: "❤️")
         self.items = [a, b, c, d]
     }
     func preparePurchaseView() {
@@ -73,7 +80,7 @@ class ShopViewController: UIViewController {
         guard self.items.count > 0 else {
             return
         }
-        let candidate = self.view.frame.size.height / CGFloat(self.items.count)
+        let candidate = self.tableView.frame.size.height / CGFloat(self.items.count)
         //se la dimensione candidata è minore del minimo, non la posso accettare, quindi devo abilitare lo scroll in quanto la somma delle altezze delle celle supererà l'altezza della view
         self.tableView.isScrollEnabled = candidate < MIN_CELL_HEIGHT
         self.tableView.rowHeight = max(candidate, MIN_CELL_HEIGHT)
