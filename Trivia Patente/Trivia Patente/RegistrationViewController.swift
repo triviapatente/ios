@@ -58,12 +58,15 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             self.registerButton.stopLoading()
             if response.success == true {
                 let controller = UIViewController.root()
-                self.present(controller, animated: true, completion: nil)
+                self.present(controller, animated: true) {
+                    self.nameField.field.text = ""
+                    self.emailField.field.text = ""
+                    self.passwordField.field.text = ""
+                    self.repeatPasswordField.field.text = ""
+                    self.errorViewContainer.isHidden = true
+                }
             } else {
                 self.errorView.set(error: response.message)
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.errorViewContainer.isHidden = false
-                })
             }
         }
     }
@@ -134,6 +137,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                     break
                 case "error":
                     self.errorView = destination as! TPErrorView
+                    break
                 default: break
             
             }

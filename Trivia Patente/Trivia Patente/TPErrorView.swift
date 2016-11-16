@@ -15,7 +15,24 @@ class TPErrorView : UIViewController {
         super.viewDidLayoutSubviews()
         self.view.mediumRounded()
     }
+    var container : UIView? {
+        get {
+            return self.view.superview
+        }
+    }
     func set(error : String) {
         errorTextView.text = error
+        UIView.animate(withDuration: 0.2, animations: {
+            self.container!.isHidden = false
+        }) { completed in
+            self.shake()
+        }
+    }
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.5
+        animation.values = [10, -10, 10, -10, 5, -5, 2, -2, 0]
+        self.view.layer.add(animation, forKey: "shake")
     }
 }

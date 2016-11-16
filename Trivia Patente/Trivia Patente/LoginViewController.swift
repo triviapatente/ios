@@ -38,12 +38,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginButton.stopLoading()
             if response.success == true {
                 let controller = UIViewController.root()
-                self.present(controller, animated: true, completion: nil)
+                self.present(controller, animated: true) {
+                    self.nameField.field.text = ""
+                    self.passwordField.field.text = ""
+                    self.errorViewContainer.isHidden = true
+                }
             } else {
                 self.errorView.set(error: response.message)
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.errorViewContainer.isHidden = false
-                })
             }
         }
     }
@@ -86,12 +87,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if let identifier = segue.identifier {
@@ -104,6 +99,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     break
                 case "error":
                     self.errorView = destination as! TPErrorView
+                    break
                 default: break
                 
             }
