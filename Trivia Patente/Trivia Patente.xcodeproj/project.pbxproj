@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D3ECBAF561E8A24A28B0B09 /* Pods_Trivia_PatenteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */; };
+		8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D88FA1DDC5D27001B4C3A /* ChangePasswordViewController.swift */; };
+		8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */; };
 		8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
@@ -145,6 +147,8 @@
 		81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86726498E38F3E6401543613 /* Pods-Trivia Patente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia Patente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente.debug.xcconfig"; sourceTree = "<group>"; };
 		87B57A20058F5AA1BCD4BF7A /* Pods-Trivia PatenteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trivia PatenteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B0D88FA1DDC5D27001B4C3A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTokenResponse.swift; sourceTree = "<group>"; };
 		8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankSearchResponse.swift; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
@@ -312,6 +316,28 @@
 				6A63A90AD9C103EE24580D35 /* Pods-Trivia PatenteUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B0D88F71DDC54FE001B4C3A /* change password */ = {
+			isa = PBXGroup;
+			children = (
+				8B0D88FA1DDC5D27001B4C3A /* ChangePasswordViewController.swift */,
+			);
+			name = "change password";
+			sourceTree = "<group>";
+		};
+		8B0D88F81DDC5506001B4C3A /* account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = account;
+			sourceTree = "<group>";
+		};
+		8B0D88F91DDC550F001B4C3A /* credits */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = credits;
 			sourceTree = "<group>";
 		};
 		8B28D26A1DCDE9FE00C65122 /* avatar */ = {
@@ -580,6 +606,9 @@
 		8B5132E61DBB5C8400143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B0D88F91DDC550F001B4C3A /* credits */,
+				8B0D88F81DDC5506001B4C3A /* account */,
+				8B0D88F71DDC54FE001B4C3A /* change password */,
 				8B5EE1011DD90A6D00745A54 /* main */,
 				8B5133081DBBAC3000143497 /* Settings.storyboard */,
 			);
@@ -653,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5132F71DBB72B600143497 /* TPAuthResponse.swift */,
+				8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1384,6 +1414,8 @@
 				8B5EE0F51DD767C500745A54 /* TPRecentTableViewCell.swift in Sources */,
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
+				8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */,
+				8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */,
 				8B5EE10B1DD9140700745A54 /* SwitchableSettingsTableViewCell.swift in Sources */,
 				8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */,
 				8B5EE0DF1DD5C23100745A54 /* StatsTableViewCell.swift in Sources */,
