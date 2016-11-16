@@ -9,12 +9,10 @@
 import UIKit
 import SwiftyJSON
 
-class TPAuthResponse: TPResponse {
-    var token : String?
+class TPAuthResponse: TPTokenResponse {
     var user : User?
     override func load(json: JSON) {
         super.load(json: json)
-        token = self.json["token"].string
         user = User(json: self.json["user"])
     }
 }
