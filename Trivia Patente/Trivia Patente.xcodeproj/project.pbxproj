@@ -70,12 +70,16 @@
 		8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */; };
 		8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */; };
 		8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */; };
-		8B8058CA1DE2F97100C3F938 /* TPOpponentListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C91DE2F97100C3F938 /* TPOpponentListResponse.swift */; };
+		8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */; };
 		8B8058CC1DE2FA1F00C3F938 /* TPNewGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */; };
 		8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */; };
 		8B8058D31DE2FC8D00C3F938 /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */; };
 		8B8058D51DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D41DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift */; };
 		8B8058DA1DE30FD800C3F938 /* RandomGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */; };
+		8B8058DC1DE3375B00C3F938 /* SearchOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058DB1DE3375B00C3F938 /* SearchOpponentViewController.swift */; };
+		8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058DF1DE337FB00C3F938 /* GameOpponentTableViewCell.swift */; };
+		8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8058E01DE337FB00C3F938 /* GameOpponentTableViewCell.xib */; };
+		8B8058E41DE33A4700C3F938 /* TPSearchOpponentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -219,12 +223,16 @@
 		8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGameMenuViewController.swift; sourceTree = "<group>"; };
 		8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteResponse.swift; sourceTree = "<group>"; };
 		8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteListResponse.swift; sourceTree = "<group>"; };
-		8B8058C91DE2F97100C3F938 /* TPOpponentListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPOpponentListResponse.swift; sourceTree = "<group>"; };
+		8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPSuggestedUsersResponse.swift; sourceTree = "<group>"; };
 		8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNewGameResponse.swift; sourceTree = "<group>"; };
 		8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTableViewCell.swift; sourceTree = "<group>"; };
 		8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteTableViewCell.xib; sourceTree = "<group>"; };
 		8B8058D41DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGameViewController.swift; sourceTree = "<group>"; };
+		8B8058DB1DE3375B00C3F938 /* SearchOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOpponentViewController.swift; sourceTree = "<group>"; };
+		8B8058DF1DE337FB00C3F938 /* GameOpponentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOpponentTableViewCell.swift; sourceTree = "<group>"; };
+		8B8058E01DE337FB00C3F938 /* GameOpponentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOpponentTableViewCell.xib; sourceTree = "<group>"; };
+		8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPSearchOpponentResponse.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -434,6 +442,7 @@
 		8B42E8291DC63D6900C36DDA /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B28D2801DD0770800C65122 /* RankViewController.swift */,
 				8BDCEA291DD124970099C3E2 /* cell */,
 				8B42E82D1DC63D8100C36DDA /* Rank.storyboard */,
 			);
@@ -896,6 +905,7 @@
 			children = (
 				8B8058D81DE30FC400C3F938 /* random */,
 				8B8058CE1DE2FC7200C3F938 /* menu */,
+				8B8058DD1DE3376300C3F938 /* search */,
 			);
 			name = "search game";
 			sourceTree = "<group>";
@@ -924,6 +934,24 @@
 				8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */,
 			);
 			name = random;
+			sourceTree = "<group>";
+		};
+		8B8058DD1DE3376300C3F938 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				8B8058DE1DE337DC00C3F938 /* cell */,
+				8B8058DB1DE3375B00C3F938 /* SearchOpponentViewController.swift */,
+			);
+			name = search;
+			sourceTree = "<group>";
+		};
+		8B8058DE1DE337DC00C3F938 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B8058DF1DE337FB00C3F938 /* GameOpponentTableViewCell.swift */,
+				8B8058E01DE337FB00C3F938 /* GameOpponentTableViewCell.xib */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 		8B8142CA1DC0C81700E60B06 /* generals */ = {
@@ -982,8 +1010,9 @@
 				8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */,
 				8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */,
 				8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */,
-				8B8058C91DE2F97100C3F938 /* TPOpponentListResponse.swift */,
+				8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */,
 				8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */,
+				8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1056,7 +1085,6 @@
 		8BDCEA291DD124970099C3E2 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				8B28D2801DD0770800C65122 /* RankViewController.swift */,
 				8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */,
 				8BDCEA2F1DD12A580099C3E2 /* RankTableViewCell.swift */,
 			);
@@ -1270,6 +1298,7 @@
 				8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */,
 				8B51330A1DBBAC3000143497 /* Settings.storyboard in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
+				8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */,
 				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
@@ -1460,6 +1489,7 @@
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
 				8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */,
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
+				8B8058DC1DE3375B00C3F938 /* SearchOpponentViewController.swift in Sources */,
 				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
@@ -1497,18 +1527,20 @@
 				8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */,
 				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
+				8B8058E41DE33A4700C3F938 /* TPSearchOpponentResponse.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
 				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BE20C641DD9E43D0048DA0A /* TPPreferenceChangeResponse.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
-				8B8058CA1DE2F97100C3F938 /* TPOpponentListResponse.swift in Sources */,
+				8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
+				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
 				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,
 				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,
 				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,

@@ -31,4 +31,31 @@ class HTTPGame: HTTPManager {
     func newGame(id : Int, handler : @escaping (TPNewGameResponse) -> Void) {
         self.request(url: "/game/new", method: .post, params: ["opponent": id], handler: handler)
     }
+    func suggested_users(handler : @escaping (TPSuggestedUsersResponse) -> Void) {
+        self.request(url: "/game/users/suggested", method: .get, params: nil, handler: handler)
+    }
+    func suggested_friends(handler : @escaping (TPSuggestedUsersResponse) -> Void) {
+        //TODO: implement this api
+        //self.request(url: "/game/friends/suggested", method: .get, params: nil, handler: handler)
+        let response = TPSuggestedUsersResponse(error: "", statusCode: 200)
+        response.users = []
+        handler(response)
+    }
+    func search(type : RankMode, query : String, handler : @escaping (TPSearchOpponentResponse) -> Void) {
+        if type == .italian {
+            self.search_user(query: query, handler: handler)
+        } else {
+            self.search_friend(query: query, handler: handler)
+        }
+    }
+    func search_user(query : String, handler : @escaping (TPSearchOpponentResponse) -> Void) {
+        self.request(url: "/game/users/search?query=\(query)", method: .get, params: nil, handler: handler)
+    }
+    func search_friend(query : String, handler : @escaping (TPSearchOpponentResponse) -> Void) {
+        //TODO: implement this api
+        //self.request(url: "/game/friends/search?query=\(query)", method: .get, params: nil, handler: handler)
+        let response = TPSearchOpponentResponse(error: "", statusCode: 200)
+        response.users = []
+        handler(response)
+    }
 }

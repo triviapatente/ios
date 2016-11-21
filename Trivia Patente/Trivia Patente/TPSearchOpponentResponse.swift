@@ -1,5 +1,5 @@
 //
-//  TPOpponentListResponse.swift
+//  TPSearchOpponentResponse.swift
 //  Trivia Patente
 //
 //  Created by Luigi Donadel on 21/11/16.
@@ -9,12 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class TPOpponentListResponse: TPResponse {
+class TPSearchOpponentResponse: TPResponse {
     var users : [User] = []
     
     override func load(json: JSON) {
         super.load(json: json)
-        if let rawUsers = json["opponents"].array {
+        if let rawUsers = json["matches"].array {
             for item in rawUsers {
                 users.append(User(json: item))
             }

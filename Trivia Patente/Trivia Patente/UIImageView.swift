@@ -30,12 +30,12 @@ extension UIImageView {
     func loadQuizImage(quiz : Quiz?) {
         let path = quiz?.imagePath
         let url = getUrl(path: path)
-        self.load(path: url, placeholder: "default_avatar")
+        self.load(path: url, placeholder: "")
         
     }
     func loadAvatar(user: User?) {
         let url = getUrl(path: user?.image)
 
-        self.load(path: url, placeholder: "")
+        self.load(path: url, placeholder: "default_avatar")
     }
 }

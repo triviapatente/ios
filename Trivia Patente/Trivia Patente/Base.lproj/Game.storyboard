@@ -42,7 +42,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qm7-U7-3TE" kind="show" id="PRB-2d-W10"/>
+                                    <segue destination="nLQ-Zq-4WB" kind="show" id="nJG-HD-DSn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-qO-3M4">
@@ -92,24 +92,6 @@
             </objects>
             <point key="canvasLocation" x="-21.600000000000001" y="-692.20389805097454"/>
         </scene>
-        <!--Ricerca avversario-->
-        <scene sceneID="khU-9z-0FS">
-            <objects>
-                <viewController title="Ricerca avversario" id="Qm7-U7-3TE" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="P29-0Y-Oi1"/>
-                        <viewControllerLayoutGuide type="bottom" id="gym-yB-ajI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TFi-S6-06S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qCy-0u-Jsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="926" y="-1103"/>
-        </scene>
         <!--recentView-->
         <scene sceneID="GfW-ZF-xth">
             <objects>
@@ -135,6 +117,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNj-w7-LNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="926" y="-289"/>
+        </scene>
+        <!--Ricerca avversario-->
+        <scene sceneID="jtV-8Y-1ZJ">
+            <objects>
+                <viewController title="Ricerca avversario" id="nLQ-Zq-4WB" customClass="SearchOpponentViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WKy-NR-IKq"/>
+                        <viewControllerLayoutGuide type="bottom" id="r2f-1G-n4F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GQf-7n-Lzr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9HM-Tp-3eU">
+                                <rect key="frame" x="16" y="28" width="343" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="nzv-yG-syA"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Italiana"/>
+                                    <segment title="Amici"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeSearchTypeWithSender:" destination="nLQ-Zq-4WB" eventType="valueChanged" id="tq2-ak-viv"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="41L-QX-Y12">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Cerca" id="GNC-Jh-qhC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="search"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="nLQ-Zq-4WB" id="DV0-9L-1Yy"/>
+                                    </connections>
+                                </searchBar>
+                                <connections>
+                                    <outlet property="dataSource" destination="nLQ-Zq-4WB" id="i1x-hB-Sgi"/>
+                                    <outlet property="delegate" destination="nLQ-Zq-4WB" id="8Bt-JC-iKv"/>
+                                    <outletCollection property="gestureRecognizers" destination="I8x-Jc-iMF" appends="YES" id="2Nl-Ga-yh9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r2f-1G-n4F" firstAttribute="top" secondItem="41L-QX-Y12" secondAttribute="bottom" id="1AQ-3K-Hay"/>
+                            <constraint firstItem="41L-QX-Y12" firstAttribute="top" secondItem="9HM-Tp-3eU" secondAttribute="bottom" constant="8" id="3Wz-WF-vJk"/>
+                            <constraint firstItem="9HM-Tp-3eU" firstAttribute="top" secondItem="WKy-NR-IKq" secondAttribute="bottom" constant="8" id="8BP-au-mLh"/>
+                            <constraint firstItem="9HM-Tp-3eU" firstAttribute="leading" secondItem="GQf-7n-Lzr" secondAttribute="leading" constant="16" id="9D0-rO-p7f"/>
+                            <constraint firstAttribute="trailing" secondItem="9HM-Tp-3eU" secondAttribute="trailing" constant="16" id="VLj-v6-TLU"/>
+                            <constraint firstAttribute="trailing" secondItem="41L-QX-Y12" secondAttribute="trailing" id="WXE-O7-Obq"/>
+                            <constraint firstItem="41L-QX-Y12" firstAttribute="leading" secondItem="GQf-7n-Lzr" secondAttribute="leading" id="tLP-af-YAI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="control" destination="9HM-Tp-3eU" id="4cc-s3-cFz"/>
+                        <outlet property="searchBar" destination="GNC-Jh-qhC" id="85g-dJ-fUZ"/>
+                        <outlet property="tableView" destination="41L-QX-Y12" id="MxE-0d-ZaD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e4E-LB-ozW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I8x-Jc-iMF">
+                    <connections>
+                        <action selector="dismissSearch" destination="nLQ-Zq-4WB" id="GWZ-W8-J0w"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="898" y="-1039"/>
         </scene>
     </scenes>
 </document>
