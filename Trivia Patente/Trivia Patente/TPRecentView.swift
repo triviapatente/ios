@@ -34,6 +34,9 @@ class TPRecentView: UIViewController {
     var tableHeight : CGFloat {
         return CGFloat(items.count) * self.tableView.rowHeight
     }
+    var maxTableHeight : CGFloat {
+        return 3 * self.tableView.rowHeight
+    }
     var viewSize : CGSize {
         return self.view.frame.size
     }
@@ -79,6 +82,9 @@ class TPRecentView: UIViewController {
         if let color = separatorColor {
             self.tableView.separatorColor = color
         }
+        if let height = rowHeight {
+            self.tableView.rowHeight = height
+        }
         headerView.topItem?.title = title
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -96,8 +102,11 @@ class TPRecentView: UIViewController {
         minimize(origin: false)
         self.tableView.tableFooterView?.isHidden = false
         let candidate_y = self.containerSize.height - viewSize.height
+        let maximum_y_value = self.containerSize.height - (self.headerHeight + self.maxTableHeight)
         if items.count < 3 && candidate_y > 0 {
             self.view.frame.origin.y = candidate_y
+        } else if maximum_y_value > 0 {
+            self.view.frame.origin.y = maximum_y_value
         }
         if reload {
             self.tableView.reloadData()
@@ -178,7 +187,6 @@ extension TPRecentView : TPRecentTableViewCellDelegate {
         guard index != nil else {
             return
         }
-        let path = IndexPath(row: index!, section: 0)
         self.items.remove(at: index!)
         
     }
