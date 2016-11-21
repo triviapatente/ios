@@ -89,8 +89,8 @@ class TPRecentView: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mainView.bringSubview(toFront: self.containerView)
-        self.containerView.bringSubview(toFront: self.view)
+        self.mainView.bringSubview(toFront: self.containerView)
+
         //enforce only the first initialization of the view position
         if dataLoaded == false {
             adaptToItems()
@@ -129,6 +129,7 @@ class TPRecentView: UIViewController {
                 self.minimize()
             }
         }) { finish in
+            self.mainView.bringSubview(toFront: self.containerView)
             self.view.addGestureRecognizer(sender)
 
         }
