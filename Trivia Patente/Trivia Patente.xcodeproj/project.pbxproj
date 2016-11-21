@@ -75,6 +75,7 @@
 		8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */; };
 		8B8058D31DE2FC8D00C3F938 /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */; };
 		8B8058D51DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D41DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift */; };
+		8B8058DA1DE30FD800C3F938 /* RandomGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -223,6 +224,7 @@
 		8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTableViewCell.swift; sourceTree = "<group>"; };
 		8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteTableViewCell.xib; sourceTree = "<group>"; };
 		8B8058D41DE3054D00C3F938 /* TPRecentTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGameViewController.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -892,6 +894,7 @@
 		8B8058CD1DE2FC6200C3F938 /* search game */ = {
 			isa = PBXGroup;
 			children = (
+				8B8058D81DE30FC400C3F938 /* random */,
 				8B8058CE1DE2FC7200C3F938 /* menu */,
 			);
 			name = "search game";
@@ -913,6 +916,14 @@
 				8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		8B8058D81DE30FC400C3F938 /* random */ = {
+			isa = PBXGroup;
+			children = (
+				8B8058D91DE30FD800C3F938 /* RandomGameViewController.swift */,
+			);
+			name = random;
 			sourceTree = "<group>";
 		};
 		8B8142CA1DC0C81700E60B06 /* generals */ = {
@@ -1452,6 +1463,7 @@
 				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
+				8B8058DA1DE30FD800C3F938 /* RandomGameViewController.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B5EE1091DD913E700745A54 /* DropdownSettingsTableViewCell.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
