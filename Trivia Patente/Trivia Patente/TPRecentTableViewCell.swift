@@ -10,6 +10,7 @@ import UIKit
 
 class TPRecentTableViewCell: UITableViewCell {
     var item : Base!
+    var delegate : TPRecentTableViewCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

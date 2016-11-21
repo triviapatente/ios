@@ -91,7 +91,7 @@ class TPRecentView: UIViewController {
         }
     }
     
-    func adaptToItems() {
+    func adaptToItems(reload : Bool = true) {
         self.view.frame.size.height = self.headerHeight + self.tableHeight
         minimize(origin: false)
         self.tableView.tableFooterView?.isHidden = false
@@ -99,7 +99,9 @@ class TPRecentView: UIViewController {
         if items.count < 3 && candidate_y > 0 {
             self.view.frame.origin.y = candidate_y
         }
-        self.tableView.reloadData()
+        if reload {
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
@@ -162,7 +164,22 @@ extension TPRecentView : UITableViewDataSource, UITableViewDelegate {
     }
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPRecentTableViewCell
+        cell.delegate = self
         cell.item = items[indexPath.row]
         return cell
+    }
+}
+extension TPRecentView : TPRecentTableViewCellDelegate {
+    
+    func removeCell(for item: Base) {
+        let index = self.items.index { candidate in
+            return item == candidate
+        }
+        guard index != nil else {
+            return
+        }
+        let path = IndexPath(row: index!, section: 0)
+        self.items.remove(at: index!)
+        
     }
 }

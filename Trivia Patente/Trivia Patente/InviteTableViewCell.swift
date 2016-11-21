@@ -15,8 +15,19 @@ class InviteTableViewCell: TPRecentTableViewCell {
     @IBOutlet var acceptButton : UIButton!
     @IBOutlet var refuseButton : UIButton!
     
+    var handler = HTTPGame()
+    
+    
     @IBAction func process(sender : UIButton) {
         let accept = (sender == acceptButton)
+        handler.process_invite(game_id: invite.gameId!, accepted: accept) { response in
+            if response.success == true {
+                //TODO: go to game page
+                self.delegate.removeCell(for: self.item)
+            } else {
+                //TODO error handler
+            }
+        }
         
     }
     
@@ -46,12 +57,6 @@ class InviteTableViewCell: TPRecentTableViewCell {
         button.layer.borderWidth = 1
         button.layer.borderColor = color.cgColor
         button.setTitleColor(color, for: .normal)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
