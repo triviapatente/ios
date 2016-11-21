@@ -13,14 +13,19 @@ open class Invite: Base {
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kInviteAcceptedKey: String = "accepted"
 	internal let kInviteReceiverIdKey: String = "receiver_id"
-	internal let kInviteSenderIdKey: String = "sender_id"
+    internal let kInviteSenderKey: String = "sender"
+    internal let kInviteSenderIdKey: String = "sender_id"
+    internal let kInviteSenderNameKey: String = "sender_name"
+    internal let kInviteSenderSurnameKey: String = "sender_surname"
+    internal let kInviteSenderUsernameKey: String = "sender_username"
+    internal let kInviteSenderImageKey: String = "sender_image"
 	internal let kInviteGameIdKey: String = "game_id"
 
 
     // MARK: Properties
 	open var accepted: Bool = false
 	open var receiverId: Int?
-	open var senderId: Int?
+	open var sender: User?
 	open var gameId: Int?
 
 
@@ -43,7 +48,7 @@ open class Invite: Base {
         super.init(json: json)
 		accepted = json[kInviteAcceptedKey].boolValue
 		receiverId = json[kInviteReceiverIdKey].int
-		senderId = json[kInviteSenderIdKey].int
+		sender = User(username: json[kInviteSenderUsernameKey].string, id: json[kInviteSenderIdKey].int, avatar: json[kInviteSenderImageKey].string)
 		gameId = json[kInviteGameIdKey].int
 
     }
@@ -60,8 +65,8 @@ open class Invite: Base {
 		if receiverId != nil {
 			dictionary.updateValue(receiverId! as AnyObject, forKey: kInviteReceiverIdKey)
 		}
-		if senderId != nil {
-			dictionary.updateValue(senderId! as AnyObject, forKey: kInviteSenderIdKey)
+		if sender != nil {
+			dictionary.updateValue(sender! as AnyObject, forKey: kInviteSenderKey)
 		}
 		if gameId != nil {
 			dictionary.updateValue(gameId! as AnyObject, forKey: kInviteGameIdKey)
@@ -75,7 +80,7 @@ open class Invite: Base {
         super.init(coder: aDecoder)
 		self.accepted = aDecoder.decodeBool(forKey: kInviteAcceptedKey)
 		self.receiverId = aDecoder.decodeObject(forKey: kInviteReceiverIdKey) as? Int
-		self.senderId = aDecoder.decodeObject(forKey: kInviteSenderIdKey) as? Int
+		self.sender = aDecoder.decodeObject(forKey: kInviteSenderKey) as? User
 		self.gameId = aDecoder.decodeObject(forKey: kInviteGameIdKey) as? Int
 
     }
@@ -84,7 +89,7 @@ open class Invite: Base {
         super.encode(with: aCoder)
 		aCoder.encode(accepted, forKey: kInviteAcceptedKey)
 		aCoder.encode(receiverId, forKey: kInviteReceiverIdKey)
-		aCoder.encode(senderId, forKey: kInviteSenderIdKey)
+		aCoder.encode(sender, forKey: kInviteSenderKey)
 		aCoder.encode(gameId, forKey: kInviteGameIdKey)
 
     }
