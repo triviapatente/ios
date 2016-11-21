@@ -67,6 +67,7 @@
 		8B5EE1111DD914F600745A54 /* ProfileSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EE10F1DD914F600745A54 /* ProfileSettingsTableViewCell.xib */; };
 		8B5EE1191DD91E8900745A54 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EE1171DD91E8900745A54 /* SettingsHeaderView.swift */; };
 		8B5EE11A1DD91E8900745A54 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EE1181DD91E8900745A54 /* SettingsHeaderView.xib */; };
+		8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -207,6 +208,7 @@
 		8B5EE10F1DD914F600745A54 /* ProfileSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		8B5EE1171DD91E8900745A54 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		8B5EE1181DD91E8900745A54 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGameMenuViewController.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5133021DBBAC1800143497 /* Game.storyboard */,
+				8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -1452,6 +1455,7 @@
 				8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
+				8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
