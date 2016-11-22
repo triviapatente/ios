@@ -52,7 +52,26 @@ class SearchOpponentViewController: UIViewController {
             return false
         }
     }
-    
+    var footerView : UIView {
+        let viewFrame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
+        let view = UIView(frame: viewFrame)
+        let buttonWidth = CGFloat(200)
+        let buttonHeight = CGFloat(40)
+        let buttonX = (view.frame.size.width - buttonWidth) / 2
+        let buttonY = (view.frame.size.height - buttonHeight) / 2
+        let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
+        let button = UIButton(frame: buttonFrame)
+        button.mediumRounded()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = Colors.green_default
+        button.setTitle("Invita i tuoi amici", for: .normal)
+        button.addTarget(self, action: #selector(goToInvitePage), for: .touchUpInside)
+        view.addSubview(button)
+        return view
+    }
+    func goToInvitePage() {
+        print("GoToInvite!")
+    }
     var mode = RankMode.italian
     
     func getContextualUsers() -> [User]? {
@@ -63,8 +82,6 @@ class SearchOpponentViewController: UIViewController {
         }
         return friendsResponse?.users
     }
-    
-    
     let handler = HTTPGame()
     
     func loadData() {
@@ -139,6 +156,12 @@ extension SearchOpponentViewController : UISearchBarDelegate {
 extension SearchOpponentViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return footerView
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return footerView.frame.size.height
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let list = getContextualUsers() {
