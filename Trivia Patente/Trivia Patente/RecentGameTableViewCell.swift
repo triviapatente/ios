@@ -20,6 +20,9 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
             self.game = item as! Game
         }
     }
+    @IBAction func gotoGame() {
+        buttonView.backgroundColor = buttonView.currentTitleColor
+    }
     var game : Game! {
         didSet {
             changeState(ended: game.ended, my_turn: game.my_turn)

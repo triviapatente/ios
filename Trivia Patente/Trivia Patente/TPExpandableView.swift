@@ -15,8 +15,10 @@ class TPExpandableView: UIViewController {
 
     var items : [Base] = [] {
         didSet {
+            if !dataLoaded {
+                adaptToItems()
+            }
             dataLoaded = true
-            adaptToItems()
         }
     }
     var cellNibName : String?
@@ -26,6 +28,7 @@ class TPExpandableView: UIViewController {
     var containerView : UIView {
         return self.view.superview!
     }
+    var expanded : Bool = false
     var isHidden : Bool = false {
         didSet {
             self.containerView.isHidden = isHidden
@@ -52,9 +55,13 @@ class TPExpandableView: UIViewController {
     var headerHeight : CGFloat {
         return headerView.frame.size.height
     }
+    var footerFrame : CGRect {
+        return CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80)
+    }
+    var previousContainerHeight : CGFloat!
+    
     var footerView : UIView {
-        let frame = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80)
-        let label = UILabel(frame: frame)
+        let label = UILabel(frame: footerFrame)
         label.text = footerText
         label.textAlignment = .center
         label.textColor = UIColor.white
@@ -77,8 +84,8 @@ class TPExpandableView: UIViewController {
             self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         }
         self.tableView.tableFooterView = footerView
-        self.tableView.separatorInset = separatorInset
         self.tableView.separatorStyle = separatorStyle
+        self.tableView.separatorInset = separatorInset
         if let color = separatorColor {
             self.tableView.separatorColor = color
         }
@@ -90,7 +97,9 @@ class TPExpandableView: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainView.bringSubview(toFront: self.containerView)
-
+        if previousContainerHeight == nil {
+            previousContainerHeight = self.containerSize.height
+        }
         //enforce only the first initialization of the view position
         if dataLoaded == false {
             adaptToItems()
@@ -116,12 +125,14 @@ class TPExpandableView: UIViewController {
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
         let up_pan = sender.velocity(in: self.view).y < 0
         
-        let now_offset = self.containerView.frame.origin.y
-        let up_thresold = -self.view.frame.origin.y
-        guard (up_pan && now_offset > up_thresold) || (!up_pan && now_offset <= up_thresold) else {
+        let canGoUp = up_pan && !self.expanded
+        let canGoDown = !up_pan && self.expanded
+        guard canGoUp || canGoDown else {
             return
         }
         self.view.removeGestureRecognizer(sender)
+        let up_thresold = -self.view.frame.origin.y
+
         UIView.animate(withDuration: 0.4, animations: {
             if up_pan == true {
                 self.expand(up_thresold)
@@ -129,6 +140,7 @@ class TPExpandableView: UIViewController {
                 self.minimize()
             }
         }) { finish in
+            self.expanded = up_pan
             self.mainView.bringSubview(toFront: self.containerView)
             self.view.addGestureRecognizer(sender)
         }
@@ -137,19 +149,23 @@ class TPExpandableView: UIViewController {
         self.tableView.isScrollEnabled = true
         self.containerView.frame.origin.y = thresold
         self.view.frame.size.height = self.mainSize.height
+        self.containerView.frame.size.height = self.view.frame.size.height
     }
     func minimize(origin : Bool = true) {
         self.tableView.isScrollEnabled = false
         if origin == true {
-            self.containerView.frame.origin.y = self.mainSize.height - self.containerSize.height
+            self.containerView.frame.origin.y = self.mainSize.height - self.previousContainerHeight
         }
     }
 }
 extension TPExpandableView : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
         guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
-        guard items.count > 0 else { return false }
         let velocity = gestureRecognizer.velocity(in: self.view)
+        //se è un tap verso l'alto (expand) non farlo se ha 0 elementi
+        if velocity.y < 0 {
+            guard items.count > 0 else { return false }
+        }
         return abs(velocity.y) > 40
     }
 }
@@ -194,7 +210,7 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPExpandableTableViewCell
         cell.delegate = self
-        cell.separatorInset = self.separatorInset
+        cell.separatorInset = separatorInset
         cell.item = items[indexPath.row]
         return cell
     }
@@ -209,6 +225,11 @@ extension TPExpandableView : TPExpandableTableViewCellDelegate {
             return
         }
         self.items.remove(at: index!)
+        let path = IndexPath(row: index!, section: 0)
+        self.tableView.deleteRows(at: [path], with: .fade)
+        if !expanded {
+            adaptToItems(reload: false)
+        }
         
     }
 }
