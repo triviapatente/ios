@@ -74,9 +74,18 @@ class TPExpandableView: UIViewController {
     
     var rowHeight : CGFloat?
     var separatorColor : UIColor?
-    var separatorStyle : UITableViewCellSeparatorStyle = .singleLine
+    var needsSeparator : Bool = true
     var separatorInset : UIEdgeInsets = .zero
     
+    var separatorView : UIView {
+        let height = CGFloat(0.5)
+        let width = self.view.frame.size.width - (self.separatorInset.left + self.separatorInset.right)
+        let x = self.separatorInset.left
+        let frame = CGRect(x: x, y: self.tableView.rowHeight - height, width: width, height: height)
+        let view = UIView(frame: frame)
+        view.backgroundColor = separatorColor ?? .white
+        return view
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let name = cellNibName {
@@ -84,11 +93,7 @@ class TPExpandableView: UIViewController {
             self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         }
         self.tableView.tableFooterView = footerView
-        self.tableView.separatorStyle = separatorStyle
-        self.tableView.separatorInset = separatorInset
-        if let color = separatorColor {
-            self.tableView.separatorColor = color
-        }
+        self.tableView.separatorStyle = .none
         if let height = rowHeight {
             self.tableView.rowHeight = height
         }
@@ -210,8 +215,10 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPExpandableTableViewCell
         cell.delegate = self
-        cell.separatorInset = separatorInset
         cell.item = items[indexPath.row]
+        if indexPath.row != self.items.count - 1 {
+            cell.addSubview(separatorView)
+        }
         return cell
     }
 }

@@ -14,11 +14,11 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     @IBOutlet var chartView : LineChartView!
     @IBOutlet var descriptionLabel : UILabel!
     
-    var errorsView : TPRecentView! {
     var errorsView : TPExpandableView! {
         didSet {
             errorsView.cellNibName = "WrongAnswerTableViewCell"
             errorsView.rowHeight = 100
+            errorsView.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         }
     }
     var category : Category!
