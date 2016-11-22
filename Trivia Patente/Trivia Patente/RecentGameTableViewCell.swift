@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecentGameTableViewCell: TPRecentTableViewCell {
+class RecentGameTableViewCell: TPExpandableTableViewCell {
     @IBOutlet var controlLights : UIImageView!
     @IBOutlet var avatarView : UIImageView!
     @IBOutlet var usernameView : UILabel!

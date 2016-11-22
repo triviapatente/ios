@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol TPRecentTableViewCellDelegate {
+protocol TPExpandableTableViewCellDelegate {
     func removeCell(for item : Base)
 }

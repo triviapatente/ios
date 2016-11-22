@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="1141.5999999999999" y="11.244377811094454"/>
         </scene>
-        <!--recentView-->
+        <!--expandableView-->
         <scene sceneID="Gdx-UA-md0">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="recentView" id="PV1-ps-mTo" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="expandableView" id="PV1-ps-mTo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDE-4J-f6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="810" y="455"/>

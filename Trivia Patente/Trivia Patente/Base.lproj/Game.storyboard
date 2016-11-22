@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="-21.600000000000001" y="-692.20389805097454"/>
         </scene>
-        <!--recentView-->
+        <!--expandableView-->
         <scene sceneID="GfW-ZF-xth">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="recentView" id="8iz-3m-51K" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="expandableView" id="8iz-3m-51K" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e32-bc-vp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-22" y="-244"/>

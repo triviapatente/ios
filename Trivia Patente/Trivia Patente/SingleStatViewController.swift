@@ -15,6 +15,7 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
     @IBOutlet var descriptionLabel : UILabel!
     
     var errorsView : TPRecentView! {
+    var errorsView : TPExpandableView! {
         didSet {
             errorsView.cellNibName = "WrongAnswerTableViewCell"
             errorsView.rowHeight = 100
@@ -137,7 +138,7 @@ class SingleStatViewController: UIViewController, IAxisValueFormatter {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "errors_view" {
-            self.errorsView = segue.destination as! TPRecentView
+            self.errorsView = segue.destination as! TPExpandableView
             self.errorsView.title = "Quiz sbagliati"
         }
     }

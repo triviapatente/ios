@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
     
-    var recentGamesView : TPRecentView! {
+    var recentGamesView : TPExpandableView! {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
             recentGamesView.footerText = "Nessun'altra partita recente.\nGioca di più 😉"
@@ -153,7 +153,7 @@ class MainViewController: UIViewController {
                     self.shopButton = destination as! TPMainButton
                     break
                 case "recent_view":
-                    self.recentGamesView = destination as! TPRecentView
+                    self.recentGamesView = destination as! TPExpandableView
                     break
                 default: break
                 

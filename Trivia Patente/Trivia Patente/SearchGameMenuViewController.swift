@@ -14,7 +14,7 @@ class SearchGameMenuViewController: UIViewController {
     @IBOutlet var randomButton : UIButton!
     let handler = HTTPGame()
     
-    var recentInvitesView : TPRecentView! {
+    var recentInvitesView : TPExpandableView! {
         didSet {
             recentInvitesView.title = "Inviti a giocare"
             recentInvitesView.cellNibName = "InviteTableViewCell"
@@ -46,7 +46,7 @@ class SearchGameMenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "recent_view" {
-                self.recentInvitesView = segue.destination as! TPRecentView
+                self.recentInvitesView = segue.destination as! TPExpandableView
             }
         }
     }

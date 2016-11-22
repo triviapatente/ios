@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TPRecentTableViewCell: UITableViewCell {
+class TPExpandableTableViewCell: UITableViewCell {
     var item : Base!
-    var delegate : TPRecentTableViewCellDelegate!
+    var delegate : TPExpandableTableViewCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

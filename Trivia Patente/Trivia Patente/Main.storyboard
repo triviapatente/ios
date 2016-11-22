@@ -347,10 +347,10 @@
             </objects>
             <point key="canvasLocation" x="-19" y="331"/>
         </scene>
-        <!--Recent View-->
+        <!--Expandable View-->
         <scene sceneID="IIF-zq-Juc">
             <objects>
-                <viewController storyboardIdentifier="recentView" id="3Zs-38-1kc" customClass="TPRecentView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="expandableView" id="3Zs-38-1kc" customClass="TPExpandableView" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fLM-nx-AY0"/>
                         <viewControllerLayoutGuide type="bottom" id="zUY-p6-Xra"/>

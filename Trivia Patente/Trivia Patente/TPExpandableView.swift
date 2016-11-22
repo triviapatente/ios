@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPRecentView: UIViewController {
+class TPExpandableView: UIViewController {
     @IBOutlet var headerView : UINavigationBar!
     @IBOutlet var counterLabel : UILabel!
     @IBOutlet var tableView : UITableView!
@@ -62,10 +62,13 @@ class TPRecentView: UIViewController {
         label.numberOfLines = 2
         return label
     }
+    //handler che da fuori permette di stabilire l'altezza di espansione di una cella (dinamico)
+    var cellExpandHandler : ((Int) -> CGFloat)?
+    
     var rowHeight : CGFloat?
     var separatorColor : UIColor?
-    var separatorStyle : UITableViewCellSeparatorStyle?
-    var separatorInset : UIEdgeInsets?
+    var separatorStyle : UITableViewCellSeparatorStyle = .singleLine
+    var separatorInset : UIEdgeInsets = .zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,12 +76,9 @@ class TPRecentView: UIViewController {
             let nib = UINib(nibName: name, bundle: Bundle.main)
             self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         }
-        if let inset = separatorInset {
-            self.tableView.separatorInset = inset
-        }
-        if let style = separatorStyle {
-            self.tableView.separatorStyle = style
-        }
+        self.tableView.tableFooterView = footerView
+        self.tableView.separatorInset = separatorInset
+        self.tableView.separatorStyle = separatorStyle
         if let color = separatorColor {
             self.tableView.separatorColor = color
         }
@@ -131,7 +131,6 @@ class TPRecentView: UIViewController {
         }) { finish in
             self.mainView.bringSubview(toFront: self.containerView)
             self.view.addGestureRecognizer(sender)
-
         }
     }
     func expand(_ thresold : CGFloat) {
@@ -146,7 +145,7 @@ class TPRecentView: UIViewController {
         }
     }
 }
-extension TPRecentView : UIGestureRecognizerDelegate {
+extension TPExpandableView : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ sender: UIGestureRecognizer) -> Bool {
         guard let gestureRecognizer = sender as? UIPanGestureRecognizer else { return true }
         guard items.count > 0 else { return false }
@@ -155,7 +154,7 @@ extension TPRecentView : UIGestureRecognizerDelegate {
     }
 }
 
-extension TPRecentView : UITableViewDataSource, UITableViewDelegate {
+extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     
     @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -172,14 +171,35 @@ extension TPRecentView : UITableViewDataSource, UITableViewDelegate {
         counterLabel.text = items.isEmpty ? "" : "\(items.count)"
         return items.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let selectedPath = tableView.indexPathForSelectedRow {
+            if let handler = cellExpandHandler {
+                if indexPath.row == selectedPath.row {
+                    return handler(indexPath.row)
+                }
+            }
+        }
+        if let height = rowHeight {
+            return height
+        } else {
+            return 80
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let _ = cellExpandHandler {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }
+    }
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPRecentTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPExpandableTableViewCell
         cell.delegate = self
+        cell.separatorInset = self.separatorInset
         cell.item = items[indexPath.row]
         return cell
     }
 }
-extension TPRecentView : TPRecentTableViewCellDelegate {
+extension TPExpandableView : TPExpandableTableViewCellDelegate {
     
     func removeCell(for item: Base) {
         let index = self.items.index { candidate in

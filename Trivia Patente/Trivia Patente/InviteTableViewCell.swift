@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InviteTableViewCell: TPRecentTableViewCell {
+class InviteTableViewCell: TPExpandableTableViewCell {
 
     @IBOutlet var avatarView : UIImageView!
     @IBOutlet var nameView : UILabel!
