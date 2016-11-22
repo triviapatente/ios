@@ -32,16 +32,33 @@ class GameOpponentTableViewCell: UITableViewCell {
             self.avatarView.loadAvatar(user: user)
             self.nameView.text = user.username
             self.detailView.text = "\(user.score!)"
+            self.configureButtonAppearance()
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.avatarView.circleRounded()
         self.playButton.mediumRounded()
-        self.playButton.layer.borderWidth = 1
-        self.playButton.layer.borderColor = Colors.green_default.cgColor
-        self.playButton.setTitleColor(Colors.green_default, for: .normal)
         // Initialization code
+    }
+    var buttonColor : UIColor {
+        if user.last_game_won == false {
+            return Colors.red_default
+        }
+        return Colors.green_default
+    }
+    var buttonTitle : String {
+        if user.last_game_won == false {
+            return "Rivincita"
+        }
+        return "Gioca ora"
+    }
+    
+    func configureButtonAppearance() {
+        self.playButton.layer.borderWidth = 1
+        self.playButton.layer.borderColor = buttonColor.cgColor
+        self.playButton.setTitle(buttonTitle, for: .normal)
+        self.playButton.setTitleColor(buttonColor, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

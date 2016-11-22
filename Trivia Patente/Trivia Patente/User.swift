@@ -18,6 +18,7 @@ open class User: CommonPK {
 	internal let kUserEmailKey: String = "email"
     internal let kUserNameKey: String = "name"
     internal let kPositionKey: String = "position"
+    internal let kLastGameWonKey: String = "last_game_won"
 
 
     // MARK: Properties
@@ -28,6 +29,7 @@ open class User: CommonPK {
     open var email: String?
     open var name: String?
     open var position: Int?
+    open var last_game_won: Bool?
     
     var fullName : String? {
         get {
@@ -68,6 +70,7 @@ open class User: CommonPK {
 		email = json[kUserEmailKey].string
         name = json[kUserNameKey].string
         position = json[kPositionKey].int
+        last_game_won = json[kLastGameWonKey].bool
 
     }
     public init(username : String?, id : Int?, avatar : String?, score : Int? = nil) {
@@ -103,7 +106,10 @@ open class User: CommonPK {
 			dictionary.updateValue(name! as AnyObject, forKey: kUserNameKey)
 		}
         if position != nil {
-            dictionary.updateValue(position! as AnyObject, forKey: kUserNameKey)
+            dictionary.updateValue(position! as AnyObject, forKey: kPositionKey)
+        }
+        if last_game_won != nil {
+            dictionary.updateValue(last_game_won! as AnyObject, forKey: kLastGameWonKey)
         }
 
         return dictionary
@@ -119,6 +125,7 @@ open class User: CommonPK {
         self.email = aDecoder.decodeObject(forKey: kUserEmailKey) as? String
 		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
         self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int
+        self.last_game_won = aDecoder.decodeObject(forKey: kLastGameWonKey) as? Bool
 
     }
 
@@ -129,7 +136,8 @@ open class User: CommonPK {
 		aCoder.encode(image, forKey: kUserImageKey)
 		aCoder.encode(surname, forKey: kUserSurnameKey)
 		aCoder.encode(email, forKey: kUserEmailKey)
-		aCoder.encode(name, forKey: kUserNameKey)
+        aCoder.encode(name, forKey: kUserNameKey)
+        aCoder.encode(last_game_won, forKey: kLastGameWonKey)
 
     }
 
