@@ -12,9 +12,9 @@ class SocketAuth : SocketManager {
     
     func authenticate(token : String, handler : @escaping (TPConnectResponse?) -> Void) {
         let params : [String : AnyObject] = ["token": token as AnyObject]
-        self.emit(path: "auth", values: params, handler: handler)
+        SocketAuth.emit(path: "auth", values: params, handler: handler)
     }
     func logout(handler : @escaping (TPResponse?) -> Void) {
-        self.emit(path: "logout", values: [:], handler: handler)
+        SocketAuth.emit(path: "logout", values: [:], handler: handler)
     }
 }
