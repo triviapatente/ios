@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WrongAnswerTableViewCell: TPRecentTableViewCell {
+class WrongAnswerTableViewCell: TPExpandableTableViewCell {
     @IBOutlet var quizImageView : UIImageView!
     @IBOutlet var imageContainerView : UIView!
 
@@ -29,17 +29,17 @@ class WrongAnswerTableViewCell: TPRecentTableViewCell {
         didSet {
             self.imageContainerView.isHidden = (quiz.imageId == nil)
             if let _ = quiz.imageId {
-                self.quizImageView.loadQuizImage(quiz: quiz)
+                self.quizImageView.load(quiz: quiz)
             }
-            self.questionView.text = quiz.question
+            self.questionView.text = quiz.question! + quiz.question!
             if quiz.answer == true {
                 setEnabled(button: self.trueButton)
                 setDisabled(button: self.falseButton)
-                self.falseAvatar.loadAvatar(user: SessionManager.currentUser)
+                self.falseAvatar.load(user: SessionManager.currentUser)
             } else {
                 setDisabled(button: self.trueButton)
                 setEnabled(button: self.falseButton)
-                self.trueAvatar.loadAvatar(user: SessionManager.currentUser)
+                self.trueAvatar.load(user: SessionManager.currentUser)
             }
             self.trueAvatar.alpha = quiz.answer ? 0 : 1
             self.falseAvatar.alpha = quiz.answer ? 1 : 0

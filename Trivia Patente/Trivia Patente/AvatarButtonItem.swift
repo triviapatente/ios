@@ -11,7 +11,7 @@ import UIKit
 class AvatarButtonItem: UIBarButtonItem {
     var user : User? {
         didSet {
-            imageView.loadAvatar(user: user)
+            imageView.load(user: user)
         }
     }
     var callback : (() -> ())!
@@ -34,7 +34,7 @@ class AvatarButtonItem: UIBarButtonItem {
         self.customView = imageView
         self.user = user
         self.callback = callback
-        imageView.loadAvatar(user: user)
+        imageView.load(user: user)
         imageView.addGestureRecognizer(tapRecognizer)
 
     }

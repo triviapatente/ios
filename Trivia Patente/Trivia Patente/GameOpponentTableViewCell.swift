@@ -29,7 +29,7 @@ class GameOpponentTableViewCell: UITableViewCell {
     
     var user : User! {
         didSet {
-            self.avatarView.loadAvatar(user: user)
+            self.avatarView.load(user: user)
             self.nameView.text = user.username
             self.detailView.text = "\(user.score!)"
             self.configureButtonAppearance()

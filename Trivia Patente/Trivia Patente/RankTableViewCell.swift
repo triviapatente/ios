@@ -41,7 +41,7 @@ class RankTableViewCell: UITableViewCell {
                 self.nameView.text = user.username
             }
             self.scoreView.text = "\(user.score!)"
-            self.avatarView.loadAvatar(user: user)
+            self.avatarView.load(user: user)
         }
     }
     var infoBackgroundColor : UIColor {

@@ -23,7 +23,7 @@ class FirstAccessPageViewController: UIPageViewController {
         return controllers[2]
     }
     var registrationController : UIViewController {
-        return controllers[1]
+        return controllers[0]
     }
     
     private func instantiateController(_ name: String) -> UIViewController {

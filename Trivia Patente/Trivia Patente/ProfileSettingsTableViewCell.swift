@@ -15,7 +15,7 @@ class ProfileSettingsTableViewCell: SettingsTableViewCell {
     override func initValues() {
         super.initValues()
         if let user = SessionManager.currentUser {
-            avatarView.loadAvatar(user: user)
+            avatarView.load(user: user)
             if let fullname = user.fullName {
                 nameView.text = fullname
             } else {
