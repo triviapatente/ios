@@ -36,6 +36,12 @@ class TPNavigationController: UINavigationController {
         //TODO: edit with correct informations
         lifesItem.initCounter(lifes: 0)
     }
+    func setUser(candidate : User?) {
+        if let user = candidate {
+            self.title = user.username
+            self.avatarItem.user = candidate
+        }
+    }
     func goTo(identifier : String) {
         self.performSegue(withIdentifier: identifier, sender: self)
     }

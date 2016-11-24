@@ -73,6 +73,7 @@ class MainViewController: UIViewController {
                 SessionManager.drop()
                 UIViewController.goToFirstAccess(from: self)
             } else {
+                self.performSegue(withIdentifier: "test_segue", sender: self)
                 self.setHints(candidateResponse: response)
                 self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
                     if response.success == true {

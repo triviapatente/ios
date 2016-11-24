@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -88,6 +88,7 @@
                         <segue destination="wOj-Ca-KPT" kind="show" identifier="play_segue" id="NtC-U5-vru"/>
                         <segue destination="uKz-I7-BOu" kind="show" identifier="rank_segue" id="WFr-mm-Iwm"/>
                         <segue destination="OSJ-hT-ijS" kind="show" identifier="stats_segue" id="Qv8-G6-Mea"/>
+                        <segue destination="Ygw-Xp-Pcv" kind="show" identifier="test_segue" id="T6L-da-TBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,6 +118,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGf-WV-p3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1511" y="-187"/>
+        </scene>
+        <!--ChooseCategory-->
+        <scene sceneID="Iks-1L-Hs8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="ChooseCategory" id="Ygw-Xp-Pcv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qvu-0M-4Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="-50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qd4-T5-GQg">
@@ -211,16 +220,16 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-3K-3Jz">
-                                <rect key="frame" x="36" y="283" width="303" height="101"/>
+                                <rect key="frame" x="36" y="283.5" width="303" height="100.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vuoi veramente disconnettere il tuo account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-hA-HHQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="49.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-jL-ZTW">
-                                        <rect key="frame" x="0.0" y="61" width="303" height="40"/>
+                                        <rect key="frame" x="0.0" y="60.5" width="303" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43h-Gj-FlC">
                                                 <rect key="frame" x="20" y="5" width="80" height="30"/>
@@ -370,11 +379,11 @@
                                     <navigationItem title="Title" id="ZDG-zM-K26"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
                                 <rect key="frame" x="0.0" y="44" width="329" height="175"/>
                                 <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="3Zs-38-1kc" id="a2b-Ng-uyo"/>

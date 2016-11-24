@@ -16,7 +16,7 @@ class ProposedCategoryTableViewCell: UITableViewCell {
     var color : UIColor! {
         didSet {
             self.imageContainerView.backgroundColor = color
-            self.imageContainerView.layer.borderColor = color.darker(offset: 10).cgColor
+            self.imageContainerView.layer.borderColor = color.darker(offset: 0.2).cgColor
         }
     }
     var category : Category! {

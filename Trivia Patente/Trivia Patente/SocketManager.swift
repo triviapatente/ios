@@ -58,6 +58,6 @@ class SocketManager {
         emit(path: "join_room", values: ["id": id as AnyObject, "type": type as AnyObject], handler: handler)
     }
     class func leave(id : Int, type : String, handler : @escaping (TPResponse?) -> Void) {
-        emit(path: "join_room", values: ["id": id as AnyObject, "type": type as AnyObject], handler: handler)
+        emit(path: "leave_room", values: ["id": id as AnyObject, "type": type as AnyObject], handler: handler)
     }
 }

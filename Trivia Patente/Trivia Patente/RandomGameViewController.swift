@@ -12,15 +12,16 @@ import MBProgressHUD
 class RandomGameViewController: UIViewController {
 
     let handler = HTTPGame()
+    var response : TPNewGameResponse!
     override func viewDidLoad() {
         super.viewDidLoad()
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.randomNewGame { response in
             sleep(3)
             loadingView.hide(animated: true)
-            print(response.game, response.opponent)
+            self.response = response
             if response.success == true {
-                //TODO: go to game page
+                //TODO: invite    
             } else {
                 //TODO: add error handler
             }
@@ -34,15 +35,5 @@ class RandomGameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

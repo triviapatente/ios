@@ -70,6 +70,7 @@
 		8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DBFB1DE6ECB80006EB90 /* TPGameHeader.swift */; };
 		8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DBFE1DE6EF9D0006EB90 /* SocketGame.swift */; };
 		8B74DC021DE6EFBB0006EB90 /* TPInitRoundResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DC011DE6EFBB0006EB90 /* TPInitRoundResponse.swift */; };
+		8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74DC031DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift */; };
 		8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */; };
 		8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */; };
 		8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */; };
@@ -230,6 +231,7 @@
 		8B74DBFB1DE6ECB80006EB90 /* TPGameHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameHeader.swift; sourceTree = "<group>"; };
 		8B74DBFE1DE6EF9D0006EB90 /* SocketGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketGame.swift; sourceTree = "<group>"; };
 		8B74DC011DE6EFBB0006EB90 /* TPInitRoundResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInitRoundResponse.swift; sourceTree = "<group>"; };
+		8B74DC031DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRoundCategoryListResponse.swift; sourceTree = "<group>"; };
 		8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGameMenuViewController.swift; sourceTree = "<group>"; };
 		8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteResponse.swift; sourceTree = "<group>"; };
 		8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteListResponse.swift; sourceTree = "<group>"; };
@@ -615,9 +617,9 @@
 		8B5132E21DBB5C7500143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B8058CD1DE2FC6200C3F938 /* search game */,
 				8BE6DE301DE6D95B00DDD179 /* round */,
 				8B5133021DBBAC1800143497 /* Game.storyboard */,
-				8B8058CD1DE2FC6200C3F938 /* search game */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -929,6 +931,7 @@
 			isa = PBXGroup;
 			children = (
 				8B74DC011DE6EFBB0006EB90 /* TPInitRoundResponse.swift */,
+				8B74DC031DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1627,6 +1630,7 @@
 				8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
 				8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */,
+				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
 				8B74DC021DE6EFBB0006EB90 /* TPInitRoundResponse.swift in Sources */,

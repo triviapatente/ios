@@ -12,4 +12,14 @@ class SocketGame: SocketManager {
     func init_round(game_id : Int, number : Int, handler : @escaping (TPInitRoundResponse?) -> Void) {
         SocketGame.emit(path: "init_round", values: ["game": game_id as AnyObject, "number": number as AnyObject], handler: handler)
     }
+    func get_categories(round : Round, handler : @escaping (TPRoundCategoryListResponse?) -> Void) {
+        SocketGame.emit(path: "get_categories", values: ["round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject], handler: handler)
+    }
+    func join(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
+        SocketGame.join(id: game_id, type: "game", handler: handler)
+    }
+    func leave(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
+        SocketGame.leave(id: game_id, type: "game", handler: handler)
+    }
+    
 }
