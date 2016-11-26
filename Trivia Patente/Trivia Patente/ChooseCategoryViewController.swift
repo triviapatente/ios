@@ -23,10 +23,19 @@ class ChooseCategoryViewController: UIViewController {
         }
     }
     let CELL_MIN_HEIGHT = CGFloat(100)
+    var indexPaths : [IndexPath] {
+        var output : [IndexPath] = []
+        for i in 0..<categories.count {
+            output.append(IndexPath(row: i, section: 0))
+        }
+        return output
+    }
     var categories : [Category] = [] {
         didSet {
             self.tableView.rowHeight = max(self.tableView.frame.height / 5, CELL_MIN_HEIGHT)
-            self.tableView.reloadData()
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: indexPaths, with: .left)
+            self.tableView.endUpdates()
         }
     }
     var handler = SocketGame()

@@ -280,7 +280,7 @@
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oIQ-SY-Upb">
                                         <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="oIQ-SY-Upb" secondAttribute="height" multiplier="21:21" id="GlJ-bS-LKA"/>
+                                            <constraint firstAttribute="width" secondItem="oIQ-SY-Upb" secondAttribute="height" multiplier="23:23" id="GlJ-bS-LKA"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scegli la categoria!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOB-p6-0mK">
