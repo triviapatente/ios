@@ -166,6 +166,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="tableView" destination="WKd-el-k6b" id="RMA-Z4-Hnw"/>
+                        <segue destination="uXd-5a-fhz" kind="show" identifier="play_round" id="mvX-Sj-SK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrl-4X-Pin" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,7 +315,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOo-o0-ypU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2536.8000000000002" y="-1040.7796101949027"/>
+            <point key="canvasLocation" x="2361" y="-492"/>
+        </scene>
+        <!--Play Round View Controller-->
+        <scene sceneID="y6l-TG-Ieo">
+            <objects>
+                <viewController id="uXd-5a-fhz" customClass="PlayRoundViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zWQ-7A-z9F"/>
+                        <viewControllerLayoutGuide type="bottom" id="qpr-b7-54K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Lf-dZ-AXE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FaV-UR-tow" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2593" y="-1039"/>
         </scene>
     </scenes>
 </document>

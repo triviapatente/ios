@@ -109,6 +109,12 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = self.categories[indexPath.row]
-        //TODO: choose category
+        handler.choose_category(cat: category, round: self.round) { (response : TPResponse?) in
+            if response?.success == true {
+                self.performSegue(withIdentifier: "play_round", sender: self)
+            } else {
+                //TODO: error handler
+            }
+        }
     }
 }

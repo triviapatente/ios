@@ -11,6 +11,7 @@
 		8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D88FA1DDC5D27001B4C3A /* ChangePasswordViewController.swift */; };
 		8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */; };
 		8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */; };
+		8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
 		8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */; };
@@ -171,6 +172,7 @@
 		8B0D88FA1DDC5D27001B4C3A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTokenResponse.swift; sourceTree = "<group>"; };
 		8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankSearchResponse.swift; sourceTree = "<group>"; };
+		8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRoundViewController.swift; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
 		8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +382,14 @@
 			children = (
 			);
 			name = credits;
+			sourceTree = "<group>";
+		};
+		8B19E0271DE9814B00304FF3 /* play_round */ = {
+			isa = PBXGroup;
+			children = (
+				8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */,
+			);
+			name = play_round;
 			sourceTree = "<group>";
 		};
 		8B28D26A1DCDE9FE00C65122 /* avatar */ = {
@@ -1149,6 +1159,7 @@
 		8BE6DE301DE6D95B00DDD179 /* round */ = {
 			isa = PBXGroup;
 			children = (
+				8B19E0271DE9814B00304FF3 /* play_round */,
 				8BE6DE331DE6DCF500DDD179 /* choose category */,
 			);
 			name = round;
@@ -1604,6 +1615,7 @@
 				8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
+				8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */,
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,
