@@ -104,7 +104,6 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "category_cell") as! ProposedCategoryTableViewCell
         cell.category = self.categories[indexPath.row]
-        cell.color = .red
         if indexPath.row == self.categories.count - 1 {
             cell.separatorInset = .zero
         }

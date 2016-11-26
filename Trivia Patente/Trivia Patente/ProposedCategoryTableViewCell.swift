@@ -23,12 +23,12 @@ class ProposedCategoryTableViewCell: UITableViewCell {
         didSet {
             self.categoryImageView.load(category: category)
             self.nameLabel.text = category.hint
+            self.color = category.nativeColor
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.categoryImageView.circleRounded()
         self.imageContainerView.circleRounded()
         self.imageContainerView.layer.borderWidth = 3
         // Initialization code

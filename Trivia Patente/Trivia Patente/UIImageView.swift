@@ -39,7 +39,7 @@ extension UIImageView {
         self.load(path: url, placeholder: "default_avatar")
     }
     func load(category: Category?) {
-        let url = getUrl(path: category?.image)
+        let url = getUrl(path: category?.imagePath)
         
         self.load(path: url, placeholder: "")
     }

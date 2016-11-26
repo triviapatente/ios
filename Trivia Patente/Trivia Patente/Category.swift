@@ -15,16 +15,27 @@ open class Category: CommonPK {
     internal let kCategoryHintKey: String = "hint"
     internal let kCategoryTotalAnswersKey: String = "total_answers"
     internal let kCategoryCorrectAnswersKey: String = "correct_answers"
-    internal let kCategoryImageKey: String = "image"
+
+    internal let kCategoryColorKey: String = "color"
 
 
     // MARK: Properties
     open var name: String!
-    open var image: String!
+
+    open var color: String!
     open var hint: String!
     open var correct_answers: Int!
     open var total_answers: Int!
     
+    var imagePath : String? {
+        if let id = self.id {
+            return HTTPManager.getBaseURL() + "/category/image/\(id)"
+        }
+        return nil
+    }
+    var nativeColor : UIColor {
+        return UIColor(hex: color)
+    }
     var progress : Int {
         get {
             guard total_answers != 0 else { return 0 }
@@ -68,7 +79,7 @@ open class Category: CommonPK {
         hint = json[kCategoryHintKey].string
         total_answers = json[kCategoryTotalAnswersKey].intValue
         correct_answers = json[kCategoryCorrectAnswersKey].intValue
-        image = json[kCategoryImageKey].string
+        color = json[kCategoryColorKey].string
     }
 
 
@@ -91,8 +102,8 @@ open class Category: CommonPK {
         if correct_answers != nil {
             dictionary.updateValue(progress as AnyObject, forKey: kCategoryCorrectAnswersKey)
         }
-        if image != nil {
-            dictionary.updateValue(image as AnyObject, forKey: kCategoryImageKey)
+        if color != nil {
+            dictionary.updateValue(color as AnyObject, forKey: kCategoryColorKey)
         }
         return dictionary
     }
@@ -104,8 +115,7 @@ open class Category: CommonPK {
         self.hint = aDecoder.decodeObject(forKey: kCategoryHintKey) as? String
         self.total_answers = aDecoder.decodeObject(forKey: kCategoryTotalAnswersKey) as! Int
         self.correct_answers = aDecoder.decodeObject(forKey: kCategoryCorrectAnswersKey) as! Int
-        self.image = aDecoder.decodeObject(forKey: kCategoryImageKey) as? String
-
+        self.color = aDecoder.decodeObject(forKey: kCategoryColorKey) as? String
     }
 
     open override func encode(with aCoder: NSCoder) {
@@ -114,7 +124,7 @@ open class Category: CommonPK {
         aCoder.encode(hint, forKey: kCategoryHintKey)
         aCoder.encode(total_answers, forKey: kCategoryTotalAnswersKey)
         aCoder.encode(correct_answers, forKey: kCategoryCorrectAnswersKey)
-        aCoder.encode(image, forKey: kCategoryImageKey)
+        aCoder.encode(color, forKey: kCategoryColorKey)
 
     }
 
