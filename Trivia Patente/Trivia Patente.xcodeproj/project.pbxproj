@@ -836,14 +836,14 @@
 			name = "single category";
 			sourceTree = "<group>";
 		};
-		8B5EE0F61DD76EEE00745A54 /* recent_view */ = {
+		8B5EE0F61DD76EEE00745A54 /* expandable_view */ = {
 			isa = PBXGroup;
 			children = (
 				8BBBE84F1DC76BA400B433F2 /* TPExpandableView.swift */,
 				8B5EE0F41DD767C500745A54 /* TPExpandableTableViewCell.swift */,
 				8B8058D41DE3054D00C3F938 /* TPExpandableTableViewCellDelegate.swift */,
 			);
-			name = recent_view;
+			name = expandable_view;
 			sourceTree = "<group>";
 		};
 		8B5EE0F71DD76F0000745A54 /* cell */ = {
@@ -1015,7 +1015,7 @@
 			children = (
 				8B5133211DBBEB4600143497 /* TPButton.swift */,
 				8B8662631DBD5D38004D266E /* TPTextField.swift */,
-				8B5EE0F61DD76EEE00745A54 /* recent_view */,
+				8B5EE0F61DD76EEE00745A54 /* expandable_view */,
 				8BE273421DC0D0390094F0F6 /* TPMainButton.swift */,
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 				8B74DBFB1DE6ECB80006EB90 /* TPGameHeader.swift */,

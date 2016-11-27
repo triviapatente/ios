@@ -18,6 +18,7 @@ class TPExpandableView: UIViewController {
             if !dataLoaded {
                 adaptToItems()
             }
+            self.tableView.tableFooterView = footerView
             dataLoaded = true
         }
     }
@@ -55,17 +56,23 @@ class TPExpandableView: UIViewController {
     var headerHeight : CGFloat {
         return headerView.frame.size.height
     }
+    //number of items dependent: settare a items già settati
     var footerFrame : CGRect {
-        return CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 80)
+        let height = self.mainSize.height - self.tableHeight - self.headerHeight
+        if height <= 0 {
+            return .zero
+        }
+        let rect = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: height)
+        return rect
     }
     var previousContainerHeight : CGFloat!
     
+    //number of items dependent: settare a items già settati
     var footerView : UIView {
         let label = UILabel(frame: footerFrame)
         label.text = footerText
         label.textAlignment = .center
         label.textColor = UIColor.white
-        label.isHidden = true
         label.numberOfLines = 2
         return label
     }
@@ -92,7 +99,6 @@ class TPExpandableView: UIViewController {
             let nib = UINib(nibName: name, bundle: Bundle.main)
             self.tableView.register(nib, forCellReuseIdentifier: "recent_cell")
         }
-        self.tableView.tableFooterView = footerView
         self.tableView.separatorStyle = .none
         if let height = rowHeight {
             self.tableView.rowHeight = height
@@ -114,7 +120,6 @@ class TPExpandableView: UIViewController {
     func adaptToItems(reload : Bool = true) {
         self.view.frame.size.height = self.headerHeight + self.tableHeight
         minimize(origin: false)
-        self.tableView.tableFooterView?.isHidden = false
         let candidate_y = self.containerSize.height - viewSize.height
         let maximum_y_value = self.containerSize.height - (self.headerHeight + self.maxTableHeight)
         if items.count < 3 && candidate_y > 0 {
