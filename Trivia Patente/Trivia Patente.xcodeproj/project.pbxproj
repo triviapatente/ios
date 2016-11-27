@@ -99,6 +99,7 @@
 		8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */; };
 		8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */; };
 		8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8571DC798A500B433F2 /* UIImageView.swift */; };
+		8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */; };
 		8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* Main.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
 		8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C801DB6A6BA00EC637C /* Category.swift */; };
@@ -261,6 +262,7 @@
 		8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGameTableViewCell.swift; sourceTree = "<group>"; };
 		8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGameTableViewCell.xib; sourceTree = "<group>"; };
 		8BBBE8571DC798A500B433F2 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConnectInviteViewController.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		8BCF8C801DB6A6BA00EC637C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				8B28D2801DD0770800C65122 /* RankViewController.swift */,
+				8BBDFE0A1DEB87C700C6A53B /* facebook connect invite */,
 				8BDCEA291DD124970099C3E2 /* cell */,
 				8B42E82D1DC63D8100C36DDA /* Rank.storyboard */,
 			);
@@ -1082,6 +1085,14 @@
 			name = recent_games;
 			sourceTree = "<group>";
 		};
+		8BBDFE0A1DEB87C700C6A53B /* facebook connect invite */ = {
+			isa = PBXGroup;
+			children = (
+				8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */,
+			);
+			name = "facebook connect invite";
+			sourceTree = "<group>";
+		};
 		8BCF8C341DB6A44400EC637C /* pagecontroller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1556,6 +1567,7 @@
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
+				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
 				8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
