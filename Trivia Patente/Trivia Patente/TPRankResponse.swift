@@ -32,6 +32,8 @@ class TPRankResponse: TPResponse {
         if !users.contains(SessionManager.currentUser!) {
             limit -= 1
         }
-        self.users.removeSubrange(limit..<self.users.count)
+        if limit < self.users.count {
+            self.users.removeSubrange(limit..<self.users.count)
+        }
     }
 }

@@ -51,12 +51,14 @@ class RankViewController: UIViewController {
             checkAndAddUser(response: &italianResponse!)
             italianRankMap = self.computeMap(response: italianResponse)
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var italianSearchResponse : TPRankSearchResponse? {
         didSet {
             italianSearchResponse?.limitToFit(in: self.tableView)
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var friendsResponse : TPRankResponse?{
@@ -65,12 +67,14 @@ class RankViewController: UIViewController {
             checkAndAddUser(response: &friendsResponse!)
             friendsRankMap = self.computeMap(response: friendsResponse)
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var friendsSearchResponse : TPRankSearchResponse? {
         didSet {
             friendsSearchResponse?.limitToFit(in: self.tableView)
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     func checkAndAddUser(response : inout TPRankResponse) {
@@ -136,6 +140,45 @@ class RankViewController: UIViewController {
             handler.friends_rank(handler: callback)
         }
     }
+    var tableHeight : CGFloat {
+        let count = self.tableView(self.tableView, numberOfRowsInSection: 0)
+        return CGFloat(count) * self.tableView.rowHeight
+    }
+    var availableFooterHeight : CGFloat {
+        let margin = self.tableView.frame.origin.y - self.control.frame.size.height
+        return self.view.frame.size.height - self.tableHeight - self.control.frame.size.height - self.searchBar.frame.size.height - margin
+    }
+    let FOOTER_MIN_HEIGHT = CGFloat(70)
+    var footerFrame : CGRect {
+        let height = availableFooterHeight
+        if height <= FOOTER_MIN_HEIGHT {
+            return .zero
+        }
+        return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
+    }
+    var footerView : UIView {
+        let frame = footerFrame
+        if frame == .zero {
+            return UIView()
+        }
+        let footer = UIView(frame: frame)
+        let buttonWidth = CGFloat(200)
+        let buttonHeight = CGFloat(40)
+        let buttonX = (footer.frame.size.width - buttonWidth) / 2
+        let buttonY = (footer.frame.size.height - buttonHeight) / 2
+        let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
+        let button = UIButton(frame: buttonFrame)
+        button.mediumRounded()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = Colors.green_default
+        button.setTitle("Invita i tuoi amici", for: .normal)
+        button.addTarget(self, action: #selector(goToInvitePage), for: .touchUpInside)
+        footer.addSubview(button)
+        return footer
+    }
+    func goToInvitePage() {
+        print("go to invite page")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,6 +189,7 @@ class RankViewController: UIViewController {
         self.changeRankType(sender: control)
 
     }
+    
 
     func search(query: String) {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)

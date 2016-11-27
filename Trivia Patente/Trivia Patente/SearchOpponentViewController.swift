@@ -27,21 +27,25 @@ class SearchOpponentViewController: UIViewController {
     var italianResponse : TPSuggestedUsersResponse? {
         didSet {
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var italianSearchResponse : TPSearchOpponentResponse? {
         didSet {
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var friendsResponse : TPSuggestedUsersResponse?{
         didSet {
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var friendsSearchResponse : TPSearchOpponentResponse? {
         didSet {
             self.tableView.reloadData()
+            self.tableView.tableFooterView = footerView
         }
     }
     var searching : Bool {
@@ -52,13 +56,32 @@ class SearchOpponentViewController: UIViewController {
             return false
         }
     }
+    var tableHeight : CGFloat {
+        let count = self.tableView(self.tableView, numberOfRowsInSection: 0)
+        return CGFloat(count) * self.tableView.rowHeight
+    }
+    var availableFooterHeight : CGFloat {
+        let margin = self.tableView.frame.origin.y - self.control.frame.size.height
+        return self.view.frame.size.height - self.tableHeight - self.control.frame.size.height - self.searchBar.frame.size.height - margin
+    }
+    let FOOTER_MIN_HEIGHT = CGFloat(70)
+    var footerFrame : CGRect {
+        let height = availableFooterHeight
+        if height <= FOOTER_MIN_HEIGHT {
+            return .zero
+        }
+        return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
+    }
     var footerView : UIView {
-        let viewFrame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
-        let view = UIView(frame: viewFrame)
+        let frame = footerFrame
+        if frame == .zero {
+            return UIView()
+        }
+        let footer = UIView(frame: frame)
         let buttonWidth = CGFloat(200)
         let buttonHeight = CGFloat(40)
-        let buttonX = (view.frame.size.width - buttonWidth) / 2
-        let buttonY = (view.frame.size.height - buttonHeight) / 2
+        let buttonX = (footer.frame.size.width - buttonWidth) / 2
+        let buttonY = (footer.frame.size.height - buttonHeight) / 2
         let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
         let button = UIButton(frame: buttonFrame)
         button.mediumRounded()
@@ -66,8 +89,8 @@ class SearchOpponentViewController: UIViewController {
         button.backgroundColor = Colors.green_default
         button.setTitle("Invita i tuoi amici", for: .normal)
         button.addTarget(self, action: #selector(goToInvitePage), for: .touchUpInside)
-        view.addSubview(button)
-        return view
+        footer.addSubview(button)
+        return footer
     }
     func goToInvitePage() {
         print("GoToInvite!")
@@ -156,12 +179,6 @@ extension SearchOpponentViewController : UISearchBarDelegate {
 extension SearchOpponentViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return footerView
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return footerView.frame.size.height
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let list = getContextualUsers() {
