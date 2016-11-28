@@ -36,8 +36,8 @@ class PlayRoundViewController: UIViewController {
             let button = questionButtons[i]
             if sender == button {
                 button.shadowSelect()
-                self.quizView.quiz = self.questions[i]
                 self.quizView.answer = self.answers[i]
+                self.quizView.quiz = self.questions[i]
             } else {
                 button.shadowDeselect()
             }
