@@ -89,6 +89,13 @@ class ChooseCategoryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "header_view" {
             gameHeader = segue.destination as! TPGameHeader
+        } else if segue.identifier == "play_round" {
+            if let destination = segue.destination as? PlayRoundViewController {
+                destination.category = self.categories[self.tableView.indexPathForSelectedRow!.row]
+                destination.round = round
+                destination.opponent = opponent
+            }
+
         }
     }
 
@@ -115,6 +122,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {
+                self.performSegue(withIdentifier: "play_round", sender: self)
                 //TODO: error handler
             }
         }

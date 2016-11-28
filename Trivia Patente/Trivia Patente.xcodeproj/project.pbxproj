@@ -38,7 +38,6 @@
 		8B51330D1DBBAC4400143497 /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B51330B1DBBAC4400143497 /* Purchases.storyboard */; };
 		8B5133121DBBADEB00143497 /* Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133111DBBADEB00143497 /* Datasource.swift */; };
 		8B5133151DBBB55300143497 /* TPInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133141DBBB55300143497 /* TPInputView.swift */; };
-		8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B51331A1DBBDFAB00143497 /* Assets.xcassets */; };
 		8B51331E1DBBE80100143497 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51331D1DBBE80100143497 /* UIView.swift */; };
 		8B5133221DBBEB4600143497 /* TPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133211DBBEB4600143497 /* TPButton.swift */; };
 		8B5133241DBC027000143497 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5133231DBC027000143497 /* SessionManager.swift */; };
@@ -88,6 +87,10 @@
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
+		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
+		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
+		8BA6BEB71DECC4FA00D9EB86 /* TPQuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */; };
+		8BA6BEB91DECCFBF00D9EB86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */; };
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
@@ -115,6 +118,7 @@
 		8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA41DB6A88700EC637C /* CommonPK.swift */; };
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
+		8BD3FC911DEC91CF00E57424 /* TPQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD3FC901DEC91CF00E57424 /* TPQuizView.swift */; };
 		8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */; };
 		8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA251DD121180099C3E2 /* HTTPRank.swift */; };
 		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
@@ -200,7 +204,6 @@
 		8B51330C1DBBAC4400143497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchases.storyboard; sourceTree = "<group>"; };
 		8B5133111DBBADEB00143497 /* Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datasource.swift; sourceTree = "<group>"; };
 		8B5133141DBBB55300143497 /* TPInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInputView.swift; sourceTree = "<group>"; };
-		8B51331B1DBBDFAB00143497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		8B51331D1DBBE80100143497 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8B5133211DBBEB4600143497 /* TPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPButton.swift; sourceTree = "<group>"; };
 		8B5133231DBC027000143497 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -251,6 +254,10 @@
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
+		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
+		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
+		8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizViewDelegate.swift; sourceTree = "<group>"; };
+		8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
@@ -278,6 +285,7 @@
 		8BCF8CA41DB6A88700EC637C /* CommonPK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonPK.swift; sourceTree = "<group>"; };
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		8BD3FC901DEC91CF00E57424 /* TPQuizView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizView.swift; sourceTree = "<group>"; };
 		8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankResponse.swift; sourceTree = "<group>"; };
 		8BDCEA251DD121180099C3E2 /* HTTPRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRank.swift; sourceTree = "<group>"; };
 		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
@@ -945,6 +953,8 @@
 			children = (
 				8B74DC011DE6EFBB0006EB90 /* TPInitRoundResponse.swift */,
 				8B74DC031DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift */,
+				8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */,
+				8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1022,8 +1032,18 @@
 				8BE273421DC0D0390094F0F6 /* TPMainButton.swift */,
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 				8B74DBFB1DE6ECB80006EB90 /* TPGameHeader.swift */,
+				8BA6BEB51DECC20E00D9EB86 /* quiz view */,
 			);
 			name = subclasses;
+			sourceTree = "<group>";
+		};
+		8BA6BEB51DECC20E00D9EB86 /* quiz view */ = {
+			isa = PBXGroup;
+			children = (
+				8BD3FC901DEC91CF00E57424 /* TPQuizView.swift */,
+				8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */,
+			);
+			name = "quiz view";
 			sourceTree = "<group>";
 		};
 		8BBAB4921DCA1CF3004AB6B0 /* navigation */ = {
@@ -1231,7 +1251,7 @@
 				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
 				A9FD52851DA16E96005DFE5D /* Info.plist */,
-				8B51331A1DBBDFAB00143497 /* Assets.xcassets */,
+				8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */,
 			);
 			path = "Trivia Patente";
 			sourceTree = "<group>";
@@ -1378,6 +1398,7 @@
 				8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */,
 				8B8058D31DE2FC8D00C3F938 /* InviteTableViewCell.xib in Resources */,
 				8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */,
+				8BA6BEB91DECCFBF00D9EB86 /* Assets.xcassets in Resources */,
 				8B5133071DBBAC2100143497 /* Chat.storyboard in Resources */,
 				8B51330D1DBBAC4400143497 /* Purchases.storyboard in Resources */,
 				8BE6DE381DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib in Resources */,
@@ -1388,7 +1409,6 @@
 				8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */,
 				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
-				8B51331C1DBBDFAB00143497 /* Assets.xcassets in Resources */,
 				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
 				8B5EE0FB1DD76F1100745A54 /* WrongAnswerTableViewCell.xib in Resources */,
 				8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */,
@@ -1559,6 +1579,7 @@
 			files = (
 				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
+				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
@@ -1592,6 +1613,7 @@
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
 				8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */,
 				8B5132F81DBB72B600143497 /* TPAuthResponse.swift in Sources */,
+				8BD3FC911DEC91CF00E57424 /* TPQuizView.swift in Sources */,
 				8B5EE0F51DD767C500745A54 /* TPExpandableTableViewCell.swift in Sources */,
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
@@ -1623,6 +1645,7 @@
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BE20C641DD9E43D0048DA0A /* TPPreferenceChangeResponse.swift in Sources */,
+				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
@@ -1654,6 +1677,7 @@
 				8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
 				8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */,
+				8BA6BEB71DECC4FA00D9EB86 /* TPQuizViewDelegate.swift in Sources */,
 				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
@@ -1731,14 +1755,6 @@
 				8B51330C1DBBAC4400143497 /* Base */,
 			);
 			name = Purchases.storyboard;
-			sourceTree = "<group>";
-		};
-		8B51331A1DBBDFAB00143497 /* Assets.xcassets */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B51331B1DBBDFAB00143497 /* Base */,
-			);
-			name = Assets.xcassets;
 			sourceTree = "<group>";
 		};
 		8BDCEA2C1DD124AC0099C3E2 /* RankTableViewCell.xib */ = {

@@ -26,6 +26,12 @@ extension UIView {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = radius
     }
+    func darkerBorder(of value : CGFloat, width : CGFloat) {
+        self.layer.borderWidth = width
+        if let color = self.backgroundColor {
+            self.layer.borderColor = color.darker(offset: value).cgColor
+        }
+    }
     func createCorners(radius : CGFloat, corners : UIRectCorner) {
         self.layer.masksToBounds = true
         if corners != .allCorners {

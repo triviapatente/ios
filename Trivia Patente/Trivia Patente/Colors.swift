@@ -27,6 +27,8 @@ class Colors {
     static let stats_medium = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
     static let stats_bad = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
     
+    static let error_default = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+
     static let accept_color = UIColor(red: 25/255, green: 221/255, blue: 109/255, alpha: 1)
     static let refuse_color = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
 }

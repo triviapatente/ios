@@ -21,8 +21,14 @@ class SocketGame: SocketManager {
     func leave(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.leave(id: game_id, type: "game", handler: handler)
     }
+    func get_questions(round : Round, handler : @escaping (TPQuizListResponse?) -> Void) {
+        SocketGame.emit(path: "get_questions", values: ["game": round.gameId as AnyObject, "round_id": round.id as AnyObject], handler: handler)
+    }
     func choose_category(cat : Category, round : Round, handler: @escaping (TPResponse?) -> Void) {
         SocketGame.emit(path: "choose_category", values: ["category": cat.id as AnyObject, "round_id": round.id as AnyObject, "game": round.gameId as AnyObject], handler: handler)
+    }
+    func answer(answer : Bool, round : Round, quiz : Quiz, handler: @escaping (TPGameAnswerResponse?) -> Void) {
+        SocketGame.emit(path: "answer", values: ["answer": answer as AnyObject, "round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject, "quiz_id": quiz.id! as AnyObject], handler: handler)
     }
     
 }
