@@ -35,11 +35,11 @@ class PlayRoundViewController: UIViewController {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
             if sender == button {
-                button.shadow(radius: 12, color: .white)
+                button.shadowSelect()
                 self.quizView.quiz = self.questions[i]
                 self.quizView.answer = self.answers[i]
             } else {
-                button.shadow(radius: 0)
+                button.shadowDeselect()
             }
         }
     }
@@ -70,6 +70,7 @@ class PlayRoundViewController: UIViewController {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
             button.circleRounded()
+            button.shadow(radius: 2, color: .white)
             let title = "\((i + 1) * round.number!)"
             button.setTitle(title, for: .normal)
             self.setQuizButtonBorder(of: button)

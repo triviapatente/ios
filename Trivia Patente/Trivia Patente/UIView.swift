@@ -20,11 +20,23 @@ extension UIView {
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
+    func shadowSelect() {
+        self.layer.shadowOpacity = 0
+        UIView.animate(withDuration: 0.2) {
+            self.layer.shadowOpacity = 1
+        }
+    }
+    func shadowDeselect() {
+        self.layer.shadowOpacity = 1
+        UIView.animate(withDuration: 0.2) {
+            self.layer.shadowOpacity = 0
+        }
+    }
     func shadow(radius : CGFloat, color : UIColor = .black) {
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
     }
     func darkerBorder(of value : CGFloat, width : CGFloat) {
         self.layer.borderWidth = width
