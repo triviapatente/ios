@@ -18,7 +18,6 @@ class TPQuizView: UIViewController {
     }
     var round : Round!
     var delegate : TPQuizViewDelegate!
-    var answer : Bool?
     @IBOutlet var quizImageView : UIImageView!
     @IBOutlet var quizNameLabel : UILabel!
     @IBOutlet var trueButton : UIButton!
@@ -52,7 +51,7 @@ class TPQuizView: UIViewController {
     func prepareQuiz() {
         self.trueButton.isEnabled = true
         self.falseButton.isEnabled = true
-        if let previousAnswer = answer {
+        if let previousAnswer = quiz?.my_answer {
             if previousAnswer == true {
                 self.disable(button: falseButton)
                 self.enable(button: trueButton)

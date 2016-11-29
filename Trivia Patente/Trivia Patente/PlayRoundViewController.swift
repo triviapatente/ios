@@ -38,17 +38,26 @@ class PlayRoundViewController: UIViewController {
             if sender == button {
                 selectedQuizIndex = i
                 button.shadowSelect()
-                self.quizView.answer = self.answers[i]
                 self.quizView.quiz = self.questions[i]
             } else {
                 button.shadowDeselect()
             }
         }
     }
-    var answers : [Bool?] = [nil, nil, nil, nil]
     var questions : [Quiz]! {
         didSet {
+            guard !questions.isEmpty else {
+                return
+            }
             let firstButton = questionButtons.first!
+            for i in 0..<questions.count {
+                let question = questions[i]
+                if let my_answer = question.my_answer {
+                    let correct = (my_answer == question.answer)
+                    let button = self.questionButtons[i]
+                    self.setQuizButtonColor(of: button, correct: correct)
+                }
+            }
             presentQuiz(sender: firstButton)
         }
     }
@@ -62,9 +71,10 @@ class PlayRoundViewController: UIViewController {
         }
     }
     
-    func setQuizButtonColor(of button : UIButton, color : UIColor? = nil) {
-        if let newColor = color {
-            button.backgroundColor = newColor
+    func setQuizButtonColor(of button : UIButton, correct : Bool? = nil) {
+        if let correctness = correct {
+            let color = correctness ? Colors.correct_default : Colors.error_default
+            button.backgroundColor = color
         }
         button.darkerBorder(of: 0.1, width: 2)
     }
@@ -113,8 +123,8 @@ class PlayRoundViewController: UIViewController {
         }
     }
     func allAnswered() -> Bool {
-        for answer in answers {
-            if answer == nil {
+        for question in questions {
+            if question.my_answer == nil {
                 return false
             }
         }
@@ -123,7 +133,7 @@ class PlayRoundViewController: UIViewController {
     func nextQuiz() -> Int? {
         for i in 1...4 {
             let candidate = (selectedQuizIndex + i) % 4
-            if self.answers[candidate] == nil {
+            if self.questions[candidate].my_answer == nil {
                 return candidate
             }
         }
@@ -139,10 +149,9 @@ class PlayRoundViewController: UIViewController {
 }
 extension PlayRoundViewController : TPQuizViewDelegate {
     func user_answered(answer: Bool, correct: Bool) {
-        self.answers[selectedQuizIndex] = answer
-        let color = correct ? Colors.correct_default : Colors.error_default
+        self.questions[selectedQuizIndex].my_answer = answer
         let button = self.questionButtons[selectedQuizIndex]
-        self.setQuizButtonColor(of: button, color: color)
+        self.setQuizButtonColor(of: button, correct: correct)
         if let quizIndex = nextQuiz() {
             let nextButton = self.questionButtons[quizIndex]
             self.presentQuiz(sender: nextButton)

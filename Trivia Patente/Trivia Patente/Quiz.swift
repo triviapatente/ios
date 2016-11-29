@@ -13,14 +13,16 @@ open class Quiz: CommonPK {
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kQuizImageIdKey: String = "image_id"
 	internal let kQuizQuestionKey: String = "question"
-	internal let kQuizAnswerKey: String = "answer"
+    internal let kQuizAnswerKey: String = "answer"
+    internal let kQuizMyAnswerKey: String = "my_answer"
 	internal let kQuizCategoryIdKey: String = "category_id"
 
 
     // MARK: Properties
 	open var imageId: Int?
 	open var question: String?
-	open var answer: Bool = false
+    open var answer: Bool = false
+    open var my_answer: Bool?
 	open var categoryId: Int?
 
     var imagePath : String? {
@@ -51,7 +53,8 @@ open class Quiz: CommonPK {
         super.init(json: json)
 		imageId = json[kQuizImageIdKey].int
 		question = json[kQuizQuestionKey].string
-		answer = json[kQuizAnswerKey].boolValue
+        answer = json[kQuizAnswerKey].boolValue
+        my_answer = json[kQuizMyAnswerKey].bool
 		categoryId = json[kQuizCategoryIdKey].int
 
     }
@@ -71,7 +74,10 @@ open class Quiz: CommonPK {
 			dictionary.updateValue(question! as AnyObject, forKey: kQuizQuestionKey)
 		}
 		dictionary.updateValue(answer as AnyObject, forKey: kQuizAnswerKey)
-		if categoryId != nil {
+        if my_answer != nil {
+            dictionary.updateValue(my_answer! as AnyObject, forKey: kQuizMyAnswerKey)
+        }
+        if categoryId != nil {
 			dictionary.updateValue(categoryId! as AnyObject, forKey: kQuizCategoryIdKey)
 		}
 
@@ -84,6 +90,7 @@ open class Quiz: CommonPK {
 		self.imageId = aDecoder.decodeObject(forKey: kQuizImageIdKey) as? Int
 		self.question = aDecoder.decodeObject(forKey: kQuizQuestionKey) as? String
 		self.answer = aDecoder.decodeBool(forKey: kQuizAnswerKey)
+        self.my_answer = aDecoder.decodeBool(forKey: kQuizMyAnswerKey)
 		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int
 
     }
@@ -92,7 +99,8 @@ open class Quiz: CommonPK {
         super.encode(with: aCoder)
 		aCoder.encode(imageId, forKey: kQuizImageIdKey)
 		aCoder.encode(question, forKey: kQuizQuestionKey)
-		aCoder.encode(answer, forKey: kQuizAnswerKey)
+        aCoder.encode(answer, forKey: kQuizAnswerKey)
+        aCoder.encode(my_answer, forKey: kQuizAnswerKey)
 		aCoder.encode(categoryId, forKey: kQuizCategoryIdKey)
 
     }
