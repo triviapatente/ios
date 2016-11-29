@@ -346,7 +346,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbD-rS-dOO">
-                                <rect key="frame" x="37" y="191" width="301" height="258"/>
+                                <rect key="frame" x="37" y="185" width="301" height="254"/>
                                 <connections>
                                     <segue destination="xxJ-No-RYl" kind="embed" identifier="quiz_segue" id="0eW-9g-fJI"/>
                                 </connections>
@@ -412,7 +412,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcu-NE-gOw">
-                                <rect key="frame" x="94.5" y="496" width="187" height="51"/>
+                                <rect key="frame" x="94.5" y="504" width="187" height="51"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYq-Ti-6cQ">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="51"/>
@@ -457,13 +457,13 @@
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h4d-To-jrZ" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" constant="15" id="2r4-Vq-XBp"/>
-                            <constraint firstItem="rcu-NE-gOw" firstAttribute="top" secondItem="nbD-rS-dOO" secondAttribute="bottom" constant="47" id="A1r-l5-FqJ"/>
+                            <constraint firstItem="rcu-NE-gOw" firstAttribute="top" secondItem="nbD-rS-dOO" secondAttribute="bottom" constant="65" id="A1r-l5-FqJ"/>
                             <constraint firstItem="tFe-nV-ZIF" firstAttribute="centerX" secondItem="3Lf-dZ-AXE" secondAttribute="centerX" id="BZB-bY-Qfi"/>
-                            <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="rcu-NE-gOw" secondAttribute="bottom" constant="30" id="FZV-LG-Dpq"/>
+                            <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="rcu-NE-gOw" secondAttribute="bottom" constant="22" id="FZV-LG-Dpq"/>
                             <constraint firstItem="qpr-b7-54K" firstAttribute="top" secondItem="Kcq-Fu-XUP" secondAttribute="bottom" id="L7B-BN-Jz8"/>
                             <constraint firstAttribute="trailing" secondItem="Kcq-Fu-XUP" secondAttribute="trailing" id="QPT-JZ-oae"/>
                             <constraint firstItem="h4d-To-jrZ" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="TqA-yo-8fx"/>
-                            <constraint firstItem="nbD-rS-dOO" firstAttribute="top" secondItem="tFe-nV-ZIF" secondAttribute="bottom" constant="25" id="YFO-Pa-evp"/>
+                            <constraint firstItem="nbD-rS-dOO" firstAttribute="top" secondItem="tFe-nV-ZIF" secondAttribute="bottom" constant="19" id="YFO-Pa-evp"/>
                             <constraint firstAttribute="trailing" secondItem="h4d-To-jrZ" secondAttribute="trailing" id="a7O-9f-Dy5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nbD-rS-dOO" secondAttribute="trailing" constant="21" id="b2J-Lu-KKX"/>
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="fcY-A6-Nz8"/>

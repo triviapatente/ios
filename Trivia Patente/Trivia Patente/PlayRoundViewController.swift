@@ -70,7 +70,7 @@ class PlayRoundViewController: UIViewController {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
             button.circleRounded()
-            button.shadow(radius: 2, color: .white)
+            button.shadow(radius: 4, color: .white)
             let title = "\((i + 1) * round.number!)"
             button.setTitle(title, for: .normal)
             self.setQuizButtonBorder(of: button)
@@ -116,7 +116,7 @@ extension PlayRoundViewController : TPQuizViewDelegate {
     func user_answered(answer: Bool, correct: Bool) {
         let index = self.questions.index(of: self.quizView.quiz)!
         self.answers[index] = answer
-        let color = correct ? Colors.green_default : Colors.error_default
+        let color = correct ? Colors.correct_default : Colors.error_default
         let button = self.questionButtons[index]
         self.setQuizButtonBorder(of: button, color: color)
 
