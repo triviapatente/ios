@@ -15,6 +15,7 @@ class PlayRoundViewController: UIViewController {
     var category : Category!
     var opponent : User!
     let handler = SocketGame()
+    var selectedQuizIndex = 0
     
     @IBOutlet var bannerView : UIView!
     @IBOutlet var questionButtons : [UIButton]!
@@ -35,6 +36,7 @@ class PlayRoundViewController: UIViewController {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
             if sender == button {
+                selectedQuizIndex = i
                 button.shadowSelect()
                 self.quizView.answer = self.answers[i]
                 self.quizView.quiz = self.questions[i]
@@ -118,6 +120,15 @@ class PlayRoundViewController: UIViewController {
         }
         return true
     }
+    func nextQuiz() -> Int? {
+        for i in 1...4 {
+            let candidate = (selectedQuizIndex + i) % 4
+            if self.answers[candidate] == nil {
+                return candidate
+            }
+        }
+        return nil
+    }
     func roundEnded() {
         let alert = UIAlertController(title: "Round finito", message: "Il round è finito", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -128,12 +139,14 @@ class PlayRoundViewController: UIViewController {
 }
 extension PlayRoundViewController : TPQuizViewDelegate {
     func user_answered(answer: Bool, correct: Bool) {
-        let index = self.questions.index(of: self.quizView.quiz)!
-        self.answers[index] = answer
+        self.answers[selectedQuizIndex] = answer
         let color = correct ? Colors.correct_default : Colors.error_default
-        let button = self.questionButtons[index]
+        let button = self.questionButtons[selectedQuizIndex]
         self.setQuizButtonColor(of: button, color: color)
-        if allAnswered() {
+        if let quizIndex = nextQuiz() {
+            let nextButton = self.questionButtons[quizIndex]
+            self.presentQuiz(sender: nextButton)
+        } else {
             self.roundEnded()
         }
     }
