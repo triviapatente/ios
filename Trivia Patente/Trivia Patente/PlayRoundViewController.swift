@@ -60,7 +60,7 @@ class PlayRoundViewController: UIViewController {
         }
     }
     
-    func setQuizButtonBorder(of button : UIButton, color : UIColor? = nil) {
+    func setQuizButtonColor(of button : UIButton, color : UIColor? = nil) {
         if let newColor = color {
             button.backgroundColor = newColor
         }
@@ -73,7 +73,7 @@ class PlayRoundViewController: UIViewController {
             button.shadow(radius: 4, color: .white)
             let title = "\((i + 1) * round.number!)"
             button.setTitle(title, for: .normal)
-            self.setQuizButtonBorder(of: button)
+            self.setQuizButtonColor(of: button)
         }
         chatButton.circleRounded()
         chatButton.darkerBorder(of: 0.10, width: 4)
@@ -110,6 +110,20 @@ class PlayRoundViewController: UIViewController {
             self.headerView = segue.destination as! TPGameHeader
         }
     }
+    func allAnswered() -> Bool {
+        for answer in answers {
+            if answer == nil {
+                return false
+            }
+        }
+        return true
+    }
+    func roundEnded() {
+        let alert = UIAlertController(title: "Round finito", message: "Il round è finito", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
 extension PlayRoundViewController : TPQuizViewDelegate {
@@ -118,7 +132,9 @@ extension PlayRoundViewController : TPQuizViewDelegate {
         self.answers[index] = answer
         let color = correct ? Colors.correct_default : Colors.error_default
         let button = self.questionButtons[index]
-        self.setQuizButtonBorder(of: button, color: color)
-
+        self.setQuizButtonColor(of: button, color: color)
+        if allAnswered() {
+            self.roundEnded()
+        }
     }
 }
