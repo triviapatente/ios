@@ -11,7 +11,8 @@ import UIKit
 class TPQuizView: UIViewController {
     var quiz : Quiz! {
         didSet {
-            self.quizNameLabel.text = quiz.question
+            self.quizNameView.contentOffset = .zero
+            self.quizNameView.text = quiz.question
             self.quizImageView.load(quiz: quiz)
             self.prepareQuiz()
         }
@@ -19,7 +20,7 @@ class TPQuizView: UIViewController {
     var round : Round!
     var delegate : TPQuizViewDelegate!
     @IBOutlet var quizImageView : UIImageView!
-    @IBOutlet var quizNameLabel : UILabel!
+    @IBOutlet var quizNameView : TPTextView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     let handler = SocketGame()
