@@ -19,11 +19,51 @@ class TPQuizView: UIViewController {
     }
     var round : Round!
     var delegate : TPQuizViewDelegate!
-    @IBOutlet var quizImageView : UIImageView!
+    var defaultImageFrame : CGRect!
+    @IBOutlet var quizImageView : UIImageView! {
+        didSet {
+            defaultImageFrame = quizImageView.frame
+        }
+    }
     @IBOutlet var quizNameView : TPTextView!
+    @IBOutlet var separatorView : UIView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     let handler = SocketGame()
+    
+    var imageExpanded = false
+    @IBAction func imageClicked() {
+        if imageExpanded == true {
+            minimizeImage()
+        } else {
+            expandImage()
+        }
+        self.imageExpanded = !self.imageExpanded
+    }
+    func minimizeImage() {
+        if let superview = quizImageView.superview {
+            UIView.animate(withDuration: 0.2) {
+                self.quizImageView.frame = self.defaultImageFrame
+                self.quizImageView.center.y = superview.frame.size.height / 2
+                self.quizNameView.alpha = 1
+            }
+        }
+
+    }
+    func expandImage() {
+        if let superview = self.quizImageView.superview {
+            let dimension = superview.frame.size.height - 20
+            let x = superview.frame.size.width / 2
+            let y = superview.frame.size.height / 2
+            UIView.animate(withDuration: 0.2) {
+                self.quizImageView.frame.size = CGSize(width: dimension, height: dimension)
+                self.quizImageView.center = CGPoint(x: x, y: y)
+                self.quizNameView.alpha = 0
+            }
+        }
+        
+    }
+    
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
@@ -52,6 +92,9 @@ class TPQuizView: UIViewController {
     func prepareQuiz() {
         self.trueButton.isEnabled = true
         self.falseButton.isEnabled = true
+        if self.imageExpanded {
+            self.minimizeImage()
+        }
         if let previousAnswer = quiz?.my_answer {
             if previousAnswer == true {
                 self.disable(button: falseButton)
@@ -70,7 +113,7 @@ class TPQuizView: UIViewController {
         self.trueButton.layer.borderWidth = 2
         self.falseButton.circleRounded()
         self.falseButton.layer.borderWidth = 2
-        self.quizImageView.shadow(radius: 2)
+        self.quizImageView.shadow(radius: 1)
         self.prepareQuiz()
     }
     override func viewDidLoad() {
