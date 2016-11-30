@@ -36,6 +36,7 @@ extension UIView {
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = 1
         self.layer.masksToBounds = false
     }
     func darkerBorder(of value : CGFloat, width : CGFloat) {
