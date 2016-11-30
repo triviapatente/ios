@@ -91,6 +91,7 @@
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* TPQuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */; };
 		8BA6BEB91DECCFBF00D9EB86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */; };
+		8BA6BEBB1DEEE6DA00D9EB86 /* TPGameActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */; };
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
@@ -258,6 +259,7 @@
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizViewDelegate.swift; sourceTree = "<group>"; };
 		8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameActions.swift; sourceTree = "<group>"; };
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
@@ -1033,6 +1035,7 @@
 				8BE273461DC0DEA40094F0F6 /* TPTextView.swift */,
 				8B74DBFB1DE6ECB80006EB90 /* TPGameHeader.swift */,
 				8BA6BEB51DECC20E00D9EB86 /* quiz view */,
+				8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */,
 			);
 			name = subclasses;
 			sourceTree = "<group>";
@@ -1633,6 +1636,7 @@
 				8BE20C601DD9DEA10048DA0A /* PreferenceVisibility.swift in Sources */,
 				8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */,
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
+				8BA6BEBB1DEEE6DA00D9EB86 /* TPGameActions.swift in Sources */,
 				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,

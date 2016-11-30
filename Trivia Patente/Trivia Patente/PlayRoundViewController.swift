@@ -19,19 +19,6 @@ class PlayRoundViewController: UIViewController {
     
     @IBOutlet var bannerView : UIView!
     @IBOutlet var questionButtons : [UIButton]!
-    @IBOutlet var chatButton : UIButton!
-    @IBOutlet var leaveButton : UIButton!
-    @IBOutlet var detailButton : UIButton!
-    
-    @IBAction func goToDetail() {
-        
-    }
-    @IBAction func leaveGame() {
-        
-    }
-    @IBAction func goToChat() {
-        
-    }
     @IBAction func presentQuiz(sender : UIButton) {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
@@ -87,12 +74,6 @@ class PlayRoundViewController: UIViewController {
             button.setTitle(title, for: .normal)
             self.setQuizButtonColor(of: button)
         }
-        chatButton.circleRounded()
-        chatButton.darkerBorder(of: 0.10, width: 4)
-        leaveButton.circleRounded()
-        leaveButton.darkerBorder(of: 0.10, width: 4)
-        detailButton.circleRounded()
-        detailButton.darkerBorder(of: 0.10, width: 4)
         quizView.view.mediumRounded()
     }
     override func viewDidLoad() {

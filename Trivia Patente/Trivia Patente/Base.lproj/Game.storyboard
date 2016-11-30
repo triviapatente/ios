@@ -315,7 +315,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOo-o0-ypU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="-492"/>
+            <point key="canvasLocation" x="2246" y="307"/>
+        </scene>
+        <!--Attendi-->
+        <scene sceneID="hS8-4e-KLf">
+            <objects>
+                <viewController title="Attendi" id="TQZ-Na-Gga" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8k7-f1-aTz"/>
+                        <viewControllerLayoutGuide type="bottom" id="OlA-mS-DF4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GeJ-Tj-WeM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cVv-7D-7r1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BPu-zb-FHd"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Pj9-5A-Y1R" kind="embed" identifier="header_segue" id="yys-8T-GtN"/>
+                                </connections>
+                            </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ob-9Ko">
+                                <rect key="frame" x="90" y="141" width="141" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
+                                <rect key="frame" x="139" y="333" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Svw-ib-Q7p">
+                                <rect key="frame" x="40" y="396" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="shz-gG-blI" kind="embed" identifier="action_view" id="kf4-r3-nBv"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F0R-G4-ngb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3150" y="-127"/>
         </scene>
         <!--Gioca-->
         <scene sceneID="y6l-TG-Ieo">
@@ -355,7 +402,7 @@
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-nV-ZIF">
-                                <rect key="frame" x="36.5" y="100" width="247" height="37"/>
+                                <rect key="frame" x="37" y="100" width="247" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcX-ee-iqL">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
@@ -414,55 +461,22 @@
                                     <constraint firstAttribute="height" constant="37" id="GzR-tS-5lU"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcu-NE-gOw">
-                                <rect key="frame" x="67" y="412" width="187" height="51"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYq-Ti-6cQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="51" height="51"/>
-                                        <color key="backgroundColor" red="0.39098423719406128" green="0.50854313373565674" blue="0.75336217880249023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="IYq-Ti-6cQ" secondAttribute="height" multiplier="10:10" id="mcO-dF-Gmo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <state key="normal" image="ic_chat_white"/>
-                                        <connections>
-                                            <action selector="goToChat" destination="uXd-5a-fhz" eventType="touchUpInside" id="3EK-QB-bOt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSG-JA-POI">
-                                        <rect key="frame" x="68" y="0.0" width="51" height="51"/>
-                                        <color key="backgroundColor" red="0.11686844378709793" green="0.76273190975189209" blue="0.40594422817230225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="TSG-JA-POI" secondAttribute="height" multiplier="10:10" id="6cZ-JR-45f"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_format_list_bulleted_white"/>
-                                        <connections>
-                                            <action selector="goToDetail" destination="uXd-5a-fhz" eventType="touchUpInside" id="0gK-1l-tth"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygt-wh-DeQ">
-                                        <rect key="frame" x="136" y="0.0" width="51" height="51"/>
-                                        <color key="backgroundColor" red="0.91545593738555908" green="0.29308891296386719" blue="0.20751205086708069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Ygt-wh-DeQ" secondAttribute="height" multiplier="10:10" id="pzb-vE-TEO"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_clear_white"/>
-                                        <connections>
-                                            <action selector="leaveGame" destination="uXd-5a-fhz" eventType="touchUpInside" id="FQj-Ow-xFa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16d-v4-sx0">
+                                <rect key="frame" x="65" y="412" width="190" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="j5F-Zu-2pP"/>
+                                    <constraint firstAttribute="width" constant="190" id="qMm-3F-T7B"/>
+                                    <constraint firstAttribute="height" constant="51" id="rnd-A3-HNL"/>
                                 </constraints>
-                            </stackView>
+                                <connections>
+                                    <segue destination="shz-gG-blI" kind="embed" identifier="action_view" id="NV8-od-C3s"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h4d-To-jrZ" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" id="2r4-Vq-XBp"/>
-                            <constraint firstItem="rcu-NE-gOw" firstAttribute="top" secondItem="nbD-rS-dOO" secondAttribute="bottom" priority="999" constant="90" id="A1r-l5-FqJ"/>
                             <constraint firstItem="tFe-nV-ZIF" firstAttribute="centerX" secondItem="3Lf-dZ-AXE" secondAttribute="centerX" id="BZB-bY-Qfi"/>
-                            <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="rcu-NE-gOw" secondAttribute="bottom" constant="15" id="FZV-LG-Dpq"/>
+                            <constraint firstItem="16d-v4-sx0" firstAttribute="centerX" secondItem="3Lf-dZ-AXE" secondAttribute="centerX" id="D2g-WJ-CMc"/>
                             <constraint firstItem="qpr-b7-54K" firstAttribute="top" secondItem="Kcq-Fu-XUP" secondAttribute="bottom" id="L7B-BN-Jz8"/>
                             <constraint firstAttribute="trailing" secondItem="Kcq-Fu-XUP" secondAttribute="trailing" id="QPT-JZ-oae"/>
                             <constraint firstItem="h4d-To-jrZ" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="TqA-yo-8fx"/>
@@ -472,14 +486,12 @@
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="fcY-A6-Nz8"/>
                             <constraint firstItem="nbD-rS-dOO" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leadingMargin" constant="15" id="h5I-6b-9yz"/>
                             <constraint firstItem="tFe-nV-ZIF" firstAttribute="top" secondItem="h4d-To-jrZ" secondAttribute="bottom" constant="20" id="pUy-KN-du5"/>
-                            <constraint firstItem="rcu-NE-gOw" firstAttribute="centerX" secondItem="3Lf-dZ-AXE" secondAttribute="centerX" id="ys2-7s-6cO"/>
+                            <constraint firstItem="16d-v4-sx0" firstAttribute="top" secondItem="nbD-rS-dOO" secondAttribute="bottom" priority="999" constant="90" id="reL-F1-ogC"/>
+                            <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="16d-v4-sx0" secondAttribute="bottom" constant="15" id="yzw-wS-hH6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="Kcq-Fu-XUP" id="Cl6-E4-avH"/>
-                        <outlet property="chatButton" destination="IYq-Ti-6cQ" id="gzP-Po-3m9"/>
-                        <outlet property="detailButton" destination="TSG-JA-POI" id="duc-Jp-CER"/>
-                        <outlet property="leaveButton" destination="Ygt-wh-DeQ" id="TBs-87-Flj"/>
                         <outletCollection property="questionButtons" destination="XcX-ee-iqL" collectionClass="NSMutableArray" id="PSy-Y4-lFi"/>
                         <outletCollection property="questionButtons" destination="qIz-up-OM6" collectionClass="NSMutableArray" id="h46-ZI-4qD"/>
                         <outletCollection property="questionButtons" destination="jT3-y9-B30" collectionClass="NSMutableArray" id="EW4-hr-EO8"/>
@@ -488,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaV-UR-tow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592.8000000000002" y="-1039.4302848575712"/>
+            <point key="canvasLocation" x="2591.25" y="-1039.4366197183099"/>
         </scene>
         <!--Quiz View-->
         <scene sceneID="j8e-cc-rBH">
@@ -608,6 +620,85 @@
             </objects>
             <point key="canvasLocation" x="3283.125" y="-969.71830985915494"/>
         </scene>
+        <!--Game Actions-->
+        <scene sceneID="Nmu-cx-qHz">
+            <objects>
+                <viewController id="shz-gG-blI" customClass="TPGameActions" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BwZ-M8-EoR"/>
+                        <viewControllerLayoutGuide type="bottom" id="PtA-5b-nWT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Oz-Oe-M3Y">
+                        <rect key="frame" x="0.0" y="0.0" width="187" height="51"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-d4-Gha">
+                                <rect key="frame" x="0.0" y="0.0" width="187" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d10-jU-IlU">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="51"/>
+                                        <color key="backgroundColor" red="0.39098423719999997" green="0.50854313370000004" blue="0.7533621788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="d10-jU-IlU" secondAttribute="height" multiplier="10:10" id="Bej-uJ-hjo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <state key="normal" image="ic_chat_white"/>
+                                        <connections>
+                                            <action selector="goToChat" destination="shz-gG-blI" eventType="touchUpInside" id="6eY-St-BcR"/>
+                                            <action selector="goToChat" destination="uXd-5a-fhz" eventType="touchUpInside" id="etV-us-iN6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Y9-rU-Utv">
+                                        <rect key="frame" x="68" y="0.0" width="51" height="51"/>
+                                        <color key="backgroundColor" red="0.1168684438" green="0.76273190980000005" blue="0.40594422819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="9Y9-rU-Utv" secondAttribute="height" multiplier="10:10" id="yz1-7b-QSf"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_format_list_bulleted_white"/>
+                                        <connections>
+                                            <action selector="goToDetail" destination="uXd-5a-fhz" eventType="touchUpInside" id="80n-cf-Qqv"/>
+                                            <action selector="goToDetail" destination="shz-gG-blI" eventType="touchUpInside" id="vyW-iJ-4cx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF3-5a-sPe">
+                                        <rect key="frame" x="136" y="0.0" width="51" height="51"/>
+                                        <color key="backgroundColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KF3-5a-sPe" secondAttribute="height" multiplier="10:10" id="TJe-YB-QyZ"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_clear_white"/>
+                                        <connections>
+                                            <action selector="leaveGame" destination="shz-gG-blI" eventType="touchUpInside" id="PlA-WE-dWJ"/>
+                                            <action selector="leaveGame" destination="uXd-5a-fhz" eventType="touchUpInside" id="tAC-au-IWd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="2RC-Qv-3IV"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gm3-d4-Gha" secondAttribute="trailing" id="N4v-K0-USF"/>
+                            <constraint firstItem="gm3-d4-Gha" firstAttribute="top" secondItem="BwZ-M8-EoR" secondAttribute="bottom" id="OFz-1A-T5I"/>
+                            <constraint firstItem="PtA-5b-nWT" firstAttribute="top" secondItem="gm3-d4-Gha" secondAttribute="bottom" id="PIL-Nq-kt8"/>
+                            <constraint firstItem="gm3-d4-Gha" firstAttribute="leading" secondItem="5Oz-Oe-M3Y" secondAttribute="leading" id="qn7-Te-j25"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="187" height="51"/>
+                    <connections>
+                        <outlet property="chatButton" destination="d10-jU-IlU" id="vkB-ON-qpU"/>
+                        <outlet property="detailButton" destination="9Y9-rU-Utv" id="UvN-b4-56P"/>
+                        <outlet property="leaveButton" destination="KF3-5a-sPe" id="68I-QO-tCn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxn-EX-aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3848" y="-615"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_chat_white" width="24" height="24"/>
@@ -615,6 +706,7 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="NV8-od-C3s"/>
         <segue reference="GCU-d2-vyc"/>
     </inferredMetricsTieBreakers>
 </document>
