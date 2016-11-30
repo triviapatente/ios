@@ -92,6 +92,7 @@
 		8BA6BEB71DECC4FA00D9EB86 /* TPQuizViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */; };
 		8BA6BEB91DECCFBF00D9EB86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */; };
 		8BA6BEBB1DEEE6DA00D9EB86 /* TPGameActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */; };
+		8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEBD1DEEEA9600D9EB86 /* WaitOpponentViewController.swift */; };
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
@@ -260,6 +261,7 @@
 		8BA6BEB61DECC4FA00D9EB86 /* TPQuizViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizViewDelegate.swift; sourceTree = "<group>"; };
 		8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameActions.swift; sourceTree = "<group>"; };
+		8BA6BEBD1DEEEA9600D9EB86 /* WaitOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitOpponentViewController.swift; sourceTree = "<group>"; };
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
@@ -1049,6 +1051,14 @@
 			name = "quiz view";
 			sourceTree = "<group>";
 		};
+		8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */ = {
+			isa = PBXGroup;
+			children = (
+				8BA6BEBD1DEEEA9600D9EB86 /* WaitOpponentViewController.swift */,
+			);
+			name = wait_for_opponent;
+			sourceTree = "<group>";
+		};
 		8BBAB4921DCA1CF3004AB6B0 /* navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1193,6 +1203,7 @@
 		8BE6DE301DE6D95B00DDD179 /* round */ = {
 			isa = PBXGroup;
 			children = (
+				8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */,
 				8B19E0271DE9814B00304FF3 /* play_round */,
 				8BE6DE331DE6DCF500DDD179 /* choose category */,
 			);
@@ -1671,6 +1682,7 @@
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
+				8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,

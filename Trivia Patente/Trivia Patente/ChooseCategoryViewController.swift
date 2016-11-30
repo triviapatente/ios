@@ -80,6 +80,7 @@ class ChooseCategoryViewController: UIViewController {
             self.loadingView.hide(animated: true)
             if categoryResponse?.success == true {
                 self.categories = categoryResponse!.categories
+                self.performSegue(withIdentifier: "test_segue", sender: self)
             } else {
                 //TODO: handler
             }
@@ -95,7 +96,11 @@ class ChooseCategoryViewController: UIViewController {
                 destination.round = round
                 destination.opponent = opponent
             }
-
+        } else if segue.identifier == "test_segue" {
+            if let destination = segue.destination as? WaitOpponentViewController {
+                destination.opponent = opponent
+                destination.round = round
+            }
         }
     }
 

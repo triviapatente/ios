@@ -20,6 +20,11 @@ extension UIView {
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
+    func rotatingBorder(color : UIColor, width : CGFloat = 3) {
+        let clearerColor = color.darker(offset: -0.4)
+        self.layer.borderWidth = width
+        self.layer.borderColor = clearerColor.cgColor
+    }
     func shadowSelect() {
         self.layer.shadowOpacity = 0
         UIView.animate(withDuration: 0.2) {
