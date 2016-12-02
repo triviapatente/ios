@@ -42,6 +42,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bOk-ck-hL0" firstAttribute="leading" secondItem="OE8-19-BnL" secondAttribute="leading" id="1Wi-EX-Zqi"/>
+                            <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="OE8-19-BnL" secondAttribute="leading" priority="999" id="MPh-u2-DoD"/>
                             <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="bOk-ck-hL0" secondAttribute="trailing" constant="7" id="Mfm-HU-KjR"/>
                             <constraint firstAttribute="bottom" secondItem="B5n-zS-jil" secondAttribute="bottom" id="St0-Yp-WY3"/>
                             <constraint firstAttribute="trailing" secondItem="B5n-zS-jil" secondAttribute="trailing" constant="7" id="fDd-V5-hv8"/>

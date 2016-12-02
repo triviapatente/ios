@@ -17,8 +17,7 @@ class PlayRoundViewController: UIViewController {
     let handler = SocketGame()
     var selectedQuizIndex = 0
     
-    let CELL_WIDTH = CGFloat(300)
-    let CELL_HEIGHT = CGFloat(200)
+    let BORDER_LENGTH = CGFloat(30)
     
     @IBOutlet var bannerView : UIView!
     @IBOutlet var questionButtons : [UIButton]!
@@ -150,7 +149,7 @@ extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDa
         return self.questions.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+        return CGSize(width: collectionView.frame.size.width - BORDER_LENGTH * 2, height: collectionView.frame.size.height)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! ShowQuizCollectionViewCell
@@ -160,7 +159,8 @@ extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return (self.view.frame.size.width - CELL_WIDTH)
+        let size = self.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: IndexPath())
+        return (self.view.frame.size.width - size.width)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let margin = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section) / 2

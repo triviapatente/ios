@@ -12,9 +12,13 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
 
     var quiz : Quiz! {
         didSet {
-            self.quizNameView.contentOffset = .zero
             self.quizNameView.text = quiz.question
-            self.quizImageView.load(quiz: quiz)
+            self.quizNameView.contentOffset = .zero
+            if let _ = quiz.imageId {
+                self.quizImageView.load(quiz: quiz)
+            } else {
+                self.quizImageView.removeFromSuperview()
+            }
             self.prepareQuiz()
         }
     }
