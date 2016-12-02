@@ -21,6 +21,7 @@
 		8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27C1DCF62B200C65122 /* HTTPShop.swift */; };
 		8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */; };
 		8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2801DD0770800C65122 /* RankViewController.swift */; };
+		8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A2A831DF1D82300830028 /* RoundDetailsViewController.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
@@ -189,6 +190,7 @@
 		8B28D27C1DCF62B200C65122 /* HTTPShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPShop.swift; sourceTree = "<group>"; };
 		8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		8B28D2801DD0770800C65122 /* RankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		8B2A2A831DF1D82300830028 /* RoundDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundDetailsViewController.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
@@ -458,6 +460,14 @@
 				8B28D27A1DCF626500C65122 /* TPShopItemsResponse.swift */,
 			);
 			name = responses;
+			sourceTree = "<group>";
+		};
+		8B2A2A821DF1D7EC00830028 /* round_details */ = {
+			isa = PBXGroup;
+			children = (
+				8B2A2A831DF1D82300830028 /* RoundDetailsViewController.swift */,
+			);
+			name = round_details;
 			sourceTree = "<group>";
 		};
 		8B42E8271DC63D4700C36DDA /* stats */ = {
@@ -1203,6 +1213,7 @@
 		8BE6DE301DE6D95B00DDD179 /* round */ = {
 			isa = PBXGroup;
 			children = (
+				8B2A2A821DF1D7EC00830028 /* round_details */,
 				8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */,
 				8B19E0271DE9814B00304FF3 /* play_round */,
 				8BE6DE331DE6DCF500DDD179 /* choose category */,
@@ -1595,6 +1606,7 @@
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
+				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,

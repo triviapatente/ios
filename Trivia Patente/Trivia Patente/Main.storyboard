@@ -88,7 +88,7 @@
                         <segue destination="wOj-Ca-KPT" kind="show" identifier="play_segue" id="NtC-U5-vru"/>
                         <segue destination="uKz-I7-BOu" kind="show" identifier="rank_segue" id="WFr-mm-Iwm"/>
                         <segue destination="OSJ-hT-ijS" kind="show" identifier="stats_segue" id="Qv8-G6-Mea"/>
-                        <segue destination="Ygw-Xp-Pcv" kind="show" identifier="test_segue" id="T6L-da-TBG"/>
+                        <segue destination="Ygw-Xp-Pcv" kind="show" identifier="start_game_segue" id="T6L-da-TBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="1511" y="-187"/>
         </scene>
-        <!--ChooseCategory-->
+        <!--WaitOpponent-->
         <scene sceneID="Iks-1L-Hs8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="ChooseCategory" id="Ygw-Xp-Pcv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="WaitOpponent" id="Ygw-Xp-Pcv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvu-0M-4Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="-50"/>

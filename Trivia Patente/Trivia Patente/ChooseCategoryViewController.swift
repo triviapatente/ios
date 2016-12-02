@@ -14,14 +14,8 @@ class ChooseCategoryViewController: UIViewController {
     var gameHeader : TPGameHeader!
     @IBOutlet var tableView : UITableView!
     
-    var game = Game(id: 15) //TODO: adapt to request
-    var opponent = User(username: "pippo", id: 1, avatar: "https://avatars3.githubusercontent.com/u/7453120?v=3&s=460") //TODO: adapt to request
-    
-    var round : Round! {
-        didSet {
-            self.gameHeader.round = round
-        }
-    }
+    var opponent : User!
+    var round : Round!
     let CELL_MIN_HEIGHT = CGFloat(100)
     var indexPaths : [IndexPath] {
         var output : [IndexPath] = []
@@ -46,41 +40,16 @@ class ChooseCategoryViewController: UIViewController {
         let nib = UINib(nibName: "ProposedCategoryTableViewCell", bundle: .main)
         self.tableView.register(nib, forCellReuseIdentifier: "category_cell")
         self.tableView.tableFooterView = UIView()
-        self.title = opponent.username
+        self.gameHeader.round = round
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
-        join_room()
-    }
-    func join_room() {
-        loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-
-        handler.join(game_id: game.id!) { joinResponse in
-            if joinResponse?.success == true {
-                self.init_round()
-            } else {
-                self.loadingView.hide(animated: true)
-                //TODO: handle error
-            }
-        }
-    }
-    func init_round() {
-        self.handler.init_round(game_id: game.id!, number: 1) { roundResponse in
-            if roundResponse?.success == true {
-                if let round = roundResponse?.round {
-                    self.round = round
-                    self.get_categories(round: round)
-                }
-            } else {
-                self.loadingView.hide(animated: true)
-                //TODO: handle error
-            }
-        }
+        self.get_categories(round: round)
     }
     func get_categories(round : Round) {
+        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         self.handler.get_categories(round: round) { categoryResponse in
             self.loadingView.hide(animated: true)
             if categoryResponse?.success == true {
                 self.categories = categoryResponse!.categories
-                self.performSegue(withIdentifier: "test_segue", sender: self)
             } else {
                 //TODO: handler
             }
@@ -95,11 +64,6 @@ class ChooseCategoryViewController: UIViewController {
                 destination.category = self.categories[self.tableView.indexPathForSelectedRow!.row]
                 destination.round = round
                 destination.opponent = opponent
-            }
-        } else if segue.identifier == "test_segue" {
-            if let destination = segue.destination as? WaitOpponentViewController {
-                destination.opponent = opponent
-                destination.round = round
             }
         }
     }

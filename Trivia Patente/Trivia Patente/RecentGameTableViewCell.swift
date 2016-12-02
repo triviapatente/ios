@@ -21,7 +21,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
         }
     }
     @IBAction func gotoGame() {
-        buttonView.backgroundColor = buttonView.currentTitleColor
+        self.delegate.selectCell(for: item)
     }
     var game : Game! {
         didSet {

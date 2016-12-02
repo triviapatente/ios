@@ -10,4 +10,5 @@ import UIKit
 
 protocol TPExpandableTableViewCellDelegate {
     func removeCell(for item : Base)
+    func selectCell(for item : Base)
 }

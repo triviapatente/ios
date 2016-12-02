@@ -16,13 +16,17 @@ class MainViewController: UIViewController {
     var rankButton : TPMainButton!
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
-    
+    var selectedGame : Game!
     var recentGamesView : TPExpandableView! {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
             recentGamesView.footerText = "Nessun'altra partita recente.\nGioca di più 😉"
             recentGamesView.separatorColor = Colors.primary
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            recentGamesView.selectedCellHandler = { item in
+                self.selectedGame = item as! Game
+                self.performSegue(withIdentifier: "start_game_segue", sender: self)
+            }
         }
     }
     
@@ -73,7 +77,6 @@ class MainViewController: UIViewController {
                 SessionManager.drop()
                 UIViewController.goToFirstAccess(from: self)
             } else {
-                self.performSegue(withIdentifier: "test_segue", sender: self)
                 self.setHints(candidateResponse: response)
                 self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
                     if response.success == true {
@@ -156,6 +159,9 @@ class MainViewController: UIViewController {
                 case "recent_view":
                     self.recentGamesView = destination as! TPExpandableView
                     break
+                case "start_game_segue":
+                    let destination = destination as! WaitOpponentViewController
+                    destination.game = selectedGame
                 default: break
                 
             }

@@ -20,10 +20,43 @@ extension UIView {
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
-    func rotatingBorder(color : UIColor, width : CGFloat = 3) {
+    
+    var borderFrontLayer : CAShapeLayer {
+        let circleLayer = CAShapeLayer()
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.strokeColor = UIColor.black.cgColor
+        circleLayer.strokeEnd = 1.0
+        return circleLayer
+    }
+    func getBorderGradientLayer(color : UIColor, width : CGFloat) -> CAGradientLayer {
         let clearerColor = color.darker(offset: -0.4)
-        self.layer.borderWidth = width
-        self.layer.borderColor = clearerColor.cgColor
+        let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
+        let circlePath = UIBezierPath(arcCenter: center, radius: (frame.size.width - width) / 2.0, startAngle: 0.0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
+        
+        let frontLayer = borderFrontLayer
+        frontLayer.path = circlePath.cgPath
+        frontLayer.lineWidth = width;
+        
+        let layer = CAGradientLayer()
+        layer.colors = [color.cgColor, clearerColor.cgColor]
+        layer.frame = CGRect(origin: .zero, size: self.frame.size)
+        layer.locations = [0.01, 0.8]
+        layer.mask = frontLayer
+        return layer
+    }
+    func rotatingBorder(color : UIColor, width : CGFloat = 3) {
+        self.layer.removeAllAnimations()
+        self.layer.sublayers?.removeAll()
+        let gradientLayer = self.getBorderGradientLayer(color: color, width: width)
+        // Add the circleLayer to the view's layer's sublayers
+        layer.addSublayer(gradientLayer)
+        
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = 1
+        rotateAnimation.repeatCount = Float.infinity
+        gradientLayer.add(rotateAnimation, forKey: nil)
     }
     func shadowSelect() {
         self.layer.shadowOpacity = 0

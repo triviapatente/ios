@@ -22,6 +22,7 @@ class TPExpandableView: UIViewController {
             dataLoaded = true
         }
     }
+    var selectedCellHandler : ((Base) -> Void)?
     var cellNibName : String?
     var footerText : String = ""
 
@@ -228,6 +229,12 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension TPExpandableView : TPExpandableTableViewCellDelegate {
+    func selectCell(for item: Base) {
+        if let handler = selectedCellHandler {
+            handler(item)
+        }
+    }
+
     
     func removeCell(for item: Base) {
         let index = self.items.index { candidate in

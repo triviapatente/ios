@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOI-HE-dHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21.600000000000001" y="-692.20389805097454"/>
+            <point key="canvasLocation" x="-231" y="-695"/>
         </scene>
         <!--expandableView-->
         <scene sceneID="GfW-ZF-xth">
@@ -99,7 +99,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="expandableView" id="8iz-3m-51K" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e32-bc-vp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22" y="-244"/>
+            <point key="canvasLocation" x="-232" y="-215"/>
         </scene>
         <!--Avversario Casuale-->
         <scene sceneID="pns-YP-IH4">
@@ -114,10 +114,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="TQZ-Na-Gga" kind="show" identifier="game_segue" id="mrD-ZA-LgU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNj-w7-LNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="-289"/>
+            <point key="canvasLocation" x="591" y="-279"/>
         </scene>
         <!--Scegli la categoria-->
         <scene sceneID="kIW-Wn-2KM">
@@ -167,12 +170,11 @@
                     <connections>
                         <outlet property="tableView" destination="WKd-el-k6b" id="RMA-Z4-Hnw"/>
                         <segue destination="uXd-5a-fhz" kind="show" identifier="play_round" id="mvX-Sj-SK8"/>
-                        <segue destination="TQZ-Na-Gga" kind="show" identifier="test_segue" id="qT2-qf-aI7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrl-4X-Pin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741.5999999999999" y="-1039.4302848575712"/>
+            <point key="canvasLocation" x="2481" y="-1447"/>
         </scene>
         <!--Ricerca avversario-->
         <scene sceneID="jtV-8Y-1ZJ">
@@ -235,6 +237,7 @@
                         <outlet property="control" destination="9HM-Tp-3eU" id="4cc-s3-cFz"/>
                         <outlet property="searchBar" destination="GNC-Jh-qhC" id="85g-dJ-fUZ"/>
                         <outlet property="tableView" destination="41L-QX-Y12" id="MxE-0d-ZaD"/>
+                        <segue destination="TQZ-Na-Gga" kind="show" identifier="game_segue" id="EVX-DV-dYQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4E-LB-ozW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +247,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="898" y="-1039"/>
+            <point key="canvasLocation" x="591" y="-1023"/>
         </scene>
         <!--Game Header-->
         <scene sceneID="Ifm-Kw-Pql">
@@ -285,7 +288,7 @@
                                             <constraint firstAttribute="width" secondItem="oIQ-SY-Upb" secondAttribute="height" multiplier="23:23" id="GlJ-bS-LKA"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scegli la categoria!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOB-p6-0mK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caricamento.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOB-p6-0mK">
                                         <rect key="frame" x="31" y="0.0" width="134" height="23"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,12 +319,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOo-o0-ypU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2246" y="307"/>
+            <point key="canvasLocation" x="2529" y="-652"/>
         </scene>
         <!--Attendi-->
         <scene sceneID="hS8-4e-KLf">
             <objects>
-                <viewController title="Attendi" id="TQZ-Na-Gga" customClass="WaitOpponentViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitOpponent" title="Attendi" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TQZ-Na-Gga" customClass="WaitOpponentViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8k7-f1-aTz"/>
                         <viewControllerLayoutGuide type="bottom" id="OlA-mS-DF4"/>
@@ -341,9 +344,9 @@
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ob-9Ko">
-                                <rect key="frame" x="70.5" y="150" width="179" height="179"/>
+                                <rect key="frame" x="65" y="150" width="190" height="190"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="0Ru-Ra-5fv"/>
+                                    <constraint firstAttribute="width" constant="190" id="0Ru-Ra-5fv"/>
                                     <constraint firstAttribute="width" secondItem="wvI-ob-9Ko" secondAttribute="height" multiplier="100:100" id="Hko-Go-rGJ"/>
                                 </constraints>
                             </imageView>
@@ -357,9 +360,9 @@
                                     <segue destination="shz-gG-blI" kind="embed" identifier="action_view" id="kf4-r3-nBv"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
-                                <rect key="frame" x="51" y="369" width="218" height="18"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In attesa di connessione.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
+                                <rect key="frame" x="51" y="380" width="218" height="57"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -367,7 +370,7 @@
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="p9J-tu-dYZ" firstAttribute="top" secondItem="wvI-ob-9Ko" secondAttribute="bottom" constant="40" id="3SA-89-p2G"/>
-                            <constraint firstItem="Svw-ib-Q7p" firstAttribute="top" secondItem="p9J-tu-dYZ" secondAttribute="bottom" constant="90" id="8mh-Dy-WSI"/>
+                            <constraint firstItem="Svw-ib-Q7p" firstAttribute="top" secondItem="p9J-tu-dYZ" secondAttribute="bottom" constant="40" id="8mh-Dy-WSI"/>
                             <constraint firstItem="wvI-ob-9Ko" firstAttribute="top" secondItem="cVv-7D-7r1" secondAttribute="bottom" constant="70" id="8w7-o4-dRB"/>
                             <constraint firstItem="OlA-mS-DF4" firstAttribute="top" secondItem="Svw-ib-Q7p" secondAttribute="bottom" constant="40" id="BAq-iy-Gxz"/>
                             <constraint firstAttribute="trailing" secondItem="cVv-7D-7r1" secondAttribute="trailing" id="HVd-56-rKE"/>
@@ -383,11 +386,14 @@
                     <connections>
                         <outlet property="opponentImageView" destination="wvI-ob-9Ko" id="QcS-55-t8F"/>
                         <outlet property="waitLabel" destination="p9J-tu-dYZ" id="WG0-Is-Ox0"/>
+                        <segue destination="c1T-Yo-WEd" kind="show" identifier="choose_category" id="ogv-rY-xM4"/>
+                        <segue destination="uXd-5a-fhz" kind="show" identifier="play_round" id="d1s-Rz-ALU"/>
+                        <segue destination="ZWh-kv-MbX" kind="show" identifier="round_details_segue" id="DiI-hO-ske"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0R-G4-ngb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3150" y="-127.8169014084507"/>
+            <point key="canvasLocation" x="1588" y="-652"/>
         </scene>
         <!--Gioca-->
         <scene sceneID="y6l-TG-Ieo">
@@ -525,7 +531,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaV-UR-tow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591.25" y="-1039.4366197183099"/>
+            <point key="canvasLocation" x="3362" y="-1424"/>
+        </scene>
+        <!--Round Details View Controller-->
+        <scene sceneID="pt1-UX-bmG">
+            <objects>
+                <viewController id="ZWh-kv-MbX" customClass="RoundDetailsViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vut-eY-DKz"/>
+                        <viewControllerLayoutGuide type="bottom" id="pYT-W5-Kp7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jea-Wn-pnL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xhK-Wp-YH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2528" y="-89"/>
         </scene>
         <!--Quiz View-->
         <scene sceneID="j8e-cc-rBH">
@@ -643,7 +667,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3283.125" y="-969.71830985915494"/>
+            <point key="canvasLocation" x="3698" y="-579"/>
         </scene>
         <!--Game Actions-->
         <scene sceneID="Nmu-cx-qHz">
@@ -722,7 +746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxn-EX-aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3848" y="-615"/>
+            <point key="canvasLocation" x="3072" y="-599"/>
         </scene>
     </scenes>
     <resources>
@@ -731,7 +755,9 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ygJ-H6-qBG"/>
+        <segue reference="mrD-ZA-LgU"/>
         <segue reference="kf4-r3-nBv"/>
+        <segue reference="d1s-Rz-ALU"/>
+        <segue reference="yys-8T-GtN"/>
     </inferredMetricsTieBreakers>
 </document>
