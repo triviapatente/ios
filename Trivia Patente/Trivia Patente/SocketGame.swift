@@ -18,6 +18,9 @@ class SocketGame: SocketManager {
     func join(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.join(id: game_id, type: "game", handler: handler)
     }
+    func listen(event : String, handler : @escaping (TPResponse?) -> Void) {
+        SocketGame.listen(event: event, handler: handler)
+    }
     func leave(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.leave(id: game_id, type: "game", handler: handler)
     }

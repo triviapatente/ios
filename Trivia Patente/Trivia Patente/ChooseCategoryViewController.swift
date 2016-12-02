@@ -16,6 +16,7 @@ class ChooseCategoryViewController: UIViewController {
     
     var opponent : User!
     var round : Round!
+    var game : Game!
     let CELL_MIN_HEIGHT = CGFloat(100)
     var indexPaths : [IndexPath] {
         var output : [IndexPath] = []
@@ -73,6 +74,7 @@ class ChooseCategoryViewController: UIViewController {
                 destination.category = self.categories[self.tableView.indexPathForSelectedRow!.row]
                 destination.round = round
                 destination.opponent = opponent
+                destination.game = game
             }
         }
     }

@@ -17,11 +17,11 @@ class RandomGameViewController: UIViewController {
         super.viewDidLoad()
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.randomNewGame { response in
-            sleep(3)
             loadingView.hide(animated: true)
             self.response = response
             if response.success == true {
                 //TODO: invite    
+                self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
             } else {
                 //TODO: add error handler
             }
@@ -30,9 +30,13 @@ class RandomGameViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "wait_opponent_segue" {
+            let destination = segue.destination as! WaitOpponentViewController
+            self.response.game.opponent = self.response.opponent
+            destination.game = self.response.game
+            destination.fromInvite = true
+        }
     }
     
 

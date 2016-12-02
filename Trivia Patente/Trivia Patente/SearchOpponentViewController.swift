@@ -23,6 +23,8 @@ class SearchOpponentViewController: UIViewController {
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     
+    var createGameCallback : ((TPNewGameResponse) -> Void)!
+    var createResponse : TPNewGameResponse!
     
     var italianResponse : TPSuggestedUsersResponse? {
         didSet {
@@ -136,6 +138,10 @@ class SearchOpponentViewController: UIViewController {
         self.tableView.rowHeight = 50
         
         self.changeSearchType(sender: control)
+        self.createGameCallback = { response in
+            self.createResponse = response
+            self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+        }
         
     }
     
@@ -156,6 +162,14 @@ class SearchOpponentViewController: UIViewController {
     }
     @IBAction func dismissSearch() {
         self.searchBar.resignFirstResponder()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "wait_opponent_segue" {
+            let destination = segue.destination as! WaitOpponentViewController
+            self.createResponse.game.opponent = self.createResponse.opponent
+            destination.game = self.createResponse.game
+            destination.fromInvite = true
+        }
     }
     
 }
@@ -189,6 +203,7 @@ extension SearchOpponentViewController : UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "opponent_cell") as! GameOpponentTableViewCell
         cell.user = getContextualUsers()![indexPath.row]
+        cell.createGameCallback = self.createGameCallback
         return cell
     }
 }

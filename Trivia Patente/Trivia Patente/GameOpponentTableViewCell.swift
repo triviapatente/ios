@@ -17,10 +17,11 @@ class GameOpponentTableViewCell: UITableViewCell {
     @IBOutlet var playButton : UIButton!
     
     var handler = HTTPGame()
+    var createGameCallback : ((TPNewGameResponse) -> Void)!
     @IBAction func playWithUser() {
         handler.newGame(id: user.id!) { response in
             if response.success == true {
-                //TODO: send message to the user that confirm the invitation
+                self.createGameCallback(response)
             } else {
                 //TODO: handle error
             }

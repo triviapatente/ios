@@ -122,6 +122,8 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.quizImageView.shadow(radius: 1)
         let imageRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
         self.quizImageView.addGestureRecognizer(imageRecognizer)
+        self.quizNameView.textContainerInset = .zero
+        self.quizNameView.textContainer.lineFragmentPadding = 0
         self.prepareQuiz()
     }
     override func layoutSubviews() {

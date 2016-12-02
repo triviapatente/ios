@@ -12,6 +12,7 @@ class PlayRoundViewController: UIViewController {
     var headerView : TPGameHeader!
     @IBOutlet var quizCollectionView : UICollectionView!
     var round : Round!
+    var game : Game!
     var category : Category!
     var opponent : User!
     let handler = SocketGame()
@@ -122,6 +123,9 @@ class PlayRoundViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "header_segue" {
             self.headerView = segue.destination as! TPGameHeader
+        } else if segue.identifier == "wait_opponent_segue" {
+            let destination = segue.destination as! WaitOpponentViewController
+            destination.game = game
         }
     }
     func allAnswered() -> Bool {
@@ -142,10 +146,7 @@ class PlayRoundViewController: UIViewController {
         return nil
     }
     func roundEnded() {
-        let alert = UIAlertController(title: "Round finito", message: "Il round è finito", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
     }
     
 
