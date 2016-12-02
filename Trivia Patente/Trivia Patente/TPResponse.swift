@@ -37,8 +37,8 @@ class TPResponse : CustomStringConvertible {
         self.statusCode = statusCode
 
     }
-    required init(error : String, statusCode : Int? = nil) {
-        self.success = false
+    required init(error : String?, statusCode : Int? = nil, success : Bool = false) {
+        self.success = success
         self.message = error
         if let code = statusCode {
             self.statusCode = code

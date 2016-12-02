@@ -42,10 +42,19 @@ class ChooseCategoryViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.gameHeader.round = round
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
-        self.get_categories(round: round)
+        self.join_room(round: round)
+    }
+    func join_room(round: Round) {
+        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
+            if joinResponse?.success == true {
+                self.get_categories(round: round)
+            } else {
+                //TODO: handle error
+            }
+        }
     }
     func get_categories(round : Round) {
-        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         self.handler.get_categories(round: round) { categoryResponse in
             self.loadingView.hide(animated: true)
             if categoryResponse?.success == true {

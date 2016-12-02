@@ -16,6 +16,7 @@ class PlayRoundViewController: UIViewController {
     var opponent : User!
     let handler = SocketGame()
     var selectedQuizIndex = 0
+    var loadingView : MBProgressHUD!
     
     let BORDER_LENGTH = CGFloat(30)
     
@@ -64,11 +65,20 @@ class PlayRoundViewController: UIViewController {
         }
     }
     func load() {
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.get_questions(round: round) { (response : TPQuizListResponse?) in
-            loadingView.hide(animated: true)
+            self.loadingView.hide(animated: true)
             if response?.success == true {
                 self.questions = response!.questions
+            }
+        }
+    }
+    func join_room() {
+        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
+            if joinResponse?.success == true {
+                self.load()
+            } else {
+                //TODO: handle error
             }
         }
     }
@@ -97,11 +107,10 @@ class PlayRoundViewController: UIViewController {
         //TODO: set category
         self.headerView.category = category
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
-        load()
+        self.join_room()
         let nib = UINib(nibName: "ShowQuizCollectionViewCell", bundle: .main)
         //self.quizCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "quiz_cell")
         self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")
-
         // Do any additional setup after loading the view.
     }
 
