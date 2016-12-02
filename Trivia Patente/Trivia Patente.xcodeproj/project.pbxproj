@@ -134,6 +134,7 @@
 		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273461DC0DEA40094F0F6 /* TPTextView.swift */; };
 		8BE2788E1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE2788C1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib */; };
+		8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */; };
 		8BE6DE321DE6D97300DDD179 /* ChooseCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6DE311DE6D97300DDD179 /* ChooseCategoryViewController.swift */; };
 		8BE6DE371DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6DE351DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift */; };
 		8BE6DE381DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6DE361DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib */; };
@@ -305,6 +306,7 @@
 		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8BE273461DC0DEA40094F0F6 /* TPTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextView.swift; sourceTree = "<group>"; };
 		8BE2788C1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowQuizCollectionViewCell.xib; sourceTree = "<group>"; };
+		8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		8BE6DE311DE6D97300DDD179 /* ChooseCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCategoryViewController.swift; sourceTree = "<group>"; };
 		8BE6DE351DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposedCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		8BE6DE361DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposedCategoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -1165,6 +1167,7 @@
 				8BBBE8571DC798A500B433F2 /* UIImageView.swift */,
 				8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */,
 				8BE6DE391DE6E0AC00DDD179 /* UIColor.swift */,
+				8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1612,6 +1615,7 @@
 				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
+				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,

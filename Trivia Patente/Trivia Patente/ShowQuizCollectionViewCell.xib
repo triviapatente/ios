@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE8-19-BnL">
                         <rect key="frame" x="22" y="7" width="256" height="125"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-ck-hL0">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-ck-hL0">
                                 <rect key="frame" x="0.0" y="38" width="50" height="50"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -97,6 +97,7 @@
                     </stackView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.92941176470588238" green="0.97647058823529409" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="OE8-19-BnL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="14" id="2Qf-AH-AZT"/>
                 <constraint firstItem="Cdi-BR-OEF" firstAttribute="top" secondItem="OE8-19-BnL" secondAttribute="bottom" constant="7" id="2tT-XW-M3r"/>

@@ -16,6 +16,11 @@ extension UIColor {
         self.getRed(&red, green: &green, blue: &blue, alpha: nil)
         return UIColor(red: red - offset, green: green - offset, blue: blue - offset, alpha: 1)
     }
+    func alpha(offset : CGFloat) -> UIColor {
+        var alpha : CGFloat = 0
+        self.getWhite(nil, alpha: &alpha)
+        return self.withAlphaComponent(alpha + offset)
+    }
     
     convenience init( hex: String) {
         var hex = hex

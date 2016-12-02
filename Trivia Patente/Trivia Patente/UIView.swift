@@ -29,7 +29,8 @@ extension UIView {
         return circleLayer
     }
     func getBorderGradientLayer(color : UIColor, width : CGFloat) -> CAGradientLayer {
-        let clearerColor = color.darker(offset: -0.4)
+        let offset = CGFloat(0.4)
+        let clearerColor = color == .white ? color.alpha(offset: -offset) : color.darker(offset: -offset)
         let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
         let circlePath = UIBezierPath(arcCenter: center, radius: (frame.size.width - width) / 2.0, startAngle: 0.0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
         

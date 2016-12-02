@@ -60,7 +60,7 @@ class WaitOpponentViewController: UIViewController {
     func processGameState(response : TPInitRoundResponse) {
         self.response = response
         if response.ended == true {
-            self.performSegue(withIdentifier: "round_details_segue", sender: self)
+            self.redirect(identifier: "round_details_segue")
             //TODO: go to round details page
         } else {
             guard let user = response.waiting_for else {
@@ -71,7 +71,7 @@ class WaitOpponentViewController: UIViewController {
             }
             if user.isMe() {
                 let identifier = self.segue(for: state)
-                self.performSegue(withIdentifier: identifier, sender: self)
+                self.redirect(identifier: identifier)
             } else {
                 let color = self.color(for: state)
                 self.opponentImageView.rotatingBorder(color: color)
@@ -104,6 +104,10 @@ class WaitOpponentViewController: UIViewController {
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.configureView()
         self.join_room()
+    }
+    func redirect(identifier : String) {
+        //TODO: rimuovere questo viewcontroller
+        self.performSegue(withIdentifier: identifier, sender: self)
     }
     
 

@@ -30,10 +30,10 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     @IBOutlet var separatorView : UIView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
-    let handler = SocketGame()
+    
     
     var imageExpanded = false
-    @IBAction func imageClicked() {
+    func imageClicked() {
         if imageExpanded == true {
             minimizeImage()
         } else {
@@ -64,7 +64,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         }
         
     }
-    
+    let handler = SocketGame()
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
@@ -115,9 +115,13 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.falseButton.circleRounded()
         self.falseButton.layer.borderWidth = 2
         self.quizImageView.shadow(radius: 1)
+        let imageRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
+        self.quizImageView.addGestureRecognizer(imageRecognizer)
         self.prepareQuiz()
-        //self.contentView.mediumRounded()
-        self.contentView.layer.cornerRadius = 10
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.mediumRounded()
     }
     override func awakeFromNib() {
         super.awakeFromNib()

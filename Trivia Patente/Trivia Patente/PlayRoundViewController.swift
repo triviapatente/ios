@@ -156,7 +156,6 @@ extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! ShowQuizCollectionViewCell
         cell.quiz = self.questions[indexPath.row]
         cell.round = round
-        cell.backgroundColor = .white
         cell.delegate = self
         return cell
     }
