@@ -10,12 +10,15 @@ import UIKit
 import MBProgressHUD
 class PlayRoundViewController: UIViewController {
     var headerView : TPGameHeader!
-    var quizView : TPQuizView!
+    @IBOutlet var quizCollectionView : UICollectionView!
     var round : Round!
     var category : Category!
     var opponent : User!
     let handler = SocketGame()
     var selectedQuizIndex = 0
+    
+    let CELL_WIDTH = CGFloat(300)
+    let CELL_HEIGHT = CGFloat(200)
     
     @IBOutlet var bannerView : UIView!
     @IBOutlet var questionButtons : [UIButton]!
@@ -25,17 +28,30 @@ class PlayRoundViewController: UIViewController {
             if sender == button {
                 selectedQuizIndex = i
                 button.shadowSelect()
-                self.quizView.quiz = self.questions[i]
+                gotoQuiz(i: i)
             } else {
                 button.shadowDeselect()
             }
         }
     }
-    var questions : [Quiz]! {
+    var currentPage : Int {
+        let x = self.quizCollectionView.contentOffset.x
+        let w = self.quizCollectionView.bounds.size.width
+        return Int(ceil(x/w))
+    }
+    func gotoQuiz(i : Int) {
+        guard i != currentPage else {
+            return
+        }
+        let indexPath = IndexPath(item: i, section: 0)
+        self.quizCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    var questions : [Quiz] = [] {
         didSet {
             guard !questions.isEmpty else {
                 return
             }
+            self.quizCollectionView.reloadData()
             let firstButton = questionButtons.first!
             for i in 0..<questions.count {
                 let question = questions[i]
@@ -74,7 +90,6 @@ class PlayRoundViewController: UIViewController {
             button.setTitle(title, for: .normal)
             self.setQuizButtonColor(of: button)
         }
-        quizView.view.mediumRounded()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,10 +97,11 @@ class PlayRoundViewController: UIViewController {
         self.headerView.round = round
         //TODO: set category
         self.headerView.category = category
-        self.quizView.round = round
-
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
         load()
+        let nib = UINib(nibName: "ShowQuizCollectionViewCell", bundle: .main)
+        //self.quizCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "quiz_cell")
+        self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")
 
         // Do any additional setup after loading the view.
     }
@@ -96,10 +112,7 @@ class PlayRoundViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "quiz_segue" {
-            self.quizView = segue.destination as! TPQuizView
-            self.quizView.delegate = self
-        } else if segue.identifier == "header_segue" {
+        if segue.identifier == "header_segue" {
             self.headerView = segue.destination as! TPGameHeader
         }
     }
@@ -126,9 +139,40 @@ class PlayRoundViewController: UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
+    
 
 }
-extension PlayRoundViewController : TPQuizViewDelegate {
+extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.questions.count
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! ShowQuizCollectionViewCell
+        cell.quiz = self.questions[indexPath.row]
+        cell.round = round
+        cell.backgroundColor = .white
+        cell.delegate = self
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (self.view.frame.size.width - CELL_WIDTH)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let margin = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section) / 2
+        return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let button = self.questionButtons[currentPage]
+        self.presentQuiz(sender: button)
+    }
+}
+extension PlayRoundViewController : ShowQuizCellDelegate {
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
         let button = self.questionButtons[selectedQuizIndex]

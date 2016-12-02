@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol TPQuizViewDelegate {
+protocol ShowQuizCellDelegate {
     func user_answered(answer : Bool, correct : Bool)
 }

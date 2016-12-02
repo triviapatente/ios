@@ -1,14 +1,15 @@
 //
-//  TPQuizView.swift
+//  ShowQuizCollectionViewCell.swift
 //  Trivia Patente
 //
-//  Created by Luigi Donadel on 28/11/16.
+//  Created by Luigi Donadel on 02/12/16.
 //  Copyright © 2016 Terpin e Donadel. All rights reserved.
 //
 
 import UIKit
 
-class TPQuizView: UIViewController {
+class ShowQuizCollectionViewCell: UICollectionViewCell {
+
     var quiz : Quiz! {
         didSet {
             self.quizNameView.contentOffset = .zero
@@ -18,7 +19,7 @@ class TPQuizView: UIViewController {
         }
     }
     var round : Round!
-    var delegate : TPQuizViewDelegate!
+    var delegate : ShowQuizCellDelegate!
     var defaultImageFrame : CGRect!
     @IBOutlet var quizImageView : UIImageView! {
         didSet {
@@ -48,7 +49,7 @@ class TPQuizView: UIViewController {
                 self.quizNameView.alpha = 1
             }
         }
-
+        
     }
     func expandImage() {
         if let superview = self.quizImageView.superview {
@@ -115,16 +116,13 @@ class TPQuizView: UIViewController {
         self.falseButton.layer.borderWidth = 2
         self.quizImageView.shadow(radius: 1)
         self.prepareQuiz()
+        //self.contentView.mediumRounded()
+        self.contentView.layer.cornerRadius = 10
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.prepareView()
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
-
