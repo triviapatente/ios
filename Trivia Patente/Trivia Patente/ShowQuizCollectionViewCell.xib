@@ -20,6 +20,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63l-cU-FB8">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.97647058819999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE8-19-BnL">
                         <rect key="frame" x="22" y="7" width="256" height="125"/>
                         <subviews>
@@ -31,7 +35,7 @@
                                     <constraint firstAttribute="width" secondItem="bOk-ck-hL0" secondAttribute="height" multiplier="53:53" id="gx8-y5-eTa"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Label" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5n-zS-jil" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" editable="NO" text="Label" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5n-zS-jil" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
                                 <rect key="frame" x="57" y="0.0" width="192" height="125"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.22951492670000001" green="0.347299099" blue="0.58799457550000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,15 +102,18 @@
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.92941176470588238" green="0.97647058823529409" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="OE8-19-BnL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="14" id="2Qf-AH-AZT"/>
                 <constraint firstItem="Cdi-BR-OEF" firstAttribute="top" secondItem="OE8-19-BnL" secondAttribute="bottom" constant="7" id="2tT-XW-M3r"/>
                 <constraint firstAttribute="trailing" secondItem="Cdi-BR-OEF" secondAttribute="trailing" constant="20" id="5mM-Ij-67V"/>
+                <constraint firstAttribute="bottom" secondItem="63l-cU-FB8" secondAttribute="bottom" id="C5l-sR-96t"/>
+                <constraint firstItem="63l-cU-FB8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lml-De-58t"/>
                 <constraint firstAttribute="trailingMargin" secondItem="OE8-19-BnL" secondAttribute="trailing" constant="14" id="NDq-rk-QLW"/>
                 <constraint firstItem="OE8-19-BnL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="NRh-fX-Wj6"/>
                 <constraint firstItem="Oqe-JB-gfh" firstAttribute="top" secondItem="Cdi-BR-OEF" secondAttribute="bottom" constant="10" id="QYn-4d-3MJ"/>
                 <constraint firstAttribute="bottom" secondItem="Oqe-JB-gfh" secondAttribute="bottom" constant="10" id="RUC-ml-NG7"/>
+                <constraint firstItem="63l-cU-FB8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SCH-Wa-8MM"/>
+                <constraint firstAttribute="trailing" secondItem="63l-cU-FB8" secondAttribute="trailing" id="fUX-XV-mUG"/>
                 <constraint firstItem="Cdi-BR-OEF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="fxh-gj-sDb"/>
                 <constraint firstItem="Oqe-JB-gfh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tnQ-mM-pLK"/>
             </constraints>
@@ -115,6 +122,7 @@
                 <outlet property="quizImageView" destination="bOk-ck-hL0" id="cZE-yw-Ne1"/>
                 <outlet property="quizNameView" destination="B5n-zS-jil" id="EDn-3b-8pQ"/>
                 <outlet property="separatorView" destination="Cdi-BR-OEF" id="MzE-g0-egx"/>
+                <outlet property="shapeView" destination="63l-cU-FB8" id="iFi-sz-sdY"/>
                 <outlet property="trueButton" destination="Qi6-lr-PlA" id="CAw-VK-amF"/>
             </connections>
         </collectionViewCell>

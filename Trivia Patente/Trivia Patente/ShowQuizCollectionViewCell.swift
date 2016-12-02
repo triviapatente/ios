@@ -13,11 +13,11 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     var quiz : Quiz! {
         didSet {
             self.quizNameView.text = quiz.question
-            self.quizNameView.contentOffset = .zero
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
             } else {
                 self.quizImageView.removeFromSuperview()
+                self.quizNameView.textAlignment = .center
             }
             self.prepareQuiz()
         }
@@ -34,6 +34,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     @IBOutlet var separatorView : UIView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
+    @IBOutlet var shapeView : UIView!
     
     
     var imageExpanded = false
@@ -125,11 +126,12 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.contentView.mediumRounded()
+        self.quizNameView.contentOffset = .zero
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepareView()
+        self.shapeView.mediumRounded()
         // Do any additional setup after loading the view.
     }
 
