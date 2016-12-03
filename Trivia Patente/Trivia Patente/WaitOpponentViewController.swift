@@ -22,7 +22,7 @@ class WaitOpponentViewController: UIViewController {
             } else if let cat = self.response.category {
                 headerView.category = cat
             } else {
-                headerView.categoryNameView.text = "Attendi.."
+                headerView.categoryNameView.text = self.waitTitle()
             }
         }
     }
@@ -43,6 +43,30 @@ class WaitOpponentViewController: UIViewController {
                 self.join_room()
             }
         }
+        handler.listen(event: "invite_refused") { response in
+            if response?.success == true {
+                self.handleInviteRefused()
+            }
+        }
+        handler.listen(event: "user_joined") { response in
+            if response?.success == true {
+                self.join_room()
+            }
+        }
+        handler.listen(event: "user_left") { response in
+            if response?.success == true {
+                self.join_room()
+            }
+        }
+       
+    }
+    func handleInviteRefused() {
+        let alert = UIAlertController(title: "Invito rifiutato", message: "L'utente ha rifiutato il tuo invito a giocare!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Indietro", style: .cancel) { action in
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     func configureView() {
         self.opponentImageView.load(user: game.opponent)
@@ -63,13 +87,19 @@ class WaitOpponentViewController: UIViewController {
             return "Caricamento.."
         }
     }
-    func waitMessage(for state: RoundWaiting) -> String {
+    func waitMessage(for state: RoundWaiting, opponent_online : Bool) -> String {
+        guard opponent_online else {
+            return "Il tuo avversario è offline. Attendi che si ricolleghi per giocare!"
+        }
         switch(state) {
             case .game: return "Attendi che il tuo avversario finisca il turno!"
             case .category: return "Attendi che il tuo avversario scelga la categoria del turno!"
         }
     }
-    func color(for state : RoundWaiting) -> UIColor {
+    func color(for state : RoundWaiting, opponent_online : Bool) -> UIColor {
+        guard opponent_online else {
+            return .white
+        }
         switch state {
             case .category: return Colors.yellow_default
             case .game: return Colors.green_default
@@ -87,24 +117,23 @@ class WaitOpponentViewController: UIViewController {
             self.redirect(identifier: "round_details_segue")
             //TODO: go to round details page
         } else {
-            
             guard let state = response.waiting else {
                 return
             }
             guard let user = response.waiting_for else {
                 return
             }
-            self.processGameState(state: state, user: user)
+            self.processGameState(state: state, user: user, opponent_online: response.opponent_online)
         }
     }
-    func processGameState(state : RoundWaiting, user: User) {
+    func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false) {
         if user.isMe() {
             let identifier = self.segue(for: state)
             self.redirect(identifier: identifier)
         } else {
-            let color = self.color(for: state)
+            let color = self.color(for: state, opponent_online: opponent_online)
             self.opponentImageView.rotatingBorder(color: color)
-            self.waitLabel.text = self.waitMessage(for: state)
+            self.waitLabel.text = self.waitMessage(for: state, opponent_online: opponent_online)
             self.headerView.categoryNameView.text = self.waitTitle(for: state)
         }
     }
