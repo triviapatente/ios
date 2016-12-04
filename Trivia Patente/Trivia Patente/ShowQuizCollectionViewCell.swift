@@ -126,10 +126,6 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.quizNameView.textContainer.lineFragmentPadding = 0
         self.prepareQuiz()
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.quizNameView.contentOffset = .zero
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepareView()
