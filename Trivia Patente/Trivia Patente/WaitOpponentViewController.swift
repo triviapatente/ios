@@ -114,8 +114,7 @@ class WaitOpponentViewController: UIViewController {
     func processResponse(response : TPInitRoundResponse) {
         self.response = response
         if response.ended == true {
-            self.redirect(identifier: "round_details_segue")
-            //TODO: go to round details page and comunicate that game is ended
+            self.redirect(identifier: "round_details")
         } else {
             guard let state = response.waiting else {
                 return
@@ -160,6 +159,7 @@ class WaitOpponentViewController: UIViewController {
         super.viewDidLoad()
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.configureView()
+        self.headerView.roundLabel.text = "Partita"
         if fromInvite == false {
             self.join_room()
         }
