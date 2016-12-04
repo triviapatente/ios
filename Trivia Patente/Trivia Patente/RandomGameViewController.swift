@@ -15,9 +15,8 @@ class RandomGameViewController: UIViewController {
     var response : TPNewGameResponse!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        _ = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.randomNewGame { response in
-            loadingView.hide(animated: true)
             self.response = response
             if response.success == true {
                 //TODO: invite    

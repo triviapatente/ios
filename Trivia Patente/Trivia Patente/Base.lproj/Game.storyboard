@@ -346,7 +346,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ob-9Ko">
                                 <rect key="frame" x="57" y="150" width="207" height="207"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="999" constant="190" id="0Ru-Ra-5fv"/>
+                                    <constraint firstAttribute="width" constant="207" id="0Ru-Ra-5fv"/>
                                     <constraint firstAttribute="width" secondItem="wvI-ob-9Ko" secondAttribute="height" multiplier="100:100" id="Hko-Go-rGJ"/>
                                 </constraints>
                             </imageView>
