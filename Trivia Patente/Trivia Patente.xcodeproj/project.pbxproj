@@ -76,7 +76,7 @@
 		8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */; };
 		8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */; };
 		8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */; };
-		8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */; };
+		8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058C91DE2F97100C3F938 /* TPUserListResponse.swift */; };
 		8B8058CC1DE2FA1F00C3F938 /* TPNewGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */; };
 		8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */; };
 		8B8058D31DE2FC8D00C3F938 /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */; };
@@ -85,7 +85,6 @@
 		8B8058DC1DE3375B00C3F938 /* SearchOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058DB1DE3375B00C3F938 /* SearchOpponentViewController.swift */; };
 		8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058DF1DE337FB00C3F938 /* GameOpponentTableViewCell.swift */; };
 		8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8058E01DE337FB00C3F938 /* GameOpponentTableViewCell.xib */; };
-		8B8058E41DE33A4700C3F938 /* TPSearchOpponentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */; };
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
@@ -255,7 +254,7 @@
 		8B8058C31DE2F5B700C3F938 /* SearchGameMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGameMenuViewController.swift; sourceTree = "<group>"; };
 		8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteResponse.swift; sourceTree = "<group>"; };
 		8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteListResponse.swift; sourceTree = "<group>"; };
-		8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPSuggestedUsersResponse.swift; sourceTree = "<group>"; };
+		8B8058C91DE2F97100C3F938 /* TPUserListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPUserListResponse.swift; sourceTree = "<group>"; };
 		8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNewGameResponse.swift; sourceTree = "<group>"; };
 		8B8058D01DE2FC8D00C3F938 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTableViewCell.swift; sourceTree = "<group>"; };
 		8B8058D11DE2FC8D00C3F938 /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteTableViewCell.xib; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 		8B8058DB1DE3375B00C3F938 /* SearchOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchOpponentViewController.swift; sourceTree = "<group>"; };
 		8B8058DF1DE337FB00C3F938 /* GameOpponentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOpponentTableViewCell.swift; sourceTree = "<group>"; };
 		8B8058E01DE337FB00C3F938 /* GameOpponentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOpponentTableViewCell.xib; sourceTree = "<group>"; };
-		8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPSearchOpponentResponse.swift; sourceTree = "<group>"; };
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
@@ -1134,9 +1132,8 @@
 				8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */,
 				8B8058C51DE2F85000C3F938 /* TPInviteResponse.swift */,
 				8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */,
-				8B8058C91DE2F97100C3F938 /* TPSuggestedUsersResponse.swift */,
+				8B8058C91DE2F97100C3F938 /* TPUserListResponse.swift */,
 				8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */,
-				8B8058E31DE33A4700C3F938 /* TPSearchOpponentResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1731,7 +1728,6 @@
 				8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */,
 				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
-				8B8058E41DE33A4700C3F938 /* TPSearchOpponentResponse.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
 				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
@@ -1739,7 +1735,7 @@
 				8BE20C641DD9E43D0048DA0A /* TPPreferenceChangeResponse.swift in Sources */,
 				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
-				8B8058CA1DE2F97100C3F938 /* TPSuggestedUsersResponse.swift in Sources */,
+				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */,

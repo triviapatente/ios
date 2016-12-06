@@ -27,6 +27,8 @@ class TPRankSearchResponse: TPResponse {
         }
         let dimension = height / tableView.rowHeight
         let limit = Int(dimension)
-        self.users.removeSubrange(limit..<self.users.count)
+        if limit < self.users.count {
+            self.users.removeSubrange(limit..<self.users.count)
+        }
     }
 }

@@ -26,25 +26,25 @@ class SearchOpponentViewController: UIViewController {
     var createGameCallback : ((TPNewGameResponse) -> Void)!
     var createResponse : TPNewGameResponse!
     
-    var italianResponse : TPSuggestedUsersResponse? {
+    var italianResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
             self.tableView.tableFooterView = footerView
         }
     }
-    var italianSearchResponse : TPSearchOpponentResponse? {
+    var italianSearchResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
             self.tableView.tableFooterView = footerView
         }
     }
-    var friendsResponse : TPSuggestedUsersResponse?{
+    var friendsResponse : TPUserListResponse?{
         didSet {
             self.tableView.reloadData()
             self.tableView.tableFooterView = footerView
         }
     }
-    var friendsSearchResponse : TPSearchOpponentResponse? {
+    var friendsSearchResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
             self.tableView.tableFooterView = footerView
@@ -112,7 +112,7 @@ class SearchOpponentViewController: UIViewController {
     func loadData() {
         
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        let callback = { (response : TPSuggestedUsersResponse) in
+        let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
             if response.success == true {
                 if self.mode == .italian {
@@ -147,7 +147,7 @@ class SearchOpponentViewController: UIViewController {
     
     func search(query: String) {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        handler.search(type: mode, query: query) { (response : TPSearchOpponentResponse) in
+        handler.search(type: mode, query: query) { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
             if response.success == true {
                 if self.mode == .italian {
