@@ -12,16 +12,21 @@ open class Question: Base {
 
     // MARK: Declaration for string constants to be used to decode and also serialize.
 	internal let kQuestionAnswerKey: String = "answer"
-	internal let kQuestionUserIdKey: String = "user_id"
+    internal let kQuestionUserIdKey: String = "user_id"
+    internal let kQuestionUserKey: String = "user"
 	internal let kQuestionQuizIdKey: String = "quiz_id"
-	internal let kQuestionRoundIdKey: String = "round_id"
+    internal let kQuestionRoundIdKey: String = "round_id"
+    internal let kQuestionRoundNumberKey: String = "round_number"
 
 
     // MARK: Properties
 	open var answer: Bool = false
 	open var userId: Int?
 	open var quizId: Int?
-	open var roundId: Int?
+    open var roundId: Int?
+    open var roundNumber: Int?
+    
+    var user : User!
 
 
     // MARK: SwiftyJSON Initalizers
@@ -45,7 +50,7 @@ open class Question: Base {
 		userId = json[kQuestionUserIdKey].int
 		quizId = json[kQuestionQuizIdKey].int
 		roundId = json[kQuestionRoundIdKey].int
-
+        roundNumber = json[kQuestionRoundNumberKey].int
     }
 
 
@@ -66,6 +71,9 @@ open class Question: Base {
 		if roundId != nil {
 			dictionary.updateValue(roundId! as AnyObject, forKey: kQuestionRoundIdKey)
 		}
+        if roundNumber != nil {
+            dictionary.updateValue(roundNumber! as AnyObject, forKey: kQuestionRoundNumberKey)
+        }
 
         return dictionary
     }
@@ -77,6 +85,8 @@ open class Question: Base {
 		self.userId = aDecoder.decodeObject(forKey: kQuestionUserIdKey) as? Int
 		self.quizId = aDecoder.decodeObject(forKey: kQuestionQuizIdKey) as? Int
 		self.roundId = aDecoder.decodeObject(forKey: kQuestionRoundIdKey) as? Int
+        self.roundNumber = aDecoder.decodeObject(forKey: kQuestionRoundNumberKey) as? Int
+        self.user = aDecoder.decodeObject(forKey: kQuestionUserKey) as? User
 
     }
 
@@ -85,7 +95,9 @@ open class Question: Base {
 		aCoder.encode(answer, forKey: kQuestionAnswerKey)
 		aCoder.encode(userId, forKey: kQuestionUserIdKey)
 		aCoder.encode(quizId, forKey: kQuestionQuizIdKey)
-		aCoder.encode(roundId, forKey: kQuestionRoundIdKey)
+        aCoder.encode(roundId, forKey: kQuestionRoundIdKey)
+        aCoder.encode(roundNumber, forKey: kQuestionRoundNumberKey)
+        aCoder.encode(user, forKey: kQuestionUserKey)
 
     }
 

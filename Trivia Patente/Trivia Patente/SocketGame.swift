@@ -33,5 +33,8 @@ class SocketGame: SocketManager {
     func answer(answer : Bool, round : Round, quiz : Quiz, handler: @escaping (TPGameAnswerResponse?) -> Void) {
         SocketGame.emit(path: "answer", values: ["answer": answer as AnyObject, "round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject, "quiz_id": quiz.id! as AnyObject], handler: handler)
     }
+    func round_details(game_id : Int, handler: @escaping (TPRoundDetailsResponse?) -> Void) {
+        SocketGame.emit(path: "round_details", values: ["game": game_id as AnyObject], handler: handler)
+    }
     
 }
