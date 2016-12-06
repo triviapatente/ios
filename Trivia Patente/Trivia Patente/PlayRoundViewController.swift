@@ -12,12 +12,18 @@ class PlayRoundViewController: UIViewController {
     var headerView : TPGameHeader!
     @IBOutlet var quizCollectionView : UICollectionView!
     var round : Round!
-    var game : Game!
     var category : Category!
     var opponent : User!
     let handler = SocketGame()
     var selectedQuizIndex = 0
     var loadingView : MBProgressHUD!
+    
+    var gameActions : TPGameActions! {
+        didSet {
+            self.gameActions.game = game
+        }
+    }
+    var game : Game!
     
     let BORDER_LENGTH = CGFloat(30)
     
@@ -39,6 +45,10 @@ class PlayRoundViewController: UIViewController {
         let x = self.quizCollectionView.contentOffset.x
         let w = self.quizCollectionView.bounds.size.width
         return Int(ceil(x/w))
+    }
+    
+    func segueTriggered(segue: String) {
+        self.performSegue(withIdentifier: segue, sender: self)
     }
     func gotoQuiz(i : Int) {
         guard i != currentPage else {
@@ -121,11 +131,18 @@ class PlayRoundViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "header_segue" {
+        let identifier = segue.identifier
+        if identifier == "header_segue" {
             self.headerView = segue.destination as! TPGameHeader
-        } else if segue.identifier == "wait_opponent_segue" {
+        } else if identifier == "wait_opponent_segue" {
             let destination = segue.destination as! WaitOpponentViewController
             destination.game = game
+        } else if identifier == "game_actions" {
+            self.gameActions = segue.destination as! TPGameActions
+        } else if identifier == "round_details" {
+            if let destination = segue.destination as? RoundDetailsViewController {
+                destination.game = game
+            }
         }
     }
     func allAnswered() -> Bool {

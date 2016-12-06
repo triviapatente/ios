@@ -14,17 +14,23 @@ class TPGameActions: UIViewController {
     @IBOutlet var chatButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var detailButton : UIButton!
+    var game : Game!
     
-    @IBAction func goToDetail() {
-        
+    func identifier(for button : UIButton) -> String? {
+        switch button {
+            case chatButton: return nil
+            
+            case leaveButton: return "leave_game"
+            
+            case detailButton: return "round_details"
+            default: return nil
+        }
     }
-    @IBAction func leaveGame() {
-        
+    @IBAction func goto(sender : UIButton) {
+        if let identifier = identifier(for: sender) {
+            self.performSegue(withIdentifier: identifier, sender: self)
+        }
     }
-    @IBAction func goToChat() {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,21 +43,11 @@ class TPGameActions: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let identifier = segue.identifier
+        if identifier == self.identifier(for: detailButton) {
+            (segue.destination as! RoundDetailsViewController).game = game
+        }
     }
-    */
 
 }

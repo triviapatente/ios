@@ -13,6 +13,11 @@ class WaitOpponentViewController: UIViewController {
     @IBOutlet var opponentImageView : UIImageView!
     
     var headerView : TPGameHeader!
+    var gameActions : TPGameActions! {
+        didSet {
+            self.gameActions.game = self.game
+        }
+    }
     var game : Game!
     var fromInvite : Bool = false
     var response : TPInitRoundResponse! {
@@ -196,6 +201,8 @@ class WaitOpponentViewController: UIViewController {
                 if let destination = segue.destination as? RoundDetailsViewController {
                     destination.game = game
                 }
+            } else if identifier == "game_actions" {
+                self.gameActions = segue.destination as! TPGameActions
             }
         }
     }
