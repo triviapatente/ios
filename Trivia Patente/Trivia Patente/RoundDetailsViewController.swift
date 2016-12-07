@@ -80,6 +80,9 @@ class RoundDetailsViewController: UIViewController {
     }
     let detailsCellKey = "details_cell"
     let winnerCellKey = "game_ended_cell"
+    let DETAILS_ROW_HEIGHT = CGFloat(90)
+    let END_ROW_HEIGHT = CGFloat(90)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.join_room()
@@ -88,7 +91,18 @@ class RoundDetailsViewController: UIViewController {
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
     }
-    
+    func height(for section: Int) -> CGFloat {
+        if section == self.questionMap.count {
+            return END_ROW_HEIGHT
+        }
+        return DETAILS_ROW_HEIGHT
+    }
+    func rows(for section: Int) -> Int {
+        if section == self.questionMap.count {
+            return 1
+        }
+        return 4
+    }
 }
 extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSource {
     var currentPage : Int {
@@ -111,10 +125,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return self.questionMap.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == self.questionMap.count {
-            return 1
-        }
-        return 4
+        return self.rows(for: section)
     }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var titles = self.questionMap.keys.sorted()
@@ -124,7 +135,24 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return titles
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return self.height(for: indexPath.section)
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let rowHeight =  self.height(for: section)
+        let count = self.rows(for: section)
+        return (self.tableView.frame.size.height - rowHeight * CGFloat(count)) / 2
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if (game.ended == true && section == self.questionMap.count) || section + 1 == self.questionMap.count {
+            return self.tableView(tableView, heightForHeaderInSection: section)
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == self.questionMap.count {
