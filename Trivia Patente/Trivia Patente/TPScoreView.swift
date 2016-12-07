@@ -42,7 +42,7 @@ class TPScoreView: UIViewController {
         self.setColor(for: self.secondAvatarView)
     }
     func setColor(for view : UIView) {
-        let isFirst = (view == firstScoreView)
+        let isFirst = (view == firstAvatarView)
         if firstScore == secondScore {
             view.layer.borderColor = Colors.yellow_default.cgColor
         } else if firstScore > secondScore {

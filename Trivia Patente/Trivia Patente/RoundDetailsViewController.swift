@@ -17,7 +17,7 @@ class RoundDetailsViewController: UIViewController {
     var response : TPRoundDetailsResponse! {
         didSet {
             self.computeMap()
-            self.scoreView.set(users: response.users, scores: [0, 0])
+            self.scoreView.set(users: response.users, scores: response.scores)
             self.tableView.reloadData()
             self.scrollViewDidEndDecelerating(self.tableView)
         }
