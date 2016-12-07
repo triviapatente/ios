@@ -38,6 +38,7 @@ class RoundDetailsViewController: UIViewController {
             } else {
                 let details = QuizDetail()
                 details.quiz = response.quizzes.first(where: {$0.id == answer.quizId})
+                details.answers.append(answer)
                 questionMap[key]!.append(details)
             }
         }

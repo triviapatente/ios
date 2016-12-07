@@ -54,8 +54,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
     func populate(users : [User], imageViews : [UIImageView]) {
         for i in 0..<imageViews.count {
             let imageView = imageViews[i]
-            imageView.alpha = (i >= users.count) ? 0 : 1
-            if imageView.alpha == 1 {
+            if (i < users.count) {
                 let user = users[i]
                 imageView.load(user: user)
             }
@@ -81,9 +80,9 @@ class RoundDetailsTableViewCell: UITableViewCell {
         self.trueValue.circleRounded()
         self.falseValue.circleRounded()
         for imageView in self.trueImageViews + self.falseImageViews {
+            imageView.layer.borderColor = Colors.primary.cgColor
             imageView.circleRounded()
         }
-        // Initialization code
     }
 
     
