@@ -22,7 +22,7 @@ class RoundDetailsViewController: UIViewController {
             self.scrollViewDidEndDecelerating(self.tableView)
         }
     }
-    var questionMap : [String: QuizDetail] = [:]
+    var questionMap : [String: [QuizDetail]] = [:]
     @IBOutlet var tableView : UITableView!
     
     func computeMap() {
@@ -30,12 +30,16 @@ class RoundDetailsViewController: UIViewController {
             let number = answer.roundNumber!
             let key = "\(number)"
             if questionMap.index(forKey: key) == nil {
-                let details = QuizDetail()
-                details.quiz = response.quizzes.first(where: {$0.id == answer.quizId})
-                questionMap[key] = details
+                questionMap[key] = []
             }
             answer.user = response.users.first(where: {$0.id == answer.userId})
-            questionMap[key]!.answers.append(answer)
+            if let index = questionMap[key]!.index(where: {$0.quiz.id == answer.quizId}) {
+                questionMap[key]![index].answers.append(answer)
+            } else {
+                let details = QuizDetail()
+                details.quiz = response.quizzes.first(where: {$0.id == answer.quizId})
+                questionMap[key]!.append(details)
+            }
         }
     }
     func join_room() {
@@ -128,7 +132,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell
             let key = "\(indexPath.section + 1)"
-            cell.quizDetail = self.questionMap[key]!
+            cell.quizDetail = self.questionMap[key]![indexPath.row]
             return cell
         }
     }
