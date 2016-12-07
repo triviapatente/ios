@@ -28,13 +28,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hd-by-kiP">
-                        <rect key="frame" x="80" y="5" width="182" height="79"/>
+                        <rect key="frame" x="80" y="5" width="212" height="79"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="doB-KN-p1Z">
-                        <rect key="frame" x="272" y="17.5" width="25" height="55"/>
+                        <rect key="frame" x="302" y="17.5" width="25" height="55"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ly-E8-ytl">
                                 <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -60,46 +60,46 @@
                             <constraint firstAttribute="width" constant="25" id="R3P-Ma-YqQ"/>
                         </constraints>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ofk-F0-goq">
-                        <rect key="frame" x="332" y="17" width="25" height="55"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ofk-F0-goq">
+                        <rect key="frame" x="347" y="19.5" width="20" height="50"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9VP-Bc-TPj">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9VP-Bc-TPj" secondAttribute="height" multiplier="1:1" id="zgy-cy-f5p"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCE-A7-4iw">
-                                <rect key="frame" x="0.0" y="30" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="30" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gCE-A7-4iw" secondAttribute="height" multiplier="1:1" id="YUH-z0-vvg"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="55" id="6eH-Ta-1cm"/>
-                            <constraint firstAttribute="width" constant="25" id="OHL-nJ-tsI"/>
+                            <constraint firstAttribute="height" constant="50" id="6eH-Ta-1cm"/>
+                            <constraint firstAttribute="width" constant="20" id="OHL-nJ-tsI"/>
                         </constraints>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b5m-Qo-Fiu">
-                        <rect key="frame" x="317" y="17.5" width="25" height="55"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b5m-Qo-Fiu">
+                        <rect key="frame" x="337" y="20" width="20" height="50"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zMZ-ct-QEv">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zMZ-ct-QEv" secondAttribute="height" multiplier="1:1" id="LjV-bs-MvY"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dBw-2I-GaO">
-                                <rect key="frame" x="0.0" y="30" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="30" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dBw-2I-GaO" secondAttribute="height" multiplier="1:1" id="GXk-RE-E8Y"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="pWg-SN-yRo"/>
-                            <constraint firstAttribute="height" constant="55" id="qwq-mX-0c5"/>
+                            <constraint firstAttribute="width" constant="20" id="pWg-SN-yRo"/>
+                            <constraint firstAttribute="height" constant="50" id="qwq-mX-0c5"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -107,16 +107,16 @@
                 <constraints>
                     <constraint firstItem="h5j-QZ-xYQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0Yf-y1-V64"/>
                     <constraint firstItem="Ofk-F0-goq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6dK-sh-fQW"/>
-                    <constraint firstAttribute="trailing" secondItem="Ofk-F0-goq" secondAttribute="trailing" constant="20" id="H74-c0-23Q"/>
+                    <constraint firstAttribute="trailing" secondItem="Ofk-F0-goq" secondAttribute="trailing" constant="10" id="H74-c0-23Q"/>
                     <constraint firstItem="0hd-by-kiP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="MCU-ge-wWc"/>
                     <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="h5j-QZ-xYQ" secondAttribute="trailing" constant="10" id="P2X-Z0-Cxz"/>
                     <constraint firstItem="b5m-Qo-Fiu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="R0C-jI-WMv"/>
                     <constraint firstAttribute="bottom" secondItem="0hd-by-kiP" secondAttribute="bottom" constant="5" id="ShC-sN-3WI"/>
                     <constraint firstItem="doB-KN-p1Z" firstAttribute="leading" secondItem="0hd-by-kiP" secondAttribute="trailing" constant="10" id="UFC-ac-eIm"/>
                     <constraint firstItem="doB-KN-p1Z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ygz-LO-ZrV"/>
-                    <constraint firstItem="b5m-Qo-Fiu" firstAttribute="leading" secondItem="doB-KN-p1Z" secondAttribute="trailing" constant="20" id="YrQ-Jg-CWs"/>
+                    <constraint firstItem="b5m-Qo-Fiu" firstAttribute="leading" secondItem="doB-KN-p1Z" secondAttribute="trailing" constant="10" id="YrQ-Jg-CWs"/>
                     <constraint firstItem="Ofk-F0-goq" firstAttribute="leading" secondItem="b5m-Qo-Fiu" secondAttribute="trailing" constant="-10" id="huW-Gy-AkG"/>
-                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="15" id="kxj-cH-gDA"/>
+                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="20" id="kxj-cH-gDA"/>
                     <constraint firstItem="h5j-QZ-xYQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vM4-Na-GCI"/>
                 </constraints>
             </tableViewCellContentView>
