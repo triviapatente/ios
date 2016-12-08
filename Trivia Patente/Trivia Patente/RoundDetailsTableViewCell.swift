@@ -37,19 +37,19 @@ class RoundDetailsTableViewCell: UITableViewCell {
     }
     private var questions : [Question]! {
         didSet {
+            var trueUsers : [User] = [],
+                falseUsers : [User] = []
             for question in questions {
                 if question.answer == quiz.answer {
-                    self.addUser(user: question.user, to: &self.trueUsers)
+                    self.addUser(user: question.user, to: &trueUsers)
                 } else {
-                    self.addUser(user: question.user, to: &self.falseUsers)
+                    self.addUser(user: question.user, to: &falseUsers)
                 }
             }
-            self.populate(users: self.trueUsers, imageViews: trueImageViews)
-            self.populate(users: self.falseUsers, imageViews: falseImageViews)
+            self.populate(users: trueUsers, imageViews: trueImageViews)
+            self.populate(users: falseUsers, imageViews: falseImageViews)
         }
     }
-    var trueUsers : [User] = []
-    var falseUsers : [User] = []
     
     func populate(users : [User], imageViews : [UIImageView]) {
         for i in 0..<imageViews.count {

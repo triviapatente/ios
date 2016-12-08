@@ -28,7 +28,12 @@ open class Game: CommonPK {
     open var my_turn : Bool!
     open var opponent : User!
 
-
+    func won() -> Bool {
+        return winnerId == SessionManager.currentUser?.id
+    }
+    func isEnded() -> Bool {
+        return self.ended || self.winnerId != nil
+    }
     // MARK: SwiftyJSON Initalizers
     /**
     Initates the class based on the object

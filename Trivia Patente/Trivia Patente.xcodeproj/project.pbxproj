@@ -95,6 +95,8 @@
 		8BA6BEBB1DEEE6DA00D9EB86 /* TPGameActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */; };
 		8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEBD1DEEEA9600D9EB86 /* WaitOpponentViewController.swift */; };
 		8BAD1C3C1DF71AF20051AC4A /* QuizDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C3B1DF71AF20051AC4A /* QuizDetail.swift */; };
+		8BAD1C431DF967540051AC4A /* Partecipation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C421DF967540051AC4A /* Partecipation.swift */; };
+		8BAD1C451DF9795D0051AC4A /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C441DF9795D0051AC4A /* Int.swift */; };
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
@@ -273,6 +275,8 @@
 		8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameActions.swift; sourceTree = "<group>"; };
 		8BA6BEBD1DEEEA9600D9EB86 /* WaitOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitOpponentViewController.swift; sourceTree = "<group>"; };
 		8BAD1C3B1DF71AF20051AC4A /* QuizDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizDetail.swift; sourceTree = "<group>"; };
+		8BAD1C421DF967540051AC4A /* Partecipation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partecipation.swift; sourceTree = "<group>"; };
+		8BAD1C441DF9795D0051AC4A /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
@@ -674,6 +678,7 @@
 				8BCF8C8B1DB6A6BA00EC637C /* Question.swift */,
 				8BCF8C8C1DB6A6BA00EC637C /* Quiz.swift */,
 				8BCF8C8D1DB6A6BA00EC637C /* Round.swift */,
+				8BAD1C421DF967540051AC4A /* Partecipation.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1191,6 +1196,7 @@
 				8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */,
 				8BE6DE391DE6E0AC00DDD179 /* UIColor.swift */,
 				8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */,
+				8BAD1C441DF9795D0051AC4A /* Int.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1691,6 +1697,7 @@
 				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
+				8BAD1C451DF9795D0051AC4A /* Int.swift in Sources */,
 				8BE6DE371DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift in Sources */,
 				8B8058DA1DE30FD800C3F938 /* RandomGameViewController.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
@@ -1768,6 +1775,7 @@
 				8B8058D21DE2FC8D00C3F938 /* InviteTableViewCell.swift in Sources */,
 				8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */,
 				8B5EE0DB1DD5C20A00745A54 /* StatsViewController.swift in Sources */,
+				8BAD1C431DF967540051AC4A /* Partecipation.swift in Sources */,
 				8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */,
 				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,

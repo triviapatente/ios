@@ -16,6 +16,7 @@ class RoundDetailsViewController: UIViewController {
     var scoreView : TPScoreView!
     var response : TPRoundDetailsResponse! {
         didSet {
+            game.winnerId = response.users.last?.id
             self.computeMap()
             self.scoreView.set(users: response.users, scores: response.scores)
             self.tableView.reloadData()
@@ -25,6 +26,8 @@ class RoundDetailsViewController: UIViewController {
     var questionMap : [String: [QuizDetail]] = [:]
     @IBOutlet var tableView : UITableView!
     
+    var createGameCallback : ((TPNewGameResponse) -> Void)!
+
     func computeMap() {
         for answer in response.answers {
             let number = answer.roundNumber!
@@ -76,13 +79,19 @@ class RoundDetailsViewController: UIViewController {
             self.headerView = segue.destination as! TPGameHeader
         } else if segue.identifier == "score_view" {
             self.scoreView = segue.destination as! TPScoreView
+        } else if segue.identifier == "wait_opponent_segue" {
+            let destination = segue.destination as! WaitOpponentViewController
+            self.newGameResponse.game.opponent = self.newGameResponse.opponent
+            destination.game = self.newGameResponse.game
+            destination.fromInvite = true
         }
     }
     let detailsCellKey = "details_cell"
     let winnerCellKey = "game_ended_cell"
     let DETAILS_ROW_HEIGHT = CGFloat(90)
-    let END_ROW_HEIGHT = CGFloat(90)
-
+    let END_ROW_HEIGHT = CGFloat(250)
+    
+    var newGameResponse : TPNewGameResponse!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.join_room()
@@ -90,6 +99,10 @@ class RoundDetailsViewController: UIViewController {
         let gameEndedNib = UINib(nibName: "GameEndedTableViewCell", bundle: .main)
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
+        self.createGameCallback = { response in
+            self.newGameResponse = response
+            self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+        }
     }
     func height(for section: Int) -> CGFloat {
         if section == self.questionMap.count {
@@ -119,7 +132,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        if game.ended == true {
+        if game.isEnded() {
             return self.questionMap.count + 1
         }
         return self.questionMap.count
@@ -129,7 +142,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var titles = self.questionMap.keys.sorted()
-        if game.ended == true {
+        if game.isEnded() {
             titles.append("🏆")
         }
         return titles
@@ -143,7 +156,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return (self.tableView.frame.size.height - rowHeight * CGFloat(count)) / 2
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if (game.ended == true && section == self.questionMap.count) || section + 1 == self.questionMap.count {
+        if (game.isEnded() && section == self.questionMap.count) || section + 1 == self.questionMap.count {
             return self.tableView(tableView, heightForHeaderInSection: section)
         }
         return 0
@@ -157,6 +170,12 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == self.questionMap.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: winnerCellKey) as! GameEndedTableViewCell
+            cell.game = game
+            cell.scoreIncrement = -59
+            cell.createGameCallback = self.createGameCallback
+            if let users = response?.users {
+                cell.users = users
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell

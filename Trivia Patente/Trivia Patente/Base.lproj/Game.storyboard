@@ -616,6 +616,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="AUB-ex-W0C" id="ZNS-aV-lkw"/>
+                        <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="iPF-Kj-XFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhK-Wp-YH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,9 +789,9 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0L7-TT-S4h"/>
+        <segue reference="NV8-od-C3s"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="kf4-r3-nBv"/>
+        <segue reference="iPF-Kj-XFy"/>
         <segue reference="F5i-i7-toe"/>
         <segue reference="xqV-nx-JeY"/>
     </inferredMetricsTieBreakers>

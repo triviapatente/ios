@@ -17,6 +17,9 @@ extension UIView {
     func mediumRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: 10, corners: corners)
     }
+    func bigRounded(corners : UIRectCorner = .allCorners) {
+        self.createCorners(radius: 17, corners: corners)
+    }
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
