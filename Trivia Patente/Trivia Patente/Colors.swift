@@ -12,6 +12,8 @@ class Colors {
     static let primary = UIColor(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
     static let secondary = UIColor(red: 0/255, green: 141/255, blue: 255/255, alpha: 1)
     
+    static let alpha_white = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.67)
+    
     static let playColor = UIColor(red: 0/255, green: 213/255, blue: 101/255, alpha: 1)
     static let rankColor = UIColor(red: 255/255, green: 144/255, blue: 0/255, alpha: 1)
     static let statsColor = UIColor(red: 255/255, green: 198/255, blue: 0/255, alpha: 1)

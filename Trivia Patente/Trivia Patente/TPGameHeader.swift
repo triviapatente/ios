@@ -26,5 +26,9 @@ class TPGameHeader: UIViewController {
             categoryNameView.text = category.hint
         }
     }
+    func set(title : String) {
+        categoryImageView.isHidden = true
+        categoryNameView.text = title
+    }
 
 }

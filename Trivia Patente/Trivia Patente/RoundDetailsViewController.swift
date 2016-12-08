@@ -14,6 +14,7 @@ class RoundDetailsViewController: UIViewController {
     
     var headerView : TPGameHeader!
     var scoreView : TPScoreView!
+    var sectionBar : TPSectionBar!
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
     }
@@ -23,6 +24,8 @@ class RoundDetailsViewController: UIViewController {
             game.winnerId = response.users.last?.id
             self.computeMap()
             self.scoreView.set(users: response.users, scores: response.scores)
+            self.sectionBar.questionMap = questionMap
+            self.sectionBar.game = game
             self.tableView.reloadData()
             self.scrollViewDidEndDecelerating(self.tableView)
         }
@@ -83,6 +86,8 @@ class RoundDetailsViewController: UIViewController {
             self.headerView = segue.destination as! TPGameHeader
         } else if segue.identifier == "score_view" {
             self.scoreView = segue.destination as! TPScoreView
+        } else if segue.identifier == "section_bar" {
+            self.sectionBar = segue.destination as! TPSectionBar
         } else if segue.identifier == "wait_opponent_segue" {
             let destination = segue.destination as! WaitOpponentViewController
             self.newGameResponse.game.opponent = self.newGameResponse.opponent
@@ -103,6 +108,7 @@ class RoundDetailsViewController: UIViewController {
         let gameEndedNib = UINib(nibName: "GameEndedTableViewCell", bundle: .main)
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
+        self.sectionBar.delegate = self
         self.createGameCallback = { response in
             self.newGameResponse = response
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
@@ -120,19 +126,27 @@ class RoundDetailsViewController: UIViewController {
         }
         return 4
     }
+    func configureHeader(page : Int) {
+        if page >= self.questionMap.count {
+            self.headerView.roundLabel.text = "Fine"
+            self.headerView.set(title: "Risultato partita")
+        } else {
+            self.headerView.category = self.response.categories[page]
+            self.headerView.roundLabel.text = "Round \(page + 1)"
+        }
+    }
 }
 extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSource {
     var currentPage : Int {
-        let x = self.tableView.contentOffset.x
-        let w = self.tableView.bounds.size.width
-        return Int(ceil(x/w))
+        let y = self.tableView.contentOffset.y
+        let height = self.tableView.bounds.size.height
+        return Int(ceil(y/height))
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.headerView.category = self.response.categories[currentPage]
-        if currentPage == self.questionMap.count {
-            self.headerView.roundLabel.text = "Fine"
-        } else {
-            self.headerView.roundLabel.text = "Round \(currentPage + 1)"
+        let page = currentPage
+        self.configureHeader(page: page)
+        if page <= self.questionMap.count {
+            self.sectionBar.currentPage = page
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -179,6 +193,16 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             let key = "\(indexPath.section + 1)"
             cell.quizDetail = self.questionMap[key]![indexPath.row]
             return cell
+        }
+    }
+}
+
+extension RoundDetailsViewController : TPSectionBarDelegate {
+    func selectPage(index: Int) {
+        if currentPage != index {
+            let indexPath = IndexPath(row: 0, section: index)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            self.configureHeader(page: index)
         }
     }
 }

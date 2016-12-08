@@ -573,8 +573,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
-                                <rect key="frame" x="0.0" y="75" width="320" height="388"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-p8-znG">
+                                <rect key="frame" x="0.0" y="75" width="30" height="388"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XRj-RD-O7M"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="cDR-IV-g5u" kind="embed" identifier="section_bar" id="0Ek-Eu-d1u"/>
+                                </connections>
+                            </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
+                                <rect key="frame" x="30" y="75" width="290" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZWh-kv-MbX" id="lcX-cX-Kjx"/>
@@ -605,10 +614,13 @@
                             <constraint firstAttribute="trailing" secondItem="AUB-ex-W0C" secondAttribute="trailing" id="0wq-Nb-T3b"/>
                             <constraint firstItem="gub-eN-bWS" firstAttribute="top" secondItem="Vut-eY-DKz" secondAttribute="bottom" constant="10" id="2Sg-gH-sk3"/>
                             <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="SXR-xc-McB" secondAttribute="bottom" constant="26" id="4bF-Ld-5J4"/>
+                            <constraint firstItem="Si0-p8-znG" firstAttribute="top" secondItem="gub-eN-bWS" secondAttribute="bottom" constant="10" id="Aun-4e-XKr"/>
+                            <constraint firstItem="AUB-ex-W0C" firstAttribute="leading" secondItem="Si0-p8-znG" secondAttribute="trailing" id="NDE-gP-dOz"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leadingMargin" constant="24" id="NpQ-V0-lnK"/>
                             <constraint firstAttribute="trailing" secondItem="gub-eN-bWS" secondAttribute="trailing" id="SyD-oS-AHJ"/>
-                            <constraint firstItem="AUB-ex-W0C" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" id="aAV-eY-RXL"/>
+                            <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="Si0-p8-znG" secondAttribute="bottom" constant="105" id="eGM-Ut-A5l"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="top" secondItem="AUB-ex-W0C" secondAttribute="bottom" constant="26" id="gEp-hf-e7r"/>
+                            <constraint firstItem="Si0-p8-znG" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" id="lWw-Vz-aE0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SXR-xc-McB" secondAttribute="trailing" constant="24" id="nH4-U0-o6V"/>
                             <constraint firstItem="gub-eN-bWS" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" id="t6M-wM-b4d"/>
                             <constraint firstItem="AUB-ex-W0C" firstAttribute="top" secondItem="gub-eN-bWS" secondAttribute="bottom" constant="10" id="uBJ-n1-OLn"/>
@@ -781,6 +793,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsZ-RU-zhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2359" y="1056"/>
+        </scene>
+        <!--Section Bar-->
+        <scene sceneID="qO2-GZ-ykZ">
+            <objects>
+                <viewController id="cDR-IV-g5u" customClass="TPSectionBar" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ST5-dq-ztf">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQ8-oL-1Hm">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="400"/>
+                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cDR-IV-g5u" id="C7D-z5-VCG"/>
+                                    <outlet property="delegate" destination="cDR-IV-g5u" id="LO3-U8-dzG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zQ8-oL-1Hm" firstAttribute="leading" secondItem="ST5-dq-ztf" secondAttribute="leading" id="6PP-j3-WR6"/>
+                            <constraint firstAttribute="trailing" secondItem="zQ8-oL-1Hm" secondAttribute="trailing" id="AnV-Ag-g2i"/>
+                            <constraint firstAttribute="bottom" secondItem="zQ8-oL-1Hm" secondAttribute="bottom" id="Jeo-TV-dr6"/>
+                            <constraint firstItem="zQ8-oL-1Hm" firstAttribute="top" secondItem="ST5-dq-ztf" secondAttribute="top" id="Y1u-LT-4P6"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="30" height="400"/>
+                    <connections>
+                        <outlet property="tableView" destination="zQ8-oL-1Hm" id="uUu-S2-lP8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdT-Ak-GG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1523" y="1272"/>
         </scene>
     </scenes>
     <resources>
