@@ -9,11 +9,11 @@
 import UIKit
 import SwiftyJSON
 
-class TPRoundDetailsResponse: TPResponse {
-    var quizzes : [Quiz] = []
-    var answers : [Question] = []
+class TPRoundDetailsResponse: TPRoundResponse {
     var categories : [Category] = []
     var users : [User] = []
+    var partecipations : [Partecipation] = []
+    var game : Game!
     var scores : [Int] {
         var output = [Int](repeating: 0, count: users.count)
         for answer in answers {
@@ -34,20 +34,16 @@ class TPRoundDetailsResponse: TPResponse {
                 users.append(User(json: item))
             }
         }
-        if let rawQuizzes = json["quizzes"].array {
-            for item in rawQuizzes {
-                quizzes.append(Quiz(json: item))
-            }
-        }
-        if let rawAnswers = json["answers"].array {
-            for item in rawAnswers {
-                answers.append(Question(json: item))
-            }
-        }
         if let rawCategories = json["categories"].array {
             for item in rawCategories {
                 categories.append(Category(json: item))
             }
         }
+        if let rawPartecipations = json["partecipations"].array {
+            for item in rawPartecipations {
+                partecipations.append(Partecipation(json: item))
+            }
+        }
+        self.game = Game(json: json["game"])
     }
 }
