@@ -14,8 +14,12 @@ class RoundDetailsViewController: UIViewController {
     
     var headerView : TPGameHeader!
     var scoreView : TPScoreView!
+    var opponent : User {
+        return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
+    }
     var response : TPRoundDetailsResponse! {
         didSet {
+            (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
             game.winnerId = response.users.last?.id
             self.computeMap()
             self.scoreView.set(users: response.users, scores: response.scores)
@@ -139,13 +143,6 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.rows(for: section)
-    }
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var titles = self.questionMap.keys.sorted()
-        if game.isEnded() {
-            titles.append("🏆")
-        }
-        return titles
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.height(for: indexPath.section)
