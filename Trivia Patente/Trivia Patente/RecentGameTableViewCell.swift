@@ -51,7 +51,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     }
     func buttonText(ended : Bool, my_turn : Bool) -> String {
         if ended {
-            return "Rivincita"
+            return "Riepilogo"
         } else if my_turn {
             return "Gioca ora"
         } else {
