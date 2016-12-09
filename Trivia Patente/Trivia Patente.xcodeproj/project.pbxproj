@@ -279,6 +279,10 @@
 		8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNavigationController.swift; sourceTree = "<group>"; };
 		8B8142CB1DC0C82F00E60B06 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8B8662631DBD5D38004D266E /* TPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextField.swift; sourceTree = "<group>"; };
+		8B8EEA1B1DFB2687003608AA /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8B8EEA201DFB283C003608AA /* HTTPChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPChat.swift; sourceTree = "<group>"; };
+		8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMessageListResponse.swift; sourceTree = "<group>"; };
+		8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameLeftEventResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 		8B5132D71DBB5B8F00143497 /* message */ = {
 			isa = PBXGroup;
 			children = (
+				8B8EEA1E1DFB2744003608AA /* http */,
+				8B8EEA1D1DFB273F003608AA /* socket */,
 				8B5132E41DBB5C7C00143497 /* ui */,
 				8B5132E31DBB5C7800143497 /* models */,
 			);
@@ -722,6 +728,7 @@
 		8B5132E41DBB5C7C00143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				8B8EEA1A1DFB2676003608AA /* chat */,
 				8B5133051DBBAC2100143497 /* Chat.storyboard */,
 			);
 			name = ui;
@@ -1108,6 +1115,38 @@
 				8BAD1C481DF99FF50051AC4A /* section_bar */,
 			);
 			name = subclasses;
+			sourceTree = "<group>";
+		};
+		8B8EEA1A1DFB2676003608AA /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA1B1DFB2687003608AA /* ChatViewController.swift */,
+			);
+			name = chat;
+			sourceTree = "<group>";
+		};
+		8B8EEA1D1DFB273F003608AA /* socket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = socket;
+			sourceTree = "<group>";
+		};
+		8B8EEA1E1DFB2744003608AA /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA1F1DFB2758003608AA /* responses */,
+				8B8EEA201DFB283C003608AA /* HTTPChat.swift */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		8B8EEA1F1DFB2758003608AA /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */,
+			);
+			name = responses;
 			sourceTree = "<group>";
 		};
 		8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */ = {
@@ -1725,6 +1764,7 @@
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B8EEA251DFB373C003608AA /* TPGameLeftEventResponse.swift in Sources */,
+				8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
@@ -1732,6 +1772,7 @@
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */,
+				8B8EEA231DFB292A003608AA /* TPMessageListResponse.swift in Sources */,
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,
 				A9D1D34E1DA5593F00557DC9 /* LoginViewController.swift in Sources */,
@@ -1759,6 +1800,7 @@
 				8B8058CC1DE2FA1F00C3F938 /* TPNewGameResponse.swift in Sources */,
 				8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */,
 				8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */,
+				8B8EEA1C1DFB2687003608AA /* ChatViewController.swift in Sources */,
 				8B5EE10B1DD9140700745A54 /* SwitchableSettingsTableViewCell.swift in Sources */,
 				8BE2789F1DF4AD6000071DF2 /* GameEndedTableViewCell.swift in Sources */,
 				8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */,
