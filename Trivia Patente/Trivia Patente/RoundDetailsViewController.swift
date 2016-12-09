@@ -11,9 +11,7 @@ import UIKit
 class RoundDetailsViewController: UIViewController {
     var game : Game! {
         didSet {
-            if self.sectionBar != nil {
-                self.sectionBar.game = game
-            }
+            self.reloadData()
         }
     }
     let handler = SocketGame()
@@ -24,8 +22,11 @@ class RoundDetailsViewController: UIViewController {
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
     }
-    var partecipation : Partecipation! {
-        return self.response!.partecipations.first(where: {$0.userId == SessionManager.currentUser?.id})!
+    var partecipation : Partecipation? {
+        guard let response = self.response else {
+            return nil
+        }
+        return response.partecipations.first(where: {$0.userId == SessionManager.currentUser?.id})!
     }
     var response : TPRoundDetailsResponse! {
         didSet {
@@ -35,13 +36,21 @@ class RoundDetailsViewController: UIViewController {
             self.scoreView.set(users: response.users, scores: response.scores)
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
-            self.tableView.reloadData()
-            self.scrollViewDidEndDecelerating(self.tableView)
+            self.reloadData()
+
         }
     }
     var questionMap : [String: [QuizDetail]] = [:] {
         didSet {
             self.sectionBar.questionMap = questionMap
+            self.reloadData()
+        }
+    }
+    func reloadData() {
+        if response != nil {
+            self.sectionBar.game = game
+            self.tableView.reloadData()
+            self.scrollViewDidEndDecelerating(self.tableView)
         }
     }
     @IBOutlet var tableView : UITableView!
@@ -70,6 +79,7 @@ class RoundDetailsViewController: UIViewController {
         handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.round_details()
+                self.listen()
             } else {
                 //TODO: handle error
             }
@@ -88,20 +98,25 @@ class RoundDetailsViewController: UIViewController {
     func listen() {
         handler.listen_round_ended { (response : TPRoundEndedEventResponse?) in
             if response?.success == true {
+                self.response.categories.append(response!.category)
                 self.computeMap(candidate: response!)
             } else {
                 //TODO: error handler
             }
         }
-        handler.listen_game_ended { (response : TPGameEndedEventResponse?) in
+        let cb = { (response : TPGameEndedEventResponse?) in
             if response?.success == true {
-                self.game.winnerId = response!.winnerId
+                self.game.winnerId = response!.winner.id
                 self.game.ended = true
                 self.response.partecipations = response!.partecipations
+                self.reloadData()
             } else {
                 //TODO: error handler
             }
         }
+        handler.listen_game_left(handler: cb)
+        handler.listen_game_ended(handler: cb)
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "header_view" {
@@ -172,6 +187,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+        guard let _ = self.response else {
+            return 0
+        }
         if game.isEnded() {
             return self.questionMap.count + 1
         }
@@ -204,7 +222,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         if indexPath.section == self.questionMap.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: winnerCellKey) as! GameEndedTableViewCell
             cell.game = game
-            cell.scoreIncrement = self.partecipation.scoreIncrement
+            if let partecipation = self.partecipation {
+                cell.scoreIncrement = partecipation.scoreIncrement
+            }
             cell.createGameCallback = self.createGameCallback
             if let users = response?.users {
                 cell.users = users

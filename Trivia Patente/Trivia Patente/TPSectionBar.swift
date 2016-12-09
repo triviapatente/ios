@@ -23,6 +23,9 @@ class TPSectionBar: UIViewController {
     }
     var currentPage : Int! {
         didSet {
+            guard currentPage < self.titles.count else {
+                return
+            }
             let indexPath = IndexPath(row: currentPage, section: 0)
             self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
         }

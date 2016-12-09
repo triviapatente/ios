@@ -88,6 +88,10 @@
 		8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142C81DC0C5B200E60B06 /* TPNavigationController.swift */; };
 		8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8142CB1DC0C82F00E60B06 /* Colors.swift */; };
 		8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8662631DBD5D38004D266E /* TPTextField.swift */; };
+		8B8EEA1C1DFB2687003608AA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA1B1DFB2687003608AA /* ChatViewController.swift */; };
+		8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA201DFB283C003608AA /* HTTPChat.swift */; };
+		8B8EEA231DFB292A003608AA /* TPMessageListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */; };
+		8B8EEA251DFB373C003608AA /* TPGameLeftEventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -1021,6 +1025,7 @@
 				8BAD1C501DF9C4130051AC4A /* TPRoundEndedEventResponse.swift */,
 				8BAD1C521DF9C4CD0051AC4A /* TPRoundResponse.swift */,
 				8BAD1C541DF9CA050051AC4A /* TPGameEndedEventResponse.swift */,
+				8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1719,6 +1724,7 @@
 				8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */,
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
+				8B8EEA251DFB373C003608AA /* TPGameLeftEventResponse.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
