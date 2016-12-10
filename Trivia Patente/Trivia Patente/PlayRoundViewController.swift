@@ -20,6 +20,7 @@ class PlayRoundViewController: UIViewController {
     
     var gameActions : TPGameActions! {
         didSet {
+            self.game.opponent = opponent
             self.gameActions.game = game
         }
     }

@@ -705,11 +705,20 @@
                         <outlet property="detailButton" destination="9Y9-rU-Utv" id="UvN-b4-56P"/>
                         <outlet property="leaveButton" destination="KF3-5a-sPe" id="68I-QO-tCn"/>
                         <segue destination="ZWh-kv-MbX" kind="show" identifier="round_details" id="F5i-i7-toe"/>
+                        <segue destination="k5r-AT-6ag" kind="show" identifier="chat" id="BTh-PE-aiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxn-EX-aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2587" y="-321"/>
+        </scene>
+        <!--ChatViewController-->
+        <scene sceneID="Pqf-fm-vGW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="ChatViewController" id="k5r-AT-6ag" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hf-06-7Bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2774" y="-129"/>
         </scene>
         <!--Score View-->
         <scene sceneID="QCg-nk-RCe">
@@ -798,6 +807,10 @@
         <scene sceneID="qO2-GZ-ykZ">
             <objects>
                 <viewController id="cDR-IV-g5u" customClass="TPSectionBar" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y4p-JS-9MH"/>
+                        <viewControllerLayoutGuide type="bottom" id="LjK-0y-Xpd"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ST5-dq-ztf">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -92,6 +92,8 @@
 		8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA201DFB283C003608AA /* HTTPChat.swift */; };
 		8B8EEA231DFB292A003608AA /* TPMessageListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */; };
 		8B8EEA251DFB373C003608AA /* TPGameLeftEventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */; };
+		8B8EEA271DFC24FE003608AA /* TPMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */; };
+		8B8EEA2A1DFC2512003608AA /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA291DFC2512003608AA /* SocketChat.swift */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -283,6 +285,8 @@
 		8B8EEA201DFB283C003608AA /* HTTPChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPChat.swift; sourceTree = "<group>"; };
 		8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMessageListResponse.swift; sourceTree = "<group>"; };
 		8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameLeftEventResponse.swift; sourceTree = "<group>"; };
+		8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMessageResponse.swift; sourceTree = "<group>"; };
+		8B8EEA291DFC2512003608AA /* SocketChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -1128,6 +1132,8 @@
 		8B8EEA1D1DFB273F003608AA /* socket */ = {
 			isa = PBXGroup;
 			children = (
+				8B8EEA281DFC2501003608AA /* responses */,
+				8B8EEA291DFC2512003608AA /* SocketChat.swift */,
 			);
 			name = socket;
 			sourceTree = "<group>";
@@ -1145,6 +1151,14 @@
 			isa = PBXGroup;
 			children = (
 				8B8EEA221DFB292A003608AA /* TPMessageListResponse.swift */,
+			);
+			name = responses;
+			sourceTree = "<group>";
+		};
+		8B8EEA281DFC2501003608AA /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1825,6 +1839,7 @@
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
 				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
+				8B8EEA271DFC24FE003608AA /* TPMessageResponse.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BAD1C4F1DF9A4A70051AC4A /* TPSectionBarDelegate.swift in Sources */,
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
@@ -1852,6 +1867,7 @@
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */,
 				8BAD1C3C1DF71AF20051AC4A /* QuizDetail.swift in Sources */,
+				8B8EEA2A1DFC2512003608AA /* SocketChat.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,

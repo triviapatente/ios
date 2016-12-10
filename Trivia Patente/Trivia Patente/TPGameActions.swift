@@ -18,7 +18,7 @@ class TPGameActions: UIViewController {
     
     func identifier(for button : UIButton) -> String? {
         switch button {
-            case chatButton: return nil
+            case chatButton: return "chat"
             
             case leaveButton: return "leave_game"
             
@@ -41,12 +41,18 @@ class TPGameActions: UIViewController {
         detailButton.circleRounded()
         detailButton.darkerBorder(of: 0.10, width: 5)
 
-        // Do any additional setup after loading the view.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let identifier = segue.identifier
-        if identifier == self.identifier(for: detailButton) {
-            (segue.destination as! RoundDetailsViewController).game = game
+        let identifier = segue.identifier!
+        switch identifier {
+            case self.identifier(for: detailButton)! :
+                (segue.destination as! RoundDetailsViewController).game = game
+                break
+            case self.identifier(for: chatButton)!:
+                (segue.destination as! ChatViewController).game = game
+                break
+            default:
+                break
         }
     }
 

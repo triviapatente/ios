@@ -8,42 +8,92 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var tableView : UITableView!
-    @IBOutlet var textInputView : UITextField!
-    @IBOutlet var sendButton : UIButton!
+    @IBOutlet var textInputView : UITextField! {
+        didSet {
+            textInputView.rightView = sendButton
+            textInputView.rightViewMode = .always
+        }
+    }
     
+    var sendButton : UIButton {
+        guard let rightView = textInputView.rightView else {
+            let button = UIButton()
+            let image = UIImage(named: "ic_send_white")?.withRenderingMode(.alwaysTemplate)
+            let dim = self.textInputView.frame.size.height - 3
+            button.frame = CGRect(x: 0, y: 0, width: dim, height: dim)
+            button.tintColor = Colors.primary
+            button.setImage(image, for: .normal)
+            button.isEnabled = false
+            button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+            return button
+        }
+        return rightView as! UIButton
+    }
     
     var game : Game!
-    var opponent : User!
     
     let gameHandler = SocketGame()
-    let chatHTTPHandler = HTTPChat()
+    let HTTPHandler = HTTPChat()
+    let socketHandler = SocketChat()
     
     var messages : [Message] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendButton.sendActions(for: .touchUpInside)
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.sendButton.isEnabled = !textInputView.text!.isEmpty
+        return true
+    }
+    
 
+    func sendMessage() {
+        let content = textInputView.text!
+        socketHandler.send_message(game: game, content: content) { response in
+            if response?.success == true {
+                self.messages.append(response!.item)
+                self.textInputView.text = ""
+            } else {
+                //TODO: error handler
+            }
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
+        (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.join()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "chat_cell")
     }
     func join() {
         gameHandler.join(game_id: game.id!) { response in
             if response?.success == true {
-                
+                self.load()
+                self.listen()
             } else {
                 //TODO: error handler
             }
         }
     }
-    func list() {
-        let date = self.messages.first?.createdAt
-        chatHTTPHandler.get_messages(game: game, date: date) { response in
+    func listen() {
+        socketHandler.listen { response in
+            if let message = response?.item {
+                self.messages.append(message)
+            } else {
+                //TODO: error handler
+            }
+        }
+    }
+    func load() {
+        let date = self.messages.first?.createdAt ?? Date()
+        HTTPHandler.get_messages(game: game, date: date) { response in
             if response.success == true {
                 self.messages += response.messages
             } else {

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class HTTPChat: HTTPManager {
-    func get_messages(game : Game, date : Date? = nil, handler: @escaping (TPMessageListResponse) -> Void) {
-        self.request(url: "/message/list/\(game.id!)", method: .post, params: ["datetime": date?.iso8601], handler: handler)
+    func get_messages(game : Game, date : Date, handler: @escaping (TPMessageListResponse) -> Void) {
+        self.request(url: "/message/list/\(game.id!)", method: .get, params: ["datetime": date.iso8601], handler: handler)
     }
 }

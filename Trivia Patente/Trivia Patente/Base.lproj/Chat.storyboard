@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EBm-Pq-ZMt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FWa-9d-Rkz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,35 +10,59 @@
     </dependencies>
     <scenes>
         <!--Chat-->
-        <scene sceneID="mYE-nx-AmL">
+        <scene sceneID="iKc-qS-C9O">
             <objects>
-                <tableViewController title="Chat" id="EBm-Pq-ZMt" customClass="ChatViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GKn-QH-WTP">
+                <viewController storyboardIdentifier="ChatViewController" title="Chat" id="FWa-9d-Rkz" customClass="ChatViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rxl-q4-81q"/>
+                        <viewControllerLayoutGuide type="bottom" id="x07-OP-EYl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wkG-vZ-jTR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="R8m-EK-B1z">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R8m-EK-B1z" id="Iue-Ce-91Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="EBm-Pq-ZMt" id="k0U-n3-bid"/>
-                            <outlet property="delegate" destination="EBm-Pq-ZMt" id="jyM-kS-vgp"/>
-                        </connections>
-                    </tableView>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3Kz-Jt-AHw">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OkM-6e-nBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6w-FP-cyh">
+                                <rect key="frame" x="2" y="631" width="371" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="TZa-Ax-cl3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="FWa-9d-Rkz" id="T5U-I3-aRy"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Ph-1Oc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="610"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FWa-9d-Rkz" id="Gck-rr-iOS"/>
+                                    <outlet property="delegate" destination="FWa-9d-Rkz" id="XH8-KZ-w41"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="x07-OP-EYl" firstAttribute="top" secondItem="p6w-FP-cyh" secondAttribute="bottom" constant="1" id="1yG-fL-ccy"/>
+                            <constraint firstItem="p6w-FP-cyh" firstAttribute="leading" secondItem="wkG-vZ-jTR" secondAttribute="leading" constant="2" id="CVc-B3-X6v"/>
+                            <constraint firstAttribute="trailing" secondItem="aO6-Ph-1Oc" secondAttribute="trailing" id="CuQ-N2-7H1"/>
+                            <constraint firstAttribute="trailing" secondItem="p6w-FP-cyh" secondAttribute="trailing" constant="2" id="Ftb-Pq-NPi"/>
+                            <constraint firstItem="aO6-Ph-1Oc" firstAttribute="top" secondItem="Rxl-q4-81q" secondAttribute="bottom" id="YKJ-Qb-CbC"/>
+                            <constraint firstAttribute="trailing" secondItem="aO6-Ph-1Oc" secondAttribute="trailing" id="acy-fq-mCf"/>
+                            <constraint firstItem="p6w-FP-cyh" firstAttribute="top" secondItem="aO6-Ph-1Oc" secondAttribute="bottom" constant="1" id="amx-NS-P4c"/>
+                            <constraint firstItem="aO6-Ph-1Oc" firstAttribute="top" secondItem="Rxl-q4-81q" secondAttribute="bottom" id="iDh-IJ-8c4"/>
+                            <constraint firstItem="aO6-Ph-1Oc" firstAttribute="leading" secondItem="wkG-vZ-jTR" secondAttribute="leading" id="wte-SE-gVn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="aO6-Ph-1Oc" id="gAR-Jt-LIJ"/>
+                        <outlet property="textInputView" destination="p6w-FP-cyh" id="WMd-LZ-IJ5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5u-uN-5MO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-174" y="-163"/>
+            <point key="canvasLocation" x="-287.19999999999999" y="-154.27286356821591"/>
         </scene>
     </scenes>
 </document>
