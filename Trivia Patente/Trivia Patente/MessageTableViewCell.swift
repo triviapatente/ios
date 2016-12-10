@@ -22,7 +22,7 @@ class MessageTableViewCell: UITableViewCell {
     
     func height(for text : String) -> CGFloat {
         self.messageView.text = text
-        return self.messageView.requiredHeight + textViewInset.top + textViewInset.bottom
+        return self.messageView.requiredHeight + self.messageView.frame.origin.y * 2
     }
     
     override func awakeFromNib() {

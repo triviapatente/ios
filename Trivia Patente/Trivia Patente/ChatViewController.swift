@@ -12,28 +12,33 @@ class ChatViewController: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var textInputView : UITextField! {
         didSet {
-            textInputView.rightView = sendButton
-            textInputView.rightViewMode = .always
+            self.setRightView(view: sendButton)
         }
     }
     @IBAction func dismissKeyboard() {
         self.textInputView.resignFirstResponder()
     }
-    var originalViewFrame : CGRect!
-    var sendButton : UIButton {
-        guard let rightView = textInputView.rightView else {
-            let button = UIButton()
-            let image = UIImage(named: "ic_send_white")?.withRenderingMode(.alwaysTemplate)
-            let dim = self.textInputView.frame.size.height - 3
-            button.frame = CGRect(x: 0, y: 0, width: dim, height: dim)
-            button.tintColor = Colors.primary
-            button.setImage(image, for: .normal)
-            button.isEnabled = false
-            button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
-            return button
-        }
-        return rightView as! UIButton
+    func setRightView(view : UIView) {
+        let dim = self.textInputView.frame.size.height - 3
+        view.frame = CGRect(x: 0, y: 0, width: dim, height: dim)
+        textInputView.rightView = view
+        textInputView.rightViewMode = .always
     }
+    var originalViewFrame : CGRect!
+    lazy var sendButton : UIButton = {
+        let button = UIButton()
+        let image = UIImage(named: "ic_send_white")?.withRenderingMode(.alwaysTemplate)
+        button.tintColor = Colors.primary
+        button.setImage(image, for: .normal)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        return button
+    }()
+    lazy var loadingView : UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        loading.startAnimating()
+        return loading
+    }()
     var refreshControl : UIRefreshControl {
         guard let output = self.tableView.refreshControl else {
             let control = UIRefreshControl()
@@ -65,7 +70,9 @@ class ChatViewController: UIViewController {
 
     func sendMessage() {
         let content = textInputView.text!
+        self.setRightView(view: loadingView)
         socketHandler.send_message(game: game, content: content) { response in
+            self.setRightView(view: self.sendButton)
             if response?.success == true {
                 self.messages.append(response!.item)
                 self.scrollToLast()
@@ -111,7 +118,9 @@ class ChatViewController: UIViewController {
     }
     func keyboardWillShow(notification : NSNotification) {
         let keyboardFrame = notification.keyboardFrame(in: self.view)!
-        self.animateView(offset: -keyboardFrame.height)
+        if self.view.frame.height == originalViewFrame.height {
+            self.animateView(offset: -keyboardFrame.height)
+        }
     }
     func keyboardWillHide(notification : NSNotification) {
         let offset = self.originalViewFrame.height - self.view.frame.height
