@@ -95,6 +95,9 @@
 		8B8EEA271DFC24FE003608AA /* TPMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */; };
 		8B8EEA2A1DFC2512003608AA /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA291DFC2512003608AA /* SocketChat.swift */; };
 		8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */; };
+		8B8EEA341DFC49C4003608AA /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA321DFC49C4003608AA /* MessageTableViewCell.swift */; };
+		8B8EEA351DFC49C4003608AA /* LeftMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */; };
+		8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -138,6 +141,7 @@
 		8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA41DB6A88700EC637C /* CommonPK.swift */; };
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
+		8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000A1DFC543F0088E8A2 /* UITextView.swift */; };
 		8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */; };
 		8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA251DD121180099C3E2 /* HTTPRank.swift */; };
 		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
@@ -289,6 +293,9 @@
 		8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMessageResponse.swift; sourceTree = "<group>"; };
 		8B8EEA291DFC2512003608AA /* SocketChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
 		8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
+		8B8EEA321DFC49C4003608AA /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMessageTableViewCell.xib; sourceTree = "<group>"; };
+		8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMessageTableViewCell.xib; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +339,7 @@
 		8BCF8CA41DB6A88700EC637C /* CommonPK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonPK.swift; sourceTree = "<group>"; };
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		8BDB000A1DFC543F0088E8A2 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankResponse.swift; sourceTree = "<group>"; };
 		8BDCEA251DD121180099C3E2 /* HTTPRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRank.swift; sourceTree = "<group>"; };
 		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
@@ -1126,6 +1134,7 @@
 		8B8EEA1A1DFB2676003608AA /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				8B8EEA2D1DFC497C003608AA /* cells */,
 				8B8EEA1B1DFB2687003608AA /* ChatViewController.swift */,
 			);
 			name = chat;
@@ -1163,6 +1172,32 @@
 				8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */,
 			);
 			name = responses;
+			sourceTree = "<group>";
+		};
+		8B8EEA2D1DFC497C003608AA /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA321DFC49C4003608AA /* MessageTableViewCell.swift */,
+				8B8EEA311DFC49A9003608AA /* right_cell */,
+				8B8EEA301DFC49A3003608AA /* left_cell */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		8B8EEA301DFC49A3003608AA /* left_cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */,
+			);
+			name = left_cell;
+			sourceTree = "<group>";
+		};
+		8B8EEA311DFC49A9003608AA /* right_cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */,
+			);
+			name = right_cell;
 			sourceTree = "<group>";
 		};
 		8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */ = {
@@ -1295,6 +1330,7 @@
 				8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */,
 				8BAD1C441DF9795D0051AC4A /* Int.swift */,
 				8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */,
+				8BDB000A1DFC543F0088E8A2 /* UITextView.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1579,6 +1615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8EEA351DFC49C4003608AA /* LeftMessageTableViewCell.xib in Resources */,
 				8BE278A01DF4AD6000071DF2 /* GameEndedTableViewCell.xib in Resources */,
 				8B28D2771DCF610E00C65122 /* ShopItemTableViewCell.xib in Resources */,
 				8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */,
@@ -1602,6 +1639,7 @@
 				8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */,
 				8B5EE1111DD914F600745A54 /* ProfileSettingsTableViewCell.xib in Resources */,
 				8B5EE11A1DD91E8900745A54 /* SettingsHeaderView.xib in Resources */,
+				8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 				8BE2788E1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib in Resources */,
 			);
@@ -1857,6 +1895,7 @@
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
+				8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */,
 				8BAD1C471DF99AEF0051AC4A /* TPSectionBar.swift in Sources */,
 				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
 				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,
@@ -1878,6 +1917,7 @@
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */,
 				8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */,
+				8B8EEA341DFC49C4003608AA /* MessageTableViewCell.swift in Sources */,
 				8BE278971DF4AD2B00071DF2 /* RoundDetailsTableViewCell.swift in Sources */,
 				8B5EE1191DD91E8900745A54 /* SettingsHeaderView.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,

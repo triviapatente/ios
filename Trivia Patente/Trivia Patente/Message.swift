@@ -20,7 +20,10 @@ open class Message: CommonPK {
 	open var content: String?
 	open var userId: Int?
 	open var gameId: Int?
-
+    
+    func isMine() -> Bool {
+        return self.userId == SessionManager.currentUser?.id
+    }
 
     // MARK: SwiftyJSON Initalizers
     /**

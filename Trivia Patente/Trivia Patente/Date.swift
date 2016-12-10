@@ -32,4 +32,28 @@ extension Date {
     var gmt : String {
         return Formatter.gmt.string(from: self)
     }
+    func isToday() -> Bool {
+        return Calendar.current.isDateInToday(self)
+    }
+    func isYesterday() -> Bool {
+        return Calendar.current.isDateInYesterday(self)
+    }
+    var pretty : String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        if self.isToday() || self.isYesterday() {
+            formatter.dateFormat = "HH:mm"
+        } else {
+            formatter.dateFormat = "dd/MM"
+        }
+        let output = formatter.string(from: self)
+        if self.isToday() {
+            return "Oggi, \(output)"
+        } else if self.isYesterday() {
+            return "Ieri, \(output)"
+        }
+        return output
+    }
 }

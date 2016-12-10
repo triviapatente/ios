@@ -14,4 +14,16 @@ extension UILabel {
         let archivedData = NSKeyedArchiver.archivedData(withRootObject: self)
         return NSKeyedUnarchiver.unarchiveObject(with: archivedData)!
     }
+    var requiredHeight : CGFloat {
+        get {
+            let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: CGFloat.greatestFiniteMagnitude)
+            let label : UILabel = UILabel(frame: frame)
+            label.numberOfLines = 0
+            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+            label.font = self.font
+            label.text = self.text
+            label.sizeToFit()
+            return label.frame.height
+        }
+    }
 }

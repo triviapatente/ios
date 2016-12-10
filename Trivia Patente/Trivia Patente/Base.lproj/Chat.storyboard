@@ -34,16 +34,19 @@
                                     <outlet property="delegate" destination="FWa-9d-Rkz" id="T5U-I3-aRy"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Ph-1Oc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Ph-1Oc">
                                 <rect key="frame" x="0.0" y="20" width="375" height="610"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="FWa-9d-Rkz" id="Gck-rr-iOS"/>
                                     <outlet property="delegate" destination="FWa-9d-Rkz" id="XH8-KZ-w41"/>
+                                    <outletCollection property="gestureRecognizers" destination="NAX-zE-904" appends="YES" id="moR-P7-PWj"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="x07-OP-EYl" firstAttribute="top" secondItem="p6w-FP-cyh" secondAttribute="bottom" constant="1" id="1yG-fL-ccy"/>
                             <constraint firstItem="p6w-FP-cyh" firstAttribute="leading" secondItem="wkG-vZ-jTR" secondAttribute="leading" constant="2" id="CVc-B3-X6v"/>
@@ -62,6 +65,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5u-uN-5MO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NAX-zE-904">
+                    <connections>
+                        <action selector="dismissKeyboard" destination="FWa-9d-Rkz" id="2Vf-Md-gUg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-287.19999999999999" y="-154.27286356821591"/>
         </scene>
