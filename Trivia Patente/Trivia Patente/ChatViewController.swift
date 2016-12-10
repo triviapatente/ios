@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITextFieldDelegate {
+class ChatViewController: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var textInputView : UITextField! {
         didSet {
@@ -16,6 +16,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
             textInputView.rightViewMode = .always
         }
     }
+    var originalViewFrame : CGRect!
     
     var sendButton : UIButton {
         guard let rightView = textInputView.rightView else {
@@ -41,20 +42,14 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     var messages : [Message] = [] {
         didSet {
             self.tableView.reloadData()
+            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.sendButton.sendActions(for: .touchUpInside)
-        return true
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        self.sendButton.isEnabled = !textInputView.text!.isEmpty
-        return true
     }
     
 
     func sendMessage() {
+        self.textInputView.resignFirstResponder()
         let content = textInputView.text!
         socketHandler.send_message(game: game, content: content) { response in
             if response?.success == true {
@@ -71,6 +66,32 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.join()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "chat_cell")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.keyboardHandlers()
+        self.originalViewFrame = self.view.frame
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    func keyboardHandlers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    func animateView(offset : CGFloat) {
+        UIView.animate(withDuration: 0.3) {
+            self.view.frame.size.height += offset
+        }
+    }
+    func keyboardWillShow(notification : NSNotification) {
+        let keyboardFrame = notification.keyboardFrame(in: self.view)!
+        self.animateView(offset: -keyboardFrame.height)
+    }
+    func keyboardWillHide(notification : NSNotification) {
+        let offset = self.originalViewFrame.height - self.view.frame.height
+        self.animateView(offset: offset)
     }
     func join() {
         gameHandler.join(game_id: game.id!) { response in
@@ -114,5 +135,15 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chat_cell")!
         cell.textLabel?.text = self.messages[indexPath.row].content
         return cell
+    }
+}
+extension ChatViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendButton.sendActions(for: .touchUpInside)
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.sendButton.isEnabled = !textInputView.text!.isEmpty
+        return true
     }
 }

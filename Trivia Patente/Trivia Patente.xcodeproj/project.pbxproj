@@ -94,6 +94,7 @@
 		8B8EEA251DFB373C003608AA /* TPGameLeftEventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */; };
 		8B8EEA271DFC24FE003608AA /* TPMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */; };
 		8B8EEA2A1DFC2512003608AA /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA291DFC2512003608AA /* SocketChat.swift */; };
+		8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -287,6 +288,7 @@
 		8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameLeftEventResponse.swift; sourceTree = "<group>"; };
 		8B8EEA261DFC24FE003608AA /* TPMessageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMessageResponse.swift; sourceTree = "<group>"; };
 		8B8EEA291DFC2512003608AA /* SocketChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
+		8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -1292,6 +1294,7 @@
 				8BE6DE391DE6E0AC00DDD179 /* UIColor.swift */,
 				8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */,
 				8BAD1C441DF9795D0051AC4A /* Int.swift */,
+				8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1874,6 +1877,7 @@
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */,
+				8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */,
 				8BE278971DF4AD2B00071DF2 /* RoundDetailsTableViewCell.swift in Sources */,
 				8B5EE1191DD91E8900745A54 /* SettingsHeaderView.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
