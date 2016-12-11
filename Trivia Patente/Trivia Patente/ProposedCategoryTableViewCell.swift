@@ -26,12 +26,18 @@ class ProposedCategoryTableViewCell: UITableViewCell {
             self.color = category.nativeColor
         }
     }
+    var disclosureIndicator : UIImageView {
+        let image = UIImage(named: "ic_chevron_right_white")?.withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = UIColor.white.alpha(offset: -0.5)
+        return imageView
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imageContainerView.circleRounded()
         self.imageContainerView.layer.borderWidth = 3
-        // Initialization code
+        self.accessoryView = self.disclosureIndicator
     }
     
     
