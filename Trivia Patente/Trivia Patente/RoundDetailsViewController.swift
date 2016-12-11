@@ -106,7 +106,7 @@ class RoundDetailsViewController: UIViewController {
         }
         let cb = { (response : TPGameEndedEventResponse?) in
             if response?.success == true {
-                self.game.winnerId = response!.winner.id
+                self.game.winnerId = response!.winner_id
                 self.game.ended = true
                 self.response.partecipations = response!.partecipations
                 self.reloadData()
