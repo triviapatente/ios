@@ -17,20 +17,14 @@ class ChooseCategoryViewController: UIViewController {
     var opponent : User!
     var round : Round!
     var game : Game!
-    let CELL_MIN_HEIGHT = CGFloat(100)
-    var indexPaths : [IndexPath] {
-        var output : [IndexPath] = []
-        for i in 0..<categories.count {
-            output.append(IndexPath(row: i, section: 0))
-        }
-        return output
-    }
+    let CELL_MIN_HEIGHT = CGFloat(80)
+    let CELL_ANIMATION_X_OFFSET = CGFloat(-100)
+    let CELL_ANIMATION_MULTIPLIER = 0.1
     var categories : [Category] = [] {
         didSet {
-            self.tableView.rowHeight = max(self.tableView.frame.height / 5, CELL_MIN_HEIGHT)
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: indexPaths, with: .left)
-            self.tableView.endUpdates()
+            let count = CGFloat(categories.count)
+            self.tableView.rowHeight = max(self.tableView.frame.height / count, CELL_MIN_HEIGHT)
+            self.tableView.reloadData()
         }
     }
     var handler = SocketGame()
@@ -42,6 +36,7 @@ class ChooseCategoryViewController: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "category_cell")
         self.tableView.tableFooterView = UIView()
         self.gameHeader.round = round
+        self.gameHeader.set(title: "Scegli la categoria!")
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
         self.join_room(round: round)
     }
@@ -94,6 +89,11 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
         if indexPath.row == self.categories.count - 1 {
             cell.separatorInset = .zero
         }
+        cell.contentView.frame.origin.x = CELL_ANIMATION_X_OFFSET
+        let duration = Double(indexPath.row + 1) * CELL_ANIMATION_MULTIPLIER
+        UIView.animate(withDuration: duration) {
+            cell.contentView.frame.origin.x = 0
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -102,7 +102,6 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {
-                self.performSegue(withIdentifier: "play_round", sender: self)
                 //TODO: error handler
             }
         }

@@ -143,7 +143,7 @@
                                     <segue destination="Pj9-5A-Y1R" kind="embed" identifier="header_view" id="ygJ-H6-qBG"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-el-k6b">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-el-k6b">
                                 <rect key="frame" x="0.0" y="80" width="320" height="488"/>
                                 <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -851,10 +851,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NV8-od-C3s"/>
-        <segue reference="d1s-Rz-ALU"/>
         <segue reference="iPF-Kj-XFy"/>
         <segue reference="F5i-i7-toe"/>
-        <segue reference="xqV-nx-JeY"/>
+        <segue reference="NV8-od-C3s"/>
+        <segue reference="mvX-Sj-SK8"/>
+        <segue reference="ygJ-H6-qBG"/>
     </inferredMetricsTieBreakers>
 </document>
