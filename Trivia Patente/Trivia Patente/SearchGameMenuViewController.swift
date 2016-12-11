@@ -13,6 +13,9 @@ class SearchGameMenuViewController: UIViewController {
     @IBOutlet var searchButton : UIButton!
     @IBOutlet var randomButton : UIButton!
     let handler = HTTPGame()
+    let socketHandler = SocketGame()
+    
+    var destinationGame : Game!
     
     var recentInvitesView : TPExpandableView! {
         didSet {
@@ -23,14 +26,34 @@ class SearchGameMenuViewController: UIViewController {
             recentInvitesView.rowHeight = 60
             recentInvitesView.separatorColor = Colors.primary
             recentInvitesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            recentInvitesView.selectedCellHandler = { item in
+                let invite = item as! Invite
+                self.destinationGame = Game(id: invite.gameId)
+                self.destinationGame.opponent = invite.sender
+                self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+            }
         }
     }
-    func loadInvites() {
+    var invites : [Invite]! {
+        didSet {
+            self.recentInvitesView.items = invites
+        }
+    }
+    func listen() {
+        socketHandler.listen_invite_created { response in
+            if response?.success == true {
+                let invite = response!.invite!
+                invite.sender = response!.user
+                self.recentInvitesView.add(item: invite)
+            }
+        }
+    }
+    func load() {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.invites { response in
             loadingView.hide(animated: true)
             if response.success == true {
-                self.recentInvitesView.items = response.invites
+                self.invites = response.invites
             } else {
                 //TODO: error handler
             }
@@ -41,13 +64,16 @@ class SearchGameMenuViewController: UIViewController {
         super.viewDidLoad()
         searchButton.mediumRounded()
         randomButton.mediumRounded()
-        loadInvites()
+        self.load()
+        self.listen()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "recent_view" {
                 self.recentInvitesView = segue.destination as! TPExpandableView
+            } else if identifier == "wait_opponent_segue" {
+                (segue.destination as! WaitOpponentViewController).game = self.destinationGame
             }
         }
     }

@@ -142,6 +142,7 @@
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
 		8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000A1DFC543F0088E8A2 /* UITextView.swift */; };
+		8BDB000D1DFD74F80088E8A2 /* TPInviteEventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */; };
 		8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */; };
 		8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA251DD121180099C3E2 /* HTTPRank.swift */; };
 		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
@@ -340,6 +341,7 @@
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8BDB000A1DFC543F0088E8A2 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteEventResponse.swift; sourceTree = "<group>"; };
 		8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankResponse.swift; sourceTree = "<group>"; };
 		8BDCEA251DD121180099C3E2 /* HTTPRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRank.swift; sourceTree = "<group>"; };
 		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
@@ -1047,6 +1049,7 @@
 				8BAD1C521DF9C4CD0051AC4A /* TPRoundResponse.swift */,
 				8BAD1C541DF9CA050051AC4A /* TPGameEndedEventResponse.swift */,
 				8B8EEA241DFB373C003608AA /* TPGameLeftEventResponse.swift */,
+				8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1937,6 +1940,7 @@
 				8BE20C661DD9E44C0048DA0A /* HTTPPreference.swift in Sources */,
 				8BE278921DF4733A00071DF2 /* TPScoreView.swift in Sources */,
 				8B5EE1051DD90CA400745A54 /* PreferenceType.swift in Sources */,
+				8BDB000D1DFD74F80088E8A2 /* TPInviteEventResponse.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPExpandableView.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,
 				8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */,

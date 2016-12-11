@@ -22,6 +22,13 @@ class TPExpandableView: UIViewController {
             self.tableView.tableFooterView = footerView
         }
     }
+    func add(item : Base) {
+        self.items.append(item)
+        self.tableView.reloadData()
+    }
+    func remove(item : Base) {
+        if let index = self.items.index(of: item) {
+            self.items.remove(at: index)
         }
     }
     var selectedCellHandler : ((Base) -> Void)?

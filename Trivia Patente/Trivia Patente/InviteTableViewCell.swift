@@ -22,8 +22,11 @@ class InviteTableViewCell: TPExpandableTableViewCell {
         let accept = (sender == acceptButton)
         handler.process_invite(game_id: invite.gameId!, accepted: accept) { response in
             if response.success == true {
-                //TODO: go to game page
                 self.delegate.removeCell(for: self.item)
+                if accept == true {
+                    //invoke setSelected event of TPExpandableTableViewCell
+                    self.setSelected(true, animated: true)
+                }
             } else {
                 //TODO error handler
             }

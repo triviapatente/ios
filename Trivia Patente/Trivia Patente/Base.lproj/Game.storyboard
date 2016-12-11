@@ -87,6 +87,7 @@
                     <connections>
                         <outlet property="randomButton" destination="ahf-qO-3M4" id="SCB-6F-aiD"/>
                         <outlet property="searchButton" destination="dwd-wP-VOG" id="uEg-As-4oe"/>
+                        <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="sSs-jh-fhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOI-HE-dHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -851,10 +852,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iPF-Kj-XFy"/>
-        <segue reference="F5i-i7-toe"/>
-        <segue reference="NV8-od-C3s"/>
-        <segue reference="mvX-Sj-SK8"/>
-        <segue reference="ygJ-H6-qBG"/>
+        <segue reference="sSs-jh-fhW"/>
+        <segue reference="DiI-hO-ske"/>
+        <segue reference="yys-8T-GtN"/>
+        <segue reference="kf4-r3-nBv"/>
+        <segue reference="d1s-Rz-ALU"/>
     </inferredMetricsTieBreakers>
 </document>

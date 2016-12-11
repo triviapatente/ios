@@ -18,7 +18,9 @@ class TPExpandableTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        if selected == true {
+            delegate.selectCell(for: item)
+        }
         // Configure the view for the selected state
     }
 

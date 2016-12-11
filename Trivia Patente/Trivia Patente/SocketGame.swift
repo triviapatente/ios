@@ -45,5 +45,8 @@ class SocketGame: SocketManager {
     func listen_game_left(handler: @escaping (TPGameLeftEventResponse?) -> Void) {
         SocketGame.listen(event: "game_left", handler: handler)
     }
+    func listen_invite_created(handler : @escaping (TPInviteEventResponse?) -> Void) {
+        SocketGame.listen(event: "invite_created", handler: handler)
+    }
     
 }
