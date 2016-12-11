@@ -18,13 +18,23 @@ class TPExpandableView: UIViewController {
             if !dataLoaded {
                 adaptToItems()
             }
-            self.tableView.tableFooterView = footerView
             dataLoaded = true
+            self.tableView.tableFooterView = footerView
+        }
+    }
         }
     }
     var selectedCellHandler : ((Base) -> Void)?
     var cellNibName : String?
     var footerText : String = ""
+    var emptyFooterText : String!
+    
+    var footer : String {
+        if items.isEmpty && emptyFooterText != nil {
+            return emptyFooterText
+        }
+        return footerText
+    }
 
     var dataLoaded = false
     var containerView : UIView {
@@ -71,7 +81,7 @@ class TPExpandableView: UIViewController {
     //number of items dependent: settare a items già settati
     var footerView : UIView {
         let label = UILabel(frame: footerFrame)
-        label.text = footerText
+        label.text = footer
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.numberOfLines = 2
