@@ -141,8 +141,11 @@
 		8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA41DB6A88700EC637C /* CommonPK.swift */; };
 		8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA71DB6AB2700EC637C /* String.swift */; };
 		8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8CA91DB6AB3400EC637C /* Date.swift */; };
+		8BD762831DFDAB7E00AB59D7 /* FMBlurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD762821DFDAB7E00AB59D7 /* FMBlurable.swift */; };
 		8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000A1DFC543F0088E8A2 /* UITextView.swift */; };
 		8BDB000D1DFD74F80088E8A2 /* TPInviteEventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */; };
+		8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB000F1DFDA1550088E8A2 /* LeaveGameViewController.swift */; };
+		8BDB00131DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB00121DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift */; };
 		8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */; };
 		8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA251DD121180099C3E2 /* HTTPRank.swift */; };
 		8BDCEA281DD121A00099C3E2 /* RankMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDCEA271DD121A00099C3E2 /* RankMode.swift */; };
@@ -340,8 +343,11 @@
 		8BCF8CA41DB6A88700EC637C /* CommonPK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonPK.swift; sourceTree = "<group>"; };
 		8BCF8CA71DB6AB2700EC637C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8BCF8CA91DB6AB3400EC637C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		8BD762821DFDAB7E00AB59D7 /* FMBlurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMBlurable.swift; sourceTree = "<group>"; };
 		8BDB000A1DFC543F0088E8A2 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPInviteEventResponse.swift; sourceTree = "<group>"; };
+		8BDB000F1DFDA1550088E8A2 /* LeaveGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveGameViewController.swift; sourceTree = "<group>"; };
+		8BDB00121DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPLeaveDecrementResponse.swift; sourceTree = "<group>"; };
 		8BDCEA231DD120940099C3E2 /* TPRankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankResponse.swift; sourceTree = "<group>"; };
 		8BDCEA251DD121180099C3E2 /* HTTPRank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRank.swift; sourceTree = "<group>"; };
 		8BDCEA271DD121A00099C3E2 /* RankMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankMode.swift; sourceTree = "<group>"; };
@@ -657,6 +663,7 @@
 		8B5132DB1DBB5BD000143497 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				8BD762811DFDAB7500AB59D7 /* assets */,
 				8B8142CA1DC0C81700E60B06 /* generals */,
 				8BCF8CA61DB6AB1300EC637C /* extensions */,
 				8B8662651DBD5D3C004D266E /* subclasses */,
@@ -1274,6 +1281,7 @@
 				8B8058C71DE2F90C00C3F938 /* TPInviteListResponse.swift */,
 				8B8058C91DE2F97100C3F938 /* TPUserListResponse.swift */,
 				8B8058CB1DE2FA1F00C3F938 /* TPNewGameResponse.swift */,
+				8BDB00121DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1336,6 +1344,30 @@
 				8BDB000A1DFC543F0088E8A2 /* UITextView.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		8BD762811DFDAB7500AB59D7 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				8BD762821DFDAB7E00AB59D7 /* FMBlurable.swift */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		8BDB000E1DFDA1440088E8A2 /* leave */ = {
+			isa = PBXGroup;
+			children = (
+				8BDB00111DFDA1640088E8A2 /* container */,
+				8BDB000F1DFDA1550088E8A2 /* LeaveGameViewController.swift */,
+			);
+			name = leave;
+			sourceTree = "<group>";
+		};
+		8BDB00111DFDA1640088E8A2 /* container */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = container;
 			sourceTree = "<group>";
 		};
 		8BDCEA211DD120590099C3E2 /* http */ = {
@@ -1412,6 +1444,7 @@
 		8BE6DE301DE6D95B00DDD179 /* round */ = {
 			isa = PBXGroup;
 			children = (
+				8BDB000E1DFDA1440088E8A2 /* leave */,
 				8B2A2A821DF1D7EC00830028 /* round_details */,
 				8BA6BEBC1DEEEA7F00D9EB86 /* wait_for_opponent */,
 				8B19E0271DE9814B00304FF3 /* play_round */,
@@ -1814,6 +1847,7 @@
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
 				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
+				8BD762831DFDAB7E00AB59D7 /* FMBlurable.swift in Sources */,
 				8BE278941DF477CC00071DF2 /* TPRoundDetailsResponse.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
@@ -1876,6 +1910,7 @@
 				8B51332A1DBCC14800143497 /* UIViewController.swift in Sources */,
 				8BA6BEBB1DEEE6DA00D9EB86 /* TPGameActions.swift in Sources */,
 				8B28D27B1DCF626500C65122 /* TPShopItemsResponse.swift in Sources */,
+				8BDB00131DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
 				8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */,
@@ -1889,6 +1924,7 @@
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BE20C641DD9E43D0048DA0A /* TPPreferenceChangeResponse.swift in Sources */,
 				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
+				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,

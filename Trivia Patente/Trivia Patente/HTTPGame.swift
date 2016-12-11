@@ -24,6 +24,13 @@ class HTTPGame: HTTPManager {
         self.request(url: "/new/random", method: .post, params: nil, handler: handler)
     }*/
     
+    func get_leave_decrement(game_id : Int, handler : @escaping (TPLeaveDecrementResponse) -> Void) {
+        self.request(url: "/game/leave/decrement", method: .get, params: ["game_id": game_id], handler: handler)
+    }
+    func leave_game(game_id : Int, handler : @escaping (TPResponse) -> Void) {
+        self.request(url: "/game/leave", method: .post, params: ["game_id": game_id], handler: handler)
+    }
+    
     func randomNewGame(handler : @escaping (TPNewGameResponse) -> Void) {
         self.request(url: "/game/new/random", method: .post, params: nil, handler: handler)
     }

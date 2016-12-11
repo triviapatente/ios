@@ -51,6 +51,13 @@ class TPGameActions: UIViewController {
             case self.identifier(for: chatButton)!:
                 (segue.destination as! ChatViewController).game = game
                 break
+            
+            case self.identifier(for: leaveButton)!:
+                if let leaveController = segue.destination as? LeaveGameViewController {
+                    leaveController.game = game
+                    leaveController.sender = self
+                }
+                break
             default:
                 break
         }
