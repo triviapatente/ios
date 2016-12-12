@@ -79,8 +79,8 @@ class WaitOpponentViewController: UIViewController {
         self.headerView.categoryNameView.text = self.waitTitle()
         if fromInvite == true {
             self.headerView.roundLabel.text = "Invito"
-            self.waitLabel.text = "Attendi che l'utente accetti il tuo invito a giocare!"
-            self.opponentImageView.rotatingBorder(color: .white)
+        } else {
+            self.headerView.roundLabel.text = "Partita"
         }
     }
     let handler = SocketGame()
@@ -99,6 +99,7 @@ class WaitOpponentViewController: UIViewController {
         switch(state) {
             case .game: return "Attendi che il tuo avversario finisca il turno!"
             case .category: return "Attendi che il tuo avversario scelga la categoria del turno!"
+            case .invite: return "Attendi che l'utente accetti il tuo invito a giocare!"
         }
     }
     func color(for state : RoundWaiting, opponent_online : Bool) -> UIColor {
@@ -108,12 +109,14 @@ class WaitOpponentViewController: UIViewController {
         switch state {
             case .category: return Colors.yellow_default
             case .game: return Colors.green_default
+            case .invite: return Colors.red_default
         }
     }
-    func segue(for state : RoundWaiting) -> String {
+    func segue(for state : RoundWaiting) -> String? {
         switch state {
             case .category: return "choose_category"
             case .game: return "play_round"
+            case .invite: return nil
         }
     }
     func processResponse(response : TPInitRoundResponse) {
@@ -132,8 +135,9 @@ class WaitOpponentViewController: UIViewController {
     }
     func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false) {
         if user.isMe() {
-            let identifier = self.segue(for: state)
-            self.redirect(identifier: identifier)
+            if let identifier = self.segue(for: state) {
+                self.redirect(identifier: identifier)
+            }
         } else {
             let color = self.color(for: state, opponent_online: opponent_online)
             self.opponentImageView.rotatingBorder(color: color)
@@ -164,9 +168,10 @@ class WaitOpponentViewController: UIViewController {
         super.viewDidLoad()
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.configureView()
-        self.headerView.roundLabel.text = "Partita"
         if fromInvite == false {
             self.join_room()
+        } else {
+            self.processGameState(state: .invite, user: game.opponent, opponent_online: true)
         }
         self.listen()
     }

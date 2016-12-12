@@ -12,12 +12,15 @@ import SwiftyJSON
 enum RoundWaiting : String {
     case category = "category"
     case game = "game"
+    case invite = "invite"
     static func from(json : JSON) -> RoundWaiting? {
         if let value = json.string {
             if value == self.category.rawValue {
                 return self.category
             } else if value == self.game.rawValue {
                 return self.game
+            } else if value == self.invite.rawValue {
+                return self.invite
             }
         }
         return nil
