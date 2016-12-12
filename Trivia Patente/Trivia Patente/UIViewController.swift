@@ -24,7 +24,15 @@ extension UIViewController {
     class func mainController() -> UINavigationController {
         return UIStoryboard.getFirstController(storyboard: "Main") as! UINavigationController
     }
-    
+    func fade(duration durationValue: Double? = nil) {
+        if let duration = durationValue {
+            self.view.fade(duration: duration)
+        } else {
+            self.view.fade()
+        }
+        self.dismiss(animated: false, completion: nil)
+        
+    }
     class func goToFirstAccess(from : UIViewController? = nil, expired_session : Bool = true) {
         var sender = from
         if sender == nil {

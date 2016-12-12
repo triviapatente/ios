@@ -12,6 +12,11 @@ class TPNavigationController: UINavigationController {
     var avatarItem: AvatarButtonItem!
     var menuItem: MenuButtonItem!
     var lifesItem: LifesButtonItem!
+    
+    
+    var topView : UIView {
+        return self.topViewController!.view
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,7 +31,8 @@ class TPNavigationController: UINavigationController {
                                 break
                 case .credits: self.goTo(identifier: "credits_segue")
                                break
-                case .logout: self.goTo(identifier: "logout_segue")
+                case .logout: self.topView.fade()
+                              self.goTo(identifier: "logout_segue")
                               break
             }
         }, sender: self)

@@ -22,11 +22,11 @@ class LeaveGameViewController: UIViewController {
     
     @IBAction func buttonTapped(button : UIButton) {
         if button == dismissButton {
-            self.dismiss(animated: true, completion: nil)
+            self.fade()
         } else if button == leaveButton {
             handler.leave_game(game_id: game.id!) { response in
                 if response.success == true {
-                    self.dismiss(animated: true, completion: nil)
+                    self.fade()
                     self.sender.performSegue(withIdentifier: "round_details", sender: self)
                 } else {
                     //TODO: error handler

@@ -23,6 +23,12 @@ extension UIView {
     func circleRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: self.frame.size.height / 2, corners: corners)
     }
+    func fade(duration : Double = 0.2) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.type = kCATransitionFade
+        self.window?.layer.add(transition, forKey: nil)
+    }
     
     var borderFrontLayer : CAShapeLayer {
         let circleLayer = CAShapeLayer()

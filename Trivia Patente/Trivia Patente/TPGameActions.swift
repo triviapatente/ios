@@ -26,8 +26,14 @@ class TPGameActions: UIViewController {
             default: return nil
         }
     }
+    var parentView : UIView {
+        return self.view.superview!
+    }
     @IBAction func goto(sender : UIButton) {
         if let identifier = identifier(for: sender) {
+            if sender == leaveButton {
+                self.parentView.fade()
+            }
             self.performSegue(withIdentifier: identifier, sender: self)
         }
     }

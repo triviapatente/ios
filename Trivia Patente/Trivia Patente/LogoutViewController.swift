@@ -22,12 +22,12 @@ class LogoutViewController: UIViewController {
         SessionManager.logout { response in
             self.loadingView.hide(animated: true)
             if response.success == true {
-                self.dismiss(animated: true, completion: nil)
+                self.fade()
             }
         }
     }
     @IBAction func remain() {
-        self.dismiss(animated: true, completion: nil)
+        self.fade()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
