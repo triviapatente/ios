@@ -70,18 +70,6 @@ class TPScoreView: UIViewController {
         self.view.layer.borderWidth = 1
         self.view.layer.borderColor = UIColor.white.cgColor
     }
-    func listen() {
-        handler.listen(event: "user_answered") { response in
-            if response?.success == true {
-                
-            } else {
-                //TODO: error handling
-            }
-        }
-    }
-    func room_joined() {
-        self.listen()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareView()

@@ -167,7 +167,6 @@
 		8BE6DE371DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6DE351DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift */; };
 		8BE6DE381DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6DE361DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib */; };
 		8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6DE391DE6E0AC00DDD179 /* UIColor.swift */; };
-		8BF2892E1E01711B00214DED /* TPGameAnswerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2892D1E01711B00214DED /* TPGameAnswerEvent.swift */; };
 		8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */; };
 		A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */; };
 		A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */; };
@@ -368,7 +367,6 @@
 		8BE6DE351DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposedCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		8BE6DE361DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposedCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		8BE6DE391DE6E0AC00DDD179 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		8BF2892D1E01711B00214DED /* TPGameAnswerEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerEvent.swift; sourceTree = "<group>"; };
 		8BFC94F51DD28CAE00D4CE86 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trivia_PatenteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
@@ -1054,7 +1052,6 @@
 				8BAD1C541DF9CA050051AC4A /* TPGameEndedEvent.swift */,
 				8B8EEA241DFB373C003608AA /* TPGameLeftEvent.swift */,
 				8BDB000C1DFD74F80088E8A2 /* TPInviteEventResponse.swift */,
-				8BF2892D1E01711B00214DED /* TPGameAnswerEvent.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1938,7 +1935,6 @@
 				8B8EEA341DFC49C4003608AA /* MessageTableViewCell.swift in Sources */,
 				8BE278971DF4AD2B00071DF2 /* RoundDetailsTableViewCell.swift in Sources */,
 				8B5EE1191DD91E8900745A54 /* SettingsHeaderView.swift in Sources */,
-				8BF2892E1E01711B00214DED /* TPGameAnswerEvent.swift in Sources */,
 				8BCF8C9F1DB6A6BA00EC637C /* Round.swift in Sources */,
 				8BAD1C531DF9C4CD0051AC4A /* TPRoundResponse.swift in Sources */,
 				8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */,

@@ -33,6 +33,7 @@ class RoundDetailsViewController: UIViewController {
             (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
             self.computeMap(candidate: response)
             game = self.response.game
+            //TODO get scores from event
             self.scoreView.set(users: response.users, scores: response.scores, game: game)
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
@@ -88,7 +89,6 @@ class RoundDetailsViewController: UIViewController {
     func round_details() {
         handler.round_details(game_id: game.id!) { response in
             if response?.success == true {
-                self.scoreView.room_joined()
                 self.response = response
             } else {
                 //TODO: error handler
