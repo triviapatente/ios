@@ -36,7 +36,7 @@ class TPSectionBar: UIViewController {
         guard questionMap != nil && game != nil else {
             return []
         }
-        var array = questionMap.keys.sorted()
+        var array = questionMap.keys.sorted(by: {Int($0)! < Int($1)!})
         if game.isEnded() {
             array.append("🏆")
         }
