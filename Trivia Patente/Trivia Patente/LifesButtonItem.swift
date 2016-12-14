@@ -11,6 +11,12 @@ import UIKit
 class LifesButtonItem: UIBarButtonItem {
     @IBOutlet var lifesLabel : UILabel!
     @IBOutlet var moreLifesButton : UIButton!
+    @IBOutlet var heartImageView : UIImageView! {
+        didSet {
+            self.heartImageView.tintColor = Colors.error_default
+            self.heartImageView.image = self.heartImageView.image?.withRenderingMode(.alwaysTemplate)
+        }
+    }
     
     var callback : (() -> Void)!
     var numberOfLifes : Int = 0 {

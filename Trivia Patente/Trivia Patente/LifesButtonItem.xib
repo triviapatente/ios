@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LifesButtonItem" customModule="Trivia_Patente" customModuleProvider="target">
             <connections>
+                <outlet property="heartImageView" destination="Kbz-bz-xEJ" id="BbG-xH-jaI"/>
                 <outlet property="lifesLabel" destination="rNz-uc-yPc" id="DCH-qW-xWS"/>
                 <outlet property="moreLifesButton" destination="srg-a0-dXh" id="L54-mI-AFm"/>
             </connections>
@@ -20,15 +21,15 @@
             <rect key="frame" x="0.0" y="0.0" width="89" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_heart" translatesAutoresizingMaskIntoConstraints="NO" id="Kbz-bz-xEJ">
-                    <rect key="frame" x="20" y="10.5" width="30" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-heart" translatesAutoresizingMaskIntoConstraints="NO" id="Kbz-bz-xEJ">
+                    <rect key="frame" x="20" y="11" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ci-Hs-jCf"/>
                         <constraint firstAttribute="width" constant="30" id="pkZ-0u-Dim"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-uc-yPc">
-                    <rect key="frame" x="27" y="18.5" width="17" height="14"/>
+                    <rect key="frame" x="27" y="19" width="17" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="4zZ-ZL-22a"/>
                         <constraint firstAttribute="width" constant="17" id="Ink-Lp-dPR"/>
@@ -38,7 +39,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srg-a0-dXh">
-                    <rect key="frame" x="57" y="14.5" width="22" height="22"/>
+                    <rect key="frame" x="57" y="15" width="22" height="22"/>
                     <color key="backgroundColor" red="0.0" green="0.83423382040000005" blue="0.39689299459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Q2Q-dc-iOv"/>
@@ -74,6 +75,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="red_heart" width="84" height="72"/>
+        <image name="red-heart" width="64" height="64"/>
     </resources>
 </document>
