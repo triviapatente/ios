@@ -102,7 +102,7 @@ class PlayRoundViewController: UIViewController {
         }
         button.darkerBorder(of: 0.1, width: 2)
     }
-    func getQuestionNumber(for i : Int) {
+    func getQuestionNumber(for i : Int) -> Int {
         return (i + 1) + (round.number! - 1) * 4
     }
     func configureView() {
