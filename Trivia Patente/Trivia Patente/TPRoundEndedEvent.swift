@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class TPRoundEndedEventResponse: TPRoundResponse {
+class TPRoundEndedEvent: TPRoundResponse {
     var category : Category!
     override func load(json: JSON) {
         super.load(json: json)

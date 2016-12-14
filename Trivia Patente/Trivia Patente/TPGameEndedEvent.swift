@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class TPGameEndedEventResponse: TPResponse {
+class TPGameEndedEvent: TPResponse {
     var partecipations : [Partecipation] = []
     var winner_id : Int!
     

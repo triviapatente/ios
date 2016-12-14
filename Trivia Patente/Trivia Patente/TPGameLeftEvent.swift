@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class TPGameLeftEventResponse: TPGameEndedEventResponse {
+class TPGameLeftEvent: TPGameEndedEvent {
     var user : User!
     
     override func load(json: JSON) {
