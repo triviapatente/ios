@@ -64,6 +64,9 @@ class ChatViewController: UIViewController {
     }
     
     func scrollToLast() {
+        guard !self.messages.isEmpty else {
+            return
+        }
         let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
         self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
