@@ -10,23 +10,13 @@ import UIKit
 
 class LifesButtonItem: UIBarButtonItem {
     @IBOutlet var lifesLabel : UILabel!
-    @IBOutlet var timeLabel : UILabel!
     @IBOutlet var moreLifesButton : UIButton!
     
     var callback : (() -> Void)!
     var numberOfLifes : Int = 0 {
         didSet {
             lifesLabel.text = "\(numberOfLifes)"
-            self.timeLabel.isHidden = (self.numberOfLifes == Constants.max_life_number )
-            self.moreLifesButton.isHidden = !self.timeLabel.isHidden
-        }
-    }
-    var remainingTime : Int = Constants.life_seconds_value {
-        didSet {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "mm:ss"
-            let date = Date(timeIntervalSince1970: TimeInterval(remainingTime))
-            timeLabel.text = formatter.string(from: date)
+            self.moreLifesButton.isHidden = self.numberOfLifes != 0
         }
     }
     @IBAction func moreLifes() {
@@ -41,22 +31,5 @@ class LifesButtonItem: UIBarButtonItem {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    func initCounter(lifes : Int, remainingTime : Int = Constants.life_seconds_value) {
-        self.numberOfLifes = lifes
-        self.remainingTime = remainingTime
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            if self.remainingTime == 0 {
-                if !self.timeLabel.isHidden {
-                    self.numberOfLifes = self.numberOfLifes + 1
-                    self.remainingTime = Constants.life_seconds_value
-                } else {
-                    timer.invalidate()
-                }
-            } else {
-                self.remainingTime = self.remainingTime - 1
-            }
-        }
     }
 }

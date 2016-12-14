@@ -9,6 +9,5 @@
 import Foundation
 
 class Constants {
-    static let life_seconds_value = 60 * 60 - 1
     static let max_life_number = 3
 }
