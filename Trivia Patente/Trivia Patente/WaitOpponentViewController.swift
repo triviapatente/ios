@@ -32,37 +32,30 @@ class WaitOpponentViewController: UIViewController {
             }
         }
     }
-    func listen() {
-        socketHandler.listen(event: "category_chosen") { response in
+    func listenForInvite() {
+        socketHandler.listen_invite_processed { response in
             if response?.success == true {
-                //posso andare a giocare, hanno scelto la categoria per me
-                self.processGameState(state: .game, user: SessionManager.currentUser!)
+                if response!.accepted == true {
+                    self.join_room()
+                } else {
+                    self.handleInviteRefused()
+                }
             }
+        }
+    }
+    func listenInRoom() {
+        socketHandler.listen(event: "category_chosen") { response in
+            self.processGameState(state: .game, user: SessionManager.currentUser!)
         }
         socketHandler.listen(event: "round_ended") { response in
-            if response?.success == true {
-                self.init_round()
-            }
+            self.init_round()
         }
-        socketHandler.listen(event: "invite_accepted") { response in
-            if response?.success == true {
-                self.join_room()
-            }
-        }
-        socketHandler.listen(event: "invite_refused") { response in
-            if response?.success == true {
-                self.handleInviteRefused()
-            }
-        }
+        
         socketHandler.listen(event: "user_joined") { response in
-            if response?.success == true {
-                self.join_room()
-            }
+            self.join_room()
         }
         socketHandler.listen(event: "user_left") { response in
-            if response?.success == true {
-                self.join_room()
-            }
+            self.join_room()
         }
        
     }
@@ -154,7 +147,7 @@ class WaitOpponentViewController: UIViewController {
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.init_round()
-                self.listen()
+                self.listenInRoom()
             } else {
                 //TODO: handle error
             }
@@ -187,6 +180,7 @@ class WaitOpponentViewController: UIViewController {
                 //TODO: change with processGameState for invite (in round_init response)
                 self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
                 //self.join_room()
+                self.listenForInvite()
             } else {
                 //TODO: error handler
             }

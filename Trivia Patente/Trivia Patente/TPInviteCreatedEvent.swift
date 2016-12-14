@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class TPInviteEventResponse: TPResponse {
+class TPInviteCreatedEvent: TPResponse {
     var user : User!
     var invite : Invite!
     
