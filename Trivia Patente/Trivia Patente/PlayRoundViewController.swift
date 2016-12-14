@@ -102,12 +102,15 @@ class PlayRoundViewController: UIViewController {
         }
         button.darkerBorder(of: 0.1, width: 2)
     }
+    func getQuestionNumber(for i : Int) {
+        return (i + 1) + (round.number! - 1) * 4
+    }
     func configureView() {
         for i in 0..<questionButtons.count {
             let button = questionButtons[i]
             button.circleRounded()
             button.shadow(radius: 4, color: .white)
-            let title = "\((i + 1) * round.number!)"
+            let title = "\(getQuestionNumber(for: i))"
             button.setTitle(title, for: .normal)
             self.setQuizButtonColor(of: button)
         }
