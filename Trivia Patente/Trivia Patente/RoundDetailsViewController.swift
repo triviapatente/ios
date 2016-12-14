@@ -96,7 +96,7 @@ class RoundDetailsViewController: UIViewController {
         }
     }
     func listen() {
-        handler.listen_round_ended { (response : TPRoundEndedEventResponse?) in
+        handler.listen_round_ended { (response : TPRoundEndedEvent?) in
             if response?.success == true {
                 self.response.categories.append(response!.category)
                 self.computeMap(candidate: response!)
@@ -104,7 +104,7 @@ class RoundDetailsViewController: UIViewController {
                 //TODO: error handler
             }
         }
-        let cb = { (response : TPGameEndedEventResponse?) in
+        let cb = { (response : TPGameEndedEvent?) in
             if response?.success == true {
                 self.game.winnerId = response!.winner_id
                 self.game.ended = true
