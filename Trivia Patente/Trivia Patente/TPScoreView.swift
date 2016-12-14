@@ -31,13 +31,33 @@ class TPScoreView: UIViewController {
     }
     var users : [User]!
     var game : Game!
-    func set(users: [User], scores: [Int], game : Game) {
+    var questions : [Question] = []
+    var quizzes : [Quiz] = []
+    func set(users: [User], game : Game) {
         self.users = users
         self.game = game
         self.firstAvatarView.load(user: users.first!)
-        self.firstScore = scores.first!
         self.secondAvatarView.load(user: users.last!)
-        self.secondScore = scores.last!
+    }
+    
+    var scores : [Int] {
+        var output = [Int](repeating: 0, count: self.users.count)
+        for question in questions {
+            if let quiz = self.quizzes.first(where: {$0.id == question.quizId}) {
+                if question.answer == quiz.answer {
+                    if let index = self.users.index(where: {$0.id == question.userId}) {
+                        output[index] += 1
+                    }
+                }
+            }
+        }
+        return output
+    }
+    func add(answers : [Question], quizzes : [Quiz]) {
+        self.questions += answers
+        self.quizzes += quizzes
+        self.firstScore = self.scores.first!
+        self.secondScore = self.scores.last!
     }
     func adaptViewToScore() {
         self.firstAvatarView.layer.borderWidth = 1

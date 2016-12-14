@@ -14,19 +14,7 @@ class TPRoundDetailsResponse: TPRoundResponse {
     var users : [User] = []
     var partecipations : [Partecipation] = []
     var game : Game!
-    var scores : [Int] {
-        var output = [Int](repeating: 0, count: users.count)
-        for answer in answers {
-            if let quiz = quizzes.first(where: {$0.id == answer.quizId}) {
-                if answer.answer == quiz.answer {
-                    if let index = users.index(where: {$0.id == answer.userId}) {
-                        output[index] += 1
-                    }
-                }
-            }
-        }
-        return output
-    }
+    
     override func load(json: JSON) {
         super.load(json: json)
         if let rawUsers = json["users"].array {

@@ -11,9 +11,11 @@ import SwiftyJSON
 
 class TPRoundEndedEvent: TPRoundResponse {
     var category : Category!
+    var globally : Bool!
     override func load(json: JSON) {
         super.load(json: json)
         self.category = Category(json: json["category"])
+        self.globally = json["globally"].boolValue
     }
 }
 

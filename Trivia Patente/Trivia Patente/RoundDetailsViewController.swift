@@ -31,10 +31,10 @@ class RoundDetailsViewController: UIViewController {
     var response : TPRoundDetailsResponse! {
         didSet {
             (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
+            self.scoreView.set(users: response.users, game: game)
+            self.scoreView.add(answers: response.answers, quizzes: response.quizzes)
             self.computeMap(candidate: response)
             game = self.response.game
-            //TODO get scores from event
-            self.scoreView.set(users: response.users, scores: response.scores, game: game)
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
             self.reloadData()
@@ -98,8 +98,11 @@ class RoundDetailsViewController: UIViewController {
     func listen() {
         handler.listen_round_ended { (response : TPRoundEndedEvent?) in
             if response?.success == true {
-                self.response.categories.append(response!.category)
-                self.computeMap(candidate: response!)
+                if response?.globally == true {
+                    self.response.categories.append(response!.category)
+                    self.scoreView.add(answers: response!.answers, quizzes: response!.quizzes)
+                    self.computeMap(candidate: response!)
+                }
             } else {
                 //TODO: error handler
             }
