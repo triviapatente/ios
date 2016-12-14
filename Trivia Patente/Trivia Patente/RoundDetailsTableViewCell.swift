@@ -18,8 +18,14 @@ class RoundDetailsTableViewCell: UITableViewCell {
     
     var quizDetail : QuizDetail! {
         didSet {
+            self.initializeImageViews()
             self.quiz = quizDetail.quiz
             self.questions = quizDetail.answers
+        }
+    }
+    func initializeImageViews() {
+        for imageView in self.trueImageViews + self.falseImageViews {
+            imageView.image = nil
         }
     }
     
@@ -40,7 +46,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
             var trueUsers : [User] = [],
                 falseUsers : [User] = []
             for question in questions {
-                if question.answer == quiz.answer {
+                if question.answer == true {
                     self.addUser(user: question.user, to: &trueUsers)
                 } else {
                     self.addUser(user: question.user, to: &falseUsers)
