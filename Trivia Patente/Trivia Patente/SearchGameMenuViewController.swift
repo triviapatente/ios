@@ -15,7 +15,7 @@ class SearchGameMenuViewController: UIViewController {
     let handler = HTTPGame()
     let socketHandler = SocketGame()
     
-    var destinationGame : Game!
+    var destinationGame : Game?
     
     var recentInvitesView : TPExpandableView! {
         didSet {
@@ -29,10 +29,14 @@ class SearchGameMenuViewController: UIViewController {
             recentInvitesView.selectedCellHandler = { item in
                 let invite = item as! Invite
                 self.destinationGame = Game(id: invite.gameId)
-                self.destinationGame.opponent = invite.sender
-                self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+                self.destinationGame!.opponent = invite.sender
+                self.goToWaitPage()
             }
         }
+    }
+    
+    @IBAction func goToWaitPage() {
+        self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
     }
     var invites : [Invite]! {
         didSet {
@@ -73,7 +77,12 @@ class SearchGameMenuViewController: UIViewController {
             if identifier == "recent_view" {
                 self.recentInvitesView = segue.destination as! TPExpandableView
             } else if identifier == "wait_opponent_segue" {
-                (segue.destination as! WaitOpponentViewController).game = self.destinationGame
+                let waitController = segue.destination as! WaitOpponentViewController
+                if let game = destinationGame {
+                    waitController.game = self.destinationGame
+                } else { //random invite
+                    waitController.fromInvite = true
+                }
             }
         }
     }

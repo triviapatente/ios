@@ -58,7 +58,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Cbe-kd-Nw5" kind="show" id="MfK-9i-fSM"/>
+                                    <action selector="goToWaitPage" destination="l6x-lJ-Wd3" eventType="touchUpInside" id="70b-V6-DHN"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7E-wg-H6n">
@@ -102,27 +102,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e32-bc-vp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-232" y="-215"/>
-        </scene>
-        <!--Avversario Casuale-->
-        <scene sceneID="pns-YP-IH4">
-            <objects>
-                <viewController title="Avversario Casuale" id="Cbe-kd-Nw5" customClass="RandomGameViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wkU-11-QL8"/>
-                        <viewControllerLayoutGuide type="bottom" id="P1K-FW-wdZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GsW-aP-QOr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="mrD-ZA-LgU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HNj-w7-LNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="591" y="-279"/>
         </scene>
         <!--Scegli la categoria-->
         <scene sceneID="kIW-Wn-2KM">
@@ -979,10 +958,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iPF-Kj-XFy"/>
-        <segue reference="HCl-2p-GQX"/>
         <segue reference="kf4-r3-nBv"/>
-        <segue reference="xqV-nx-JeY"/>
+        <segue reference="sSs-jh-fhW"/>
         <segue reference="d1s-Rz-ALU"/>
+        <segue reference="HCl-2p-GQX"/>
+        <segue reference="xqV-nx-JeY"/>
     </inferredMetricsTieBreakers>
 </document>

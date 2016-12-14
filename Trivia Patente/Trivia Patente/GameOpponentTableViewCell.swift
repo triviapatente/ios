@@ -17,15 +17,9 @@ class GameOpponentTableViewCell: UITableViewCell {
     @IBOutlet var playButton : UIButton!
     
     var handler = HTTPGame()
-    var createGameCallback : ((TPNewGameResponse) -> Void)!
+    var userChosenCallback : ((User) -> Void)!
     @IBAction func playWithUser() {
-        handler.newGame(id: user.id!) { response in
-            if response.success == true {
-                self.createGameCallback(response)
-            } else {
-                //TODO: handle error
-            }
-        }
+        self.userChosenCallback(user)
     }
     
     var user : User! {

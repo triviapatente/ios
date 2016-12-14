@@ -20,6 +20,7 @@ class WaitOpponentViewController: UIViewController {
     }
     var game : Game!
     var fromInvite : Bool = false
+    var userToInvite : User?
     var response : TPInitRoundResponse! {
         didSet {
             if let game_round = response.round {
@@ -32,33 +33,33 @@ class WaitOpponentViewController: UIViewController {
         }
     }
     func listen() {
-        handler.listen(event: "category_chosen") { response in
+        socketHandler.listen(event: "category_chosen") { response in
             if response?.success == true {
                 //posso andare a giocare, hanno scelto la categoria per me
                 self.processGameState(state: .game, user: SessionManager.currentUser!)
             }
         }
-        handler.listen(event: "round_ended") { response in
+        socketHandler.listen(event: "round_ended") { response in
             if response?.success == true {
                 self.init_round()
             }
         }
-        handler.listen(event: "invite_accepted") { response in
+        socketHandler.listen(event: "invite_accepted") { response in
             if response?.success == true {
                 self.join_room()
             }
         }
-        handler.listen(event: "invite_refused") { response in
+        socketHandler.listen(event: "invite_refused") { response in
             if response?.success == true {
                 self.handleInviteRefused()
             }
         }
-        handler.listen(event: "user_joined") { response in
+        socketHandler.listen(event: "user_joined") { response in
             if response?.success == true {
                 self.join_room()
             }
         }
-        handler.listen(event: "user_left") { response in
+        socketHandler.listen(event: "user_left") { response in
             if response?.success == true {
                 self.join_room()
             }
@@ -74,6 +75,7 @@ class WaitOpponentViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     func configureView() {
+        (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.opponentImageView.load(user: game.opponent)
         self.opponentImageView.circleRounded()
         self.headerView.categoryNameView.text = self.waitTitle()
@@ -83,7 +85,9 @@ class WaitOpponentViewController: UIViewController {
             self.headerView.roundLabel.text = "Partita"
         }
     }
-    let handler = SocketGame()
+    let socketHandler = SocketGame()
+    let httpHandler = HTTPGame()
+    
     
     func waitTitle(for state: RoundWaiting? = nil) -> String {
         if let _ = state {
@@ -147,16 +151,17 @@ class WaitOpponentViewController: UIViewController {
     }
     func join_room() {
         self.opponentImageView.rotatingBorder(color: .white)
-        handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.init_round()
+                self.listen()
             } else {
                 //TODO: handle error
             }
         }
     }
     func init_round() {
-        handler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
             if response?.success == true {
                 self.processResponse(response: response!)
             } else {
@@ -166,14 +171,31 @@ class WaitOpponentViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
-        self.configureView()
-        if fromInvite == false {
-            self.join_room()
+        if fromInvite == true {
+            self.createInvite()
         } else {
-            self.processGameState(state: .invite, user: game.opponent, opponent_online: true)
+            self.configureView()
+            self.join_room()
         }
-        self.listen()
+    }
+    func createInvite() {
+        let handler = { (response : TPNewGameResponse) in
+            if response.success == true {
+                self.game = response.game
+                self.game.opponent = response.opponent
+                self.configureView()
+                //TODO: change with processGameState for invite (in round_init response)
+                self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
+                //self.join_room()
+            } else {
+                //TODO: error handler
+            }
+        }
+        if let opponent = userToInvite {
+            httpHandler.newGame(id: opponent.id!, handler: handler)
+        } else {
+            httpHandler.randomNewGame(handler: handler)
+        }
     }
     func redirect(identifier : String) {
         //TODO: rimuovere questo viewcontroller
