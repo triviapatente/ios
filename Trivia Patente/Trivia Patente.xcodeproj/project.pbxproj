@@ -116,7 +116,7 @@
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
-		8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */; };
+		8BBAB49C1DCBBCD0004AB6B0 /* TPMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB49A1DCBBCD0004AB6B0 /* TPMenuViewController.swift */; };
 		8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */; };
 		8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */; };
 		8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */; };
@@ -317,7 +317,7 @@
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
-		8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMenuViewController.swift; sourceTree = "<group>"; };
+		8BBAB49A1DCBBCD0004AB6B0 /* TPMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMenuViewController.swift; sourceTree = "<group>"; };
 		8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuAction.swift; sourceTree = "<group>"; };
 		8BBBE84B1DC7695600B433F2 /* HTTPGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPGame.swift; sourceTree = "<group>"; };
 		8BBBE84D1DC769C800B433F2 /* TPGameListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameListResponse.swift; sourceTree = "<group>"; };
@@ -484,7 +484,7 @@
 			children = (
 				8BBAB49E1DCBBD9C004AB6B0 /* MenuAction.swift */,
 				8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */,
-				8BBAB49A1DCBBCD0004AB6B0 /* UIMenuViewController.swift */,
+				8BBAB49A1DCBBCD0004AB6B0 /* TPMenuViewController.swift */,
 				8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */,
 			);
 			name = menu;
@@ -1918,7 +1918,7 @@
 				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
 				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,
 				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,
-				8BBAB49C1DCBBCD0004AB6B0 /* UIMenuViewController.swift in Sources */,
+				8BBAB49C1DCBBCD0004AB6B0 /* TPMenuViewController.swift in Sources */,
 				A9D1D3501DA5594A00557DC9 /* RegistrationViewController.swift in Sources */,
 				8B28D2811DD0770800C65122 /* RankViewController.swift in Sources */,
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,

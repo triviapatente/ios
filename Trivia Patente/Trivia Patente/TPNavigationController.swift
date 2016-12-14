@@ -57,7 +57,6 @@ class TPNavigationController: UINavigationController {
         self.configureBar()
     }
     func configureBar() {
-        configureOptionsFrame()
         if let navigationItem = self.topViewController?.navigationItem {
             let negativeSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             negativeSpacer.width = -15
@@ -67,14 +66,6 @@ class TPNavigationController: UINavigationController {
             }
         }
         
-    }
-    func configureOptionsFrame() {
-        if let window = self.view.window {
-            let frame = window.convert(self.navigationBar.frame, to: window)
-            let y = frame.height + frame.origin.y
-            let x = (frame.width + frame.origin.x) - menuItem.optionsFrame.width
-            menuItem.optionsOrigin = CGPoint(x: x, y: y)
-        }
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

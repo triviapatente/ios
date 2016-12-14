@@ -452,51 +452,83 @@
             <point key="canvasLocation" x="1197" y="613"/>
         </scene>
         <!--Menu View Controller-->
-        <scene sceneID="PIO-ad-1Zz">
+        <scene sceneID="APM-mg-JBE">
             <objects>
-                <tableViewController storyboardIdentifier="UIMenuViewController" id="964-iz-eFj" customClass="UIMenuViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yuR-91-yGY">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="260"/>
+                <viewController storyboardIdentifier="TPMenuViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="bdD-YO-bi0" customClass="TPMenuViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKx-vx-MYj"/>
+                        <viewControllerLayoutGuide type="bottom" id="PXv-Aj-r3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DEY-Fl-hwg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1445920765" green="0.55883234739999998" blue="0.88869136569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="options_cell" textLabel="esg-47-J8M" style="IBUITableViewCellStyleDefault" id="ZqX-Yy-RYj">
-                                <rect key="frame" x="0.0" y="28" width="250" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZqX-Yy-RYj" id="L1r-Q6-3pD">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="esg-47-J8M">
-                                            <rect key="frame" x="15" y="0.0" width="220" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yuR-91-yGY">
+                                <rect key="frame" x="175" y="20" width="200" height="200"/>
                                 <color key="backgroundColor" red="0.1445920765" green="0.55883234739999998" blue="0.88869136569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableViewCell>
-                        </prototypes>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5Ra-T4-evY"/>
+                                    <constraint firstAttribute="height" constant="200" id="cOn-GN-ZTj"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="options_cell" textLabel="esg-47-J8M" style="IBUITableViewCellStyleDefault" id="ZqX-Yy-RYj">
+                                        <rect key="frame" x="0.0" y="28" width="200" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZqX-Yy-RYj" id="L1r-Q6-3pD">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="esg-47-J8M">
+                                                    <rect key="frame" x="15" y="0.0" width="170" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1445920765" green="0.55883234739999998" blue="0.88869136569999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bdD-YO-bi0" id="UN6-pe-WfT"/>
+                                    <outlet property="delegate" destination="bdD-YO-bi0" id="1zc-Oa-Q4k"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="yuR-91-yGY" firstAttribute="top" secondItem="dKx-vx-MYj" secondAttribute="bottom" priority="999" id="IxC-D7-tje"/>
+                            <constraint firstAttribute="trailing" secondItem="yuR-91-yGY" secondAttribute="trailing" id="Yw6-eU-cTZ"/>
+                        </constraints>
                         <connections>
-                            <outlet property="dataSource" destination="964-iz-eFj" id="czN-T2-Ci0"/>
-                            <outlet property="delegate" destination="964-iz-eFj" id="NDX-bo-Gbl"/>
+                            <outletCollection property="gestureRecognizers" destination="mzv-Ms-Cl2" appends="YES" id="egb-su-K4y"/>
+                            <outletCollection property="gestureRecognizers" destination="T2I-Dl-WNP" appends="YES" id="y8A-g7-pZe"/>
                         </connections>
-                    </tableView>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="260"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1l-iA-9Lp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <connections>
+                        <outlet property="optionsTableView" destination="yuR-91-yGY" id="KT4-Kf-g8F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="moq-JT-XjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" id="mzv-Ms-Cl2">
+                    <connections>
+                        <action selector="dismissViewWithSender:" destination="bdD-YO-bi0" id="fWv-hy-GmE"/>
+                        <outlet property="delegate" destination="bdD-YO-bi0" id="JLB-VF-eq0"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="T2I-Dl-WNP">
+                    <connections>
+                        <action selector="dismissViewWithSender:" destination="bdD-YO-bi0" id="O9e-nc-Qai"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-336" y="-735"/>
+            <point key="canvasLocation" x="-993" y="-735"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="5II-cs-oTT"/>
         <segue reference="B6J-yy-Imj"/>
-        <segue reference="NhK-dZ-dty"/>
     </inferredMetricsTieBreakers>
 </document>

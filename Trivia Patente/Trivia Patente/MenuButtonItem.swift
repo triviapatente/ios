@@ -17,51 +17,36 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         return view
     }()
     
-    var optionsOrigin : CGPoint! {
-        didSet {
-            controller.view.frame.origin = optionsOrigin
-        }
-    }
-    var optionsFrame : CGSize! {
-        get {
-            return controller.view.frame.size
-        }
-    }
-    var controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "UIMenuViewController") as! UIMenuViewController
+    var controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TPMenuViewController") as! TPMenuViewController
     
     lazy var tapRecognizer : UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(imagePressed))
     }()
-    
+    var navController : TPNavigationController!
     init(callback : @escaping (MenuAction) -> (), sender : TPNavigationController) {
         super.init()
         imageView.addGestureRecognizer(tapRecognizer)
         self.customView = imageView
+        self.navController = sender
 
-        toggleMenuState(visible: false, animate: false)
+        toggleMenuState(visible: false)
+        controller.navController = self.navController
         controller.callback = { action in
-            self.toggleMenuState(visible: false)
             callback(action)
+            self.toggleMenuState(visible: false)
         }
-        
-        sender.view.addSubview(controller.view)
 
     }
-    func toggleMenuState(visible : Bool, animate : Bool = true) {
-        let endAlpha = CGFloat(visible ? 1 : 0)
-        guard endAlpha != controller.view.alpha else {
-            return
-        }
-        if animate == true {
-            UIView.animate(withDuration: 0.2) {
-                self.controller.view.alpha = endAlpha
-            }
+    func toggleMenuState(visible : Bool) {
+        if visible {
+            self.navController.modalPresentationStyle = .overFullScreen
+            self.navController.present(controller, animated: true, completion: nil)
         } else {
-            self.controller.view.alpha = endAlpha
+            controller.dismiss(animated: false, completion: nil)
         }
     }
     func isVisible() -> Bool {
-        return controller.view.alpha > 0
+        return controller.isBeingPresented
     }
     func imagePressed() {
         toggleMenuState(visible: !isVisible())
