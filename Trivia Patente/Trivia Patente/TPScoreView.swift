@@ -29,7 +29,11 @@ class TPScoreView: UIViewController {
             self.adaptViewToScore()
         }
     }
-    func set(users: [User], scores: [Int]) {
+    var users : [User]!
+    var game : Game!
+    func set(users: [User], scores: [Int], game : Game) {
+        self.users = users
+        self.game = game
         self.firstAvatarView.load(user: users.first!)
         self.firstScore = scores.first!
         self.secondAvatarView.load(user: users.last!)
@@ -43,6 +47,14 @@ class TPScoreView: UIViewController {
     }
     func setColor(for view : UIView) {
         let isFirst = (view == firstAvatarView)
+        guard game.isNotEnded() else {
+            if isFirst {
+                view.layer.borderColor = ((game.isWinner(user: users.first!)) ? Colors.green_default : Colors.red_default).cgColor
+            } else {
+                view.layer.borderColor = ((game.isWinner(user: users.last!)) ? Colors.green_default : Colors.red_default).cgColor
+            }
+            return
+        }
         if firstScore == secondScore {
             view.layer.borderColor = Colors.yellow_default.cgColor
         } else if firstScore > secondScore {

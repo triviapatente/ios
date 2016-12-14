@@ -40,7 +40,7 @@ class TPNavigationController: UINavigationController {
             self.goTo(identifier: "shop_segue")
         })
         //TODO: edit with correct informations
-        lifesItem.initCounter(lifes: 0)
+        lifesItem.numberOfLifes = 5
     }
     func setUser(candidate : User?) {
         if let user = candidate {

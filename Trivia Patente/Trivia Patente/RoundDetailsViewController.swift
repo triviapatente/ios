@@ -33,7 +33,7 @@ class RoundDetailsViewController: UIViewController {
             (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
             self.computeMap(candidate: response)
             game = self.response.game
-            self.scoreView.set(users: response.users, scores: response.scores)
+            self.scoreView.set(users: response.users, scores: response.scores, game: game)
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
             self.reloadData()
