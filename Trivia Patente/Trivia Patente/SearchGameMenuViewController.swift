@@ -79,7 +79,7 @@ class SearchGameMenuViewController: UIViewController {
             } else if identifier == "wait_opponent_segue" {
                 let waitController = segue.destination as! WaitOpponentViewController
                 if let game = destinationGame {
-                    waitController.game = self.destinationGame
+                    waitController.game = game
                 } else { //random invite
                     waitController.fromInvite = true
                 }
