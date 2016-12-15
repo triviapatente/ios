@@ -21,7 +21,7 @@ class FBConnectInviteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.smallRounded()
+        self.view.mediumRounded()
         self.exitButton.isHidden = !canDismiss
         // Do any additional setup after loading the view.
     }

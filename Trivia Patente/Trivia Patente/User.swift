@@ -73,7 +73,7 @@ open class User: CommonPK {
         last_game_won = json[kLastGameWonKey].bool
 
     }
-    public init(username : String?, id : Int?, avatar : String?, score : Int? = nil) {
+    public init(username : String?, id : Int?, avatar : String? = nil, score : Int? = nil) {
         super.init(id: id)
         self.username = username
         self.image = avatar

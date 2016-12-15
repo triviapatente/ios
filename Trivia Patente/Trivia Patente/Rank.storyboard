@@ -36,7 +36,7 @@
                                     <action selector="changeRankTypeWithSender:" destination="I8V-Qm-EmO" eventType="valueChanged" id="T5a-Qw-bEe"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kT1-29-7Ir">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kT1-29-7Ir">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -55,6 +55,30 @@
                                     <outletCollection property="gestureRecognizers" destination="eRn-Uy-phy" appends="YES" id="Ajs-c7-EOb"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2Q-pq-Pwc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0hj-JU-y7J">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oow-s9-RJo">
+                                            <rect key="frame" x="38" y="127" width="300" height="350"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="350" id="hof-ak-vgz"/>
+                                                <constraint firstAttribute="width" constant="300" id="wyd-G6-udk"/>
+                                            </constraints>
+                                            <connections>
+                                                <segue destination="4y2-sv-Gxz" kind="embed" identifier="fb_connect_invite" id="pHT-F0-JKi"/>
+                                            </connections>
+                                        </containerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oow-s9-RJo" firstAttribute="centerY" secondItem="0hj-JU-y7J" secondAttribute="centerY" id="faZ-QT-3hB"/>
+                                        <constraint firstItem="oow-s9-RJo" firstAttribute="centerX" secondItem="0hj-JU-y7J" secondAttribute="centerX" id="oVU-bg-mP6"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -63,14 +87,19 @@
                             <constraint firstItem="kT1-29-7Ir" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="5ds-l5-UAt"/>
                             <constraint firstAttribute="trailing" secondItem="kT1-29-7Ir" secondAttribute="trailing" id="DLE-tO-Pwq"/>
                             <constraint firstItem="gP6-Oj-cdX" firstAttribute="top" secondItem="KwU-kO-zzv" secondAttribute="bottom" constant="8" id="IBr-Vz-OuB"/>
+                            <constraint firstItem="d2Q-pq-Pwc" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="Sbp-3d-hL4"/>
                             <constraint firstItem="kT1-29-7Ir" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="ZQt-qD-nbV"/>
+                            <constraint firstAttribute="trailing" secondItem="d2Q-pq-Pwc" secondAttribute="trailing" id="bSC-eg-DUe"/>
                             <constraint firstItem="gP6-Oj-cdX" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" constant="16" id="ciS-Fa-o0j"/>
+                            <constraint firstItem="d2Q-pq-Pwc" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="hoE-vw-7Zu"/>
+                            <constraint firstItem="qML-cU-Rx7" firstAttribute="top" secondItem="d2Q-pq-Pwc" secondAttribute="bottom" id="xh3-Ae-ooI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="control" destination="gP6-Oj-cdX" id="Ymp-1A-ChN"/>
                         <outlet property="searchBar" destination="X3e-Db-ljh" id="FTp-IM-YAH"/>
                         <outlet property="tableView" destination="kT1-29-7Ir" id="f5y-Yl-Ngr"/>
+                        <outlet property="visualEffectView" destination="d2Q-pq-Pwc" id="kzf-yc-SP7"/>
                         <segue destination="pxt-Ae-UbU" kind="show" identifier="wait_opponent_segue" id="Soc-wK-lBG"/>
                     </connections>
                 </viewController>

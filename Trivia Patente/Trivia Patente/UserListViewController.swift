@@ -10,12 +10,21 @@ import UIKit
 import MBProgressHUD
 
 class UserListViewController: UIViewController {
+    let isLinkedToFB : Bool = true
     
     @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()
         self.listScope = (sender.selectedSegmentIndex == 0) ? .italian : .friends
+        
+        if self.listScope == .friends {
+            guard isLinkedToFB == true else {
+                showFacebookView()
+                return
+            }
+        }
+        self.hideFacebookView()
         if (self.listScope == .italian && italianResponse != nil) || (self.listScope == .friends && friendsResponse != nil) {
-            self.tableView.reloadData()
+            self.reloadTable()
         } else {
             self.loadData()
         }
@@ -23,6 +32,12 @@ class UserListViewController: UIViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
+    @IBOutlet var visualEffectView : UIVisualEffectView!
+    var connectView : FBConnectInviteViewController! {
+        didSet {
+            connectView.canDismiss = false
+        }
+    }
     
     var listType = UserListMode.rank
     var listScope = UserListScope.italian
@@ -68,23 +83,27 @@ class UserListViewController: UIViewController {
     }
     var italianResponse : TPUserListResponse? {
         didSet {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
     }
     var italianSearchResponse : TPUserListResponse? {
         didSet {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
     }
     var friendsResponse : TPUserListResponse?{
         didSet {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
     }
     var friendsSearchResponse : TPUserListResponse? {
         didSet {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
+    }
+    func reloadTable() {
+        self.tableView.reloadData()
+        self.tableView.tableFooterView = footerView
     }
     
     var searching : Bool {
@@ -100,8 +119,28 @@ class UserListViewController: UIViewController {
     let rankHandler = HTTPRank()
     let gameHandler = HTTPGame()
     
+    func showFacebookView() {
+        self.friendsResponse = TPRankResponse(error: nil, statusCode: 200, success: true)
+        let users = [User(username: "Trivia", id: -1, score: 199),
+                     User(username: "Patente", id: -2, score: 198),
+                     User(username: "è", id: -3, score: 197),
+                     User(username: "un", id: -4, score: 196),
+                     User(username: "gioco", id: -5, score: 195),
+                     User(username: "fantastico,", id: -6, score: 194),
+                     User(username: "come", id: -7, score: 193),
+                     User(username: "gli", id: -8, score: 192),
+                     User(username: "utenti", id: -9, score: 191),
+                     User(username: "che", id: -10, score: 190),
+                     User(username: "giocano!", id: -11, score: 189)]
+        self.friendsResponse?.users = users
+        self.reloadTable()
+
+        self.visualEffectView.isHidden = false
+    }
+    func hideFacebookView() {
+        self.visualEffectView.isHidden = true
+    }
     func loadData() {
-        
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
@@ -207,6 +246,8 @@ class UserListViewController: UIViewController {
             let destination = segue.destination as! WaitOpponentViewController
             destination.userToInvite = chosenUser
             destination.fromInvite = true
+        } else if segue.identifier == "fb_connect_invite" {
+            self.connectView = segue.destination as! FBConnectInviteViewController
         }
     }
 
@@ -217,14 +258,14 @@ extension UserListViewController : UISearchBarDelegate {
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searching {
             self.search(query: searchBar.text!)
         } else {
-            self.tableView.reloadData()
+            self.reloadTable()
         }
     }
 }
@@ -237,12 +278,6 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             return list.count
         }
         return 0
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return footerView
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return footerView.frame.size.height
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
