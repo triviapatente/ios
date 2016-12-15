@@ -43,6 +43,9 @@ class WaitOpponentViewController: UIViewController {
             }
         }
     }
+    func unlisten() {
+        socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_left")
+    }
     func listenInRoom() {
         socketHandler.listen(event: "category_chosen") { response in
             self.processGameState(state: .game, user: SessionManager.currentUser!)
@@ -192,6 +195,7 @@ class WaitOpponentViewController: UIViewController {
         }
     }
     func redirect(identifier : String) {
+        self.unlisten()
         //TODO: rimuovere questo viewcontroller
         self.performSegue(withIdentifier: identifier, sender: self)
     }

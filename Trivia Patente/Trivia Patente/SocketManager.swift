@@ -35,8 +35,16 @@ class SocketManager {
             socket.disconnect()
         }
     }
-    class func listen<T: TPResponse>(event : String, handler : @escaping (T?) -> Void) {
+    class func unlisten(event : String) {
         SocketManager.socket.off(event)
+    }
+    class func unlisten(events : [String]) {
+        for event in events {
+            SocketManager.unlisten(event: event)
+        }
+    }
+    class func listen<T: TPResponse>(event : String, handler : @escaping (T?) -> Void) {
+        SocketManager.unlisten(event: event)
         SocketManager.socket.on(event) { (data, ack) in
             if let object = data.first as? [String : AnyObject] {
                 let json = JSON.fromDict(dict: object)

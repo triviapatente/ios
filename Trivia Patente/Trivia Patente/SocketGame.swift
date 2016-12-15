@@ -21,6 +21,9 @@ class SocketGame: SocketManager {
     func listen(event : String, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.listen(event: event, handler: handler)
     }
+    func unlisten(events : String...) {
+        SocketGame.unlisten(events: events)
+    }
     func leave(handler : @escaping (TPResponse?) -> Void) {
         SocketGame.leave(type: "game", handler: handler)
     }
