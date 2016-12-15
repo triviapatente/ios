@@ -48,7 +48,8 @@ class WaitOpponentViewController: UIViewController {
     }
     func listenInRoom() {
         socketHandler.listen(event: "category_chosen") { response in
-            self.processGameState(state: .game, user: SessionManager.currentUser!)
+            self.init_round()
+
         }
         socketHandler.listen(event: "round_ended") { response in
             self.init_round()
