@@ -10,28 +10,29 @@ import UIKit
 
 class HTTPRank: HTTPManager {
     func italian_rank(handler : @escaping (TPRankResponse) -> Void) {
-        self.request(url: "/rank/global", method: .get, params: nil) { (response : TPRankResponse) in
-            //sleep(3)
-            let a = User(username: "Utente a", id: 1000, avatar: "https://yt3.ggpht.com/-F4Y7-A-tKCQ/AAAAAAAAAAI/AAAAAAAAAAA/GgD8W2uPsQI/s100-c-k-no-mo-rj-c0xffffff/photo.jpg", score: 11100)
-            let b = User(username: "Utente b", id: 1002, avatar: nil, score: 11100)
-            let c = User(username: "Utente c", id: 1003, avatar: "https://yt3.ggpht.com/-yjj95JJQEm8/AAAAAAAAAAI/AAAAAAAAAAA/qkyW_xNpwSo/s88-c-k-no-mo-rj-c0xffffff/photo.jpg", score: 8100)
-            let d = User(username: "Utente d", id: 1004, avatar: "https://i.ytimg.com/vi/6pIR8XP8Kh8/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=y8RCKvlXmBUTjavTviOIQLey84Y", score: 7155)
-            let e = User(username: "Utente e", id: 1005, avatar: "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/1503354_1411413165787940_1685526080_n.jpg?oh=e8178ca6d621e78972f0948802bd8b6e&oe=58A001F5", score: 7155)
-            let f = User(username: "Utente f", id: 1006, avatar: "https://yt3.ggpht.com/-dt3sUNuUOZM/AAAAAAAAAAI/AAAAAAAAAAA/4E7K3mB-mYY/s88-c-k-no-mo-rj-c0xffffff/photo.jpg", score: 7000)
-            let g = User(username: "Utente g", id: 1004, avatar: "https://i.ytimg.com/vi/6pIR8XP8Kh8/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=y8RCKvlXmBUTjavTviOIQLey84Y", score: 6005)
-            let h = User(username: "Utente h", id: 1005, avatar: "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/1503354_1411413165787940_1685526080_n.jpg?oh=e8178ca6d621e78972f0948802bd8b6e&oe=58A001F5", score: 6000)
-            let i = User(username: "Utente i", id: 1006, avatar: "https://yt3.ggpht.com/-dt3sUNuUOZM/AAAAAAAAAAI/AAAAAAAAAAA/4E7K3mB-mYY/s88-c-k-no-mo-rj-c0xffffff/photo.jpg", score: 5100)
-            let l = User(username: "Utente l", id: 1006, avatar: "https://yt3.ggpht.com/-dt3sUNuUOZM/AAAAAAAAAAI/AAAAAAAAAAA/4E7K3mB-mYY/s88-c-k-no-mo-rj-c0xffffff/photo.jpg", score: 5000)
-            response.users = [a, b, c, d, e, f, g, h, i, l]
-            response.userPosition = 403023
-            handler(response)
-        }
+        self.request(url: "/rank/global", method: .get, params: nil, handler: handler)
     }
     func friends_rank(handler : @escaping (TPRankResponse) -> Void) {
         italian_rank(handler: handler)
     }
-    func search(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
-        sleep(3)
+    func rank(scope : UserListScope, handler : @escaping (TPRankResponse) -> Void) {
+        if scope == .friends {
+            self.friends_rank(handler: handler)
+        } else {
+            self.italian_rank(handler: handler)
+        }
+    }
+    func search(scope : UserListScope, query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
+        if scope == .friends {
+            self.search_friends(query: query, handler: handler)
+        } else {
+            self.search_users(query: query, handler: handler)
+        }
+    }
+    func search_friends(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
+        self.search_users(query: query, handler: handler)
+    }
+    func search_users(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
         self.request(url: "/rank/search", method: .get, params: ["query": query], handler: handler)
     }
 }

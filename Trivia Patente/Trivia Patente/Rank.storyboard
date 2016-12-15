@@ -13,7 +13,7 @@
         <!--Classifica-->
         <scene sceneID="aqP-QK-0fQ">
             <objects>
-                <viewController title="Classifica" id="I8V-Qm-EmO" customClass="RankViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserListViewController" title="Classifica" id="I8V-Qm-EmO" customClass="UserListViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KwU-kO-zzv"/>
                         <viewControllerLayoutGuide type="bottom" id="qML-cU-Rx7"/>
@@ -36,9 +36,9 @@
                                     <action selector="changeRankTypeWithSender:" destination="I8V-Qm-EmO" eventType="valueChanged" id="T5a-Qw-bEe"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kT1-29-7Ir">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kT1-29-7Ir">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Cerca" id="X3e-Db-ljh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -71,6 +71,7 @@
                         <outlet property="control" destination="gP6-Oj-cdX" id="Ymp-1A-ChN"/>
                         <outlet property="searchBar" destination="X3e-Db-ljh" id="FTp-IM-YAH"/>
                         <outlet property="tableView" destination="kT1-29-7Ir" id="f5y-Yl-Ngr"/>
+                        <segue destination="pxt-Ae-UbU" kind="show" identifier="wait_opponent_segue" id="Soc-wK-lBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULD-Dt-rtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,6 +82,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5.5999999999999996" y="12.143928035982009"/>
+        </scene>
+        <!--WaitOpponent-->
+        <scene sceneID="NCo-li-RcU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="WaitOpponent" id="pxt-Ae-UbU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqh-PN-cSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="769" y="-275"/>
         </scene>
         <!--Connect Invite View Controller-->
         <scene sceneID="jAh-pS-VY9">

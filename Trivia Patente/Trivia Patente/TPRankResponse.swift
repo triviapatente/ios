@@ -9,31 +9,41 @@
 import UIKit
 import SwiftyJSON
 
-class TPRankResponse: TPResponse {
-    var users : [User] = []
+class TPRankResponse: TPUserListResponse {
     var userPosition : Int?
     override func load(json: JSON) {
+        self.load(json: json, addMyUser: true)
+    }
+    func load(json: JSON, addMyUser : Bool) {
         super.load(json: json)
         if let rawUsers = json["rank"].array {
             for item in rawUsers {
                 users.append(User(json: item))
             }
         }
+        if addMyUser {
+            self.checkAndAddUser()
+        }
         userPosition = json["my_position"].int
     }
-    func limitToFit(in tableView : UITableView) {
-        guard tableView.rowHeight > 0 else { return }
-        var height = tableView.frame.size.height
-        if let header = tableView.tableHeaderView {
-            height -= header.frame.size.height
+    var map : [String : Int] {
+        var output : [String : Int] = [:]
+        var lastScore = -1
+        var currentPosition = 1
+        for user in users {
+            if user.score != lastScore {
+                lastScore = user.score!
+                output["\(lastScore)"] = currentPosition
+                currentPosition += 1
+            }
         }
-        let dimension = height / tableView.rowHeight
-        var limit = Int(dimension)
-        if !users.contains(SessionManager.currentUser!) {
-            limit -= 1
-        }
-        if limit < self.users.count {
-            self.users.removeSubrange(limit..<self.users.count)
+        return output
+    }
+    func checkAndAddUser() {
+        if let user = SessionManager.currentUser {
+            if !self.users.contains(user) {
+                self.users.append(user)
+            }
         }
     }
 }

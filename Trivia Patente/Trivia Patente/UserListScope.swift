@@ -1,5 +1,5 @@
 //
-//  RankType.swift
+//  UserListScope.swift
 //  Trivia Patente
 //
 //  Created by Luigi Donadel on 07/11/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RankMode {
+enum UserListScope {
     case italian
     case friends
 }

@@ -83,6 +83,8 @@ class SearchGameMenuViewController: UIViewController {
                 } else { //random invite
                     waitController.fromInvite = true
                 }
+            } else if identifier == "user_list_segue" {
+                (segue.destination as! UserListViewController).listType = .searchOpponent
             }
         }
     }

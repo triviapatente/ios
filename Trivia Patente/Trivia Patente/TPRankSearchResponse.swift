@@ -9,26 +9,13 @@
 import UIKit
 import SwiftyJSON
 
-class TPRankSearchResponse: TPResponse {
-    var users : [User] = []
+class TPRankSearchResponse: TPRankResponse {
     override func load(json: JSON) {
-        super.load(json: json)
+        super.load(json: json, addMyUser: false)
         if let rawUsers = json["matches"].array {
             for item in rawUsers {
                 users.append(User(json: item))
             }
-        }
-    }
-    func limitToFit(in tableView : UITableView) {
-        guard tableView.rowHeight > 0 else { return }
-        var height = tableView.frame.size.height
-        if let header = tableView.tableHeaderView {
-            height -= header.frame.size.height
-        }
-        let dimension = height / tableView.rowHeight
-        let limit = Int(dimension)
-        if limit < self.users.count {
-            self.users.removeSubrange(limit..<self.users.count)
         }
     }
 }

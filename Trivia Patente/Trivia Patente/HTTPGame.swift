@@ -48,8 +48,15 @@ class HTTPGame: HTTPManager {
         response.users = []
         handler(response)
     }
-    func search(type : RankMode, query : String, handler : @escaping (TPUserListResponse) -> Void) {
-        if type == .italian {
+    func suggested(scope : UserListScope, handler : @escaping (TPUserListResponse) -> Void) {
+        if scope == .italian {
+            self.suggested_users(handler: handler)
+        } else {
+            self.suggested_friends(handler: handler)
+        }
+    }
+    func search(scope : UserListScope, query : String, handler : @escaping (TPUserListResponse) -> Void) {
+        if scope == .italian {
             self.search_user(query: query, handler: handler)
         } else {
             self.search_friend(query: query, handler: handler)

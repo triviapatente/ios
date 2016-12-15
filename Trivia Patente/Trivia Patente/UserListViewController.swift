@@ -1,19 +1,20 @@
 //
-//  SearchOpponentViewController.swift
+//  RankViewController.swift
 //  Trivia Patente
 //
-//  Created by Luigi Donadel on 21/11/16.
+//  Created by Luigi Donadel on 07/11/16.
 //  Copyright © 2016 Terpin e Donadel. All rights reserved.
+//
 
 import UIKit
 import MBProgressHUD
 
-class SearchOpponentViewController: UIViewController {
+class UserListViewController: UIViewController {
     
-    @IBAction func changeSearchType(sender : UISegmentedControl) {
+    @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()
-        self.mode = (sender.selectedSegmentIndex == 0) ? .italian : .friends
-        if (self.mode == .italian && italianResponse != nil) || (self.mode == .friends && friendsResponse != nil) {
+        self.listScope = (sender.selectedSegmentIndex == 0) ? .italian : .friends
+        if (self.listScope == .italian && italianResponse != nil) || (self.listScope == .friends && friendsResponse != nil) {
             self.tableView.reloadData()
         } else {
             self.loadData()
@@ -23,39 +24,102 @@ class SearchOpponentViewController: UIViewController {
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     
-    var userChosenCallback : ((User) -> Void)!
-    var chosenUser : User!
-    
+    var listType = UserListMode.rank
+    var listScope = UserListScope.italian
+    var cellIdentifier : String {
+        if listType == .rank {
+            return "RankTableViewCell"
+        }
+        return "GameOpponentTableViewCell"
+    }
+
+    func getContextualUsers() -> [User]? {
+        if searching {
+            return italianSearchResponse?.users
+        } else if listScope == .italian {
+            return italianResponse?.users
+        }
+        return friendsResponse?.users
+    }
+    func getContextualUserPosition() -> Int? {
+        guard let response = italianResponse as? TPRankResponse else {
+            return nil
+        }
+        if listScope == .italian {
+            return response.userPosition
+        }
+        guard let newResponse = friendsResponse as? TPRankResponse else {
+            return nil
+        }
+        return newResponse.userPosition
+    }
+    func getContextualMap() -> [String : Int]? {
+        if listScope == .italian {
+            if searching {
+                return (italianSearchResponse as! TPRankSearchResponse).map
+            }
+            return (italianResponse as! TPRankResponse).map
+        } else {
+            if searching {
+                return (friendsSearchResponse as! TPRankSearchResponse).map
+            }
+            return (friendsResponse as! TPRankResponse).map
+        }
+    }
     var italianResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
-            self.tableView.tableFooterView = footerView
         }
     }
     var italianSearchResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
-            self.tableView.tableFooterView = footerView
         }
     }
     var friendsResponse : TPUserListResponse?{
         didSet {
             self.tableView.reloadData()
-            self.tableView.tableFooterView = footerView
         }
     }
     var friendsSearchResponse : TPUserListResponse? {
         didSet {
             self.tableView.reloadData()
-            self.tableView.tableFooterView = footerView
         }
     }
+    
     var searching : Bool {
         get {
             if let text = self.searchBar.text {
                 return !text.isEmpty
             }
             return false
+        }
+    }
+    
+    
+    let rankHandler = HTTPRank()
+    let gameHandler = HTTPGame()
+    
+    func loadData() {
+        
+        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let callback = { (response : TPUserListResponse) in
+            loadingView.hide(animated: true)
+            if response.success == true {
+                if self.listScope == .italian {
+                    self.italianResponse = response
+                } else {
+                    self.friendsResponse = response
+                }
+            } else {
+                //TODO error handler
+            }
+        }
+        
+        if self.listType == .rank {
+            rankHandler.rank(scope: self.listScope, handler: callback)
+        } else {
+            gameHandler.suggested(scope: self.listScope, handler: callback)
         }
     }
     var tableHeight : CGFloat {
@@ -68,10 +132,7 @@ class SearchOpponentViewController: UIViewController {
     }
     let FOOTER_MIN_HEIGHT = CGFloat(70)
     var footerFrame : CGRect {
-        let height = availableFooterHeight
-        if height <= FOOTER_MIN_HEIGHT {
-            return .zero
-        }
+        let height = max(availableFooterHeight, FOOTER_MIN_HEIGHT)
         return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
     }
     var footerView : UIView {
@@ -80,6 +141,7 @@ class SearchOpponentViewController: UIViewController {
             return UIView()
         }
         let footer = UIView(frame: frame)
+        footer.backgroundColor = Colors.primary
         let buttonWidth = CGFloat(200)
         let buttonHeight = CGFloat(40)
         let buttonX = (footer.frame.size.width - buttonWidth) / 2
@@ -95,62 +157,34 @@ class SearchOpponentViewController: UIViewController {
         return footer
     }
     func goToInvitePage() {
-        print("GoToInvite!")
+        print("go to invite page")
     }
-    var mode = RankMode.italian
     
-    func getContextualUsers() -> [User]? {
-        if searching {
-            return italianSearchResponse?.users
-        } else if mode == .italian {
-            return italianResponse?.users
-        }
-        return friendsResponse?.users
-    }
-    let handler = HTTPGame()
     
-    func loadData() {
-        
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        let callback = { (response : TPUserListResponse) in
-            loadingView.hide(animated: true)
-            if response.success == true {
-                if self.mode == .italian {
-                    self.italianResponse = response
-                } else {
-                    self.friendsResponse = response
-                }
-            } else {
-                //TODO error handler
-            }
-        }
-        if self.mode == .italian {
-            handler.suggested_users(handler: callback)
-        } else {
-            handler.suggested_friends(handler: callback)
-        }
-    }
+    var userChosenCallback : ((User) -> Void)!
+    var chosenUser : User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "GameOpponentTableViewCell", bundle: Bundle.main)
-        self.tableView.register(nib, forCellReuseIdentifier: "opponent_cell")
+        let nib = UINib(nibName: cellIdentifier, bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: "user_cell")
         self.tableView.rowHeight = 50
-        
-        self.changeSearchType(sender: control)
+
+        self.changeRankType(sender: control)
         self.userChosenCallback = { user in
             self.chosenUser = user
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
         }
-        
+
     }
     
+
     func search(query: String) {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        handler.search(type: mode, query: query) { (response : TPUserListResponse) in
+        let handler = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
             if response.success == true {
-                if self.mode == .italian {
+                if self.listScope == .italian {
                     self.italianSearchResponse = response
                 } else {
                     self.friendsSearchResponse = response
@@ -158,6 +192,11 @@ class SearchOpponentViewController: UIViewController {
             } else {
                 //TODO error handler
             }
+        }
+        if self.listType == .rank {
+            self.rankHandler.search(scope: self.listScope, query: query, handler: handler)
+        } else {
+            self.gameHandler.search(scope: self.listScope, query: query, handler: handler)
         }
     }
     @IBAction func dismissSearch() {
@@ -170,9 +209,9 @@ class SearchOpponentViewController: UIViewController {
             destination.fromInvite = true
         }
     }
-    
+
 }
-extension SearchOpponentViewController : UISearchBarDelegate {
+extension UserListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.search(query: searchBar.text!)
     }
@@ -189,7 +228,7 @@ extension SearchOpponentViewController : UISearchBarDelegate {
         }
     }
 }
-extension SearchOpponentViewController : UITableViewDelegate, UITableViewDataSource {
+extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -199,11 +238,30 @@ extension SearchOpponentViewController : UITableViewDelegate, UITableViewDataSou
         }
         return 0
     }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return footerView
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return footerView.frame.size.height
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "opponent_cell") as! GameOpponentTableViewCell
-        cell.user = getContextualUsers()![indexPath.row]
-        cell.userChosenCallback = self.userChosenCallback
-        return cell
+        let reusableCell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
+        if let cell = reusableCell as? RankTableViewCell {
+            cell.user = getContextualUsers()![indexPath.row]
+            if searching {
+                cell.position = cell.user.position
+            } else if cell.user!.isMe() {
+                cell.position = getContextualUserPosition()!
+            } else {
+                cell.position = getContextualMap()!["\(cell.user.score!)"]
+            }
+            cell.user = getContextualUsers()![indexPath.row]
+            return cell
+        } else {
+            let cell = reusableCell as! GameOpponentTableViewCell
+            cell.userChosenCallback = self.userChosenCallback
+            cell.user = getContextualUsers()![indexPath.row]
+            return cell
+        }
     }
 }
-
