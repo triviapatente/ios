@@ -21,8 +21,8 @@ class SocketGame: SocketManager {
     func listen(event : String, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.listen(event: event, handler: handler)
     }
-    func leave(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
-        SocketGame.leave(id: game_id, type: "game", handler: handler)
+    func leave(handler : @escaping (TPResponse?) -> Void) {
+        SocketGame.leave(type: "game", handler: handler)
     }
     func get_questions(round : Round, handler : @escaping (TPQuizListResponse?) -> Void) {
         SocketGame.emit(path: "get_questions", values: ["game": round.gameId as AnyObject, "round_id": round.id as AnyObject], handler: handler)
