@@ -8,7 +8,7 @@
 
 import UIKit
 import MBProgressHUD
-class PlayRoundViewController: UIViewController {
+class PlayRoundViewController: TPGameViewController {
     var headerView : TPGameHeader!
     @IBOutlet var quizCollectionView : UICollectionView!
     var round : Round!

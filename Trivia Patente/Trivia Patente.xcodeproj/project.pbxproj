@@ -30,6 +30,7 @@
 		8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82D1DC63D8100C36DDA /* Rank.storyboard */; };
 		8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */; };
 		8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */; };
+		8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D51E043513008285D4 /* TPGameViewController.swift */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -232,6 +233,7 @@
 		8B42E82D1DC63D8100C36DDA /* Rank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalViewController.swift; sourceTree = "<group>"; };
 		8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalTableViewController.swift; sourceTree = "<group>"; };
+		8B4551D51E043513008285D4 /* TPGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameViewController.swift; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				8BAD1C481DF99FF50051AC4A /* section_bar */,
 				8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */,
 				8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */,
+				8B4551D51E043513008285D4 /* TPGameViewController.swift */,
 			);
 			name = subclasses;
 			sourceTree = "<group>";
@@ -1853,6 +1856,7 @@
 				8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
+				8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
 				8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,

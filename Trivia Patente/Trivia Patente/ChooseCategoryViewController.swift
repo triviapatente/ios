@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class ChooseCategoryViewController: UIViewController {
+class ChooseCategoryViewController: TPGameViewController {
 
     var gameHeader : TPGameHeader!
     @IBOutlet var tableView : UITableView!

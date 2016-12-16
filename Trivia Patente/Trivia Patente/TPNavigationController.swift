@@ -72,6 +72,16 @@ class TPNavigationController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
         self.configureBar()
     }
+    override func popViewController(animated: Bool) -> UIViewController? {
+        if let controller = self.topViewController as? TPGameViewController {
+            if controller.mainOnDismiss {
+                let lastIndex = self.viewControllers.index(of: controller)!
+                let firstIndex = self.viewControllers.index(where: {$0 is MainViewController})! + 1
+                self.viewControllers.removeSubrange(firstIndex..<lastIndex)
+            }
+        }
+        return super.popViewController(animated: animated)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WaitOpponentViewController: UIViewController {
+class WaitOpponentViewController: TPGameViewController {
     @IBOutlet var waitLabel : UILabel!
     @IBOutlet var opponentImageView : UIImageView!
     

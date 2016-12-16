@@ -8,12 +8,18 @@
 
 import UIKit
 
-class RoundDetailsViewController: UIViewController {
+class RoundDetailsViewController: TPGameViewController {
     var game : Game! {
         didSet {
             self.reloadData()
         }
     }
+    
+    //not returning to main on dismiss, but on PlayRoundViewController/WaitOpponentViewController
+    override var mainOnDismiss: Bool {
+        return false
+    }
+    
     let handler = SocketGame()
     
     var headerView : TPGameHeader!

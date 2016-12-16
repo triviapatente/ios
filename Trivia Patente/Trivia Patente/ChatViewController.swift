@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: TPGameViewController {
+    //not returning to main on dismiss, but on PlayRoundViewController/WaitOpponentViewController
+    override var mainOnDismiss: Bool {
+        return false
+    }
     @IBOutlet var tableView : UITableView!
     @IBOutlet var textInputView : UITextField! {
         didSet {
