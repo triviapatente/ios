@@ -12,6 +12,18 @@ import SwiftyJSON
 class TPMessageListResponse: TPResponse {
     var messages : [Message] = []
     
+    var map : [Date : [Message]] {
+        var output : [Date : [Message]] = [:]
+        for message in messages {
+            let day = message.updatedAt!.withoutTime!
+            if output[day] == nil {
+                output[day] = []
+            }
+            output[day]!.append(message)
+        }
+        return output
+    }
+    
     override func load(json: JSON) {
         super.load(json: json)
         if let rawMessages = json["messages"].array {

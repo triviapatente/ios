@@ -61,17 +61,30 @@ class ChatViewController: TPGameViewController {
     let HTTPHandler = HTTPChat()
     let socketHandler = SocketChat()
     
-    var messages : [Message] = [] {
+    var response = TPMessageListResponse(error: nil, statusCode: 200, success: true) {
         didSet {
             self.tableView.reloadData()
         }
     }
+    var cachedMessages : [Message] {
+        set {
+            self.response.messages = newValue
+            self.tableView.reloadData()
+        }
+        get {
+            return self.response.messages
+        }
+    }
     
     func scrollToLast() {
-        guard !self.messages.isEmpty else {
+        guard !self.response.map.isEmpty else {
             return
         }
-        let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+        let map = self.response.map
+        let lastKey = map.keys.sorted().last!
+        let lastRow = map[lastKey]!.count - 1
+        let lastSection = map.count - 1
+        let indexPath = IndexPath(row: lastRow, section: lastSection)
         self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 
@@ -81,7 +94,7 @@ class ChatViewController: TPGameViewController {
         socketHandler.send_message(game: game, content: content) { response in
             self.setRightView(view: self.sendButton)
             if response?.success == true {
-                self.messages.append(response!.item)
+                self.cachedMessages.append(response!.item)
                 self.scrollToLast()
                 self.textInputView.text = ""
                 self.sendButton.isEnabled = false
@@ -146,7 +159,7 @@ class ChatViewController: TPGameViewController {
     func listen() {
         socketHandler.listen { response in
             if let message = response?.item {
-                self.messages.append(message)
+                self.cachedMessages.append(message)
                 self.scrollToLast()
             } else {
                 //TODO: error handler
@@ -155,12 +168,14 @@ class ChatViewController: TPGameViewController {
     }
     func load() {
         self.refreshControl.beginRefreshing()
-        let date = self.messages.first?.createdAt ?? Date()
+        let date = self.cachedMessages.first?.createdAt ?? Date()
         HTTPHandler.get_messages(game: game, date: date) { response in
             self.refreshControl.endRefreshing()
             if response.success == true {
-                let firstTime = self.messages.isEmpty
-                self.messages = response.messages + self.messages
+                let firstTime = self.cachedMessages.isEmpty
+                let oldMessages = self.cachedMessages
+                self.response = response
+                self.cachedMessages += oldMessages
                 if firstTime {
                     self.scrollToLast()
                 }
@@ -173,11 +188,16 @@ class ChatViewController: TPGameViewController {
 }
 extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.response.map.count
     }
     func cell(for message : Message) -> MessageTableViewCell {
         let identifier = self.cellIdentifier(for: message)
         return self.tableView.dequeueReusableCell(withIdentifier: identifier) as! MessageTableViewCell
+    }
+    func message(for indexPath : IndexPath) -> Message {
+        let map = self.response.map
+        let key = map.keys.sorted()[indexPath.section]
+        return map[key]![indexPath.row]
     }
     func cellIdentifier(for message : Message) -> String {
         if message.isMine() {
@@ -186,16 +206,22 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
             return "left_cell"
         }
     }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let keys = self.response.map.keys.sorted()
+        return keys[section].prettyDate
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let message = self.messages[indexPath.row]
+        let message = self.message(for: indexPath)
         let cell = self.cell(for: message)
         return cell.height(for: message.content!)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        let map = self.response.map
+        let key = map.keys.sorted()[section]
+        return map[key]!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = self.messages[indexPath.row]
+        let message = self.message(for: indexPath)
         let cell = self.cell(for: message)
         cell.message = message
         return cell

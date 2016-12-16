@@ -15,7 +15,7 @@ class MessageTableViewCell: UITableViewCell {
     var message : Message! {
         didSet {
             self.messageView.text = message.content
-            self.dateLabel.text = message.createdAt?.pretty
+            self.dateLabel.text = message.updatedAt?.prettyTime
         }
     }
     var textViewInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
