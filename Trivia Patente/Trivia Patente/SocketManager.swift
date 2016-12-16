@@ -76,7 +76,19 @@ class SocketManager {
             }
         }
     }
-    class func leave(type : String, handler : @escaping (TPResponse?) -> Void) {
-        emit(path: "leave_room", values: ["type": type as AnyObject], handler: handler)
+    class func leave(type : String, handler : ((TPResponse?) -> Void)? = nil) {
+        if let _ = joined_rooms[type] {
+            emit(path: "leave_room", values: ["type": type as AnyObject]) { response in
+                joined_rooms.removeValue(forKey: type)
+                if let cb = handler {
+                    cb(response)
+                }
+            }
+        } else {
+            let response = TPResponse(error: nil, statusCode: 200, success: true)
+            if let cb = handler {
+                cb(response)
+            }
+        }
     }
 }

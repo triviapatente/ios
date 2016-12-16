@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class SearchGameMenuViewController: UIViewController {
+class SearchGameMenuViewController: TPNormalViewController {
     @IBOutlet var searchButton : UIButton!
     @IBOutlet var randomButton : UIButton!
     let handler = HTTPGame()

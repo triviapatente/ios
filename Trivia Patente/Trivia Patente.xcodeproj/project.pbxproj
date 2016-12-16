@@ -28,6 +28,8 @@
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
 		8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82D1DC63D8100C36DDA /* Rank.storyboard */; };
+		8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */; };
+		8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -228,6 +230,8 @@
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		8B42E82D1DC63D8100C36DDA /* Rank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
+		8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalViewController.swift; sourceTree = "<group>"; };
+		8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalTableViewController.swift; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -1125,6 +1129,8 @@
 				8BA6BEBA1DEEE6DA00D9EB86 /* TPGameActions.swift */,
 				8BE278911DF4733A00071DF2 /* TPScoreView.swift */,
 				8BAD1C481DF99FF50051AC4A /* section_bar */,
+				8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */,
+				8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */,
 			);
 			name = subclasses;
 			sourceTree = "<group>";
@@ -1918,10 +1924,12 @@
 				8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */,
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
+				8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */,
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
 				8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */,
 				8BAD1C471DF99AEF0051AC4A /* TPSectionBar.swift in Sources */,
+				8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */,
 				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
 				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,
 				8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */,

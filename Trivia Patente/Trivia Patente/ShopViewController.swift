@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class ShopViewController: UIViewController {
+class ShopViewController: TPNormalViewController {
 
     @IBOutlet var tableView : UITableView!
     @IBOutlet var alreadyInfinityView : UIView!

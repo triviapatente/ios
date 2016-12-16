@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class UserListViewController: UIViewController {
+class UserListViewController: TPNormalViewController {
     let isLinkedToFB : Bool = true
     
     @IBAction func changeRankType(sender : UISegmentedControl) {

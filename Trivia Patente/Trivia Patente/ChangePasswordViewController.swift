@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
+class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate {
 
     var oldPasswordField : TPInputView!
     var newPasswordField : TPInputView!

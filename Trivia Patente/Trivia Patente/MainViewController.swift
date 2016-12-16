@@ -8,7 +8,7 @@
 
 import UIKit
 import MBProgressHUD
-class MainViewController: UIViewController {
+class MainViewController: TPNormalViewController {
     
     var loadingView : MBProgressHUD!
     

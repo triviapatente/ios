@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import MBProgressHUD
 
-class SingleStatViewController: UIViewController, IAxisValueFormatter {
+class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
     @IBOutlet var chartView : LineChartView!
     @IBOutlet var descriptionLabel : UILabel!
     

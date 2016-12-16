@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: TPNormalTableViewController {
 
     var profileItems =      [PreferenceItem(type: .profile, segue: "account_segue", height: 100)]
     var privacyItems =      [PreferenceItem(title: "Condividi le mie statistiche", image: "preference_stats", type: .dropdown, key: "stats"),
