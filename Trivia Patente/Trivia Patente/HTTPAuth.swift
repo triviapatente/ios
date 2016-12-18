@@ -17,11 +17,23 @@ class HTTPAuth : HTTPManager {
                 SessionManager.set(token: token)
             }
             if let user = response.user {
-                print(user.dictionaryRepresentation())
                 SessionManager.set(user: user)
             }
             handler(response)
         }
+    }
+    func fb_auth(token : String, handler : @escaping (TPAuthResponse) -> Void) {
+        let parameters = ["token": token]
+        request(url: "/fb/auth", method: .post, params: parameters, auth: false) { (response : TPAuthResponse) in
+            if let token = response.token {
+                SessionManager.set(token: token)
+            }
+            if let user = response.user {
+                SessionManager.set(user: user)
+            }
+            handler(response)
+        }
+
     }
     func user(handler : @escaping (TPAuthResponse) -> Void) {
         request(url: "/auth/user", method: .get, params: nil, handler: handler)

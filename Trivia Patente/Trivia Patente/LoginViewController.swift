@@ -36,16 +36,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.load()
         httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.loginButton.stopLoading()
-            if response.success == true {
-                let controller = UIViewController.root()
-                self.present(controller, animated: true) {
-                    self.nameField.field.text = ""
-                    self.passwordField.field.text = ""
-                    self.errorViewContainer.isHidden = true
-                }
-            } else {
-                self.errorView.set(error: response.message)
+            self.handleResponse(response: response)
+        }
+    }
+    func handleResponse(response : TPAuthResponse) {
+        if response.success == true {
+            let controller = UIViewController.root()
+            self.present(controller, animated: true) {
+                self.nameField.field.text = ""
+                self.passwordField.field.text = ""
+                self.errorViewContainer.isHidden = true
             }
+        } else {
+            self.errorView.set(error: response.message)
         }
     }
     func checkValues() {
@@ -72,7 +75,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func facebookLogin() {
         facebookButton.load()
-        FBManager.login(sender: self)
+        FBManager.login(sender: self) { response in
+            self.facebookButton.stopLoading()
+            self.handleResponse(response: response)
+        }
     }
     
     override func viewDidLoad() {

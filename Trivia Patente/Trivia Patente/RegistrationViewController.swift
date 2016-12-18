@@ -56,18 +56,22 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         registerButton.load()
         http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.registerButton.stopLoading()
-            if response.success == true {
-                let controller = UIViewController.root()
-                self.present(controller, animated: true) {
-                    self.nameField.field.text = ""
-                    self.emailField.field.text = ""
-                    self.passwordField.field.text = ""
-                    self.repeatPasswordField.field.text = ""
-                    self.errorViewContainer.isHidden = true
-                }
-            } else {
-                self.errorView.set(error: response.message)
+            self.handleResponse(response: response)
+            
+        }
+    }
+    func handleResponse(response : TPAuthResponse) {
+        if response.success == true {
+            let controller = UIViewController.root()
+            self.present(controller, animated: true) {
+                self.nameField.field.text = ""
+                self.emailField.field.text = ""
+                self.passwordField.field.text = ""
+                self.repeatPasswordField.field.text = ""
+                self.errorViewContainer.isHidden = true
             }
+        } else {
+            self.errorView.set(error: response.message)
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -92,7 +96,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func facebookRegistration() {
         fbButton.load()
-        FBManager.login(sender: self)
+        FBManager.login(sender: self) { response in
+            self.fbButton.stopLoading()
+            self.handleResponse(response: response)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

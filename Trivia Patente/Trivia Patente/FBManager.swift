@@ -10,7 +10,7 @@ import UIKit
 
 class FBManager {
     static let permissions = ["public_profile", "email", "user_birthday"]
-    class func login(sender : UIViewController) {
+    class func login(sender : UIViewController, cb : @escaping (TPAuthResponse) -> Void) {
         let manager = FBSDKLoginManager()
         manager.logIn(withReadPermissions: permissions, from: sender) { (handler, error) in
              if let fbHandler = handler {
@@ -23,9 +23,7 @@ class FBManager {
                     return
                 }
                 if let token = fbHandler.token {
-                    print("token date", token.expirationDate)
-                    print("token id", token.userID)
-                    print("token", token.tokenString)
+                    HTTPAuth().fb_auth(token: token.tokenString, handler: cb)
                 }
             }
         }

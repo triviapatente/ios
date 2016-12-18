@@ -36,7 +36,7 @@ open class User: CommonPK {
             guard name != nil && surname != nil else {
                 return nil
             }
-            return "\(name) \(surname)"
+            return "\(name!) \(surname!)"
         }
     }
     func isMe() -> Bool {
