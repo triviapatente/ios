@@ -72,6 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func facebookLogin() {
         facebookButton.load()
+        FBManager.login(sender: self)
     }
     
     override func viewDidLoad() {

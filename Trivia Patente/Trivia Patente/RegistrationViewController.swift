@@ -92,6 +92,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func facebookRegistration() {
         fbButton.load()
+        FBManager.login(sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

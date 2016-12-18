@@ -31,6 +31,10 @@
 		8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */; };
 		8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */; };
 		8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D51E043513008285D4 /* TPGameViewController.swift */; };
+		8B4551D81E068B1A008285D4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551D71E068B1A008285D4 /* FBSDKLoginKit.framework */; };
+		8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D91E068BA8008285D4 /* FBManager.swift */; };
+		8B4551DD1E068CD5008285D4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */; };
+		8B4551DF1E06908F008285D4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DE1E06908F008285D4 /* Bolts.framework */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -234,6 +238,11 @@
 		8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalViewController.swift; sourceTree = "<group>"; };
 		8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalTableViewController.swift; sourceTree = "<group>"; };
 		8B4551D51E043513008285D4 /* TPGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameViewController.swift; sourceTree = "<group>"; };
+		8B4551D71E068B1A008285D4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		8B4551D91E068BA8008285D4 /* FBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBManager.swift; sourceTree = "<group>"; };
+		8B4551DB1E068C2E008285D4 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		8B4551DE1E06908F008285D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -399,7 +408,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4551D81E068B1A008285D4 /* FBSDKLoginKit.framework in Frameworks */,
+				8B4551DD1E068CD5008285D4 /* FBSDKCoreKit.framework in Frameworks */,
 				A453D854B3568B6B1F9853EB /* Pods_Trivia_Patente.framework in Frameworks */,
+				8B4551DF1E06908F008285D4 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +437,9 @@
 		3950FB9A55E6AD8BBF2D5752 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B4551DE1E06908F008285D4 /* Bolts.framework */,
+				8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */,
+				8B4551D71E068B1A008285D4 /* FBSDKLoginKit.framework */,
 				8B5EE0ED1DD652C200745A54 /* Charts.framework */,
 				46E8588E1F190225D3BBAC32 /* Pods_Trivia_Patente.framework */,
 				8DD99CF78DFC817A13D8F974 /* Pods_Trivia_PatenteTests.framework */,
@@ -806,6 +821,7 @@
 				8B5132FB1DBB8B9500143497 /* socket */,
 				8B5132EC1DBB5EE500143497 /* http */,
 				8B5133231DBC027000143497 /* SessionManager.swift */,
+				8B4551D91E068BA8008285D4 /* FBManager.swift */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -1476,6 +1492,7 @@
 				A9FD528D1DA16E96005DFE5D /* Trivia PatenteTests */,
 				A9FD52981DA16E96005DFE5D /* Trivia PatenteUITests */,
 				A9FD52771DA16E96005DFE5D /* Products */,
+				8B4551DB1E068C2E008285D4 /* Bridging-Header.h */,
 				61E200B9C7A4C6DFB5D427CB /* Pods */,
 				3950FB9A55E6AD8BBF2D5752 /* Frameworks */,
 			);
@@ -1968,6 +1985,7 @@
 				8BAD1C431DF967540051AC4A /* Partecipation.swift in Sources */,
 				8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */,
 				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
+				8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
 				8B74DC021DE6EFBB0006EB90 /* TPInitRoundResponse.swift in Sources */,
@@ -2178,10 +2196,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S5GD6XDXR4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2194,10 +2217,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S5GD6XDXR4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Trivia Patente/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "TeD.Trivia-Patente";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
