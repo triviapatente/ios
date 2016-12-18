@@ -104,6 +104,9 @@ class ChatViewController: TPGameViewController {
         }
         
     }
+    let HEADER_HEIGHT = CGFloat(50)
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
@@ -168,14 +171,14 @@ class ChatViewController: TPGameViewController {
     }
     func load() {
         self.refreshControl.beginRefreshing()
-        let date = self.cachedMessages.first?.createdAt ?? Date()
-        HTTPHandler.get_messages(game: game, date: date) { response in
+        let date = self.cachedMessages.first?.updatedAt ?? Date()
+        HTTPHandler.get_messages(game: game, timestamp: date.timeIntervalSince1970) { response in
             self.refreshControl.endRefreshing()
             if response.success == true {
                 let firstTime = self.cachedMessages.isEmpty
-                let oldMessages = self.cachedMessages
+                let newerMessages = self.cachedMessages
                 self.response = response
-                self.cachedMessages += oldMessages
+                self.cachedMessages += newerMessages
                 if firstTime {
                     self.scrollToLast()
                 }
@@ -187,6 +190,15 @@ class ChatViewController: TPGameViewController {
     
 }
 extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
+    var headerLabel : UILabel {
+        let width = self.tableView.frame.size.width
+        let frame = CGRect(x: 0, y: 0, width: width, height: HEADER_HEIGHT)
+        let view = UILabel(frame: frame)
+        view.textAlignment = .center
+        view.backgroundColor = Colors.primary
+        view.textColor = .white
+        return view
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.response.map.count
     }
@@ -206,9 +218,14 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
             return "left_cell"
         }
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return HEADER_HEIGHT
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let keys = self.response.map.keys.sorted()
-        return keys[section].prettyDate
+        let label = self.headerLabel
+        label.text = keys[section].prettyDate
+        return label
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message = self.message(for: indexPath)
