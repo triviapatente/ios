@@ -31,7 +31,7 @@ open class Shopitem: CommonPK {
     convenience public init(object: AnyObject) {
         self.init(json: JSON(object))
     }
-    init(id: Int?, name : String?, price : Float?, emoji : String?) {
+    init(id: Int32?, name : String?, price : Float?, emoji : String?) {
         super.init(id: id)
         self.name = name
         self.price = price

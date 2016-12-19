@@ -20,8 +20,8 @@ open class Partecipation: Base {
     
     // MARK: Properties
     open var scoreIncrement: Int?
-    open var userId: Int?
-    open var gameId: Int?
+    open var userId: Int32?
+    open var gameId: Int32?
     
     
     // MARK: SwiftyJSON Initalizers
@@ -44,8 +44,8 @@ open class Partecipation: Base {
      */
     public required init(json: JSON) {
         super.init(json: json)
-        gameId = json[kPartecipationGameIdKey].int
-        userId = json[kPartecipationUserIdKey].int
+        gameId = json[kPartecipationGameIdKey].int32
+        userId = json[kPartecipationUserIdKey].int32
         scoreIncrement = json[kPartecipationScoreIncrementKey].int
     }
     
@@ -74,8 +74,8 @@ open class Partecipation: Base {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.scoreIncrement = aDecoder.decodeObject(forKey: kPartecipationScoreIncrementKey) as? Int
-        self.userId = aDecoder.decodeObject(forKey: kPartecipationUserIdKey) as? Int
-        self.gameId = aDecoder.decodeObject(forKey: kPartecipationGameIdKey) as? Int
+        self.userId = aDecoder.decodeObject(forKey: kPartecipationUserIdKey) as? Int32
+        self.gameId = aDecoder.decodeObject(forKey: kPartecipationGameIdKey) as? Int32
         
     }
     

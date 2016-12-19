@@ -24,9 +24,9 @@ open class Invite: Base {
 
     // MARK: Properties
 	open var accepted: Bool = false
-	open var receiverId: Int?
+	open var receiverId: Int32?
 	open var sender: User?
-	open var gameId: Int?
+	open var gameId: Int32?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -47,9 +47,9 @@ open class Invite: Base {
     public required init(json: JSON) {
         super.init(json: json)
 		accepted = json[kInviteAcceptedKey].boolValue
-		receiverId = json[kInviteReceiverIdKey].int
-		sender = User(username: json[kInviteSenderUsernameKey].string, id: json[kInviteSenderIdKey].int, avatar: json[kInviteSenderImageKey].string)
-		gameId = json[kInviteGameIdKey].int
+		receiverId = json[kInviteReceiverIdKey].int32
+		sender = User(username: json[kInviteSenderUsernameKey].string, id: json[kInviteSenderIdKey].int32, avatar: json[kInviteSenderImageKey].string)
+		gameId = json[kInviteGameIdKey].int32
 
     }
 
@@ -79,9 +79,9 @@ open class Invite: Base {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 		self.accepted = aDecoder.decodeBool(forKey: kInviteAcceptedKey)
-		self.receiverId = aDecoder.decodeObject(forKey: kInviteReceiverIdKey) as? Int
+		self.receiverId = aDecoder.decodeObject(forKey: kInviteReceiverIdKey) as? Int32
 		self.sender = aDecoder.decodeObject(forKey: kInviteSenderKey) as? User
-		self.gameId = aDecoder.decodeObject(forKey: kInviteGameIdKey) as? Int
+		self.gameId = aDecoder.decodeObject(forKey: kInviteGameIdKey) as? Int32
 
     }
 

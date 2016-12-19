@@ -9,13 +9,13 @@
 import UIKit
 
 class SocketGame: SocketManager {
-    func init_round(game_id : Int, handler : @escaping (TPInitRoundResponse?) -> Void) {
+    func init_round(game_id : Int32, handler : @escaping (TPInitRoundResponse?) -> Void) {
         SocketGame.emit(path: "init_round", values: ["game": game_id as AnyObject], handler: handler)
     }
     func get_categories(round : Round, handler : @escaping (TPRoundCategoryListResponse?) -> Void) {
         SocketGame.emit(path: "get_categories", values: ["round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject], handler: handler)
     }
-    func join(game_id : Int, handler : @escaping (TPResponse?) -> Void) {
+    func join(game_id : Int32, handler : @escaping (TPResponse?) -> Void) {
         SocketGame.join(id: game_id, type: "game", handler: handler)
     }
     func listen(event : String, handler : @escaping (TPResponse?) -> Void) {
@@ -36,7 +36,7 @@ class SocketGame: SocketManager {
     func answer(answer : Bool, round : Round, quiz : Quiz, handler: @escaping (TPGameAnswerResponse?) -> Void) {
         SocketGame.emit(path: "answer", values: ["answer": answer as AnyObject, "round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject, "quiz_id": quiz.id! as AnyObject], handler: handler)
     }
-    func round_details(game_id : Int, handler: @escaping (TPRoundDetailsResponse?) -> Void) {
+    func round_details(game_id : Int32, handler: @escaping (TPRoundDetailsResponse?) -> Void) {
         SocketGame.emit(path: "round_details", values: ["game": game_id as AnyObject], handler: handler)
     }
     func listen_round_ended(handler: @escaping (TPRoundEndedEvent?) -> Void) {

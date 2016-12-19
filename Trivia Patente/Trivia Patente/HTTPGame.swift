@@ -16,7 +16,7 @@ class HTTPGame: HTTPManager {
         self.request(url: "/game/invites", method: .get, params: nil, handler: handler)
     }
     
-    func process_invite(game_id : Int, accepted : Bool, handler : @escaping (TPInviteResponse) -> Void) {
+    func process_invite(game_id : Int32, accepted : Bool, handler : @escaping (TPInviteResponse) -> Void) {
         self.request(url: "/game/invites/\(game_id)", method: .post, params: ["accepted" : accepted], handler: handler)
     }
     
@@ -24,10 +24,10 @@ class HTTPGame: HTTPManager {
         self.request(url: "/new/random", method: .post, params: nil, handler: handler)
     }*/
     
-    func get_leave_decrement(game_id : Int, handler : @escaping (TPLeaveDecrementResponse) -> Void) {
+    func get_leave_decrement(game_id : Int32, handler : @escaping (TPLeaveDecrementResponse) -> Void) {
         self.request(url: "/game/leave/decrement", method: .get, params: ["game_id": game_id], handler: handler)
     }
-    func leave_game(game_id : Int, handler : @escaping (TPResponse) -> Void) {
+    func leave_game(game_id : Int32, handler : @escaping (TPResponse) -> Void) {
         self.request(url: "/game/leave", method: .post, params: ["game_id": game_id], handler: handler)
     }
     
@@ -35,7 +35,7 @@ class HTTPGame: HTTPManager {
         self.request(url: "/game/new/random", method: .post, params: nil, handler: handler)
     }
     
-    func newGame(id : Int, handler : @escaping (TPNewGameResponse) -> Void) {
+    func newGame(id : Int32, handler : @escaping (TPNewGameResponse) -> Void) {
         self.request(url: "/game/new", method: .post, params: ["opponent": id], handler: handler)
     }
     func suggested_users(handler : @escaping (TPUserListResponse) -> Void) {

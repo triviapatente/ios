@@ -66,7 +66,7 @@ class RankTableViewCell: UITableViewCell {
         self.infoBar.barTintColor = infoBackgroundColor
 
     }
-    var position : Int! {
+    var position : Int32! {
         didSet {
             self.detailView.text = self.positionText
             self.infoBar.topItem?.title = "Posizione: \(infoPositionText)"

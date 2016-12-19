@@ -62,8 +62,9 @@ class SocketManager {
         }
         SocketManager.socket.emit(path, values)
     }
-    static var joined_rooms : [String : Int] = [:]
-    class func join(id : Int, type : String, handler : @escaping (TPResponse?) -> Void) {
+    static var joined_rooms : [String : Int32
+        ] = [:]
+    class func join(id : Int32, type : String, handler : @escaping (TPResponse?) -> Void) {
         if id == joined_rooms[type] {
             let response = TPResponse(error: nil, statusCode: 200, success: true)
             handler(response)

@@ -19,11 +19,11 @@ open class Quiz: CommonPK {
 
 
     // MARK: Properties
-	open var imageId: Int?
+	open var imageId: Int32?
 	open var question: String?
     open var answer: Bool = false
     open var my_answer: Bool?
-	open var categoryId: Int?
+	open var categoryId: Int32?
 
     var imagePath : String? {
         get {
@@ -51,11 +51,11 @@ open class Quiz: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
-		imageId = json[kQuizImageIdKey].int
+		imageId = json[kQuizImageIdKey].int32
 		question = json[kQuizQuestionKey].string
         answer = json[kQuizAnswerKey].boolValue
         my_answer = json[kQuizMyAnswerKey].bool
-		categoryId = json[kQuizCategoryIdKey].int
+		categoryId = json[kQuizCategoryIdKey].int32
 
     }
 
@@ -87,11 +87,11 @@ open class Quiz: CommonPK {
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-		self.imageId = aDecoder.decodeObject(forKey: kQuizImageIdKey) as? Int
+		self.imageId = aDecoder.decodeObject(forKey: kQuizImageIdKey) as? Int32
 		self.question = aDecoder.decodeObject(forKey: kQuizQuestionKey) as? String
 		self.answer = aDecoder.decodeBool(forKey: kQuizAnswerKey)
         self.my_answer = aDecoder.decodeBool(forKey: kQuizMyAnswerKey)
-		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int
+		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int32
 
     }
 

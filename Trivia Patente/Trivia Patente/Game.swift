@@ -22,8 +22,8 @@ open class Game: CommonPK {
 
 
     // MARK: Properties
-	open var creatorId: Int?
-	open var winnerId: Int?
+	open var creatorId: Int32?
+	open var winnerId: Int32?
 	open var ended: Bool = false
     open var my_turn : Bool!
     open var opponent : User!
@@ -57,14 +57,14 @@ open class Game: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
-		creatorId = json[kGameCreatorIdKey].int
-		winnerId = json[kGameWinnerIdKey].int
+		creatorId = json[kGameCreatorIdKey].int32
+		winnerId = json[kGameWinnerIdKey].int32
         ended = json[kGameEndedKey].boolValue
         my_turn = json[kGameMyTurnKey].boolValue
-        opponent = User(username: json[kGameOpponentNameKey].string, id: json[kGameOpponentIdKey].int, avatar: json[kGameOpponentAvatarKey].string)
+        opponent = User(username: json[kGameOpponentNameKey].string, id: json[kGameOpponentIdKey].int32, avatar: json[kGameOpponentAvatarKey].string)
     }
 
-    override init(id: Int?) {
+    override init(id: Int32?) {
         super.init(id: id)
     }
     /**
@@ -93,8 +93,8 @@ open class Game: CommonPK {
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-		self.winnerId = aDecoder.decodeObject(forKey: kGameWinnerIdKey) as? Int
-        self.creatorId = aDecoder.decodeObject(forKey: kGameCreatorIdKey) as? Int
+		self.winnerId = aDecoder.decodeObject(forKey: kGameWinnerIdKey) as? Int32
+        self.creatorId = aDecoder.decodeObject(forKey: kGameCreatorIdKey) as? Int32
 		self.ended = aDecoder.decodeBool(forKey: kGameEndedKey)
         self.my_turn = aDecoder.decodeBool(forKey: kGameMyTurnKey)
         self.opponent = aDecoder.decodeObject(forKey: kGameOpponentKey) as? User

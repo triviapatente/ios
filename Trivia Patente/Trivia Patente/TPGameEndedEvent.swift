@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class TPGameEndedEvent: TPResponse {
     var partecipations : [Partecipation] = []
-    var winner_id : Int!
+    var winner_id : Int32!
     
     override func load(json: JSON) {
         super.load(json: json)
@@ -20,6 +20,6 @@ class TPGameEndedEvent: TPResponse {
                 partecipations.append(Partecipation(json: item))
             }
         }
-        self.winner_id = json["winner_id"].int
+        self.winner_id = json["winner_id"].int32
     }
 }

@@ -19,9 +19,9 @@ open class Round: CommonPK {
 
     // MARK: Properties
 	open var number: Int?
-	open var gameId: Int?
-	open var catId: Int?
-	open var dealerId: Int?
+	open var gameId: Int32?
+	open var catId: Int32?
+	open var dealerId: Int32?
 
 
     // MARK: SwiftyJSON Initalizers
@@ -42,9 +42,9 @@ open class Round: CommonPK {
     public required init(json: JSON) {
         super.init(json: json)
 		number = json[kRoundNumberKey].int
-		gameId = json[kRoundGameIdKey].int
-		catId = json[kRoundCatIdKey].int
-		dealerId = json[kRoundDealerIdKey].int
+		gameId = json[kRoundGameIdKey].int32
+		catId = json[kRoundCatIdKey].int32
+		dealerId = json[kRoundDealerIdKey].int32
 
     }
 
@@ -76,9 +76,9 @@ open class Round: CommonPK {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 		self.number = aDecoder.decodeObject(forKey: kRoundNumberKey) as? Int
-		self.gameId = aDecoder.decodeObject(forKey: kRoundGameIdKey) as? Int
-		self.catId = aDecoder.decodeObject(forKey: kRoundCatIdKey) as? Int
-		self.dealerId = aDecoder.decodeObject(forKey: kRoundDealerIdKey) as? Int
+		self.gameId = aDecoder.decodeObject(forKey: kRoundGameIdKey) as? Int32
+		self.catId = aDecoder.decodeObject(forKey: kRoundCatIdKey) as? Int32
+		self.dealerId = aDecoder.decodeObject(forKey: kRoundDealerIdKey) as? Int32
 
     }
 

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class TPRankResponse: TPUserListResponse {
-    var userPosition : Int?
+    var userPosition : Int32?
     override func load(json: JSON) {
         self.load(json: json, addMyUser: true)
     }
@@ -24,12 +24,12 @@ class TPRankResponse: TPUserListResponse {
         if addMyUser {
             self.checkAndAddUser()
         }
-        userPosition = json["my_position"].int
+        userPosition = json["my_position"].int32
     }
     var map : [String : Int] {
         var output : [String : Int] = [:]
         var lastScore = -1
-        var currentPosition = 1
+        var currentPosition : Int = 1
         for user in users {
             if user.score != lastScore {
                 lastScore = user.score!

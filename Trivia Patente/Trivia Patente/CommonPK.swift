@@ -16,7 +16,7 @@ open class CommonPK: Base {
     
     
     // MARK: Properties
-    open var id: Int?
+    open var id: Int32?
     
     
     // MARK: SwiftyJSON Initalizers
@@ -41,10 +41,10 @@ open class CommonPK: Base {
      */
     public required init(json: JSON) {
         super.init(json: json)
-        id = json[kIdKey].int
+        id = json[kIdKey].int32
         
     }
-    init(id : Int?) {
+    init(id : Int32?) {
         super.init()
         self.id = id
     }
@@ -66,7 +66,7 @@ open class CommonPK: Base {
     // MARK: NSCoding Protocol
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.id = aDecoder.decodeObject(forKey: kIdKey) as? Int
+        self.id = aDecoder.decodeObject(forKey: kIdKey) as? Int32
         
     }
     

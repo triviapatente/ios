@@ -28,7 +28,7 @@ open class User: CommonPK {
 	open var surname: String?
     open var email: String?
     open var name: String?
-    open var position: Int?
+    open var position: Int32?
     open var last_game_won: Bool?
     
     var fullName : String? {
@@ -69,11 +69,11 @@ open class User: CommonPK {
 		surname = json[kUserSurnameKey].string
 		email = json[kUserEmailKey].string
         name = json[kUserNameKey].string
-        position = json[kPositionKey].int
+        position = json[kPositionKey].int32
         last_game_won = json[kLastGameWonKey].bool
 
     }
-    public init(username : String?, id : Int?, avatar : String? = nil, score : Int? = nil) {
+    public init(username : String?, id : Int32?, avatar : String? = nil, score : Int? = nil) {
         super.init(id: id)
         self.username = username
         self.image = avatar
@@ -124,7 +124,7 @@ open class User: CommonPK {
 		self.surname = aDecoder.decodeObject(forKey: kUserSurnameKey) as? String
         self.email = aDecoder.decodeObject(forKey: kUserEmailKey) as? String
 		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
-        self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int
+        self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int32
         self.last_game_won = aDecoder.decodeObject(forKey: kLastGameWonKey) as? Bool
 
     }

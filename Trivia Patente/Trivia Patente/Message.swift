@@ -18,8 +18,8 @@ open class Message: CommonPK {
 
     // MARK: Properties
 	open var content: String?
-	open var userId: Int?
-	open var gameId: Int?
+	open var userId: Int32?
+	open var gameId: Int32?
     
     func isMine() -> Bool {
         return self.userId == SessionManager.currentUser?.id
@@ -43,8 +43,8 @@ open class Message: CommonPK {
     public required init(json: JSON) {
         super.init(json: json)
 		content = json[kMessageContentKey].string
-		userId = json[kMessageUserIdKey].int
-		gameId = json[kMessageGameIdKey].int
+		userId = json[kMessageUserIdKey].int32
+		gameId = json[kMessageGameIdKey].int32
 
     }
 
@@ -73,8 +73,8 @@ open class Message: CommonPK {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 		self.content = aDecoder.decodeObject(forKey: kMessageContentKey) as? String
-		self.userId = aDecoder.decodeObject(forKey: kMessageUserIdKey) as? Int
-		self.gameId = aDecoder.decodeObject(forKey: kMessageGameIdKey) as? Int
+		self.userId = aDecoder.decodeObject(forKey: kMessageUserIdKey) as? Int32
+		self.gameId = aDecoder.decodeObject(forKey: kMessageGameIdKey) as? Int32
 
     }
 

@@ -21,9 +21,9 @@ open class Question: Base {
 
     // MARK: Properties
 	open var answer: Bool = false
-	open var userId: Int?
-	open var quizId: Int?
-    open var roundId: Int?
+	open var userId: Int32?
+	open var quizId: Int32?
+    open var roundId: Int32?
     open var roundNumber: Int?
     
     var user : User!
@@ -47,9 +47,9 @@ open class Question: Base {
     public required init(json: JSON) {
         super.init(json: json)
 		answer = json[kQuestionAnswerKey].boolValue
-		userId = json[kQuestionUserIdKey].int
-		quizId = json[kQuestionQuizIdKey].int
-		roundId = json[kQuestionRoundIdKey].int
+		userId = json[kQuestionUserIdKey].int32
+		quizId = json[kQuestionQuizIdKey].int32
+		roundId = json[kQuestionRoundIdKey].int32
         roundNumber = json[kQuestionRoundNumberKey].int
     }
 
@@ -82,9 +82,9 @@ open class Question: Base {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 		self.answer = aDecoder.decodeBool(forKey: kQuestionAnswerKey)
-		self.userId = aDecoder.decodeObject(forKey: kQuestionUserIdKey) as? Int
-		self.quizId = aDecoder.decodeObject(forKey: kQuestionQuizIdKey) as? Int
-		self.roundId = aDecoder.decodeObject(forKey: kQuestionRoundIdKey) as? Int
+		self.userId = aDecoder.decodeObject(forKey: kQuestionUserIdKey) as? Int32
+		self.quizId = aDecoder.decodeObject(forKey: kQuestionQuizIdKey) as? Int32
+		self.roundId = aDecoder.decodeObject(forKey: kQuestionRoundIdKey) as? Int32
         self.roundNumber = aDecoder.decodeObject(forKey: kQuestionRoundNumberKey) as? Int
         self.user = aDecoder.decodeObject(forKey: kQuestionUserKey) as? User
 

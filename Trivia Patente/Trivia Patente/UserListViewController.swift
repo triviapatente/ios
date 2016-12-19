@@ -56,7 +56,7 @@ class UserListViewController: TPNormalViewController {
         }
         return friendsResponse?.users
     }
-    func getContextualUserPosition() -> Int? {
+    func getContextualUserPosition() -> Int32? {
         guard let response = italianResponse as? TPRankResponse else {
             return nil
         }
@@ -288,7 +288,7 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             } else if cell.user!.isMe() {
                 cell.position = getContextualUserPosition()!
             } else {
-                cell.position = getContextualMap()!["\(cell.user.score!)"]
+                cell.position = Int32(getContextualMap()!["\(cell.user.score!)"]!)
             }
             cell.user = getContextualUsers()![indexPath.row]
             return cell
