@@ -58,12 +58,22 @@ class SocketManager {
     class func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T?) -> Void) {
         listen(event: path) { (response:  T?) in
             SocketManager.socket.off(path)
-            handler(response)
+            if response?.statusCode == 401 {
+                SessionManager.authenticateSocket { response in
+                    if response?.success == true {
+                        self.emit(path: path, values: values, handler: handler)
+                    } else {
+                        SessionManager.drop()
+                        UIViewController.goToFirstAccess()
+                    }
+                }
+            } else {
+                handler(response)
+            }
         }
         SocketManager.socket.emit(path, values)
     }
-    static var joined_rooms : [String : Int32
-        ] = [:]
+    static var joined_rooms : [String : Int32] = [:]
     class func join(id : Int32, type : String, handler : @escaping (TPResponse?) -> Void) {
         if id == joined_rooms[type] {
             let response = TPResponse(error: nil, statusCode: 200, success: true)

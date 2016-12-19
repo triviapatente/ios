@@ -34,7 +34,9 @@ class TPResponse : CustomStringConvertible {
             self.success = false
             self.message = "No message from server"
         }
-        self.statusCode = statusCode
+        if let code = statusCode {
+            self.statusCode = code
+        }
 
     }
     required init(error : String?, statusCode : Int? = nil, success : Bool = false) {
