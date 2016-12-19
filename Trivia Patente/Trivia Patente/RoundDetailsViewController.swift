@@ -216,10 +216,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return (self.tableView.frame.size.height - rowHeight * CGFloat(count)) / 2
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if (game.isEnded() && section == self.questionMap.count) || section + 1 == self.questionMap.count {
-            return self.tableView(tableView, heightForHeaderInSection: section)
-        }
-        return 0
+        return self.tableView(tableView, heightForHeaderInSection: section)
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
