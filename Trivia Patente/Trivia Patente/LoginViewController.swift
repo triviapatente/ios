@@ -20,6 +20,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let httpAuth = HTTPAuth()
     
+    @IBAction func resignResponder() {
+        _ = self.nameField.resignFirstResponder()
+        _ = self.passwordField.resignFirstResponder()
+    }
+    
     func formIsCorrect() -> Bool {
         return nameField.isCorrect() && passwordField.isCorrect()
     }

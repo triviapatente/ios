@@ -22,6 +22,13 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     let http = HTTPAuth()
     
+    @IBAction func resignResponder() {
+        _ = self.nameField.resignFirstResponder()
+        _ = self.emailField.resignFirstResponder()
+        _ = self.passwordField.resignFirstResponder()
+        _ = self.repeatPasswordField.resignFirstResponder()
+    }
+    
     func checkValues() {
         let username = nameField.getText()
         let email = emailField.getText()

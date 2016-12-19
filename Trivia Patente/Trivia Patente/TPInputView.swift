@@ -70,6 +70,10 @@ class TPInputView: UIViewController {
         self.field.placeholder = hint
         self.field.delegate = delegate
     }
+    override func resignFirstResponder() -> Bool {
+        _ = self.field.resignFirstResponder()
+        return super.resignFirstResponder()
+    }
     override func becomeFirstResponder() -> Bool {
         _ = self.field.becomeFirstResponder()
         return super.becomeFirstResponder()
