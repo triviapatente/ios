@@ -10,7 +10,9 @@ import UIKit
 import MBProgressHUD
 
 class UserListViewController: TPNormalViewController {
-    let isLinkedToFB : Bool = true
+    var isLinkedToFB : Bool {
+        return FBManager.getInfos().hasToken == true
+    }
     
     @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()

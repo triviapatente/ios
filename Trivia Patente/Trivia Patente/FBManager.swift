@@ -28,4 +28,16 @@ class FBManager {
             }
         }
     }
+    static let kFBInfosKey = "fb_infos"
+    class func getInfos() -> FBInfos {
+        let defaults = UserDefaults.standard
+        let object = defaults.data(forKey: kFBInfosKey)!
+        return NSKeyedUnarchiver.unarchiveObject(with: object) as! FBInfos
+    }
+    class func set(infos : FBInfos) {
+        let defaults = UserDefaults.standard
+        let object = NSKeyedArchiver.archivedData(withRootObject: infos)
+        defaults.set(object, forKey: kFBInfosKey)
+        defaults.synchronize()
+    }
 }

@@ -104,6 +104,7 @@
 		8B8EEA341DFC49C4003608AA /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEA321DFC49C4003608AA /* MessageTableViewCell.swift */; };
 		8B8EEA351DFC49C4003608AA /* LeftMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */; };
 		8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */; };
+		8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A58841E089C3E0005E46B /* FBInfos.swift */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -313,6 +314,7 @@
 		8B8EEA321DFC49C4003608AA /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMessageTableViewCell.xib; sourceTree = "<group>"; };
 		8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMessageTableViewCell.xib; sourceTree = "<group>"; };
+		8B9A58841E089C3E0005E46B /* FBInfos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBInfos.swift; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCF8C901DB6A6BA00EC637C /* User.swift */,
+				8B9A58841E089C3E0005E46B /* FBInfos.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -1940,6 +1943,7 @@
 				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
+				8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */,
