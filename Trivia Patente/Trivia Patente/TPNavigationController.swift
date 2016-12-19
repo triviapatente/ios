@@ -42,9 +42,11 @@ class TPNavigationController: UINavigationController {
         //TODO: edit with correct informations
         lifesItem.numberOfLifes = 5
     }
-    func setUser(candidate : User?) {
+    func setUser(candidate : User?, with_title : Bool = true) {
         if let user = candidate {
-            self.topViewController?.title = user.username
+            if with_title {
+                self.topViewController?.title = user.username
+            }
             self.avatarItem.user = candidate
         }
     }
