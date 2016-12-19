@@ -43,10 +43,8 @@ extension UIViewController {
             if expired_session == true {
                 let controller = UIAlertController(title: "Sessione scaduta", message: "Riaccedi per continuare", preferredStyle: .alert)
                 let action = UIAlertAction(title: "Continua", style: .default, handler: { action in
-                
-                    visibleViewController.present(destination, animated: true, completion: {
-                        destination.gotoLogin()
-                    })
+                    destination.viewControllerToPresent = destination.loginController
+                    visibleViewController.present(destination, animated: true)
                 })
                 controller.addAction(action)
                 visibleViewController.present(controller, animated: true, completion: nil)

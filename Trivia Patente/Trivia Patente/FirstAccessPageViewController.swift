@@ -25,6 +25,7 @@ class FirstAccessPageViewController: UIPageViewController {
     var registrationController : UIViewController {
         return controllers[0]
     }
+    var viewControllerToPresent : UIViewController!
     
     private func instantiateController(_ name: String) -> UIViewController {
         return self.storyboard!.instantiateViewController(withIdentifier: name)
@@ -38,12 +39,18 @@ class FirstAccessPageViewController: UIPageViewController {
     func gotoRegister() {
         setViewControllers([registrationController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
+    func present() {
+        if viewControllerToPresent == nil {
+            viewControllerToPresent = mainController
+        }
+        setViewControllers([viewControllerToPresent], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         self.view.backgroundColor = mainController.view.backgroundColor
-        gotoMain()
+        present()
     }
 
     

@@ -19,11 +19,8 @@ class LogoutViewController: UIViewController {
     @IBAction func leave() {
         loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingView.mode = .indeterminate
-        SessionManager.logout { response in
+        SessionManager.logout(from: self) { response in
             self.loadingView.hide(animated: true)
-            if response.success == true {
-                self.fade()
-            }
         }
     }
     @IBAction func remain() {
