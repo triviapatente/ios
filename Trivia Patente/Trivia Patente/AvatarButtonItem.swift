@@ -11,7 +11,9 @@ import UIKit
 class AvatarButtonItem: UIBarButtonItem {
     var user : User? {
         didSet {
-            imageView.load(user: user)
+            if user != oldValue {
+                imageView.load(user: user)
+            }
         }
     }
     var callback : (() -> ())!
