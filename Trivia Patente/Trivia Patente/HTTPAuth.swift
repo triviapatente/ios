@@ -35,6 +35,18 @@ class HTTPAuth : HTTPManager {
         }
 
     }
+    func link_to_fb(token : String, handler : @escaping (TPFBResponse) -> Void) {
+        let parameters = ["token": token]
+        request(url: "/fb/link", method: .post, params: parameters) { (response : TPFBResponse) in
+            if let user = response.user {
+                SessionManager.set(user: user)
+            }
+            if let infos = response.infos {
+                FBManager.set(infos: infos)
+            }
+            handler(response)
+        }
+    }
     func user(handler : @escaping (TPAuthResponse) -> Void) {
         request(url: "/auth/user", method: .get, params: nil, handler: handler)
     }

@@ -38,6 +38,7 @@ class UserListViewController: TPNormalViewController {
     var connectView : FBConnectInviteViewController! {
         didSet {
             connectView.canDismiss = false
+            connectView.delegate = self
         }
     }
     
@@ -141,6 +142,8 @@ class UserListViewController: TPNormalViewController {
     }
     func hideFacebookView() {
         self.visualEffectView.isHidden = true
+        self.friendsResponse?.users = []
+        self.reloadTable()
     }
     func loadData() {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -300,5 +303,11 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             cell.user = getContextualUsers()![indexPath.row]
             return cell
         }
+    }
+}
+extension UserListViewController : FBConnectInviteDelegate {
+    func connected() {
+        self.hideFacebookView()
+        self.loadData()
     }
 }

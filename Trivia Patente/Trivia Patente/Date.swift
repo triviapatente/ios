@@ -33,6 +33,14 @@ extension Date {
             formatter.timeZone = TimeZone.current
             return formatter
         }()
+        static let simple : DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.calendar = Calendar(identifier: .iso8601)
+            formatter.locale = defaultLocale
+            formatter.timeZone = TimeZone.current
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
     }
     static var defaultLocale : Locale = {
         return Locale(identifier: "it_IT")

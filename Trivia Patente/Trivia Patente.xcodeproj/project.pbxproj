@@ -105,6 +105,8 @@
 		8B8EEA351DFC49C4003608AA /* LeftMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */; };
 		8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */; };
 		8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A58841E089C3E0005E46B /* FBInfos.swift */; };
+		8B9A58871E09379C0005E46B /* TPFBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A58861E09379C0005E46B /* TPFBResponse.swift */; };
+		8B9A58891E0939970005E46B /* FBConnectInviteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A58881E0939970005E46B /* FBConnectInviteDelegate.swift */; };
 		8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */; };
 		8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */; };
 		8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */; };
@@ -315,6 +317,8 @@
 		8B8EEA331DFC49C4003608AA /* LeftMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMessageTableViewCell.xib; sourceTree = "<group>"; };
 		8B8EEA371DFC49CF003608AA /* RightMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMessageTableViewCell.xib; sourceTree = "<group>"; };
 		8B9A58841E089C3E0005E46B /* FBInfos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBInfos.swift; sourceTree = "<group>"; };
+		8B9A58861E09379C0005E46B /* TPFBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPFBResponse.swift; sourceTree = "<group>"; };
+		8B9A58881E0939970005E46B /* FBConnectInviteDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConnectInviteDelegate.swift; sourceTree = "<group>"; };
 		8BA6BEB11DECA27300D9EB86 /* TPQuizListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPQuizListResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB31DECC0E700D9EB86 /* TPGameAnswerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameAnswerResponse.swift; sourceTree = "<group>"; };
 		8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCellDelegate.swift; sourceTree = "<group>"; };
@@ -868,6 +872,7 @@
 			children = (
 				8B5132F71DBB72B600143497 /* TPAuthResponse.swift */,
 				8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */,
+				8B9A58861E09379C0005E46B /* TPFBResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1324,6 +1329,7 @@
 			isa = PBXGroup;
 			children = (
 				8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */,
+				8B9A58881E0939970005E46B /* FBConnectInviteDelegate.swift */,
 			);
 			name = "facebook connect invite";
 			sourceTree = "<group>";
@@ -1953,6 +1959,7 @@
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
 				8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */,
+				8B9A58871E09379C0005E46B /* TPFBResponse.swift in Sources */,
 				8BAD1C471DF99AEF0051AC4A /* TPSectionBar.swift in Sources */,
 				8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */,
 				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
@@ -1997,6 +2004,7 @@
 				8BE20C661DD9E44C0048DA0A /* HTTPPreference.swift in Sources */,
 				8BE278921DF4733A00071DF2 /* TPScoreView.swift in Sources */,
 				8B5EE1051DD90CA400745A54 /* PreferenceType.swift in Sources */,
+				8B9A58891E0939970005E46B /* FBConnectInviteDelegate.swift in Sources */,
 				8BDB000D1DFD74F80088E8A2 /* TPInviteCreatedEvent.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPExpandableView.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,

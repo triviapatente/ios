@@ -14,14 +14,17 @@ class FBInfos : NSObject, NSCoding {
     let kExpirationKey = "expiration"
     
     var hasToken : Bool!
-    var expiration : Date!
+    var expiration : Date?
     
-    var expired : Bool {
-        return expiration <= Date()
+    var expired : Bool? {
+        guard let exp = expiration else {
+            return nil
+        }
+        return exp <= Date()
     }
     public init(json: JSON) {
         hasToken = json[kHasTokenKey].bool
-        expiration = json[kExpirationKey].string?.dateFromISO8601
+        expiration = json[kExpirationKey].string?.simpleDate
         
     }
 

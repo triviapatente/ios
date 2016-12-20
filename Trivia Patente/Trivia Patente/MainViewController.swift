@@ -77,6 +77,13 @@ class MainViewController: TPNormalViewController {
                 SessionManager.drop()
                 UIViewController.goToFirstAccess(from: self)
             } else {
+                if let fbInfos = response?.fbInfos {
+                    if fbInfos.expired == true {
+                        FBManager.link(sender: self) { response in
+                            //TODO: handler
+                        }
+                    }
+                }
                 self.setHints(candidateResponse: response)
                 self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
                     if response.success == true {

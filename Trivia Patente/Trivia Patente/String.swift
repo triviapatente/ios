@@ -14,6 +14,9 @@ extension String {
     var dateFromISO8601: Date? {
         return Date.Formatter.iso8601.date(from: self)
     }
+    var simpleDate : Date? {
+        return Date.Formatter.simple.date(from: self)
+    }
     var dateFromGMT : Date? {
         let date =  Date.Formatter.gmt.date(from: self)
         return date

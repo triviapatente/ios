@@ -11,8 +11,13 @@ import UIKit
 class FBConnectInviteViewController: UIViewController {
 
     @IBOutlet var exitButton : UIButton!
+    var delegate : FBConnectInviteDelegate!
     @IBAction func connect() {
-        print("connect")
+        FBManager.link(sender: self) { (response) in
+            if response.success == true {
+                self.delegate.connected()
+            }
+        }
     }
     @IBAction func dismiss() {
         self.dismiss(animated: true, completion: nil)
