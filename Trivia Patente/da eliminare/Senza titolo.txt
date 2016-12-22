@@ -1,0 +1,7 @@
+git -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree push -v --tags origin refs/heads/master:refs/heads/master 
+Pushing to git@gitlab.com:TriviaPatente/Android.git
+remote: GitLab: You are not allowed to push code to protected branches on this project.        
+To git@gitlab.com:TriviaPatente/Android.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'git@gitlab.com:TriviaPatente/Android.git'
+Completed with errors, see above
