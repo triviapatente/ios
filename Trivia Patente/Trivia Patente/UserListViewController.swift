@@ -221,6 +221,12 @@ class UserListViewController: TPNormalViewController {
         }
 
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.searchBar.layer.addBorder(edge: .top, color: Colors.primary, thickness: 1)
+        self.searchBar.layer.addBorder(edge: .bottom, color: Colors.primary, thickness: 1)
+
+    }
     
 
     func search(query: String) {

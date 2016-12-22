@@ -134,6 +134,7 @@
 		8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */; };
 		8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */; };
 		8BBBE8581DC798A500B433F2 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBE8571DC798A500B433F2 /* UIImageView.swift */; };
+		8BBBF9D91E0C26A80061C25B /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBF9D81E0C26A80061C25B /* CALayer.swift */; };
 		8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */; };
 		8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCF8C281DB6A3C900EC637C /* Main.storyboard */; };
 		8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF8C7F1DB6A6BA00EC637C /* Base.swift */; };
@@ -346,6 +347,7 @@
 		8BBBE8531DC77BEF00B433F2 /* RecentGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGameTableViewCell.swift; sourceTree = "<group>"; };
 		8BBBE8541DC77BEF00B433F2 /* RecentGameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentGameTableViewCell.xib; sourceTree = "<group>"; };
 		8BBBE8571DC798A500B433F2 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		8BBBF9D81E0C26A80061C25B /* CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		8BBDFE0B1DEB87E500C6A53B /* FBConnectInviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBConnectInviteViewController.swift; sourceTree = "<group>"; };
 		8BCF8C281DB6A3C900EC637C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8BCF8C7F1DB6A6BA00EC637C /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
@@ -1373,6 +1375,7 @@
 				8BAD1C441DF9795D0051AC4A /* Int.swift */,
 				8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */,
 				8BDB000A1DFC543F0088E8A2 /* UITextView.swift */,
+				8BBBF9D81E0C26A80061C25B /* CALayer.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -2008,6 +2011,7 @@
 				8BDB000D1DFD74F80088E8A2 /* TPInviteCreatedEvent.swift in Sources */,
 				8BBBE8501DC76BA400B433F2 /* TPExpandableView.swift in Sources */,
 				8BCF8C931DB6A6BA00EC637C /* Game.swift in Sources */,
+				8BBBF9D91E0C26A80061C25B /* CALayer.swift in Sources */,
 				8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */,
 				8B5EE1071DD913BC00745A54 /* SettingsTableViewCell.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
