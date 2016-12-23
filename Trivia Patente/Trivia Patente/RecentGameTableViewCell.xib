@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,21 +21,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Atb-LI-zp3">
-                        <rect key="frame" x="8" y="19" width="23" height="48"/>
+                        <rect key="frame" x="8" y="19" width="21" height="48"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="23" id="Nn5-0N-zMx"/>
+                            <constraint firstAttribute="width" secondItem="Atb-LI-zp3" secondAttribute="height" multiplier="58:134" id="TTn-GV-tfo"/>
                             <constraint firstAttribute="height" constant="48" id="X1M-ah-zae"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CGY-Bd-mD4">
-                        <rect key="frame" x="46" y="19" width="48" height="48"/>
+                        <rect key="frame" x="44" y="19" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="RFp-Jz-jai"/>
                             <constraint firstAttribute="height" constant="48" id="irG-yc-0jb"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rws-6l-UEb">
-                        <rect key="frame" x="225" y="30.5" width="124" height="25"/>
+                        <rect key="frame" x="223" y="30.5" width="126" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="OZi-9a-14T"/>
                         </constraints>
@@ -46,7 +47,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0q0-jC-bZG">
-                        <rect key="frame" x="104" y="25.5" width="115" height="36"/>
+                        <rect key="frame" x="102" y="25.5" width="115" height="36"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antonio Terpin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-gG-PCW">
                                 <rect key="frame" x="0.0" y="0.0" width="115" height="18"/>

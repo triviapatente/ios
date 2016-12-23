@@ -35,7 +35,6 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
         buttonView.mediumRounded()
-        controlLights.mediumRounded()
         avatarView.circleRounded()
         buttonView.layer.borderWidth = 1
     }
@@ -69,11 +68,11 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     }
     func lightsImage(ended: Bool, my_turn : Bool) -> UIImage {
         if ended {
-            return UIImage(named: "red_lights")!
+            return UIImage(named: "traffic_lights_red")!
         } else if my_turn {
-            return UIImage(named: "green_lights")!
+            return UIImage(named: "traffic_lights_green")!
         } else {
-            return UIImage(named: "yellow_lights")!
+            return UIImage(named: "traffic_lights_yellow")!
         }
     }
     func buttonColor(ended : Bool, my_turn : Bool) -> UIColor {
