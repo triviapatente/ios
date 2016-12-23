@@ -50,6 +50,13 @@ class UserListViewController: TPNormalViewController {
         }
         return "GameOpponentTableViewCell"
     }
+    var controllerTitle : String? {
+        if listType == .rank {
+            return "Classifica"
+        } else {
+            return "Ricerca avversario"
+        }
+    }
 
     func getContextualUsers() -> [User]? {
         if searching {
@@ -213,6 +220,7 @@ class UserListViewController: TPNormalViewController {
         let nib = UINib(nibName: cellIdentifier, bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "user_cell")
         self.tableView.rowHeight = 50
+        self.title = self.controllerTitle
 
         self.changeRankType(sender: control)
         self.userChosenCallback = { user in
