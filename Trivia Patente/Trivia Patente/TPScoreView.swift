@@ -34,7 +34,7 @@ class TPScoreView: UIViewController {
     var questions : [Question] = []
     var quizzes : [Quiz] = []
     func set(users: [User], game : Game) {
-        self.users = users
+        self.users = users.sorted(by: {$0.0.isMe()})
         self.game = game
         self.firstAvatarView.load(user: users.first!)
         self.secondAvatarView.load(user: users.last!)
@@ -56,8 +56,9 @@ class TPScoreView: UIViewController {
     func add(answers : [Question], quizzes : [Quiz]) {
         self.questions += answers
         self.quizzes += quizzes
-        self.firstScore = self.scores.first!
-        self.secondScore = self.scores.last!
+        let scores = self.scores
+        self.firstScore = scores.first!
+        self.secondScore = scores.last!
     }
     func adaptViewToScore() {
         self.firstAvatarView.layer.borderWidth = 1
