@@ -17,6 +17,7 @@ class TPInputView: UIViewController {
     var ignoreValidation = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.field.tintColor = Colors.primary
     }
     func isCorrect() -> Bool {
         return !isError
