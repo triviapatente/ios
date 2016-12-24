@@ -29,11 +29,11 @@ class TPInputView: UIViewController {
         }
         
     }
-    func validate(condition : Bool, error : String, force: Bool = false) {
+    func validate(condition : Bool, error : String, force: Bool = false, vibrate : Bool) {
         if ignoreValidation || condition {
             normalState()
         } else {
-            errorState(error: error)
+            errorState(error: error, vibrate: vibrate)
         }
     }
     func add(target : Any?, changeValueHandler: Selector) {
@@ -45,13 +45,16 @@ class TPInputView: UIViewController {
     func set(ignoreValidation : Bool) {
         self.ignoreValidation = ignoreValidation
     }
-    func errorState(error : String) {
+    func errorState(error : String, vibrate : Bool) {
         isError = true
         self.errorView.smallRounded(corners: [.topLeft, .topRight])
         self.field.smallRounded(corners: [.bottomLeft, .bottomRight])
         self.errorView.text = error
         self.errorView.isHidden = false
         self.field.layer.borderColor = UIColor.red.cgColor
+        if vibrate {
+            self.view.shake()
+        }
     }
     func normalState() {
         isError = false

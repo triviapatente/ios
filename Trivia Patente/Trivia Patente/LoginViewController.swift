@@ -34,10 +34,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func login() {
         self.enableValidation()
-        self.checkValues()
+        self.checkValues(vibrate: true)
+        self.resignResponder()
         guard self.formIsCorrect() else {
             return
         }
+        self.resignResponder()
         loginButton.load()
         httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.loginButton.stopLoading()
@@ -56,12 +58,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.errorView.set(error: response.message)
         }
     }
-    func checkValues() {
+    func checkValues(vibrate : Bool) {
         let username = nameField.getText()
         let password = passwordField.getText()
         
-        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email")
-        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password")
+        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
+        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password", vibrate: vibrate)
         
         loginButton.isEnabled = formIsCorrect()
     }
@@ -79,6 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     @IBAction func facebookLogin() {
+        self.resignResponder()
         facebookButton.load()
         FBManager.login(sender: self) { response in
             self.facebookButton.stopLoading()

@@ -29,17 +29,17 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         _ = self.repeatPasswordField.resignFirstResponder()
     }
     
-    func checkValues() {
+    func checkValues(vibrate : Bool = false) {
         let username = nameField.getText()
         let email = emailField.getText()
         let password = passwordField.getText()
         let repeatPassword = repeatPasswordField.getText()
         
-        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username")
-        emailField.validate(condition: email.isEmail && !email.isEmpty, error: "Inserisci un'indirizzo email corretto")
-        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password")
-        repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password")
-        repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono")
+        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username", vibrate: vibrate)
+        emailField.validate(condition: email.isEmail && !email.isEmpty, error: "Inserisci un'indirizzo email corretto", vibrate: vibrate)
+        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password", vibrate: vibrate)
+        repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password", vibrate: vibrate)
+        repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono", vibrate: vibrate)
         
         registerButton.isEnabled = formIsCorrect()
     }
@@ -56,7 +56,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func normalRegistration() {
         self.enableValidation()
-        self.checkValues()
+        self.checkValues(vibrate: true)
+        self.resignResponder()
         guard self.formIsCorrect() else {
             return
         }
@@ -102,6 +103,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     @IBAction func facebookRegistration() {
+        self.resignResponder()
         fbButton.load()
         FBManager.login(sender: self) { response in
             self.fbButton.stopLoading()
