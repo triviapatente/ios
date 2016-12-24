@@ -430,6 +430,7 @@
                     <connections>
                         <outlet property="counterLabel" destination="5W4-Af-Qvk" id="tPl-So-fow"/>
                         <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
+                        <outlet property="scrollRecognizer" destination="XhF-lm-a05" id="pYg-fH-RuI"/>
                         <outlet property="tableView" destination="EI8-w6-YFR" id="QJe-0D-bRd"/>
                     </connections>
                 </viewController>

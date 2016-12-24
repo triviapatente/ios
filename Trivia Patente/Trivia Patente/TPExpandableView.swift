@@ -12,6 +12,7 @@ class TPExpandableView: UIViewController {
     @IBOutlet var headerView : UINavigationBar!
     @IBOutlet var counterLabel : UILabel!
     @IBOutlet var tableView : UITableView!
+    @IBOutlet var scrollRecognizer : UIPanGestureRecognizer!
 
     var items : [Base] = [] {
         didSet {
@@ -153,24 +154,22 @@ class TPExpandableView: UIViewController {
     @IBAction func triggerFullScreen(sender : UIPanGestureRecognizer) {
         let up_pan = sender.velocity(in: self.view).y < 0
         
-        let canGoUp = up_pan && !self.expanded
-        let canGoDown = !up_pan && self.expanded
-        guard canGoUp || canGoDown else {
-            return
-        }
-        self.view.removeGestureRecognizer(sender)
+        self.view.removeGestureRecognizer(scrollRecognizer)
         let up_thresold = -self.view.frame.origin.y
+        self.traslate(up: up_pan, up_thresold: up_thresold)
 
+    }
+    func traslate(up : Bool, up_thresold : CGFloat = 0) {
         UIView.animate(withDuration: 0.4, animations: {
-            if up_pan == true {
+            if up == true {
                 self.expand(up_thresold)
             } else {
                 self.minimize()
             }
         }) { finish in
-            self.expanded = up_pan
+            self.expanded = up
             self.mainView.bringSubview(toFront: self.containerView)
-            self.view.addGestureRecognizer(sender)
+            self.view.addGestureRecognizer(self.scrollRecognizer)
         }
     }
     func expand(_ thresold : CGFloat) {
@@ -194,7 +193,13 @@ extension TPExpandableView : UIGestureRecognizerDelegate {
         if velocity.y < 0 {
             guard items.count > 0 else { return false }
         }
-        return abs(velocity.y) > 40
+        guard abs(velocity.y) > 40 else {
+            return false
+        }
+        let up_pan = velocity.y < 0
+        let canGoUp = up_pan && !self.expanded
+        let canGoDown = !up_pan && self.expanded
+        return canGoUp || canGoDown
     }
 }
 
@@ -203,12 +208,10 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     @objc(numberOfSectionsInTableView:) func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //se sono arrivato all'inizio, faccio il minimize
-        if scrollView.contentOffset.y < -20 {
-            UIView.animate(withDuration: 0.4, animations: {
-                self.minimize()
-            })
+        if scrollView.contentOffset.y <= 0 {
+            self.traslate(up: false)
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
