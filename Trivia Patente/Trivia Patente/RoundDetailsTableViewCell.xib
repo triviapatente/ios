@@ -109,14 +109,14 @@
                     <constraint firstItem="Ofk-F0-goq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6dK-sh-fQW"/>
                     <constraint firstAttribute="trailing" secondItem="Ofk-F0-goq" secondAttribute="trailing" constant="10" id="H74-c0-23Q"/>
                     <constraint firstItem="0hd-by-kiP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="MCU-ge-wWc"/>
-                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="h5j-QZ-xYQ" secondAttribute="trailing" constant="10" id="P2X-Z0-Cxz"/>
+                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="h5j-QZ-xYQ" secondAttribute="trailing" priority="998" constant="10" id="P2X-Z0-Cxz"/>
                     <constraint firstItem="b5m-Qo-Fiu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="R0C-jI-WMv"/>
                     <constraint firstAttribute="bottom" secondItem="0hd-by-kiP" secondAttribute="bottom" constant="5" id="ShC-sN-3WI"/>
                     <constraint firstItem="doB-KN-p1Z" firstAttribute="leading" secondItem="0hd-by-kiP" secondAttribute="trailing" constant="10" id="UFC-ac-eIm"/>
                     <constraint firstItem="doB-KN-p1Z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ygz-LO-ZrV"/>
                     <constraint firstItem="b5m-Qo-Fiu" firstAttribute="leading" secondItem="doB-KN-p1Z" secondAttribute="trailing" constant="10" id="YrQ-Jg-CWs"/>
                     <constraint firstItem="Ofk-F0-goq" firstAttribute="leading" secondItem="b5m-Qo-Fiu" secondAttribute="trailing" constant="-10" id="huW-Gy-AkG"/>
-                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="999" constant="20" id="kxj-cH-gDA"/>
+                    <constraint firstItem="0hd-by-kiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" priority="250" constant="20" id="kxj-cH-gDA"/>
                     <constraint firstItem="h5j-QZ-xYQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vM4-Na-GCI"/>
                 </constraints>
             </tableViewCellContentView>
@@ -124,6 +124,7 @@
                 <outlet property="falseValue" destination="p52-T5-JkY" id="iwt-IU-u7M"/>
                 <outlet property="quizImageView" destination="h5j-QZ-xYQ" id="hlJ-f7-Ixs"/>
                 <outlet property="quizNameView" destination="0hd-by-kiP" id="WT7-C1-j7x"/>
+                <outlet property="titleCostraint" destination="kxj-cH-gDA" id="6lp-yk-WD0"/>
                 <outlet property="trueValue" destination="5ly-E8-ytl" id="aeM-sf-IvE"/>
                 <outletCollection property="trueImageViews" destination="zMZ-ct-QEv" collectionClass="NSMutableArray" id="hZ0-Gb-nWf"/>
                 <outletCollection property="falseImageViews" destination="dBw-2I-GaO" collectionClass="NSMutableArray" id="0Qi-iX-W7p"/>

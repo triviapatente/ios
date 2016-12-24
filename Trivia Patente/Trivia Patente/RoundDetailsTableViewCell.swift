@@ -16,6 +16,8 @@ class RoundDetailsTableViewCell: UITableViewCell {
     @IBOutlet var trueImageViews : [UIImageView]!
     @IBOutlet var falseImageViews : [UIImageView]!
     
+    @IBOutlet var titleCostraint : NSLayoutConstraint!
+    
     var quizDetail : QuizDetail! {
         didSet {
             self.initializeImageViews()
@@ -34,9 +36,12 @@ class RoundDetailsTableViewCell: UITableViewCell {
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
+                self.quizImageView.isHidden = false
             } else {
-                self.quizImageView.removeFromSuperview()
+                self.quizImageView.isHidden = true
             }
+            self.quizImageView.isHidden = (quiz.imageId == nil)
+            self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
             self.set(label: trueValue, enabled: quiz.answer)
             self.set(label: falseValue, enabled: !quiz.answer)
         }
