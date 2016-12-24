@@ -80,6 +80,13 @@ extension UIView {
             self.layer.shadowOpacity = 0
         }
     }
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.5
+        animation.values = [10, -10, 10, -10, 5, -5, 2, -2, 0]
+        self.layer.add(animation, forKey: "shake")
+    }
     func shadow(radius : CGFloat, color : UIColor = .black) {
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)

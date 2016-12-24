@@ -25,14 +25,8 @@ class TPErrorView : UIViewController {
         UIView.animate(withDuration: 0.2, animations: {
             self.container!.isHidden = false
         }) { completed in
-            self.shake()
+            self.view.shake()
         }
     }
-    func shake() {
-        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.5
-        animation.values = [10, -10, 10, -10, 5, -5, 2, -2, 0]
-        self.view.layer.add(animation, forKey: "shake")
-    }
+    
 }
