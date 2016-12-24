@@ -22,8 +22,10 @@ class TPGameHeader: UIViewController {
     var category : Category! {
         didSet {
             categoryImageView.isHidden = false
-            categoryImageView.load(category: category)
-            categoryNameView.text = category.hint
+            if category != oldValue {
+                categoryImageView.load(category: category)
+                categoryNameView.text = category.hint
+            }
         }
     }
     func set(title : String) {
