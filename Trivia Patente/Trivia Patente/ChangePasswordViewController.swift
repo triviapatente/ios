@@ -37,7 +37,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
     
     @IBAction func changePassword() {
         self.enableValidation()
-        self.checkValues()
+        self.checkValues(vibrate: true)
         guard self.formIsCorrect() else {
             return
         }
@@ -72,14 +72,14 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         return true
     }
     
-    func checkValues() {
+    func checkValues(vibrate : Bool) {
         let oldPassword = self.oldPasswordField.getText()
         let newPassword = self.newPasswordField.getText()
         let repeatPassword = self.repeatPasswordField.getText()
         
-        oldPasswordField.validate(condition: !oldPassword.isEmpty, error: "Inserisci l'username o l'email")
-        newPasswordField.validate(condition: !newPassword.isEmpty, error: "Inserisci la password")
-        repeatPasswordField.validate(condition: repeatPassword == newPassword, error: "Le password non coincidono")
+        oldPasswordField.validate(condition: !oldPassword.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
+        newPasswordField.validate(condition: !newPassword.isEmpty, error: "Inserisci la password", vibrate: vibrate)
+        repeatPasswordField.validate(condition: repeatPassword == newPassword, error: "Le password non coincidono", vibrate: vibrate)
         
         confirmButton.isEnabled = formIsCorrect()
     }
