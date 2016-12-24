@@ -67,10 +67,9 @@ class PlayRoundViewController: TPGameViewController {
             let firstButton = questionButtons.first!
             for i in 0..<questions.count {
                 let question = questions[i]
-                if let my_answer = question.my_answer {
-                    let correct = (my_answer == question.answer)
+                if let _ = question.my_answer {
                     let button = self.questionButtons[i]
-                    self.setQuizButtonColor(of: button, correct: correct)
+                    self.setQuizButtonColor(of: button, correct: question.answeredCorrectly!)
                 }
             }
             presentQuiz(sender: firstButton)

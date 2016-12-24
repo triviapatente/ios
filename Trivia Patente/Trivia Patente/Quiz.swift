@@ -15,7 +15,8 @@ open class Quiz: CommonPK {
 	internal let kQuizQuestionKey: String = "question"
     internal let kQuizAnswerKey: String = "answer"
     internal let kQuizMyAnswerKey: String = "my_answer"
-	internal let kQuizCategoryIdKey: String = "category_id"
+    internal let kQuizCategoryIdKey: String = "category_id"
+    internal let kQuizAnsweredCorrectlyKey: String = "answered_correctly"
 
 
     // MARK: Properties
@@ -24,6 +25,7 @@ open class Quiz: CommonPK {
     open var answer: Bool = false
     open var my_answer: Bool?
 	open var categoryId: Int32?
+    open var answeredCorrectly : Bool?
 
     var imagePath : String? {
         get {
@@ -56,6 +58,7 @@ open class Quiz: CommonPK {
         answer = json[kQuizAnswerKey].boolValue
         my_answer = json[kQuizMyAnswerKey].bool
 		categoryId = json[kQuizCategoryIdKey].int32
+        answeredCorrectly = json[kQuizAnsweredCorrectlyKey].bool
 
     }
 
@@ -80,6 +83,7 @@ open class Quiz: CommonPK {
         if categoryId != nil {
 			dictionary.updateValue(categoryId! as AnyObject, forKey: kQuizCategoryIdKey)
 		}
+        dictionary.updateValue(answeredCorrectly as AnyObject, forKey: kQuizAnsweredCorrectlyKey)
 
         return dictionary
     }
@@ -92,6 +96,7 @@ open class Quiz: CommonPK {
 		self.answer = aDecoder.decodeBool(forKey: kQuizAnswerKey)
         self.my_answer = aDecoder.decodeBool(forKey: kQuizMyAnswerKey)
 		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int32
+        self.answeredCorrectly = aDecoder.decodeBool(forKey: kQuizAnsweredCorrectlyKey)
 
     }
 
@@ -102,7 +107,7 @@ open class Quiz: CommonPK {
         aCoder.encode(answer, forKey: kQuizAnswerKey)
         aCoder.encode(my_answer, forKey: kQuizAnswerKey)
 		aCoder.encode(categoryId, forKey: kQuizCategoryIdKey)
-
+        aCoder.encode(answeredCorrectly, forKey: kQuizAnsweredCorrectlyKey)
     }
 
 }
