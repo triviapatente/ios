@@ -15,13 +15,8 @@ class TPExpandableTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        if selected == true {
-            delegate.selectCell(for: item)
-        }
-        // Configure the view for the selected state
+    
+    func invokeCellHandler() {
+        delegate.selectCell(for: item)
     }
-
 }

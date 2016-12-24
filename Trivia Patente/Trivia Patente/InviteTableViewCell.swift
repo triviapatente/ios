@@ -24,8 +24,7 @@ class InviteTableViewCell: TPExpandableTableViewCell {
             if response.success == true {
                 self.delegate.removeCell(for: self.item)
                 if accept == true {
-                    //invoke setSelected event of TPExpandableTableViewCell
-                    self.setSelected(true, animated: true)
+                    self.invokeCellHandler()
                 }
             } else {
                 //TODO error handler
