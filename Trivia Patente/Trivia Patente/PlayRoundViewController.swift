@@ -56,7 +56,9 @@ class PlayRoundViewController: TPGameViewController {
             return
         }
         let indexPath = IndexPath(item: i, section: 0)
-        self.quizCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.quizCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
     var questions : [Quiz] = [] {
         didSet {
