@@ -61,7 +61,6 @@ open class Game: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
-        print(json)
 		creatorId = json[kGameCreatorIdKey].int32
 		winnerId = json[kGameWinnerIdKey].int32
         ended = json[kGameEndedKey].boolValue
