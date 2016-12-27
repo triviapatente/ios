@@ -21,6 +21,7 @@ class TPExpandableView: UIViewController {
             }
             dataLoaded = true
             self.tableView.tableFooterView = footerView
+            self.headerView.topItem?.title = headerTitle
         }
     }
     func add(item : Base) {
@@ -36,6 +37,14 @@ class TPExpandableView: UIViewController {
     var cellNibName : String?
     var footerText : String = ""
     var emptyFooterText : String!
+    var emptyTitleText : String!
+    
+    var headerTitle : String? {
+        if items.isEmpty {
+            return emptyTitleText
+        }
+        return self.title
+    }
     
     var footer : String {
         if items.isEmpty && emptyFooterText != nil {
@@ -122,7 +131,7 @@ class TPExpandableView: UIViewController {
         if let height = rowHeight {
             self.tableView.rowHeight = height
         }
-        headerView.topItem?.title = title
+        headerView.topItem?.title = headerTitle
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

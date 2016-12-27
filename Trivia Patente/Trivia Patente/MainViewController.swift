@@ -21,6 +21,8 @@ class MainViewController: TPNormalViewController {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
             recentGamesView.footerText = "Nessun'altra partita recente.\nGioca di più 😉"
+            recentGamesView.emptyTitleText = "Nessuna partita recente"
+            recentGamesView.title = "Partite recenti"
             recentGamesView.separatorColor = Colors.primary
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = { item in
@@ -60,7 +62,6 @@ class MainViewController: TPNormalViewController {
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
-        self.recentGamesView.headerView.topItem?.title = "Partite recenti"
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {

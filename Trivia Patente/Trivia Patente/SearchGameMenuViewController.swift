@@ -23,6 +23,7 @@ class SearchGameMenuViewController: TPNormalViewController {
             recentInvitesView.cellNibName = "InviteTableViewCell"
             recentInvitesView.footerText = "Nessun altro invito a giocare 😅"
             recentInvitesView.emptyFooterText = "Nessun invito a giocare 😅"
+            recentInvitesView.emptyTitleText = "Nessun invito a giocare"
             recentInvitesView.rowHeight = 60
             recentInvitesView.separatorColor = Colors.primary
             recentInvitesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

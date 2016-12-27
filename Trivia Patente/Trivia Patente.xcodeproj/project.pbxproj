@@ -27,6 +27,7 @@
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */; };
+		8B3E3A901E13015D0062AF32 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E3A8F1E13015D0062AF32 /* UITableView.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
 		8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82D1DC63D8100C36DDA /* Rank.storyboard */; };
 		8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */; };
@@ -239,6 +240,7 @@
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaViewController.swift; sourceTree = "<group>"; };
+		8B3E3A8F1E13015D0062AF32 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		8B42E82D1DC63D8100C36DDA /* Rank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalViewController.swift; sourceTree = "<group>"; };
@@ -1371,6 +1373,7 @@
 				8B8EEA2B1DFC3D2C003608AA /* NSNotification.swift */,
 				8BDB000A1DFC543F0088E8A2 /* UITextView.swift */,
 				8BBBF9D81E0C26A80061C25B /* CALayer.swift */,
+				8B3E3A8F1E13015D0062AF32 /* UITableView.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1948,6 +1951,7 @@
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
 				8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */,
+				8B3E3A901E13015D0062AF32 /* UITableView.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
 				8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */,
 				8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */,
