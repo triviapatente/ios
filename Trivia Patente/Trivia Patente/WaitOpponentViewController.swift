@@ -121,9 +121,9 @@ class WaitOpponentViewController: TPGameViewController {
             case .invite: return nil
         }
     }
-    func processResponse(response : TPInitRoundResponse) {
+    func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
-        if response.ended == true {
+        if response.ended == true && followRedirects {
             self.redirect(identifier: "round_details")
         } else {
             guard let state = response.waiting else {
@@ -132,11 +132,11 @@ class WaitOpponentViewController: TPGameViewController {
             guard let user = response.waiting_for else {
                 return
             }
-            self.processGameState(state: state, user: user, opponent_online: response.opponent_online)
+            self.processGameState(state: state, user: user, opponent_online: response.opponent_online, followRedirects: followRedirects)
         }
     }
-    func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false) {
-        if user.isMe() {
+    func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false, followRedirects : Bool = true) {
+        if user.isMe() && followRedirects {
             if let identifier = self.segue(for: state) {
                 self.redirect(identifier: identifier)
             }
@@ -158,10 +158,10 @@ class WaitOpponentViewController: TPGameViewController {
             }
         }
     }
-    func init_round() {
+    func init_round(followRedirects : Bool = true) {
         socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
             if response?.success == true {
-                self.processResponse(response: response!)
+                self.processResponse(response: response!, followRedirects: followRedirects)
             } else {
                 //TODO: handle_error
             }
@@ -172,6 +172,7 @@ class WaitOpponentViewController: TPGameViewController {
         if fromInvite == true {
             self.createInvite()
         } else {
+            self.join_room()
             self.configureView()
         }
     }
@@ -204,8 +205,10 @@ class WaitOpponentViewController: TPGameViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if fromInvite == false {
-            self.join_room()
+        //non deve essere chiamato al primo accesso alla view, ma solo quando si torna indietro da un viewcontroller
+        if response != nil {
+            self.listenInRoom()
+            self.init_round(followRedirects: false)
         }
     }
     
