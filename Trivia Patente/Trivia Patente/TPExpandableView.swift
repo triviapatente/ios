@@ -170,6 +170,9 @@ class TPExpandableView: UIViewController {
             self.expanded = up
             self.mainView.bringSubview(toFront: self.containerView)
             self.view.addGestureRecognizer(self.scrollRecognizer)
+            if !self.expanded {
+                self.tableView.scrollToTop()
+            }
         }
     }
     func expand(_ thresold : CGFloat) {
