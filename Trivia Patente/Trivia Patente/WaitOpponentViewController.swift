@@ -47,6 +47,7 @@ class WaitOpponentViewController: TPGameViewController {
         socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_left")
     }
     func listenInRoom() {
+        self.listenForInvite()
         socketHandler.listen(event: "category_chosen") { response in
             self.init_round()
 
@@ -172,7 +173,6 @@ class WaitOpponentViewController: TPGameViewController {
             self.createInvite()
         } else {
             self.configureView()
-            self.join_room()
         }
     }
     func createInvite() {
@@ -183,8 +183,8 @@ class WaitOpponentViewController: TPGameViewController {
                 self.configureView()
                 //TODO: change with processGameState for invite (in round_init response)
                 self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
-                //self.join_room()
-                self.listenForInvite()
+                self.join_room()
+                self.fromInvite = false
             } else {
                 //TODO: error handler
             }
@@ -196,9 +196,17 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func redirect(identifier : String) {
-        self.unlisten()
-        //TODO: rimuovere questo viewcontroller
         self.performSegue(withIdentifier: identifier, sender: self)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.unlisten()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if fromInvite == false {
+            self.join_room()
+        }
     }
     
 
