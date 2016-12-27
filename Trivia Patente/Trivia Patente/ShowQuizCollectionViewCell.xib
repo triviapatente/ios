@@ -46,8 +46,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bOk-ck-hL0" firstAttribute="leading" secondItem="OE8-19-BnL" secondAttribute="leading" id="1Wi-EX-Zqi"/>
-                            <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="OE8-19-BnL" secondAttribute="leading" priority="999" id="MPh-u2-DoD"/>
-                            <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="bOk-ck-hL0" secondAttribute="trailing" constant="7" id="Mfm-HU-KjR"/>
+                            <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="OE8-19-BnL" secondAttribute="leading" priority="250" id="MPh-u2-DoD"/>
+                            <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="bOk-ck-hL0" secondAttribute="trailing" priority="998" constant="7" id="Mfm-HU-KjR"/>
                             <constraint firstAttribute="bottom" secondItem="B5n-zS-jil" secondAttribute="bottom" id="St0-Yp-WY3"/>
                             <constraint firstAttribute="trailing" secondItem="B5n-zS-jil" secondAttribute="trailing" constant="7" id="fDd-V5-hv8"/>
                             <constraint firstItem="bOk-ck-hL0" firstAttribute="centerY" secondItem="OE8-19-BnL" secondAttribute="centerY" id="gnR-tB-Bhp"/>
@@ -123,6 +123,7 @@
                 <outlet property="quizNameView" destination="B5n-zS-jil" id="EDn-3b-8pQ"/>
                 <outlet property="separatorView" destination="Cdi-BR-OEF" id="MzE-g0-egx"/>
                 <outlet property="shapeView" destination="63l-cU-FB8" id="iFi-sz-sdY"/>
+                <outlet property="titleCostraint" destination="MPh-u2-DoD" id="Nnt-eB-pVx"/>
                 <outlet property="trueButton" destination="Qi6-lr-PlA" id="CAw-VK-amF"/>
             </connections>
         </collectionViewCell>

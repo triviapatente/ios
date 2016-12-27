@@ -15,10 +15,12 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
+                self.quizNameView.textAlignment = .left
             } else {
-                self.quizImageView.removeFromSuperview()
                 self.quizNameView.textAlignment = .center
             }
+            self.quizImageView.isHidden = (quiz.imageId == nil)
+            self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
             self.prepareQuiz()
         }
     }
@@ -35,7 +37,8 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     @IBOutlet var shapeView : UIView!
-    
+    @IBOutlet var titleCostraint : NSLayoutConstraint!
+
     
     var imageExpanded = false
     func imageClicked() {
