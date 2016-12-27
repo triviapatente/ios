@@ -26,7 +26,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     var game : Game! {
         didSet {
             changeState(for: game)
-            usernameView.text = game.opponent.username
+            usernameView.text = game.opponent.displayName
             //TODO: load async with cache
             avatarView.load(user: game.opponent)
         }

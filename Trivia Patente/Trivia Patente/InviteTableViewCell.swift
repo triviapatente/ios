@@ -40,7 +40,7 @@ class InviteTableViewCell: TPExpandableTableViewCell {
     }
     var invite : Invite! {
         didSet {
-            self.nameView.text = invite.sender?.username
+            self.nameView.text = invite.sender?.displayName
             self.avatarView.load(user: invite.sender)
             //TODO: set user
         }

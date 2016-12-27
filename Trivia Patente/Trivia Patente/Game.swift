@@ -16,8 +16,10 @@ open class Game: CommonPK {
 	internal let kGameEndedKey: String = "ended"
     internal let kGameStartedKey: String = "started"
     internal let kGameMyTurnKey: String = "my_turn"
-    internal let kGameOpponentNameKey: String = "opponent_username"
+    internal let kGameOpponentUsernameKey: String = "opponent_username"
     internal let kGameOpponentIdKey: String = "opponent_id"
+    internal let kGameOpponentNameKey: String = "opponent_name"
+    internal let kGameOpponentSurnameKey: String = "opponent_surname"
     internal let kGameOpponentAvatarKey: String = "opponent_image"
     internal let kGameOpponentKey: String = "opponent"
 
@@ -59,12 +61,13 @@ open class Game: CommonPK {
     */
     public required init(json: JSON) {
         super.init(json: json)
+        print(json)
 		creatorId = json[kGameCreatorIdKey].int32
 		winnerId = json[kGameWinnerIdKey].int32
         ended = json[kGameEndedKey].boolValue
         my_turn = json[kGameMyTurnKey].boolValue
         started = json[kGameStartedKey].boolValue
-        opponent = User(username: json[kGameOpponentNameKey].string, id: json[kGameOpponentIdKey].int32, avatar: json[kGameOpponentAvatarKey].string)
+        opponent = User(username: json[kGameOpponentUsernameKey].string, id: json[kGameOpponentIdKey].int32, avatar: json[kGameOpponentAvatarKey].string, name: json[kGameOpponentNameKey].string, surname: json[kGameOpponentSurnameKey].string)
     }
 
     override init(id: Int32?) {
@@ -86,9 +89,7 @@ open class Game: CommonPK {
 		}
 		dictionary.updateValue(ended as AnyObject, forKey: kGameEndedKey)
         dictionary.updateValue(my_turn as AnyObject, forKey: kGameMyTurnKey)
-        dictionary.updateValue(opponent.username as AnyObject, forKey: kGameOpponentNameKey)
-        dictionary.updateValue(opponent.id as AnyObject, forKey: kGameOpponentIdKey)
-        dictionary.updateValue(opponent.image as AnyObject, forKey: kGameOpponentAvatarKey)
+        dictionary.updateValue(opponent.dictionaryRepresentation() as AnyObject, forKey: kGameOpponentKey)
         dictionary.updateValue(started as AnyObject, forKey: kGameStartedKey)
         
         return dictionary

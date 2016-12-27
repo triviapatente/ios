@@ -35,11 +35,7 @@ class RankTableViewCell: UITableViewCell {
     var user : User! {
         didSet {
             self.setAppearance(for: user)
-            if let fullName = user.fullName {
-                self.nameView.text = fullName
-            } else {
-                self.nameView.text = user.username
-            }
+            self.nameView.text = user.displayName
             self.scoreView.text = "\(user.score!)"
             self.avatarView.load(user: user)
         }

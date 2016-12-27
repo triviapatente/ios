@@ -45,7 +45,7 @@ class TPNavigationController: UINavigationController {
     func setUser(candidate : User?, with_title : Bool = true) {
         if let user = candidate {
             if with_title {
-                self.topViewController?.title = user.username
+                self.topViewController?.title = user.displayName
             }
             self.avatarItem.user = candidate
         }

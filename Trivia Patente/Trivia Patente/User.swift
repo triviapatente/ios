@@ -27,9 +27,16 @@ open class User: CommonPK {
 	open var image: String?
 	open var surname: String?
     open var email: String?
-    open var name: String?
+    private var name: String?
     open var position: Int32?
     open var last_game_won: Bool?
+    
+    var displayName : String? {
+        if let output = self.fullName {
+            return output
+        }
+        return self.username
+    }
     
     var fullName : String? {
         get {
@@ -73,11 +80,13 @@ open class User: CommonPK {
         last_game_won = json[kLastGameWonKey].bool
 
     }
-    public init(username : String?, id : Int32?, avatar : String? = nil, score : Int? = nil) {
+    public init(username : String?, id : Int32?, avatar : String? = nil, name : String? = nil, surname : String? = nil, score : Int? = nil) {
         super.init(id: id)
         self.username = username
         self.image = avatar
         self.score = score
+        self.name = name
+        self.surname = surname
     }
 
     /**
