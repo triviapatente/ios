@@ -26,6 +26,7 @@
 		8B2A2A871DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A2A851DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
+		8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */; };
 		8B42E82C1DC63D7900C36DDA /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82B1DC63D7900C36DDA /* Stats.storyboard */; };
 		8B42E82E1DC63D8100C36DDA /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B42E82D1DC63D8100C36DDA /* Rank.storyboard */; };
 		8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */; };
@@ -237,6 +238,7 @@
 		8B2A2A851DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
+		8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaViewController.swift; sourceTree = "<group>"; };
 		8B42E82B1DC63D7900C36DDA /* Stats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		8B42E82D1DC63D8100C36DDA /* Rank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPNormalViewController.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				8B4551D11E03BF31008285D4 /* TPNormalViewController.swift */,
 				8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */,
 				8B4551D51E043513008285D4 /* TPGameViewController.swift */,
+				8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -2007,6 +2010,7 @@
 				8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */,
 				8B5EE1071DD913BC00745A54 /* SettingsTableViewCell.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
+				8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */,
 				8B1DC63D1E026D5C00F7BEE0 /* UserListMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

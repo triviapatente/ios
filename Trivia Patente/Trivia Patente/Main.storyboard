@@ -90,6 +90,7 @@
                         <segue destination="OSJ-hT-ijS" kind="show" identifier="stats_segue" id="Qv8-G6-Mea"/>
                         <segue destination="Ygw-Xp-Pcv" kind="show" identifier="start_game_segue" id="T6L-da-TBG"/>
                         <segue destination="83K-i8-TFz" kind="show" identifier="chat_segue" id="jBo-cE-f6v"/>
+                        <segue destination="89w-gJ-8kN" kind="show" identifier="alpha_segue" id="GoM-GB-ghT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,6 +137,40 @@
             </objects>
             <point key="canvasLocation" x="1286" y="24"/>
         </scene>
+        <!--Alpha-->
+        <scene sceneID="EsO-qF-RYe">
+            <objects>
+                <viewController storyboardIdentifier="AlphaViewController" title="Alpha" id="89w-gJ-8kN" customClass="AlphaViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4oS-0j-eB2"/>
+                        <viewControllerLayoutGuide type="bottom" id="LGY-YC-XK7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="erf-iF-yGr">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funzionalità non disponibile  nell'alpha 😉" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-B3-xgn">
+                                <rect key="frame" x="26" y="201.5" width="323" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="d3u-6v-Z92"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="nY5-B3-xgn" secondAttribute="trailing" constant="10" id="WEl-vd-Xk1"/>
+                            <constraint firstItem="nY5-B3-xgn" firstAttribute="centerY" secondItem="erf-iF-yGr" secondAttribute="centerY" id="srA-o3-ihn"/>
+                            <constraint firstItem="nY5-B3-xgn" firstAttribute="leading" secondItem="erf-iF-yGr" secondAttribute="leadingMargin" constant="10" id="wmI-hh-ziB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clH-NJ-R7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1772" y="253.2233883058471"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qd4-T5-GQg">
             <objects>
@@ -153,52 +188,15 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="XeD-ax-umb" kind="relationship" relationship="rootViewController" id="mUJ-We-grm"/>
-                        <segue destination="vbh-Xb-T5x" kind="show" identifier="profile_segue" id="eOo-uJ-bw2"/>
-                        <segue destination="4yY-Qi-7gY" kind="show" identifier="credits_segue" id="VMl-V1-Csf"/>
                         <segue destination="OOv-13-APl" kind="show" identifier="shop_segue" id="5II-cs-oTT"/>
                         <segue destination="Tac-14-TFZ" kind="show" identifier="settings_segue" id="oWh-Er-0wF"/>
                         <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" animates="NO" modalPresentationStyle="overCurrentContext" id="8Lg-qo-Ol3"/>
+                        <segue destination="89w-gJ-8kN" kind="show" identifier="alpha_segue" id="87V-2k-7nr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-335.19999999999999" y="-150.67466266866569"/>
-        </scene>
-        <!--Profilo-->
-        <scene sceneID="ALH-jz-Yjg">
-            <objects>
-                <viewController title="Profilo" id="vbh-Xb-T5x" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zHq-Fk-4sE"/>
-                        <viewControllerLayoutGuide type="bottom" id="9II-ib-nDn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WPK-hU-gXY">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Baa-CJ-NGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="604" y="-2400"/>
-        </scene>
-        <!--Chi siamo-->
-        <scene sceneID="rQJ-B9-LgW">
-            <objects>
-                <viewController title="Chi siamo" id="4yY-Qi-7gY" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="toL-rP-N37"/>
-                        <viewControllerLayoutGuide type="bottom" id="hFF-OW-bIg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y1d-Fa-eG8">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yoQ-o7-FGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="604" y="-1699"/>
         </scene>
         <!--Settings-->
         <scene sceneID="aaZ-ZA-CDz">
@@ -538,7 +536,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5II-cs-oTT"/>
+        <segue reference="NhK-dZ-dty"/>
+        <segue reference="GoM-GB-ghT"/>
         <segue reference="B6J-yy-Imj"/>
     </inferredMetricsTieBreakers>
 </document>

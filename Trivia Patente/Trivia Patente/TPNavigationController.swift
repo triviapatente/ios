@@ -21,23 +21,23 @@ class TPNavigationController: UINavigationController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         avatarItem = AvatarButtonItem(user: SessionManager.currentUser, callback: {
-            self.goTo(identifier: "profile_segue")
+            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
         })
         menuItem = MenuButtonItem(callback: { action in
             switch(action) {
-                case .profile: self.goTo(identifier: "profile_segue")
+                case .profile: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
                                break
-                case .settings: self.goTo(identifier: "settings_segue")
+                case .settings: self.goTo(SettingsViewController.self, identifier: "settings_segue")
                                 break
-                case .credits: self.goTo(identifier: "credits_segue")
+                case .credits: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
                                break
                 case .logout: self.topView.fade()
-                              self.goTo(identifier: "logout_segue")
+                              self.goTo(LogoutViewController.self, identifier: "logout_segue")
                               break
             }
         }, sender: self)
         lifesItem = LifesButtonItem(callback: {
-            self.goTo(identifier: "shop_segue")
+            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
         })
         //TODO: edit with correct informations
         lifesItem.numberOfLifes = 5
@@ -50,7 +50,12 @@ class TPNavigationController: UINavigationController {
             self.avatarItem.user = candidate
         }
     }
-    func goTo(identifier : String) {
+    func goTo(_ vcClass : UIViewController.Type, identifier : String) {
+        if let controller = self.topViewController {
+            guard type(of: controller) != vcClass else {
+                return
+            }
+        }
         self.performSegue(withIdentifier: identifier, sender: self)
     }
     
