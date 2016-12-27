@@ -34,13 +34,7 @@ class UserListViewController: TPNormalViewController {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
-    @IBOutlet var visualEffectView : UIVisualEffectView!
-    var connectView : FBConnectInviteViewController! {
-        didSet {
-            connectView.canDismiss = false
-            connectView.delegate = self
-        }
-    }
+    @IBOutlet var connectContainerView : UIView!
     
     var listType = UserListMode.rank
     var listScope = UserListScope.italian
@@ -144,11 +138,10 @@ class UserListViewController: TPNormalViewController {
                      User(username: "giocano!", id: -11, score: 189)]
         self.friendsResponse?.users = users
         self.reloadTable()
-
-        self.visualEffectView.isHidden = false
+        self.connectContainerView.isHidden = false
     }
     func hideFacebookView() {
-        self.visualEffectView.isHidden = true
+        self.connectContainerView.isHidden = true
         self.friendsResponse?.users = []
         self.reloadTable()
     }
@@ -265,8 +258,8 @@ class UserListViewController: TPNormalViewController {
             let destination = segue.destination as! WaitOpponentViewController
             destination.userToInvite = chosenUser
             destination.fromInvite = true
-        } else if segue.identifier == "fb_connect_invite" {
-            self.connectView = segue.destination as! FBConnectInviteViewController
+        } else if segue.identifier == "facebook_modal" {
+            (segue.destination as! FBConnectInviteViewController).delegate = self
         }
     }
 
@@ -323,5 +316,9 @@ extension UserListViewController : FBConnectInviteDelegate {
     func connected() {
         self.hideFacebookView()
         self.loadData()
+    }
+    func dismissed() {
+        self.control.selectedSegmentIndex = 0
+        self.changeRankType(sender: self.control)
     }
 }

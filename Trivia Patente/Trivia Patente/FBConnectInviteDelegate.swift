@@ -10,4 +10,5 @@ import UIKit
 
 protocol FBConnectInviteDelegate {
     func connected()
+    func dismissed()
 }

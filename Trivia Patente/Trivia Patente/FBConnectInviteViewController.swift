@@ -11,6 +11,14 @@ import UIKit
 class FBConnectInviteViewController: UIViewController {
 
     @IBOutlet var exitButton : UIButton!
+    @IBOutlet var containerView : UIView!
+    
+    var isHidden : Bool! {
+        didSet {
+            self.view.isHidden = isHidden
+        }
+    }
+
     var delegate : FBConnectInviteDelegate!
     @IBAction func connect() {
         FBManager.link(sender: self) { (response) in
@@ -20,13 +28,13 @@ class FBConnectInviteViewController: UIViewController {
         }
     }
     @IBAction func dismiss() {
-        self.dismiss(animated: true, completion: nil)
+        self.delegate.dismissed()
     }
     var canDismiss : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.mediumRounded()
+        self.containerView.mediumRounded()
         self.exitButton.isHidden = !canDismiss
         // Do any additional setup after loading the view.
     }
