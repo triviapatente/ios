@@ -25,7 +25,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     }
     var game : Game! {
         didSet {
-            changeState(ended: game.ended, my_turn: game.my_turn)
+            changeState(for: game)
             usernameView.text = game.opponent.username
             //TODO: load async with cache
             avatarView.load(user: game.opponent)
@@ -39,56 +39,58 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
         buttonView.layer.borderWidth = 1
     }
     
-    func changeState(ended : Bool, my_turn : Bool) {
-        let color = buttonColor(ended: ended, my_turn: my_turn)
-        let title = buttonText(ended: ended, my_turn: my_turn)
+    func changeState(for game : Game) {
+        let color = buttonColor(for: game)
+        let title = buttonText(for: game)
         buttonView.layer.borderColor = color.cgColor
         buttonView.setTitleColor(color, for: .normal)
         buttonView.setTitle(title, for: .normal)
-        hintView.text = hint(ended: ended, my_turn: my_turn)
-        controlLights.image = lightsImage(ended: ended, my_turn: my_turn)
+        hintView.text = hint(for : game)
+        controlLights.image = lightsImage(for: game)
     }
-    func buttonText(ended : Bool, my_turn : Bool) -> String {
-        if ended {
+    func buttonText(for game : Game) -> String {
+        if game.ended {
             return "Riepilogo"
-        } else if my_turn {
+        } else if !game.started {
+            return "Chat"
+        } else if game.my_turn {
             return "Gioca ora"
         } else {
             return "Dettagli"
         }
     }
-    func hint(ended : Bool, my_turn : Bool) -> String {
-        if ended {
+    func hint(for game : Game) -> String {
+        if game.ended {
             return "Partita terminata."
-        } else if my_turn {
+        } else if !game.started {
+            return "Invito inviato!"
+        } else if game.my_turn {
             return "E' il tuo turno!"
         } else {
             return "E' il suo turno.."
         }
     }
-    func lightsImage(ended: Bool, my_turn : Bool) -> UIImage {
-        if ended {
+    func lightsImage(for game : Game) -> UIImage {
+        if game.ended {
             return UIImage(named: "traffic_lights_red")!
-        } else if my_turn {
+        } else if !game.started {
+            return UIImage(named: "traffic_lights_no_lights")!
+        } else if game.my_turn {
             return UIImage(named: "traffic_lights_green")!
         } else {
             return UIImage(named: "traffic_lights_yellow")!
         }
     }
-    func buttonColor(ended : Bool, my_turn : Bool) -> UIColor {
-        if ended {
+    func buttonColor(for game : Game) -> UIColor {
+        if game.ended {
             return Colors.red_default
-        } else if my_turn {
+        } else if !game.started {
+            return Colors.gray_default
+        } else if game.my_turn {
             return Colors.green_default
         } else {
             return Colors.yellow_default
         }
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

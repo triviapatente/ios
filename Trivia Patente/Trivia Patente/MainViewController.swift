@@ -25,7 +25,8 @@ class MainViewController: TPNormalViewController {
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = { item in
                 self.selectedGame = item as! Game
-                self.performSegue(withIdentifier: "start_game_segue", sender: self)
+                let identifier = self.selectedGame.started ? "start_game_segue" : "chat_segue"
+                self.performSegue(withIdentifier: identifier, sender: self)
             }
         }
     }
@@ -166,9 +167,14 @@ class MainViewController: TPNormalViewController {
                 case "recent_view":
                     self.recentGamesView = destination as! TPExpandableView
                     break
+                case "chat_segue":
+                    let destination = destination as! ChatViewController
+                    destination.game = selectedGame
+                    break
                 case "start_game_segue":
                     let destination = destination as! WaitOpponentViewController
                     destination.game = selectedGame
+                    break
                 default: break
                 
             }

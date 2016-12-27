@@ -89,6 +89,7 @@
                         <segue destination="uKz-I7-BOu" kind="show" identifier="rank_segue" id="WFr-mm-Iwm"/>
                         <segue destination="OSJ-hT-ijS" kind="show" identifier="stats_segue" id="Qv8-G6-Mea"/>
                         <segue destination="Ygw-Xp-Pcv" kind="show" identifier="start_game_segue" id="T6L-da-TBG"/>
+                        <segue destination="83K-i8-TFz" kind="show" identifier="chat_segue" id="jBo-cE-f6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,6 +127,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvu-0M-4Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1282" y="-50"/>
+        </scene>
+        <!--ChatViewController-->
+        <scene sceneID="gFU-Cx-q46">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="ChatViewController" id="83K-i8-TFz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqo-9A-y0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="24"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qd4-T5-GQg">

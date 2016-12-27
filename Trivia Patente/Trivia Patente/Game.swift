@@ -14,6 +14,7 @@ open class Game: CommonPK {
 	internal let kGameCreatorIdKey: String = "creator_id"
 	internal let kGameWinnerIdKey: String = "winner_id"
 	internal let kGameEndedKey: String = "ended"
+    internal let kGameStartedKey: String = "started"
     internal let kGameMyTurnKey: String = "my_turn"
     internal let kGameOpponentNameKey: String = "opponent_username"
     internal let kGameOpponentIdKey: String = "opponent_id"
@@ -25,7 +26,8 @@ open class Game: CommonPK {
 	open var creatorId: Int32?
 	open var winnerId: Int32?
 	open var ended: Bool = false
-    open var my_turn : Bool!
+    open var started: Bool = false
+    open var my_turn : Bool = false
     open var opponent : User!
 
     func won() -> Bool {
@@ -61,6 +63,7 @@ open class Game: CommonPK {
 		winnerId = json[kGameWinnerIdKey].int32
         ended = json[kGameEndedKey].boolValue
         my_turn = json[kGameMyTurnKey].boolValue
+        started = json[kGameStartedKey].boolValue
         opponent = User(username: json[kGameOpponentNameKey].string, id: json[kGameOpponentIdKey].int32, avatar: json[kGameOpponentAvatarKey].string)
     }
 
@@ -86,6 +89,7 @@ open class Game: CommonPK {
         dictionary.updateValue(opponent.username as AnyObject, forKey: kGameOpponentNameKey)
         dictionary.updateValue(opponent.id as AnyObject, forKey: kGameOpponentIdKey)
         dictionary.updateValue(opponent.image as AnyObject, forKey: kGameOpponentAvatarKey)
+        dictionary.updateValue(started as AnyObject, forKey: kGameStartedKey)
         
         return dictionary
     }
@@ -96,6 +100,7 @@ open class Game: CommonPK {
 		self.winnerId = aDecoder.decodeObject(forKey: kGameWinnerIdKey) as? Int32
         self.creatorId = aDecoder.decodeObject(forKey: kGameCreatorIdKey) as? Int32
 		self.ended = aDecoder.decodeBool(forKey: kGameEndedKey)
+        self.started = aDecoder.decodeBool(forKey: kGameStartedKey)
         self.my_turn = aDecoder.decodeBool(forKey: kGameMyTurnKey)
         self.opponent = aDecoder.decodeObject(forKey: kGameOpponentKey) as? User
 
@@ -108,7 +113,7 @@ open class Game: CommonPK {
 		aCoder.encode(ended, forKey: kGameEndedKey)
         aCoder.encode(my_turn, forKey: kGameMyTurnKey)
         aCoder.encode(opponent, forKey: kGameOpponentKey)
-
+        aCoder.encode(started, forKey: kGameStartedKey)
     }
 
 }

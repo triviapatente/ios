@@ -23,6 +23,7 @@ class Colors {
     static let yellow_default = UIColor(red: 210/255, green: 199/255, blue: 68/255, alpha: 1)
     static let red_default = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
     static let orange_default = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
+    static let gray_default = UIColor(red: 91/255, green: 91/255, blue: 91/255, alpha: 1)
     
     static let stats_perfect = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let stats_good = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)
