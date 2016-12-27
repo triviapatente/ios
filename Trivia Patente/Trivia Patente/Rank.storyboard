@@ -58,8 +58,11 @@
                                     <outletCollection property="gestureRecognizers" destination="eRn-Uy-phy" appends="YES" id="Ajs-c7-EOb"/>
                                 </connections>
                             </tableView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6D-27-zp9">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KK7-02-YNG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6D-27-zp9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <segue destination="zGP-gU-Uoy" kind="embed" identifier="facebook_modal" id="rF4-58-Fmr"/>
                                 </connections>
@@ -67,20 +70,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qML-cU-Rx7" firstAttribute="top" secondItem="KK7-02-YNG" secondAttribute="bottom" id="04S-gb-lgR"/>
                             <constraint firstAttribute="trailing" secondItem="gP6-Oj-cdX" secondAttribute="trailing" constant="16" id="2Kw-Vh-NRf"/>
                             <constraint firstItem="qML-cU-Rx7" firstAttribute="top" secondItem="E6D-27-zp9" secondAttribute="bottom" id="4JL-Sj-nfL"/>
                             <constraint firstItem="qML-cU-Rx7" firstAttribute="top" secondItem="kT1-29-7Ir" secondAttribute="bottom" id="4YE-BM-lfa"/>
                             <constraint firstItem="kT1-29-7Ir" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="5ds-l5-UAt"/>
                             <constraint firstAttribute="trailing" secondItem="kT1-29-7Ir" secondAttribute="trailing" id="DLE-tO-Pwq"/>
+                            <constraint firstItem="KK7-02-YNG" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="GiQ-mB-3v5"/>
                             <constraint firstItem="E6D-27-zp9" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="GuC-DS-vrC"/>
                             <constraint firstItem="gP6-Oj-cdX" firstAttribute="top" secondItem="KwU-kO-zzv" secondAttribute="bottom" constant="8" id="IBr-Vz-OuB"/>
+                            <constraint firstItem="E6D-27-zp9" firstAttribute="top" secondItem="KwU-kO-zzv" secondAttribute="bottom" id="KyT-Rw-Seg"/>
+                            <constraint firstItem="KK7-02-YNG" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="TMZ-tq-8E8"/>
                             <constraint firstItem="kT1-29-7Ir" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" id="ZQt-qD-nbV"/>
                             <constraint firstItem="gP6-Oj-cdX" firstAttribute="leading" secondItem="Vq6-A7-b8A" secondAttribute="leading" constant="16" id="ciS-Fa-o0j"/>
                             <constraint firstAttribute="trailing" secondItem="E6D-27-zp9" secondAttribute="trailing" id="jJN-VZ-GFo"/>
-                            <constraint firstItem="E6D-27-zp9" firstAttribute="top" secondItem="gP6-Oj-cdX" secondAttribute="bottom" constant="8" id="oqM-Dg-Smp"/>
+                            <constraint firstAttribute="trailing" secondItem="KK7-02-YNG" secondAttribute="trailing" id="vTQ-RQ-wSW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurImageView" destination="KK7-02-YNG" id="iCz-qu-UZK"/>
                         <outlet property="connectContainerView" destination="E6D-27-zp9" id="1fU-rj-eKd"/>
                         <outlet property="control" destination="gP6-Oj-cdX" id="Ymp-1A-ChN"/>
                         <outlet property="searchBar" destination="X3e-Db-ljh" id="FTp-IM-YAH"/>
@@ -114,11 +122,11 @@
                         <viewControllerLayoutGuide type="bottom" id="ear-tp-bc2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bp3-O1-kZx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Jz-YR-z5e">
-                                <rect key="frame" x="38" y="126.5" width="300" height="350"/>
+                                <rect key="frame" x="38" y="148.5" width="300" height="350"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connettiti a Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGA-FX-mrX">
                                         <rect key="frame" x="0.0" y="16" width="300" height="21"/>

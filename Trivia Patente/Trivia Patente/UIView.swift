@@ -68,6 +68,34 @@ extension UIView {
         rotateAnimation.repeatCount = Float.infinity
         gradientLayer.add(rotateAnimation, forKey: nil)
     }
+    
+    func snapshotView(scale: CGFloat = 0.0, isOpaque: Bool = true) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, scale)
+        let context = UIGraphicsGetCurrentContext()!
+        context.interpolationQuality = .none
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+        
+    func blur(blurRadius: CGFloat) -> UIImage? {
+        guard let blur = CIFilter(name: "CIGaussianBlur") else { return nil }
+        
+        let image = self.snapshotView(scale: 1.0, isOpaque: true)
+        blur.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+        blur.setValue(blurRadius, forKey: kCIInputRadiusKey)
+        
+        let ciContext  = CIContext(options: nil)
+        let result = blur.value(forKey: kCIOutputImageKey) as! CIImage!
+        let boundingRect = CGRect(x: 0,
+                                  y: 0,
+                                  width: frame.width,
+                                  height: frame.height)
+            
+        let cgImage = ciContext.createCGImage(result!, from: boundingRect)!
+        return UIImage(cgImage: cgImage)
+    }
     func shadowSelect() {
         self.layer.shadowOpacity = 0
         UIView.animate(withDuration: 0.2) {

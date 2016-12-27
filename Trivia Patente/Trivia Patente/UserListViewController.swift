@@ -10,6 +10,27 @@ import UIKit
 import MBProgressHUD
 
 class UserListViewController: TPNormalViewController {
+    @IBOutlet var tableView : UITableView!
+    @IBOutlet var control : UISegmentedControl!
+    @IBOutlet var searchBar : UISearchBar!
+    @IBOutlet var connectContainerView : UIView!
+    @IBOutlet var blurImageView : UIImageView!
+    
+    var blurImage : UIImage?
+    
+    func createBlurImage() {
+        if let image = blurImage {
+            self.blurImageView.image = image
+        } else {
+            DispatchQueue.main.async {
+                self.blurImage = self.tableView.blur(blurRadius: 4)
+                self.blurImageView.image = self.blurImage
+            }
+        }
+        
+    }
+    
+    
     var isLinkedToFB : Bool {
         return FBManager.getInfos().hasToken == true
     }
@@ -31,10 +52,7 @@ class UserListViewController: TPNormalViewController {
             self.loadData()
         }
     }
-    @IBOutlet var tableView : UITableView!
-    @IBOutlet var control : UISegmentedControl!
-    @IBOutlet var searchBar : UISearchBar!
-    @IBOutlet var connectContainerView : UIView!
+    
     
     var listType = UserListMode.rank
     var listScope = UserListScope.italian
@@ -138,10 +156,13 @@ class UserListViewController: TPNormalViewController {
                      User(username: "giocano!", id: -11, score: 189)]
         self.friendsResponse?.users = users
         self.reloadTable()
+        self.blurImageView.isHidden = false
         self.connectContainerView.isHidden = false
+        self.createBlurImage()
     }
     func hideFacebookView() {
         self.connectContainerView.isHidden = true
+        self.blurImageView.isHidden = true
         self.friendsResponse?.users = []
         self.reloadTable()
     }
