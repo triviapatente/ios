@@ -17,8 +17,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var loginButton : TPButton!
     @IBOutlet var facebookButton : TPButton!
     @IBOutlet var errorViewContainer : UIView!
+    @IBOutlet var forgotPasswordButton : UIButton!
     
     let httpAuth = HTTPAuth()
+    
+    @IBAction func forgotPassword() {
+        
+    }
     
     @IBAction func resignResponder() {
         _ = self.nameField.resignFirstResponder()
@@ -43,6 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.load()
         httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.loginButton.stopLoading()
+            self.forgotPasswordButton.isHidden = response.success
             self.handleResponse(response: response)
         }
     }

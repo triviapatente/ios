@@ -224,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
-                                <rect key="frame" x="16" y="151.5" width="343" height="365"/>
+                                <rect key="frame" x="16" y="126" width="343" height="416"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
                                         <rect key="frame" x="40" y="0.0" width="263" height="88"/>
@@ -273,8 +273,18 @@
                                             <action selector="normalRegistration" destination="fLU-4u-cEV" eventType="touchUpInside" id="zhn-FI-cV7"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
+                                        <rect key="frame" x="59" y="276" width="225" height="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Hai dimenticato la password?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forgotPassword" destination="ptR-KN-xUF" eventType="touchUpInside" id="t2c-49-2eY"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— oppure ——" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT9-dZ-YmM">
-                                        <rect key="frame" x="106.5" y="276" width="130" height="24"/>
+                                        <rect key="frame" x="106.5" y="327" width="130" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="EC6-Ye-0R9"/>
                                         </constraints>
@@ -283,7 +293,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpj-OV-08t" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="146.5" y="315" width="50" height="50"/>
+                                        <rect key="frame" x="146.5" y="366" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4N7-cs-ZJa"/>
                                             <constraint firstAttribute="width" constant="50" id="dmL-zh-t0X"/>
@@ -320,6 +330,7 @@
                     <connections>
                         <outlet property="errorViewContainer" destination="14Y-Gw-Zgt" id="zmj-wg-uxk"/>
                         <outlet property="facebookButton" destination="Cpj-OV-08t" id="oZx-Mv-fiD"/>
+                        <outlet property="forgotPasswordButton" destination="kDz-cq-bBM" id="6Az-Hd-d9c"/>
                         <outlet property="loginButton" destination="JDy-jQ-2nk" id="lrH-HV-H6j"/>
                     </connections>
                 </viewController>
