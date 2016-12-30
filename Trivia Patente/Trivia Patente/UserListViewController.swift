@@ -30,6 +30,10 @@ class UserListViewController: TPNormalViewController {
         
     }
     
+    override func needsMenu() -> Bool {
+        return false
+    }
+    
     
     var isLinkedToFB : Bool {
         return FBManager.getInfos().hasToken == true

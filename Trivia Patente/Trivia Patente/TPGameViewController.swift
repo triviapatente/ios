@@ -13,5 +13,8 @@ class TPGameViewController: UIViewController {
     var mainOnDismiss : Bool {
         return true
     }
+    override func needsMenu() -> Bool {
+        return false
+    }
 
 }

@@ -17,6 +17,10 @@ class SearchGameMenuViewController: TPNormalViewController {
     
     var destinationGame : Game?
     
+    override func needsMenu() -> Bool {
+        return false
+    }
+    
     var recentInvitesView : TPExpandableView! {
         didSet {
             recentInvitesView.title = "Inviti a giocare"

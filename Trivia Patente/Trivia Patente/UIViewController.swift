@@ -8,7 +8,16 @@
 
 import UIKit
 
-extension UIViewController {
+
+protocol TPViewController {
+    func needsMenu() -> Bool
+}
+
+extension UIViewController : TPViewController {
+    internal func needsMenu() -> Bool {
+        return true
+    }
+
     class func root() -> UIViewController {
         if let _ = SessionManager.getToken() {
             return mainController()
@@ -16,7 +25,6 @@ extension UIViewController {
             return firstAccessController()
         }
     }
-    
     class func firstAccessController() -> FirstAccessPageViewController {
         return UIStoryboard.getFirstController(storyboard: "FirstAccess") as! FirstAccessPageViewController
     }

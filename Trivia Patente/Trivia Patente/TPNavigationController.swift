@@ -27,7 +27,7 @@ class TPNavigationController: UINavigationController {
             switch(action) {
                 case .profile: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
                                break
-                case .settings: self.goTo(SettingsViewController.self, identifier: "settings_segue")
+                case .settings: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
                                 break
                 case .credits: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
                                break
@@ -64,12 +64,17 @@ class TPNavigationController: UINavigationController {
         self.configureBar()
     }
     func configureBar() {
-        if let navigationItem = self.topViewController?.navigationItem {
+        if let topController = self.topViewController {
+            let navigationItem = topController.navigationItem
             let negativeSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             negativeSpacer.width = -20
-            navigationItem.rightBarButtonItems = [negativeSpacer, menuItem, avatarItem]
             if self.viewControllers.count == 1 {
                 navigationItem.leftBarButtonItems = [negativeSpacer, lifesItem]
+            }
+            if topController.needsMenu() {
+                navigationItem.rightBarButtonItems = [negativeSpacer, menuItem, avatarItem]
+            } else {
+                navigationItem.rightBarButtonItems = [avatarItem]
             }
         }
         
