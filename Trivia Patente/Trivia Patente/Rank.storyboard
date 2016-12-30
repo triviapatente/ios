@@ -179,6 +179,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUp-d3-H28">
                                         <rect key="frame" x="0.0" y="283" width="300" height="67"/>
+                                        <color key="backgroundColor" red="0.0" green="0.65286409850000005" blue="0.96456819770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="67" id="ebX-r5-kMF"/>
                                         </constraints>

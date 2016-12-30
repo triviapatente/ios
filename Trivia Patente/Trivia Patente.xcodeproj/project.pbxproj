@@ -38,6 +38,7 @@
 		8B4551DD1E068CD5008285D4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */; };
 		8B4551DF1E06908F008285D4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DE1E06908F008285D4 /* Bolts.framework */; };
 		8B4814741E16FE9300AD0834 /* TPPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4814731E16FE9300AD0834 /* TPPlayButton.swift */; };
+		8B4814791E170A3400AD0834 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4814781E170A3400AD0834 /* UIButton.swift */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -253,6 +254,7 @@
 		8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8B4551DE1E06908F008285D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8B4814731E16FE9300AD0834 /* TPPlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPPlayButton.swift; sourceTree = "<group>"; };
+		8B4814781E170A3400AD0834 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -1377,6 +1379,7 @@
 				8BDB000A1DFC543F0088E8A2 /* UITextView.swift */,
 				8BBBF9D81E0C26A80061C25B /* CALayer.swift */,
 				8B3E3A8F1E13015D0062AF32 /* UITableView.swift */,
+				8B4814781E170A3400AD0834 /* UIButton.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1988,6 +1991,7 @@
 				8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
+				8B4814791E170A3400AD0834 /* UIButton.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */,
 				8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */,
