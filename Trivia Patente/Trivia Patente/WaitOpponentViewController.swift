@@ -18,7 +18,13 @@ class WaitOpponentViewController: TPGameViewController {
             self.gameActions.game = self.game
         }
     }
-    var game : Game!
+    var game : Game! {
+        didSet {
+            if self.gameActions != nil {
+                self.gameActions.game = self.game
+            }
+        }
+    }
     var fromInvite : Bool = false
     var userToInvite : User?
     var response : TPInitRoundResponse! {
@@ -182,8 +188,8 @@ class WaitOpponentViewController: TPGameViewController {
     func createInvite() {
         let handler = { (response : TPNewGameResponse) in
             if response.success == true {
+                response.game.opponent = response.opponent
                 self.game = response.game
-                self.game.opponent = response.opponent
                 self.configureView()
                 //TODO: change with processGameState for invite (in round_init response)
                 self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
