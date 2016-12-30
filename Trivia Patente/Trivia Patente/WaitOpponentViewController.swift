@@ -28,7 +28,7 @@ class WaitOpponentViewController: TPGameViewController {
             } else if let cat = self.response.category {
                 headerView.category = cat
             } else {
-                headerView.categoryNameView.text = self.waitTitle()
+                self.headerView.set(title: self.waitTitle())
             }
         }
     }
@@ -76,7 +76,7 @@ class WaitOpponentViewController: TPGameViewController {
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.opponentImageView.load(user: game.opponent)
         self.opponentImageView.circleRounded()
-        self.headerView.categoryNameView.text = self.waitTitle()
+        self.headerView.set(title: self.waitTitle())
         if fromInvite == true {
             self.headerView.roundLabel.text = "Invito"
         } else {
@@ -95,7 +95,7 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func waitMessage(for state: RoundWaiting, opponent_online : Bool) -> String {
-        guard opponent_online else {
+        guard opponent_online || state == .invite else {
             return "Il tuo avversario è offline. Attendi che si ricolleghi per giocare!"
         }
         switch(state) {
@@ -105,7 +105,7 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func color(for state : RoundWaiting, opponent_online : Bool) -> UIColor {
-        guard opponent_online else {
+        guard opponent_online || state == .invite else {
             return .white
         }
         switch state {
@@ -129,6 +129,9 @@ class WaitOpponentViewController: TPGameViewController {
             guard let state = response.waiting else {
                 return
             }
+            if state == .invite {
+                response.waiting_for = game.opponent
+            }
             guard let user = response.waiting_for else {
                 return
             }
@@ -144,7 +147,7 @@ class WaitOpponentViewController: TPGameViewController {
             let color = self.color(for: state, opponent_online: opponent_online)
             self.opponentImageView.rotatingBorder(color: color)
             self.waitLabel.text = self.waitMessage(for: state, opponent_online: opponent_online)
-            self.headerView.categoryNameView.text = self.waitTitle(for: state)
+            self.headerView.set(title: self.waitTitle(for: state))
         }
     }
     func join_room() {
