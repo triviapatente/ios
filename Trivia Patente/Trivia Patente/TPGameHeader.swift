@@ -12,7 +12,7 @@ class TPGameHeader: UIViewController {
 
     @IBOutlet var roundLabel : UILabel!
     @IBOutlet var categoryImageView : UIImageView!
-    @IBOutlet var categoryNameView : UILabel!
+    @IBOutlet private var categoryNameView : UILabel!
     
     var round : Round! {
         didSet {
