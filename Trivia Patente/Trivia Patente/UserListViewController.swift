@@ -226,7 +226,7 @@ class UserListViewController: TPNormalViewController {
         return footer
     }
     func goToInvitePage() {
-        print("go to invite page")
+        self.performSegue(withIdentifier: "alpha_segue", sender: self)
     }
     
     

@@ -94,6 +94,7 @@
                         <outlet property="searchBar" destination="X3e-Db-ljh" id="FTp-IM-YAH"/>
                         <outlet property="tableView" destination="kT1-29-7Ir" id="f5y-Yl-Ngr"/>
                         <segue destination="pxt-Ae-UbU" kind="show" identifier="wait_opponent_segue" id="Soc-wK-lBG"/>
+                        <segue destination="fQs-ad-cHL" kind="show" identifier="alpha_segue" id="sEk-KN-b4l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULD-Dt-rtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,6 +105,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5.5999999999999996" y="12.143928035982009"/>
+        </scene>
+        <!--AlphaViewController-->
+        <scene sceneID="myX-jv-y9Q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="AlphaViewController" id="fQs-ad-cHL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OMs-O4-Waf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="-480"/>
         </scene>
         <!--WaitOpponent-->
         <scene sceneID="NCo-li-RcU">
