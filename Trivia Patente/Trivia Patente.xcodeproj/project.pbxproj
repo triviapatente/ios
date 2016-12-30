@@ -37,6 +37,7 @@
 		8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4551D91E068BA8008285D4 /* FBManager.swift */; };
 		8B4551DD1E068CD5008285D4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */; };
 		8B4551DF1E06908F008285D4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4551DE1E06908F008285D4 /* Bolts.framework */; };
+		8B4814741E16FE9300AD0834 /* TPPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4814731E16FE9300AD0834 /* TPPlayButton.swift */; };
 		8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */; };
 		8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132EF1DBB5F1500143497 /* DataRequest.swift */; };
 		8B5132F21DBB662700143497 /* TPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5132F11DBB662700143497 /* TPResponse.swift */; };
@@ -251,6 +252,7 @@
 		8B4551DB1E068C2E008285D4 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		8B4551DC1E068CD5008285D4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		8B4551DE1E06908F008285D4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		8B4814731E16FE9300AD0834 /* TPPlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPPlayButton.swift; sourceTree = "<group>"; };
 		8B5132EA1DBB5DBE00143497 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		8B5132EF1DBB5F1500143497 /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		8B5132F11DBB662700143497 /* TPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPResponse.swift; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 				8B4551D31E043312008285D4 /* TPNormalTableViewController.swift */,
 				8B4551D51E043513008285D4 /* TPGameViewController.swift */,
 				8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */,
+				8B4814731E16FE9300AD0834 /* TPPlayButton.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -1918,6 +1921,7 @@
 				8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */,
 				8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */,
 				8B8EEA1C1DFB2687003608AA /* ChatViewController.swift in Sources */,
+				8B4814741E16FE9300AD0834 /* TPPlayButton.swift in Sources */,
 				8B5EE10B1DD9140700745A54 /* SwitchableSettingsTableViewCell.swift in Sources */,
 				8BE2789F1DF4AD6000071DF2 /* GameEndedTableViewCell.swift in Sources */,
 				8BDCEA281DD121A00099C3E2 /* UserListScope.swift in Sources */,

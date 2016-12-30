@@ -13,7 +13,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     @IBOutlet var avatarView : UIImageView!
     @IBOutlet var usernameView : UILabel!
     @IBOutlet var hintView : UILabel!
-    @IBOutlet var buttonView : UIButton!
+    @IBOutlet var buttonView : TPPlayButton!
     
     override var item : Base! {
         didSet {
@@ -34,30 +34,13 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        buttonView.mediumRounded()
         avatarView.circleRounded()
-        buttonView.layer.borderWidth = 1
     }
     
     func changeState(for game : Game) {
-        let color = buttonColor(for: game)
-        let title = buttonText(for: game)
-        buttonView.layer.borderColor = color.cgColor
-        buttonView.setTitleColor(color, for: .normal)
-        buttonView.setTitle(title, for: .normal)
+        buttonView.set(for: game)
         hintView.text = hint(for : game)
         controlLights.image = lightsImage(for: game)
-    }
-    func buttonText(for game : Game) -> String {
-        if game.ended {
-            return "Riepilogo"
-        } else if !game.started {
-            return "Chat"
-        } else if game.my_turn {
-            return "Gioca ora"
-        } else {
-            return "Dettagli"
-        }
     }
     func hint(for game : Game) -> String {
         if game.ended {
@@ -79,17 +62,6 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
             return UIImage(named: "traffic_lights_green")!
         } else {
             return UIImage(named: "traffic_lights_yellow")!
-        }
-    }
-    func buttonColor(for game : Game) -> UIColor {
-        if game.ended {
-            return Colors.red_default
-        } else if !game.started {
-            return Colors.gray_default
-        } else if game.my_turn {
-            return Colors.green_default
-        } else {
-            return Colors.yellow_default
         }
     }
     

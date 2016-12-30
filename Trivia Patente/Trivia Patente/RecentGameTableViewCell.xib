@@ -34,7 +34,7 @@
                             <constraint firstAttribute="height" constant="48" id="irG-yc-0jb"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rws-6l-UEb">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rws-6l-UEb" customClass="TPPlayButton" customModule="Trivia_Patente" customModuleProvider="target">
                         <rect key="frame" x="223" y="30.5" width="126" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="OZi-9a-14T"/>

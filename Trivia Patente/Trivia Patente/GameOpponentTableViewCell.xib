@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="361" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="94j-VU-Wrj" id="SkC-DP-Ruu">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="69.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Y3-gb-f9c">
@@ -49,7 +49,7 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-dm-Jd6">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neZ-dm-Jd6" customClass="TPPlayButton" customModule="Trivia_Patente" customModuleProvider="target">
                         <rect key="frame" x="236" y="22.5" width="100" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="r9f-gn-kV7"/>

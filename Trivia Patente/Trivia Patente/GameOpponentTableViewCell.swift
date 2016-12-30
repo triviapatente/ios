@@ -14,7 +14,7 @@ class GameOpponentTableViewCell: UITableViewCell {
     @IBOutlet var nameView : UILabel!
     @IBOutlet var detailView : UILabel!
 
-    @IBOutlet var playButton : UIButton!
+    @IBOutlet var playButton : TPPlayButton!
     
     var handler = HTTPGame()
     var userChosenCallback : ((User) -> Void)!
@@ -27,39 +27,13 @@ class GameOpponentTableViewCell: UITableViewCell {
             self.avatarView.load(user: user)
             self.nameView.text = user.displayName
             self.detailView.text = "\(user.score!)"
-            self.configureButtonAppearance()
+            self.playButton.set(theUser: user)
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.avatarView.circleRounded()
-        self.playButton.mediumRounded()
         // Initialization code
-    }
-    var buttonColor : UIColor {
-        if user.last_game_won == false {
-            return Colors.red_default
-        }
-        return Colors.green_default
-    }
-    var buttonTitle : String {
-        if user.last_game_won == false {
-            return "Rivincita"
-        }
-        return "Gioca ora"
-    }
-    
-    func configureButtonAppearance() {
-        self.playButton.layer.borderWidth = 1
-        self.playButton.layer.borderColor = buttonColor.cgColor
-        self.playButton.setTitle(buttonTitle, for: .normal)
-        self.playButton.setTitleColor(buttonColor, for: .normal)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
