@@ -37,9 +37,7 @@ extension UIView {
         circleLayer.strokeEnd = 1.0
         return circleLayer
     }
-    func getBorderGradientLayer(color : UIColor, width : CGFloat) -> CAGradientLayer {
-        let offset = CGFloat(0.4)
-        let clearerColor = color == .white ? color.alpha(offset: -offset) : color.darker(offset: -offset)
+    func getBorderGradientLayer(width : CGFloat) -> CAGradientLayer {
         let center = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
         let circlePath = UIBezierPath(arcCenter: center, radius: (frame.size.width - width) / 2.0, startAngle: 0.0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
         
@@ -48,7 +46,6 @@ extension UIView {
         frontLayer.lineWidth = width;
         
         let layer = CAGradientLayer()
-        layer.colors = [color.cgColor, clearerColor.cgColor]
         layer.frame = CGRect(origin: .zero, size: self.frame.size)
         layer.locations = [0.01, 0.8]
         layer.mask = frontLayer
@@ -57,16 +54,23 @@ extension UIView {
     func rotatingBorder(color : UIColor, width : CGFloat = 3) {
         self.layer.removeAllAnimations()
         self.layer.sublayers?.removeAll()
-        let gradientLayer = self.getBorderGradientLayer(color: color, width: width)
+        let gradientLayer = self.getBorderGradientLayer(width: width)
         // Add the circleLayer to the view's layer's sublayers
         layer.addSublayer(gradientLayer)
-        
+        self.set(rotatingBorderColor: color)
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
         rotateAnimation.duration = 1
         rotateAnimation.repeatCount = Float.infinity
         gradientLayer.add(rotateAnimation, forKey: nil)
+    }
+    func set(rotatingBorderColor color : UIColor) {
+        if let layer = self.layer.sublayers?.first(where: {$0 is CAGradientLayer}) as? CAGradientLayer {
+            let offset = CGFloat(0.4)
+            let clearerColor = color == .white ? color.alpha(offset: -offset) : color.darker(offset: -offset)
+            layer.colors = [color.cgColor, clearerColor.cgColor]
+        }
     }
     
     func snapshotView(scale: CGFloat = 0.0, isOpaque: Bool = true) -> UIImage {

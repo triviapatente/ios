@@ -82,6 +82,7 @@ class WaitOpponentViewController: TPGameViewController {
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.opponentImageView.load(user: game.opponent)
         self.opponentImageView.circleRounded()
+        self.opponentImageView.rotatingBorder(color: .white)
         self.headerView.set(title: self.waitTitle())
         if fromInvite == true {
             self.headerView.roundLabel.text = "Invito"
@@ -151,13 +152,12 @@ class WaitOpponentViewController: TPGameViewController {
             }
         } else {
             let color = self.color(for: state, opponent_online: opponent_online)
-            self.opponentImageView.rotatingBorder(color: color)
+            self.opponentImageView.set(rotatingBorderColor: color)
             self.waitLabel.text = self.waitMessage(for: state, opponent_online: opponent_online)
             self.headerView.set(title: self.waitTitle(for: state))
         }
     }
     func join_room() {
-        self.opponentImageView.rotatingBorder(color: .white)
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.init_round()
