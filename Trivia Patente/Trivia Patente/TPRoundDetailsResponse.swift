@@ -14,6 +14,7 @@ class TPRoundDetailsResponse: TPRoundResponse {
     var users : [User] = []
     var partecipations : [Partecipation] = []
     var game : Game!
+    var scoreIncrement : Int!
     
     override func load(json: JSON) {
         super.load(json: json)
@@ -32,6 +33,7 @@ class TPRoundDetailsResponse: TPRoundResponse {
                 partecipations.append(Partecipation(json: item))
             }
         }
+        self.scoreIncrement = json["score_increment"].int
         self.game = Game(json: json["game"])
     }
 }

@@ -25,6 +25,7 @@ class RoundDetailsViewController: TPGameViewController {
     var headerView : TPGameHeader!
     var scoreView : TPScoreView!
     var sectionBar : TPSectionBar!
+    var emptyView : RoundDetailsEmptyViewController!
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
     }
@@ -43,6 +44,7 @@ class RoundDetailsViewController: TPGameViewController {
             game = self.response.game
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
+            self.decideToShowEmptyView()
             self.reloadData()
 
         }
@@ -60,7 +62,18 @@ class RoundDetailsViewController: TPGameViewController {
             self.scrollViewDidEndDecelerating(self.tableView)
         }
     }
+    func decideToShowEmptyView() {
+        self.tableView.isHidden = questionMap.isEmpty && !game.ended
+        self.emptyContainer.isHidden = !self.tableView.isHidden
+        response.scoreIncrement = 10
+        self.emptyView.set(opponent: opponent, increment: response.scoreIncrement)
+        if self.tableView.isHidden {
+            self.headerView.roundLabel.text = "Partita"
+            self.headerView.set(title: "Devi ancora iniziare!")
+        }
+    }
     @IBOutlet var tableView : UITableView!
+    @IBOutlet var emptyContainer : UIView!
     
     var createGameCallback : ((TPNewGameResponse) -> Void)!
 
@@ -108,6 +121,7 @@ class RoundDetailsViewController: TPGameViewController {
                     self.response.categories.append(response!.category)
                     self.scoreView.add(answers: response!.answers, quizzes: response!.quizzes)
                     self.computeMap(candidate: response!)
+                    self.decideToShowEmptyView()
                 }
             } else {
                 //TODO: error handler
@@ -119,6 +133,7 @@ class RoundDetailsViewController: TPGameViewController {
                 self.game.ended = true
                 self.response.partecipations = response!.partecipations
                 self.reloadData()
+                self.decideToShowEmptyView()
             } else {
                 //TODO: error handler
             }
@@ -139,6 +154,8 @@ class RoundDetailsViewController: TPGameViewController {
             self.newGameResponse.game.opponent = self.newGameResponse.opponent
             destination.game = self.newGameResponse.game
             destination.fromInvite = true
+        } else if segue.identifier == "empty_view_segue" {
+            self.emptyView = segue.destination as! RoundDetailsEmptyViewController
         }
     }
     let detailsCellKey = "details_cell"

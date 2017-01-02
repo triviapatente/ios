@@ -37,6 +37,9 @@ open class User: CommonPK {
         }
         return self.username
     }
+    var confidentialName : String? {
+        return self.name ?? self.username
+    }
     
     var fullName : String? {
         get {
