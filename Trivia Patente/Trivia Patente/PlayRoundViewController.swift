@@ -101,7 +101,7 @@ class PlayRoundViewController: TPGameViewController {
             let color = correctness ? Colors.correct_default : Colors.error_default
             button.backgroundColor = color
         }
-        button.darkerBorder(of: 0.1, width: 2)
+        button.darkerBorder(of: 0.1, width: 2.5)
     }
     func getQuestionNumber(for i : Int) -> Int {
         return (i + 1) + (round.number! - 1) * 4
