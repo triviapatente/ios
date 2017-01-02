@@ -65,7 +65,6 @@ class RoundDetailsViewController: TPGameViewController {
     func decideToShowEmptyView() {
         self.tableView.isHidden = questionMap.isEmpty && !game.ended
         self.emptyContainer.isHidden = !self.tableView.isHidden
-        response.scoreIncrement = 10
         self.emptyView.set(opponent: opponent, increment: response.scoreIncrement)
         if self.tableView.isHidden {
             self.headerView.roundLabel.text = "Partita"
