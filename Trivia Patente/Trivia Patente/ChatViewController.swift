@@ -117,8 +117,10 @@ class ChatViewController: TPGameViewController {
     func registerCells() {
         let leftNib = UINib(nibName: "LeftMessageTableViewCell", bundle: .main)
         let rightNib = UINib(nibName: "RightMessageTableViewCell", bundle: .main)
+        let headerNib = UINib(nibName: "HeaderTableViewCell", bundle: .main)
         self.tableView.register(leftNib, forCellReuseIdentifier: "left_cell")
         self.tableView.register(rightNib, forCellReuseIdentifier: "right_cell")
+        self.tableView.register(headerNib, forCellReuseIdentifier: "header_cell")
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -190,57 +192,55 @@ class ChatViewController: TPGameViewController {
     
 }
 extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
-    var headerLabel : UILabel {
-        let width = self.tableView.frame.size.width
-        let frame = CGRect(x: 0, y: 0, width: width, height: HEADER_HEIGHT)
-        let view = UILabel(frame: frame)
-        view.textAlignment = .center
-        view.backgroundColor = Colors.primary
-        view.textColor = .white
-        return view
-    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.response.map.count
     }
-    func cell(for message : Message) -> MessageTableViewCell {
+    func cell(for message : Message?) -> UITableViewCell {
         let identifier = self.cellIdentifier(for: message)
-        return self.tableView.dequeueReusableCell(withIdentifier: identifier) as! MessageTableViewCell
+        return self.tableView.dequeueReusableCell(withIdentifier: identifier)!
     }
-    func message(for indexPath : IndexPath) -> Message {
+    func message(for indexPath : IndexPath) -> Message? {
+        //in caso di row = 0, serve un header non un message
+        guard indexPath.row != 0 else {
+            return nil
+        }
         let map = self.response.map
         let key = map.keys.sorted()[indexPath.section]
-        return map[key]![indexPath.row]
+        return map[key]![indexPath.row - 1]
     }
-    func cellIdentifier(for message : Message) -> String {
+    func cellIdentifier(for theMessage : Message?) -> String {
+        guard let message = theMessage else {
+            return "header_cell"
+        }
         if message.isMine() {
             return "right_cell"
         } else {
             return "left_cell"
         }
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return HEADER_HEIGHT
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let keys = self.response.map.keys.sorted()
-        let label = self.headerLabel
-        label.text = keys[section].prettyDate
-        return label
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message = self.message(for: indexPath)
         let cell = self.cell(for: message)
-        return cell.height(for: message.content!)
+        if let messageCell = cell as? MessageTableViewCell {
+            return messageCell.height(for: message!.content!)
+        } else {
+            return HEADER_HEIGHT
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let map = self.response.map
         let key = map.keys.sorted()[section]
-        return map[key]!.count
+        return map[key]!.count + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = self.message(for: indexPath)
         let cell = self.cell(for: message)
-        cell.message = message
+        if let messageCell = cell as? MessageTableViewCell {
+            messageCell.message = message
+        } else if let headerCell = cell as? HeaderTableViewCell {
+            headerCell.date = self.response.map.keys.sorted()[indexPath.section]
+        }
         return cell
     }
 }
