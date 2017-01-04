@@ -39,8 +39,14 @@ class SocketGame: SocketManager {
     func round_details(game_id : Int32, handler: @escaping (TPRoundDetailsResponse?) -> Void) {
         SocketGame.emit(path: "round_details", values: ["game": game_id as AnyObject], handler: handler)
     }
-    func listen_round_ended(handler: @escaping (TPRoundEndedEvent?) -> Void) {
+    func listen_round_ended(handler: @escaping (TPResponse?) -> Void) {
         SocketGame.listen(event: "round_ended", handler: handler)
+    }
+    func listen_round_started(handler: @escaping (TPRoundStartedEvent?) -> Void) {
+        SocketGame.listen(event: "round_started", handler: handler)
+    }
+    func listen_user_answered(handler: @escaping (TPQuestionAnsweredEvent?) -> Void) {
+        SocketGame.listen(event: "user_answered", handler: handler)
     }
     func listen_game_ended(handler: @escaping (TPGameEndedEvent?) -> Void) {
         SocketGame.listen(event: "game_ended", handler: handler)

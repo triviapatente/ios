@@ -41,8 +41,8 @@ class WrongAnswerTableViewCell: TPExpandableTableViewCell {
                 setEnabled(button: self.falseButton)
                 self.trueAvatar.load(user: SessionManager.currentUser)
             }
-            self.trueAvatar.alpha = quiz.answer ? 0 : 1
-            self.falseAvatar.alpha = quiz.answer ? 1 : 0
+            self.trueAvatar.alpha = quiz.answer! ? 0 : 1
+            self.falseAvatar.alpha = quiz.answer! ? 1 : 0
         }
     }
     func setEnabled(button : UIButton) {

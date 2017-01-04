@@ -16,15 +16,15 @@ open class Question: Base {
     internal let kQuestionUserKey: String = "user"
 	internal let kQuestionQuizIdKey: String = "quiz_id"
     internal let kQuestionRoundIdKey: String = "round_id"
-    internal let kQuestionRoundNumberKey: String = "round_number"
+    internal let kQuestionCorrectKey: String = "correct"
 
 
     // MARK: Properties
-	open var answer: Bool = false
+	open var answer: Bool?
 	open var userId: Int32?
 	open var quizId: Int32?
     open var roundId: Int32?
-    open var roundNumber: Int?
+    open var correct: Bool?
     
     var user : User!
 
@@ -46,11 +46,11 @@ open class Question: Base {
     */
     public required init(json: JSON) {
         super.init(json: json)
-		answer = json[kQuestionAnswerKey].boolValue
+		answer = json[kQuestionAnswerKey].bool
 		userId = json[kQuestionUserIdKey].int32
 		quizId = json[kQuestionQuizIdKey].int32
 		roundId = json[kQuestionRoundIdKey].int32
-        roundNumber = json[kQuestionRoundNumberKey].int
+        correct = json[kQuestionCorrectKey].bool
     }
 
 
@@ -71,9 +71,7 @@ open class Question: Base {
 		if roundId != nil {
 			dictionary.updateValue(roundId! as AnyObject, forKey: kQuestionRoundIdKey)
 		}
-        if roundNumber != nil {
-            dictionary.updateValue(roundNumber! as AnyObject, forKey: kQuestionRoundNumberKey)
-        }
+        dictionary.updateValue(correct! as AnyObject, forKey: kQuestionCorrectKey)
 
         return dictionary
     }
@@ -85,9 +83,8 @@ open class Question: Base {
 		self.userId = aDecoder.decodeObject(forKey: kQuestionUserIdKey) as? Int32
 		self.quizId = aDecoder.decodeObject(forKey: kQuestionQuizIdKey) as? Int32
 		self.roundId = aDecoder.decodeObject(forKey: kQuestionRoundIdKey) as? Int32
-        self.roundNumber = aDecoder.decodeObject(forKey: kQuestionRoundNumberKey) as? Int
         self.user = aDecoder.decodeObject(forKey: kQuestionUserKey) as? User
-
+        self.correct = aDecoder.decodeBool(forKey: kQuestionCorrectKey)
     }
 
     open override func encode(with aCoder: NSCoder) {
@@ -96,8 +93,8 @@ open class Question: Base {
 		aCoder.encode(userId, forKey: kQuestionUserIdKey)
 		aCoder.encode(quizId, forKey: kQuestionQuizIdKey)
         aCoder.encode(roundId, forKey: kQuestionRoundIdKey)
-        aCoder.encode(roundNumber, forKey: kQuestionRoundNumberKey)
         aCoder.encode(user, forKey: kQuestionUserKey)
+        aCoder.encode(correct, forKey: kQuestionCorrectKey)
 
     }
 

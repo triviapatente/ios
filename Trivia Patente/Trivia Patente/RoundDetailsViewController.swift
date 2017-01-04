@@ -39,8 +39,8 @@ class RoundDetailsViewController: TPGameViewController {
         didSet {
             (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
             self.scoreView.set(users: response.users, game: game)
-            self.scoreView.add(answers: response.answers, quizzes: response.quizzes)
-            self.computeMap(candidate: response)
+            self.scoreView.add(answers: response.answers)
+            self.computeMap(quizzes: response.quizzes)
             game = self.response.game
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
@@ -49,7 +49,7 @@ class RoundDetailsViewController: TPGameViewController {
 
         }
     }
-    var questionMap : [String: [QuizDetail]] = [:] {
+    var questionMap : [String: [Quiz]] = [:] {
         didSet {
             self.sectionBar.questionMap = questionMap
             self.reloadData()
@@ -65,10 +65,10 @@ class RoundDetailsViewController: TPGameViewController {
     func decideToShowEmptyView() {
         self.tableView.isHidden = questionMap.isEmpty && !game.ended
         self.emptyContainer.isHidden = !self.tableView.isHidden
-        self.emptyView.set(opponent: opponent, increment: response.scoreIncrement)
         if self.tableView.isHidden {
             self.headerView.roundLabel.text = "Partita"
             self.headerView.set(title: "Devi ancora iniziare!")
+            self.emptyView.set(opponent: opponent, increment: response.scoreIncrement)
         }
     }
     @IBOutlet var tableView : UITableView!
@@ -76,23 +76,22 @@ class RoundDetailsViewController: TPGameViewController {
     
     var createGameCallback : ((TPNewGameResponse) -> Void)!
 
-    func computeMap(candidate : TPRoundResponse) {
-        for answer in candidate.answers {
-            let number = answer.roundNumber!
+    func computeMap(quizzes : [Quiz]) {
+        for quiz in quizzes {
+            let number = quiz.roundId!
             let key = "\(number)"
             if questionMap.index(forKey: key) == nil {
                 questionMap[key] = []
             }
-            answer.user = response.users.first(where: {$0.id == answer.userId})
-            if let index = questionMap[key]!.index(where: {$0.quiz.id == answer.quizId}) {
-                questionMap[key]![index].answers.append(answer)
-            } else {
-                let details = QuizDetail()
-                details.quiz = candidate.quizzes.first(where: {$0.id == answer.quizId})
-                details.answers.append(answer)
-                questionMap[key]!.append(details)
+            quiz.answers = response.answers.filter({$0.quizId == quiz.id}).map { (question : Question) -> Question in
+                question.user = self.response.users.first(where: {$0.id == question.userId})
+                return question
             }
+            questionMap[key]?.append(quiz)
         }
+    }
+    func reloadMap() {
+        self.computeMap(quizzes: response.quizzes)
     }
     func join_room() {
         handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
@@ -112,34 +111,6 @@ class RoundDetailsViewController: TPGameViewController {
                 //TODO: error handler
             }
         }
-    }
-    func listen() {
-        handler.listen_round_ended { (response : TPRoundEndedEvent?) in
-            if response?.success == true {
-                if response?.globally == true {
-                    self.response.categories.append(response!.category)
-                    self.scoreView.add(answers: response!.answers, quizzes: response!.quizzes)
-                    self.computeMap(candidate: response!)
-                    self.decideToShowEmptyView()
-                }
-            } else {
-                //TODO: error handler
-            }
-        }
-        let cb = { (response : TPGameEndedEvent?) in
-            if response?.success == true {
-                self.game.winnerId = response!.winner_id
-                self.game.ended = true
-                self.response.partecipations = response!.partecipations
-                self.reloadData()
-                self.decideToShowEmptyView()
-            } else {
-                //TODO: error handler
-            }
-        }
-        handler.listen_game_left(handler: cb)
-        handler.listen_game_ended(handler: cb)
-
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "header_view" {
@@ -186,7 +157,9 @@ class RoundDetailsViewController: TPGameViewController {
         if section == self.questionMap.count {
             return 1
         }
-        return 4
+        let keys = self.questionMap.keys.sorted()
+        let key = keys[section]
+        return self.questionMap[key]!.count
     }
     func configureHeader(page : Int) {
         if page >= self.questionMap.count {
@@ -254,8 +227,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell
-            let key = "\(indexPath.section + 1)"
-            cell.quizDetail = self.questionMap[key]![indexPath.row]
+            let keys = self.questionMap.keys.sorted()
+            let key = keys[indexPath.section]
+            cell.quiz = self.questionMap[key]![indexPath.row]
             return cell
         }
     }
@@ -268,5 +242,42 @@ extension RoundDetailsViewController : TPSectionBarDelegate {
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             self.configureHeader(page: index)
         }
+    }
+}
+extension RoundDetailsViewController {
+    
+    func listen() {
+        handler.listen_round_started { (response : TPRoundStartedEvent?) in
+            if response?.success == true {
+                self.response.categories.append(response!.category)
+                self.scoreView.add(answers: response!.answers)
+                self.response.answers += response!.answers
+                self.computeMap(quizzes: response!.quizzes)
+                self.decideToShowEmptyView()
+            } else {
+                //TODO: error handler
+            }
+        }
+        let cb = { (response : TPGameEndedEvent?) in
+            if response?.success == true {
+                self.game.winnerId = response!.winner_id
+                self.game.ended = true
+                self.response.partecipations = response!.partecipations
+                self.reloadData()
+                self.decideToShowEmptyView()
+            } else {
+                //TODO: error handler
+            }
+        }
+        handler.listen_game_left(handler: cb)
+        handler.listen_game_ended(handler: cb)
+        handler.listen_user_answered { (response : TPQuestionAnsweredEvent?) in
+            if let answer = response?.answer {
+                self.scoreView.add(answers: [answer])
+                self.response.answers.append(answer)
+                self.reloadMap()
+            }
+        }
+        
     }
 }

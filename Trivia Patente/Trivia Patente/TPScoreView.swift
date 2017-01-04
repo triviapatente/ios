@@ -32,7 +32,6 @@ class TPScoreView: UIViewController {
     var users : [User]!
     var game : Game!
     var questions : [Question] = []
-    var quizzes : [Quiz] = []
     func set(users: [User], game : Game) {
         self.users = users.sorted(by: {$0.0.isMe()})
         self.game = game
@@ -43,19 +42,16 @@ class TPScoreView: UIViewController {
     var scores : [Int] {
         var output = [Int](repeating: 0, count: self.users.count)
         for question in questions {
-            if let quiz = self.quizzes.first(where: {$0.id == question.quizId}) {
-                if question.answer == quiz.answer {
-                    if let index = self.users.index(where: {$0.id == question.userId}) {
-                        output[index] += 1
-                    }
+            if question.correct == true {
+                if let index = self.users.index(where: {$0.id == question.userId}) {
+                    output[index] += 1
                 }
             }
         }
         return output
     }
-    func add(answers : [Question], quizzes : [Quiz]) {
+    func add(answers : [Question]) {
         self.questions += answers
-        self.quizzes += quizzes
         let scores = self.scores
         self.firstScore = scores.first!
         self.secondScore = scores.last!
@@ -65,6 +61,9 @@ class TPScoreView: UIViewController {
         self.secondAvatarView.layer.borderWidth = 1
         self.setColor(for: self.firstAvatarView)
         self.setColor(for: self.secondAvatarView)
+    }
+    func editOpponentScore(increment : Bool) {
+        
     }
     func setColor(for view : UIView) {
         let isFirst = (view == firstAvatarView)

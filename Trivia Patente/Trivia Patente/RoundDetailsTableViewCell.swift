@@ -18,21 +18,16 @@ class RoundDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet var titleCostraint : NSLayoutConstraint!
     
-    var quizDetail : QuizDetail! {
-        didSet {
-            self.initializeImageViews()
-            self.quiz = quizDetail.quiz
-            self.questions = quizDetail.answers
-        }
-    }
     func initializeImageViews() {
         for imageView in self.trueImageViews + self.falseImageViews {
             imageView.image = nil
         }
     }
     
-    private var quiz : Quiz! {
+    var quiz : Quiz! {
         didSet {
+            self.initializeImageViews()
+            self.questions = quiz.answers
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
@@ -42,19 +37,31 @@ class RoundDetailsTableViewCell: UITableViewCell {
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
             self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
-            self.set(label: trueValue, enabled: quiz.answer)
-            self.set(label: falseValue, enabled: !quiz.answer)
+            if let answer = quiz.answer {
+                self.set(label: trueValue, enabled: answer)
+                self.set(label: falseValue, enabled: !answer)
+            } else {
+                self.disableAnswerButtons()
+            }
         }
+    }
+    func answer(for quiz : Quiz, answer : Question) -> Bool? {
+        guard let correctAnswer = quiz.answer else {
+            return nil
+        }
+        return answer.correct! ? correctAnswer : !correctAnswer
     }
     private var questions : [Question]! {
         didSet {
             var trueUsers : [User] = [],
                 falseUsers : [User] = []
             for question in questions {
-                if question.answer == true {
-                    self.addUser(user: question.user, to: &trueUsers)
-                } else {
-                    self.addUser(user: question.user, to: &falseUsers)
+                if let answer = self.answer(for: quiz, answer: question) {
+                    if answer == true {
+                        self.add(user: question.user, to: &trueUsers)
+                    } else {
+                        self.add(user: question.user, to: &falseUsers)
+                    }
                 }
             }
             self.populate(users: trueUsers, imageViews: trueImageViews)
@@ -71,11 +78,18 @@ class RoundDetailsTableViewCell: UITableViewCell {
             }
         }
     }
-    func addUser(user : User, to users: inout [User]) {
+    func add(user : User, to users: inout [User]) {
         if user.isMe() {
             users.insert(user, at: 0)
         } else {
             users.append(user)
+        }
+    }
+    func disableAnswerButtons() {
+        for value in [self.trueValue, self.falseValue] {
+            value?.textColor = .white
+            value?.backgroundColor = Colors.gray_default
+            value?.darkerBorder(of: 0.2, width: 1)
         }
     }
     func set(label : UILabel, enabled : Bool) {

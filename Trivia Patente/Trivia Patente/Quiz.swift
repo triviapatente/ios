@@ -17,15 +17,17 @@ open class Quiz: CommonPK {
     internal let kQuizMyAnswerKey: String = "my_answer"
     internal let kQuizCategoryIdKey: String = "category_id"
     internal let kQuizAnsweredCorrectlyKey: String = "answered_correctly"
+    internal let kQuizRoundIdKey : String = "round_id"
 
 
     // MARK: Properties
 	open var imageId: Int32?
 	open var question: String?
-    open var answer: Bool = false
+    open var answer: Bool?
     open var my_answer: Bool?
 	open var categoryId: Int32?
     open var answeredCorrectly : Bool?
+    open var roundId : Int32?
 
     var imagePath : String? {
         get {
@@ -35,6 +37,7 @@ open class Quiz: CommonPK {
             return nil
         }
     }
+    var answers : [Question] = []
 
     // MARK: SwiftyJSON Initalizers
     /**
@@ -55,10 +58,11 @@ open class Quiz: CommonPK {
         super.init(json: json)
 		imageId = json[kQuizImageIdKey].int32
 		question = json[kQuizQuestionKey].string
-        answer = json[kQuizAnswerKey].boolValue
+        answer = json[kQuizAnswerKey].bool
         my_answer = json[kQuizMyAnswerKey].bool
 		categoryId = json[kQuizCategoryIdKey].int32
         answeredCorrectly = json[kQuizAnsweredCorrectlyKey].bool
+        roundId = json[kQuizRoundIdKey].int32
 
     }
 
@@ -83,6 +87,9 @@ open class Quiz: CommonPK {
         if categoryId != nil {
 			dictionary.updateValue(categoryId! as AnyObject, forKey: kQuizCategoryIdKey)
 		}
+        if roundId != nil {
+            dictionary.updateValue(roundId! as AnyObject, forKey: kQuizRoundIdKey)
+        }
         dictionary.updateValue(answeredCorrectly as AnyObject, forKey: kQuizAnsweredCorrectlyKey)
 
         return dictionary
@@ -97,7 +104,7 @@ open class Quiz: CommonPK {
         self.my_answer = aDecoder.decodeBool(forKey: kQuizMyAnswerKey)
 		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int32
         self.answeredCorrectly = aDecoder.decodeBool(forKey: kQuizAnsweredCorrectlyKey)
-
+        self.roundId = aDecoder.decodeInt32(forKey: kQuizRoundIdKey) as? Int32
     }
 
     open override func encode(with aCoder: NSCoder) {
@@ -108,6 +115,7 @@ open class Quiz: CommonPK {
         aCoder.encode(my_answer, forKey: kQuizAnswerKey)
 		aCoder.encode(categoryId, forKey: kQuizCategoryIdKey)
         aCoder.encode(answeredCorrectly, forKey: kQuizAnsweredCorrectlyKey)
+        aCoder.encode(roundId, forKey: kQuizRoundIdKey)
     }
 
 }

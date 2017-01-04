@@ -11,7 +11,7 @@ import UIKit
 class TPSectionBar: UIViewController {
     @IBOutlet var tableView : UITableView!
     
-    var questionMap : [String : [QuizDetail]]! {
+    var questionMap : [String : [Quiz]]! {
         didSet {
             self.tableView.reloadData()
         }
@@ -36,7 +36,11 @@ class TPSectionBar: UIViewController {
         guard questionMap != nil && game != nil else {
             return []
         }
-        var array = questionMap.keys.sorted(by: {Int($0)! < Int($1)!})
+        var array : [String] = []
+        for i in 1...questionMap.count {
+            array.append("\(i)")
+        }
+        
         if game.isEnded() {
             array.append("🏆")
         }
