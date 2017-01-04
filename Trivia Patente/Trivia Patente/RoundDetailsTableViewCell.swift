@@ -41,7 +41,8 @@ class RoundDetailsTableViewCell: UITableViewCell {
                 self.set(label: trueValue, enabled: answer)
                 self.set(label: falseValue, enabled: !answer)
             } else {
-                self.disableAnswerButtons()
+                self.set(label: trueValue, enabled: false)
+                self.set(label: falseValue, enabled: false)
             }
         }
     }
@@ -83,13 +84,6 @@ class RoundDetailsTableViewCell: UITableViewCell {
             users.insert(user, at: 0)
         } else {
             users.append(user)
-        }
-    }
-    func disableAnswerButtons() {
-        for value in [self.trueValue, self.falseValue] {
-            value?.textColor = .white
-            value?.backgroundColor = Colors.gray_default
-            value?.darkerBorder(of: 0.2, width: 1)
         }
     }
     func set(label : UILabel, enabled : Bool) {
