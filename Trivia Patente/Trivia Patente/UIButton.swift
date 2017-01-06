@@ -14,13 +14,17 @@ extension UIButton {
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let color = self.backgroundColor {
-            self.backgroundColor = color.darker(offset: DARK_OFFSET)
+            if color != .clear {
+                self.backgroundColor = color.darker(offset: DARK_OFFSET)
+            }
         }
         super.touchesBegan(touches, with: event)
     }
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let color = self.backgroundColor {
-            self.backgroundColor = color.darker(offset: -DARK_OFFSET)
+            if color != .clear {
+                self.backgroundColor = color.darker(offset: -DARK_OFFSET)
+            }
         }
         super.touchesEnded(touches, with: event)
     }
