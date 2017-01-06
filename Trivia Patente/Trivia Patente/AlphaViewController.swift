@@ -12,6 +12,7 @@ class AlphaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        (self.navigationController as! TPNavigationController).setUser(candidate: SessionManager.currentUser)
 
         // Do any additional setup after loading the view.
     }
