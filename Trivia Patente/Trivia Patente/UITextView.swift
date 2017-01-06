@@ -9,15 +9,13 @@
 import UIKit
 
 extension UITextView {
-    var requiredHeight : CGFloat {
-        get {
-            let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: CGFloat.greatestFiniteMagnitude)
-            let textView = UITextView(frame: frame)
-            textView.contentInset = self.contentInset
-            textView.font = self.font
-            textView.text = self.text
-            textView.sizeToFit()
-            return textView.frame.height
-        }
+    func requiredHeight(for maxLines : Int = 0) -> CGFloat {
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: CGFloat.greatestFiniteMagnitude)
+        let textView = UITextView(frame: frame)
+        textView.textContainer.maximumNumberOfLines = maxLines
+        textView.contentInset = self.contentInset
+        textView.attributedText = self.attributedText
+        textView.sizeToFit()
+        return textView.frame.height
     }
 }

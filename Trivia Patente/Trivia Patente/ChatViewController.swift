@@ -13,36 +13,32 @@ class ChatViewController: TPGameViewController {
     override var mainOnDismiss: Bool {
         return false
     }
+    let MAX_NUMBER_OF_GROW_LINES = 5
     @IBOutlet var tableView : UITableView!
-    @IBOutlet var textInputView : UITextField! {
-        didSet {
-            self.setRightView(view: sendButton)
-        }
-    }
+    @IBOutlet var textInputView : UITextView!
+    @IBOutlet var inputViewHeight : NSLayoutConstraint!
     @IBAction func dismissKeyboard() {
         self.textInputView.resignFirstResponder()
     }
-    func setRightView(view : UIView) {
-        let dim = self.textInputView.frame.size.height - 3
-        view.frame = CGRect(x: 0, y: 0, width: dim, height: dim)
-        textInputView.rightView = view
-        textInputView.rightViewMode = .always
-    }
     var originalViewFrame : CGRect!
-    lazy var sendButton : UIButton = {
-        let button = UIButton()
-        let image = UIImage(named: "ic_send_white")?.withRenderingMode(.alwaysTemplate)
-        button.tintColor = Colors.primary
-        button.setImage(image, for: .normal)
-        button.isEnabled = false
-        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
-        return button
-    }()
-    lazy var loadingView : UIActivityIndicatorView = {
-        let loading = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        loading.startAnimating()
-        return loading
-    }()
+    
+    static let accessorySize = CGSize(width: 40, height: 40)
+    
+    @IBOutlet var loadingView : UIActivityIndicatorView! {
+        didSet {
+            loadingView.startAnimating()
+            loadingView.isHidden = true
+        }
+    }
+    @IBOutlet var accessoryView : UIView!
+    @IBOutlet var inputBarView : UIView!
+    @IBOutlet var sendButton : UIButton! {
+        didSet {
+            let image = UIImage(named: "ic_send_white")?.withRenderingMode(.alwaysTemplate)
+            self.sendButton.setImage(image, for: .normal)
+            self.sendButton.isEnabled = false
+        }
+    }
     var refreshControl : UIRefreshControl {
         guard let output = self.tableView.refreshControl else {
             let control = UIRefreshControl()
@@ -85,18 +81,20 @@ class ChatViewController: TPGameViewController {
         let lastRow = map[lastKey]!.count - 1
         let lastSection = map.count - 1
         let indexPath = IndexPath(row: lastRow, section: lastSection)
-        self.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+        self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
-    func sendMessage() {
+    @IBAction func sendMessage() {
         let content = textInputView.text!
-        self.setRightView(view: loadingView)
+        self.sendButton.isHidden = true
+        self.loadingView.isHidden = false
         socketHandler.send_message(game: game, content: content) { response in
-            self.setRightView(view: self.sendButton)
+            self.loadingView.isHidden = true
+            self.sendButton.isHidden = false
             if response?.success == true {
                 self.cachedMessages.append(response!.item)
                 self.scrollToLast()
-                self.textInputView.text = ""
+                self.clearInputView()
                 self.sendButton.isEnabled = false
             } else {
                 //TODO: error handler
@@ -104,13 +102,21 @@ class ChatViewController: TPGameViewController {
         }
         
     }
+    func clearInputView() {
+        self.textInputView.text = ""
+        self.textViewDidChange(textInputView)
+    }
     let HEADER_HEIGHT = CGFloat(50)
+    var inputInitialHeight : CGFloat!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.tableView.refreshControl = refreshControl
+        self.inputInitialHeight = inputViewHeight.constant
+        self.textInputView.smallRounded()
+        self.accessoryView.smallRounded()
         self.join()
         self.registerCells()
     }
@@ -244,13 +250,19 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-extension ChatViewController : UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.sendButton.sendActions(for: .touchUpInside)
+extension ChatViewController : UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" && range.location + range.length == textView.text.characters.count {
+            self.sendButton.sendActions(for: .touchUpInside)
+            return false
+        }
         return true
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textViewDidChange(_ textView: UITextView) {
         self.sendButton.isEnabled = !textInputView.text!.isEmpty
-        return true
+        let height = max(inputInitialHeight, self.textInputView.requiredHeight(for: MAX_NUMBER_OF_GROW_LINES))
+        inputViewHeight.constant = height
+        self.view.layoutIfNeeded()
     }
 }
