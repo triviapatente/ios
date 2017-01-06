@@ -18,11 +18,16 @@ class RoundDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet var titleCostraint : NSLayoutConstraint!
     
+    
     func initializeImageViews() {
         for imageView in self.trueImageViews + self.falseImageViews {
             imageView.image = nil
         }
     }
+    var requiredHeight : CGFloat {
+        return self.quizNameView.requiredHeight + self.quizNameView.frame.origin.y * 2
+    }
+    
     
     var quiz : Quiz! {
         didSet {
@@ -37,6 +42,9 @@ class RoundDetailsTableViewCell: UITableViewCell {
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
             self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
+            if quiz.imageId != nil {
+                self.quizNameView.frame.size.width -= self.quizImageView.frame.size.width
+            }
             if let answer = quiz.answer {
                 self.set(label: trueValue, enabled: answer)
                 self.set(label: falseValue, enabled: !answer)

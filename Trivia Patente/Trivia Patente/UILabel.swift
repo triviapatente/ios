@@ -20,8 +20,7 @@ extension UILabel {
             let label : UILabel = UILabel(frame: frame)
             label.numberOfLines = 0
             label.lineBreakMode = NSLineBreakMode.byWordWrapping
-            label.font = self.font
-            label.text = self.text
+            label.attributedText = self.attributedText
             label.sizeToFit()
             return label.frame.height
         }

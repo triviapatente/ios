@@ -147,11 +147,20 @@ class RoundDetailsViewController: TPGameViewController {
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
         }
     }
-    func height(for section: Int) -> CGFloat {
-        if section == self.questionMap.count {
+    func height(for indexPath: IndexPath, ignoreExpanded: Bool = false) -> CGFloat {
+        if indexPath.section == self.questionMap.count {
             return END_ROW_HEIGHT
         }
-        return DETAILS_ROW_HEIGHT
+        guard let selectedPath = self.tableView.indexPathForSelectedRow  else {
+            return DETAILS_ROW_HEIGHT
+        }
+        if !ignoreExpanded && (indexPath == selectedPath) {
+            let cell = self.tableView(tableView, cellForRowAt: selectedPath) as! RoundDetailsTableViewCell
+            let requiredHeight = cell.requiredHeight
+            return max(requiredHeight, DETAILS_ROW_HEIGHT)
+        } else {
+            return DETAILS_ROW_HEIGHT
+        }
     }
     func rows(for section: Int) -> Int {
         if section == self.questionMap.count {
@@ -197,10 +206,11 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return self.rows(for: section)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.height(for: indexPath.section)
+        return self.height(for: indexPath)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let rowHeight =  self.height(for: section)
+        let firstRowPath = IndexPath(row: 0, section: section)
+        let rowHeight =  self.height(for: firstRowPath, ignoreExpanded: true)
         let count = self.rows(for: section)
         return (self.tableView.frame.size.height - rowHeight * CGFloat(count)) / 2
     }
@@ -212,6 +222,23 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.beginUpdates()
+        //triggers heightForRowAt: on every visible cell
+        self.tableView.endUpdates()
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self.tableView(tableView, didSelectRowAt: indexPath)
+    }
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let cell = self.tableView.cellForRow(at: indexPath)
+        if cell?.isSelected == true {
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView(tableView, didDeselectRowAt: indexPath)
+            return nil
+        }
+        return indexPath
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == self.questionMap.count {
@@ -227,6 +254,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell
+            cell.backgroundView = UIView(frame: cell.frame)
+            cell.backgroundView?.backgroundColor = Colors.primary
+            cell.backgroundColor = .clear
             let keys = self.questionMap.keys.sorted()
             let key = keys[indexPath.section]
             cell.quiz = self.questionMap[key]![indexPath.row]
