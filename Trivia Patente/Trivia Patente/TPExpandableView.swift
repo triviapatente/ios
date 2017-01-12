@@ -18,6 +18,8 @@ class TPExpandableView: UIViewController {
         didSet {
             if !dataLoaded {
                 adaptToItems()
+            } else {
+                self.tableView.reloadData()
             }
             dataLoaded = true
             self.tableView.tableFooterView = footerView

@@ -66,6 +66,9 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        RecentGameHandler.start {
+            self.recentGamesView.items = RecentGameHandler.games
+        }
         self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
 
     }
@@ -86,14 +89,10 @@ class MainViewController: TPNormalViewController {
                         }
                     }
                 }
+                RecentGameHandler.refresh {
+                    self.recentGamesView.items = RecentGameHandler.games
+                }
                 self.setHints(candidateResponse: response)
-                self.httpGame.recent_games(handler: { (response : TPGameListResponse) in
-                    if response.success == true {
-                        self.recentGamesView.items = response.games
-                    } else {
-                        //TODO: handle error
-                    }
-                })
             }
         }
     }
@@ -142,12 +141,6 @@ class MainViewController: TPNormalViewController {
     func getShopHint(response : TPConnectResponse) -> String? {
         return nil
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination

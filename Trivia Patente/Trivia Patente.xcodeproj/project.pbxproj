@@ -126,6 +126,9 @@
 		8BAD1C511DF9C4130051AC4A /* TPRoundEndedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C501DF9C4130051AC4A /* TPRoundEndedEvent.swift */; };
 		8BAD1C531DF9C4CD0051AC4A /* TPRoundResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C521DF9C4CD0051AC4A /* TPRoundResponse.swift */; };
 		8BAD1C551DF9CA050051AC4A /* TPGameEndedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAD1C541DF9CA050051AC4A /* TPGameEndedEvent.swift */; };
+		8BB29D8A1E278E8F00F5CFB9 /* TPRecentGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB29D891E278E8F00F5CFB9 /* TPRecentGameEvent.swift */; };
+		8BB29D8D1E278EB600F5CFB9 /* TPEventAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB29D8C1E278EB600F5CFB9 /* TPEventAction.swift */; };
+		8BB29D901E2790BF00F5CFB9 /* RecentGameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB29D8F1E2790BF00F5CFB9 /* RecentGameHandler.swift */; };
 		8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */; };
 		8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */; };
 		8BBAB4981DCA211C004AB6B0 /* LifesButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */; };
@@ -346,6 +349,9 @@
 		8BAD1C501DF9C4130051AC4A /* TPRoundEndedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRoundEndedEvent.swift; sourceTree = "<group>"; };
 		8BAD1C521DF9C4CD0051AC4A /* TPRoundResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRoundResponse.swift; sourceTree = "<group>"; };
 		8BAD1C541DF9CA050051AC4A /* TPGameEndedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPGameEndedEvent.swift; sourceTree = "<group>"; };
+		8BB29D891E278E8F00F5CFB9 /* TPRecentGameEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRecentGameEvent.swift; sourceTree = "<group>"; };
+		8BB29D8C1E278EB600F5CFB9 /* TPEventAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPEventAction.swift; sourceTree = "<group>"; };
+		8BB29D8F1E2790BF00F5CFB9 /* RecentGameHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentGameHandler.swift; sourceTree = "<group>"; };
 		8BBAB4931DCA1D0A004AB6B0 /* AvatarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4951DCA20CF004AB6B0 /* MenuButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButtonItem.swift; sourceTree = "<group>"; };
 		8BBAB4971DCA211C004AB6B0 /* LifesButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifesButtonItem.swift; sourceTree = "<group>"; };
@@ -909,6 +915,7 @@
 		8B5132FB1DBB8B9500143497 /* socket */ = {
 			isa = PBXGroup;
 			children = (
+				8BB29D8B1E278EA700F5CFB9 /* utils */,
 				8B5132FC1DBB8E6F00143497 /* SocketManager.swift */,
 			);
 			name = socket;
@@ -1094,6 +1101,7 @@
 		8B74DBFD1DE6EF8A0006EB90 /* socket */ = {
 			isa = PBXGroup;
 			children = (
+				8BB29D8E1E2790B500F5CFB9 /* handlers */,
 				8B74DC001DE6EFA40006EB90 /* responses */,
 				8B74DBFE1DE6EF9D0006EB90 /* SocketGame.swift */,
 			);
@@ -1115,6 +1123,7 @@
 				8BDB000C1DFD74F80088E8A2 /* TPInviteCreatedEvent.swift */,
 				8BF2892F1E01CE6400214DED /* TPInviteProcessedEvent.swift */,
 				8BDEDEEB1E1AAB7000063FB2 /* TPQuestionAnsweredEvent.swift */,
+				8BB29D891E278E8F00F5CFB9 /* TPRecentGameEvent.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1266,6 +1275,22 @@
 				8BAD1C4B1DF9A0130051AC4A /* TPSectionBarTableViewCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		8BB29D8B1E278EA700F5CFB9 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8BB29D8C1E278EB600F5CFB9 /* TPEventAction.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		8BB29D8E1E2790B500F5CFB9 /* handlers */ = {
+			isa = PBXGroup;
+			children = (
+				8BB29D8F1E2790BF00F5CFB9 /* RecentGameHandler.swift */,
+			);
+			name = handlers;
 			sourceTree = "<group>";
 		};
 		8BBAB4921DCA1CF3004AB6B0 /* navigation */ = {
@@ -1898,6 +1923,7 @@
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
 				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
+				8BB29D901E2790BF00F5CFB9 /* RecentGameHandler.swift in Sources */,
 				8BE278941DF477CC00071DF2 /* TPRoundDetailsResponse.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
@@ -1969,6 +1995,7 @@
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
 				8B5132EB1DBB5DBE00143497 /* HTTPManager.swift in Sources */,
 				A9D1D3521DA5595600557DC9 /* WelcomeViewController.swift in Sources */,
+				8BB29D8D1E278EB600F5CFB9 /* TPEventAction.swift in Sources */,
 				8B8EEA271DFC24FE003608AA /* TPMessageResponse.swift in Sources */,
 				A9FD527A1DA16E96005DFE5D /* AppDelegate.swift in Sources */,
 				8BAD1C4F1DF9A4A70051AC4A /* TPSectionBarDelegate.swift in Sources */,
@@ -2002,6 +2029,7 @@
 				8B8058D51DE3054D00C3F938 /* TPExpandableTableViewCellDelegate.swift in Sources */,
 				8BE6DE321DE6D97300DDD179 /* ChooseCategoryViewController.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
+				8BB29D8A1E278E8F00F5CFB9 /* TPRecentGameEvent.swift in Sources */,
 				8B8058C41DE2F5B700C3F938 /* SearchGameMenuViewController.swift in Sources */,
 				8B8EEA2A1DFC2512003608AA /* SocketChat.swift in Sources */,
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,

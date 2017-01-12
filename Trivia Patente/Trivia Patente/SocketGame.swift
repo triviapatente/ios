@@ -60,5 +60,8 @@ class SocketGame: SocketManager {
     func listen_invite_processed(handler : @escaping (TPInviteProcessedEvent?) -> Void) {
         SocketGame.listen(event: "invite_processed", handler: handler)
     }
+    func listen_recent_games(handler: @escaping (TPRecentGameEvent?) -> Void) {
+        SocketGame.listen(event: "recent_game", handler: handler)
+    }
     
 }
