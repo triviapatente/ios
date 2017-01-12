@@ -104,7 +104,7 @@ open class Quiz: CommonPK {
         self.my_answer = aDecoder.decodeBool(forKey: kQuizMyAnswerKey)
 		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int32
         self.answeredCorrectly = aDecoder.decodeBool(forKey: kQuizAnsweredCorrectlyKey)
-        self.roundId = aDecoder.decodeInt32(forKey: kQuizRoundIdKey) as? Int32
+        self.roundId = aDecoder.decodeInt32(forKey: kQuizRoundIdKey)
     }
 
     open override func encode(with aCoder: NSCoder) {
