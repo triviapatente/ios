@@ -85,7 +85,7 @@ class ChatViewController: TPGameViewController {
     }
 
     @IBAction func sendMessage() {
-        let content = textInputView.text!
+        let content = getInput()
         self.sendButton.isHidden = true
         self.loadingView.isHidden = false
         socketHandler.send_message(game: game, content: content) { response in
@@ -195,6 +195,9 @@ class ChatViewController: TPGameViewController {
             }
         }
     }
+    func getInput() -> String {
+        return textInputView.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
     
 }
 extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
@@ -249,6 +252,7 @@ extension ChatViewController : UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
 }
 extension ChatViewController : UITextViewDelegate {
     
@@ -260,7 +264,7 @@ extension ChatViewController : UITextViewDelegate {
         return true
     }
     func textViewDidChange(_ textView: UITextView) {
-        self.sendButton.isEnabled = !textInputView.text!.isEmpty
+        self.sendButton.isEnabled = !getInput().isEmpty
         let height = max(inputInitialHeight, self.textInputView.requiredHeight(for: MAX_NUMBER_OF_GROW_LINES))
         inputViewHeight.constant = height
         self.view.layoutIfNeeded()
