@@ -43,22 +43,20 @@ class SocketManager {
             SocketManager.unlisten(event: event)
         }
     }
-    class func listen<T: TPResponse>(event : String, handler : @escaping (T?) -> Void) {
+    class func listen<T: TPResponse>(event : String, handler : @escaping (T) -> Void) {
         SocketManager.unlisten(event: event)
         SocketManager.socket.on(event) { (data, ack) in
             if let object = data.first as? [String : AnyObject] {
                 let json = JSON.fromDict(dict: object)
                 let response = T(json: json)
                 handler(response)
-            } else {
-                handler(nil)
             }
         }
     }
-    class func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T?) -> Void) {
-        listen(event: path) { (response:  T?) in
+    class func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T) -> Void) {
+        listen(event: path) { (response:  T) in
             SocketManager.socket.off(path)
-            if response?.statusCode == 401 {
+            if response.statusCode == 401 {
                 SessionManager.authenticateSocket { response in
                     if response?.success == true {
                         self.emit(path: path, values: values, handler: handler)
@@ -77,20 +75,20 @@ class SocketManager {
     class func joined(to value: Int32, type: String) -> Bool {
         return joined_rooms[type] == value
     }
-    class func join(id : Int32, type : String, handler : @escaping (TPResponse?) -> Void) {
+    class func join(id : Int32, type : String, handler : @escaping (TPResponse) -> Void) {
         if id == joined_rooms[type] {
             let response = TPResponse(error: nil, statusCode: 200, success: true)
             handler(response)
         } else {
             emit(path: "join_room", values: ["id": id as AnyObject, "type": type as AnyObject]) { response in
-                if response?.success == true {
+                if response.success == true {
                     joined_rooms[type] = id
                 }
                 handler(response)
             }
         }
     }
-    class func leave(type : String, handler : ((TPResponse?) -> Void)? = nil) {
+    class func leave(type : String, handler : ((TPResponse) -> Void)? = nil) {
         if let _ = joined_rooms[type] {
             emit(path: "leave_room", values: ["type": type as AnyObject]) { response in
                 joined_rooms.removeValue(forKey: type)

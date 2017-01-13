@@ -105,7 +105,7 @@ class RoundDetailsViewController: TPGameViewController {
     }
     func round_details() {
         handler.round_details(game_id: game.id!) { response in
-            if response?.success == true {
+            if response.success == true {
                 self.response = response
             } else {
                 //TODO: error handler

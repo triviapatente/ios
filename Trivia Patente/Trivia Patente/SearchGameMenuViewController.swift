@@ -50,9 +50,9 @@ class SearchGameMenuViewController: TPNormalViewController {
     }
     func listen() {
         socketHandler.listen_invite_created { response in
-            if response?.success == true {
-                let invite = response!.invite!
-                invite.sender = response!.user
+            if response.success == true {
+                let invite = response.invite!
+                invite.sender = response.user
                 self.recentInvitesView.add(item: invite)
             }
         }

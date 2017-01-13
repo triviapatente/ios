@@ -40,8 +40,8 @@ class WaitOpponentViewController: TPGameViewController {
     }
     func listenForInvite() {
         socketHandler.listen_invite_processed { response in
-            if response?.success == true {
-                if response!.accepted == true {
+            if response.success == true {
+                if response.accepted == true {
                     self.join_room()
                 } else {
                     self.handleInviteRefused()

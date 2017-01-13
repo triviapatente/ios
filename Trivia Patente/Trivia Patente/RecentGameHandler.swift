@@ -15,10 +15,7 @@ class RecentGameHandler: TPResponse {
     class func refresh(handler: @escaping () -> Void) {
         httpHandler.recent_games { (response) in
             if response.success == true {
-                self.games = response.games.filter({$0.started == true}).map { game in
-                    game.opponent = SessionManager.currentUser
-                    return game
-                }
+                self.games = response.games.filter({$0.started == true})
                 handler()
             } else {
                 //TODO: add handler
@@ -64,12 +61,10 @@ class RecentGameHandler: TPResponse {
         guard started != true else {
             return
         }
-        socketHandler.listen_recent_games { (theEvent) in
-            if let event = theEvent {
-                let game = event.game!
-                self.update(game: game)
-                handler()
-            }
+        socketHandler.listen_recent_games { (event) in
+            let game = event.game!
+            self.update(game: game)
+            handler()
         }
         self.started = true
     }

@@ -76,9 +76,9 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
-            if response?.success == true {
+            if response.success == true {
                 self.enable(button: sender)
-                self.delegate.user_answered(answer: answer, correct: response!.correct)
+                self.delegate.user_answered(answer: answer, correct: response.correct)
             } else {
                 //TODO: handle error
             }

@@ -91,8 +91,8 @@ class ChatViewController: TPGameViewController {
         socketHandler.send_message(game: game, content: content) { response in
             self.loadingView.isHidden = true
             self.sendButton.isHidden = false
-            if response?.success == true {
-                self.cachedMessages.append(response!.item)
+            if response.success == true {
+                self.cachedMessages.append(response.item)
                 self.scrollToLast()
                 self.clearInputView()
                 self.sendButton.isEnabled = false
@@ -159,7 +159,7 @@ class ChatViewController: TPGameViewController {
     }
     func join() {
         gameHandler.join(game_id: game.id!) { response in
-            if response?.success == true {
+            if response.success == true {
                 self.load()
                 self.listen()
             } else {
@@ -169,7 +169,7 @@ class ChatViewController: TPGameViewController {
     }
     func listen() {
         socketHandler.listen { response in
-            if let message = response?.item {
+            if let message = response.item {
                 self.cachedMessages.append(message)
                 self.scrollToLast()
             } else {

@@ -9,10 +9,10 @@
 import UIKit
 
 class SocketChat: SocketManager {
-    func send_message(game : Game, content : String, handler : @escaping (TPMessageResponse?) -> Void) {
+    func send_message(game : Game, content : String, handler : @escaping (TPMessageResponse) -> Void) {
         SocketManager.emit(path: "send_message", values: ["content": content as AnyObject, "game_id": game.id as AnyObject], handler: handler)
     }
-    func listen(handler : @escaping (TPMessageResponse?) -> Void) {
+    func listen(handler : @escaping (TPMessageResponse) -> Void) {
         SocketManager.listen(event: "message", handler: handler)
     }
 }

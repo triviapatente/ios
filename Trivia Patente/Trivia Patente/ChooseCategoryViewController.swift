@@ -53,8 +53,8 @@ class ChooseCategoryViewController: TPGameViewController {
     func get_categories(round : Round) {
         self.handler.get_categories(round: round) { categoryResponse in
             self.loadingView.hide(animated: true)
-            if categoryResponse?.success == true {
-                self.categories = categoryResponse!.categories
+            if categoryResponse.success == true {
+                self.categories = categoryResponse.categories
             } else {
                 //TODO: handler
             }
