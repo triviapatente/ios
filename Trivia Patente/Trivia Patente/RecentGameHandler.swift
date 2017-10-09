@@ -12,6 +12,7 @@ class RecentGameHandler: TPResponse {
     static var games : [Game] = []
     static var socketHandler = SocketGame()
     static var httpHandler = HTTPGame()
+    static var delegate : TPExpandableTableViewCellDelegate!
     class func refresh(handler: @escaping () -> Void) {
         httpHandler.recent_games { (response) in
             if response.success == true {
@@ -53,18 +54,20 @@ class RecentGameHandler: TPResponse {
         return WAIT
     }
     class func update(game : Game) {
+        delegate.remove(item: game)
         let type = self.typeFor(game: game)
         let index = indexFor(type: type)
+        delegate.add(item: game, position: index)
         self.games.insert(game, at: index)
     }
-    class func start(handler : @escaping () -> Void) {
+    class func start(delegate : TPExpandableTableViewCellDelegate) {
+        self.delegate = delegate
         guard started != true else {
             return
         }
         socketHandler.listen_recent_games { (event) in
             let game = event.game!
             self.update(game: game)
-            handler()
         }
         self.started = true
     }

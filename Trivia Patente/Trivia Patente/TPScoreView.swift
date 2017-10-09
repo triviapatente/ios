@@ -33,7 +33,7 @@ class TPScoreView: UIViewController {
     var game : Game!
     var questions : [Question] = []
     func set(users: [User], game : Game) {
-        self.users = users.sorted(by: {$0.0.isMe()})
+        self.users = users.sorted(by: { $0.0.isMe()})
         self.game = game
         self.firstAvatarView.load(user: users.first!)
         self.secondAvatarView.load(user: users.last!)

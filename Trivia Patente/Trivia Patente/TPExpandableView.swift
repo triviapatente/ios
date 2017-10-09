@@ -18,21 +18,10 @@ class TPExpandableView: UIViewController {
         didSet {
             if !dataLoaded {
                 adaptToItems()
-            } else {
-                self.tableView.reloadData()
             }
             dataLoaded = true
             self.tableView.tableFooterView = footerView
             self.headerView.topItem?.title = headerTitle
-        }
-    }
-    func add(item : Base) {
-        self.items.append(item)
-        self.tableView.reloadData()
-    }
-    func remove(item : Base) {
-        if let index = self.items.index(of: item) {
-            self.items.remove(at: index)
         }
     }
     var selectedCellHandler : ((Base) -> Void)?
@@ -263,22 +252,37 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension TPExpandableView : TPExpandableTableViewCellDelegate {
-    func selectCell(for item: Base) {
+    func select(item: Base) {
         if let handler = selectedCellHandler {
             handler(item)
         }
     }
-
-    
-    func removeCell(for item: Base) {
-        let index = self.items.index { candidate in
-            return item == candidate
+    func add(item: Base) {
+        self.add(item: item, position: nil)
+    }
+    func search(item: Base) -> Int? {
+        return self.items.index(of: item)
+    }
+    func add(item: Base, position : Int? = nil) {
+        if let index = position {
+            self.items.insert(item, at: index)
+        } else {
+            self.items.append(item)
         }
-        guard index != nil else {
+        let index = position ?? (self.items.count - 1)
+        let path = IndexPath(row: index, section: 0)
+        self.tableView.insertRows(at: [path], with: .fade)
+        if !expanded {
+            adaptToItems(reload: false)
+        }
+    }
+    
+    func remove(item: Base) {
+        guard let index = self.items.index(where: {$0 == item}) else {
             return
         }
-        self.items.remove(at: index!)
-        let path = IndexPath(row: index!, section: 0)
+        self.items.remove(at: index)
+        let path = IndexPath(row: index, section: 0)
         self.tableView.deleteRows(at: [path], with: .fade)
         if !expanded {
             adaptToItems(reload: false)

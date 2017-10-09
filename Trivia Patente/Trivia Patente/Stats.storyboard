@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E4p-xQ-18Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E4p-xQ-18Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,15 +51,6 @@
                                     <constraint firstAttribute="width" constant="300" id="A2m-4g-O9t"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FC-0h-Nw0">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="hYl-JT-bDv"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="PV1-ps-mTo" kind="embed" identifier="errors_view" id="ISA-Pf-Ly8"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Cb-f71">
                                 <rect key="frame" x="0.0" y="335" width="375" height="288"/>
                                 <subviews>
@@ -80,6 +71,15 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="jD2-80-VhM" secondAttribute="trailing" id="ljN-LB-iGl"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FC-0h-Nw0">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hYl-JT-bDv"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PV1-ps-mTo" kind="embed" identifier="errors_view" id="ISA-Pf-Ly8"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.91774743800000003" green="0.2929156423" blue="0.2060605288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

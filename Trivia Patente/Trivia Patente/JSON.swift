@@ -19,7 +19,7 @@ extension JSON {
     
     static func fromDict(dict: [String : AnyObject]?) -> JSON? {
         if let candidate = dict {
-            return JSON(jsonDictionary: candidate)
+            return JSON(json: candidate)
         }
         return nil
     }

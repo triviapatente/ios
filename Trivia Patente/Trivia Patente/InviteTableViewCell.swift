@@ -22,7 +22,7 @@ class InviteTableViewCell: TPExpandableTableViewCell {
         let accept = (sender == acceptButton)
         handler.process_invite(game_id: invite.gameId!, accepted: accept) { response in
             if response.success == true {
-                self.delegate.removeCell(for: self.item)
+                self.delegate.remove(item: self.item)
                 if accept == true {
                     self.invokeCellHandler()
                 }

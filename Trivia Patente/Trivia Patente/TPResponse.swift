@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 class TPResponse : CustomStringConvertible {
-    var statusCode : Int!
+    var statusCode : Int = 0
     var message : String!
     var parameters : [String]!
     var success : Bool!

@@ -17,6 +17,6 @@ class TPExpandableTableViewCell: UITableViewCell {
     }
     
     func invokeCellHandler() {
-        delegate.selectCell(for: item)
+        delegate.select(item: item)
     }
 }

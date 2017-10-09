@@ -7,9 +7,9 @@ target 'Trivia Patente' do
   # Pods for Trivia Patente
   pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
   pod 'Alamofire', '~> 4.0'
-  pod 'Socket.IO-Client-Swift', '~> 8.0.2' # Or latest version
+  pod 'Socket.IO-Client-Swift', '~> 12.0.0' # Or latest version
   pod 'MBProgressHUD', '~> 1.0.0'
-  pod 'Charts'
+  pod 'Charts', '~> 3.0.3'
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths

@@ -9,6 +9,8 @@
 import UIKit
 
 protocol TPExpandableTableViewCellDelegate {
-    func removeCell(for item : Base)
-    func selectCell(for item : Base)
+    func remove(item : Base)
+    func select(item : Base)
+    func add(item : Base, position : Int?)
+    func search(item: Base) -> Int?
 }

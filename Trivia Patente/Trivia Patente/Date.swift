@@ -57,7 +57,7 @@ extension Date {
     func isYesterday() -> Bool {
         return Calendar.current.isDateInYesterday(self)
     }
-    func isLastYear() -> Bool {
+    func isPreviousYear() -> Bool {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year], from: Date())
         components.calendar = calendar
@@ -87,7 +87,7 @@ extension Date {
             return "Ieri"
         }
         var format = "dd MMMM"
-        if self.isLastYear() {
+        if self.isPreviousYear() {
             format += " YYYY"
         }
         Formatter.current.dateFormat = format

@@ -66,9 +66,7 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        RecentGameHandler.start {
-            self.recentGamesView.items = RecentGameHandler.games
-        }
+        RecentGameHandler.start(delegate: self.recentGamesView)
         self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
 
     }

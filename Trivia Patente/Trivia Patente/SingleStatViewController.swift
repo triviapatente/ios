@@ -14,11 +14,24 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
     @IBOutlet var chartView : LineChartView!
     @IBOutlet var descriptionLabel : UILabel!
     
+    @IBAction func test() {
+        print("test")
+    }
+    var fakeCell : WrongAnswerTableViewCell!
     var errorsView : TPExpandableView! {
         didSet {
             errorsView.cellNibName = "WrongAnswerTableViewCell"
             errorsView.rowHeight = 100
             errorsView.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            errorsView.cellExpandHandler = { index in
+                self.fakeCell.quiz = self.errorsView.items[index] as! Quiz
+                let labelNewHeight = self.fakeCell.questionView.requiredHeight
+                let labelOldHeight = self.fakeCell.questionView.frame.size.height
+                let output = self.fakeCell.frame.size.height + (labelNewHeight - labelOldHeight)
+                print("Before", self.fakeCell.frame.size.height)
+                print("After", output)
+                return output
+            }
         }
     }
     var category : Category!
@@ -133,6 +146,10 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         super.viewDidLoad()
         setupView()
         loadData()
+        let frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
+        let nib = UINib(nibName: "WrongAnswerTableViewCell", bundle: Bundle.main)
+        fakeCell = nib.instantiate(withOwner: self, options: nil)[0] as! WrongAnswerTableViewCell
+        fakeCell.frame = frame
         // Do any additional setup after loading the view.
     }
 

@@ -21,7 +21,7 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
         }
     }
     @IBAction func gotoGame() {
-        self.delegate.selectCell(for: item)
+        self.delegate.select(item: item)
     }
     var game : Game! {
         didSet {

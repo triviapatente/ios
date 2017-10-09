@@ -193,6 +193,14 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             self.sectionBar.currentPage = page
         }
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if let selectedPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectedPath, animated: false)
+        }
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let _ = self.response else {
             return 0
