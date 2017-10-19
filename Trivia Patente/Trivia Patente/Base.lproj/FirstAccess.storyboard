@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1sd-zi-ypU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1sd-zi-ypU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Italic</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--First Access Page View Controller-->
         <scene sceneID="BUG-Er-VZ4">
@@ -31,10 +38,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
-                                <rect key="frame" x="0.0" y="150" width="375" height="368"/>
+                                <rect key="frame" x="0.0" y="202" width="375" height="264"/>
                                 <subviews>
-                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
-                                        <rect key="frame" x="40" y="0.0" width="295" height="0.0"/>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
+                                        <rect key="frame" x="40" y="-88" width="295" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="J9V-5l-dZ3"/>
                                         </constraints>
@@ -110,26 +117,6 @@
                                             <action selector="normalRegistration" destination="fLU-4u-cEV" eventType="touchUpInside" id="Mdd-p3-49f"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— oppure ——" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm5-Xv-WsA">
-                                        <rect key="frame" x="123" y="279" width="130" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="8FT-ZB-kU0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ega-FS-B72" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="163" y="318" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Pgj-P9-e8Y"/>
-                                            <constraint firstAttribute="height" constant="50" id="y7v-TY-L6q"/>
-                                        </constraints>
-                                        <state key="normal" image="fb_logo"/>
-                                        <connections>
-                                            <action selector="facebookRegistration" destination="fLU-4u-cEV" eventType="touchUpInside" id="zvN-lT-RPS"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AgN-di-1yK" firstAttribute="leading" secondItem="oZT-Ko-9ZK" secondAttribute="leading" id="BUC-dw-m9T"/>
@@ -155,7 +142,6 @@
                     </view>
                     <connections>
                         <outlet property="errorViewContainer" destination="6a8-Ba-Ass" id="hlh-cz-uTv"/>
-                        <outlet property="fbButton" destination="Ega-FS-B72" id="s33-rg-CP5"/>
                         <outlet property="registerButton" destination="h7Y-Hh-ssX" id="A0F-qC-oiI"/>
                     </connections>
                 </viewController>
@@ -224,10 +210,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
-                                <rect key="frame" x="16" y="126" width="343" height="416"/>
+                                <rect key="frame" x="16" y="255" width="343" height="158"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
-                                        <rect key="frame" x="40" y="0.0" width="263" height="88"/>
+                                        <rect key="frame" x="40" y="-88" width="263" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="ZyO-A2-Jws"/>
                                         </constraints>
@@ -236,7 +222,7 @@
                                         </connections>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
-                                        <rect key="frame" x="50" y="103" width="243" height="103"/>
+                                        <rect key="frame" x="50" y="0.0" width="243" height="103"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXb-E5-Iaf">
                                                 <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
@@ -259,7 +245,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="221" width="243" height="40"/>
+                                        <rect key="frame" x="50" y="118" width="243" height="40"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="We6-hV-UrX"/>
@@ -274,34 +260,13 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
-                                        <rect key="frame" x="59" y="276" width="225" height="36"/>
+                                        <rect key="frame" x="59" y="158" width="225" height="0.0"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Hai dimenticato la password?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="forgotPassword" destination="ptR-KN-xUF" eventType="touchUpInside" id="t2c-49-2eY"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— oppure ——" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT9-dZ-YmM">
-                                        <rect key="frame" x="106.5" y="327" width="130" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="EC6-Ye-0R9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpj-OV-08t" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="146.5" y="366" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="4N7-cs-ZJa"/>
-                                            <constraint firstAttribute="width" constant="50" id="dmL-zh-t0X"/>
-                                        </constraints>
-                                        <state key="normal" image="fb_logo"/>
-                                        <connections>
-                                            <action selector="facebookLogin" destination="ptR-KN-xUF" eventType="touchUpInside" id="iOr-uN-Epr"/>
-                                            <action selector="facebookRegistration" destination="fLU-4u-cEV" eventType="touchUpInside" id="pVf-US-6LF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -329,7 +294,6 @@
                     </view>
                     <connections>
                         <outlet property="errorViewContainer" destination="14Y-Gw-Zgt" id="zmj-wg-uxk"/>
-                        <outlet property="facebookButton" destination="Cpj-OV-08t" id="oZx-Mv-fiD"/>
                         <outlet property="forgotPasswordButton" destination="kDz-cq-bBM" id="6Az-Hd-d9c"/>
                         <outlet property="loginButton" destination="JDy-jQ-2nk" id="lrH-HV-H6j"/>
                     </connections>
@@ -456,10 +420,9 @@
     </scenes>
     <resources>
         <image name="alert" width="430" height="402"/>
-        <image name="fb_logo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iCr-yz-zFN"/>
         <segue reference="Ama-cG-z4s"/>
+        <segue reference="iCr-yz-zFN"/>
     </inferredMetricsTieBreakers>
 </document>
