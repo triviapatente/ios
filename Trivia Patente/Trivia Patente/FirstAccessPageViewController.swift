@@ -12,18 +12,19 @@ class FirstAccessPageViewController: UIPageViewController {
 
     lazy var controllers: [UIViewController] = {
         return [self.instantiateController("RegistrationViewController"),
-                self.instantiateController("WelcomeViewController"),
                 self.instantiateController("LoginViewController")]
     }()
+    
+    let firstControllerIndex = 0 // corresponds to RegistrationViewController in self.controllers
+    
     var mainController : UIViewController {
-        let mid = controllers.count / 2
-        return controllers[mid]
+        return controllers[firstControllerIndex]
     }
     var loginController : UIViewController {
-        return controllers[2]
+        return controllers[1] // corresponds to LoginViewController in self.controllers
     }
     var registrationController : UIViewController {
-        return controllers[0]
+        return controllers[0] // corresponds to RegistrationViewController in self.controllers
     }
     var viewControllerToPresent : UIViewController!
     

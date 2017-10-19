@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var errorView : TPErrorView!
 
     @IBOutlet var loginButton : TPButton!
-    @IBOutlet var facebookButton : TPButton!
+//    @IBOutlet var facebookButton : TPButton!
     @IBOutlet var errorViewContainer : UIView!
     @IBOutlet var forgotPasswordButton : UIButton!
     
@@ -86,14 +86,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    @IBAction func facebookLogin() {
-        self.resignResponder()
-        facebookButton.load()
-        FBManager.login(sender: self) { response in
-            self.facebookButton.stopLoading()
-            self.handleResponse(response: response)
-        }
-    }
+//    @IBAction func facebookLogin() {
+//        self.resignResponder()
+//        facebookButton.load()
+//        FBManager.login(sender: self) { response in
+//            self.facebookButton.stopLoading()
+//            self.handleResponse(response: response)
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

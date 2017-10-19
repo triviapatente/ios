@@ -23,7 +23,7 @@ extension FirstAccessPageViewController: UIPageViewControllerDataSource {
         return self.controllers.count
     }
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return self.controllers.count / 2
+        return 0
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         //guard non fa altro che controllare se la condizione è verificata, se non lo è returna nil
