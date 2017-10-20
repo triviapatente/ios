@@ -23,6 +23,10 @@ extension FirstAccessPageViewController: UIPageViewControllerDataSource {
         return self.controllers.count
     }
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        if let i = self.controllers.index(of: viewControllerToPresent)
+        {
+            return i
+        }
         return 0
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {

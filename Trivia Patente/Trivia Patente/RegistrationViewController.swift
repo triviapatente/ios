@@ -110,6 +110,15 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             self.handleResponse(response: response)
         }
     }
+    @IBAction func showTermAndConditions()
+    {
+        // TODO
+    }
+    @IBAction func userHasAnAccount()
+    {
+        self.resignResponder()
+        NotificationCenter.default.post(name: Notification.Name("slideToLogin"), object: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerButton.smallRounded()
