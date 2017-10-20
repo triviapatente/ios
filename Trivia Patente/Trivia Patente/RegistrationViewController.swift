@@ -112,6 +112,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registerButton.smallRounded()
         self.nameField.initValues(hint: "Username", delegate: self)
         self.nameField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))
 
