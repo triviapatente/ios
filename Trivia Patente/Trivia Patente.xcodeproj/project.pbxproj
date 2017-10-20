@@ -201,6 +201,7 @@
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
+		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -429,6 +430,7 @@
 		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1178,6 +1180,7 @@
 				8B8142CB1DC0C82F00E60B06 /* Colors.swift */,
 				8B28D26D1DCDEA7100C65122 /* Constants.swift */,
 				8B5EE0E71DD5C92C00745A54 /* Shared.swift */,
+				F45C6EB71F9966CA005BECF9 /* GradientView.swift */,
 			);
 			name = generals;
 			sourceTree = "<group>";
@@ -2060,6 +2063,7 @@
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B4814791E170A3400AD0834 /* UIButton.swift in Sources */,
+				F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */,
 				8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */,
 				8BBAB4961DCA20CF004AB6B0 /* MenuButtonItem.swift in Sources */,
 				8B8EEA2C1DFC3D2C003608AA /* NSNotification.swift in Sources */,

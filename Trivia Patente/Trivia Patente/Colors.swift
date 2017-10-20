@@ -35,4 +35,8 @@ class Colors {
 
     static let accept_color = UIColor(red: 25/255, green: 221/255, blue: 109/255, alpha: 1)
     static let refuse_color = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+    
+    // colors for the login&register controllers background gradient
+    static let access_top_color = UIColor(red: 0/255, green: 216/255, blue: 255/255, alpha: 1)
+    static let access_bottom_color = UIColor(red: 0/255, green: 192/255, blue: 255/255, alpha: 1)
 }

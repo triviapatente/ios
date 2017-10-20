@@ -50,7 +50,7 @@ class FirstAccessPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        self.view.backgroundColor = mainController.view.backgroundColor
+        self.view.backgroundColor = Colors.access_bottom_color
         present()
     }
 

@@ -34,7 +34,7 @@
                         <viewControllerLayoutGuide type="top" id="l7g-FI-flY"/>
                         <viewControllerLayoutGuide type="bottom" id="hYj-bA-OW3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LSC-2Z-bgl">
+                    <view key="view" contentMode="scaleToFill" id="LSC-2Z-bgl" customClass="GradientView" customModule="Trivia_Patente" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -137,14 +137,14 @@
                                     <fragment content="Iscrivendoti e utilizzando questa applicazione accetti in automatico ">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Termini e Condizioni">
                                         <attributes>
                                             <color key="NSColor" red="0.51764705882352935" green="0.97647058823529409" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="13" name=".AppleSystemUIFont"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -152,7 +152,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hYj-bA-OW3" firstAttribute="top" secondItem="Dxx-Ca-mXy" secondAttribute="bottom" constant="8" id="5GI-gE-LEg"/>
@@ -163,6 +163,20 @@
                             <constraint firstItem="Dxx-Ca-mXy" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="cE0-G1-DaC"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="leading" secondItem="LSC-2Z-bgl" secondAttribute="leading" id="zGN-BC-IQL"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.0" green="0.84705882352941175" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="t30-Ex-n8f" appends="YES" id="1my-Q8-hzu"/>
                         </connections>
@@ -232,15 +246,15 @@
                         <viewControllerLayoutGuide type="top" id="tfu-MX-3XT"/>
                         <viewControllerLayoutGuide type="bottom" id="aV1-Rc-oQ9"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b9J-oY-i0P">
+                    <view key="view" contentMode="scaleToFill" id="b9J-oY-i0P" customClass="GradientView" customModule="Trivia_Patente" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
-                                <rect key="frame" x="16" y="255" width="343" height="158"/>
+                                <rect key="frame" x="0.0" y="255" width="375" height="158"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
-                                        <rect key="frame" x="40" y="-88" width="263" height="88"/>
+                                        <rect key="frame" x="40" y="-88" width="295" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="ZyO-A2-Jws"/>
                                         </constraints>
@@ -249,10 +263,10 @@
                                         </connections>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
-                                        <rect key="frame" x="50" y="0.0" width="243" height="103"/>
+                                        <rect key="frame" x="50" y="0.0" width="275" height="103"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXb-E5-Iaf">
-                                                <rect key="frame" x="0.0" y="0.0" width="243" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="S6Y-IT-Elj"/>
                                                 </constraints>
@@ -261,7 +275,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abT-te-gpY">
-                                                <rect key="frame" x="0.0" y="53" width="243" height="50"/>
+                                                <rect key="frame" x="0.0" y="53" width="275" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="F8y-Cb-fi5"/>
                                                 </constraints>
@@ -272,7 +286,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="118" width="243" height="40"/>
+                                        <rect key="frame" x="50" y="118" width="275" height="40"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="We6-hV-UrX"/>
@@ -287,7 +301,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
-                                        <rect key="frame" x="59" y="158" width="225" height="0.0"/>
+                                        <rect key="frame" x="75" y="158" width="225" height="0.0"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Hai dimenticato la password?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,14 +321,27 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerX" secondItem="b9J-oY-i0P" secondAttribute="centerX" id="AIw-ev-vfi"/>
+                            <constraint firstAttribute="trailing" secondItem="qBL-8W-xtN" secondAttribute="trailing" id="JYs-1P-ghM"/>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerY" secondItem="b9J-oY-i0P" secondAttribute="centerY" id="O6i-ps-maG"/>
-                            <constraint firstItem="qBL-8W-xtN" firstAttribute="leading" secondItem="b9J-oY-i0P" secondAttribute="leadingMargin" id="pCv-eN-GLC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qBL-8W-xtN" secondAttribute="trailing" id="tOD-qr-PLV"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="yef-VD-OUN" appends="YES" id="MBX-hR-T1J"/>
                         </connections>
