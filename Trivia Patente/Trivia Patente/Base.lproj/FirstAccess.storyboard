@@ -38,8 +38,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
-                                <rect key="frame" x="0.0" y="202" width="375" height="264"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
+                                <rect key="frame" x="0.0" y="134.5" width="375" height="298"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
                                         <rect key="frame" x="40" y="-88" width="295" height="88"/>
@@ -50,31 +50,31 @@
                                             <segue destination="GER-WT-r58" kind="embed" identifier="error" id="Zdm-RU-yT4"/>
                                         </connections>
                                     </containerView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-di-1yK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="AgN-di-1yK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-9H-a0N">
-                                                <rect key="frame" x="50" y="0.0" width="275" height="50"/>
+                                                <rect key="frame" x="50" y="0.0" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="9DF-wd-JlY"/>
+                                                    <constraint firstAttribute="height" constant="55" id="9DF-wd-JlY"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="6Xa-dn-wX6" kind="embed" identifier="username" id="yeT-FU-VgN"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIz-b5-uyO">
-                                                <rect key="frame" x="50" y="53" width="275" height="50"/>
+                                                <rect key="frame" x="50" y="61" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="wKY-WE-lhz"/>
+                                                    <constraint firstAttribute="height" constant="55" id="wKY-WE-lhz"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="6Xa-dn-wX6" kind="embed" identifier="email" id="4W6-zH-o8t"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-kA-Ncg">
-                                                <rect key="frame" x="50" y="106" width="275" height="50"/>
+                                                <rect key="frame" x="50" y="122" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="cQW-H1-2E2"/>
+                                                    <constraint firstAttribute="height" constant="55" id="cQW-H1-2E2"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="kFD-fx-VVc"/>
                                                 </constraints>
                                                 <connections>
@@ -82,9 +82,9 @@
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-Gg-e70">
-                                                <rect key="frame" x="50" y="159" width="275" height="50"/>
+                                                <rect key="frame" x="50" y="183" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="iU6-Fr-cZe"/>
+                                                    <constraint firstAttribute="height" constant="55" id="iU6-Fr-cZe"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="6Xa-dn-wX6" kind="embed" identifier="repeat_password" id="8vG-z2-sO0"/>
@@ -105,8 +105,8 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7Y-Hh-ssX" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="224" width="275" height="40"/>
-                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.50980392156862742" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="50" y="258" width="275" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50980392156862742" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Aow-xc-6nE"/>
                                         </constraints>
@@ -156,7 +156,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hYj-bA-OW3" firstAttribute="top" secondItem="Dxx-Ca-mXy" secondAttribute="bottom" constant="8" id="5GI-gE-LEg"/>
-                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" id="EKn-Xc-RUQ"/>
+                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" constant="-50" id="EKn-Xc-RUQ"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="EmY-4l-zf8"/>
                             <constraint firstItem="Dxx-Ca-mXy" firstAttribute="width" secondItem="LSC-2Z-bgl" secondAttribute="width" multiplier="0.8" id="VHn-fn-ke2"/>
                             <constraint firstAttribute="trailing" secondItem="oZT-Ko-9ZK" secondAttribute="trailing" id="bKk-4R-ipj"/>
@@ -250,8 +250,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
-                                <rect key="frame" x="0.0" y="255" width="375" height="158"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
+                                <rect key="frame" x="0.0" y="246" width="375" height="176"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
                                         <rect key="frame" x="40" y="-88" width="295" height="88"/>
@@ -262,22 +262,22 @@
                                             <segue destination="GER-WT-r58" kind="embed" identifier="error" id="Ama-cG-z4s"/>
                                         </connections>
                                     </containerView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
-                                        <rect key="frame" x="50" y="0.0" width="275" height="103"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-gp-FOc">
+                                        <rect key="frame" x="50" y="0.0" width="275" height="116"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXb-E5-Iaf">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="S6Y-IT-Elj"/>
+                                                    <constraint firstAttribute="height" constant="55" id="S6Y-IT-Elj"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="6Xa-dn-wX6" kind="embed" identifier="username" id="V6P-bK-GXB"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abT-te-gpY">
-                                                <rect key="frame" x="0.0" y="53" width="275" height="50"/>
+                                                <rect key="frame" x="0.0" y="61" width="275" height="55"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="F8y-Cb-fi5"/>
+                                                    <constraint firstAttribute="height" constant="55" id="F8y-Cb-fi5"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="6Xa-dn-wX6" kind="embed" identifier="password" id="iCr-yz-zFN"/>
@@ -286,8 +286,8 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="118" width="275" height="40"/>
-                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="50" y="136" width="275" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50980392156862742" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="We6-hV-UrX"/>
                                         </constraints>
@@ -301,7 +301,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
-                                        <rect key="frame" x="75" y="158" width="225" height="0.0"/>
+                                        <rect key="frame" x="75" y="176" width="225" height="0.0"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Hai dimenticato la password?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -370,24 +370,26 @@
                         <viewControllerLayoutGuide type="bottom" id="YcU-Ly-Z1K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2ZC-cT-auf">
-                        <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="275" height="55"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLH-a6-DEr">
-                                <rect key="frame" x="0.0" y="1" width="275" height="17"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="275" height="15"/>
+                                <color key="backgroundColor" red="0.85098039215686272" green="0.16470588235294117" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="L9z-v1-1oP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jEo-J8-YOj" customClass="TPTextField" customModule="Trivia_Patente" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="15" width="275" height="35"/>
+                                <rect key="frame" x="0.0" y="15" width="275" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Awj-Ht-o7P"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Wvq-bU-Lxz"/>
+                                    <constraint firstAttribute="height" constant="40" id="Awj-Ht-o7P"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -397,17 +399,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eLH-a6-DEr" firstAttribute="top" secondItem="2ZC-cT-auf" secondAttribute="top" constant="1" id="Mit-c1-dwT"/>
+                            <constraint firstItem="eLH-a6-DEr" firstAttribute="top" secondItem="2ZC-cT-auf" secondAttribute="top" id="Mit-c1-dwT"/>
                             <constraint firstItem="eLH-a6-DEr" firstAttribute="leading" secondItem="2ZC-cT-auf" secondAttribute="leading" id="NgL-hX-Dfl"/>
                             <constraint firstAttribute="trailing" secondItem="jEo-J8-YOj" secondAttribute="trailing" id="S82-UB-j9G"/>
                             <constraint firstAttribute="trailing" secondItem="eLH-a6-DEr" secondAttribute="trailing" id="WHb-fF-Dk1"/>
                             <constraint firstAttribute="bottomMargin" secondItem="jEo-J8-YOj" secondAttribute="bottom" id="hIP-CK-2yl"/>
-                            <constraint firstAttribute="bottom" secondItem="jEo-J8-YOj" secondAttribute="bottom" id="qey-Ox-Bt6"/>
+                            <constraint firstItem="jEo-J8-YOj" firstAttribute="top" secondItem="eLH-a6-DEr" secondAttribute="bottom" id="qGi-yi-AEQ"/>
                             <constraint firstItem="jEo-J8-YOj" firstAttribute="leading" secondItem="2ZC-cT-auf" secondAttribute="leading" id="ysm-Kc-l0c"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="275" height="50"/>
+                    <size key="freeformSize" width="275" height="55"/>
                     <connections>
                         <outlet property="errorView" destination="eLH-a6-DEr" id="i5h-tJ-AhN"/>
                         <outlet property="field" destination="jEo-J8-YOj" id="gKV-Ef-IrF"/>
