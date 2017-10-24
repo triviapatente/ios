@@ -471,7 +471,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-2h-jCR" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
-                                <rect key="frame" x="68" y="12" width="191" height="64"/>
+                                <rect key="frame" x="72" y="12" width="187" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.50492554903030396" green="0.37762138247489929" blue="0.25387939810752869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -484,7 +484,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="L5G-l6-yiv">
-                                <rect key="frame" x="10" y="24" width="50" height="40"/>
+                                <rect key="frame" x="14" y="24" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="1m6-W1-DX8"/>
                                     <constraint firstAttribute="height" constant="40" id="f9a-QO-Abe"/>
@@ -494,7 +494,7 @@
                         <color key="backgroundColor" red="1" green="0.94854682683944702" blue="0.7009081244468689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="87Q-2h-jCR" secondAttribute="bottom" constant="12" id="6ll-cM-D49"/>
-                            <constraint firstItem="L5G-l6-yiv" firstAttribute="leading" secondItem="MJs-hg-cax" secondAttribute="leading" constant="10" id="G0G-2J-azT"/>
+                            <constraint firstItem="L5G-l6-yiv" firstAttribute="leading" secondItem="MJs-hg-cax" secondAttribute="leading" constant="14" id="G0G-2J-azT"/>
                             <constraint firstItem="L5G-l6-yiv" firstAttribute="centerY" secondItem="MJs-hg-cax" secondAttribute="centerY" id="JGi-np-i1H"/>
                             <constraint firstItem="87Q-2h-jCR" firstAttribute="top" secondItem="MJs-hg-cax" secondAttribute="top" constant="12" id="bZi-Mp-QcD"/>
                             <constraint firstAttribute="trailing" secondItem="87Q-2h-jCR" secondAttribute="trailing" constant="16" id="cES-lT-LkM"/>
