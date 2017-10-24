@@ -34,7 +34,7 @@
                         <viewControllerLayoutGuide type="top" id="l7g-FI-flY"/>
                         <viewControllerLayoutGuide type="bottom" id="hYj-bA-OW3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LSC-2Z-bgl" customClass="GradientView" customModule="Trivia_Patente" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="LSC-2Z-bgl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -189,7 +189,7 @@
                                 </connections>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hYj-bA-OW3" firstAttribute="top" secondItem="Dxx-Ca-mXy" secondAttribute="bottom" constant="8" id="5GI-gE-LEg"/>
@@ -200,20 +200,6 @@
                             <constraint firstItem="Dxx-Ca-mXy" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="cE0-G1-DaC"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="leading" secondItem="LSC-2Z-bgl" secondAttribute="leading" id="zGN-BC-IQL"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.0" green="0.84705882352941175" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="t30-Ex-n8f" appends="YES" id="1my-Q8-hzu"/>
                         </connections>
@@ -288,7 +274,7 @@
                         <viewControllerLayoutGuide type="top" id="tfu-MX-3XT"/>
                         <viewControllerLayoutGuide type="bottom" id="aV1-Rc-oQ9"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b9J-oY-i0P" customClass="GradientView" customModule="Trivia_Patente" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="b9J-oY-i0P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -374,27 +360,13 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerX" secondItem="b9J-oY-i0P" secondAttribute="centerX" id="AIw-ev-vfi"/>
                             <constraint firstAttribute="trailing" secondItem="qBL-8W-xtN" secondAttribute="trailing" id="JYs-1P-ghM"/>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerY" secondItem="b9J-oY-i0P" secondAttribute="centerY" constant="-50" id="O6i-ps-maG"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                <color key="value" red="0.0" green="0.84705882349999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" red="0.0" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="yef-VD-OUN" appends="YES" id="MBX-hR-T1J"/>
                         </connections>
@@ -531,7 +503,7 @@
         <image name="alert" width="40" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zdm-RU-yT4"/>
-        <segue reference="4W6-zH-o8t"/>
+        <segue reference="Ama-cG-z4s"/>
+        <segue reference="V6P-bK-GXB"/>
     </inferredMetricsTieBreakers>
 </document>
