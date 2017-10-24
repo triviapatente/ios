@@ -26,6 +26,14 @@
             </objects>
             <point key="canvasLocation" x="575" y="37"/>
         </scene>
+        <!--TermsAndConditionsMain-->
+        <scene sceneID="TaO-Fp-Vsx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TermsAndConditions" referencedIdentifier="TermsAndConditionsMain" id="WJd-eG-N5S" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2h-qX-r1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-609" y="1218"/>
+        </scene>
         <!--Registration View Controller-->
         <scene sceneID="UvZ-tr-GC5">
             <objects>
@@ -186,6 +194,7 @@
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8Uk-0H-Nan" appends="YES" id="WD2-jc-ynh"/>
+                                    <outletCollection property="gestureRecognizers" destination="gc3-zM-AOe" appends="YES" id="J8k-AR-vyD"/>
                                 </connections>
                             </label>
                         </subviews>
@@ -218,6 +227,11 @@
                 <tapGestureRecognizer id="8Uk-0H-Nan">
                     <connections>
                         <action selector="showTermAndConditions" destination="fLU-4u-cEV" id="oCA-u2-ekB"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="gc3-zM-AOe">
+                    <connections>
+                        <segue destination="WJd-eG-N5S" kind="show" id="bI3-tV-X4k"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -503,7 +517,7 @@
         <image name="alert" width="40" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ama-cG-z4s"/>
-        <segue reference="V6P-bK-GXB"/>
+        <segue reference="Zdm-RU-yT4"/>
+        <segue reference="4W6-zH-o8t"/>
     </inferredMetricsTieBreakers>
 </document>
