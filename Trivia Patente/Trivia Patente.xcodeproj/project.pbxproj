@@ -202,6 +202,8 @@
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
+		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
+		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +433,8 @@
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1572,6 +1576,7 @@
 		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
 			isa = PBXGroup;
 			children = (
+				F49716A11F9FE09400ED4D7B /* terms */,
 				8B5132D61DBB5B8700143497 /* auth */,
 				8B5132D41DBB5B5300143497 /* base */,
 				8B5132D51DBB5B5800143497 /* game */,
@@ -1605,6 +1610,15 @@
 				A9FD529B1DA16E96005DFE5D /* Info.plist */,
 			);
 			path = "Trivia PatenteUITests";
+			sourceTree = "<group>";
+		};
+		F49716A11F9FE09400ED4D7B /* terms */ = {
+			isa = PBXGroup;
+			children = (
+				F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */,
+				F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */,
+			);
+			name = terms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1755,6 +1769,7 @@
 				8B5EE1111DD914F600745A54 /* ProfileSettingsTableViewCell.xib in Resources */,
 				8B5EE11A1DD91E8900745A54 /* SettingsHeaderView.xib in Resources */,
 				8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */,
+				F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 				8BE2788E1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib in Resources */,
 			);
@@ -2029,6 +2044,7 @@
 				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
 				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
+				F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
 				8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */,
 				8B3E3A901E13015D0062AF32 /* UITableView.swift in Sources */,
