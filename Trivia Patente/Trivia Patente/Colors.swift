@@ -39,4 +39,14 @@ class Colors {
     // colors for the login&register controllers background gradient
     static let access_top_color = UIColor(red: 8/255, green: 222/255, blue: 255/255, alpha: 1)
     static let access_bottom_color = UIColor(red: 0/255, green: 192/255, blue: 255/255, alpha: 1)
+    
+    // get gradient for access controllers
+    static func accessGradientLayer(view: UIView) -> CAGradientLayer
+    {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [Colors.access_top_color.cgColor, Colors.access_bottom_color.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        return gradientLayer
+    }
 }

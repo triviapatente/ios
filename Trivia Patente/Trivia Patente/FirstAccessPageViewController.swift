@@ -49,21 +49,12 @@ class FirstAccessPageViewController: UIPageViewController {
         setViewControllers([viewControllerToPresent], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // set gardient background
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [Colors.access_top_color.cgColor, Colors.access_bottom_color.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set background gradient
+        self.view.layer.insertSublayer(Colors.accessGradientLayer(view: self.view), at: 0)
+        
         dataSource = self
         self.view.backgroundColor = Colors.access_bottom_color // set base color
         
