@@ -74,7 +74,6 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     
     func handleResponse(response : TPForgotResponse) {
         if response.success == true && response.requestSuccess! {
-            // TODO: set the new message for the login view
             guard response.requestSuccess != nil && response.requestSuccess! else
             {
                 setErrorMessage(message: "Errore generico")
