@@ -19,6 +19,14 @@ class TPInputView: UIViewController {
         super.viewDidLoad()
         self.field.tintColor = Colors.primary
     }
+    func enable()
+    {
+        self.field.isUserInteractionEnabled = true
+    }
+    func disable()
+    {
+        self.field.isUserInteractionEnabled = false
+    }
     func isCorrect() -> Bool {
         return !isError
     }
@@ -28,7 +36,6 @@ class TPInputView: UIViewController {
         if isError == false {
             self.normalState()
         }
-        
     }
     func validate(condition : Bool, error : String, force: Bool = false, vibrate : Bool) {
         if ignoreValidation || condition {
