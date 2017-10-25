@@ -201,6 +201,8 @@
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
+		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
+		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
@@ -432,6 +434,8 @@
 		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
@@ -914,6 +918,7 @@
 				8B5132F71DBB72B600143497 /* TPAuthResponse.swift */,
 				8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */,
 				8B9A58861E09379C0005E46B /* TPFBResponse.swift */,
+				F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -1380,6 +1385,7 @@
 		8BCF8C341DB6A44400EC637C /* pagecontroller */ = {
 			isa = PBXGroup;
 			children = (
+				F4477E341FA0851700ED5319 /* passRecovery */,
 				A9D1D34B1DA556FD00557DC9 /* FirstAccessPageViewController.swift */,
 				8B5133111DBBADEB00143497 /* Datasource.swift */,
 				8B51330E1DBBACAB00143497 /* login */,
@@ -1610,6 +1616,14 @@
 				A9FD529B1DA16E96005DFE5D /* Info.plist */,
 			);
 			path = "Trivia PatenteUITests";
+			sourceTree = "<group>";
+		};
+		F4477E341FA0851700ED5319 /* passRecovery */ = {
+			isa = PBXGroup;
+			children = (
+				F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */,
+			);
+			name = passRecovery;
 			sourceTree = "<group>";
 		};
 		F49716A11F9FE09400ED4D7B /* terms */ = {
@@ -1975,6 +1989,7 @@
 				8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
+				F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */,
 				8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
 				8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */,
@@ -2112,6 +2127,7 @@
 				8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */,
 				8B5EE1071DD913BC00745A54 /* SettingsTableViewCell.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
+				F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */,
 				8BDEDEEC1E1AAB7000063FB2 /* TPQuestionAnsweredEvent.swift in Sources */,
 				8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */,
 				8BDEDEEA1E1A60F200063FB2 /* RoundDetailsEmptyViewController.swift in Sources */,
