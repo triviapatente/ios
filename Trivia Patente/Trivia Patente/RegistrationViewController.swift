@@ -29,6 +29,21 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         _ = self.repeatPasswordField.resignFirstResponder()
     }
     
+    func enableForm()
+    {
+        self.nameField.enable()
+        self.passwordField.enable()
+        self.repeatPasswordField.enable()
+        self.emailField.enable()
+    }
+    func disableForm()
+    {
+        self.nameField.disable()
+        self.passwordField.disable()
+        self.repeatPasswordField.disable()
+        self.emailField.disable()
+    }
+    
     func checkValues(vibrate : Bool = false) {
         let username = nameField.getText()
         let email = emailField.getText()
@@ -61,8 +76,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         guard self.formIsCorrect() else {
             return
         }
+        self.disableForm()
         registerButton.load()
         http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
+            self.enableForm()
             self.registerButton.stopLoading()
             self.handleResponse(response: response)
             

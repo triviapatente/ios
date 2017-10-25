@@ -22,6 +22,12 @@ class HTTPAuth : HTTPManager {
             handler(response)
         }
     }
+    func forgotPassword(user : String, handler : @escaping (TPForgotResponse) -> Void) {
+        let parameters = ["user": user]
+        request(url: "/auth/forgot", method: .post, params: parameters, auth: false) { (response : TPForgotResponse) in
+            handler(response)
+        }
+    }
     func fb_auth(token : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["token": token]
         request(url: "/fb/auth", method: .post, params: parameters, auth: false) { (response : TPAuthResponse) in

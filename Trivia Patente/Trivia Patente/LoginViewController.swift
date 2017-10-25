@@ -37,6 +37,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         nameField.enableValidation()
         passwordField.enableValidation()
     }
+    func enableForm()
+    {
+        self.nameField.enable()
+        self.passwordField.enable()
+    }
+    func disableForm()
+    {
+        self.nameField.disable()
+        self.passwordField.disable()
+    }
     @IBAction func login() {
         self.enableValidation()
         self.checkValues(vibrate: true)
@@ -44,10 +54,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard self.formIsCorrect() else {
             return
         }
+        self.disableForm()
         self.resignResponder()
         loginButton.load()
         httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
             self.loginButton.stopLoading()
+            self.enableForm()
             self.forgotPasswordButton.isHidden = response.success
             self.handleResponse(response: response)
         }
@@ -56,8 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if response.success == true {
             let controller = UIViewController.root()
             self.present(controller, animated: true) {
-                self.nameField.field.text = ""
-                self.passwordField.field.text = ""
+                self.clearForm()
                 self.errorViewContainer.isHidden = true
             }
         } else {
@@ -106,6 +117,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordField.add(target: self, changeValueHandler: #selector(checkValues))
         self.passwordField.field.isSecureTextEntry = true
         // Do any additional setup after loading the view.
+        
+        // Listen for an error message from the forgot password controller
+        NotificationCenter.default.addObserver(self, selector: #selector(handleForgotNotification), name: Notification.Name("forgotMessage"), object: nil)
+    }
+    
+    func handleForgotNotification(notification: Notification)
+    {
+        self.errorViewContainer.isHidden = false
+        self.errorView.set(error: notification.userInfo!["message"] as! String)
+        self.clearForm()
+        self.enableForm()
+        self.loginButton.stopLoading()
+    }
+    
+    func clearForm()
+    {
+        self.nameField.field.text = ""
+        self.passwordField.field.text = ""
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
