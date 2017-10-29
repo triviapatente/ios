@@ -206,6 +206,7 @@
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
+		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -439,6 +440,7 @@
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
+		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1416,6 +1418,7 @@
 				8BBBF9D81E0C26A80061C25B /* CALayer.swift */,
 				8B3E3A8F1E13015D0062AF32 /* UITableView.swift */,
 				8B4814781E170A3400AD0834 /* UIButton.swift */,
+				F4E4EC501FA5E30D00162756 /* UIFont.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1977,6 +1980,7 @@
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
 				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
+				F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */,
 				8BB29D901E2790BF00F5CFB9 /* RecentGameHandler.swift in Sources */,
 				8BE278941DF477CC00071DF2 /* TPRoundDetailsResponse.swift in Sources */,
 				8B8142CC1DC0C82F00E60B06 /* Colors.swift in Sources */,

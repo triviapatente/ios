@@ -48,6 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         SocketManager.disconnect { }
     }
+    
+    override init() {
+        super.init()
+        UIFont.overrideInitialize()
+    }
 
 
 }

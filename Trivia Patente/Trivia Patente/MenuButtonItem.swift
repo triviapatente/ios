@@ -11,9 +11,9 @@ import UIKit
 class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
     
     lazy var imageView : UIImageView = {
-        let rect = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
         let view = UIImageView(frame: rect)
-        view.image = UIImage(named: "menu_dots")
+        view.image = UIImage(named: "menu-hamburger")
         return view
     }()
     
@@ -23,6 +23,7 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         return UITapGestureRecognizer(target: self, action: #selector(imagePressed))
     }()
     var navController : TPNavigationController!
+    
     init(callback : @escaping (MenuAction) -> (), sender : TPNavigationController) {
         super.init()
         imageView.addGestureRecognizer(tapRecognizer)

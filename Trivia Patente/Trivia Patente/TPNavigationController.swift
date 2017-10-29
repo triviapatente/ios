@@ -9,20 +9,23 @@
 import UIKit
 
 class TPNavigationController: UINavigationController {
-    var avatarItem: AvatarButtonItem!
+//    var avatarItem: AvatarButtonItem!
     var menuItem: MenuButtonItem!
     var lifesItem: LifesButtonItem!
-    
     
     var topView : UIView {
         return self.topViewController!.view
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationBar.shadowImage = UIImage()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        avatarItem = AvatarButtonItem(user: SessionManager.currentUser, callback: {
-            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
-        })
+//        avatarItem = AvatarButtonItem(user: SessionManager.currentUser, callback: {
+//            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
+//        })
         menuItem = MenuButtonItem(callback: { action in
             switch(action) {
                 case .profile: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
@@ -40,14 +43,14 @@ class TPNavigationController: UINavigationController {
             self.goTo(AlphaViewController.self, identifier: "alpha_segue")
         })
         //TODO: edit with correct informations
-        lifesItem.numberOfLifes = 5
+//        lifesItem.numberOfLifes = 5
     }
     func setUser(candidate : User?, with_title : Bool = true) {
         if let user = candidate {
             if with_title {
                 self.topViewController?.title = user.displayName
             }
-            self.avatarItem.user = candidate
+//            self.avatarItem.user = candidate
         }
     }
     func goTo(_ vcClass : UIViewController.Type, identifier : String) {
@@ -66,16 +69,17 @@ class TPNavigationController: UINavigationController {
     func configureBar() {
         if let topController = self.topViewController {
             let navigationItem = topController.navigationItem
-            let negativeSpacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            negativeSpacer.width = -20
+            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            spacer.width = 20
             if self.viewControllers.count == 1 {
-                navigationItem.leftBarButtonItems = [negativeSpacer, lifesItem]
+                navigationItem.leftBarButtonItems = [spacer, menuItem]
             }
             if topController.needsMenu() {
-                navigationItem.rightBarButtonItems = [negativeSpacer, menuItem, avatarItem]
+                navigationItem.rightBarButtonItems = [spacer, lifesItem]
             } else {
-                navigationItem.rightBarButtonItems = [avatarItem]
+//                navigationItem.rightBarButtonItems = [avatarItem]
             }
+            
         }
         
     }

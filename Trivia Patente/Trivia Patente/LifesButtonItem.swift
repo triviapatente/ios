@@ -9,22 +9,23 @@
 import UIKit
 
 class LifesButtonItem: UIBarButtonItem {
-    @IBOutlet var lifesLabel : UILabel!
-    @IBOutlet var moreLifesButton : UIButton!
-    @IBOutlet var heartImageView : UIImageView! {
-        didSet {
-            self.heartImageView.tintColor = Colors.error_default
-            self.heartImageView.image = self.heartImageView.image?.withRenderingMode(.alwaysTemplate)
-        }
-    }
+//    @IBOutlet var lifesLabel : UILabel!
+//    @IBOutlet var moreLifesButton : UIButton!
+    @IBOutlet var heartImageView : UIImageView!
+//    {
+//        didSet {
+//            self.heartImageView.tintColor = Colors.error_default
+//            self.heartImageView.image = self.heartImageView.image?.withRenderingMode(.alwaysTemplate)
+//        }
+//    }
     
     var callback : (() -> Void)!
-    var numberOfLifes : Int = 0 {
-        didSet {
-            lifesLabel.text = "\(numberOfLifes)"
-            self.moreLifesButton.isHidden = self.numberOfLifes != 0
-        }
-    }
+//    var numberOfLifes : Int = 0 {
+//        didSet {
+//            lifesLabel.text = "\(numberOfLifes)"
+//            self.moreLifesButton.isHidden = self.numberOfLifes != 0
+//        }
+//    }
     @IBAction func moreLifes() {
         callback()
     }
@@ -32,7 +33,7 @@ class LifesButtonItem: UIBarButtonItem {
         super.init()
         self.callback = callback
         self.customView = Bundle.main.loadNibNamed("LifesButtonItem", owner: self, options: nil)?.first as! UIView?
-        self.moreLifesButton.circleRounded()
+//        self.moreLifesButton.circleRounded()
     }
     
     required init?(coder aDecoder: NSCoder) {
