@@ -43,6 +43,23 @@ class TPMainButton: UIViewController {
             self.hintView.frame.origin.y = oldOrigin
         }
     }
+    func setComingSoon()
+    {
+        let opacity = CGFloat(0.7)
+        self.view.backgroundColor = self.view.backgroundColor!.withAlphaComponent(opacity)
+        self.titleView.alpha = opacity
+        self.imageView.alpha = opacity
+        self.hintView.alpha = opacity
+        
+        // adding coming soon image
+        let csImage = UIImage(named: "coming_soon_white")!
+        let csWidth = CGFloat(csImage.size.width)
+        let imageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 2, y: 0, width: csWidth, height: self.view.frame.height + 2))
+        imageView.image = csImage
+        self.view.addSubview(imageView)
+        
+        self.view.isUserInteractionEnabled = false
+    }
     func display(hints : [String]) {
         self.hints = hints
         if let first = self.hints.first {

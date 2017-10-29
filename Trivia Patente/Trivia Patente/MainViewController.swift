@@ -62,6 +62,11 @@ class MainViewController: TPNormalViewController {
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
+        
+        // set Stats and Sjop as coming soon
+        self.statsButton.setComingSoon()
+        self.shopButton.setComingSoon()
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {

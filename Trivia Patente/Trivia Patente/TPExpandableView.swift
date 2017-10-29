@@ -112,6 +112,14 @@ class TPExpandableView: UIViewController {
         view.backgroundColor = separatorColor ?? .white
         return view
     }
+    var topViewSeparator : UIView {
+        let height = CGFloat(0.5)
+        let width = self.view.frame.size.width
+        let frame = CGRect(x: 0, y: 0, width: width, height: height)
+        let view = UIView(frame: frame)
+        view.backgroundColor = .white
+        return view
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let name = cellNibName {
@@ -123,6 +131,7 @@ class TPExpandableView: UIViewController {
             self.tableView.rowHeight = height
         }
         headerView.topItem?.title = headerTitle
+        self.view.addSubview(self.topViewSeparator)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
