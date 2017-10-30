@@ -12,6 +12,7 @@ import MBProgressHUD
 class SearchGameMenuViewController: TPNormalViewController {
     @IBOutlet var searchButton : UIButton!
     @IBOutlet var randomButton : UIButton!
+    @IBOutlet var tournamentButton : UIButton!
     let handler = HTTPGame()
     let socketHandler = SocketGame()
     
@@ -73,8 +74,12 @@ class SearchGameMenuViewController: TPNormalViewController {
         super.viewDidLoad()
         searchButton.mediumRounded()
         randomButton.mediumRounded()
+        tournamentButton.mediumRounded()
+        
         self.load()
         self.listen()
+        
+        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
