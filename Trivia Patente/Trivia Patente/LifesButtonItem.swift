@@ -33,6 +33,8 @@ class LifesButtonItem: UIBarButtonItem {
         super.init()
         self.callback = callback
         self.customView = Bundle.main.loadNibNamed("LifesButtonItem", owner: self, options: nil)?.first as! UIView?
+//        self.customView?.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        
 //        self.moreLifesButton.circleRounded()
     }
     

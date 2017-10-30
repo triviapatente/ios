@@ -206,6 +206,7 @@
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
+		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
 /* End PBXBuildFile section */
 
@@ -440,6 +441,7 @@
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
+		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1353,6 +1355,7 @@
 			children = (
 				8BBBE8521DC7700500B433F2 /* recent_games */,
 				8B5133251DBCBA6900143497 /* MainViewController.swift */,
+				F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -2118,6 +2121,7 @@
 				8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
+				F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */,
 				8B74DC021DE6EFBB0006EB90 /* TPInitRoundResponse.swift in Sources */,
 				8BCF8CAA1DB6AB3400EC637C /* Date.swift in Sources */,
 				8BE20C661DD9E44C0048DA0A /* HTTPPreference.swift in Sources */,

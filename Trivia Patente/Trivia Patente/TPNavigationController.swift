@@ -11,7 +11,8 @@ import UIKit
 class TPNavigationController: UINavigationController {
 //    var avatarItem: AvatarButtonItem!
     var menuItem: MenuButtonItem!
-    var lifesItem: LifesButtonItem!
+//    var lifesItem: LifesButtonItem! // non funzionava niente!! Perso ore e ore
+    var lifesItem : UIBarButtonItem!
     
     var topView : UIView {
         return self.topViewController!.view
@@ -39,11 +40,20 @@ class TPNavigationController: UINavigationController {
                               break
             }
         }, sender: self)
-        lifesItem = LifesButtonItem(callback: {
-            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
-        })
+        
+        // TODO: make this better - temporary solution
+        let heartImageView = UIImageView(image: UIImage(named: "heart-infinity"))
+        heartImageView.isUserInteractionEnabled = true
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(lifesPressed))
+        heartImageView.addGestureRecognizer(tapper)
+        lifesItem = UIBarButtonItem(customView: heartImageView)
+        
         //TODO: edit with correct informations
 //        lifesItem.numberOfLifes = 5
+    }
+    func lifesPressed()
+    {
+        self.goTo(LuckyModalViewController.self, identifier: "lucky_segue")
     }
     func setUser(candidate : User?, with_title : Bool = true) {
         if let user = candidate {
@@ -70,12 +80,12 @@ class TPNavigationController: UINavigationController {
         if let topController = self.topViewController {
             let navigationItem = topController.navigationItem
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            spacer.width = 20
+            spacer.width = -20
             if self.viewControllers.count == 1 {
                 navigationItem.leftBarButtonItems = [spacer, menuItem]
             }
             if topController.needsMenu() {
-                navigationItem.rightBarButtonItems = [spacer, lifesItem]
+                navigationItem.rightBarButtonItems = [lifesItem]
             } else {
 //                navigationItem.rightBarButtonItems = [avatarItem]
             }
