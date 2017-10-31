@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+import SideMenu
 
 
 class TPNavigationController: UINavigationController {
     
 //    var avatarItem: AvatarButtonItem!
-    var menuItem: MenuButtonItem!
+    var menuItem: UIBarButtonItem!
 //    var lifesItem: LifesButtonItem! // non funzionava niente!! Perso ore e ore
     var lifesItem : UIBarButtonItem!
     
@@ -27,7 +27,9 @@ class TPNavigationController: UINavigationController {
     }
     
     override func viewDidLoad() {
-        
+        SideMenuManager.menuFadeStatusBar = false
+        // 240 grandezza minima, 300 grandezza massima
+        SideMenuManager.menuWidth = min(max(UIScreen.main.bounds.width * 0.80, 240), 300)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,19 +37,8 @@ class TPNavigationController: UINavigationController {
 //        avatarItem = AvatarButtonItem(user: SessionManager.currentUser, callback: {
 //            self.goTo(AlphaViewController.self, identifier: "alpha_segue")
 //        })
-        menuItem = MenuButtonItem(callback: { action in
-            switch(action) {
-                case .profile: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
-                               break
-                case .settings: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
-                                break
-                case .credits: self.goTo(AlphaViewController.self, identifier: "alpha_segue")
-                               break
-                case .logout: self.topView.fade()
-                              self.goTo(LogoutViewController.self, identifier: "logout_segue")
-                              break
-            }
-        }, sender: self)
+        
+        menuItem = UIBarButtonItem(image: UIImage(named: "menu-hamburger"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(showMenu))
         
         // TODO: make this better - temporary solution
         let heartImageView = UIImageView(image: UIImage(named: "heart-infinity"))
@@ -58,6 +49,11 @@ class TPNavigationController: UINavigationController {
         
         //TODO: edit with correct informations
 //        lifesItem.numberOfLifes = 5
+    }
+    
+    func showMenu()
+    {
+        self.performSegue(withIdentifier: "menu_segue", sender: nil)
     }
     
     func handleRandomLuckyPopoverShow()
@@ -146,19 +142,15 @@ class TPNavigationController: UINavigationController {
     func configureBar() {
         if let topController = self.topViewController {
             let navigationItem = topController.navigationItem
-            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            spacer.width = -20
             if self.viewControllers.count == 1 {
-                navigationItem.leftBarButtonItems = [spacer, menuItem]
+                navigationItem.leftBarButtonItems = [menuItem]
             }
             if topController.needsMenu() {
                 navigationItem.rightBarButtonItems = [lifesItem]
             } else {
 //                navigationItem.rightBarButtonItems = [avatarItem]
             }
-            
         }
-        
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

@@ -202,6 +202,7 @@
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
 		F446B3B11FA7F07700FD2C79 /* DNSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */; };
+		F446B3B41FA80C5D00FD2C79 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446B3B31FA80C5D00FD2C79 /* MenuViewController.swift */; };
 		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
 		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
@@ -438,6 +439,7 @@
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSAViewController.swift; sourceTree = "<group>"; };
+		F446B3B31FA80C5D00FD2C79 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -785,6 +787,7 @@
 		8B5132E01DBB5C6D00143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F446B3B21FA80C4C00FD2C79 /* Menu */,
 				8BCF8C281DB6A3C900EC637C /* Main.storyboard */,
 				8BBBE8511DC76FF100B433F2 /* main */,
 				8BBAB4921DCA1CF3004AB6B0 /* navigation */,
@@ -1627,6 +1630,14 @@
 			path = "Trivia PatenteUITests";
 			sourceTree = "<group>";
 		};
+		F446B3B21FA80C4C00FD2C79 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F446B3B31FA80C5D00FD2C79 /* MenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		F4477E341FA0851700ED5319 /* passRecovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1830,7 +1841,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		317B9D4B4A9FB304A8DEDBF3 /* [CP] Check Pods Manifest.lock */ = {
@@ -1848,7 +1859,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3929FA2D7FD4CB242E18E58A /* [CP] Embed Pods Frameworks */ = {
@@ -1924,7 +1935,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E3CB3DDB1FAD472BF077CBA2 /* [CP] Embed Pods Frameworks */ = {
@@ -2018,6 +2029,7 @@
 				8BAD1C551DF9CA050051AC4A /* TPGameEndedEvent.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
 				8BAD1C451DF9795D0051AC4A /* Int.swift in Sources */,
+				F446B3B41FA80C5D00FD2C79 /* MenuViewController.swift in Sources */,
 				8BE6DE371DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B5EE1091DD913E700745A54 /* DropdownSettingsTableViewCell.swift in Sources */,
