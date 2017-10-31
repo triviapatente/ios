@@ -10,4 +10,6 @@ import Foundation
 
 class Constants {
     static let max_life_number = 3
+    static let kLastLuckyPopTS = "luckyPopoverLastTS"
+    static let kLuckyPopShouldShowTS = "luckyPopoverShouldShow"
 }

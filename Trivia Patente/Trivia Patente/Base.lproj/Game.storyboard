@@ -251,7 +251,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="J3Z-sF-tD0" firstAttribute="centerY" secondItem="RmV-5q-voe" secondAttribute="centerY" id="J4x-AK-eEZ"/>
                             <constraint firstItem="rf0-iS-IOi" firstAttribute="leading" secondItem="q75-Re-qk4" secondAttribute="trailing" constant="10" id="KAp-pt-ElF"/>
@@ -721,7 +721,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhK-Wp-YH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569.375" y="455.28169014084506"/>
+            <point key="canvasLocation" x="1419" y="397"/>
         </scene>
         <!--Game Actions-->
         <scene sceneID="Nmu-cx-qHz">
@@ -732,14 +732,14 @@
                         <viewControllerLayoutGuide type="bottom" id="PtA-5b-nWT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Oz-Oe-M3Y">
-                        <rect key="frame" x="0.0" y="0.0" width="203" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-d4-Gha">
-                                <rect key="frame" x="0.0" y="0.0" width="203" height="56"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-d4-Gha">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="56"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d10-jU-IlU">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d10-jU-IlU">
+                                        <rect key="frame" x="-56" y="0.0" width="56" height="56"/>
                                         <color key="backgroundColor" red="0.39098423719999997" green="0.50854313370000004" blue="0.7533621788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="d10-jU-IlU" secondAttribute="height" multiplier="10:10" id="Bej-uJ-hjo"/>
@@ -751,7 +751,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Y9-rU-Utv">
-                                        <rect key="frame" x="73.5" y="0.0" width="56" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                                         <color key="backgroundColor" red="0.1168684438" green="0.76273190980000005" blue="0.40594422819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9Y9-rU-Utv" secondAttribute="height" multiplier="10:10" id="yz1-7b-QSf"/>
@@ -762,7 +762,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF3-5a-sPe">
-                                        <rect key="frame" x="147" y="0.0" width="56" height="56"/>
+                                        <rect key="frame" x="74" y="0.0" width="56" height="56"/>
                                         <color key="backgroundColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="KF3-5a-sPe" secondAttribute="height" multiplier="10:10" id="TJe-YB-QyZ"/>
@@ -775,7 +775,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="29G-SZ-SeX"/>
-                                    <constraint firstAttribute="width" constant="203" id="FDP-bl-uqE"/>
+                                    <constraint firstAttribute="width" constant="130" id="FDP-bl-uqE"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -787,7 +787,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="203" height="56"/>
+                    <size key="freeformSize" width="130" height="56"/>
                     <connections>
                         <outlet property="chatButton" destination="d10-jU-IlU" id="vkB-ON-qpU"/>
                         <outlet property="detailButton" destination="9Y9-rU-Utv" id="UvN-b4-56P"/>
@@ -1006,7 +1006,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4tD-t6-eAc" firstAttribute="leading" secondItem="WAg-FI-PSD" secondAttribute="trailing" constant="5" id="2hN-aZ-SP7"/>
                             <constraint firstItem="4tD-t6-eAc" firstAttribute="centerY" secondItem="5mv-61-tAc" secondAttribute="centerY" id="86f-SZ-IE0"/>
@@ -1088,10 +1088,10 @@
         <image name="up_score_arrow" width="80" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kf4-r3-nBv"/>
+        <segue reference="NV8-od-C3s"/>
         <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="sSs-jh-fhW"/>
-        <segue reference="xqV-nx-JeY"/>
+        <segue reference="0L7-TT-S4h"/>
+        <segue reference="GCU-d2-vyc"/>
     </inferredMetricsTieBreakers>
 </document>
