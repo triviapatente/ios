@@ -65,5 +65,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) deve accedere alla tua fotocamera per scattare la foto</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) deve accedere alla tua libreria foto per poter usare l&apos;immagine</string>
 </dict>
 </plist>

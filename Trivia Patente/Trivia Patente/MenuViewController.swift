@@ -9,10 +9,16 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    static let kMenuActionLogout = "logoutMenuAction"
+    static let kMenuActionProfile = "profileMenuAction"
+    static let kMenuActionContact = "contactMenuAction"
 
     @IBOutlet weak var avatarImageView : UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    var actionCallback : ((String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,29 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func profile()
+    {
+        self.sendAction(action: MenuViewController.kMenuActionProfile)
+    }
+    
+    @IBAction func infos()
+    {
+        self.sendAction(action: MenuViewController.kMenuActionContact)
+    }
+    
+    func sendAction(action: String)
+    {
+        self.dismiss(animated: true, completion: nil)
+        if let cb = self.actionCallback
+        {
+            cb(action)
+        }
+    }
+    
+    @IBAction func logout()
+    {
+        self.performSegue(withIdentifier: "logout_segue", sender: nil)
+    }
 
     /*
     // MARK: - Navigation

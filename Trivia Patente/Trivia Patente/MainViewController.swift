@@ -63,6 +63,8 @@ class MainViewController: TPNormalViewController {
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
         
+        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        
         // set Stats and Sjop as coming soon
         self.statsButton.setComingSoon()
         self.shopButton.setComingSoon()
@@ -72,7 +74,6 @@ class MainViewController: TPNormalViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         RecentGameHandler.start(delegate: self.recentGamesView)
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
 
     }
     func connectToSocket() {

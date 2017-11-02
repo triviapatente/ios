@@ -88,6 +88,9 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         super.viewDidLoad()
         confirmButton.smallRounded()
         initFields()
+        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        
+        self.navigationItem.rightBarButtonItems = []
     }
     func initFields() {
         let hints = ["Password precedente", "Nuova password", "Ripeti password"]

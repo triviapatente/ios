@@ -201,6 +201,8 @@
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
+		F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */; };
+		F42D8D1E1FAABE1A00610B99 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */; };
 		F446B3B11FA7F07700FD2C79 /* DNSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */; };
 		F446B3B41FA80C5D00FD2C79 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446B3B31FA80C5D00FD2C79 /* MenuViewController.swift */; };
 		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
@@ -438,6 +440,8 @@
 		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSAViewController.swift; sourceTree = "<group>"; };
 		F446B3B31FA80C5D00FD2C79 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
@@ -518,15 +522,17 @@
 		8B0D88F81DDC5506001B4C3A /* account */ = {
 			isa = PBXGroup;
 			children = (
+				F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */,
 			);
 			name = account;
 			sourceTree = "<group>";
 		};
-		8B0D88F91DDC550F001B4C3A /* credits */ = {
+		8B0D88F91DDC550F001B4C3A /* contact us */ = {
 			isa = PBXGroup;
 			children = (
+				F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */,
 			);
-			name = credits;
+			name = "contact us";
 			sourceTree = "<group>";
 		};
 		8B19E0271DE9814B00304FF3 /* play_round */ = {
@@ -848,7 +854,7 @@
 		8B5132E61DBB5C8400143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				8B0D88F91DDC550F001B4C3A /* credits */,
+				8B0D88F91DDC550F001B4C3A /* contact us */,
 				8B0D88F81DDC5506001B4C3A /* account */,
 				8B0D88F71DDC54FE001B4C3A /* change password */,
 				8B5EE1011DD90A6D00745A54 /* main */,
@@ -2004,6 +2010,7 @@
 				8BCF8C911DB6A6BA00EC637C /* Base.swift in Sources */,
 				8B5132F21DBB662700143497 /* TPResponse.swift in Sources */,
 				8B51332C1DBCCA9C00143497 /* JSON.swift in Sources */,
+				F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */,
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
 				8B8EEA251DFB373C003608AA /* TPGameLeftEvent.swift in Sources */,
@@ -2096,6 +2103,7 @@
 				8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */,
 				8B9A58871E09379C0005E46B /* TPFBResponse.swift in Sources */,
 				8BAD1C471DF99AEF0051AC4A /* TPSectionBar.swift in Sources */,
+				F42D8D1E1FAABE1A00610B99 /* ContactUsViewController.swift in Sources */,
 				8B4551D41E043312008285D4 /* TPNormalTableViewController.swift in Sources */,
 				8B8058E11DE337FB00C3F938 /* GameOpponentTableViewCell.swift in Sources */,
 				8B5EE0E51DD5C7BA00745A54 /* HTTPStats.swift in Sources */,

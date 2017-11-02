@@ -318,6 +318,14 @@
             </objects>
             <point key="canvasLocation" x="1772" y="253.2233883058471"/>
         </scene>
+        <!--ContactUsController-->
+        <scene sceneID="P0E-BG-ePc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="ContactUsController" id="Xpi-4Q-Ifx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5nb-3K-ps3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1088" y="-263"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qd4-T5-GQg">
             <objects>
@@ -338,10 +346,11 @@
                         <segue destination="XeD-ax-umb" kind="relationship" relationship="rootViewController" id="mUJ-We-grm"/>
                         <segue destination="OOv-13-APl" kind="show" identifier="shop_segue" id="5II-cs-oTT"/>
                         <segue destination="Tac-14-TFZ" kind="show" identifier="settings_segue" id="oWh-Er-0wF"/>
-                        <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" animates="NO" modalPresentationStyle="overCurrentContext" id="8Lg-qo-Ol3"/>
                         <segue destination="89w-gJ-8kN" kind="show" identifier="alpha_segue" id="87V-2k-7nr"/>
                         <segue destination="gFF-E9-r6g" kind="presentation" identifier="lucky_segue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CZf-ha-q5B"/>
                         <segue destination="1Yk-65-iyF" kind="presentation" identifier="menu_segue" id="OOI-cS-noR"/>
+                        <segue destination="aee-Gh-Qoq" kind="show" identifier="account_segue" id="WM9-0Y-78t"/>
+                        <segue destination="Xpi-4Q-Ifx" kind="show" identifier="contact_segue" id="KQX-aZ-M6j"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -455,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaL-9e-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954.39999999999998" y="-838.83058470764627"/>
+            <point key="canvasLocation" x="-1634" y="1779"/>
         </scene>
         <!--Main Button-->
         <scene sceneID="vZS-eu-Izu">
@@ -628,7 +637,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Be-ns-wDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2916" y="-120"/>
+            <point key="canvasLocation" x="-2569" y="940"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="j4y-HP-Kue">
@@ -702,6 +711,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Profilo"/>
+                                                <connections>
+                                                    <action selector="profile" destination="VMd-ie-hsv" eventType="touchUpInside" id="RWm-mq-2U5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -730,6 +742,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Contattaci"/>
+                                                <connections>
+                                                    <action selector="infos" destination="VMd-ie-hsv" eventType="touchUpInside" id="FWP-Ua-pca"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -786,6 +801,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                 <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logout" destination="VMd-ie-hsv" eventType="touchUpInside" id="NdD-yF-y5Q"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -817,11 +835,20 @@
                         <outlet property="avatarImageView" destination="SzV-ht-UhN" id="kdG-wd-7fW"/>
                         <outlet property="nameLabel" destination="lf2-GL-eDf" id="eON-Zz-iP6"/>
                         <outlet property="usernameLabel" destination="Fh4-h8-6KI" id="gNX-iC-APC"/>
+                        <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" id="9bK-rU-4Jm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qd4-8x-Luv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2170.4000000000001" y="-120.08995502248877"/>
+            <point key="canvasLocation" x="-1634" y="940"/>
+        </scene>
+        <!--AccountController-->
+        <scene sceneID="1dH-uM-Ib0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="AccountController" id="aee-Gh-Qoq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WtK-rS-cbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="-629"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="APM-mg-JBE">

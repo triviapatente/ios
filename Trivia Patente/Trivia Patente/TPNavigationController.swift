@@ -140,7 +140,8 @@ class TPNavigationController: UINavigationController {
     }
     
     func configureBar() {
-        if let topController = self.topViewController {
+        if let topController = self.topViewController as? MainViewController
+        {
             let navigationItem = topController.navigationItem
             if self.viewControllers.count == 1 {
                 navigationItem.leftBarButtonItems = [menuItem]
@@ -171,10 +172,8 @@ class TPNavigationController: UINavigationController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources that can be recreated
     }
-    
-
     
     // MARK: - Navigation
 
@@ -191,7 +190,22 @@ class TPNavigationController: UINavigationController {
                 {
                     (segue.destination as! LuckyModalViewController).shouldShowDoNotShow = true
                 }
-                break;
+                break
+            case "menu_segue":
+                let menuController = (segue.destination as! UISideMenuNavigationController).topViewController! as! MenuViewController
+                menuController.actionCallback = {(action) in
+                    switch action {
+                    case MenuViewController.kMenuActionContact:
+                        self.goTo(AlphaViewController.self, identifier: "contact_segue")
+                        break
+                    case MenuViewController.kMenuActionProfile:
+                        self.goTo(AccountViewController.self, identifier: "account_segue")
+                        break
+                    default:
+                        break
+                    }
+                }
+                break
             default:
                 break;
             }

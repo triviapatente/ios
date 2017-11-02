@@ -12,7 +12,7 @@ class AlphaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        (self.navigationController as! TPNavigationController).setUser(candidate: SessionManager.currentUser)
+//        (self.navigationController as! TPNavigationController).setUser(candidate: SessionManager.currentUser)
         self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
         // Do any additional setup after loading the view.
     }
