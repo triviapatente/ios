@@ -21,7 +21,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         
         // set bar button item for password change
         let changePasswordButton = UIBarButtonItem(image: UIImage(named: "gear-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(changePassword))

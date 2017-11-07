@@ -16,7 +16,7 @@ class RecentGameHandler: TPResponse {
     class func refresh(handler: @escaping () -> Void) {
         httpHandler.recent_games { (response) in
             if response.success == true {
-                self.games = response.games.filter({$0.started == true})
+                self.games = response.games//.filter({$0.started == true})
                 handler()
             } else {
                 //TODO: add handler

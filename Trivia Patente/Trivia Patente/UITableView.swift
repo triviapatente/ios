@@ -14,5 +14,4 @@ extension UITableView {
         let path = IndexPath(row: 0, section: 0)
         self.scrollToRow(at: path, at: .top, animated: true)
     }
-
 }

@@ -13,7 +13,8 @@ extension UIImageView {
     func load(path : URL?, placeholder : String) {
         self.image = UIImage(named: placeholder)
         if let url = path {
-            Alamofire.request(url).responseData(completionHandler: { response in
+            let headers = HTTPManager.getAuthHeaders(auth: true)
+            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseData(completionHandler: { response in
                 if let data = response.result.value {
                     self.image = UIImage(data: data)
                 }

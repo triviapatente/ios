@@ -178,7 +178,7 @@ class WaitOpponentViewController: TPGameViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         if fromInvite == true {
             self.createInvite()
         } else {

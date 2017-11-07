@@ -131,6 +131,7 @@ class TPExpandableView: UIViewController {
             self.tableView.rowHeight = height
         }
         headerView.topItem?.title = headerTitle
+        self.headerView.barTintColor = Colors.secondary
         self.view.addSubview(self.topViewSeparator)
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -172,9 +173,14 @@ class TPExpandableView: UIViewController {
         UIView.animate(withDuration: 0.4, animations: {
             if up == true {
                 self.expand(up_thresold)
+                // set the color of the header bar when the view is minimized
+                self.headerView.barTintColor = Colors.primary
             } else {
                 self.minimize()
+                // set the color of the header bar when the view is expanded
+                self.headerView.barTintColor = Colors.secondary
             }
+            self.headerView.layoutIfNeeded()
         }) { finish in
             self.expanded = up
             self.mainView.bringSubview(toFront: self.containerView)

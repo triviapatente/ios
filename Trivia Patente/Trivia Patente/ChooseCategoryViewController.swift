@@ -39,6 +39,7 @@ class ChooseCategoryViewController: TPGameViewController {
         self.gameHeader.set(title: "Scegli la categoria!")
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
         self.join_room(round: round)
+        self.setDefaultBackgroundGradient()
     }
     func join_room(round: Round) {
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)

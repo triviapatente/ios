@@ -101,6 +101,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Trivia Patente" id="12x-rm-0HG"/>
                     <connections>
+                        <outlet property="recentGamesViewContainer" destination="vpA-SX-xhq" id="Jsv-KK-9Ry"/>
                         <segue destination="OOv-13-APl" kind="show" identifier="shop_segue" id="NhK-dZ-dty"/>
                         <segue destination="wOj-Ca-KPT" kind="show" identifier="play_segue" id="NtC-U5-vru"/>
                         <segue destination="uKz-I7-BOu" kind="show" identifier="rank_segue" id="WFr-mm-Iwm"/>
@@ -130,10 +131,10 @@
                                 <rect key="frame" x="38" y="173" width="300" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxA-hz-itL">
-                                        <rect key="frame" x="272" y="8" width="20" height="20"/>
+                                        <rect key="frame" x="267" y="8" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="Rbg-Kf-nM0"/>
-                                            <constraint firstAttribute="height" constant="20" id="k3h-Qu-p14"/>
+                                            <constraint firstAttribute="width" constant="25" id="Rbg-Kf-nM0"/>
+                                            <constraint firstAttribute="height" constant="25" id="k3h-Qu-p14"/>
                                         </constraints>
                                         <state key="normal" image="ic_clear_white_36pt">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,11 +294,11 @@
                         <viewControllerLayoutGuide type="bottom" id="LGY-YC-XK7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="erf-iF-yGr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funzionalità non disponibile  nell'alpha 😉" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-B3-xgn">
-                                <rect key="frame" x="26" y="233.5" width="323" height="200"/>
+                                <rect key="frame" x="26" y="201.5" width="323" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="d3u-6v-Z92"/>
                                 </constraints>
@@ -546,7 +547,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Wit-h9-3qq"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.0" green="0.50980392156862742" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.69803921570000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 </textAttributes>
@@ -600,7 +601,7 @@
                         <outlet property="counterLabel" destination="5W4-Af-Qvk" id="tPl-So-fow"/>
                         <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
                         <outlet property="scrollRecognizer" destination="XhF-lm-a05" id="pYg-fH-RuI"/>
-                        <outlet property="tableView" destination="EI8-w6-YFR" id="QJe-0D-bRd"/>
+                        <outlet property="tableView" destination="EI8-w6-YFR" id="T4Y-Fe-dVs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgp-XP-p5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -992,8 +993,8 @@
         <image name="user-logout" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5II-cs-oTT"/>
+        <segue reference="NhK-dZ-dty"/>
         <segue reference="n4A-43-lvl"/>
-        <segue reference="87V-2k-7nr"/>
+        <segue reference="GoM-GB-ghT"/>
     </inferredMetricsTieBreakers>
 </document>

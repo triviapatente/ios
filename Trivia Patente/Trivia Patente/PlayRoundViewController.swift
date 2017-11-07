@@ -119,7 +119,7 @@ class PlayRoundViewController: TPGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         self.headerView.round = round
         //TODO: set category
         self.headerView.category = category

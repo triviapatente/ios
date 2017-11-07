@@ -16,14 +16,18 @@ class HTTPManager {
         return "http://192.168.1.135:8000"
     }
     
-    
-    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, handler: @escaping (T) -> Void) {
+    class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
         var headers = HTTPHeaders()
         if auth == true {
             if let token = SessionManager.getToken() {
                 headers[SessionManager.kTokenKey] = token
             }
         }
+        return headers
+    }
+    
+    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, handler: @escaping (T) -> Void) {
+        let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         //TODO: add timeouts
         //let configuration = URLSessionConfiguration.default

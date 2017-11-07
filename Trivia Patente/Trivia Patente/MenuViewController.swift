@@ -24,7 +24,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         self.avatarImageView.circleRounded()
         
         // load data

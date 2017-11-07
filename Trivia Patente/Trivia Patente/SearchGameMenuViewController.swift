@@ -79,7 +79,7 @@ class SearchGameMenuViewController: TPNormalViewController {
         self.load()
         self.listen()
         
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

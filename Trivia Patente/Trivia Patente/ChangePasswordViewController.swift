@@ -88,7 +88,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         super.viewDidLoad()
         confirmButton.smallRounded()
         initFields()
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         
         self.navigationItem.rightBarButtonItems = []
     }

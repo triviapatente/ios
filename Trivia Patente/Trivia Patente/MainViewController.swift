@@ -17,6 +17,7 @@ class MainViewController: TPNormalViewController {
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
     var selectedGame : Game!
+    @IBOutlet var recentGamesViewContainer : UIView!
     var recentGamesView : TPExpandableView! {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
@@ -45,6 +46,15 @@ class MainViewController: TPNormalViewController {
             }
         }
     }
+    func resetBackgroundGradientLocations() {
+        // TODO: in the future, make the groudient come up to the position of the recents header view
+        print(self.recentGamesView.view.frame.origin.y, self.recentGamesViewContainer.frame.origin.y)
+        self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesView.view.frame.origin.y + self.recentGamesViewContainer.frame.origin.y) / self.view.frame.height))
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.resetBackgroundGradientLocations()
+    }
     func getSegueIdentifier(for button: TPMainButton) -> String? {
         switch(button) {
             case self.playButton: return "play_segue"
@@ -63,13 +73,11 @@ class MainViewController: TPNormalViewController {
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
         
-        self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
+        self.setDefaultBackgroundGradient()
         
         // set Stats and Sjop as coming soon
         self.statsButton.setComingSoon()
         self.shopButton.setComingSoon()
-        
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

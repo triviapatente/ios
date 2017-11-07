@@ -146,6 +146,7 @@ class RoundDetailsViewController: TPGameViewController {
             self.newGameResponse = response
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
         }
+        self.setDefaultBackgroundGradient()
     }
     func height(for indexPath: IndexPath, ignoreExpanded: Bool = false) -> CGFloat {
         if indexPath.section == self.questionMap.count {

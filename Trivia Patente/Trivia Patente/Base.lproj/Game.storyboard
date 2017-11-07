@@ -169,7 +169,7 @@
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-el-k6b">
                                 <rect key="frame" x="0.0" y="80" width="320" height="488"/>
-                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1088,10 +1088,10 @@
         <image name="up_score_arrow" width="80" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NV8-od-C3s"/>
+        <segue reference="kf4-r3-nBv"/>
         <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="0L7-TT-S4h"/>
-        <segue reference="GCU-d2-vyc"/>
+        <segue reference="sSs-jh-fhW"/>
+        <segue reference="yys-8T-GtN"/>
     </inferredMetricsTieBreakers>
 </document>
