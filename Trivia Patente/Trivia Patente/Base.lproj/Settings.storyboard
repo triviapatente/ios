@@ -290,6 +290,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cJ8-fA-220" id="fTK-rZ-kbC"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -361,7 +364,7 @@
                         <outlet property="counterLabel" destination="xud-1A-alR" id="yZp-Sb-zO8"/>
                         <outlet property="messagePlaceholder" destination="blL-mv-OGJ" id="Gao-gu-UUk"/>
                         <outlet property="messageTextView" destination="eAT-0Q-fti" id="ubm-YY-gAb"/>
-                        <outlet property="motivationLabel" destination="51C-b3-c4K" id="pPi-QG-xZT"/>
+                        <outlet property="motivationField" destination="51C-b3-c4K" id="efc-b1-etZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEW-GS-sKo" userLabel="First Responder" sceneMemberID="firstResponder"/>

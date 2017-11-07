@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
 
-    @IBOutlet weak var motivationLabel: UITextField!
+    @IBOutlet weak var motivationField: UITextField!
     @IBOutlet weak var messagePlaceholder: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var counterLabel: UILabel!
@@ -24,7 +24,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        UITextField.appearance().tintColor = UIColor.lightText
+        UITextField.appearance().tintColor = UIColor.clear
         UITextView.appearance().tintColor = UIColor.lightText
         
         self.counterLabel.text = "\(self.maxMessageLength)"
@@ -32,7 +32,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         let motivationPicker = UIPickerView()
         motivationPicker.delegate = self
         motivationPicker.dataSource = self
-        self.motivationLabel.inputView = motivationPicker
+        self.motivationField.inputView = motivationPicker
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -48,7 +48,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.motivationLabel.text = self.messageReasons[row]
+        self.motivationField.text = self.messageReasons[row]
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +64,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     @IBAction func resignResponder()
     {
         self.messageTextView.resignFirstResponder()
-        self.motivationLabel.resignFirstResponder()
+        self.motivationField.resignFirstResponder()
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -76,6 +76,11 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         let msgLength = textView.text.characters.count
         self.counterLabel.text = "\(self.maxMessageLength - msgLength)"
         self.messagePlaceholder.isHidden = msgLength > 0
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        return self.messageReasons.index(of: newText) != nil
     }
     
 
