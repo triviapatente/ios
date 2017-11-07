@@ -127,17 +127,26 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4CV-qW-SMr" firstAttribute="leading" secondItem="h0T-tr-mC9" secondAttribute="leading" id="5FP-Gz-6wq"/>
                             <constraint firstAttribute="trailing" secondItem="4CV-qW-SMr" secondAttribute="trailing" id="6wW-n5-HAP"/>
                             <constraint firstItem="4CV-qW-SMr" firstAttribute="centerY" secondItem="h0T-tr-mC9" secondAttribute="centerY" constant="-50" id="mjM-u0-P9j"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="38f-h2-se4" appends="YES" id="R8c-bs-NsD"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="OoT-CR-oN2" id="77q-6b-kDz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MN-a6-zph" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="38f-h2-se4">
+                    <connections>
+                        <action selector="resignResponders" destination="WoF-hb-FDO" id="FHB-Iw-O8v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1447" y="-538"/>
         </scene>
@@ -612,7 +621,7 @@
         <image name="triangle-white" width="9" height="5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TAo-8k-0re"/>
+        <segue reference="CNj-Lo-Zu5"/>
         <segue reference="7Xx-a1-VjS"/>
     </inferredMetricsTieBreakers>
 </document>

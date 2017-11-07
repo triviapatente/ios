@@ -79,6 +79,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         
         oldPasswordField.validate(condition: !oldPassword.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
         newPasswordField.validate(condition: !newPassword.isEmpty, error: "Inserisci la password", vibrate: vibrate)
+        newPasswordField.validate(condition: newPassword != oldPassword, error: "Nuova e vecchia password identiche", vibrate: vibrate)
         repeatPasswordField.validate(condition: repeatPassword == newPassword, error: "Le password non coincidono", vibrate: vibrate)
         
         confirmButton.isEnabled = formIsCorrect()
@@ -101,6 +102,13 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
             field.add(target: self, changeValueHandler: #selector(checkValues))
             field.field.isSecureTextEntry = true
         }
+    }
+    
+    @IBAction func resignResponders()
+    {
+        self.oldPasswordField.resignFirstResponder()
+        self.newPasswordField.resignFirstResponder()
+        self.repeatPasswordField.resignFirstResponder()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
