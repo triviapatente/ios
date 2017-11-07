@@ -16,6 +16,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     var nameField: TPInputView!
     var surnameField: TPInputView!
     var newAvatarImage : UIImage? = nil
+    var errorView : TPErrorView!
     
     @IBOutlet weak var submitButton: TPButton!
     @IBOutlet weak var userEmailLabel: UILabel!
@@ -142,7 +143,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             SessionManager.updateUserData(image: self.newAvatarImage, name: self.nameField.getText(), surname: self.surnameField.getText()) { success in
                 self.submitButton.stopLoading()
                 if !success {
-                    // TODO: handle
+                    self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                    
                 }
             }
         }
@@ -156,6 +158,9 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 break
             case "surname_field":
                 self.surnameField = segue.destination as! TPInputView
+                break
+            case "error_view":
+                self.errorView = segue.destination as! TPErrorView
                 break
             default: break
             }

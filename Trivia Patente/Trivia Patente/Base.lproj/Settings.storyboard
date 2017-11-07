@@ -391,7 +391,7 @@
                 <viewControllerPlaceholder storyboardName="FirstAccess" referencedIdentifier="TPErrorView" id="zAR-kt-Ta1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CG-Lf-Qj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="-588"/>
+            <point key="canvasLocation" x="2331" y="-205"/>
         </scene>
         <!--Account-->
         <scene sceneID="XDS-wb-gMj">
@@ -408,6 +408,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nwu-f1-xJg">
                                 <rect key="frame" x="50" y="91" width="275" height="385"/>
                                 <subviews>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTF-9d-fpf">
+                                        <rect key="frame" x="0.0" y="-88" width="275" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="T9T-Wm-ddp"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="zAR-kt-Ta1" kind="embed" identifier="error_view" id="FtD-r4-Jft"/>
+                                        </connections>
+                                    </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTc-Hm-GYP">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="150"/>
                                         <subviews>
@@ -621,7 +630,8 @@
         <image name="triangle-white" width="9" height="5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CNj-Lo-Zu5"/>
+        <segue reference="FtD-r4-Jft"/>
+        <segue reference="TAo-8k-0re"/>
         <segue reference="7Xx-a1-VjS"/>
     </inferredMetricsTieBreakers>
 </document>
