@@ -45,7 +45,7 @@ class HTTPManager {
                             handler(response)
                         } else if let message = (response.result.error as? BackendError)?.message {
                             let response = T(error: message, statusCode: response.response?.statusCode)
-                            if response.statusCode == 401 {
+                            if response.statusCode == 401 && auth {
                                 SessionManager.drop()
                                 UIViewController.goToFirstAccess()
                             } else {
