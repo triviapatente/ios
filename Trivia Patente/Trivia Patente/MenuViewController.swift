@@ -27,11 +27,12 @@ class MenuViewController: UIViewController {
         self.setDefaultBackgroundGradient()
         self.avatarImageView.circleRounded()
         
-        // load data
-        self.nameLabel.text = "Gabriel Ciulei"//SessionManager.currentUser!.fullName
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        // load user data
+        self.nameLabel.text = SessionManager.currentUser!.fullName
         self.usernameLabel.text = SessionManager.currentUser!.username
         self.avatarImageView.load(user: SessionManager.currentUser!)
-        // image size using button image insets in IB
     }
 
     override func didReceiveMemoryWarning() {

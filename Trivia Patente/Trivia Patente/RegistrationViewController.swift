@@ -89,15 +89,19 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         if response.success == true {
             let controller = UIViewController.root()
             self.present(controller, animated: true) {
-                self.nameField.field.text = ""
-                self.emailField.field.text = ""
-                self.passwordField.field.text = ""
-                self.repeatPasswordField.field.text = ""
-                self.errorViewContainer.isHidden = true
+                self.clearForm()
             }
         } else {
             self.errorView.set(error: response.message)
         }
+    }
+    func clearForm()
+    {
+        self.nameField.field.text = ""
+        self.emailField.field.text = ""
+        self.passwordField.field.text = ""
+        self.repeatPasswordField.field.text = ""
+        self.errorViewContainer.isHidden = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

@@ -15,8 +15,9 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var avatarImageView: UIImageView!
     var nameField: TPInputView!
     var surnameField: TPInputView!
+    var newAvatarImage : UIImage? = nil
     
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var submitButton: TPButton!
     @IBOutlet weak var userEmailLabel: UILabel!
     
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         self.nameField.resignFirstResponder()
         self.surnameField.resignFirstResponder()
     }
+    
     
     func changePassword()
     {
@@ -126,13 +128,24 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         let newImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        self.newAvatarImage = newImage
         self.avatarImageView.image = newImage
         picker.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func submitChanges()
     {
-    
+        // first, check if anything has changed
+        if self.newAvatarImage != nil || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) || (SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)
+        {
+            self.submitButton.load()
+            SessionManager.updateUserData(image: self.newAvatarImage, name: self.nameField.getText(), surname: self.surnameField.getText()) { success in
+                self.submitButton.stopLoading()
+                if !success {
+                    // TODO: handle
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
