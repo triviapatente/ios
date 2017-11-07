@@ -77,7 +77,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
             NotificationCenter.default.post(name: Notification.Name("forgotMessage"), object: nil, userInfo: ["message": "Utilizza la nuova password che hai ricevuto per email per accedere."])
             self.dismissController()
         } else {
-            self.setErrorMessage(message: response.message)
+            self.setErrorMessage(message: "Impossibile soddisfare la richiesta per questo username")
         }
     }
     
