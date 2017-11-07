@@ -9,10 +9,12 @@
 import UIKit
 
 class TPExpandableView: UIViewController {
-    @IBOutlet var headerView : UINavigationBar!
-    @IBOutlet var counterLabel : UILabel!
-    @IBOutlet var tableView : UITableView!
-    @IBOutlet var scrollRecognizer : UIPanGestureRecognizer!
+    @IBOutlet weak var headerView : UINavigationBar!
+//    @IBOutlet var counterLabel : UILabel!
+    @IBOutlet var reloadBarButton : UIBarButtonItem!
+    @IBOutlet weak var reloadingActivityIndicator : UIActivityIndicatorView!
+    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var scrollRecognizer : UIPanGestureRecognizer!
 
     var items : [Base] = [] {
         didSet {
@@ -22,6 +24,7 @@ class TPExpandableView: UIViewController {
             dataLoaded = true
             self.tableView.tableFooterView = footerView
             self.headerView.topItem?.title = headerTitle
+            self.reloadDidEnd()
         }
     }
     var selectedCellHandler : ((Base) -> Void)?
@@ -103,6 +106,24 @@ class TPExpandableView: UIViewController {
     var needsSeparator : Bool = true
     var separatorInset : UIEdgeInsets = .zero
     
+    @IBAction func retrieveRecentGames() {
+        self.reloadWillStart()
+        RecentGameHandler.refresh {
+            self.items = RecentGameHandler.games
+        }
+    }
+    
+    func reloadWillStart()
+    {
+        headerView.topItem?.rightBarButtonItem = nil
+        self.reloadingActivityIndicator.startAnimating()
+    }
+    func reloadDidEnd()
+    {
+        headerView.topItem?.rightBarButtonItems = [self.reloadBarButton]
+        self.reloadingActivityIndicator.stopAnimating()
+    }
+    
     var separatorView : UIView {
         let height = CGFloat(0.5)
         let width = self.view.frame.size.width - (self.separatorInset.left + self.separatorInset.right)
@@ -140,6 +161,7 @@ class TPExpandableView: UIViewController {
         if previousContainerHeight == nil {
             previousContainerHeight = self.containerSize.height
         }
+        self.retrieveRecentGames()
         //enforce only the first initialization of the view position
         if dataLoaded == false {
             adaptToItems()
@@ -233,7 +255,7 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        counterLabel.text = items.isEmpty ? "" : "\(items.count)"
+//        counterLabel.text = items.isEmpty ? "" : "\(items.count)"
         return items.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

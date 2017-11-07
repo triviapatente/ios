@@ -552,7 +552,14 @@
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="ZDG-zM-K26"/>
+                                    <navigationItem title="Title" id="ZDG-zM-K26">
+                                        <barButtonItem key="rightBarButtonItem" image="reload_icon" style="plain" id="7mx-JD-Fe3">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="retrieveRecentGames" destination="3Zs-38-1kc" id="EEX-cg-eCV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EI8-w6-YFR">
@@ -566,30 +573,26 @@
                                     <outlet property="delegate" destination="3Zs-38-1kc" id="3m0-Jk-K8c"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W4-Af-Qvk">
-                                <rect key="frame" x="290" y="12" width="21" height="21"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="AFX-vO-gKH">
+                                <rect key="frame" x="291" y="12" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="21" id="Buc-cg-HbT"/>
-                                    <constraint firstAttribute="height" constant="21" id="cjo-Zq-fGI"/>
+                                    <constraint firstAttribute="width" constant="20" id="Wo7-KT-XjF"/>
+                                    <constraint firstAttribute="height" constant="20" id="afd-pA-Sgs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="yAL-s7-7YC" secondAttribute="bottom" id="6tt-aC-9PC"/>
-                            <constraint firstItem="5W4-Af-Qvk" firstAttribute="top" secondItem="fLM-nx-AY0" secondAttribute="bottom" constant="11.5" id="HE2-iG-Gie"/>
-                            <constraint firstAttribute="trailing" secondItem="5W4-Af-Qvk" secondAttribute="trailing" constant="18" id="YWq-18-oPf"/>
+                            <constraint firstAttribute="trailing" secondItem="AFX-vO-gKH" secondAttribute="trailing" constant="18" id="CgK-GL-sy9"/>
+                            <constraint firstItem="AFX-vO-gKH" firstAttribute="top" secondItem="fLM-nx-AY0" secondAttribute="bottom" constant="12" id="WvX-fk-idx"/>
                             <constraint firstAttribute="trailing" secondItem="yAL-s7-7YC" secondAttribute="trailing" id="ddi-eI-28j"/>
                             <constraint firstAttribute="trailing" secondItem="EI8-w6-YFR" secondAttribute="trailing" id="fXx-He-TJ9"/>
                             <constraint firstAttribute="bottom" secondItem="EI8-w6-YFR" secondAttribute="bottom" id="jdl-mC-IAC"/>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="sB3-IZ-Q7M"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="top" secondItem="Q3N-y5-gRN" secondAttribute="top" id="weh-xj-QuE"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="wzo-Cy-yRH"/>
-                            <constraint firstItem="EI8-w6-YFR" firstAttribute="top" secondItem="5W4-Af-Qvk" secondAttribute="bottom" constant="11.5" id="zRv-AD-9Qo"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XhF-lm-a05" appends="YES" id="Pa8-QR-oDg"/>
@@ -598,8 +601,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="329" height="219"/>
                     <connections>
-                        <outlet property="counterLabel" destination="5W4-Af-Qvk" id="tPl-So-fow"/>
                         <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
+                        <outlet property="reloadBarButton" destination="7mx-JD-Fe3" id="HUv-HO-eZN"/>
+                        <outlet property="reloadingActivityIndicator" destination="AFX-vO-gKH" id="75h-uq-mkT"/>
                         <outlet property="scrollRecognizer" destination="XhF-lm-a05" id="pYg-fH-RuI"/>
                         <outlet property="tableView" destination="EI8-w6-YFR" id="T4Y-Fe-dVs"/>
                     </connections>
@@ -988,6 +992,7 @@
         <image name="default_avatar" width="316" height="302"/>
         <image name="ic_clear_white_36pt" width="36" height="36"/>
         <image name="lucky_icon" width="51" height="56"/>
+        <image name="reload_icon" width="25" height="25"/>
         <image name="user-filled" width="38" height="41"/>
         <image name="user-info" width="46" height="46"/>
         <image name="user-logout" width="50" height="50"/>

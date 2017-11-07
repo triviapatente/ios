@@ -101,9 +101,9 @@ class MainViewController: TPNormalViewController {
                         }
                     }
                 }
-                RecentGameHandler.refresh {
-                    self.recentGamesView.items = RecentGameHandler.games
-                }
+//                RecentGameHandler.refresh {
+//                    self.recentGamesView.items = RecentGameHandler.games
+//                }
                 self.setHints(candidateResponse: response)
             }
         }
