@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import Photos
 
 class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -32,6 +34,22 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         self.nameField.initValues(hint: "Nome", delegate: self)
         self.surnameField.initValues(hint: "Cognome", delegate: self)
+        
+        // set user data
+        if let user = SessionManager.currentUser
+        {
+            self.avatarImageView.load(user: user)
+            self.nameField.setText(text: user.name)
+            self.surnameField.setText(text: user.surname)
+            self.userEmailLabel.text = user.email
+        } else {
+            // TODO: handler nel caso l'utente sia scollegato
+        }
+    }
+    
+    @IBAction func resignFirstRespondes() {
+        self.nameField.resignFirstResponder()
+        self.surnameField.resignFirstResponder()
     }
     
     func changePassword()
@@ -47,12 +65,46 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBAction func takePhoto()
     {
-        self.present(self.getImagePiker(sourceType: UIImagePickerControllerSourceType.camera), animated: true, completion: nil)
+        let cameraMediaType = AVMediaTypeVideo
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        
+        switch cameraAuthorizationStatus {
+        case .authorized, .notDetermined:
+            self.present(self.getImagePiker(sourceType: UIImagePickerControllerSourceType.camera), animated: true, completion: nil)
+            break
+        case .denied, .restricted:
+            let alert = UIAlertController(title: "Accesso alla fotocamera", message: "Permetti a Trivia Patente di accedere alla fotocamera nelle impostazioni del tuo dispositivo e poi riprova", preferredStyle: UIAlertControllerStyle.alert)
+            let settingsAction = UIAlertAction(title: "Ho capito", style: .default) { (_) -> Void in
+                let settingsUrl = URL.init(string: UIApplicationOpenSettingsURLString)
+                if let url = settingsUrl {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            alert.addAction(settingsAction)
+            self.present(alert, animated: true, completion: nil)
+            break
+        }
     }
     
     @IBAction func galleryImage()
     {
-        self.present(self.getImagePiker(sourceType: UIImagePickerControllerSourceType.photoLibrary), animated: true, completion: nil)
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized, .notDetermined:
+             self.present(self.getImagePiker(sourceType: UIImagePickerControllerSourceType.photoLibrary), animated: true, completion: nil)
+            break
+        case .denied, .restricted :
+            let alert = UIAlertController(title: "Accesso alla libreria", message: "Permetti a Trivia Patente di accedere alla tua libreria fotografica nelle impostazioni del tuo dispositivo e poi riprova", preferredStyle: UIAlertControllerStyle.alert)
+            let settingsAction = UIAlertAction(title: "Ho capito", style: .default) { (_) -> Void in
+                let settingsUrl = URL.init(string: UIApplicationOpenSettingsURLString)
+                if let url = settingsUrl {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            alert.addAction(settingsAction)
+            self.present(alert, animated: true, completion: nil)
+            break
+        }
     }
     
     func getImagePiker(sourceType: UIImagePickerControllerSourceType) -> UIImagePickerController

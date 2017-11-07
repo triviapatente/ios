@@ -19,6 +19,10 @@ class TPInputView: UIViewController {
         super.viewDidLoad()
         self.field.tintColor = Colors.primary
     }
+    func setText(text: String?) {
+        // ignored validation by default
+        self.field.text = text
+    }
     func enable()
     {
         self.field.isUserInteractionEnabled = true

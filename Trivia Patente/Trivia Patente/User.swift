@@ -27,7 +27,7 @@ open class User: CommonPK {
 	open var image: String?
 	open var surname: String?
     open var email: String?
-    private var name: String?
+    open var name: String?
     open var position: Int32?
     open var last_game_won: Bool?
     

@@ -502,11 +502,15 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.65286409850000005" blue="0.96456819770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Nwu-f1-xJg" firstAttribute="leading" secondItem="bnm-hw-TLr" secondAttribute="leading" constant="50" id="2UM-Dm-FsY"/>
                             <constraint firstAttribute="trailing" secondItem="Nwu-f1-xJg" secondAttribute="trailing" constant="50" id="5qO-72-RvL"/>
                             <constraint firstItem="Nwu-f1-xJg" firstAttribute="centerY" secondItem="bnm-hw-TLr" secondAttribute="centerY" constant="-50" id="P1e-DU-lDV"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="e4t-gJ-Rup" appends="YES" id="wxN-hc-cC2"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="dd3-cu-pxf" id="XGI-88-Dl2"/>
@@ -516,6 +520,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofS-ph-lpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="e4t-gJ-Rup">
+                    <connections>
+                        <action selector="resignFirstRespondes" destination="ksd-XF-Ta1" id="kln-Wl-mSK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="893.60000000000002" y="223.53823088455775"/>
         </scene>
