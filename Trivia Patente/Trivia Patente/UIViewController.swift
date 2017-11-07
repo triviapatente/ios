@@ -94,6 +94,7 @@ extension UIViewController : TPViewController {
         self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
     }
     func setBackgroundGradientBounds(start: Float = 0, end: Float = 1) {
+        let end = end > 0.2 ? end : 1 // temporary solution to a big issue
         if let sublayers = self.view.layer.sublayers {
             if let gradient = sublayers[0] as? CAGradientLayer {
                 gradient.locations = [start as NSNumber, end as NSNumber]

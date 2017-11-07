@@ -47,12 +47,10 @@ class MainViewController: TPNormalViewController {
         }
     }
     func resetBackgroundGradientLocations() {
-        // TODO: in the future, make the groudient come up to the position of the recents header view
-        print(self.recentGamesView.view.frame.origin.y, self.recentGamesViewContainer.frame.origin.y)
         self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesView.view.frame.origin.y + self.recentGamesViewContainer.frame.origin.y) / self.view.frame.height))
     }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.resetBackgroundGradientLocations()
     }
     func getSegueIdentifier(for button: TPMainButton) -> String? {
@@ -78,6 +76,8 @@ class MainViewController: TPNormalViewController {
         // set Stats and Sjop as coming soon
         self.statsButton.setComingSoon()
         self.shopButton.setComingSoon()
+        
+        self.resetBackgroundGradientLocations()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
