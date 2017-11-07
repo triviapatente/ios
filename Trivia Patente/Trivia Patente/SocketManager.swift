@@ -57,19 +57,16 @@ class SocketManager {
         listen(event: path) { (response:  T) in
             SocketManager.socket.off(path)
             if response.statusCode == 401 {
-                SessionManager.authenticateSocket { response in
-                    if response?.success == true {
-                        self.emit(path: path, values: values, handler: handler)
-                    } else {
-                        SessionManager.drop()
-                        UIViewController.goToFirstAccess()
-                    }
-                }
+                SessionManager.drop()
+                UIViewController.goToFirstAccess()
             } else {
                 handler(response)
             }
         }
-        SocketManager.socket.emit(path, values)
+        if let token = SessionManager.getToken() {
+            let body = [SessionManager.kTokenKey: token, "body": values] as [String : AnyObject]
+            SocketManager.socket.emit(path, body)
+        }
     }
     static var joined_rooms : [String : Int32] = [:]
     class func joined(to value: Int32, type: String) -> Bool {

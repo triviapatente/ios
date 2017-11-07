@@ -42,14 +42,6 @@ class SessionManager {
         defaults.removeObject(forKey: kUserKey)
         defaults.synchronize()
     }
-    class func authenticateSocket(handler : @escaping (TPConnectResponse?) -> Void) {
-        let socketAuth = SocketAuth()
-        if let token = SessionManager.getToken() {
-            SocketManager.connect {
-                socketAuth.authenticate(token: token, handler: handler)
-            }
-        }
-    }
     class func logout(from sender: UIViewController, cb : ((TPAuthResponse) -> Void)? = nil) {
         let auth = HTTPAuth()
         auth.logout { (response : TPAuthResponse) in

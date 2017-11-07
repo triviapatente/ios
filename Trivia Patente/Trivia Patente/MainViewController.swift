@@ -87,24 +87,16 @@ class MainViewController: TPNormalViewController {
     func connectToSocket() {
         loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingView.mode = .indeterminate
-        SessionManager.authenticateSocket { (response : TPConnectResponse?) in
-            self.loadingView.hide(animated: true)
-            //check if login was forbidden
-            if response?.statusCode == 401 {
-                SessionManager.drop()
-                UIViewController.goToFirstAccess(from: self)
-            } else {
-                if let fbInfos = response?.fbInfos {
-                    if fbInfos.expired == true {
-                        FBManager.link(sender: self) { response in
-                            //TODO: handler
-                        }
-                    }
+        SocketManager.connect {
+            self.socketAuth.global_infos { (response : TPConnectResponse?) in
+                self.loadingView.hide(animated: true)
+                //check if login was forbidden
+                if response?.statusCode == 401 {
+                    SessionManager.drop()
+                    UIViewController.goToFirstAccess(from: self)
+                } else {
+                    self.setHints(candidateResponse: response)
                 }
-//                RecentGameHandler.refresh {
-//                    self.recentGamesView.items = RecentGameHandler.games
-//                }
-                self.setHints(candidateResponse: response)
             }
         }
     }
