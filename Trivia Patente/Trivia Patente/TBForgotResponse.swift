@@ -10,10 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class TPForgotResponse: TPResponse {
-    // TODO: conformare a quanto fatto su backend
-    var requestSuccess : Bool?
     override func load(json: JSON) {
         super.load(json: json)
-        success = self.json["requestSuccess"].boolValue
     }
 }

@@ -54,7 +54,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         self.disableForm()
         self.resignResponder()
         self.resetButton.load()
-        httpAuth.forgotPassword(user: nameField.getText()) { (response : TPForgotResponse) in
+        httpAuth.forgotPassword(username: nameField.getText()) { (response : TPForgotResponse) in
             self.resetButton.stopLoading()
             self.enableForm()
             self.handleResponse(response: response)
@@ -73,12 +73,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     }
     
     func handleResponse(response : TPForgotResponse) {
-        if response.success == true && response.requestSuccess! {
-            guard response.requestSuccess != nil && response.requestSuccess! else
-            {
-                setErrorMessage(message: "Errore generico")
-                return
-            }
+        if response.success == true {
             NotificationCenter.default.post(name: Notification.Name("forgotMessage"), object: nil, userInfo: ["message": "Utilizza la nuova password che hai ricevuto per email per accedere."])
             self.dismissController()
         } else {
