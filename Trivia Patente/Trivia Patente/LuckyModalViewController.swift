@@ -27,8 +27,6 @@ class LuckyModalViewController: UIViewController {
         {
             self.showDoNotShowCheckbox()
         }
-        
-        self.setShouldShowLuckyPop(show: true)
     }
     
     override func didReceiveMemoryWarning() {
