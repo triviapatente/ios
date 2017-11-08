@@ -20,6 +20,9 @@ class TPErrorView : UIViewController {
             return self.view.superview
         }
     }
+    func clearError() {
+        self.container!.isHidden = true
+    }
     func set(error : String) {
         errorTextView.text = error
         UIView.animate(withDuration: 0.2, animations: {
