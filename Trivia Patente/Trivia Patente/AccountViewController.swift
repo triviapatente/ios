@@ -179,7 +179,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         self.startSaving()
         if self.newAvatarImage != nil {
-            httpManager.upload(url: "/account/image/edit", method: .post, data: UIImagePNGRepresentation(self.newAvatarImage!)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: { (response: TPAuthResponse) in
+            httpManager.upload(url: "/account/image/edit", method: .post, data: UIImageJPEGRepresentation(self.newAvatarImage!, Constants.avataImageRapresentationQuality)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: { (response: TPAuthResponse) in
                 if !response.success {
                     self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
                     self.finishedSaving()

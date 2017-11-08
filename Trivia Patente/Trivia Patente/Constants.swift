@@ -12,4 +12,5 @@ class Constants {
     static let max_life_number = 3
     static let kLastLuckyPopTS = "luckyPopoverLastTS"
     static let kLuckyPopShouldShowTS = "luckyPopoverShouldShow"
+    static let avataImageRapresentationQuality = CGFloat(0.6) // from 0 to 1, proportion of original resolution
 }
