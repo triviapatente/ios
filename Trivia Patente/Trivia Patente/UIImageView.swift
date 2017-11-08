@@ -10,13 +10,13 @@ import UIKit
 import Alamofire
 
 extension UIImageView {
-    func load(path : URL?, placeholder : String) {
+    func load(path : URL?, placeholder : String, callback: ((UIImage?) -> Void)? = nil) {
         self.image = UIImage(named: placeholder)
         if let url = path {
-            let headers = HTTPManager.getAuthHeaders(auth: true)
-            Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseData(completionHandler: { response in
-                if let data = response.result.value {
-                    self.image = UIImage(data: data)
+            UIImage.downloadImage(url: url, callback: { (image) in
+                self.image = image
+                if let cb = callback {
+                    cb(self.image)
                 }
             })
         }
@@ -35,10 +35,18 @@ extension UIImageView {
         
     }
     func load(user: User?) {
-        let imagePath = user!.image != nil ? HTTPManager.getBaseURL() + "/" + (user?.image)! : nil
-        let url = getUrl(path: imagePath)
-
-        self.load(path: url, placeholder: "default_avatar")
+        if let avatar = user?.savedImaged {
+            self.image = avatar
+        } else {
+            let imagePath = user?.avatarImageUrl
+            let url = getUrl(path: imagePath)
+            self.load(path: url, placeholder: "default_avatar", callback: { image in
+                user!.savedImaged = image
+                if (user?.isMe())! {
+                    SessionManager.set(user: user!)
+                }
+            })
+        }
     }
     func load(category: Category?) {
         let url = getUrl(path: category?.imagePath)

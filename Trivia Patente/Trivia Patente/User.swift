@@ -19,6 +19,7 @@ open class User: CommonPK {
     internal let kUserNameKey: String = "name"
     internal let kPositionKey: String = "position"
     internal let kLastGameWonKey: String = "last_game_won"
+    internal let kSavedImageKey: String = "saved_image"
 
 
     // MARK: Properties
@@ -30,6 +31,10 @@ open class User: CommonPK {
     open var name: String?
     open var position: Int32?
     open var last_game_won: Bool?
+    open var savedImaged : UIImage?
+    open var avatarImageUrl : String? {
+        return self.image != nil ? HTTPManager.getBaseURL() + "/account/image/\((self.id)!)" : nil
+    }
     
     var displayName : String? {
         if let output = self.fullName {
@@ -83,7 +88,6 @@ open class User: CommonPK {
         name = json[kUserNameKey].string
         position = json[kPositionKey].int32
         last_game_won = json[kLastGameWonKey].bool
-
     }
     public init(username : String?, id : Int32?, avatar : String? = nil, name : String? = nil, surname : String? = nil, score : Int? = nil) {
         super.init(id: id)
@@ -140,6 +144,7 @@ open class User: CommonPK {
 		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
         self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int32
         self.last_game_won = aDecoder.decodeObject(forKey: kLastGameWonKey) as? Bool
+        self.savedImaged = aDecoder.decodeObject(forKey: kSavedImageKey) as? UIImage
 
     }
 
@@ -152,7 +157,7 @@ open class User: CommonPK {
 		aCoder.encode(email, forKey: kUserEmailKey)
         aCoder.encode(name, forKey: kUserNameKey)
         aCoder.encode(last_game_won, forKey: kLastGameWonKey)
-
+        aCoder.encode(savedImaged, forKey: kSavedImageKey)
     }
 
 }

@@ -53,8 +53,8 @@ class HTTPAuth : HTTPManager {
             handler(response)
         }
     }
-    func user(handler : @escaping (TPAuthResponse) -> Void) {
-        request(url: "/auth/user", method: .get, params: nil, handler: handler)
+    func user(handler : @escaping (TPUserResponse) -> Void) {
+        request(url: "/account/user", method: .get, params: nil, handler: handler)
     }
     func logout(handler : @escaping (TPAuthResponse) -> Void) {
         request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in

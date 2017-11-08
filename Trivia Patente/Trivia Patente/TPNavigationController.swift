@@ -30,6 +30,18 @@ class TPNavigationController: UINavigationController {
         SideMenuManager.menuFadeStatusBar = false
         // 240 grandezza minima, 300 grandezza massima
         SideMenuManager.menuWidth = min(max(UIScreen.main.bounds.width * 0.80, 240), 300)
+        
+        // download user data so that the app has a new copy of them
+        HTTPAuth().user { response in
+            if let currentUser = response.user {
+                SessionManager.set(user: currentUser)
+                UIImage.downloadImage(url: currentUser.avatarImageUrl!, callback: { image in
+                    let u = SessionManager.currentUser! // need to create a copy to update values and the copy needs to be done inside the callback
+                    u.savedImaged = image
+                    SessionManager.set(user: u)
+                })
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -121,7 +133,6 @@ class TPNavigationController: UINavigationController {
             if with_title {
                 self.topViewController?.title = user.displayName
             }
-//            self.avatarItem.user = candidate
         }
     }
     

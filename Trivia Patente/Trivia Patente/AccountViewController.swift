@@ -185,8 +185,9 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     self.finishedSaving()
                 } else {
                     nameUpdate()
-                    self.newAvatarImage = nil
+                    response.user!.savedImaged = self.newAvatarImage
                     SessionManager.set(user: response.user!)
+                    self.newAvatarImage = nil
                 }
             })
         } else {

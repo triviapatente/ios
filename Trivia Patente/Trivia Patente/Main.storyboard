@@ -700,7 +700,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="juA-Xk-3Bh">
-                                <rect key="frame" x="16" y="248" width="343" height="200"/>
+                                <rect key="frame" x="16" y="230" width="343" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mk7-4s-z3g">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -832,7 +832,7 @@
                             <constraint firstItem="juA-Xk-3Bh" firstAttribute="trailing" secondItem="nZ2-h5-lCk" secondAttribute="trailingMargin" id="BcQ-cp-QI0"/>
                             <constraint firstItem="cs9-lY-A9B" firstAttribute="top" secondItem="nZ2-h5-lCk" secondAttribute="top" constant="16" id="Biy-rw-v8p"/>
                             <constraint firstItem="juA-Xk-3Bh" firstAttribute="leading" secondItem="nZ2-h5-lCk" secondAttribute="leadingMargin" id="JsP-KG-y6I"/>
-                            <constraint firstItem="juA-Xk-3Bh" firstAttribute="top" secondItem="cs9-lY-A9B" secondAttribute="bottom" constant="18" id="VHZ-ax-eyC"/>
+                            <constraint firstItem="juA-Xk-3Bh" firstAttribute="top" secondItem="cs9-lY-A9B" secondAttribute="bottom" id="VHZ-ax-eyC"/>
                             <constraint firstItem="cs9-lY-A9B" firstAttribute="leading" secondItem="nZ2-h5-lCk" secondAttribute="leading" id="YkI-wI-uWQ"/>
                         </constraints>
                     </view>
