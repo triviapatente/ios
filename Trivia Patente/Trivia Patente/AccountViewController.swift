@@ -208,6 +208,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     func startSaving()
     {
         DispatchQueue.main.async {
+            self.errorView.clearError()
             self.submitButton.load()
             self.nameField.disable()
             self.surnameField.disable()
