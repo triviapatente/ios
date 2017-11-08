@@ -37,6 +37,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         motivationPicker.dataSource = self
         self.motivationField.inputView = motivationPicker
         self.sendButton.isEnabled = false
+        self.motivationField.canCopyPaste = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
