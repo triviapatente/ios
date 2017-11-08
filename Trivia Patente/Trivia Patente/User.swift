@@ -43,10 +43,9 @@ open class User: CommonPK {
     
     var fullName : String? {
         get {
-            guard name != nil && surname != nil else {
-                return nil
-            }
-            return "\(name!) \(surname!)"
+            var result = self.name != nil ? self.name! : ""
+            result += self.surname != nil ? (" "+self.surname!) : ""
+            return result
         }
     }
     func isMe() -> Bool {
