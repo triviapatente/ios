@@ -11,13 +11,16 @@ import UIKit
 class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
 
-    @IBOutlet weak var motivationField: UITextField!
+    @IBOutlet weak var motivationField: TPTextField!
     @IBOutlet weak var messagePlaceholder: UILabel!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var feedbackLabel: UILabel!
     
     // TODO: mettere quelli giusti
-    let messageReasons = ["Suggerimento", "Segnalazione"]
+    let messageReasons = [("Suggerimento","hint"), ("Segnalazione","complaint"), ("Altro","other")]
+    var selectedReasonIndex = 0
     let maxMessageLength = 250
     
     override func viewDidLoad() {
@@ -33,6 +36,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         motivationPicker.delegate = self
         motivationPicker.dataSource = self
         self.motivationField.inputView = motivationPicker
+        self.sendButton.isEnabled = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -44,11 +48,12 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.messageReasons[row]
+        return self.messageReasons[row].0
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.motivationField.text = self.messageReasons[row]
+        self.motivationField.text = self.messageReasons[row].0
+        self.selectedReasonIndex = row
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +63,24 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     
     @IBAction func sendMessage()
     {
-
+        self.feedbackLabel.text = ""
+        self.resignResponder()
+        let httpManager = HTTPManager()
+        httpManager.request(url: "/ws/contact/", method: .post, params: ["message":self.messageTextView.text!, "scope":self.messageReasons[selectedReasonIndex].1], auth: true) { (response: TPResponse) in
+            if response.success && response.statusCode == 200 {
+                self.feedbackLabel.text = "Messaggio inviato!"
+                self.clearForm()
+            } else
+            {
+                self.feedbackLabel.text = "Errore durante l'invio. Riprova"
+            }
+        }
+    }
+    
+    func clearForm()
+    {
+        self.messageTextView.text = ""
+        self.messagePlaceholder.isHidden = false
     }
     
     @IBAction func resignResponder()
@@ -76,11 +98,14 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         let msgLength = textView.text.characters.count
         self.counterLabel.text = "\(self.maxMessageLength - msgLength)"
         self.messagePlaceholder.isHidden = msgLength > 0
+        self.sendButton.isEnabled = msgLength > 0
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        return self.messageReasons.index(of: newText) != nil
+        return self.messageReasons.map({ t in
+            t.0
+        }).index(of: newText) != nil
     }
     
 

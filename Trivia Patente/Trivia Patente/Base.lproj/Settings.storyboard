@@ -291,7 +291,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Suggerimento" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51C-b3-c4K">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Suggerimento" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51C-b3-c4K" customClass="TPTextField" customModule="Trivia_Patente" customModuleProvider="target">
                                         <rect key="frame" x="112" y="8" width="206" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="JZC-gM-LHm"/>
@@ -303,11 +303,21 @@
                                             <outlet property="delegate" destination="cJ8-fA-220" id="fTK-rZ-kbC"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpn-YA-lyH">
+                                        <rect key="frame" x="0.0" y="131" width="283" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="rzf-4P-3sM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="eAT-0Q-fti" firstAttribute="leading" secondItem="yeI-m0-V3X" secondAttribute="leading" id="0TN-YL-w7U"/>
                                     <constraint firstAttribute="trailing" secondItem="fWt-yT-jPt" secondAttribute="trailing" id="5Mx-Ak-N34"/>
+                                    <constraint firstItem="gpn-YA-lyH" firstAttribute="top" secondItem="ifi-As-xI2" secondAttribute="bottom" constant="18" id="83k-X3-f3i"/>
                                     <constraint firstItem="cku-4J-irj" firstAttribute="top" secondItem="yeI-m0-V3X" secondAttribute="top" constant="15" id="AFw-oI-umf"/>
                                     <constraint firstItem="51C-b3-c4K" firstAttribute="leading" secondItem="cQC-d9-Xqx" secondAttribute="trailing" id="BVf-ds-Mny"/>
                                     <constraint firstItem="fWt-yT-jPt" firstAttribute="leading" secondItem="yeI-m0-V3X" secondAttribute="leading" id="CY4-l2-Klt"/>
@@ -315,6 +325,7 @@
                                     <constraint firstItem="cQC-d9-Xqx" firstAttribute="top" secondItem="yeI-m0-V3X" secondAttribute="top" constant="8" id="I9j-MS-PiF"/>
                                     <constraint firstAttribute="trailing" secondItem="eAT-0Q-fti" secondAttribute="trailing" constant="25" id="KZb-G4-jg0"/>
                                     <constraint firstAttribute="trailing" secondItem="HO5-eP-6IQ" secondAttribute="trailing" id="PIi-gz-9m1"/>
+                                    <constraint firstItem="gpn-YA-lyH" firstAttribute="leading" secondItem="yeI-m0-V3X" secondAttribute="leading" id="TTr-Vw-ux5"/>
                                     <constraint firstAttribute="trailing" secondItem="xud-1A-alR" secondAttribute="trailing" id="XIP-ol-R0y"/>
                                     <constraint firstItem="fWt-yT-jPt" firstAttribute="top" secondItem="cQC-d9-Xqx" secondAttribute="bottom" constant="8" id="YQP-0n-GVy"/>
                                     <constraint firstAttribute="trailing" secondItem="ifi-As-xI2" secondAttribute="trailing" id="YsL-GN-M5d"/>
@@ -328,6 +339,7 @@
                                     <constraint firstItem="blL-mv-OGJ" firstAttribute="leading" secondItem="yeI-m0-V3X" secondAttribute="leading" constant="6" id="n03-9J-xJG"/>
                                     <constraint firstItem="ifi-As-xI2" firstAttribute="top" secondItem="eAT-0Q-fti" secondAttribute="bottom" constant="8" id="ntr-iF-kMR"/>
                                     <constraint firstItem="HO5-eP-6IQ" firstAttribute="top" secondItem="ifi-As-xI2" secondAttribute="bottom" constant="8" id="sAA-a7-esH"/>
+                                    <constraint firstItem="HO5-eP-6IQ" firstAttribute="leading" secondItem="gpn-YA-lyH" secondAttribute="trailing" constant="8" id="sIq-5X-4Vc"/>
                                     <constraint firstItem="xud-1A-alR" firstAttribute="top" secondItem="fWt-yT-jPt" secondAttribute="bottom" constant="8" id="ysf-nm-H44"/>
                                 </constraints>
                             </view>
@@ -371,9 +383,11 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel" destination="xud-1A-alR" id="yZp-Sb-zO8"/>
+                        <outlet property="feedbackLabel" destination="gpn-YA-lyH" id="dHr-OW-EKZ"/>
                         <outlet property="messagePlaceholder" destination="blL-mv-OGJ" id="Gao-gu-UUk"/>
                         <outlet property="messageTextView" destination="eAT-0Q-fti" id="ubm-YY-gAb"/>
                         <outlet property="motivationField" destination="51C-b3-c4K" id="efc-b1-etZ"/>
+                        <outlet property="sendButton" destination="HO5-eP-6IQ" id="MiM-OJ-6zQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEW-GS-sKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
