@@ -20,6 +20,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     @IBOutlet weak var submitButton: TPButton!
     @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var shootPhotoButton : UIButton!
+    @IBOutlet weak var imageFromLibraryButton : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,19 +136,83 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         picker.dismiss(animated: true, completion: nil)
     }
     
+    
     @IBAction func submitChanges()
     {
-        // first, check if anything has changed
-        if self.newAvatarImage != nil || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) || (SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)
-        {
-            self.submitButton.load()
-            SessionManager.updateUserData(image: self.newAvatarImage, name: self.nameField.getText(), surname: self.surnameField.getText()) { success in
-                self.submitButton.stopLoading()
-                if !success {
-                    self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
-                    
-                }
+        let httpManager = HTTPManager()
+        // TODO: LA FUNZIONE PIù BRUTTA CHE ESISTA NEL MONDO
+        let u = SessionManager.currentUser!
+        
+        let surnameUpdate : (() -> Void) = { _ in
+//            self.startSaving()
+            if ((SessionManager.currentUser!.surname == nil && self.surnameField.getText() != "")||(SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)) {
+                httpManager.request(url: "/account/surname/edit", method: .post, params: ["surname":self.surnameField.getText()], auth: true, handler: { response in
+                    self.finishedSaving()
+                    if !response.success {
+                        self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                    } else {
+                        u.surname = self.surnameField.getText()
+                        SessionManager.set(user: u)
+                    }
+                })
+            } else {
+                self.finishedSaving()
             }
+        }
+        let nameUpdate : (() -> Void) = { _ in
+//            self.startSaving()
+            if (SessionManager.currentUser!.name == nil && self.nameField.getText() != "") || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) {
+                httpManager.request(url: "/account/name/edit", method: .post, params: ["name":self.nameField.getText()], auth: true, handler: { response in
+                    if !response.success {
+                        self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                        self.finishedSaving()
+                    } else {
+                        u.name = self.nameField.getText()
+                        SessionManager.set(user: u)
+                        surnameUpdate()
+                    }
+                })
+            } else {
+                surnameUpdate()
+            }
+        }
+        
+        self.startSaving()
+        if self.newAvatarImage != nil {
+            httpManager.upload(url: "/account/image/edit", method: .post, data: UIImagePNGRepresentation(self.newAvatarImage!)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: { (response: TPAuthResponse) in
+                if !response.success {
+                    self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                    self.finishedSaving()
+                } else {
+                    nameUpdate()
+                    self.newAvatarImage = nil
+                    SessionManager.set(user: response.user!)
+                }
+            })
+        } else {
+            nameUpdate()
+        }
+    }
+    
+    func finishedSaving()
+    {
+        DispatchQueue.main.async {
+            self.submitButton.stopLoading()
+            self.nameField.enable()
+            self.surnameField.enable()
+            self.shootPhotoButton.isEnabled = true
+            self.imageFromLibraryButton.isEnabled = true
+        }
+    }
+    
+    func startSaving()
+    {
+        DispatchQueue.main.async {
+            self.submitButton.load()
+            self.nameField.disable()
+            self.surnameField.disable()
+            self.shootPhotoButton.isEnabled = false
+            self.imageFromLibraryButton.isEnabled = false
         }
     }
 

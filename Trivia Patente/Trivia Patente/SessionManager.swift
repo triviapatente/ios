@@ -62,9 +62,4 @@ class SessionManager {
             }
         }
     }
-    
-    class func updateUserData(image: UIImage?, name: String, surname: String, done: ((Bool) -> Void)? = nil)
-    {
-        // TODO: to implement
-    }
 }

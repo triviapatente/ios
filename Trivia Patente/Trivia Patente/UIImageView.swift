@@ -35,7 +35,8 @@ extension UIImageView {
         
     }
     func load(user: User?) {
-        let url = getUrl(path: user?.image)
+        let imagePath = user!.image != nil ? HTTPManager.getBaseURL() + "/" + (user?.image)! : nil
+        let url = getUrl(path: imagePath)
 
         self.load(path: url, placeholder: "default_avatar")
     }
