@@ -11,6 +11,7 @@ let LOADING_VIEW_TAG = 233
 class TPButton : UIButton {
     var prevTitle : String!
     func load() {
+        self.isEnabled = false
         prevTitle = self.title(for: .normal)
         self.setTitle("", for: .normal)
         let view = UIActivityIndicatorView(activityIndicatorStyle: .white)
@@ -22,6 +23,7 @@ class TPButton : UIButton {
         self.bringSubview(toFront: view)
     }
     func stopLoading() {
+        self.isEnabled = true
         self.setTitle(prevTitle, for: .normal)
         if let loadingView = self.viewWithTag(LOADING_VIEW_TAG) {
             loadingView.removeFromSuperview()
