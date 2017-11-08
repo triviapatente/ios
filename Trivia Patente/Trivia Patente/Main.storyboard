@@ -657,7 +657,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-lY-A9B">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                                <rect key="frame" x="0.0" y="16" width="375" height="214"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-ht-UhN">
                                         <rect key="frame" x="129" y="30" width="116" height="116"/>
@@ -667,20 +667,20 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antonio Terpin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf2-GL-eDf">
-                                        <rect key="frame" x="8" y="154" width="359" height="30"/>
+                                        <rect key="frame" x="8" y="154" width="359" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="hS8-wv-Gfn"/>
+                                            <constraint firstAttribute="height" constant="20" id="hS8-wv-Gfn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="antonio.terpin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-h8-6KI">
-                                        <rect key="frame" x="8" y="184" width="359" height="22"/>
+                                        <rect key="frame" x="8" y="174" width="359" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="0SU-P7-zqS"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -699,7 +699,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="juA-Xk-3Bh">
-                                <rect key="frame" x="16" y="232" width="343" height="200"/>
+                                <rect key="frame" x="16" y="248" width="343" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mk7-4s-z3g">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -829,7 +829,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cs9-lY-A9B" secondAttribute="trailing" id="8BH-Cw-0hG"/>
                             <constraint firstItem="juA-Xk-3Bh" firstAttribute="trailing" secondItem="nZ2-h5-lCk" secondAttribute="trailingMargin" id="BcQ-cp-QI0"/>
-                            <constraint firstItem="cs9-lY-A9B" firstAttribute="top" secondItem="nZ2-h5-lCk" secondAttribute="top" id="Biy-rw-v8p"/>
+                            <constraint firstItem="cs9-lY-A9B" firstAttribute="top" secondItem="nZ2-h5-lCk" secondAttribute="top" constant="16" id="Biy-rw-v8p"/>
                             <constraint firstItem="juA-Xk-3Bh" firstAttribute="leading" secondItem="nZ2-h5-lCk" secondAttribute="leadingMargin" id="JsP-KG-y6I"/>
                             <constraint firstItem="juA-Xk-3Bh" firstAttribute="top" secondItem="cs9-lY-A9B" secondAttribute="bottom" constant="18" id="VHZ-ax-eyC"/>
                             <constraint firstItem="cs9-lY-A9B" firstAttribute="leading" secondItem="nZ2-h5-lCk" secondAttribute="leading" id="YkI-wI-uWQ"/>
