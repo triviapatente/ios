@@ -67,10 +67,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func handleResponse(response : TPAuthResponse) {
         if response.success == true {
             let controller = UIViewController.root()
-            self.present(controller, animated: true) {
-                self.clearForm()
-                self.errorViewContainer.isHidden = true
-            }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.changeRootViewController(with: controller)
+//            self.present(controller, animated: true) {
+//                self.clearForm()
+//                self.errorViewContainer.isHidden = true
+//            }
         } else {
             self.errorView.set(error: response.message)
         }

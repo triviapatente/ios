@@ -50,6 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SocketManager.disconnect { }
     }
     
+    func changeRootViewController(with controller:UIViewController!) {
+        let snapshot:UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
+        controller?.view.addSubview(snapshot);
+        
+        self.window?.rootViewController = controller;
+        
+        UIView.animate(withDuration: 0.3, animations: {() in
+            snapshot.layer.opacity = 0;
+            snapshot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5);
+        }, completion: {
+            (value: Bool) in
+            snapshot.removeFromSuperview();
+        });
+    }
+    
     override init() {
         super.init()
         UIFont.overrideInitialize()

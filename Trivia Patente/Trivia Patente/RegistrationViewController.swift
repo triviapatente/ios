@@ -88,9 +88,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     func handleResponse(response : TPAuthResponse) {
         if response.success == true {
             let controller = UIViewController.root()
-            self.present(controller, animated: true) {
-                self.clearForm()
-            }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.changeRootViewController(with: controller)
+//            self.present(controller, animated: true) {
+//                self.clearForm()
+//            }
         } else {
             self.errorView.set(error: response.message)
         }

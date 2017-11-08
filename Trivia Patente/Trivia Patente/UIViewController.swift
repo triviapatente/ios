@@ -57,7 +57,10 @@ extension UIViewController : TPViewController {
                 controller.addAction(action)
                 visibleViewController.present(controller, animated: true, completion: nil)
             } else {
-                visibleViewController.present(destination, animated: true, completion: nil)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.changeRootViewController(with: destination)
+//                visibleViewController.present(destination, animated: true, completion: nil)
+                
             }
 
         }

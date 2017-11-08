@@ -61,7 +61,8 @@ class MenuViewController: UIViewController {
     
     @IBAction func logout()
     {
-        self.performSegue(withIdentifier: "logout_segue", sender: nil)
+        self.sendAction(action: MenuViewController.kMenuActionLogout)
+        self.dismiss(animated: true)
     }
 
     /*

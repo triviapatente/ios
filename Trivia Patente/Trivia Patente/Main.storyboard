@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="-150.67466266866569"/>
+            <point key="canvasLocation" x="732" y="-168"/>
         </scene>
         <!--Lucky Modal View Controller-->
         <scene sceneID="cWn-Mn-QLv">
@@ -294,11 +294,11 @@
                         <viewControllerLayoutGuide type="bottom" id="LGY-YC-XK7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="erf-iF-yGr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funzionalità non disponibile  nell'alpha 😉" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-B3-xgn">
-                                <rect key="frame" x="26" y="201.5" width="323" height="200"/>
+                                <rect key="frame" x="26" y="233.5" width="323" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="d3u-6v-Z92"/>
                                 </constraints>
@@ -352,6 +352,7 @@
                         <segue destination="1Yk-65-iyF" kind="presentation" identifier="menu_segue" id="OOI-cS-noR"/>
                         <segue destination="aee-Gh-Qoq" kind="show" identifier="account_segue" id="WM9-0Y-78t"/>
                         <segue destination="Xpi-4Q-Ifx" kind="show" identifier="contact_segue" id="KQX-aZ-M6j"/>
+                        <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" modalTransitionStyle="crossDissolve" id="PEX-sP-htm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th2-Qs-Bo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -369,7 +370,7 @@
         <!--Logout View Controller-->
         <scene sceneID="Zqi-Lb-YkV">
             <objects>
-                <viewController id="H6P-hP-e0H" customClass="LogoutViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="H6P-hP-e0H" customClass="LogoutViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Wy-Ym-G3w"/>
                         <viewControllerLayoutGuide type="bottom" id="Ytl-k3-S5l"/>
@@ -465,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaL-9e-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1634" y="1779"/>
+            <point key="canvasLocation" x="3070" y="-151"/>
         </scene>
         <!--Main Button-->
         <scene sceneID="vZS-eu-Izu">
@@ -840,7 +841,6 @@
                         <outlet property="avatarImageView" destination="SzV-ht-UhN" id="kdG-wd-7fW"/>
                         <outlet property="nameLabel" destination="lf2-GL-eDf" id="eON-Zz-iP6"/>
                         <outlet property="usernameLabel" destination="Fh4-h8-6KI" id="gNX-iC-APC"/>
-                        <segue destination="H6P-hP-e0H" kind="presentation" identifier="logout_segue" id="9bK-rU-4Jm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qd4-8x-Luv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -998,8 +998,8 @@
         <image name="user-logout" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NhK-dZ-dty"/>
+        <segue reference="5II-cs-oTT"/>
         <segue reference="n4A-43-lvl"/>
-        <segue reference="GoM-GB-ghT"/>
+        <segue reference="87V-2k-7nr"/>
     </inferredMetricsTieBreakers>
 </document>

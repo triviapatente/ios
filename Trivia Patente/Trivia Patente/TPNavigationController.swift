@@ -53,7 +53,8 @@ class TPNavigationController: UINavigationController {
     
     func showMenu()
     {
-        self.performSegue(withIdentifier: "menu_segue", sender: nil)
+        self.popToRootViewController(animated: true)
+        performSegue(withIdentifier: "menu_segue", sender: nil)
     }
     
     func handleRandomLuckyPopoverShow()
@@ -200,6 +201,10 @@ class TPNavigationController: UINavigationController {
                         break
                     case MenuViewController.kMenuActionProfile:
                         self.goTo(AccountViewController.self, identifier: "account_segue")
+                        break
+                    case MenuViewController.kMenuActionLogout:
+                        self.performSegue(withIdentifier: "logout_segue", sender: nil)
+//                        self.goTo(LogoutViewController.self, identifier: "logout_segue")
                         break
                     default:
                         break
