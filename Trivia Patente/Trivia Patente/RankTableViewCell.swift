@@ -56,7 +56,7 @@ class RankTableViewCell: UITableViewCell {
     func setAppearance(for user: User) {
         self.nameView.textColor = infoContentColor
         self.detailView.textColor = infoScoreColor
-        self.scoreView.textColor = infoContentColor
+        self.scoreView.textColor = infoScoreColor
         self.contentView.backgroundColor = infoBackgroundColor
         
         self.infoBar.titleColor = infoContentColor
@@ -66,7 +66,7 @@ class RankTableViewCell: UITableViewCell {
     }
     var position : Int32! {
         didSet {
-            self.detailView.text = "54742"//self.positionText
+            self.detailView.text = self.positionText
             self.infoBar.topItem?.title = "Posizione: \(infoPositionText)"
 //            self.detailView.isHidden = (position > 99)
         }
