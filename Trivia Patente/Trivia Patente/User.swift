@@ -58,7 +58,7 @@ open class User: CommonPK {
     }
     func isMe() -> Bool {
         if let current = SessionManager.currentUser {
-            return self.isEqual(current)
+            return self.id == current.id// self.isEqual(current)
         }
         return false
     }

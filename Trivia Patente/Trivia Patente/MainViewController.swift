@@ -57,7 +57,7 @@ class MainViewController: TPNormalViewController {
     func getSegueIdentifier(for button: TPMainButton) -> String? {
         switch(button) {
             case self.playButton: return "play_segue"
-            case self.rankButton: return "alpha_segue"
+            case self.rankButton: return "rank_segue"
             case self.statsButton: return "alpha_segue"
             case self.shopButton: return "alpha_segue"
 

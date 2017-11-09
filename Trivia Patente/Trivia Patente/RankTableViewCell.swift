@@ -15,8 +15,6 @@ class RankTableViewCell: UITableViewCell {
     @IBOutlet var detailView : UILabel!
     @IBOutlet var scoreView : UILabel!
     
-    @IBOutlet var infoDisclosure : UIButton!
-    
     @IBOutlet var infoBar : UINavigationBar!
     @IBOutlet var infoBackButton : UIBarButtonItem!
     
@@ -47,14 +45,18 @@ class RankTableViewCell: UITableViewCell {
     }
     var infoContentColor : UIColor {
         get {
+            return (user.isMe()) ? UIColor.white : UIColor.black
+        }
+    }
+    var infoScoreColor : UIColor {
+        get {
             return (user.isMe()) ? UIColor.white : Colors.primary
         }
     }
     func setAppearance(for user: User) {
         self.nameView.textColor = infoContentColor
-        self.detailView.textColor = infoContentColor
+        self.detailView.textColor = infoScoreColor
         self.scoreView.textColor = infoContentColor
-        self.infoDisclosure.tintColor = infoContentColor
         self.contentView.backgroundColor = infoBackgroundColor
         
         self.infoBar.titleColor = infoContentColor
@@ -64,10 +66,9 @@ class RankTableViewCell: UITableViewCell {
     }
     var position : Int32! {
         didSet {
-            self.detailView.text = self.positionText
+            self.detailView.text = "54742"//self.positionText
             self.infoBar.topItem?.title = "Posizione: \(infoPositionText)"
-            self.detailView.isHidden = (position > 99)
-            self.infoDisclosure.isHidden = !self.detailView.isHidden
+//            self.detailView.isHidden = (position > 99)
         }
     }
     var infoPositionText : String {
@@ -78,11 +79,11 @@ class RankTableViewCell: UITableViewCell {
     var positionText : String {
         get {
             if position == 1 {
-                return "🏎"
+                return "🚀"
             } else if position == 2 {
-                return "🚗"
+                return "🚙"
             } else if position == 3 {
-                return "🚲"
+                return "🏍"
             }
             return "\(position!)"
         }
