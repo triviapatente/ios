@@ -28,8 +28,9 @@ class MainViewController: TPNormalViewController {
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = { item in
                 self.selectedGame = item as! Game
-                let identifier = self.selectedGame.started ? "start_game_segue" : "chat_segue"
-                self.performSegue(withIdentifier: identifier, sender: self)
+                if self.selectedGame.started {
+                    self.performSegue(withIdentifier: "start_game_segue", sender: self)
+                }
             }
         }
     }

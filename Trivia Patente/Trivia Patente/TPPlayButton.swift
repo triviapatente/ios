@@ -57,23 +57,28 @@ class TPPlayButton: UIButton {
         super.awakeFromNib()
     }
     func chatButton() {
-        self.setTitle("Chat", for: .normal)
+        self.setTitle("In attesa", for: .normal)
+        self.isUserInteractionEnabled = false
         self.tintColor = Colors.gray_default
     }
     func hisTurnButton() {
         self.setTitle("Dettagli", for: .normal)
+        self.isUserInteractionEnabled = true
         self.tintColor = Colors.yellow_default
     }
     func recapButton() {
         self.setTitle("Riepilogo", for: .normal)
+        self.isUserInteractionEnabled = true
         self.tintColor = Colors.red_default
     }
     func playNowButton() {
         self.setTitle("Gioca ora", for: .normal)
+        self.isUserInteractionEnabled = true
         self.tintColor = Colors.green_default
     }
     func revengeButton() {
         self.setTitle("Rivincita", for: .normal)
+        self.isUserInteractionEnabled = true
         self.tintColor = Colors.red_default
     }
     
