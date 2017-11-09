@@ -53,15 +53,8 @@ class LuckyModalViewController: UIViewController {
     }
     
     @IBAction func shareButtonClicked(sender: UIButton) {
-        let textToShare = "Hey! Scarica anche tu l'applicazione Trivia Patente cos' ci possiamo sfidare!"
-        
-        if let myWebsite = NSURL(string: "http://www.apple.com/") {
-            let objectsToShare = [textToShare, myWebsite] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
-            activityVC.popoverPresentationController?.sourceView = sender
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.shareAppLink(controller: self)
     }
     
 

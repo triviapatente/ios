@@ -210,7 +210,7 @@ class UserListViewController: TPNormalViewController {
             return UIView()
         }
         let footer = UIView(frame: frame)
-        footer.backgroundColor = Colors.primary
+        footer.backgroundColor = UIColor.clear
         let buttonWidth = CGFloat(200)
         let buttonHeight = CGFloat(40)
         let buttonX = (footer.frame.size.width - buttonWidth) / 2
@@ -221,12 +221,13 @@ class UserListViewController: TPNormalViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Colors.green_default
         button.setTitle("Invita i tuoi amici", for: .normal)
-        button.addTarget(self, action: #selector(goToInvitePage), for: .touchUpInside)
+        button.addTarget(self, action: #selector(inviteFriends), for: .touchUpInside)
         footer.addSubview(button)
         return footer
     }
-    func goToInvitePage() {
-        self.performSegue(withIdentifier: "alpha_segue", sender: self)
+    func inviteFriends() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.shareAppLink(controller: self)
     }
     
     
@@ -241,6 +242,7 @@ class UserListViewController: TPNormalViewController {
         self.title = self.controllerTitle
 
         self.changeRankType(sender: control)
+        self.setDefaultBackgroundGradient()
         self.userChosenCallback = { user in
             self.chosenUser = user
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)

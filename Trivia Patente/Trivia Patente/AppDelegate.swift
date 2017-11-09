@@ -64,6 +64,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         });
     }
     
+    func shareAppLink(controller: UIViewController)
+    {
+        let textToShare = "Hey! Scarica anche tu l'applicazione Trivia Patente cos' ci possiamo sfidare!"
+        
+        if let myWebsite = NSURL(string: "http://www.apple.com/") {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = controller.view
+            controller.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     override init() {
         super.init()
         UIFont.overrideInitialize()
