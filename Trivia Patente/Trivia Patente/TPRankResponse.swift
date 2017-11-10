@@ -10,9 +10,9 @@ import UIKit
 import SwiftyJSON
 
 class TPRankResponse: TPUserListResponse {
-    var userPosition : Int32?
+//    var userPosition : Int32?
     override func load(json: JSON) {
-        self.load(json: json, addMyUser: true)
+        self.load(json: json, addMyUser: false)
     }
     func load(json: JSON, addMyUser : Bool) {
         super.load(json: json)
@@ -24,7 +24,7 @@ class TPRankResponse: TPUserListResponse {
         if addMyUser {
             self.checkAndAddUser()
         }
-        userPosition = json["my_position"].int32
+//        userPosition = json["my_position"].int32
     }
     var map : [String : Int] {
         var output : [String : Int] = [:]

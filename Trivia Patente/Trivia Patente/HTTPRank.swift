@@ -8,18 +8,23 @@
 
 import UIKit
 
+enum RankDirection : String {
+    case up = "up"
+    case down = "down"
+}
+
 class HTTPRank: HTTPManager {
-    func italian_rank(handler : @escaping (TPRankResponse) -> Void) {
-        self.request(url: "/rank/global", method: .get, params: nil, handler: handler)
+    func italian_rank(thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
+        self.request(url: "/rank/global", method: .get, params: ["thresold": thresold, "direction": direction.rawValue], handler: handler)
     }
-    func friends_rank(handler : @escaping (TPRankResponse) -> Void) {
-        italian_rank(handler: handler)
+    func friends_rank(thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
+        italian_rank(thresold: thresold, direction: direction, handler: handler)
     }
-    func rank(scope : UserListScope, handler : @escaping (TPRankResponse) -> Void) {
+    func rank(scope : UserListScope, thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
         if scope == .friends {
-            self.friends_rank(handler: handler)
+            self.friends_rank(thresold: thresold, direction: direction, handler: handler)
         } else {
-            self.italian_rank(handler: handler)
+            self.italian_rank(thresold: thresold, direction: direction, handler: handler)
         }
     }
     func search(scope : UserListScope, query : String, handler : @escaping (TPRankSearchResponse) -> Void) {

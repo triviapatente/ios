@@ -20,6 +20,7 @@ open class User: CommonPK {
     internal let kPositionKey: String = "position"
     internal let kLastGameWonKey: String = "last_game_won"
     internal let kSavedImageKey: String = "saved_image"
+    internal let kInternalPositionKey: String = "internalPosition"
 
 
     // MARK: Properties
@@ -30,6 +31,7 @@ open class User: CommonPK {
     open var email: String?
     open var name: String?
     open var position: Int32?
+    open var internalPosition : Int32?
     open var last_game_won: Bool?
     open var savedImaged : UIImage?
     open var avatarImageUrl : String? {
@@ -88,6 +90,7 @@ open class User: CommonPK {
         name = json[kUserNameKey].string
         position = json[kPositionKey].int32
         last_game_won = json[kLastGameWonKey].bool
+        internalPosition = json[kInternalPositionKey].int32
     }
     public init(username : String?, id : Int32?, avatar : String? = nil, name : String? = nil, surname : String? = nil, score : Int? = nil) {
         super.init(id: id)
@@ -143,6 +146,7 @@ open class User: CommonPK {
         self.email = aDecoder.decodeObject(forKey: kUserEmailKey) as? String
 		self.name = aDecoder.decodeObject(forKey: kUserNameKey) as? String
         self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int32
+        self.internalPosition = aDecoder.decodeObject(forKey: kInternalPositionKey) as? Int32
         self.last_game_won = aDecoder.decodeObject(forKey: kLastGameWonKey) as? Bool
         self.savedImaged = aDecoder.decodeObject(forKey: kSavedImageKey) as? UIImage
 
@@ -158,6 +162,8 @@ open class User: CommonPK {
         aCoder.encode(name, forKey: kUserNameKey)
         aCoder.encode(last_game_won, forKey: kLastGameWonKey)
         aCoder.encode(savedImaged, forKey: kSavedImageKey)
+        aCoder.encode(position, forKey: kPositionKey)
+        aCoder.encode(internalPosition, forKey: kInternalPositionKey)
     }
 
 }

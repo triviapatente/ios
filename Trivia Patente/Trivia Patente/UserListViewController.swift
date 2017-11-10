@@ -84,18 +84,18 @@ class UserListViewController: TPNormalViewController {
         }
         return friendsResponse?.users
     }
-    func getContextualUserPosition() -> Int32? {
-        guard let response = italianResponse as? TPRankResponse else {
-            return nil
-        }
-        if listScope == .italian {
-            return response.userPosition
-        }
-        guard let newResponse = friendsResponse as? TPRankResponse else {
-            return nil
-        }
-        return newResponse.userPosition
-    }
+//    func getContextualUserPosition() -> Int32? {
+//        guard let response = italianResponse as? TPRankResponse else {
+//            return nil
+//        }
+//        if listScope == .italian {
+//            return response.userPosition
+//        }
+//        guard let newResponse = friendsResponse as? TPRankResponse else {
+//            return nil
+//        }
+//        return newResponse.userPosition
+//    }
     func getContextualMap() -> [String : Int]? {
         if listScope == .italian {
             if searching {
@@ -188,9 +188,42 @@ class UserListViewController: TPNormalViewController {
         }
         
         if self.listType == .rank {
-            rankHandler.rank(scope: self.listScope, handler: callback)
+            rankHandler.rank(scope: self.listScope, thresold: 0, direction: .up, handler: callback)
         } else {
             gameHandler.suggested(scope: self.listScope, handler: callback)
+        }
+    }
+    func loadUp() {
+        // only called on rank
+        let callback = { (response : TPUserListResponse) in
+            if response.success == true {
+                self.italianResponse?.users.insert(contentsOf: response.users, at: 0)
+                self.tableView.refreshControl!.endRefreshing()
+                self.tableView.reloadData()
+            } else {
+                //TODO error handler
+            }
+        }
+        
+        if self.listType == .rank {
+            rankHandler.rank(scope: self.listScope, thresold: getContextualUsers()!.first!.internalPosition!, direction: .down, handler: callback)
+        }
+    }
+    
+    func loadDown(endRefreshing: @escaping (() -> Void)) {
+         // only called on rank
+        let callback = { (response : TPUserListResponse) in
+            if response.success == true {
+                self.italianResponse?.users.append(contentsOf: response.users)
+                endRefreshing()
+                self.tableView.reloadData()
+            } else {
+                //TODO error handler
+            }
+        }
+        
+        if self.listType == .rank {
+            rankHandler.rank(scope: self.listScope, thresold: getContextualUsers()!.last!.internalPosition!, direction: .up, handler: callback)
         }
     }
     var tableHeight : CGFloat {
@@ -273,15 +306,6 @@ class UserListViewController: TPNormalViewController {
 
     }
     
-    func loadUp() {
-    
-    }
-    
-    func loadDown(cb: (() -> Void))
-    {
-        
-    }
-    
 
     func search(query: String) {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -315,8 +339,54 @@ class UserListViewController: TPNormalViewController {
             (segue.destination as! FBConnectInviteViewController).delegate = self
         }
     }
-
+    
+    // MARK: handle bottom pull to refresh
+    let minBottomRefreshTime : TimeInterval = 1
+    var bottomIsRefreshing = false
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard self.listType == .rank && !self.bottomIsRefreshing else { return }
+        
+        // Use this 'canLoadFromBottom' variable only if you want to load from bottom iff content > table size
+        let contentSize = scrollView.contentSize.height
+        let tableSize = scrollView.frame.size.height - scrollView.contentInset.top - scrollView.contentInset.bottom
+        let canLoadFromBottom = contentSize > tableSize
+        
+        // Offset
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let difference = maximumOffset - currentOffset
+        
+        // Difference threshold as you like. -120.0 means pulling the cell up 120 points
+        if canLoadFromBottom, difference <= -0.0 {
+            self.bottomActivityIndicator?.startAnimating()
+            let bottomRefreshShowedAt = NSDate().timeIntervalSince1970
+            self.bottomIsRefreshing = true
+            // Save the current bottom inset
+            let previousScrollViewBottomInset = scrollView.contentInset.bottom
+            // Add 50 points to bottom inset, avoiding it from laying over the refresh control.
+            scrollView.contentInset.bottom = previousScrollViewBottomInset + 50
+            
+            let endRefreshing = { (timer : Timer) in
+                // Reset the bottom inset to its original value
+                self.bottomIsRefreshing = false
+                scrollView.contentInset.bottom = previousScrollViewBottomInset
+                self.bottomActivityIndicator?.stopAnimating()
+            }
+            
+            // loadMoreData function call
+            loadDown() { _ in
+                print(bottomRefreshShowedAt)
+                let timeDiff = NSDate().timeIntervalSince1970 - bottomRefreshShowedAt
+                if timeDiff >= self.minBottomRefreshTime {
+                    endRefreshing(Timer()) // useless empty timer
+                } else {
+                    Timer.scheduledTimer(withTimeInterval: self.minBottomRefreshTime - timeDiff, repeats: false, block: endRefreshing)
+                }
+            }
+        }
+    }
 }
+
 extension UserListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.search(query: searchBar.text!)
@@ -350,12 +420,12 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             cell.user = getContextualUsers()![indexPath.row]
             if searching {
                 cell.position = cell.user.position
-            } else if cell.user!.isMe() {
+            } /*else if cell.user!.isMe() {
                 cell.position = getContextualUserPosition()!
-            } else {
-                cell.position = Int32(getContextualMap()!["\(cell.user.score!)"]!)
+            } */else {
+                cell.position = cell.user.position// Int32(getContextualMap()!["\(cell.user.score!)"]!)
             }
-            cell.user = getContextualUsers()![indexPath.row]
+//            cell.user = getContextualUsers()![indexPath.row]
             return cell
         } else {
             let cell = reusableCell as! GameOpponentTableViewCell
@@ -364,38 +434,7 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-}
-extension UserListViewController : UIScrollViewDelegate
-{
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard self.listType == .rank else { return }
-        
-        // Use this 'canLoadFromBottom' variable only if you want to load from bottom iff content > table size
-        let contentSize = scrollView.contentSize.height
-        let tableSize = scrollView.frame.size.height - scrollView.contentInset.top - scrollView.contentInset.bottom
-        let canLoadFromBottom = contentSize > tableSize
-        
-        // Offset
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        let difference = maximumOffset - currentOffset
-        
-        // Difference threshold as you like. -120.0 means pulling the cell up 120 points
-        if canLoadFromBottom, difference <= -60.0 {
-            self.bottomActivityIndicator?.startAnimating()
-            // Save the current bottom inset
-            let previousScrollViewBottomInset = scrollView.contentInset.bottom
-            // Add 50 points to bottom inset, avoiding it from laying over the refresh control.
-            scrollView.contentInset.bottom = previousScrollViewBottomInset + 50
-            
-            // loadMoreData function call
-            loadDown(){ _ in
-                // Reset the bottom inset to its original value
-                scrollView.contentInset.bottom = previousScrollViewBottomInset
-                self.bottomActivityIndicator?.stopAnimating()
-            }
-        }
-    }
+    
 }
 extension UserListViewController : FBConnectInviteDelegate {
     func connected() {
