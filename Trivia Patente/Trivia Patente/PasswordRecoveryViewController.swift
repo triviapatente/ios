@@ -74,8 +74,15 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     
     func handleResponse(response : TPForgotResponse) {
         if response.success == true {
-            NotificationCenter.default.post(name: Notification.Name("forgotMessage"), object: nil, userInfo: ["message": "Utilizza la nuova password che hai ricevuto per email per accedere."])
-            self.dismissController()
+            self.showToast(text: "Dovresti aver ricevuto una mail! Prova a controllare 😁")
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { t in
+                NotificationCenter.default.post(name: Notification.Name("forgotMessage"), object: nil, userInfo: ["message": "Utilizza la nuova password che hai ricevuto per email per accedere."])
+                DispatchQueue.main.async {
+                    self.dismissController()
+                }
+                
+            })
+            
         } else {
             self.setErrorMessage(message: "Impossibile soddisfare la richiesta per questo username")
         }

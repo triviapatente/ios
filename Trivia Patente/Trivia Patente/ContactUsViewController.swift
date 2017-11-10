@@ -36,7 +36,6 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         motivationPicker.delegate = self
         motivationPicker.dataSource = self
         self.motivationField.inputView = motivationPicker
-        self.sendButton.isEnabled = false
         self.motivationField.canCopyPaste = false
     }
     
@@ -64,6 +63,12 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     
     @IBAction func sendMessage()
     {
+        guard self.messageTextView.text.characters.count > 0 else
+        {
+            self.showToast(text: "Come può aiutarci un messaggio vuoto? 🤔")
+            return
+        }
+        
         self.feedbackLabel.text = ""
         self.resignResponder()
         let httpManager = HTTPManager()
@@ -99,7 +104,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         let msgLength = textView.text.characters.count
         self.counterLabel.text = "\(self.maxMessageLength - msgLength)"
         self.messagePlaceholder.isHidden = msgLength > 0
-        self.sendButton.isEnabled = msgLength > 0
+//        self.sendButton.isEnabled = msgLength > 0
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

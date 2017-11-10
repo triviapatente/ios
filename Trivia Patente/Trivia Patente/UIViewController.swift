@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 
 protocol TPViewController {
@@ -103,5 +104,18 @@ extension UIViewController : TPViewController {
                 gradient.locations = [start as NSNumber, end as NSNumber]
             }
         }
+    }
+    
+    func showToast(text: String)
+    {
+        self.view.endEditing(true)
+        let toast = MBProgressHUD.showAdded(to: self.view, animated: true)
+        toast.mode = .text
+        toast.label.text = text
+        toast.label.numberOfLines = 0
+        toast.removeFromSuperViewOnHide = true
+        
+        toast.hide(animated: true, afterDelay: 2)
+        
     }
 }
