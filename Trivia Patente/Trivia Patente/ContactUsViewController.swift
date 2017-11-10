@@ -67,7 +67,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         self.feedbackLabel.text = ""
         self.resignResponder()
         let httpManager = HTTPManager()
-        httpManager.request(url: "/ws/contact/", method: .post, params: ["message":self.messageTextView.text!, "scope":self.messageReasons[selectedReasonIndex].1], auth: true) { (response: TPResponse) in
+        httpManager.request(url: "/ws/contact", method: .post, params: ["message":self.messageTextView.text!, "scope":self.messageReasons[selectedReasonIndex].1], auth: true) { (response: TPResponse) in
             if response.success && response.statusCode == 200 {
                 self.feedbackLabel.text = "Messaggio inviato!"
                 self.clearForm()
