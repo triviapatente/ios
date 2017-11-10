@@ -18,6 +18,8 @@ class UserListViewController: TPNormalViewController {
     
     var blurImage : UIImage?
     
+    var bottomActivityIndicator : UIActivityIndicatorView?
+    
     func createBlurImage() {
         if let image = blurImage {
             self.blurImageView.image = image
@@ -223,6 +225,15 @@ class UserListViewController: TPNormalViewController {
         button.setTitle("Invita i tuoi amici", for: .normal)
         button.addTarget(self, action: #selector(inviteFriends), for: .touchUpInside)
         footer.addSubview(button)
+        if self.listType == .rank {
+            self.bottomActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+            self.bottomActivityIndicator!.hidesWhenStopped = true
+            let indicatorCenterX = self.tableView.frame.size.width / 2
+            let indicatorCenterY = buttonY + buttonHeight + 40
+            self.bottomActivityIndicator!.center = CGPoint(x: indicatorCenterX, y: indicatorCenterY)
+            
+            footer.addSubview(self.bottomActivityIndicator!)
+        }
         return footer
     }
     func inviteFriends() {
@@ -248,12 +259,27 @@ class UserListViewController: TPNormalViewController {
             self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
         }
 
+        if self.listType == .rank
+        {
+            self.tableView.refreshControl = UIRefreshControl()
+            self.tableView.refreshControl!.tintColor = UIColor.white
+            self.tableView.refreshControl!.addTarget(self, action: #selector(loadUp), for: UIControlEvents.valueChanged)
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.searchBar.layer.addBorder(edge: .top, color: Colors.primary, thickness: 1)
         self.searchBar.layer.addBorder(edge: .bottom, color: Colors.primary, thickness: 1)
 
+    }
+    
+    func loadUp() {
+    
+    }
+    
+    func loadDown(cb: (() -> Void))
+    {
+        
     }
     
 
@@ -336,6 +362,38 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             cell.userChosenCallback = self.userChosenCallback
             cell.user = getContextualUsers()![indexPath.row]
             return cell
+        }
+    }
+}
+extension UserListViewController : UIScrollViewDelegate
+{
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard self.listType == .rank else { return }
+        
+        // Use this 'canLoadFromBottom' variable only if you want to load from bottom iff content > table size
+        let contentSize = scrollView.contentSize.height
+        let tableSize = scrollView.frame.size.height - scrollView.contentInset.top - scrollView.contentInset.bottom
+        let canLoadFromBottom = contentSize > tableSize
+        
+        // Offset
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        let difference = maximumOffset - currentOffset
+        
+        // Difference threshold as you like. -120.0 means pulling the cell up 120 points
+        if canLoadFromBottom, difference <= -60.0 {
+            self.bottomActivityIndicator?.startAnimating()
+            // Save the current bottom inset
+            let previousScrollViewBottomInset = scrollView.contentInset.bottom
+            // Add 50 points to bottom inset, avoiding it from laying over the refresh control.
+            scrollView.contentInset.bottom = previousScrollViewBottomInset + 50
+            
+            // loadMoreData function call
+            loadDown(){ _ in
+                // Reset the bottom inset to its original value
+                scrollView.contentInset.bottom = previousScrollViewBottomInset
+                self.bottomActivityIndicator?.stopAnimating()
+            }
         }
     }
 }
