@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 enum RankDirection : String {
     case up = "up"
@@ -14,13 +15,13 @@ enum RankDirection : String {
 }
 
 class HTTPRank: HTTPManager {
-    func italian_rank(thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
-        self.request(url: "/rank/global", method: .get, params: ["thresold": thresold, "direction": direction.rawValue], handler: handler)
+    func italian_rank(thresold: Int32?, direction: RankDirection?, handler : @escaping (TPRankResponse) -> Void) {
+        self.request(url: "/rank/global", method: .get, params: self.paramsFor(thresold: thresold, direction: direction), handler: handler)
     }
-    func friends_rank(thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
+    func friends_rank(thresold: Int32?, direction: RankDirection?, handler : @escaping (TPRankResponse) -> Void) {
         italian_rank(thresold: thresold, direction: direction, handler: handler)
     }
-    func rank(scope : UserListScope, thresold: Int32, direction: RankDirection, handler : @escaping (TPRankResponse) -> Void) {
+    func rank(scope : UserListScope, thresold: Int32?, direction: RankDirection?, handler : @escaping (TPRankResponse) -> Void) {
         if scope == .friends {
             self.friends_rank(thresold: thresold, direction: direction, handler: handler)
         } else {
@@ -39,5 +40,12 @@ class HTTPRank: HTTPManager {
     }
     func search_users(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
         self.request(url: "/rank/search", method: .get, params: ["query": query], handler: handler)
+    }
+    func paramsFor(thresold: Int32?, direction: RankDirection?) -> Parameters?
+    {
+        guard thresold != nil && direction != nil else {
+            return nil
+        }
+        return ["thresold": thresold!, "direction": direction!.rawValue]
     }
 }

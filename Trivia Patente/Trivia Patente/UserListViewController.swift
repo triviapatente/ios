@@ -19,6 +19,7 @@ class UserListViewController: TPNormalViewController {
     var blurImage : UIImage?
     
     var bottomActivityIndicator : UIActivityIndicatorView?
+    var topRefreshControl : UIRefreshControl?
     
     func createBlurImage() {
         if let image = blurImage {
@@ -29,7 +30,6 @@ class UserListViewController: TPNormalViewController {
                 self.blurImageView.image = self.blurImage
             }
         }
-        
     }
     
     override func needsMenu() -> Bool {
@@ -131,7 +131,8 @@ class UserListViewController: TPNormalViewController {
     }
     func reloadTable() {
         self.tableView.reloadData()
-        self.tableView.tableFooterView = footerView
+        self.tableView.tableFooterView = self.footerView
+
     }
     
     var searching : Bool {
@@ -172,13 +173,37 @@ class UserListViewController: TPNormalViewController {
         self.friendsResponse?.users = []
         self.reloadTable()
     }
+    func getMyPosition() -> Int32?
+    {
+        if let users = getContextualUsers()
+        {
+            if let me = users.first(where: { $0.isMe() }) {
+                return me.position
+            }
+        }
+        return nil
+    }
+    func scrollToMyPosition() {
+        if let users = self.getContextualUsers()
+        {
+            if let index = users.index(where: { $0.isMe() }) {
+                self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.middle, animated: true)
+            }
+        }
+    }
     func loadData() {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.tableView.tableFooterView!.isHidden = true
         let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
+            self.tableView.tableFooterView!.isHidden = true
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianResponse = response
+                    if let myPos = self.getMyPosition() {
+                        if myPos > 20 { self.enableStairs() }
+                    }
+                    self.scrollToMyPosition()
                 } else {
                     self.friendsResponse = response
                 }
@@ -188,7 +213,7 @@ class UserListViewController: TPNormalViewController {
         }
         
         if self.listType == .rank {
-            rankHandler.rank(scope: self.listScope, thresold: 0, direction: .up, handler: callback)
+            rankHandler.rank(scope: self.listScope, thresold: nil, direction: nil, handler: callback)
         } else {
             gameHandler.suggested(scope: self.listScope, handler: callback)
         }
@@ -199,7 +224,7 @@ class UserListViewController: TPNormalViewController {
             if response.success == true {
                 self.italianResponse?.users.insert(contentsOf: response.users, at: 0)
                 self.tableView.refreshControl!.endRefreshing()
-                self.tableView.reloadData()
+                self.reloadTable()
             } else {
                 //TODO error handler
             }
@@ -216,7 +241,7 @@ class UserListViewController: TPNormalViewController {
             if response.success == true {
                 self.italianResponse?.users.append(contentsOf: response.users)
                 endRefreshing()
-                self.tableView.reloadData()
+                self.reloadTable()
             } else {
                 //TODO error handler
             }
@@ -278,6 +303,9 @@ class UserListViewController: TPNormalViewController {
     var userChosenCallback : ((User) -> Void)!
     var chosenUser : User!
     
+    var stairsUp = true
+    var stairsHoldMyPositionResults : [User]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: cellIdentifier, bundle: Bundle.main)
@@ -294,9 +322,10 @@ class UserListViewController: TPNormalViewController {
 
         if self.listType == .rank
         {
-            self.tableView.refreshControl = UIRefreshControl()
-            self.tableView.refreshControl!.tintColor = UIColor.white
-            self.tableView.refreshControl!.addTarget(self, action: #selector(loadUp), for: UIControlEvents.valueChanged)
+            self.topRefreshControl = UIRefreshControl()
+            self.topRefreshControl!.tintColor = UIColor.white
+            self.topRefreshControl!.addTarget(self, action: #selector(loadUp), for: UIControlEvents.valueChanged)
+            self.tableView.refreshControl = self.topRefreshControl
         }
     }
     override func viewDidLayoutSubviews() {
@@ -306,11 +335,19 @@ class UserListViewController: TPNormalViewController {
 
     }
     
+    func enableStairs()
+    {
+        self.searchBar.showsBookmarkButton = true
+        self.searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: UIControlState.normal)
+    }
 
     func search(query: String) {
+        self.dismissSearch()
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.tableView.tableFooterView!.isHidden = true
         let handler = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
+            self.tableView.tableFooterView!.isHidden = true
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianSearchResponse = response
@@ -344,7 +381,7 @@ class UserListViewController: TPNormalViewController {
     let minBottomRefreshTime : TimeInterval = 1
     var bottomIsRefreshing = false
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard self.listType == .rank && !self.bottomIsRefreshing else { return }
+        guard self.listType == .rank && !self.bottomIsRefreshing && !self.searching else { return }
         
         // Use this 'canLoadFromBottom' variable only if you want to load from bottom iff content > table size
         let contentSize = scrollView.contentSize.height
@@ -399,7 +436,9 @@ extension UserListViewController : UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searching {
             self.search(query: searchBar.text!)
+            self.tableView.refreshControl = nil
         } else {
+            if self.listType == .rank { self.tableView.refreshControl = self.topRefreshControl }
             self.reloadTable()
         }
     }
@@ -433,6 +472,18 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
             cell.user = getContextualUsers()![indexPath.row]
             return cell
         }
+    }
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        if self.stairsUp {
+            searchBar.setImage(UIImage(named: "stairs_down"), for: .bookmark, state: .normal)
+            self.stairsHoldMyPositionResults = self.getContextualUsers()
+            self.loadData()
+        } else {
+            searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: .normal)
+            self.italianResponse!.users = self.stairsHoldMyPositionResults!
+            self.scrollToMyPosition()
+        }
+        self.stairsUp = !self.stairsUp
     }
     
 }
