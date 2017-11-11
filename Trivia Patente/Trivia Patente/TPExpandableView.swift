@@ -214,6 +214,8 @@ class TPExpandableView: UIViewController {
     }
     func expand(_ thresold : CGFloat) {
         self.tableView.isScrollEnabled = true
+        // change top constaint
+        self.view.constraints
         self.containerView.frame.origin.y = thresold
         self.view.frame.size.height = self.mainSize.height
         self.containerView.frame.size.height = self.view.frame.size.height

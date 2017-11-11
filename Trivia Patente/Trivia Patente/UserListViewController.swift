@@ -192,7 +192,7 @@ class UserListViewController: TPNormalViewController {
         }
     }
     func loadData() {
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let loadingView = MBProgressHUD.showAdded(to: self.tableView, animated: true)
         self.tableView.tableFooterView!.isHidden = true
         let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)

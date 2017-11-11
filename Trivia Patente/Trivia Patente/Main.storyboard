@@ -94,7 +94,7 @@
                             <constraint firstItem="fYq-fB-Vuw" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="OIp-JT-icV"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="20" id="RgR-sa-fLX"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" constant="20" id="TFw-Q2-md3"/>
-                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="9Ka-ZU-snF" secondAttribute="bottom" constant="20" id="gfC-4I-1lq"/>
+                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="9Ka-ZU-snF" secondAttribute="bottom" constant="20" identifier="minimizedTop" id="gfC-4I-1lq"/>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="zQ5-Kc-uoa"/>
                         </constraints>
                     </view>

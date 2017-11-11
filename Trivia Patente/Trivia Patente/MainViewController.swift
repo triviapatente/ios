@@ -146,6 +146,9 @@ class MainViewController: TPNormalViewController {
     func getShopHint(response : TPConnectResponse) -> String? {
         return nil
     }
+    override func viewDidDisappear(_ animated: Bool) {
+//        self.recentGamesView.minimize()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination

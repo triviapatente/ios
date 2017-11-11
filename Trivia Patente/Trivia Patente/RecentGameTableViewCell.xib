@@ -56,7 +56,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0q0-jC-bZG">
-                        <rect key="frame" x="103" y="21" width="145" height="45.5"/>
+                        <rect key="frame" x="103" y="20" width="145" height="45.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antonio Terpin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-gG-PCW">
                                 <rect key="frame" x="0.0" y="0.0" width="145" height="23.5"/>
