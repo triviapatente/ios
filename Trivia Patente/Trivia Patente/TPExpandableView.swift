@@ -34,6 +34,7 @@ class TPExpandableView: UIViewController {
     var emptyTitleText : String!
     
     var expandedTopConstraintCostant : CGFloat = 320
+    var tableViewLastScrollOffset = CGFloat(0)
     
     var headerTitle : String? {
         if items.isEmpty {
@@ -261,6 +262,11 @@ extension TPExpandableView : UIGestureRecognizerDelegate {
         let canGoUp = up_pan && !self.expanded
         let canGoDown = !up_pan && self.expanded
         return canGoUp || canGoDown
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y == 0 {
+            self.traslate(up: false)
+        }
     }
 }
 
