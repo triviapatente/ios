@@ -35,6 +35,7 @@ extension UIImageView {
         
     }
     func load(user: User?) {
+        self.contentMode = .scaleAspectFill
         if let avatar = user?.savedImaged {
             self.image = avatar
         } else {

@@ -420,7 +420,7 @@
                                     <segue destination="Pj9-5A-Y1R" kind="embed" identifier="header_segue" id="yys-8T-GtN"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ob-9Ko">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ob-9Ko">
                                 <rect key="frame" x="66.5" y="140" width="187" height="187"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="0Ru-Ra-5fv"/>
@@ -659,7 +659,7 @@
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
                                 <rect key="frame" x="30" y="75" width="290" height="388"/>
-                                <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZWh-kv-MbX" id="lcX-cX-Kjx"/>
                                     <outlet property="delegate" destination="ZWh-kv-MbX" id="rpF-Hr-LNJ"/>
@@ -834,14 +834,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtB-p3-Jb7" userLabel="Won">
                                 <rect key="frame" x="72" y="96" width="120" height="70"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dle-fz-3WF">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dle-fz-3WF">
                                         <rect key="frame" x="5" y="5" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="Eba-DP-257"/>
                                             <constraint firstAttribute="height" constant="60" id="mBf-Dp-7EL"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-SV-Qaq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXe-SV-Qaq">
                                         <rect key="frame" x="75" y="15" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="a9a-XC-2XZ"/>
@@ -966,14 +966,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="260" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UT0-yt-3PR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UT0-yt-3PR">
                                 <rect key="frame" x="210" y="15" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="5Ka-gq-ZRp"/>
                                     <constraint firstAttribute="height" constant="40" id="knU-bh-JAE"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WAg-FI-PSD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WAg-FI-PSD">
                                 <rect key="frame" x="10" y="15" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="4JO-zk-ym3"/>
@@ -1091,7 +1091,7 @@
         <segue reference="kf4-r3-nBv"/>
         <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="sSs-jh-fhW"/>
+        <segue reference="0L7-TT-S4h"/>
         <segue reference="yys-8T-GtN"/>
     </inferredMetricsTieBreakers>
 </document>
