@@ -48,7 +48,7 @@ class MainViewController: TPNormalViewController {
         }
     }
     func resetBackgroundGradientLocations() {
-        self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesView.view.frame.origin.y + self.recentGamesViewContainer.frame.origin.y) / self.view.frame.height))
+        self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesViewContainer.frame.origin.y / self.view.frame.height)))
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

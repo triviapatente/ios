@@ -33,6 +33,8 @@ class TPExpandableView: UIViewController {
     var emptyFooterText : String!
     var emptyTitleText : String!
     
+    var expandedTopConstraintCostant : CGFloat = 320
+    
     var headerTitle : String? {
         if items.isEmpty {
             return emptyTitleText
@@ -154,7 +156,9 @@ class TPExpandableView: UIViewController {
         headerView.topItem?.title = headerTitle
         self.headerView.barTintColor = Colors.secondary
         self.view.addSubview(self.topViewSeparator)
+        
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.mainView.bringSubview(toFront: self.containerView)
@@ -166,18 +170,19 @@ class TPExpandableView: UIViewController {
         if dataLoaded == false {
             adaptToItems()
         }
+        
     }
     
     func adaptToItems(reload : Bool = true) {
-        self.view.frame.size.height = self.headerHeight + self.tableHeight
-        minimize(origin: false)
-        let candidate_y = self.containerSize.height - viewSize.height
-        let maximum_y_value = self.containerSize.height - (self.headerHeight + self.maxTableHeight)
-        if items.count < 3 && candidate_y > 0 {
-            self.view.frame.origin.y = candidate_y
-        } else if maximum_y_value > 0 {
-            self.view.frame.origin.y = maximum_y_value
-        }
+//        self.view.frame.size.height = self.headerHeight + self.tableHeight
+//        minimize(origin: false)
+//        let candidate_y = self.containerSize.height - viewSize.height
+//        let maximum_y_value = self.containerSize.height - (self.headerHeight + self.maxTableHeight)
+//        if items.count < 3 && candidate_y > 0 {
+//            self.view.frame.origin.y = candidate_y
+//        } else if maximum_y_value > 0 {
+//            self.view.frame.origin.y = maximum_y_value
+//        }
         if reload {
             self.tableView.reloadData()
         }
@@ -203,6 +208,7 @@ class TPExpandableView: UIViewController {
                 self.headerView.barTintColor = Colors.secondary
             }
             self.headerView.layoutIfNeeded()
+            self.containerView.superview!.layoutIfNeeded()
         }) { finish in
             self.expanded = up
             self.mainView.bringSubview(toFront: self.containerView)
@@ -212,19 +218,32 @@ class TPExpandableView: UIViewController {
             }
         }
     }
+    func getContainerTopConstraint() -> NSLayoutConstraint?
+    {
+        return (self.containerView.superview!.constraints.filter{ $0.identifier == "recentsTop" }.first)
+    }
     func expand(_ thresold : CGFloat) {
         self.tableView.isScrollEnabled = true
         // change top constaint
-        self.view.constraints
-        self.containerView.frame.origin.y = thresold
-        self.view.frame.size.height = self.mainSize.height
-        self.containerView.frame.size.height = self.view.frame.size.height
+//        self.containerView.isHidden = true
+        
+        if let constraint = self.getContainerTopConstraint() {
+            constraint.constant = 0
+            self.containerView.updateConstraints()
+        }
+//        self.containerView.frame.origin.y = thresold
+//        self.view.frame.size.height = self.mainSize.height
+//        self.containerView.frame.size.height = self.view.frame.size.height
     }
     func minimize(origin : Bool = true) {
         self.tableView.isScrollEnabled = false
-        if origin == true {
-            self.containerView.frame.origin.y = self.mainSize.height - self.previousContainerHeight
+        if let constraint = self.getContainerTopConstraint() {
+            constraint.constant = self.expandedTopConstraintCostant
+            self.containerView.updateConstraints()
         }
+//        if origin == true {
+//            self.containerView.frame.origin.y = self.mainSize.height - self.previousContainerHeight
+//        }
     }
 }
 extension TPExpandableView : UIGestureRecognizerDelegate {

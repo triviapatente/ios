@@ -71,14 +71,14 @@
                                 </subviews>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-fB-Vuw">
-                                <rect key="frame" x="0.0" y="284" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="319" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lXt-FH-NoE"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
-                                <rect key="frame" x="0.0" y="285" width="375" height="318"/>
+                                <rect key="frame" x="0.0" y="320" width="375" height="283"/>
                                 <connections>
                                     <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
                                 </connections>
@@ -90,11 +90,11 @@
                             <constraint firstAttribute="trailing" secondItem="9Ka-ZU-snF" secondAttribute="trailing" constant="20" id="1go-0f-hEh"/>
                             <constraint firstAttribute="trailing" secondItem="fYq-fB-Vuw" secondAttribute="trailing" id="2ft-Rt-cVi"/>
                             <constraint firstAttribute="trailing" secondItem="vpA-SX-xhq" secondAttribute="trailing" id="LkM-Bj-yNL"/>
-                            <constraint firstItem="Nln-vB-sjl" firstAttribute="top" secondItem="vpA-SX-xhq" secondAttribute="bottom" id="N5M-pY-XCa"/>
+                            <constraint firstAttribute="bottom" secondItem="vpA-SX-xhq" secondAttribute="bottom" id="N5M-pY-XCa"/>
                             <constraint firstItem="fYq-fB-Vuw" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="OIp-JT-icV"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="20" id="RgR-sa-fLX"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" constant="20" id="TFw-Q2-md3"/>
-                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="9Ka-ZU-snF" secondAttribute="bottom" constant="20" identifier="minimizedTop" id="gfC-4I-1lq"/>
+                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="320" identifier="recentsTop" id="dQb-zW-KYO"/>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="zQ5-Kc-uoa"/>
                         </constraints>
                     </view>
