@@ -44,13 +44,13 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     }
     func hint(for game : Game) -> String {
         if game.ended {
-            return "Partita terminata."
+            return "Partita terminata"
         } else if !game.started {
             return "Invito inviato!"
         } else if game.my_turn {
             return "E' il tuo turno!"
         } else {
-            return "E' il suo turno.."
+            return "E' il suo turno"
         }
     }
     func lightsImage(for game : Game) -> UIImage {
