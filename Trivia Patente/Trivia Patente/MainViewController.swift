@@ -66,7 +66,7 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        connectToSocket()
+        
         self.playButton.initValues(imageName: "car", title: "Gioca", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
@@ -83,14 +83,16 @@ class MainViewController: TPNormalViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         RecentGameHandler.start(delegate: self.recentGamesView)
-
+        connectToSocket(showLoader: SocketManager.getStatus() != .connected)
     }
-    func connectToSocket() {
-        loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        loadingView.mode = .indeterminate
+    func connectToSocket(showLoader: Bool = true) {
+        if showLoader {
+            loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+            loadingView.mode = .indeterminate
+        }
         SocketManager.connect {
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
-                self.loadingView.hide(animated: true)
+                if showLoader { self.loadingView.hide(animated: true) }
                 //check if login was forbidden
                 if response?.statusCode == 401 {
                     SessionManager.drop()
@@ -145,9 +147,6 @@ class MainViewController: TPNormalViewController {
     }
     func getShopHint(response : TPConnectResponse) -> String? {
         return nil
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-//        self.recentGamesView.minimize()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

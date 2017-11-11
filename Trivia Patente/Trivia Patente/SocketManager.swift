@@ -24,6 +24,10 @@ class SocketManager {
             socket.connect()
         }
     }
+    class func getStatus() -> SocketIOClientStatus
+    {
+        return socket.status
+    }
     class func disconnect(handler : @escaping () -> Void) {
         if socket.status == .disconnected {
             handler()
