@@ -136,6 +136,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func showTermAndConditions()
     {
         self.showToast(text: Strings.terms_tap_toast)
+        Timer.scheduledTimer(withTimeInterval: Constants.toastDuration, repeats: false) { t in
+            // TODO
+        }
     }
     @IBAction func userHasAnAccount()
     {

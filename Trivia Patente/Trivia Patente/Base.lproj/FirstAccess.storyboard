@@ -229,7 +229,11 @@
                         <action selector="showTermAndConditions" destination="fLU-4u-cEV" id="oCA-u2-ekB"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="gc3-zM-AOe"/>
+                <tapGestureRecognizer id="gc3-zM-AOe">
+                    <connections>
+                        <action selector="showTermAndConditions" destination="fLU-4u-cEV" id="XwD-ON-DdC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-167.19999999999999" y="762.36881559220399"/>
         </scene>

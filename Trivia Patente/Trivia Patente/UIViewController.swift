@@ -115,7 +115,7 @@ extension UIViewController : TPViewController {
         toast.label.numberOfLines = 0
         toast.removeFromSuperViewOnHide = true
         
-        toast.hide(animated: true, afterDelay: 2)
+        toast.hide(animated: true, afterDelay: Constants.toastDuration)
         
     }
 }
