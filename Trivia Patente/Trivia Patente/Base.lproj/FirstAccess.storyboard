@@ -229,11 +229,7 @@
                         <action selector="showTermAndConditions" destination="fLU-4u-cEV" id="oCA-u2-ekB"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="gc3-zM-AOe">
-                    <connections>
-                        <segue destination="WJd-eG-N5S" kind="show" id="bI3-tV-X4k"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="gc3-zM-AOe"/>
             </objects>
             <point key="canvasLocation" x="-167.19999999999999" y="762.36881559220399"/>
         </scene>
@@ -442,7 +438,7 @@
                                 <rect key="frame" x="0.0" y="106" width="375" height="255"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-Rm-AA3">
-                                        <rect key="frame" x="40" y="-68" width="295" height="88"/>
+                                        <rect key="frame" x="40" y="-88" width="295" height="88"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="88" id="bFE-Be-Xyg"/>
                                         </constraints>
@@ -645,7 +641,7 @@
         <image name="alert" width="40" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lhd-Vv-FuT"/>
-        <segue reference="uZM-ZA-Gxl"/>
+        <segue reference="Zdm-RU-yT4"/>
+        <segue reference="8vG-z2-sO0"/>
     </inferredMetricsTieBreakers>
 </document>

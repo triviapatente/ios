@@ -189,8 +189,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukb-L2-KGS">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukb-L2-KGS">
                                 <rect key="frame" x="38" y="559" width="300" height="45"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Wcn-dv-5RP"/>
                                     <constraint firstAttribute="height" constant="45" id="fZ4-qV-H4B"/>
@@ -212,6 +213,9 @@
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fhj-42-adl" appends="YES" id="9S1-uw-phV"/>
+                                </connections>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeI-m0-V3X">
                                 <rect key="frame" x="16" y="28" width="343" height="169"/>
@@ -394,6 +398,11 @@
                 <tapGestureRecognizer id="EHK-lK-FiT">
                     <connections>
                         <action selector="resignResponder" destination="cJ8-fA-220" id="CvN-Me-cZq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fhj-42-adl">
+                    <connections>
+                        <action selector="termsTapped" destination="cJ8-fA-220" id="dFI-9G-cFv"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

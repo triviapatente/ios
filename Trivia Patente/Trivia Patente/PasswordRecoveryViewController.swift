@@ -74,7 +74,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     
     func handleResponse(response : TPForgotResponse) {
         if response.success == true {
-            self.showToast(text: "Dovresti aver ricevuto una mail! Prova a controllare 😁")
+            self.showToast(text: Strings.password_recovery_done_toast)
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { t in
                 NotificationCenter.default.post(name: Notification.Name("forgotMessage"), object: nil, userInfo: ["message": "Utilizza la nuova password che hai ricevuto per email per accedere."])
                 DispatchQueue.main.async {

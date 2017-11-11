@@ -65,7 +65,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     {
         guard self.messageTextView.text.characters.count > 0 else
         {
-            self.showToast(text: "Come può aiutarci un messaggio vuoto? 🤔")
+            self.showToast(text: Strings.empty_message_toast)
             return
         }
         
@@ -114,6 +114,10 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         }).index(of: newText) != nil
     }
     
+    @IBAction func termsTapped()
+    {
+        self.showToast(text: Strings.terms_tap_toast)
+    }
 
     /*
     // MARK: - Navigation

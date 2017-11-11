@@ -135,7 +135,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func showTermAndConditions()
     {
-        // TODO
+        self.showToast(text: Strings.terms_tap_toast)
     }
     @IBAction func userHasAnAccount()
     {
