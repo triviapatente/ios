@@ -10,10 +10,10 @@ import UIKit
 import Alamofire
 
 class HTTPManager {
-    let TIMEOUT = 6.0
+    let REQUEST_TIMEOUT = 6.0
     
     class func getBaseURL() -> String {
-        return "http://192.168.1.68:8000"
+        return "http://192.168.1.136:8000"
     }
     
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
@@ -31,7 +31,9 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        Alamofire.upload(multipartFormData: { multipartData in
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
+        manager.upload(multipartFormData: { multipartData in
             multipartData.append(data, withName: forHttpParam, fileName: fileName, mimeType: mimeType)
             if parameters != nil   {
                 for (key, value) in parameters! {
@@ -78,12 +80,10 @@ class HTTPManager {
     func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, handler: @escaping (T) -> Void) {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
-        //TODO: add timeouts
-        //let configuration = URLSessionConfiguration.default
-        //configuration.timeoutIntervalForRequest = TIMEOUT
-        //configuration.timeoutIntervalForResource = TIMEOUT
-        //let manager = Alamofire.SessionManager(configuration: configuration)
-        _ = Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
+        
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
+        _ = manager.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in

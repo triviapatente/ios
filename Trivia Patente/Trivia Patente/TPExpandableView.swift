@@ -9,6 +9,8 @@
 import UIKit
 
 class TPExpandableView: UIViewController {
+    static let DEAFULT_CONTAINER_TOP_SPACE = CGFloat(320)
+    
     @IBOutlet weak var headerView : UINavigationBar!
 //    @IBOutlet var counterLabel : UILabel!
     @IBOutlet var reloadBarButton : UIBarButtonItem!
@@ -33,7 +35,11 @@ class TPExpandableView: UIViewController {
     var emptyFooterText : String!
     var emptyTitleText : String!
     
-    var expandedTopConstraintCostant : CGFloat = 320
+    var expandedTopConstraintCostant : CGFloat {
+        let totalRecentsHeight = self.containerView.superview!.frame.height - (self.headerHeight + self.tableHeight)
+        print(self.containerView.superview!.frame.height, totalRecentsHeight)
+        return totalRecentsHeight > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? totalRecentsHeight : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
+    }
     var tableViewLastScrollOffset = CGFloat(0)
     
     var headerTitle : String? {
@@ -157,15 +163,15 @@ class TPExpandableView: UIViewController {
         headerView.topItem?.title = headerTitle
         self.headerView.barTintColor = Colors.secondary
         self.view.addSubview(self.topViewSeparator)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.minimize()
         self.mainView.bringSubview(toFront: self.containerView)
-        if previousContainerHeight == nil {
-            previousContainerHeight = self.containerSize.height
-        }
         self.retrieveRecentGames()
         //enforce only the first initialization of the view position
         if dataLoaded == false {
@@ -175,7 +181,7 @@ class TPExpandableView: UIViewController {
     }
     
     func adaptToItems(reload : Bool = true) {
-//        self.view.frame.size.height = self.headerHeight + self.tableHeight
+//        let supposed_y = self.headerHeight + self.tableHeight
 //        minimize(origin: false)
 //        let candidate_y = self.containerSize.height - viewSize.height
 //        let maximum_y_value = self.containerSize.height - (self.headerHeight + self.maxTableHeight)
@@ -223,13 +229,13 @@ class TPExpandableView: UIViewController {
     {
         return (self.containerView.superview!.constraints.filter{ $0.identifier == "recentsTop" }.first)
     }
-    func expand(_ thresold : CGFloat) {
+    func expand(_ thresold : CGFloat = 0) {
         self.tableView.isScrollEnabled = true
         // change top constaint
 //        self.containerView.isHidden = true
         
         if let constraint = self.getContainerTopConstraint() {
-            constraint.constant = 0
+            constraint.constant = thresold
             self.containerView.updateConstraints()
         }
 //        self.containerView.frame.origin.y = thresold

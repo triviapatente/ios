@@ -125,14 +125,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    @IBAction func facebookRegistration() {
-        self.resignResponder()
-        fbButton.load()
-        FBManager.login(sender: self) { response in
-            self.fbButton.stopLoading()
-            self.handleResponse(response: response)
-        }
-    }
+//    @IBAction func facebookRegistration() {
+//        self.resignResponder()
+//        fbButton.load()
+//        FBManager.login(sender: self) { response in
+//            self.fbButton.stopLoading()
+//            self.handleResponse(response: response)
+//        }
+//    }
     @IBAction func showTermAndConditions()
     {
         self.showToast(text: Strings.terms_tap_toast)
