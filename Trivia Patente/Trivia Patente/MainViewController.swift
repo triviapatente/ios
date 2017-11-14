@@ -89,6 +89,7 @@ class MainViewController: TPNormalViewController {
         if showLoader {
             loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
             loadingView.mode = .indeterminate
+            loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
         }
         SocketManager.connect {
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
