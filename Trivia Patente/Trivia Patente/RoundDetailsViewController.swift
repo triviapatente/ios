@@ -264,7 +264,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell
             cell.backgroundView = UIView(frame: cell.frame)
-            cell.backgroundView?.backgroundColor = Colors.primary
+            cell.backgroundView?.backgroundColor = .clear
             cell.backgroundColor = .clear
             let keys = self.questionMap.keys.sorted()
             let key = keys[indexPath.section]

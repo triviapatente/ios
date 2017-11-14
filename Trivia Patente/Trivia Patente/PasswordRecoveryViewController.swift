@@ -80,11 +80,9 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     self.dismissController()
                 }
-                
             })
-            
         } else {
-            self.setErrorMessage(message: "Impossibile soddisfare la richiesta per questo username")
+            self.setErrorMessage(message: "Impossibile soddisfare la richiesta per questo username al momento")
         }
     }
     

@@ -35,7 +35,7 @@ class InviteTableViewCell: TPExpandableTableViewCell {
     
     override var item : Base! {
         didSet {
-            self.invite = item as! Invite
+//            self.invite = item as! Invite
         }
     }
     var invite : Invite! {

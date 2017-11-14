@@ -29,7 +29,7 @@ class LeaveGameViewController: UIViewController {
                     self.fade()
                     self.sender.performSegue(withIdentifier: "round_details", sender: self)
                 } else {
-                    //TODO: error handler
+                    self.showGenericError()
                 }
             }
         }

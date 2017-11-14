@@ -16,7 +16,6 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var feedbackLabel: UILabel!
     
     // TODO: mettere quelli giusti
     let messageReasons = [("Suggerimento","hint"), ("Segnalazione","complaint"), ("Altro","other")]
@@ -69,16 +68,16 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
             return
         }
         
-        self.feedbackLabel.text = ""
         self.resignResponder()
         let httpManager = HTTPManager()
+        self.showToast(text: "Invio...")
         httpManager.request(url: "/ws/contact", method: .post, params: ["message":self.messageTextView.text!, "scope":self.messageReasons[selectedReasonIndex].1], auth: true) { (response: TPResponse) in
             if response.success && response.statusCode == 200 {
-                self.feedbackLabel.text = "Messaggio inviato!"
+                self.showToast(text: "Messaggio inviato")
                 self.clearForm()
             } else
             {
-                self.feedbackLabel.text = "Errore durante l'invio. Riprova"
+                self.showToast(text: "Errore durante l'invio. Riprova")
             }
         }
     }
@@ -87,6 +86,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     {
         self.messageTextView.text = ""
         self.messagePlaceholder.isHidden = false
+        self.textViewDidChange(self.messageTextView)
     }
     
     @IBAction func resignResponder()

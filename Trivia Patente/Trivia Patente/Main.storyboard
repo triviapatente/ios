@@ -667,16 +667,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Antonio Terpin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf2-GL-eDf">
-                                        <rect key="frame" x="8" y="154" width="359" height="20"/>
+                                        <rect key="frame" x="8" y="154" width="359" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="hS8-wv-Gfn"/>
+                                            <constraint firstAttribute="height" constant="24" id="hS8-wv-Gfn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="antonio.terpin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-h8-6KI">
-                                        <rect key="frame" x="8" y="174" width="359" height="22"/>
+                                        <rect key="frame" x="8" y="180" width="359" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="0SU-P7-zqS"/>
                                         </constraints>
@@ -690,7 +690,7 @@
                                     <constraint firstAttribute="height" constant="214" id="5sG-fR-7FU"/>
                                     <constraint firstItem="lf2-GL-eDf" firstAttribute="leading" secondItem="cs9-lY-A9B" secondAttribute="leading" constant="8" id="6sl-Qx-hN4"/>
                                     <constraint firstItem="SzV-ht-UhN" firstAttribute="top" secondItem="cs9-lY-A9B" secondAttribute="top" constant="30" id="RR7-SS-jso"/>
-                                    <constraint firstItem="Fh4-h8-6KI" firstAttribute="top" secondItem="lf2-GL-eDf" secondAttribute="bottom" id="SRD-Ub-qta"/>
+                                    <constraint firstItem="Fh4-h8-6KI" firstAttribute="top" secondItem="lf2-GL-eDf" secondAttribute="bottom" constant="2" id="SRD-Ub-qta"/>
                                     <constraint firstItem="Fh4-h8-6KI" firstAttribute="leading" secondItem="cs9-lY-A9B" secondAttribute="leading" constant="8" id="e5v-IZ-dcz"/>
                                     <constraint firstAttribute="trailing" secondItem="Fh4-h8-6KI" secondAttribute="trailing" constant="8" id="kRV-ja-XB9"/>
                                     <constraint firstItem="SzV-ht-UhN" firstAttribute="centerX" secondItem="cs9-lY-A9B" secondAttribute="centerX" id="pos-p6-4ha"/>

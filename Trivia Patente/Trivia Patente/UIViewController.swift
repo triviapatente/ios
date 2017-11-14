@@ -106,6 +106,27 @@ extension UIViewController : TPViewController {
         }
     }
     
+    func handleGenericError(message: String, dismiss: Bool = false) {
+        self.showToast(text: message)
+        if dismiss {
+            Timer.scheduledTimer(withTimeInterval: Constants.toastDuration, repeats: false, block: { t in
+                DispatchQueue.main.async {
+                    if let navController = self.navigationController {
+                        navController.popViewController(animated: true)
+                    }
+                }
+            })
+        }
+    }
+    
+    func genericConnectionError(dismiss: Bool = false) {
+        self.handleGenericError(message: Strings.no_connection_toast)
+    }
+    
+    func showGenericError() {
+        self.showToast(text: Strings.generic_error)
+    }
+    
     func showToast(text: String)
     {
         self.view.endEditing(true)

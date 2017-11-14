@@ -98,7 +98,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
         label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.white.cgColor
         label.textColor = (enabled ? Colors.primary : UIColor.white)
-        label.backgroundColor = enabled ? UIColor.white : Colors.primary
+        label.backgroundColor = enabled ? UIColor.white : UIColor.clear
     }
     
     override func awakeFromNib() {
@@ -106,6 +106,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
         self.quizImageView.shadow(radius: 2)
         self.trueValue.circleRounded()
         self.falseValue.circleRounded()
+        self.backgroundColor = UIColor.clear
         for imageView in self.trueImageViews + self.falseImageViews {
             imageView.layer.borderColor = Colors.primary.cgColor
             imageView.circleRounded()

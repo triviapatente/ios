@@ -194,6 +194,7 @@ class UserListViewController: TPNormalViewController {
     func loadData() {
         let loadingView = MBProgressHUD.showAdded(to: self.tableView, animated: true)
         self.tableView.tableFooterView!.isHidden = true
+        self.tableView.isUserInteractionEnabled = false
         let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
             self.tableView.tableFooterView!.isHidden = true
@@ -208,8 +209,9 @@ class UserListViewController: TPNormalViewController {
                     self.friendsResponse = response
                 }
             } else {
-                //TODO error handler
+                self.handleGenericError(message: response.message, dismiss:true)
             }
+            self.tableView.isUserInteractionEnabled = true
         }
         
         if self.listType == .rank {
@@ -226,7 +228,7 @@ class UserListViewController: TPNormalViewController {
                 self.tableView.refreshControl!.endRefreshing()
                 self.reloadTable()
             } else {
-                //TODO error handler
+                self.handleGenericError(message: response.message, dismiss:true)
             }
         }
         
@@ -243,7 +245,7 @@ class UserListViewController: TPNormalViewController {
                 endRefreshing()
                 self.reloadTable()
             } else {
-                //TODO error handler
+                self.handleGenericError(message: response.message, dismiss:true)
             }
         }
         
@@ -355,7 +357,7 @@ class UserListViewController: TPNormalViewController {
                     self.friendsSearchResponse = response
                 }
             } else {
-                //TODO error handler
+                self.handleGenericError(message: response.message, dismiss:true)
             }
         }
         if self.listType == .rank {

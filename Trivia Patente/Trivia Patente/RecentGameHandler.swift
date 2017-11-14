@@ -19,7 +19,7 @@ class RecentGameHandler: TPResponse {
                 self.games = response.games//.filter({$0.started == true})
                 handler()
             } else {
-                //TODO: add handler
+                handler()
             }
         }
     }

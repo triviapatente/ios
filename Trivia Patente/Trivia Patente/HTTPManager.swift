@@ -31,9 +31,9 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
-        manager.upload(multipartFormData: { multipartData in
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = REQUEST_TIMEOUT
+        Alamofire.upload(multipartFormData: { multipartData in
             multipartData.append(data, withName: forHttpParam, fileName: fileName, mimeType: mimeType)
             if parameters != nil   {
                 for (key, value) in parameters! {
@@ -47,7 +47,7 @@ class HTTPManager {
                     if let result = response.result.value {
                         handler(result)
                     } else if response.response == nil {
-                        let response = T(error: "Ci dispiace ma i server sono in manutenzione..\nRiprova tra un po\'! :/")
+                        let response = T(error: Strings.no_connection_toast)
                         handler(response)
                     } else if let message = (response.result.error as? BackendError)?.message {
                         let response = T(error: message, statusCode: response.response?.statusCode)
@@ -81,16 +81,17 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        let manager = Alamofire.SessionManager.default
-        manager.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
-        _ = manager.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
+//        let AFManager = Alamofire.SessionManager(configuration: self.ALConfiguration())
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
+        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = REQUEST_TIMEOUT
+        Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in
                         if let result = response.result.value {
                             handler(result)
                         } else if response.response == nil {
-                            let response = T(error: "Ci dispiace ma i server sono in manutenzione..\nRiprova tra un po\'! :/")
+                            let response = T(error: Strings.no_connection_toast)
                             handler(response)
                         } else if let message = (response.result.error as? BackendError)?.message {
                             let response = T(error: message, statusCode: response.response?.statusCode)

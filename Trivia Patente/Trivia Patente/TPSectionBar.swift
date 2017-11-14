@@ -50,6 +50,7 @@ class TPSectionBar: UIViewController {
         super.viewDidLoad()
         let nib = UINib(nibName: "TPSectionBarTableViewCell", bundle: .main)
         self.tableView.register(nib, forCellReuseIdentifier: "item_cell")
+        self.view.backgroundColor = UIColor.clear
     }
 }
 extension TPSectionBar : UITableViewDelegate, UITableViewDataSource {

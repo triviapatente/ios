@@ -76,8 +76,9 @@ class SearchGameMenuViewController: TPNormalViewController {
         randomButton.mediumRounded()
         tournamentButton.mediumRounded()
         
-        self.load()
-        self.listen()
+        // ATTENTION: siccome sono stati tolti gli inviti si possono togliere queste due cose
+//        self.load()
+//        self.listen()
         
         self.setDefaultBackgroundGradient()
     }

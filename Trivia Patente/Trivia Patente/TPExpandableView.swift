@@ -38,7 +38,7 @@ class TPExpandableView: UIViewController {
     var expandedTopConstraintCostant : CGFloat {
         let totalRecentsHeight = self.containerView.superview!.frame.height - (self.headerHeight + self.tableHeight)
         print(self.containerView.superview!.frame.height, totalRecentsHeight)
-        return CGFloat(320)//totalRecentsHeight > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? totalRecentsHeight : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
+        return totalRecentsHeight > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? totalRecentsHeight : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
     }
     var tableViewLastScrollOffset = CGFloat(0)
     
@@ -192,6 +192,7 @@ class TPExpandableView: UIViewController {
 //        }
         if reload {
             self.tableView.reloadData()
+            if !expanded { self.minimize() } // ensure it has the right dimension after data is loaded
         }
     }
     
