@@ -20,9 +20,7 @@ class TPExpandableView: UIViewController {
 
     var items : [Base] = [] {
         didSet {
-            if !dataLoaded {
-                adaptToItems()
-            }
+            adaptToItems()
             dataLoaded = true
             self.tableView.tableFooterView = footerView
             self.headerView.topItem?.title = headerTitle
@@ -117,8 +115,10 @@ class TPExpandableView: UIViewController {
     
     @IBAction func retrieveRecentGames() {
         self.reloadWillStart()
-        RecentGameHandler.refresh {
-            self.items = RecentGameHandler.games
+        RecentGameHandler.refresh { response, games in
+            if response.success == true {
+                self.items = games!
+            }
         }
     }
     

@@ -13,14 +13,12 @@ class RecentGameHandler: TPResponse {
     static var socketHandler = SocketGame()
     static var httpHandler = HTTPGame()
     static var delegate : TPExpandableTableViewCellDelegate!
-    class func refresh(handler: @escaping () -> Void) {
+    class func refresh(handler: @escaping (TPResponse, [Game]?) -> Void) {
         httpHandler.recent_games { (response) in
             if response.success == true {
                 self.games = response.games//.filter({$0.started == true})
-                handler()
-            } else {
-                handler()
             }
+            handler(response, response.games)
         }
     }
     private static var started : Bool = false
