@@ -22,8 +22,8 @@ class HTTPAuth : HTTPManager {
             handler(response)
         }
     }
-    func forgotPassword(username : String, handler : @escaping (TPForgotResponse) -> Void) {
-        let parameters = ["username": username]
+    func forgotPassword(usernameOrEmail : String, handler : @escaping (TPForgotResponse) -> Void) {
+        let parameters = ["usernameOrEmail": usernameOrEmail]
         request(url: "/auth/password/request", method: .post, params: parameters, auth: false) { (response : TPForgotResponse) in
             handler(response)
         }

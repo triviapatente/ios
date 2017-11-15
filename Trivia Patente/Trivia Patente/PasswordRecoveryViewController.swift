@@ -54,7 +54,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         self.disableForm()
         self.resignResponder()
         self.resetButton.load()
-        httpAuth.forgotPassword(username: nameField.getText()) { (response : TPForgotResponse) in
+        httpAuth.forgotPassword(usernameOrEmail: nameField.getText()) { (response : TPForgotResponse) in
             self.resetButton.stopLoading()
             self.enableForm()
             self.handleResponse(response: response)
@@ -81,6 +81,8 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
                     self.dismissController()
                 }
             })
+        } else if response.statusCode == 404 {
+            self.setErrorMessage(message: "Non esiste alcun utente nel sistema con questo username o email")
         } else {
             self.setErrorMessage(message: "Impossibile soddisfare la richiesta per questo username al momento")
         }
