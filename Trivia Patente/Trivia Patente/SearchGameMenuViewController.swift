@@ -49,15 +49,6 @@ class SearchGameMenuViewController: TPNormalViewController {
             self.recentInvitesView.items = invites
         }
     }
-    func listen() {
-        socketHandler.listen_invite_created { response in
-            if response.success == true {
-                let invite = response.invite!
-                invite.sender = response.user
-                self.recentInvitesView.add(item: invite)
-            }
-        }
-    }
     func load() {
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         handler.invites { response in

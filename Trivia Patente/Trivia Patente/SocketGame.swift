@@ -15,18 +15,6 @@ class SocketGame: SocketManager {
     func get_categories(round : Round, handler : @escaping (TPRoundCategoryListResponse) -> Void) {
         SocketGame.emit(path: "get_categories", values: ["round_id": round.id! as AnyObject, "game": round.gameId! as AnyObject], handler: handler)
     }
-    func join(game_id : Int32, handler : @escaping (TPResponse) -> Void) {
-        SocketGame.join(id: game_id, type: "game", handler: handler)
-    }
-    func listen(event : String, handler : @escaping (TPResponse) -> Void) {
-        SocketGame.listen(event: event, handler: handler)
-    }
-    func unlisten(events : String...) {
-        SocketGame.unlisten(events: events)
-    }
-    func leave(handler : @escaping (TPResponse) -> Void) {
-        SocketGame.leave(type: "game", handler: handler)
-    }
     func get_questions(round : Round, handler : @escaping (TPQuizListResponse) -> Void) {
         SocketGame.emit(path: "get_questions", values: ["game": round.gameId as AnyObject, "round_id": round.id as AnyObject], handler: handler)
     }
@@ -38,6 +26,18 @@ class SocketGame: SocketManager {
     }
     func round_details(game_id : Int32, handler: @escaping (TPRoundDetailsResponse) -> Void) {
         SocketGame.emit(path: "round_details", values: ["game": game_id as AnyObject], handler: handler)
+    }
+    func join(game_id : Int32, handler : @escaping (TPResponse) -> Void) {
+        SocketGame.join(id: game_id, type: "game", handler: handler)
+    }
+    func listen(event : String, handler : @escaping (TPResponse) -> Void) {
+        SocketGame.listen(event: event, handler: handler)
+    }
+    func unlisten(events : String...) {
+        SocketGame.unlisten(events: events)
+    }
+    func leave(handler : @escaping (TPResponse) -> Void) {
+        SocketGame.leave(type: "game", handler: handler)
     }
     func listen_round_ended(handler: @escaping (TPResponse) -> Void) {
         SocketGame.listen(event: "round_ended", handler: handler)
@@ -53,12 +53,6 @@ class SocketGame: SocketManager {
     }
     func listen_game_left(handler: @escaping (TPGameLeftEvent) -> Void) {
         SocketGame.listen(event: "game_left", handler: handler)
-    }
-    func listen_invite_created(handler : @escaping (TPInviteCreatedEvent) -> Void) {
-        SocketGame.listen(event: "invite_created", handler: handler)
-    }
-    func listen_invite_processed(handler : @escaping (TPInviteProcessedEvent) -> Void) {
-        SocketGame.listen(event: "invite_processed", handler: handler)
     }
     func listen_recent_games(handler: @escaping (TPRecentGameEvent) -> Void) {
         SocketGame.listen(event: "recent_game", handler: handler)

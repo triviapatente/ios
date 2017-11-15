@@ -38,26 +38,10 @@ class WaitOpponentViewController: TPGameViewController {
             }
         }
     }
-    func listenForInvite() {
-        socketHandler.listen_invite_processed { response in
-            if response.success == true {
-                if response.accepted == true {
-                    self.join_room()
-                } else {
-                    self.handleInviteRefused()
-                }
-            }
-        }
-    }
     func unlisten() {
         socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_left")
     }
     func listenInRoom() {
-        self.listenForInvite()
-        socketHandler.listen(event: "category_chosen") { response in
-            self.init_round()
-
-        }
         socketHandler.listen(event: "round_ended") { response in
             self.init_round()
         }
