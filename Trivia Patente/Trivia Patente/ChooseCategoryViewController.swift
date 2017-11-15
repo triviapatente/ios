@@ -103,7 +103,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {
-                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: false)
+                self.handleGenericError(message: (response?.message!)!, dismiss: false)
             }
         }
     }
