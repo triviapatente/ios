@@ -56,7 +56,7 @@ class PlayRoundViewController: TPGameViewController {
             return
         }
         let indexPath = IndexPath(item: i, section: 0)
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.main.async {
             self.quizCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
