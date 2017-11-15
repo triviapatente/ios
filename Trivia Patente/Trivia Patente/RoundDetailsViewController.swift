@@ -99,7 +99,7 @@ class RoundDetailsViewController: TPGameViewController {
                 self.round_details()
                 self.listen()
             } else {
-                //TODO: handle error
+                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
         }
     }
@@ -108,7 +108,7 @@ class RoundDetailsViewController: TPGameViewController {
             if response.success == true {
                 self.response = response
             } else {
-                //TODO: error handler
+                self.handleGenericError(message: response.message, dismiss: true)
             }
         }
     }
@@ -143,8 +143,12 @@ class RoundDetailsViewController: TPGameViewController {
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
         self.sectionBar.delegate = self
         self.createGameCallback = { response in
-            self.newGameResponse = response
-            self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+            if response.success {
+                self.newGameResponse = response
+                self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
+            } else {
+                self.handleGenericError(message: response.message)
+            }
         }
         self.setDefaultBackgroundGradient()
     }

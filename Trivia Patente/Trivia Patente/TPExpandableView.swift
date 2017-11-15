@@ -170,7 +170,7 @@ class TPExpandableView: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.minimize()
+        if !expanded { self.minimize() }
         self.mainView.bringSubview(toFront: self.containerView)
         self.retrieveRecentGames()
         //enforce only the first initialization of the view position

@@ -82,6 +82,8 @@ class PlayRoundViewController: TPGameViewController {
             self.loadingView.hide(animated: true)
             if response?.success == true {
                 self.questions = response!.questions
+            } else {
+                self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }
         }
     }
@@ -91,7 +93,7 @@ class PlayRoundViewController: TPGameViewController {
             if joinResponse?.success == true {
                 self.load()
             } else {
-                //TODO: handle error
+                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
         }
     }

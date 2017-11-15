@@ -80,7 +80,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
                 self.enable(button: sender)
                 self.delegate.user_answered(answer: answer, correct: response.correct)
             } else {
-                //TODO: handle error
+                // TODO: in the future give feedback somehow
             }
         }
     }

@@ -163,7 +163,7 @@ class WaitOpponentViewController: TPGameViewController {
                 self.init_round()
                 self.listenInRoom()
             } else {
-                //TODO: handle error
+                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
         }
     }
@@ -172,7 +172,7 @@ class WaitOpponentViewController: TPGameViewController {
             if response?.success == true {
                 self.processResponse(response: response!, followRedirects: followRedirects)
             } else {
-                //TODO: handle_error
+                self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }
         }
     }
@@ -197,7 +197,7 @@ class WaitOpponentViewController: TPGameViewController {
                 self.join_room()
                 self.fromInvite = false
             } else {
-                //TODO: error handler
+                self.handleGenericError(message: response.message)
             }
         }
         if let opponent = userToInvite {

@@ -149,7 +149,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                 httpManager.request(url: "/account/surname/edit", method: .post, params: ["surname":self.surnameField.getText()], auth: true, handler: { response in
                     self.finishedSaving()
                     if !response.success {
-                        self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                        self.errorView.set(error: Strings.contact_us_error_toast)
                     } else {
                         u.surname = self.surnameField.getText()
                         SessionManager.set(user: u)
@@ -164,7 +164,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             if (SessionManager.currentUser!.name == nil && self.nameField.getText() != "") || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) {
                 httpManager.request(url: "/account/name/edit", method: .post, params: ["name":self.nameField.getText()], auth: true, handler: { response in
                     if !response.success {
-                        self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                        self.errorView.set(error: Strings.contact_us_error_toast)
                         self.finishedSaving()
                     } else {
                         u.name = self.nameField.getText()
@@ -181,7 +181,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         if self.newAvatarImage != nil {
             httpManager.upload(url: "/account/image/edit", method: .post, data: UIImageJPEGRepresentation(self.newAvatarImage!, Constants.avataImageRapresentationQuality)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: { (response: TPAuthResponse) in
                 if !response.success {
-                    self.errorView.set(error: "Errore durante il salvataggio delle modifiche. Riprova")
+                    self.errorView.set(error: Strings.contact_us_error_toast)
                     self.finishedSaving()
                 } else {
                     nameUpdate()

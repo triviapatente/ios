@@ -47,7 +47,7 @@ class ChooseCategoryViewController: TPGameViewController {
             if joinResponse?.success == true {
                 self.get_categories(round: round)
             } else {
-                //TODO: handle error
+                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
         }
     }
@@ -57,7 +57,7 @@ class ChooseCategoryViewController: TPGameViewController {
             if categoryResponse.success == true {
                 self.categories = categoryResponse.categories
             } else {
-                //TODO: handler
+                self.handleGenericError(message: categoryResponse.message, dismiss: true)
             }
         }
     }
@@ -103,7 +103,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {
-                //TODO: error handler
+                self.handleGenericError(message: (joinResponse?.message!)!, dismiss: false)
             }
         }
     }

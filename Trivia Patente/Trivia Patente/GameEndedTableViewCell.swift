@@ -19,11 +19,7 @@ class GameEndedTableViewCell: UITableViewCell {
     let handler = HTTPGame()
     @IBAction func playNewGame() {
         handler.newGame(id: opponent.id!) { response in
-            if response.success == true {
-                self.createGameCallback(response)
-            } else {
-                //TODO: handle error
-            }
+            self.createGameCallback(response)
         }
     }
     var createGameCallback : ((TPNewGameResponse) -> Void)!
