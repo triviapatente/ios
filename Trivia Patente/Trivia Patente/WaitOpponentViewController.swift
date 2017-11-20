@@ -42,6 +42,9 @@ class WaitOpponentViewController: TPGameViewController {
         socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_left")
     }
     func listenInRoom() {
+        socketHandler.listen(event: "category_chosen") { response in
+            self.init_round()
+        }
         socketHandler.listen(event: "round_ended") { response in
             self.init_round()
         }
