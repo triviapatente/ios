@@ -63,10 +63,6 @@ class RecentGameHandler: TPResponse {
         guard started != true else {
             return
         }
-        socketHandler.listen_recent_games { (event) in
-            let game = event.game!
-            self.update(game: game)
-        }
         self.started = true
     }
     class func stop() {
