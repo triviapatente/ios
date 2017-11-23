@@ -45,8 +45,6 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     func hint(for game : Game) -> String {
         if game.ended {
             return "Partita terminata"
-        } else if !game.started {
-            return "Invito inviato!"
         } else if game.my_turn {
             return "E' il tuo turno!"
         } else {
@@ -56,8 +54,6 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     func lightsImage(for game : Game) -> UIImage {
         if game.ended {
             return UIImage(named: "traffic_lights_red")!
-        } else if !game.started {
-            return UIImage(named: "traffic_lights_no_lights")!
         } else if game.my_turn {
             return UIImage(named: "traffic_lights_green")!
         } else {
