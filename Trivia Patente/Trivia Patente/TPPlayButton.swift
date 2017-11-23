@@ -30,8 +30,6 @@ class TPPlayButton: UIButton {
         if let game = theGame {
             if game.ended {
                 self.recapButton()
-            } else if !game.started {
-                self.chatButton()
             } else if game.my_turn {
                 self.playNowButton()
             } else {
