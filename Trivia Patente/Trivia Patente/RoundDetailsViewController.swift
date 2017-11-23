@@ -78,7 +78,7 @@ class RoundDetailsViewController: TPGameViewController {
 
     func computeMap(quizzes : [Quiz]) {
         for quiz in quizzes {
-            let number = quiz.roundId!
+            let number = response.rounds.filter({$0.id == quiz.roundId}).first!.number!
             let key = "\(number)"
             if questionMap.index(forKey: key) == nil {
                 questionMap[key] = []
@@ -171,7 +171,7 @@ class RoundDetailsViewController: TPGameViewController {
         if section == self.questionMap.count {
             return 1
         }
-        let keys = self.questionMap.keys.sorted()
+        let keys = self.keys()
         let key = keys[section]
         return self.questionMap[key]!.count
     }
@@ -180,7 +180,8 @@ class RoundDetailsViewController: TPGameViewController {
             self.headerView.roundLabel.text = "Fine"
             self.headerView.set(title: "Risultato partita")
         } else {
-            self.headerView.category = self.response.categories[page]
+            let round = self.response.rounds.filter({$0.number == page + 1}).first!
+            self.headerView.category = self.response.categories.filter({$0.id == round.catId}).first!
             self.headerView.roundLabel.text = "Round \(page + 1)"
         }
     }
@@ -253,6 +254,11 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         }
         return indexPath
     }
+    func keys() -> [String] {
+        return self.questionMap.keys.sorted {
+            return Int($0)! < Int($1)!
+        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == self.questionMap.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: winnerCellKey) as! GameEndedTableViewCell
@@ -270,7 +276,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             cell.backgroundView = UIView(frame: cell.frame)
             cell.backgroundView?.backgroundColor = .clear
             cell.backgroundColor = .clear
-            let keys = self.questionMap.keys.sorted()
+            let keys = self.keys()
             let key = keys[indexPath.section]
             cell.quiz = self.questionMap[key]![indexPath.row]
             return cell
