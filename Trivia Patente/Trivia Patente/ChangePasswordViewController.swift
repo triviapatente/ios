@@ -27,6 +27,9 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
     
     
     func formIsCorrect() -> Bool {
+        print(oldPasswordField.isCorrect())
+        print(newPasswordField.isCorrect())
+        print(repeatPasswordField.isCorrect())
         return oldPasswordField.isCorrect() && newPasswordField.isCorrect() && repeatPasswordField.isCorrect()
     }
     func enableValidation() {
@@ -78,8 +81,8 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         let repeatPassword = self.repeatPasswordField.getText()
         
         oldPasswordField.validate(condition: !oldPassword.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
-        newPasswordField.validate(condition: !newPassword.isEmpty, error: "Inserisci la password", vibrate: vibrate)
-        newPasswordField.validate(condition: newPassword != oldPassword, error: "Nuova e vecchia password identiche", vibrate: vibrate)
+        newPasswordField.validate(condition: newPassword != oldPassword, error: "La nuova e la vecchia password sono identiche", vibrate: vibrate)
+        newPasswordField.validate(condition: newPassword.count >= Constants.passwordMinLength, error: "La password deve contenere almeno 7 caratteri", vibrate: vibrate)
         repeatPasswordField.validate(condition: repeatPassword == newPassword, error: "Le password non coincidono", vibrate: vibrate)
         
         confirmButton.isEnabled = formIsCorrect()
@@ -106,9 +109,9 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
     
     @IBAction func resignResponders()
     {
-        self.oldPasswordField.resignFirstResponder()
-        self.newPasswordField.resignFirstResponder()
-        self.repeatPasswordField.resignFirstResponder()
+        _ = self.oldPasswordField.resignFirstResponder()
+        _ = self.newPasswordField.resignFirstResponder()
+        _ = self.repeatPasswordField.resignFirstResponder()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

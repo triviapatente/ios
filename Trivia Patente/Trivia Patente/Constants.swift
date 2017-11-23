@@ -14,4 +14,6 @@ class Constants {
     static let kLuckyPopShouldShowTS = "luckyPopoverShouldShow"
     static let avataImageRapresentationQuality = CGFloat(0.6) // from 0 to 1, proportion of original resolution
     static let toastDuration : TimeInterval = 2
+    static let usernameMinLength = 3
+    static let passwordMinLength = 7
 }

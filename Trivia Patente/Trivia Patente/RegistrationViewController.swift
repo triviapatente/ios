@@ -50,9 +50,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.getText()
         let repeatPassword = repeatPasswordField.getText()
         
-        nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username", vibrate: vibrate)
+        nameField.validate(condition: username.count >= Constants.usernameMinLength, error: "L'username deve contenere almeno 3 caratteri", vibrate: vibrate)
         emailField.validate(condition: email.isEmail && !email.isEmpty, error: "Inserisci un'indirizzo email corretto", vibrate: vibrate)
-        passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password", vibrate: vibrate)
+        passwordField.validate(condition: password.count >= Constants.passwordMinLength, error: "La password deve contenere almeno 7 caratteri", vibrate: vibrate)
         repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password", vibrate: vibrate)
         repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono", vibrate: vibrate)
         
