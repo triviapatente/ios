@@ -48,6 +48,7 @@ class RoundDetailsEmptyViewController: UIViewController {
         self.configureUI()
         let user = SessionManager.currentUser
         self.userImageView.load(user: user)
+        self.opponentImageView.load(user: opponent)
         self.stimulationLabel.text = self.stimulation(for: user)
         
     }

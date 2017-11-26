@@ -684,11 +684,11 @@
                                     <segue destination="XG7-fN-oC2" kind="embed" identifier="score_view" id="iOb-zP-x4i"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBQ-Dl-2ml">
-                                <rect key="frame" x="27.5" y="140.5" width="265" height="227"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBQ-Dl-2ml">
+                                <rect key="frame" x="27.5" y="140.5" width="265" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="227" id="GUQ-gF-iHi"/>
+                                    <constraint firstAttribute="height" constant="200" id="GUQ-gF-iHi"/>
                                     <constraint firstAttribute="width" constant="265" id="Se0-78-NYZ"/>
                                 </constraints>
                                 <connections>
@@ -820,7 +820,7 @@
                         <viewControllerLayoutGuide type="bottom" id="r4d-9k-JVN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Irk-oR-hWT">
-                        <rect key="frame" x="0.0" y="0.0" width="265" height="227"/>
+                        <rect key="frame" x="0.0" y="0.0" width="265" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Che occasione!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-3w-MuN">
@@ -834,7 +834,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtB-p3-Jb7" userLabel="Won">
-                                <rect key="frame" x="72" y="96" width="120" height="70"/>
+                                <rect key="frame" x="72" y="69" width="120" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dle-fz-3WF">
                                         <rect key="frame" x="5" y="5" width="60" height="60"/>
@@ -887,7 +887,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forza!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcP-uP-cA8">
-                                <rect key="frame" x="16" y="186" width="233" height="21"/>
+                                <rect key="frame" x="16" y="159" width="233" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="pNO-Xz-w4b"/>
                                 </constraints>
@@ -895,47 +895,13 @@
                                 <color key="textColor" red="0.0" green="0.65286409850000005" blue="0.96456819770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BZ-Ui-Ryd" userLabel="Score">
-                                <rect key="frame" x="82" y="51" width="100" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA7-Gc-ArF">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up_score_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="owa-kM-g18">
-                                        <rect key="frame" x="75" y="0.0" width="15" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="15" id="cru-7z-OzT"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="13Y-2A-Lov"/>
-                                    <constraint firstItem="QA7-Gc-ArF" firstAttribute="top" secondItem="3BZ-Ui-Ryd" secondAttribute="top" id="3ba-el-gUy"/>
-                                    <constraint firstAttribute="trailing" secondItem="owa-kM-g18" secondAttribute="trailing" constant="10" id="6tq-ZZ-n1q"/>
-                                    <constraint firstAttribute="bottom" secondItem="owa-kM-g18" secondAttribute="bottom" id="E4k-Il-GbA"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="NMs-CV-a7V"/>
-                                    <constraint firstItem="owa-kM-g18" firstAttribute="leading" secondItem="QA7-Gc-ArF" secondAttribute="trailing" constant="5" id="VW1-Sw-Cbi"/>
-                                    <constraint firstItem="owa-kM-g18" firstAttribute="top" secondItem="3BZ-Ui-Ryd" secondAttribute="top" id="Vhr-en-IQV"/>
-                                    <constraint firstAttribute="width" constant="100" id="bH6-tC-hAD"/>
-                                    <constraint firstAttribute="height" constant="30" id="gk2-Wt-Zh7"/>
-                                    <constraint firstAttribute="bottom" secondItem="QA7-Gc-ArF" secondAttribute="bottom" id="vV9-gm-Hdn"/>
-                                    <constraint firstItem="QA7-Gc-ArF" firstAttribute="leading" secondItem="3BZ-Ui-Ryd" secondAttribute="leading" id="vtO-kO-qzR"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92793506383895874" green="0.97627037763595581" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="BtB-p3-Jb7" firstAttribute="top" secondItem="3BZ-Ui-Ryd" secondAttribute="bottom" constant="15" id="3KJ-TU-Drf"/>
                             <constraint firstAttribute="trailing" secondItem="vFB-3w-MuN" secondAttribute="trailing" id="7HX-Iv-5yq"/>
                             <constraint firstItem="r4d-9k-JVN" firstAttribute="top" secondItem="TcP-uP-cA8" secondAttribute="bottom" constant="20" id="DQC-Ze-846"/>
-                            <constraint firstItem="3BZ-Ui-Ryd" firstAttribute="centerX" secondItem="Irk-oR-hWT" secondAttribute="centerX" id="QaJ-3O-2Ea"/>
                             <constraint firstItem="vFB-3w-MuN" firstAttribute="top" secondItem="j9D-82-O9I" secondAttribute="bottom" constant="20" id="YDe-QI-yTX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TcP-uP-cA8" secondAttribute="trailing" id="YJh-bd-85x"/>
-                            <constraint firstItem="3BZ-Ui-Ryd" firstAttribute="top" secondItem="vFB-3w-MuN" secondAttribute="bottom" constant="10" id="a8W-vq-UqQ"/>
                             <constraint firstItem="TcP-uP-cA8" firstAttribute="leading" secondItem="Irk-oR-hWT" secondAttribute="leadingMargin" id="i7c-qR-ZaL"/>
                             <constraint firstItem="BtB-p3-Jb7" firstAttribute="centerX" secondItem="Irk-oR-hWT" secondAttribute="centerX" id="nNe-sa-xFV"/>
                             <constraint firstItem="vFB-3w-MuN" firstAttribute="leading" secondItem="Irk-oR-hWT" secondAttribute="leading" id="okw-GX-MBu"/>
@@ -944,9 +910,8 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="265" height="227"/>
+                    <size key="freeformSize" width="265" height="200"/>
                     <connections>
-                        <outlet property="incrementLabel" destination="QA7-Gc-ArF" id="tiv-p1-YNx"/>
                         <outlet property="opponentImageView" destination="oXe-SV-Qaq" id="EJ1-rV-QTw"/>
                         <outlet property="stimulationLabel" destination="TcP-uP-cA8" id="0eD-QT-sYR"/>
                         <outlet property="userImageView" destination="dle-fz-3WF" id="Slp-HV-urU"/>
@@ -1087,7 +1052,6 @@
         <image name="ic_chat_white" width="24" height="24"/>
         <image name="ic_clear_white" width="24" height="24"/>
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
-        <image name="up_score_arrow" width="80" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kf4-r3-nBv"/>

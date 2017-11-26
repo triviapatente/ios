@@ -44,6 +44,7 @@ class RoundDetailsViewController: TPGameViewController {
             game = self.response.game
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
+            self.scoreView.view.isHidden = false
             self.decideToShowEmptyView()
             self.reloadData()
 

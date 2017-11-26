@@ -89,6 +89,7 @@ class TPScoreView: UIViewController {
         self.view.mediumRounded()
         self.view.layer.borderWidth = 1
         self.view.layer.borderColor = UIColor.white.cgColor
+        self.view.isHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
