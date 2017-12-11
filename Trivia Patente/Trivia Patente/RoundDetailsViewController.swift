@@ -326,6 +326,7 @@ extension RoundDetailsViewController {
                 self.scoreView.add(answers: [answer])
                 self.response.answers.append(answer)
                 self.reloadMap()
+                self.reloadData()
             }
         }
         
