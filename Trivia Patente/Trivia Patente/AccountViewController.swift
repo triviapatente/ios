@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import Photos
 
-class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     var nameField: TPInputView!
@@ -26,6 +26,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.costantKeyboardTranslationRef = 200.0
         // Do any additional setup after loading the view.
         self.setDefaultBackgroundGradient()
         

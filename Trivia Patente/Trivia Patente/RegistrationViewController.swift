@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class RegistrationViewController: UIViewController, UITextFieldDelegate {
+class RegistrationViewController: FormViewController, UITextFieldDelegate {
     var nameField : TPInputView!
     var emailField : TPInputView!
     var passwordField : TPInputView!
@@ -56,7 +56,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password", vibrate: vibrate)
         repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono", vibrate: vibrate)
         
-        registerButton.isEnabled = formIsCorrect()
+//        registerButton.isEnabled = formIsCorrect()
     }
     func formIsCorrect() -> Bool {
         return nameField.isCorrect() && emailField.isCorrect() && passwordField.isCorrect() && repeatPasswordField.isCorrect()
@@ -147,6 +147,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.costantKeyboardTranslationRef = 30.0
+        
         self.registerButton.smallRounded()
         self.nameField.initValues(hint: "Username", delegate: self)
         self.nameField.add(target: self, changeValueHandler: #selector(RegistrationViewController.checkValues))

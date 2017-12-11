@@ -87,7 +87,19 @@ extension UIView {
         UIGraphicsEndImageContext()
         return image
     }
+    func currentFirstResponder() -> UIView? {
+        if self.isFirstResponder {
+            return self
+        }
         
+        for view in self.subviews {
+            if let responder = view.currentFirstResponder() {
+                return view
+            }
+        }
+        
+        return nil
+    }
     func blur(blurRadius: CGFloat) -> UIImage? {
         guard let blur = CIFilter(name: "CIGaussianBlur") else { return nil }
         

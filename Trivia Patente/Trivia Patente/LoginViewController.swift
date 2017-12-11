@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: FormViewController, UITextFieldDelegate {
     var nameField : TPInputView!
     var passwordField : TPInputView!
     var errorView : TPErrorView!
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
         passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password", vibrate: vibrate)
         
-        loginButton.isEnabled = formIsCorrect()
+//        loginButton.isEnabled = formIsCorrect()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
@@ -111,6 +111,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.smallRounded()
+        
+        self.costantKeyboardTranslationRef = 30.0
         
         self.nameField.initValues(hint: "Username o email", delegate: self)
         self.nameField.add(target: self, changeValueHandler: #selector(checkValues))

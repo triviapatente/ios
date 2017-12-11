@@ -215,6 +215,8 @@
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
+		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
+		F4F335511FDEBDC00094A849 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F335501FDEBDC00094A849 /* FormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,6 +459,8 @@
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		F4F335501FDEBDC00094A849 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1213,6 +1217,7 @@
 				8B5EE0E71DD5C92C00745A54 /* Shared.swift */,
 				F45C6EB71F9966CA005BECF9 /* GradientView.swift */,
 				F488C94E1FB72915000842AC /* Strings.swift */,
+				F4F335501FDEBDC00094A849 /* FormViewController.swift */,
 			);
 			name = generals;
 			sourceTree = "<group>";
@@ -1443,6 +1448,7 @@
 				8B4814781E170A3400AD0834 /* UIButton.swift */,
 				F4E4EC501FA5E30D00162756 /* UIFont.swift */,
 				F4A9B2CE1FB348F100910D20 /* UIImage.swift */,
+				F4F3354E1FDEB4BD0094A849 /* UITextField.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -2100,6 +2106,7 @@
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
+				F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */,
 				8B9A58851E089C3E0005E46B /* FBInfos.swift in Sources */,
 				8B3E3A901E13015D0062AF32 /* UITableView.swift in Sources */,
 				8BCF8C9E1DB6A6BA00EC637C /* Quiz.swift in Sources */,
@@ -2170,6 +2177,7 @@
 				8BBBF9D91E0C26A80061C25B /* CALayer.swift in Sources */,
 				8B74DBFC1DE6ECB80006EB90 /* TPGameHeader.swift in Sources */,
 				8B5EE1071DD913BC00745A54 /* SettingsTableViewCell.swift in Sources */,
+				F4F335511FDEBDC00094A849 /* FormViewController.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
 				F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */,
 				8BDEDEEC1E1AAB7000063FB2 /* TPQuestionAnsweredEvent.swift in Sources */,

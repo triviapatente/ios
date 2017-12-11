@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -102,7 +103,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoT-CR-oN2" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
                                         <rect key="frame" x="50" y="197" width="275" height="40"/>
-                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="button_default_color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="DSe-lU-v6W"/>
                                         </constraints>
@@ -228,7 +229,7 @@
                                 </connections>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeI-m0-V3X">
-                                <rect key="frame" x="16" y="28" width="343" height="169"/>
+                                <rect key="frame" x="16" y="28" width="343" height="259"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWt-yT-jPt">
                                         <rect key="frame" x="0.0" y="37" width="343" height="1"/>
@@ -238,7 +239,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifi-As-xI2">
-                                        <rect key="frame" x="0.0" y="112" width="343" height="1"/>
+                                        <rect key="frame" x="0.0" y="202" width="343" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="7pa-Fc-43L"/>
@@ -265,16 +266,16 @@
                                             <constraint firstAttribute="height" constant="10" id="egA-Km-hKd"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eAT-0Q-fti">
-                                        <rect key="frame" x="0.0" y="44" width="318" height="60"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eAT-0Q-fti">
+                                        <rect key="frame" x="0.0" y="44" width="318" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="xFS-kx-jzV"/>
+                                            <constraint firstAttribute="height" constant="150" id="I4u-7K-clp"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="send"/>
                                         <connections>
                                             <outlet property="delegate" destination="cJ8-fA-220" id="xQw-gr-VHc"/>
                                         </connections>
@@ -289,7 +290,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HO5-eP-6IQ">
-                                        <rect key="frame" x="291" y="121" width="52" height="40"/>
+                                        <rect key="frame" x="291" y="211" width="52" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bK6-6C-Vrq"/>
                                             <constraint firstAttribute="width" constant="52" id="mSW-UP-zUX"/>
@@ -536,7 +537,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asU-H1-fPj" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="348" width="275" height="36"/>
-                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" name="button_default_color"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <state key="normal" title="Conferma">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -659,10 +660,13 @@
         <image name="gallery-pick" width="50" height="50"/>
         <image name="map-bg" width="375" height="193"/>
         <image name="triangle-white" width="9" height="5"/>
+        <namedColor name="button_default_color">
+            <color red="0.0080000003799796104" green="0.43500000238418579" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FtD-r4-Jft"/>
-        <segue reference="pYO-ge-frg"/>
+        <segue reference="4Cd-Ff-Qla"/>
+        <segue reference="5Bg-oM-UXX"/>
         <segue reference="7Xx-a1-VjS"/>
     </inferredMetricsTieBreakers>
 </document>

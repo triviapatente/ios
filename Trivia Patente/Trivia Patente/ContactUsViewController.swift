@@ -67,6 +67,11 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendMessage()
+        return true
+    }
+    
     @IBAction func sendMessage()
     {
         guard (self.messageTextView.text.characters.count > 0 && !String.blank(text: self.messageTextView.text)) else

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate {
+class ChangePasswordViewController: FormViewController, UITextFieldDelegate {
 
     var oldPasswordField : TPInputView!
     var newPasswordField : TPInputView!
@@ -25,6 +25,13 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
     
     @IBOutlet var confirmButton : TPButton!
     
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = SessionManager.getToken() {
+            SocketGame.leave(type: "game")
+        }
+        super.viewDidAppear(animated)
+        (self.navigationController as! TPNavigationController).setUser(candidate: SessionManager.currentUser, with_title: false)
+    }
     
     func formIsCorrect() -> Bool {
         print(oldPasswordField.isCorrect())
@@ -85,7 +92,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         newPasswordField.validate(condition: newPassword.count >= Constants.passwordMinLength, error: "La password deve contenere almeno 7 caratteri", vibrate: vibrate)
         repeatPasswordField.validate(condition: repeatPassword == newPassword, error: "Le password non coincidono", vibrate: vibrate)
         
-        confirmButton.isEnabled = formIsCorrect()
+//        confirmButton.isEnabled = formIsCorrect()
     }
     
     override func viewDidLoad() {
@@ -93,7 +100,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         confirmButton.smallRounded()
         initFields()
         self.setDefaultBackgroundGradient()
-        
+        self.costantKeyboardTranslationRef = 50.0
         self.navigationItem.rightBarButtonItems = []
     }
     func initFields() {
