@@ -32,12 +32,27 @@ extension String {
         return (self as NSString).floatValue
     }
     
+    static func blank(text: String) -> Bool {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty
+    }
+    subscript (i: Int) -> Character {
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
     subscript (r: Range<Int>) -> String {
-        get {
-            return self
-            //let start = self.index
-            //let end = self.index(after: r.upperBound - 1)
-            //return self.substring(with: start..<end)
-        }
+        let start = index(startIndex, offsetBy: r.lowerBound)
+        let end = index(startIndex, offsetBy: r.upperBound)
+        return self[start..<end]
+    }
+    
+    subscript (r: ClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: r.lowerBound)
+        let end = index(startIndex, offsetBy: r.upperBound)
+        return self[start...end]
     }
 }

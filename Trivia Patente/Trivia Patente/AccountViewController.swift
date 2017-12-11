@@ -142,7 +142,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let httpManager = HTTPManager()
         // TODO: LA FUNZIONE PIù BRUTTA CHE ESISTA NEL MONDO
         let u = SessionManager.currentUser!
-        
+        self.view.endEditing(true)
         let surnameUpdate : (() -> Void) = { _ in
 //            self.startSaving()
             if ((SessionManager.currentUser!.surname == nil && self.surnameField.getText() != "")||(SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)) {
@@ -153,10 +153,12 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                     } else {
                         u.surname = self.surnameField.getText()
                         SessionManager.set(user: u)
+                        self.navigationController!.popViewController(animated: true)
                     }
                 })
             } else {
                 self.finishedSaving()
+                self.navigationController!.popViewController(animated: true)
             }
         }
         let nameUpdate : (() -> Void) = { _ in
@@ -216,6 +218,20 @@ class AccountViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             self.shootPhotoButton.isEnabled = false
             self.imageFromLibraryButton.isEnabled = false
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nameField.field:
+            _ = surnameField.field.becomeFirstResponder()
+            break
+        case surnameField.field:
+            //programmatically touch login button
+            submitButton.sendActions(for: .touchUpInside)
+            break
+        default: break
+        }
+        return true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

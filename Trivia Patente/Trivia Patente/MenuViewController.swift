@@ -13,6 +13,7 @@ class MenuViewController: UIViewController {
     static let kMenuActionLogout = "logoutMenuAction"
     static let kMenuActionProfile = "profileMenuAction"
     static let kMenuActionContact = "contactMenuAction"
+    static let kMenuQuickGame = "quickGameMenuAction"
 
     @IBOutlet weak var avatarImageView : UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,14 +41,16 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func profile()
-    {
+    @IBAction func profile() {
         self.sendAction(action: MenuViewController.kMenuActionProfile)
     }
     
-    @IBAction func infos()
-    {
+    @IBAction func infos() {
         self.sendAction(action: MenuViewController.kMenuActionContact)
+    }
+    
+    @IBAction func quickGame() {
+        self.sendAction(action: MenuViewController.kMenuQuickGame)
     }
     
     func sendAction(action: String)
@@ -64,15 +67,6 @@ class MenuViewController: UIViewController {
         self.sendAction(action: MenuViewController.kMenuActionLogout)
         self.dismiss(animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

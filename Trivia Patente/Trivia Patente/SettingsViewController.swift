@@ -15,7 +15,7 @@ class SettingsViewController: TPNormalTableViewController {
                              PreferenceItem(title: "Cambia password", image: "preference_password", type: .normal, segue: "change_password_segue")]
     var chatItems =         [PreferenceItem(title: "Chi mi può contattare:", image: "preference_chat", type: .dropdown, key: "chat")]
     var notificationItems = [PreferenceItem(title: "Inviti alle partite", image: "preference_new_invite", type: .switchable, key: "new_game"),
-                             PreferenceItem(title: "E' il mio turno", image: "preference_my_turn", type: .switchable, key: "round"),
+                             PreferenceItem(title: "È il mio turno", image: "preference_my_turn", type: .switchable, key: "round"),
                              PreferenceItem(title: "Ho un nuovo messaggio", image: "preference_new_message", type: .switchable, key: "message"),
                              PreferenceItem(title: "Ho tutte le vite disponibili", image: "preference_full_hearts", type: .switchable, key: "full_hearts")]
     var inviteItems =       [PreferenceItem(title: "Dillo a un amico!", image: "preference_tell_a_friend", type: .normal, segue: "tell_a_friend_segue")]

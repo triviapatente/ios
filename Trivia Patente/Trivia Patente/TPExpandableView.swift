@@ -117,7 +117,20 @@ class TPExpandableView: UIViewController {
         self.reloadWillStart()
         RecentGameHandler.refresh { response, games in
             if response.success == true {
-                self.items = games!
+                let sortFn = { (f: Game, s: Game) -> Bool in
+                    return f.updatedAt! > s.updatedAt!
+                }
+                let my_turn_games = games!.filter({ (g: Game) -> Bool in
+                    return g.my_turn && !g.ended
+                }).sorted(by: sortFn)
+                let your_turn_games = games!.filter({ (g: Game) -> Bool in
+                    return !g.my_turn && !g.ended
+                }).sorted(by: sortFn)
+                let ended_games = games!.filter({ (g: Game) -> Bool in
+                    return g.ended
+                }).sorted(by: sortFn)
+                
+                self.items = my_turn_games + your_turn_games + ended_games
             }
         }
     }

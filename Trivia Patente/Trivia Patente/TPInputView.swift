@@ -29,6 +29,7 @@ class TPInputView: UIViewController {
     }
     func disable()
     {
+        self.resignFirstResponder()
         self.field.isUserInteractionEnabled = false
     }
     func isCorrect() -> Bool {

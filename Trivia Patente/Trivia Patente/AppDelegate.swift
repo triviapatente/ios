@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func shareAppLink(controller: UIViewController)
     {
-        let textToShare = "Hey! Scarica anche tu l'applicazione Trivia Patente cos' ci possiamo sfidare!"
+        let textToShare = "Scarica anche tu TriviaPatente e prova a battermi https://shesh.com"
         
         if let myWebsite = NSURL(string: "http://www.apple.com/") {
             let objectsToShare = [textToShare, myWebsite] as [Any]

@@ -48,6 +48,21 @@ open class User: CommonPK {
         return self.name ?? self.username
     }
     
+    var initials : String {
+        get {
+            if (self.name != nil) && (self.surname != nil) {
+                return self.name![0] + self.surname![0]
+            } else {
+                if username!.characters.count > 2
+                {
+                    return self.username![0...1]
+                } else {
+                    return self.username!
+                }
+            }
+        }
+    }
+    
     var fullName : String? {
         get {
             guard name != nil && surname != nil else {

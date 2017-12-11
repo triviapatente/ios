@@ -18,7 +18,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     @IBOutlet weak var sendButton: UIButton!
     
     // TODO: mettere quelli giusti
-    let messageReasons = [("Suggerimento","hint"), ("Segnalazione","complaint"), ("Altro","other")]
+    let messageReasons = [("Suggerimento","hint"), ("Segnalazione errore","complaint"), ("Altro","other")]
     var selectedReasonIndex = 0
     let maxMessageLength = 250
     
@@ -36,6 +36,11 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         motivationPicker.dataSource = self
         self.motivationField.inputView = motivationPicker
         self.motivationField.canCopyPaste = false
+    }
+    
+    @IBAction func openMotivationSelector()
+    {
+        _ = self.motivationField.becomeFirstResponder()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -62,7 +67,7 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     
     @IBAction func sendMessage()
     {
-        guard self.messageTextView.text.characters.count > 0 else
+        guard (self.messageTextView.text.characters.count > 0 && !String.blank(text: self.messageTextView.text)) else
         {
             self.showToast(text: Strings.empty_message_toast)
             return
@@ -104,6 +109,11 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         let msgLength = textView.text.characters.count
         self.counterLabel.text = "\(self.maxMessageLength - msgLength)"
         self.messagePlaceholder.isHidden = msgLength > 0
+        let trimmedText = textView.text.trimmingCharacters(in: .newlines)
+        if textView.text != trimmedText
+        {
+            textView.text = trimmedText
+        }
 //        self.sendButton.isEnabled = msgLength > 0
     }
     

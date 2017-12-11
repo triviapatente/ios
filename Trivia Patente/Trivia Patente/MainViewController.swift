@@ -21,7 +21,7 @@ class MainViewController: TPNormalViewController {
     var recentGamesView : TPExpandableView! {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
-            recentGamesView.footerText = "Nessun'altra partita recente.\nGioca di più 😉"
+            recentGamesView.footerText = "Non ci sono altre partite.. \nIniziane un’altra 😉"
             recentGamesView.emptyTitleText = "Nessuna partita recente"
             recentGamesView.title = "Partite recenti"
             recentGamesView.separatorColor = Colors.primary
@@ -65,7 +65,7 @@ class MainViewController: TPNormalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.playButton.initValues(imageName: "car", title: "Gioca", color: Colors.playColor, clickListener: buttonClickListener)
+        self.playButton.initValues(imageName: "car", title: "Nuova partita", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)

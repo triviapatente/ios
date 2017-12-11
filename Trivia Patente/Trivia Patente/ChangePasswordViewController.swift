@@ -44,7 +44,7 @@ class ChangePasswordViewController: TPNormalViewController, UITextFieldDelegate 
         guard self.formIsCorrect() else {
             return
         }
-        
+        self.view.endEditing(true)
         let old = oldPasswordField.getText()
         let new = newPasswordField.getText()
         confirmButton.load()

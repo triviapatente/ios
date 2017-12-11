@@ -46,9 +46,9 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
         if game.ended {
             return "Partita terminata"
         } else if game.my_turn {
-            return "E' il tuo turno!"
+            return "È il tuo turno!"
         } else {
-            return "E' il suo turno"
+            return "È il suo turno.."
         }
     }
     func lightsImage(for game : Game) -> UIImage {

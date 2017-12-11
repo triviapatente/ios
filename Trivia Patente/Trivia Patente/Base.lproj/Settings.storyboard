@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-bg" translatesAutoresizingMaskIntoConstraints="NO" id="IiZ-Xw-tDS">
-                                <rect key="frame" x="0.0" y="433" width="375" height="234"/>
+                                <rect key="frame" x="0.0" y="403" width="375" height="234"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iiv-Jv-w8U">
                                 <rect key="frame" x="47" y="620" width="280" height="1"/>
@@ -197,18 +197,28 @@
                                     <constraint firstAttribute="height" constant="45" id="fZ4-qV-H4B"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Iscrivendoti e utilizzando questa applicazione accetti in automatico ">
+                                    <fragment content="Utilizzando questa applicazione accetti ">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="Avenir-Book"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Termini e Condizioni">
                                         <attributes>
-                                            <color key="NSColor" red="0.43299513779999999" green="0.81031878680000002" blue="0.26711740099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.51764705879999995" green="0.97647058819999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="Avenir-Book"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -234,8 +244,9 @@
                                             <constraint firstAttribute="height" constant="1" id="7pa-Fc-43L"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivazione" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-d9-Xqx">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivazione" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQC-d9-Xqx">
                                         <rect key="frame" x="8" y="8" width="104" height="21"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="104" id="dyZ-HF-R2H"/>
                                             <constraint firstAttribute="height" constant="21" id="r9S-jt-C2E"/>
@@ -243,6 +254,9 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="TA5-9Z-dhh" appends="YES" id="cqJ-gn-zN5"/>
+                                        </connections>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle-white" translatesAutoresizingMaskIntoConstraints="NO" id="cku-4J-irj">
                                         <rect key="frame" x="327" y="15" width="10" height="10"/>
@@ -352,7 +366,7 @@
                             <constraint firstItem="T1u-n9-GHa" firstAttribute="leading" secondItem="xfI-D8-OmZ" secondAttribute="leadingMargin" constant="16" id="hsR-GS-kdd"/>
                             <constraint firstItem="IiZ-Xw-tDS" firstAttribute="height" secondItem="xfI-D8-OmZ" secondAttribute="height" multiplier="0.35" id="jtF-ti-zgQ"/>
                             <constraint firstItem="T1u-n9-GHa" firstAttribute="top" secondItem="Iiv-Jv-w8U" secondAttribute="bottom" constant="8" id="lAY-Bd-b44"/>
-                            <constraint firstItem="xyE-30-FiG" firstAttribute="top" secondItem="IiZ-Xw-tDS" secondAttribute="bottom" id="oIr-DA-oyN"/>
+                            <constraint firstItem="xyE-30-FiG" firstAttribute="top" secondItem="IiZ-Xw-tDS" secondAttribute="bottom" constant="30" id="oIr-DA-oyN"/>
                             <constraint firstAttribute="trailing" secondItem="IiZ-Xw-tDS" secondAttribute="trailing" id="uDQ-4L-2wI"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -390,6 +404,11 @@
                 <tapGestureRecognizer id="fhj-42-adl">
                     <connections>
                         <action selector="termsTapped" destination="cJ8-fA-220" id="dFI-9G-cFv"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="TA5-9Z-dhh">
+                    <connections>
+                        <action selector="openMotivationSelector" destination="cJ8-fA-220" id="mZw-gG-2Cw"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -643,7 +662,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FtD-r4-Jft"/>
-        <segue reference="TAo-8k-0re"/>
-        <segue reference="0OJ-f4-6IT"/>
+        <segue reference="pYO-ge-frg"/>
+        <segue reference="7Xx-a1-VjS"/>
     </inferredMetricsTieBreakers>
 </document>

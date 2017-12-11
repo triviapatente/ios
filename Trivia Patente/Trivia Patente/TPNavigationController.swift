@@ -217,6 +217,11 @@ class TPNavigationController: UINavigationController {
                         self.performSegue(withIdentifier: "logout_segue", sender: nil)
 //                        self.goTo(LogoutViewController.self, identifier: "logout_segue")
                         break
+                    case MenuViewController.kMenuQuickGame:
+                        let controller = UIStoryboard(name: "Game", bundle: nil).instantiateViewController(withIdentifier: "WaitOpponent") as! WaitOpponentViewController
+                        controller.fromInvite = true
+                        self.pushViewController(controller, animated: true)
+                        break
                     default:
                         break
                     }
@@ -229,5 +234,14 @@ class TPNavigationController: UINavigationController {
         
     }
     
+    /*
+     if let identifier = segue.identifier {
+     if identifier == "wait_opponent_segue" {
+     let waitController = segue.destination as! WaitOpponentViewController
+     waitController.fromInvite = true
+     }
+     }
+     
+     */
 
 }

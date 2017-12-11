@@ -10,7 +10,11 @@ import UIKit
 import QuartzCore
 
 extension UIView {
-
+    func removeAllSubviews() {
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+    }
     func smallRounded(corners : UIRectCorner = .allCorners) {
         self.createCorners(radius: 3, corners: corners)
     }
