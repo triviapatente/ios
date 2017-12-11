@@ -34,6 +34,10 @@ extension UIImageView {
         self.load(path: url, placeholder: "")
         
     }
+    func clear() {
+        self.layer.borderWidth = 0.0
+        self.removeAllSubviews()
+    }
     func load(user: User?) {
         self.contentMode = .scaleAspectFill
         self.layer.borderWidth = CGFloat(0) // for reausable views

@@ -133,7 +133,31 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
     
     @IBAction func termsTapped()
     {
-        self.showToast(text: Strings.terms_tap_toast)
+        ContactUsViewController.handleTerms(controller: self)
+    }
+    
+    class func handleTerms(controller: UIViewController) {
+        let sheetController = UIAlertController(title: "", message: Strings.terms_tap_toast, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let termsAction = UIAlertAction(title: "Termini e Condizioni", style: .default) { (a) in
+            guard let url = URL(string: HTTPManager.getBaseURL() + "/ws/terms") else {
+                return //be safe
+            }
+            controller.openURL(url: url)
+        }
+        let privacyAction = UIAlertAction(title: "Privacy Policy", style: .default) { (a) in
+            guard let url = URL(string: HTTPManager.getBaseURL() + "/ws/privacyPolicy") else {
+                return //be safe
+            }
+            controller.openURL(url: url)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annulla", style: UIAlertActionStyle.cancel) { (a) in
+            sheetController.dismiss(animated: true, completion: nil)
+        }
+        sheetController.addAction(termsAction)
+        sheetController.addAction(privacyAction)
+        sheetController.addAction(cancelAction)
+        controller.present(sheetController, animated: true, completion: nil)
     }
 
     /*

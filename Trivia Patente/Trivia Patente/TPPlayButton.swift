@@ -60,7 +60,7 @@ class TPPlayButton: UIButton {
         self.tintColor = Colors.gray_default
     }
     func hisTurnButton() {
-        self.setTitle("Attendi", for: .normal)
+        self.setTitle("Attendi..", for: .normal)
         self.isUserInteractionEnabled = true
         self.tintColor = Colors.yellow_default
     }

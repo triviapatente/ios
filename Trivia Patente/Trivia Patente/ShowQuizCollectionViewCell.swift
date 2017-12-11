@@ -51,11 +51,15 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     }
     func minimizeImage() {
         if let superview = quizImageView.superview {
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .allowAnimatedContent, animations: {
                 self.quizImageView.frame = self.defaultImageFrame
                 self.quizImageView.center.y = superview.frame.size.height / 2
-                self.quizNameView.alpha = 1
-            }
+            }, completion: { (c) in
+                UIView.animate(withDuration: 0.1) {
+                    self.quizNameView.alpha = 1
+                }
+            })
+            
         }
         
     }
@@ -64,11 +68,14 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             let dimension = superview.frame.size.height - 20
             let x = superview.frame.size.width / 2
             let y = superview.frame.size.height / 2
-            UIView.animate(withDuration: 0.2) {
-                self.quizImageView.frame.size = CGSize(width: dimension, height: dimension)
-                self.quizImageView.center = CGPoint(x: x, y: y)
+            UIView.animate(withDuration: 0.1, delay: 0, options: .allowAnimatedContent, animations: {
                 self.quizNameView.alpha = 0
-            }
+            }, completion: { (c) in
+                UIView.animate(withDuration: 0.2) {
+                    self.quizImageView.frame.size = CGSize(width: dimension, height: dimension)
+                    self.quizImageView.center = CGPoint(x: x, y: y)
+                }
+            })
         }
         
     }

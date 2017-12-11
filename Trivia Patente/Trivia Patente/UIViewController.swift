@@ -126,6 +126,14 @@ extension UIViewController : TPViewController {
     func showGenericError() {
         self.showToast(text: Strings.generic_error)
     }
+    func openURL(url: URL)
+    {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
     func showToast(text: String)
     {

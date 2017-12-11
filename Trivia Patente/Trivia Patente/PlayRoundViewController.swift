@@ -66,15 +66,17 @@ class PlayRoundViewController: TPGameViewController {
                 return
             }
             self.quizCollectionView.reloadData()
-            let firstButton = questionButtons.first!
+            var unansweredIndex : Int? = nil
             for i in 0..<questions.count {
                 let question = questions[i]
                 if let _ = question.my_answer {
                     let button = self.questionButtons[i]
                     self.setQuizButtonColor(of: button, correct: question.answeredCorrectly!)
+                } else if unansweredIndex == nil {
+                    unansweredIndex = i
                 }
             }
-            presentQuiz(sender: firstButton)
+            presentQuiz(sender: self.questionButtons[unansweredIndex != nil ? unansweredIndex! : 0])
         }
     }
     func load() {

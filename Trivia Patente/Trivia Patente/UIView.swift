@@ -150,7 +150,9 @@ extension UIView {
         }
     }
     func createCorners(radius : CGFloat, corners : UIRectCorner) {
+        self.layer.cornerRadius = 0.0
         self.layer.masksToBounds = true
+        
         if corners != .allCorners {
             let path = UIBezierPath(roundedRect: self.bounds,
                                     byRoundingCorners: corners,

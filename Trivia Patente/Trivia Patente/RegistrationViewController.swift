@@ -133,12 +133,10 @@ class RegistrationViewController: FormViewController, UITextFieldDelegate {
 //            self.handleResponse(response: response)
 //        }
 //    }
+    
     @IBAction func showTermAndConditions()
     {
-        self.showToast(text: Strings.terms_tap_toast)
-        Timer.scheduledTimer(withTimeInterval: Constants.toastDuration, repeats: false) { t in
-            // TODO
-        }
+        ContactUsViewController.handleTerms(controller: self)
     }
     @IBAction func userHasAnAccount()
     {

@@ -133,6 +133,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
     {
         let newImage = info[UIImagePickerControllerEditedImage] as? UIImage
         self.newAvatarImage = newImage
+        self.avatarImageView.clear()
         self.avatarImageView.image = newImage
         picker.dismiss(animated: true, completion: nil)
     }

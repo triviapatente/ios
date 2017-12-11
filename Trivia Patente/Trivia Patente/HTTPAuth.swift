@@ -57,13 +57,14 @@ class HTTPAuth : HTTPManager {
         request(url: "/account/user", method: .get, params: nil, handler: handler)
     }
     func logout(handler : @escaping (TPAuthResponse) -> Void) {
-        request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in
-            if response.success == true {
+//        request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in
+//            if response.success == true {
                 SessionManager.drop()
                 SocketManager.disconnect {}
-            }
-            handler(response)
-        }
+                handler(TPAuthResponse(error: nil, statusCode: 200, success: true))
+//            }
+//            handler(response)
+//        }
     }
     
     func register(username : String, email : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {

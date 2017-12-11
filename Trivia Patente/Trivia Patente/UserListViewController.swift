@@ -449,8 +449,24 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    func noUsersFoundLabel() -> UILabel {
+        let bgLabel = UILabel()
+        bgLabel.text = Strings.no_user_found + "\n\n\n\n\n" // do NEVER delete the '\n'
+        bgLabel.textAlignment = .center
+        bgLabel.numberOfLines = 0
+        bgLabel.transform = CGAffineTransform(translationX: 0, y: -20)
+        bgLabel.font = UIFont(name: "Avenir Next", size: 16.0)
+        bgLabel.textColor = UIColor.white
+        return bgLabel
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.tableView.backgroundView = nil
+        self.tableView.isScrollEnabled = true
         if let list = getContextualUsers() {
+            if list.count == 0 && searching {
+                self.tableView.backgroundView = noUsersFoundLabel()
+                self.tableView.isScrollEnabled = false
+            }
             return list.count
         }
         return 0
