@@ -68,7 +68,8 @@ extension UIImageView {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         label.textAlignment = .center
         label.textColor = UIColor.white
-        label.font = UIFont(name: "Avenir Next", size: self.frame.width * 0.5)
+        label.font = UIFont(name: "Avenir Next", size: self.frame.width * 0.4)
+//        label.backgroundColor = UIColor.red
         return label
     }
     func load(category: Category?) {

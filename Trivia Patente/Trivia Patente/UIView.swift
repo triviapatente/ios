@@ -57,7 +57,8 @@ extension UIView {
     }
     func rotatingBorder(color : UIColor, width : CGFloat = 3) {
         self.layer.removeAllAnimations()
-        self.layer.sublayers?.removeAll()
+        self.layer.borderWidth = 0
+//        self.layer.sublayers?.removeAll()
         let gradientLayer = self.getBorderGradientLayer(width: width)
         // Add the circleLayer to the view's layer's sublayers
         layer.addSublayer(gradientLayer)

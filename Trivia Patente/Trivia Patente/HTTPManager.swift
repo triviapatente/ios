@@ -13,7 +13,7 @@ class HTTPManager {
     let REQUEST_TIMEOUT = 6.0
     
     class func getBaseURL() -> String {
-        return "http://192.168.0.107:8000"
+        return "http://192.168.1.244:8000"
     }
     
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {

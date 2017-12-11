@@ -69,7 +69,7 @@ class WaitOpponentViewController: TPGameViewController {
         (self.navigationController as! TPNavigationController).setUser(candidate: game.opponent)
         self.opponentImageView.load(user: game.opponent)
         self.opponentImageView.circleRounded()
-        self.opponentImageView.rotatingBorder(color: .white)
+        self.opponentImageView.rotatingBorder(color: .white, width: 5)
         self.headerView.set(title: self.waitTitle())
         if fromInvite == true {
             self.headerView.roundLabel.text = "Invito"

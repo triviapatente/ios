@@ -29,6 +29,8 @@ class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerVie
         UITextField.appearance().tintColor = UIColor.clear
         UITextView.appearance().tintColor = UIColor.lightText
         
+        self.setDefaultBackgroundGradient()
+        
         self.counterLabel.text = "\(self.maxMessageLength)"
         
         let motivationPicker = UIPickerView()

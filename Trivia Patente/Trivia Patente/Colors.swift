@@ -9,8 +9,8 @@
 import UIKit
 
 class Colors {
-    static let primary = UIColor(red: 0/255, green: 178/255, blue: 255/255, alpha: 1)
-    static let secondary = UIColor(red: 0/255, green: 130/255, blue: 255/255, alpha: 1)
+    static let primary = UIColor(red: 0/255, green: 170/255, blue: 255/255, alpha: 1)
+    static let secondary = UIColor(red: 1/255, green: 112/255, blue: 255/255, alpha: 1)
     
     static let alpha_white = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.67)
     
@@ -45,7 +45,7 @@ class Colors {
     {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
-        gradientLayer.colors = [Colors.access_top_color.cgColor, Colors.access_bottom_color.cgColor]
+        gradientLayer.colors = [Colors.primary.cgColor, Colors.secondary.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         return gradientLayer
     }

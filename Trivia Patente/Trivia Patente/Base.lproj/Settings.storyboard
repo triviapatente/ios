@@ -166,7 +166,7 @@
                         <viewControllerLayoutGuide type="top" id="KV9-le-DpM"/>
                         <viewControllerLayoutGuide type="bottom" id="xyE-30-FiG"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xfI-D8-OmZ" customClass="GradientView" customModule="Trivia_Patente" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="xfI-D8-OmZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
