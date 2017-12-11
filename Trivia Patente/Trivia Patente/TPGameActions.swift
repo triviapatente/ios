@@ -9,8 +9,6 @@
 import UIKit
 
 class TPGameActions: UIViewController {
-
-    
     @IBOutlet var chatButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var detailButton : UIButton!

@@ -92,7 +92,7 @@ class TPNavigationController: UINavigationController {
             }
         }
         
-        let minTimeDifference = Double(60*60*24) // 1 day in seconds
+        let minTimeDifference = Double(60*60*24*13) // 13 day in seconds
         let currentTS = NSDate().timeIntervalSince1970
         if let lastDateTS = UserDefaults.standard.value(forKey: Constants.kLastLuckyPopTS) as? TimeInterval
         {

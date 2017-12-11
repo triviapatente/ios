@@ -153,6 +153,13 @@ class RoundDetailsViewController: TPGameViewController {
         }
         self.setDefaultBackgroundGradient()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if !(navigationController?.viewControllers)!.contains(self) {
+            // back button was pressed
+            self.navigationController?.popToRootViewController(animated: animated)
+        }
+        super.viewWillDisappear(animated)
+    }
     func height(for indexPath: IndexPath, ignoreExpanded: Bool = false) -> CGFloat {
         if indexPath.section == self.questionMap.count {
             return END_ROW_HEIGHT
