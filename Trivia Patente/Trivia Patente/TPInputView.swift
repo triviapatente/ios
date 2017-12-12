@@ -44,7 +44,7 @@ class TPInputView: UIViewController {
     }
     func validate(condition : Bool, error : String, force: Bool = false, vibrate : Bool) {
         if ignoreValidation || condition {
-            normalState()
+            return
         } else {
             errorState(error: error, vibrate: vibrate)
         }

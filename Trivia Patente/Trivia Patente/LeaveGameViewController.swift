@@ -27,6 +27,7 @@ class LeaveGameViewController: UIViewController {
             handler.leave_game(game_id: game.id!) { response in
                 if response.success == true {
                     self.fade()
+                    self.game.ended = true
                     self.sender.performSegue(withIdentifier: "round_details", sender: self)
                 } else {
                     self.showGenericError()

@@ -100,6 +100,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     
     func checkValues(vibrate : Bool) {
         let username = nameField.getText()
+        nameField.normalState()
         nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
     }
 

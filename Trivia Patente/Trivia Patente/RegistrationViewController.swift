@@ -49,12 +49,19 @@ class RegistrationViewController: FormViewController, UITextFieldDelegate {
         let email = emailField.getText()
         let password = passwordField.getText()
         let repeatPassword = repeatPasswordField.getText()
-        
+     
+        nameField.normalState()
+        emailField.normalState()
+        passwordField.normalState()
+        repeatPasswordField.normalState()
+        nameField.validate(condition: username.characters.filter({$0 == " "}).count == 0, error: "L'username non può contenere spazi", vibrate: vibrate)
         nameField.validate(condition: username.count >= Constants.usernameMinLength, error: "L'username deve contenere almeno 3 caratteri", vibrate: vibrate)
+
         emailField.validate(condition: email.isEmail && !email.isEmpty, error: "Inserisci un'indirizzo email corretto", vibrate: vibrate)
         passwordField.validate(condition: password.count >= Constants.passwordMinLength, error: "La password deve contenere almeno 7 caratteri", vibrate: vibrate)
-        repeatPasswordField.validate(condition: !repeatPassword.isEmpty, error: "Reinserisci la password", vibrate: vibrate)
-        repeatPasswordField.validate(condition: repeatPassword == password, error: "Le password non coincidono", vibrate: vibrate)
+
+        repeatPasswordField.validate(condition: repeatPassword == password || password.isEmpty, error: "Le password non coincidono", vibrate: vibrate)
+        repeatPasswordField.validate(condition: !repeatPassword.isEmpty || password.isEmpty, error: "Reinserisci la password", vibrate: vibrate)
         
 //        registerButton.isEnabled = formIsCorrect()
     }

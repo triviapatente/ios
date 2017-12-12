@@ -80,7 +80,8 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
     func checkValues(vibrate : Bool) {
         let username = nameField.getText()
         let password = passwordField.getText()
-        
+        nameField.normalState()
+        passwordField.normalState()
         nameField.validate(condition: !username.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
         passwordField.validate(condition: !password.isEmpty, error: "Inserisci la password", vibrate: vibrate)
         

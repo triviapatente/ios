@@ -34,9 +34,9 @@ enum PopoverType {
     var minDifference : Double {
         switch self {
             case .lucky:
-                return Double(60*60)//Double(60*60*24*13) // 13 days
+                return Double(60*60*24*13) // 13 days
             case .review:
-                return Double(2)//Double(60*60*24*17) // 17 days
+                return Double(60*60*24*17) // 17 days
         }
     }
     

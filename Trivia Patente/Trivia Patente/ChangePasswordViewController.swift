@@ -87,6 +87,9 @@ class ChangePasswordViewController: FormViewController, UITextFieldDelegate {
         let newPassword = self.newPasswordField.getText()
         let repeatPassword = self.repeatPasswordField.getText()
         
+        oldPasswordField.normalState()
+        newPasswordField.normalState()
+        repeatPasswordField.normalState()
         oldPasswordField.validate(condition: !oldPassword.isEmpty, error: "Inserisci l'username o l'email", vibrate: vibrate)
         newPasswordField.validate(condition: newPassword != oldPassword, error: "La nuova e la vecchia password sono identiche", vibrate: vibrate)
         newPasswordField.validate(condition: newPassword.count >= Constants.passwordMinLength, error: "La password deve contenere almeno 7 caratteri", vibrate: vibrate)

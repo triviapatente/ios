@@ -120,6 +120,11 @@ class PlayRoundViewController: TPGameViewController {
             self.setQuizButtonColor(of: button)
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        if game.ended {
+            self.navigationController!.popToRootViewController(animated: true)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()

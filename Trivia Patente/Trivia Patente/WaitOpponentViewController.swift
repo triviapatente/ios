@@ -53,6 +53,7 @@ class WaitOpponentViewController: TPGameViewController {
             self.join_room()
         }
         socketHandler.listen(event: "user_left") { response in
+            self.game.ended = true
             self.join_room()
         }
        
@@ -72,7 +73,7 @@ class WaitOpponentViewController: TPGameViewController {
         self.opponentImageView.rotatingBorder(color: .white, width: 5)
         self.headerView.set(title: self.waitTitle())
         if fromInvite == true {
-            self.headerView.roundLabel.text = "Invito"
+            self.headerView.roundLabel.text = "Avvio"
         } else {
             self.headerView.roundLabel.text = "Partita"
         }
@@ -95,7 +96,7 @@ class WaitOpponentViewController: TPGameViewController {
         switch(state) {
             case .game: return "Attendi che il tuo avversario finisca il turno!"
             case .category: return "Attendi che il tuo avversario scelga la categoria del turno!"
-            case .invite: return "Attendi che l'utente accetti il tuo invito a giocare!"
+            case .invite: return "Attendi che la partita abbia inizio!"
         }
     }
     func color(for state : RoundWaiting, opponent_online : Bool) -> UIColor {
@@ -118,6 +119,7 @@ class WaitOpponentViewController: TPGameViewController {
     func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
         if response.ended == true && followRedirects {
+            self.game.ended = true
             self.redirect(identifier: "round_details")
         } else {
             guard let state = response.waiting else {

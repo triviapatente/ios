@@ -428,7 +428,10 @@ class UserListViewController: TPNormalViewController {
 
 extension UserListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.search(query: searchBar.text!)
+        if searchBar.text!.characters.count > 0 {
+            self.search(query: searchBar.text!)
+        }
+        searchBar.resignFirstResponder()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {

@@ -156,7 +156,9 @@ class RoundDetailsViewController: TPGameViewController {
     override func viewWillDisappear(_ animated: Bool) {
         if !(navigationController?.viewControllers)!.contains(self) {
             // back button was pressed
-            self.navigationController?.popToRootViewController(animated: animated)
+            if self.game.ended {
+                self.navigationController?.popToRootViewController(animated: animated)
+            }
         }
         super.viewWillDisappear(animated)
     }
