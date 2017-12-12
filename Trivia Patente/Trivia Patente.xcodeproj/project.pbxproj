@@ -200,6 +200,7 @@
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
+		F406F5B21FDFE6E700AF1621 /* ReviewModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */; };
 		F417CA111FBA768900B494C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
 		F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */; };
 		F42D8D1E1FAABE1A00610B99 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */; };
@@ -445,6 +446,7 @@
 		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModalViewController.swift; sourceTree = "<group>"; };
 		F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSAViewController.swift; sourceTree = "<group>"; };
@@ -1381,6 +1383,7 @@
 				8B5133251DBCBA6900143497 /* MainViewController.swift */,
 				F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */,
 				F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */,
+				F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -2049,6 +2052,7 @@
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
 				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
+				F406F5B21FDFE6E700AF1621 /* ReviewModalViewController.swift in Sources */,
 				8BAD1C551DF9CA050051AC4A /* TPGameEndedEvent.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,
 				8BAD1C451DF9795D0051AC4A /* Int.swift in Sources */,

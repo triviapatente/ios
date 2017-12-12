@@ -39,11 +39,6 @@ class LuckyModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func setShouldShowLuckyPop(show : Bool)
-    {
-        UserDefaults.standard.set(show, forKey: Constants.kLuckyPopShouldShowTS)
-    }
-    
     @IBAction func stopPropagation() // prevent a tap on the modal itself to dismiss it
     {}
     
@@ -71,7 +66,7 @@ class LuckyModalViewController: UIViewController {
             case "dnsa":
                 self.dnsaController = destination as! DNSAViewController
                 self.dnsaController.toggleCallback = { (checked) -> Void in
-                    self.setShouldShowLuckyPop(show: !self.dnsaController.DNSAChecked)
+                    PopoverType.lucky.setShoudShow(show: !self.dnsaController.DNSAChecked)
                 }
                 break
             default:

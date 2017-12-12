@@ -475,14 +475,7 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
         if let cell = reusableCell as? RankTableViewCell {
             cell.user = getContextualUsers()![indexPath.row]
-            if searching {
-                cell.position = cell.user.position
-            } /*else if cell.user!.isMe() {
-                cell.position = getContextualUserPosition()!
-            } */else {
-                cell.position = cell.user.position// Int32(getContextualMap()!["\(cell.user.score!)"]!)
-            }
-//            cell.user = getContextualUsers()![indexPath.row]
+            cell.position = cell.user.position
             return cell
         } else {
             let cell = reusableCell as! GameOpponentTableViewCell

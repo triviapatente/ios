@@ -18,4 +18,11 @@ class Strings {
     static let generic_error = "Abbiamo riscontrato un errore. Riprova"
     static let contact_us_error_toast = "Errore durante il salvataggio delle modifiche. Riprova"
     static let no_user_found = "Nessun utente trovato 😔"
+    
+    // Review popover
+    static let review_pop_first_msg = "Come ti trovi con\nTriviaPatente?"
+    static let review_pop_negative_msg = "Ti va di aiutarci a correggere la rotta?"
+    static let review_pop_positive_msg = "Ti va di comunicarlo ai dubbiosi?"
+    static let review_pop_positive_btn = "Certo! 😍"
+    static let review_pop_negative_btn = "Certo! 💪🏻"
 }

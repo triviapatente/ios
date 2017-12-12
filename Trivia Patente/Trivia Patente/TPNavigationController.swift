@@ -9,6 +9,56 @@
 import UIKit
 import SideMenu
 
+enum PopoverType {
+    case lucky
+    case review
+    
+    var shouldShow : Bool? {
+        switch self {
+            case .lucky:
+                return UserDefaults.standard.value(forKey: Constants.kLuckyPopShouldShowTS) as? Bool
+            case .review:
+                return UserDefaults.standard.value(forKey: Constants.kReviewPopShouldShowTS) as? Bool
+        }
+    }
+    
+    var lastTS : TimeInterval? {
+        switch self {
+            case .lucky:
+                return UserDefaults.standard.value(forKey: Constants.kLastLuckyPopTS) as? TimeInterval
+            case .review:
+                return UserDefaults.standard.value(forKey: Constants.kLastReviewPopTS) as? TimeInterval
+        }
+    }
+    
+    var minDifference : Double {
+        switch self {
+            case .lucky:
+                return Double(60*60)//Double(60*60*24*13) // 13 days
+            case .review:
+                return Double(2)//Double(60*60*24*17) // 17 days
+        }
+    }
+    
+    func setLastDate(lastTS: TimeInterval) {
+        switch self {
+            case .lucky:
+                return UserDefaults.standard.set(lastTS, forKey: Constants.kLastLuckyPopTS)
+            case .review:
+                return UserDefaults.standard.set(lastTS, forKey: Constants.kLastReviewPopTS)
+        }
+    }
+    
+    func setShoudShow(show: Bool) {
+        switch self {
+        case .lucky:
+            return UserDefaults.standard.set(show, forKey: Constants.kLuckyPopShouldShowTS)
+        case .review:
+            return UserDefaults.standard.set(show, forKey: Constants.kReviewPopShouldShowTS)
+        }
+        
+    }
+}
 
 class TPNavigationController: UINavigationController {
     
@@ -42,6 +92,25 @@ class TPNavigationController: UINavigationController {
                 })
             }
         }
+        
+        self.checkAppVersion()
+    }
+    
+    func checkAppVersion() {
+        // if it's a new version then set the 'shouldShow' for the review popover to true
+        if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            print(UserDefaults.standard.value(forKey: Constants.storedVersionKey) )
+            if let storedVersion = UserDefaults.standard.value(forKey: Constants.storedVersionKey) as? String
+            {
+                if storedVersion != currentVersion {
+                    PopoverType.review.setShoudShow(show: true)
+                    UserDefaults.standard.set(currentVersion, forKey: Constants.storedVersionKey)
+                }
+                
+            } else {
+                UserDefaults.standard.set(currentVersion, forKey: Constants.storedVersionKey)
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -69,7 +138,7 @@ class TPNavigationController: UINavigationController {
         performSegue(withIdentifier: "menu_segue", sender: nil)
     }
     
-    func handleRandomLuckyPopoverShow()
+    func handleRandomPopoverShow(type: PopoverType)
     {
         /* HOW IT WORKS
          *
@@ -84,37 +153,38 @@ class TPNavigationController: UINavigationController {
          *
          * This date is saved inside NSUSerDefaults as TIMESTAMP
          */
-        if let shouldShowPop = UserDefaults.standard.value(forKey: Constants.kLuckyPopShouldShowTS) as? Bool
+        
+        if let shouldShowPop = type.shouldShow
         {
             if shouldShowPop == false
             {
                 return
             }
         }
-        
-        let minTimeDifference = Double(60*60*24*13) // 13 day in seconds
+    
         let currentTS = NSDate().timeIntervalSince1970
-        if let lastDateTS = UserDefaults.standard.value(forKey: Constants.kLastLuckyPopTS) as? TimeInterval
+        if let lastDateTS = type.lastTS
         {
-            if currentTS - lastDateTS >= minTimeDifference
+            if currentTS - lastDateTS >= type.minDifference
             {
                 // show popover
-                self.setDateForLastLuckyPop(lastTS: currentTS)
+                type.setLastDate(lastTS: currentTS)
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (t) in
                     DispatchQueue.main.async {
-                        self.showLuckyPopover(automatic: true)
+                        switch type {
+                        case .lucky:
+                            self.showLuckyPopover(automatic: true)
+                        case .review:
+                            self.showReviewPopover(automatic: true)
+                        }
+                        
                     }
                 })
             }
         } else
         {
-            self.setDateForLastLuckyPop(lastTS: currentTS)
+            type.setLastDate(lastTS: currentTS)
         }
-    }
-    
-    func setDateForLastLuckyPop(lastTS : TimeInterval)
-    {
-        UserDefaults.standard.set(lastTS, forKey: Constants.kLastLuckyPopTS)
     }
     
     func lifesPressed()
@@ -126,6 +196,11 @@ class TPNavigationController: UINavigationController {
     {
         self.automaticTriggerForLuckyPop = automatic
         self.goTo(LuckyModalViewController.self, identifier: "lucky_segue")
+    }
+    
+    func showReviewPopover(automatic: Bool = false)
+    {
+        self.goTo(ReviewModalViewController.self, identifier: "review_segue")
     }
     
     func setUser(candidate : User?, with_title : Bool = true) {
@@ -148,7 +223,8 @@ class TPNavigationController: UINavigationController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configureBar()
-        self.handleRandomLuckyPopoverShow()
+        self.handleRandomPopoverShow(type: .lucky)
+        self.handleRandomPopoverShow(type: .review)
     }
     
     func configureBar() {
@@ -203,12 +279,15 @@ class TPNavigationController: UINavigationController {
                     (segue.destination as! LuckyModalViewController).shouldShowDoNotShow = true
                 }
                 break
+            case "review_segue":
+                (segue.destination as! ReviewModalViewController).navController = self
+                break
             case "menu_segue":
                 let menuController = (segue.destination as! UISideMenuNavigationController).topViewController! as! MenuViewController
                 menuController.actionCallback = {(action) in
                     switch action {
                     case MenuViewController.kMenuActionContact:
-                        self.goTo(AlphaViewController.self, identifier: "contact_segue")
+                        self.goTo(ContactUsViewController.self, identifier: "contact_segue")
                         break
                     case MenuViewController.kMenuActionProfile:
                         self.goTo(AccountViewController.self, identifier: "account_segue")
