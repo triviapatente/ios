@@ -389,13 +389,77 @@
                                     <constraint firstItem="14Y-Gw-Zgt" firstAttribute="leading" secondItem="qBL-8W-xtN" secondAttribute="leading" constant="40" id="z1r-Mf-JQf"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etQ-0B-nYM">
+                                <rect key="frame" x="-0.5" y="584" width="375" height="75"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="dbf-aM-xzB"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Utilizzando questa applicazione ne accetti  ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Termini e Condizioni">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.51764705879999995" green="0.97647058819999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" e la relativa ">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Privacy Policy">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="NSColor" red="0.51764705879999995" green="0.97647058819999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="13" name="AvenirNext-Regular"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops/>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" red="0.23921999999999999" green="0.27843000000000001" blue="0.30196000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="eOy-hh-KLL" appends="YES" id="EH5-RQ-Nae"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="etQ-0B-nYM" firstAttribute="width" secondItem="b9J-oY-i0P" secondAttribute="width" id="87G-0Z-xSR"/>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerX" secondItem="b9J-oY-i0P" secondAttribute="centerX" id="AIw-ev-vfi"/>
+                            <constraint firstItem="etQ-0B-nYM" firstAttribute="centerX" secondItem="b9J-oY-i0P" secondAttribute="centerX" id="Gf5-ae-o89"/>
                             <constraint firstAttribute="trailing" secondItem="qBL-8W-xtN" secondAttribute="trailing" id="JYs-1P-ghM"/>
                             <constraint firstItem="qBL-8W-xtN" firstAttribute="centerY" secondItem="b9J-oY-i0P" secondAttribute="centerY" constant="-50" id="O6i-ps-maG"/>
+                            <constraint firstItem="aV1-Rc-oQ9" firstAttribute="top" secondItem="etQ-0B-nYM" secondAttribute="bottom" constant="8" id="z5p-pa-1gL"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="yef-VD-OUN" appends="YES" id="MBX-hR-T1J"/>
@@ -411,6 +475,11 @@
                 <tapGestureRecognizer id="yef-VD-OUN">
                     <connections>
                         <action selector="resignResponder" destination="ptR-KN-xUF" id="F1N-rA-DSp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="eOy-hh-KLL">
+                    <connections>
+                        <action selector="showTermsAndPrivacy" destination="ptR-KN-xUF" id="dWC-hL-MYX"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -668,7 +737,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zdm-RU-yT4"/>
-        <segue reference="4W6-zH-o8t"/>
+        <segue reference="Ama-cG-z4s"/>
+        <segue reference="V6P-bK-GXB"/>
     </inferredMetricsTieBreakers>
 </document>

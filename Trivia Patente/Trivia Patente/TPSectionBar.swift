@@ -33,7 +33,7 @@ class TPSectionBar: UIViewController {
     var delegate : TPSectionBarDelegate!
     
     var titles : [String] {
-        guard questionMap != nil && game != nil else {
+        guard questionMap != nil && game != nil && !questionMap.isEmpty else {
             return []
         }
         var array : [String] = []

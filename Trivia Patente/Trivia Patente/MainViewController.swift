@@ -82,6 +82,7 @@ class MainViewController: TPNormalViewController {
         super.viewDidAppear(animated)
         RecentGameHandler.start(delegate: self.recentGamesView)
         connectToSocket(showLoader: SocketManager.getStatus() != .connected)
+        SocketManager.leave(type: "game")
     }
     func connectToSocket(showLoader: Bool = true) {
         if showLoader {

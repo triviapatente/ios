@@ -38,7 +38,9 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         self.submitButton.smallRounded()
         
         self.nameField.initValues(hint: "Nome", delegate: self)
+        self.nameField.add(target: self, changeValueHandler: #selector(AccountViewController.checkValues))
         self.surnameField.initValues(hint: "Cognome", delegate: self)
+        self.nameField.add(target: self, changeValueHandler: #selector(AccountViewController.checkValues))
         
         // set user data
         if let user = SessionManager.currentUser
@@ -50,6 +52,14 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         } else {
             // TODO: handler nel caso l'utente sia scollegato
         }
+    }
+    func checkValues(vibrate : Bool = false) {
+        let name = nameField.getText()
+        let surname = surnameField.getText()
+        
+        nameField.normalState()
+        surnameField.normalState()
+        // nothing to check
     }
     
     @IBAction func resignFirstRespondes() {
@@ -181,6 +191,10 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
             }
         }
         
+        self.checkValues(vibrate: true)
+        guard self.formIsCorrect() else {
+            return
+        }
         self.startSaving()
         if self.newAvatarImage != nil {
             httpManager.upload(url: "/account/image/edit", method: .post, data: UIImageJPEGRepresentation(self.newAvatarImage!, Constants.avataImageRapresentationQuality)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: { (response: TPAuthResponse) in
@@ -197,6 +211,10 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         } else {
             nameUpdate()
         }
+    }
+    
+    func formIsCorrect() -> Bool {
+        return nameField.isCorrect() && surnameField.isCorrect()
     }
     
     func finishedSaving()
@@ -235,7 +253,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         }
         return true
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {

@@ -92,6 +92,7 @@ class RoundDetailsViewController: TPGameViewController {
         }
     }
     func reloadMap() {
+        self.questionMap = [:]
         self.computeMap(quizzes: response.quizzes)
     }
     func join_room() {
@@ -124,7 +125,8 @@ class RoundDetailsViewController: TPGameViewController {
             let destination = segue.destination as! WaitOpponentViewController
             self.newGameResponse.game.opponent = self.newGameResponse.opponent
             destination.game = self.newGameResponse.game
-            destination.fromInvite = true
+            destination.fromInvite = false
+            destination.join_room()
         } else if segue.identifier == "empty_view_segue" {
             self.emptyView = segue.destination as! RoundDetailsEmptyViewController
         }
@@ -273,6 +275,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         if indexPath.section == self.questionMap.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: winnerCellKey) as! GameEndedTableViewCell
             cell.game = game
+            cell.isDrew = scoreView.firstScore == scoreView.secondScore
             if let partecipation = self.partecipation {
                 cell.scoreIncrement = partecipation.scoreIncrement
             }
@@ -280,6 +283,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             if let users = response?.users {
                 cell.users = users
             }
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: detailsCellKey) as! RoundDetailsTableViewCell
@@ -296,9 +300,13 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
 
 extension RoundDetailsViewController : TPSectionBarDelegate {
     func selectPage(index: Int) {
+        selectPage(index: index, animated: true)
+    }
+    
+    func selectPage(index: Int, animated: Bool = true) {
         if currentPage != index {
             let indexPath = IndexPath(row: 0, section: index)
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: animated)
             self.configureHeader(page: index)
         }
     }
@@ -334,8 +342,11 @@ extension RoundDetailsViewController {
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])
                 self.response.answers.append(answer)
+                let curPage = self.currentPage
                 self.reloadMap()
                 self.reloadData()
+                self.selectPage(index: curPage, animated: false)
+                self.sectionBar.tableView.selectRow(at: IndexPath.init(row: curPage, section: 0), animated: true, scrollPosition: .none)
             }
         }
         

@@ -18,7 +18,7 @@ class GameEndedTableViewCell: UITableViewCell {
     
     let handler = HTTPGame()
     @IBAction func playNewGame() {
-        handler.newGame(id: opponent.id!) { response in
+        handler.newGame(id: self.opponent.id!) { response in
             self.createGameCallback(response)
         }
     }
@@ -31,6 +31,11 @@ class GameEndedTableViewCell: UITableViewCell {
             if let partecipation = self.partecipations.first(where: {$0.isMine()}) {
                 self.scoreIncrement = partecipation.scoreIncrement
             }
+        }
+    }
+    var isDrew = false {
+        didSet {
+            self.titleLabel.text = self.titleFor(game: game)
         }
     }
     var scoreIncrement : Int! {
@@ -62,7 +67,9 @@ class GameEndedTableViewCell: UITableViewCell {
         return UIImage(named: name)!
     }
     func titleFor(game : Game) -> String {
-        if game.won() {
+        if isDrew && game.winnerId == nil {
+            return "Hai pareggiato!"
+        } else if game.won() {
             return "Hai vinto!"
         }
         return "Hai perso!"

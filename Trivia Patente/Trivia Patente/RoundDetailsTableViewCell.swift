@@ -22,6 +22,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
     func initializeImageViews() {
         for imageView in self.trueImageViews + self.falseImageViews {
             imageView.image = nil
+            imageView.clear()
         }
     }
     var requiredHeight : CGFloat {

@@ -8,18 +8,18 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 extension UIImageView {
     func load(path : URL?, placeholder : String, callback: ((UIImage?) -> Void)? = nil) {
-        self.image = UIImage(named: placeholder)
         if let url = path {
-            UIImage.downloadImage(url: url, callback: { (image) in
-                self.image = image
+            self.af_setImage(withURL: path!, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) { (response) in
                 if let cb = callback {
-                    cb(self.image)
+                    cb(response.value)
                 }
-            })
+            }
         }
+        
     }
     func getUrl(path : String?) -> URL? {
         var url : URL? = nil

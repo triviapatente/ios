@@ -11,6 +11,7 @@ target 'Trivia Patente' do
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'Charts', '3.0.3'
   pod 'SideMenu'
+  pod 'AlamofireImage', '~> 3.3'
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths

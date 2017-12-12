@@ -141,6 +141,10 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
         self.nameField.field.text = ""
         self.passwordField.field.text = ""
     }
+    
+    @IBAction func showTermsAndPrivacy() {
+        ContactUsViewController.handleTerms(controller: self)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
