@@ -28,11 +28,16 @@ class WaitOpponentViewController: TPGameViewController {
     }
     var fromInvite : Bool = false
     var userToInvite : User?
-    var gameCanceled : Bool!
+    var gameCanceled : Bool = false
     var response : TPInitRoundResponse! {
         didSet {
             if let game_round = response.round {
                 headerView.round = game_round
+                if game_round.number! <= 1 && !game.ended {
+                    self.gameActions.detailButton.isHidden = true
+                } else {
+                    self.gameActions.detailButton.isHidden = false
+                }
             } else if let cat = self.response.category {
                 headerView.category = cat
             } else {

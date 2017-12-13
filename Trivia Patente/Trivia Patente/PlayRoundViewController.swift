@@ -132,6 +132,11 @@ class PlayRoundViewController: TPGameViewController {
         configureView()
         self.setDefaultBackgroundGradient()
         self.headerView.round = round
+        if round.number! == 1 {
+            self.gameActions.detailButton.isHidden = true
+        } else {
+            self.gameActions.detailButton.isHidden = false
+        }
         //TODO: set category
         self.headerView.category = category
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)

@@ -13,6 +13,8 @@ class LeaveGameViewController: UIViewController {
     @IBOutlet var decrementLabel : UILabel!
     @IBOutlet var dismissButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
+    @IBOutlet weak var mainTitle: UILabel!
+    @IBOutlet weak var arrowView: UIImageView!
     
     var game : Game!
     
@@ -39,7 +41,13 @@ class LeaveGameViewController: UIViewController {
     func getDecrement() {
         handler.get_leave_decrement(game_id: game.id!) { response in
             if response.success == true {
-                self.decrementLabel.text = "\(response.decrement!)"
+                if response.decrement! == 0 {
+                    self.decrementLabel.isHidden = true
+                    self.arrowView.isHidden = true
+                    self.mainTitle.text = "Sei sicuro di voler annullare la partita?"
+                } else {
+                    self.decrementLabel.text = "\(response.decrement!)"
+                }
             }
         }
     }

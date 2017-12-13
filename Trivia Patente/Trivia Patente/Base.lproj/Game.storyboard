@@ -388,10 +388,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="arrowView" destination="Ur8-XV-rVN" id="AGw-w3-qrZ"/>
                         <outlet property="containerView" destination="wRs-Y1-xy3" id="Rbj-kF-kET"/>
                         <outlet property="decrementLabel" destination="DM6-QS-Jd7" id="hhI-8f-Uzs"/>
                         <outlet property="dismissButton" destination="htI-s9-dCw" id="DJ9-M2-ZGr"/>
                         <outlet property="leaveButton" destination="m1T-H1-iyg" id="udk-Hp-9O6"/>
+                        <outlet property="mainTitle" destination="CFT-uS-NBK" id="XmW-YJ-0R0"/>
                         <segue destination="ZWh-kv-MbX" kind="show" identifier="round_details" id="HCl-2p-GQX"/>
                     </connections>
                 </viewController>
@@ -737,8 +739,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="130" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-d4-Gha">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="56"/>
+                            <stackView opaque="NO" contentMode="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gm3-d4-Gha">
+                                <rect key="frame" x="-1" y="0.0" width="132" height="56"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d10-jU-IlU">
                                         <rect key="frame" x="-56" y="0.0" width="56" height="56"/>
@@ -756,7 +758,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                                         <color key="backgroundColor" red="0.1168684438" green="0.76273190980000005" blue="0.40594422819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="9Y9-rU-Utv" secondAttribute="height" multiplier="10:10" id="yz1-7b-QSf"/>
+                                            <constraint firstAttribute="width" secondItem="9Y9-rU-Utv" secondAttribute="height" multiplier="1:1" id="k3S-jV-XP1"/>
                                         </constraints>
                                         <state key="normal" image="ic_format_list_bulleted_white"/>
                                         <connections>
@@ -764,10 +766,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF3-5a-sPe">
-                                        <rect key="frame" x="74" y="0.0" width="56" height="56"/>
+                                        <rect key="frame" x="76" y="0.0" width="56" height="56"/>
                                         <color key="backgroundColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="KF3-5a-sPe" secondAttribute="height" multiplier="10:10" id="TJe-YB-QyZ"/>
+                                            <constraint firstAttribute="width" secondItem="KF3-5a-sPe" secondAttribute="height" multiplier="1:1" id="De9-Rh-o0z"/>
                                         </constraints>
                                         <state key="normal" image="ic_clear_white"/>
                                         <connections>
@@ -777,7 +779,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="29G-SZ-SeX"/>
-                                    <constraint firstAttribute="width" constant="130" id="FDP-bl-uqE"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -1054,10 +1055,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kf4-r3-nBv"/>
+        <segue reference="NV8-od-C3s"/>
         <segue reference="F5i-i7-toe"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="sSs-jh-fhW"/>
-        <segue reference="yys-8T-GtN"/>
+        <segue reference="0L7-TT-S4h"/>
+        <segue reference="GCU-d2-vyc"/>
     </inferredMetricsTieBreakers>
 </document>
