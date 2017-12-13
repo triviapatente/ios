@@ -15,6 +15,7 @@ class TPResponse : CustomStringConvertible {
     var message : String!
     var parameters : [String]!
     var success : Bool!
+    var canceled : Bool!
     var json : JSON!
     
     var description: String {
@@ -51,6 +52,11 @@ class TPResponse : CustomStringConvertible {
         self.message = self.json["message"].stringValue
         if let parameters = self.json["parameters"].arrayObject {
             self.parameters = parameters as! [String]
+        }
+        if let canceled = self.json["annulled"].bool {
+            self.canceled = canceled
+        } else {
+            self.canceled = false
         }
         if let success = self.json["success"].bool {
             self.success = success

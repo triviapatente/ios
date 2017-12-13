@@ -26,6 +26,7 @@ class RoundDetailsViewController: TPGameViewController {
     var scoreView : TPScoreView!
     var sectionBar : TPSectionBar!
     var emptyView : RoundDetailsEmptyViewController!
+    var gameCancelled : Bool = false
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
     }
@@ -155,6 +156,15 @@ class RoundDetailsViewController: TPGameViewController {
         }
         self.setDefaultBackgroundGradient()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if game.incomplete && !gameCancelled {
+            self.opponentLeftGame()
+        }
+    }
+    func opponentLeftGame() {
+        self.showToast(text: "Il tuo avversario ha abbandonato la partita, hai vinto!")
+    }
     override func viewWillDisappear(_ animated: Bool) {
         if !(navigationController?.viewControllers)!.contains(self) {
             // back button was pressed
@@ -276,6 +286,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeueReusableCell(withIdentifier: winnerCellKey) as! GameEndedTableViewCell
             cell.game = game
             cell.isDrew = scoreView.firstScore == scoreView.secondScore
+            cell.isCancelled = self.gameCancelled
             if let partecipation = self.partecipation {
                 cell.scoreIncrement = partecipation.scoreIncrement
             }
@@ -332,12 +343,20 @@ extension RoundDetailsViewController {
                 self.response.partecipations = response!.partecipations
                 self.reloadData()
                 self.decideToShowEmptyView()
+                self.gameCancelled = response!.canceled
+                if self.game.incomplete && !self.gameCancelled {
+                    self.opponentLeftGame()
+                }
             } else {
                 //TODO: error handler
             }
         }
         handler.listen_game_left(handler: cb)
         handler.listen_game_ended(handler: cb)
+        handler.listen_user_left_game { (response) in
+            self.game.incomplete = true
+            cb(response)
+        }
         handler.listen_user_answered { (response : TPQuestionAnsweredEvent?) in
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])

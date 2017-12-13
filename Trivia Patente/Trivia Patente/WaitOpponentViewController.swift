@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class WaitOpponentViewController: TPGameViewController {
     @IBOutlet var waitLabel : UILabel!
@@ -27,6 +28,7 @@ class WaitOpponentViewController: TPGameViewController {
     }
     var fromInvite : Bool = false
     var userToInvite : User?
+    var gameCanceled : Bool!
     var response : TPInitRoundResponse! {
         didSet {
             if let game_round = response.round {
@@ -39,7 +41,7 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func unlisten() {
-        socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_left")
+        socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_game_left", "user_left")
     }
     func listenInRoom() {
         socketHandler.listen(event: "category_chosen") { response in
@@ -48,12 +50,15 @@ class WaitOpponentViewController: TPGameViewController {
         socketHandler.listen(event: "round_ended") { response in
             self.init_round()
         }
-        
         socketHandler.listen(event: "user_joined") { response in
             self.join_room()
         }
+        socketHandler.listen(event: "user_left_game") { response in
+            self.gameCanceled = response.canceled
+            self.game.incomplete = true
+            self.init_round()
+        }
         socketHandler.listen(event: "user_left") { response in
-            self.game.ended = true
             self.join_room()
         }
        
@@ -236,6 +241,7 @@ class WaitOpponentViewController: TPGameViewController {
             } else if identifier == "round_details" {
                 if let destination = segue.destination as? RoundDetailsViewController {
                     destination.game = game
+                    destination.gameCancelled = self.gameCanceled
                 }
             } else if identifier == "game_actions" {
                 self.gameActions = segue.destination as! TPGameActions

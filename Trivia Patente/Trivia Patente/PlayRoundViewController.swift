@@ -17,6 +17,7 @@ class PlayRoundViewController: TPGameViewController {
     let handler = SocketGame()
     var selectedQuizIndex = 0
     var loadingView : MBProgressHUD!
+    var gameCancelled : Bool = false
     
     var gameActions : TPGameActions! {
         didSet {
@@ -94,6 +95,7 @@ class PlayRoundViewController: TPGameViewController {
         handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.load()
+                self.listen()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
@@ -152,11 +154,13 @@ class PlayRoundViewController: TPGameViewController {
         } else if identifier == "wait_opponent_segue" {
             let destination = segue.destination as! WaitOpponentViewController
             destination.game = game
+            destination.gameCanceled = self.gameCancelled
         } else if identifier == "game_actions" {
             self.gameActions = segue.destination as! TPGameActions
         } else if identifier == "round_details" {
             if let destination = segue.destination as? RoundDetailsViewController {
                 destination.game = game
+                destination.gameCancelled = self.gameCancelled
             }
         }
     }
@@ -180,7 +184,6 @@ class PlayRoundViewController: TPGameViewController {
     func roundEnded() {
         self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
     }
-    
 
 }
 extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -223,6 +226,26 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
             self.presentQuiz(sender: nextButton)
         } else {
             self.roundEnded()
+        }
+    }
+}
+
+extension PlayRoundViewController {
+    
+    func listen() {
+        let cb = { (response : TPGameEndedEvent?) in
+            if response?.success == true {
+                self.game.winnerId = response!.winner_id
+                self.game.ended = true
+                self.gameCancelled = response!.canceled
+                self.roundEnded()
+            } else {
+                //TODO: error handler
+            }
+        }
+        handler.listen_user_left_game { (response) in
+            self.game.incomplete = true
+            cb(response)
         }
     }
 }

@@ -28,6 +28,7 @@ class LeaveGameViewController: UIViewController {
                 if response.success == true {
                     self.fade()
                     self.game.ended = true
+                    self.sender.gameCancelled = true
                     self.sender.performSegue(withIdentifier: "round_details", sender: self)
                 } else {
                     self.showGenericError()
@@ -50,7 +51,6 @@ class LeaveGameViewController: UIViewController {
         self.containerView.mediumRounded()
         self.getDecrement()
     }
-
     
 
 }

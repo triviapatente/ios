@@ -54,6 +54,9 @@ class SocketGame: SocketManager {
     func listen_game_left(handler: @escaping (TPGameLeftEvent) -> Void) {
         SocketGame.listen(event: "game_left", handler: handler)
     }
+    func listen_user_left_game(handler: @escaping (TPGameEndedEvent) -> Void) {
+        SocketGame.listen(event: "user_left_game", handler: handler)
+    }
     func listen_recent_games(handler: @escaping (TPRecentGameEvent) -> Void) {
         SocketGame.listen(event: "recent_game", handler: handler)
     }

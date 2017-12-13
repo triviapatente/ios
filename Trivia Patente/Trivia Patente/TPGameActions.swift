@@ -13,6 +13,7 @@ class TPGameActions: UIViewController {
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var detailButton : UIButton!
     var game : Game!
+    var gameCancelled : Bool = false
     
     func identifier(for button : UIButton) -> String? {
         switch button {
@@ -51,6 +52,7 @@ class TPGameActions: UIViewController {
         switch identifier {
             case self.identifier(for: detailButton)! :
                 (segue.destination as! RoundDetailsViewController).game = game
+                (segue.destination as! RoundDetailsViewController).gameCancelled = self.gameCancelled
                 break
             case self.identifier(for: chatButton)!:
                 (segue.destination as! ChatViewController).game = game

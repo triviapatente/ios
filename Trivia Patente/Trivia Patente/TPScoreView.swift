@@ -59,8 +59,8 @@ class TPScoreView: UIViewController {
         self.secondScore = scores.last!
     }
     func adaptViewToScore() {
-        self.firstAvatarView.layer.borderWidth = 1
-        self.secondAvatarView.layer.borderWidth = 1
+        self.firstAvatarView.layer.borderWidth = 2
+        self.secondAvatarView.layer.borderWidth = 2
         self.setColor(for: self.firstAvatarView)
         self.setColor(for: self.secondAvatarView)
     }

@@ -38,6 +38,11 @@ class GameEndedTableViewCell: UITableViewCell {
             self.titleLabel.text = self.titleFor(game: game)
         }
     }
+    var isCancelled = false {
+        didSet {
+            self.titleLabel.text = self.titleFor(game: game)
+        }
+    }
     var scoreIncrement : Int! {
         didSet {
             self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString())"
@@ -67,7 +72,9 @@ class GameEndedTableViewCell: UITableViewCell {
         return UIImage(named: name)!
     }
     func titleFor(game : Game) -> String {
-        if isDrew && game.winnerId == nil {
+        if isCancelled && game.ended == true && game.started == false {
+            return "Partita annullata"
+        } else if isDrew && game.winnerId == nil {
             return "Hai pareggiato!"
         } else if game.won() {
             return "Hai vinto!"

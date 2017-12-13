@@ -31,6 +31,7 @@ open class Game: CommonPK {
     open var started: Bool = false
     open var my_turn : Bool = false
     open var opponent : User!
+    open var incomplete : Bool = false
 
     func won() -> Bool {
         return winnerId == SessionManager.currentUser?.id
