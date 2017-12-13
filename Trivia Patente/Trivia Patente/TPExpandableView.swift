@@ -185,7 +185,7 @@ class TPExpandableView: UIViewController {
         super.viewDidAppear(animated)
         if !expanded { self.minimize() }
         self.mainView.bringSubview(toFront: self.containerView)
-        self.retrieveRecentGames()
+//        self.retrieveRecentGames()
         //enforce only the first initialization of the view position
         if dataLoaded == false {
             adaptToItems()

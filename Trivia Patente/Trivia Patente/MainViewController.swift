@@ -71,18 +71,18 @@ class MainViewController: TPNormalViewController {
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
         
         self.setDefaultBackgroundGradient()
-        
-        // set Stats and Sjop as coming soon
-        self.statsButton.setComingSoon()
-        self.shopButton.setComingSoon()
-        
         self.resetBackgroundGradientLocations()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         RecentGameHandler.start(delegate: self.recentGamesView)
+
         connectToSocket(showLoader: SocketManager.getStatus() != .connected)
         SocketManager.leave(type: "game")
+        
+        // set Stats and Sjop as coming soon
+        self.statsButton.setComingSoon()
+        self.shopButton.setComingSoon()
     }
     func connectToSocket(showLoader: Bool = true) {
         if showLoader {
@@ -91,6 +91,7 @@ class MainViewController: TPNormalViewController {
             loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
         }
         SocketManager.connect {
+            self.recentGamesView.retrieveRecentGames()
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
                 if showLoader { self.loadingView.hide(animated: true) }
                 //check if login was forbidden

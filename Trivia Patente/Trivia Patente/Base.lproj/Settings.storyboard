@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -175,14 +174,14 @@
                                 <rect key="frame" x="0.0" y="403" width="375" height="234"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iiv-Jv-w8U">
-                                <rect key="frame" x="47" y="620" width="280" height="1"/>
+                                <rect key="frame" x="18.5" y="620" width="337" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="w9t-Xv-235"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luigi Donadel ● Antonio Terpin ● Gabriel Ciulei" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1u-n9-GHa">
-                                <rect key="frame" x="32" y="629" width="311" height="30"/>
+                                <rect key="frame" x="0.0" y="629" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="leD-mr-3aM"/>
                                 </constraints>
@@ -378,9 +377,9 @@
                         <color key="backgroundColor" red="0.0" green="0.69803921570000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="T1u-n9-GHa" secondAttribute="trailing" id="5eR-wN-rlm"/>
                             <constraint firstItem="yeI-m0-V3X" firstAttribute="leading" secondItem="xfI-D8-OmZ" secondAttribute="leading" constant="16" id="6Un-1e-l2N"/>
                             <constraint firstAttribute="trailing" secondItem="yeI-m0-V3X" secondAttribute="trailing" constant="16" id="6vq-Yw-mWd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="T1u-n9-GHa" secondAttribute="trailing" constant="16" id="7XL-mr-Cog"/>
                             <constraint firstItem="yeI-m0-V3X" firstAttribute="top" secondItem="KV9-le-DpM" secondAttribute="bottom" constant="8" id="7hm-ij-I3a"/>
                             <constraint firstItem="Iiv-Jv-w8U" firstAttribute="width" secondItem="T1u-n9-GHa" secondAttribute="width" multiplier="0.9" id="D5b-dN-VrM"/>
                             <constraint firstItem="ukb-L2-KGS" firstAttribute="centerX" secondItem="xfI-D8-OmZ" secondAttribute="centerX" id="FkV-oT-FIe"/>
@@ -388,11 +387,11 @@
                             <constraint firstItem="IiZ-Xw-tDS" firstAttribute="leading" secondItem="xfI-D8-OmZ" secondAttribute="leading" id="Gpl-dB-JSv"/>
                             <constraint firstItem="Iiv-Jv-w8U" firstAttribute="centerX" secondItem="xfI-D8-OmZ" secondAttribute="centerX" id="QWw-rD-LLx"/>
                             <constraint firstItem="Iiv-Jv-w8U" firstAttribute="top" secondItem="ukb-L2-KGS" secondAttribute="bottom" constant="16" id="Xo6-Vh-KSo"/>
-                            <constraint firstItem="T1u-n9-GHa" firstAttribute="leading" secondItem="xfI-D8-OmZ" secondAttribute="leadingMargin" constant="16" id="hsR-GS-kdd"/>
                             <constraint firstItem="IiZ-Xw-tDS" firstAttribute="height" secondItem="xfI-D8-OmZ" secondAttribute="height" multiplier="0.35" id="jtF-ti-zgQ"/>
                             <constraint firstItem="T1u-n9-GHa" firstAttribute="top" secondItem="Iiv-Jv-w8U" secondAttribute="bottom" constant="8" id="lAY-Bd-b44"/>
                             <constraint firstItem="xyE-30-FiG" firstAttribute="top" secondItem="IiZ-Xw-tDS" secondAttribute="bottom" constant="30" id="oIr-DA-oyN"/>
                             <constraint firstAttribute="trailing" secondItem="IiZ-Xw-tDS" secondAttribute="trailing" id="uDQ-4L-2wI"/>
+                            <constraint firstItem="T1u-n9-GHa" firstAttribute="leading" secondItem="xfI-D8-OmZ" secondAttribute="leading" id="ydX-Cx-pti"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">

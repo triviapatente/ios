@@ -67,7 +67,7 @@ class ReviewModalViewController: UIViewController {
     
     func externalReview() {
         self.dismissModal()
-        self.openURL(url: URL(string: HTTPManager.getBaseURL() + "")!)
+        self.openURL(url: URL(string: HTTPManager.getBaseURL() + "/ws/store_page/ios")!)
     }
     
     @IBAction func stopPropagation() // prevent a tap on the modal itself to dismiss it

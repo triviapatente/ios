@@ -48,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-Ko-9ZK">
-                                <rect key="frame" x="0.0" y="115.5" width="375" height="336.5"/>
+                                <rect key="frame" x="0.0" y="120.5" width="375" height="336.5"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a8-Ba-Ass">
                                         <rect key="frame" x="40" y="-88" width="295" height="88"/>
@@ -217,7 +217,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hYj-bA-OW3" firstAttribute="top" secondItem="Dxx-Ca-mXy" secondAttribute="bottom" constant="8" id="5GI-gE-LEg"/>
-                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" constant="-50" id="EKn-Xc-RUQ"/>
+                            <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerY" secondItem="LSC-2Z-bgl" secondAttribute="centerY" constant="-45" id="EKn-Xc-RUQ"/>
                             <constraint firstItem="oZT-Ko-9ZK" firstAttribute="centerX" secondItem="LSC-2Z-bgl" secondAttribute="centerX" id="EmY-4l-zf8"/>
                             <constraint firstItem="Dxx-Ca-mXy" firstAttribute="width" secondItem="LSC-2Z-bgl" secondAttribute="width" multiplier="0.8" id="VHn-fn-ke2"/>
                             <constraint firstAttribute="trailing" secondItem="oZT-Ko-9ZK" secondAttribute="trailing" id="bKk-4R-ipj"/>
@@ -737,7 +737,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ama-cG-z4s"/>
-        <segue reference="V6P-bK-GXB"/>
+        <segue reference="Zdm-RU-yT4"/>
+        <segue reference="4W6-zH-o8t"/>
     </inferredMetricsTieBreakers>
 </document>

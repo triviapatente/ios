@@ -54,9 +54,11 @@ class TPMainButton: UIViewController {
         // adding coming soon image
         let csImage = UIImage(named: "coming_soon_white")!
         let csWidth = CGFloat(csImage.size.width)
-        let imageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 2, y: 0, width: csWidth, height: self.view.frame.height + 2))
-        imageView.image = csImage
-        self.view.addSubview(imageView)
+        let csImageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 5, y: 0, width: csWidth, height: self.view.frame.height + 2))
+        csImageView.image = csImage
+        self.view.addSubview(csImageView)
+//        let costraintAlignRight = NSLayoutConstraint(item: csImageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+//        csImageView.addConstraint(costraintAlignRight)
         
         self.view.isUserInteractionEnabled = false
     }

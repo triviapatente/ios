@@ -118,7 +118,7 @@ class TPNavigationController: UINavigationController {
                 self.performSegue(withIdentifier: "legislation_segue", sender: ["type": type, "date": serverDate!.timeIntervalSince1970])
             }
         } else {
-//            type.setLastDate(lastTS: serverDate!.timeIntervalSince1970)
+            type.setLastDate(lastTS: serverDate!.timeIntervalSince1970)
         }
     }
     
