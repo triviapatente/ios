@@ -25,4 +25,10 @@ class Strings {
     static let review_pop_positive_msg = "Ti va di comunicarlo ai dubbiosi?"
     static let review_pop_positive_btn = "Certo! 😍"
     static let review_pop_negative_btn = "Certo! 💪🏻"
+    
+    // Legislation update popover
+    static let legislation_pop_privacy_update_1 = "Abbiamo aggiornato la " // 'Privacy Policy' diventa link
+    static let legislation_pop_privacy_update_2 = "Privacy Policy"
+    static let legislation_pop_terms_update_1 = "Abbiamo aggiornato i " // 'Termini e Condizioni' diventa link
+    static let legislation_pop_terms_update_2 = "Termini e Condizioni"
 }

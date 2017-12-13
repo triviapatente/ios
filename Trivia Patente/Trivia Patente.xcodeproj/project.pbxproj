@@ -216,6 +216,7 @@
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
+		F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */; };
 		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
 		F4F335511FDEBDC00094A849 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F335501FDEBDC00094A849 /* FormViewController.swift */; };
 /* End PBXBuildFile section */
@@ -461,6 +462,7 @@
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformativePopoverViewController.swift; sourceTree = "<group>"; };
 		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		F4F335501FDEBDC00094A849 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1384,6 +1386,7 @@
 				F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */,
 				F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */,
 				F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */,
+				F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -2048,6 +2051,7 @@
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */,
 				8B8EEA231DFB292A003608AA /* TPMessageListResponse.swift in Sources */,
+				F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */,
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BDEDEEF1E1D5BF600063FB2 /* HeaderTableViewCell.swift in Sources */,
 				8BCF8C9A1DB6A6BA00EC637C /* Preferences.swift in Sources */,

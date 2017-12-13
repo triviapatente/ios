@@ -13,6 +13,8 @@ class TPConnectResponse: TPResponse {
     var invitesCount : Int?
     var globalRankPosition : Int?
     var friendsRankPosition : Int?
+    var privacyPolicyLastUpdate: Date?
+    var termsLastUpdate: Date?
     var preferences : Preferences!
     var stats : [Category] = []
     var fbInfos : FBInfos!
@@ -22,6 +24,8 @@ class TPConnectResponse: TPResponse {
         invitesCount = json["invites"].int
         globalRankPosition = json["global_rank_position"].int
         friendsRankPosition = json["friends_rank_position"].int
+        privacyPolicyLastUpdate = json["privacy_policy_last_update"].stringValue.dateFromISO8601
+        termsLastUpdate = json["terms_and_conditions_last_update"].stringValue.dateFromISO8601
         preferences = Preferences(json: json["preferences"])
         if let rawStats = json["stats"].array {
             for item in rawStats {

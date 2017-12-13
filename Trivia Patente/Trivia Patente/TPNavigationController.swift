@@ -12,6 +12,7 @@ import SideMenu
 enum PopoverType {
     case lucky
     case review
+    case privacyUpdate, termsUpdate
     
     var shouldShow : Bool? {
         switch self {
@@ -19,6 +20,8 @@ enum PopoverType {
                 return UserDefaults.standard.value(forKey: Constants.kLuckyPopShouldShowTS) as? Bool
             case .review:
                 return UserDefaults.standard.value(forKey: Constants.kReviewPopShouldShowTS) as? Bool
+            default:
+                return false
         }
     }
     
@@ -28,6 +31,12 @@ enum PopoverType {
                 return UserDefaults.standard.value(forKey: Constants.kLastLuckyPopTS) as? TimeInterval
             case .review:
                 return UserDefaults.standard.value(forKey: Constants.kLastReviewPopTS) as? TimeInterval
+            case .privacyUpdate:
+                return UserDefaults.standard.value(forKey: Constants.kLastPrivacyPopTS) as? TimeInterval
+            case .termsUpdate:
+                return UserDefaults.standard.value(forKey: Constants.kLastTermsPopTS) as? TimeInterval
+            default:
+                return nil
         }
     }
     
@@ -37,6 +46,8 @@ enum PopoverType {
                 return Double(60*60*24*13) // 13 days
             case .review:
                 return Double(60*60*24*17) // 17 days
+            default:
+                return 0.0
         }
     }
     
@@ -46,17 +57,22 @@ enum PopoverType {
                 return UserDefaults.standard.set(lastTS, forKey: Constants.kLastLuckyPopTS)
             case .review:
                 return UserDefaults.standard.set(lastTS, forKey: Constants.kLastReviewPopTS)
+            case .privacyUpdate:
+                return UserDefaults.standard.set(lastTS, forKey: Constants.kLastPrivacyPopTS)
+            case .termsUpdate:
+                return UserDefaults.standard.set(lastTS, forKey: Constants.kLastTermsPopTS)
+            default: return
         }
     }
     
     func setShoudShow(show: Bool) {
         switch self {
-        case .lucky:
-            return UserDefaults.standard.set(show, forKey: Constants.kLuckyPopShouldShowTS)
-        case .review:
-            return UserDefaults.standard.set(show, forKey: Constants.kReviewPopShouldShowTS)
+            case .lucky:
+                return UserDefaults.standard.set(show, forKey: Constants.kLuckyPopShouldShowTS)
+            case .review:
+                return UserDefaults.standard.set(show, forKey: Constants.kReviewPopShouldShowTS)
+            default: return
         }
-        
     }
 }
 
@@ -94,6 +110,16 @@ class TPNavigationController: UINavigationController {
         }
         
         self.checkAppVersion()
+    }
+    
+    func handleLegislationUpdate(serverDate: Date?, type: PopoverType) {
+        if let last = type.lastTS {
+            if last != serverDate?.timeIntervalSince1970 {
+                self.performSegue(withIdentifier: "legislation_segue", sender: ["type": type, "date": serverDate!.timeIntervalSince1970])
+            }
+        } else {
+//            type.setLastDate(lastTS: serverDate!.timeIntervalSince1970)
+        }
     }
     
     func checkAppVersion() {
@@ -176,6 +202,8 @@ class TPNavigationController: UINavigationController {
                             self.showLuckyPopover(automatic: true)
                         case .review:
                             self.showReviewPopover(automatic: true)
+                        default:
+                            return
                         }
                         
                     }
@@ -273,6 +301,18 @@ class TPNavigationController: UINavigationController {
         if let segueId = segue.identifier
         {
             switch segueId {
+            case "legislation_segue":
+                if let data = sender as? Dictionary<String, Any>
+                {
+                    let type = data["type"] as? PopoverType
+                    let date = data["date"] as? TimeInterval
+                    let modal = (segue.destination as! InformativePopoverViewController)
+                    modal.type = type!
+                    modal.dismissCallback = { () -> Void in
+                        type!.setLastDate(lastTS: date!)
+                    }
+                }
+                break
             case "lucky_segue":
                 if automaticTriggerForLuckyPop
                 {

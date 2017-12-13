@@ -99,6 +99,9 @@ class MainViewController: TPNormalViewController {
                     UIViewController.goToFirstAccess(from: self)
                 } else {
                     self.setHints(candidateResponse: response)
+                    let navController = self.navigationController as! TPNavigationController
+                    navController.handleLegislationUpdate(serverDate: response!.privacyPolicyLastUpdate, type: .privacyUpdate)
+                    navController.handleLegislationUpdate(serverDate: response!.termsLastUpdate, type: .termsUpdate)
                 }
             }
         }

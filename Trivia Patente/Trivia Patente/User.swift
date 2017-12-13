@@ -105,6 +105,9 @@ open class User: CommonPK {
         name = json[kUserNameKey].string
         position = json[kPositionKey].int32
         last_game_won = json[kLastGameWonKey].bool
+        if last_game_won == nil {
+            last_game_won = true
+        }
         internalPosition = json[kInternalPositionKey].int32
     }
     public init(username : String?, id : Int32?, avatar : String? = nil, name : String? = nil, surname : String? = nil, score : Int? = nil) {

@@ -41,6 +41,7 @@ class Colors {
     static let access_bottom_color = UIColor(red: 0/255, green: 192/255, blue: 255/255, alpha: 1)
     
     static let button_highlighted_color = UIColor(red: 3/255, green: 97/255, blue: 188/255, alpha: 1)
+    static let text_highlight = UIColor(red: 132/255, green: 249/255, blue: 182/255, alpha: 1)
     
     // get gradient for access controllers
     static func accessGradientLayer(view: UIView) -> CAGradientLayer
