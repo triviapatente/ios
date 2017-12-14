@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class RoundDetailsViewController: TPGameViewController {
     var game : Game! {
@@ -27,6 +28,9 @@ class RoundDetailsViewController: TPGameViewController {
     var sectionBar : TPSectionBar!
     var emptyView : RoundDetailsEmptyViewController!
     var gameCancelled : Bool = false
+    
+    var interstitial: GADInterstitial!
+    
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
     }
@@ -48,7 +52,7 @@ class RoundDetailsViewController: TPGameViewController {
             self.scoreView.view.isHidden = false
             self.decideToShowEmptyView()
             self.reloadData()
-
+            self.checkForBanner()
         }
     }
     var questionMap : [String: [Quiz]] = [:] {
@@ -140,6 +144,11 @@ class RoundDetailsViewController: TPGameViewController {
     var newGameResponse : TPNewGameResponse!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
+        
         self.join_room()
         let cellNib = UINib(nibName: "RoundDetailsTableViewCell", bundle: .main)
         let gameEndedNib = UINib(nibName: "GameEndedTableViewCell", bundle: .main)
@@ -206,6 +215,18 @@ class RoundDetailsViewController: TPGameViewController {
             self.headerView.category = self.response.categories.filter({$0.id == round.catId}).first!
             self.headerView.roundLabel.text = "Round \(page + 1)"
         }
+    }
+    // banner
+    func checkForBanner() {
+        guard game.ended && !game.incomplete && !interstitial.hasBeenUsed else { return }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (t) in
+            if self.interstitial.isReady {
+                self.interstitial.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+        }
+        
     }
 }
 extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSource {

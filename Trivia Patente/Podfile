@@ -12,6 +12,7 @@ target 'Trivia Patente' do
   pod 'Charts', '3.0.3'
   pod 'SideMenu'
   pod 'AlamofireImage', '~> 3.3'
+  pod 'Google-Mobile-Ads-SDK'
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths
