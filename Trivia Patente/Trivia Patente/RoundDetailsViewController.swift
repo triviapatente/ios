@@ -218,7 +218,7 @@ class RoundDetailsViewController: TPGameViewController {
     }
     // banner
     func checkForBanner() {
-        guard game.ended && !game.incomplete && !interstitial.hasBeenUsed else { return }
+        guard game.ended && !game.incomplete && !self.gameCancelled && !interstitial.hasBeenUsed else { return }
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (t) in
             if self.interstitial.isReady {
                 self.interstitial.present(fromRootViewController: self)
