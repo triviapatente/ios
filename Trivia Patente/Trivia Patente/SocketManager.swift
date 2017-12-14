@@ -32,9 +32,6 @@ class SocketManager {
                 
                 handler()
             }
-            socket.on("reconnect") { (data, ack) in
-                print("a")
-            }
             socket.on("error") { (data, ack) in
                 self.socket.off("error")
                 errorHandler()

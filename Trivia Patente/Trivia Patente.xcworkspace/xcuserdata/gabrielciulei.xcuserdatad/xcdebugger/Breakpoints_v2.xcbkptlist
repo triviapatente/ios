@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/SocketManager.swift"
-            timestampString = "534975918.373482"
+            timestampString = "534978336.291592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/SocketManager.swift"
-            timestampString = "534975918.374034"
+            timestampString = "534978336.291686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -326,16 +326,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/HTTPManager.swift"
-            timestampString = "534975918.374467"
+            timestampString = "534978336.291801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "request(url:method:params:auth:handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/SocketGame.swift"
+            timestampString = "534978336.296285"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "leave(handler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/SocketGame.swift"
+            timestampString = "534978340.671124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "listen_user_left_game(handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

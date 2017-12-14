@@ -12,8 +12,6 @@
 		8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */; };
 		8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */; };
 		8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */; };
-		8B1CA4871FE2C748006474D1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CA4861FE2C748006474D1 /* FirebaseManager.swift */; };
-		8B1CA4891FE2C932006474D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B1CA4881FE2C932006474D1 /* GoogleService-Info.plist */; };
 		8B1DC63D1E026D5C00F7BEE0 /* UserListMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC63C1E026D5C00F7BEE0 /* UserListMode.swift */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
@@ -254,9 +252,6 @@
 		8B0D88FC1DDC638D001B4C3A /* TPTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTokenResponse.swift; sourceTree = "<group>"; };
 		8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankSearchResponse.swift; sourceTree = "<group>"; };
 		8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRoundViewController.swift; sourceTree = "<group>"; };
-		8B1CA4861FE2C748006474D1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		8B1CA4881FE2C932006474D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8B1CA48A1FE2D056006474D1 /* Trivia Patente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trivia Patente.entitlements"; sourceTree = "<group>"; };
 		8B1DC63C1E026D5C00F7BEE0 /* UserListMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListMode.swift; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
@@ -910,7 +905,6 @@
 				8B5132EC1DBB5EE500143497 /* http */,
 				8B5133231DBC027000143497 /* SessionManager.swift */,
 				8B4551D91E068BA8008285D4 /* FBManager.swift */,
-				8B1CA4861FE2C748006474D1 /* FirebaseManager.swift */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -1630,7 +1624,6 @@
 		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
 			isa = PBXGroup;
 			children = (
-				8B1CA48A1FE2D056006474D1 /* Trivia Patente.entitlements */,
 				F49716A11F9FE09400ED4D7B /* terms */,
 				8B5132D61DBB5B8700143497 /* auth */,
 				8B5132D41DBB5B5300143497 /* base */,
@@ -1644,7 +1637,6 @@
 				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
 				A9FD52851DA16E96005DFE5D /* Info.plist */,
-				8B1CA4881FE2C932006474D1 /* GoogleService-Info.plist */,
 				8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */,
 			);
 			path = "Trivia Patente";
@@ -1772,12 +1764,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4Z4MA22Y2R;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
-						SystemCapabilities = {
-							com.apple.Push = {
-								enabled = 1;
-							};
-						};
+						ProvisioningStyle = Automatic;
 					};
 					A9FD52891DA16E96005DFE5D = {
 						CreatedOnToolsVersion = 8.0;
@@ -1839,7 +1826,6 @@
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */,
 				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
-				8B1CA4891FE2C932006474D1 /* GoogleService-Info.plist in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
 				8B5EE0FB1DD76F1100745A54 /* WrongAnswerTableViewCell.xib in Resources */,
@@ -1946,28 +1932,22 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2136,7 +2116,6 @@
 				8BCF8C981DB6A6BA00EC637C /* Message.swift in Sources */,
 				8BE20C641DD9E43D0048DA0A /* TPPreferenceChangeResponse.swift in Sources */,
 				F4A9B2CF1FB348F100910D20 /* UIImage.swift in Sources */,
-				8B1CA4871FE2C748006474D1 /* FirebaseManager.swift in Sources */,
 				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
 				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
 				F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */,
@@ -2416,10 +2395,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Trivia Patente/Trivia Patente.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4Z4MA22Y2R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2429,8 +2406,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.triviapatente.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a9d1fbc-cb39-473b-aca1-79e28d3a0ef3";
-				PROVISIONING_PROFILE_SPECIFIER = "TriviaPatente iOS";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
@@ -2444,10 +2419,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Trivia Patente/Trivia Patente.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4Z4MA22Y2R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2457,8 +2430,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.triviapatente.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "082bd14a-e7b4-4610-8352-4e7acad1cbbf";
-				PROVISIONING_PROFILE_SPECIFIER = "TriviaPatente App Store";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
