@@ -20,7 +20,7 @@ extension UIViewController : TPViewController {
     }
 
     class func root() -> UIViewController {
-        if let _ = SessionManager.getToken() {
+        if SessionManager.isLogged() {
             return mainController()
         } else {
             return firstAccessController()
@@ -65,6 +65,12 @@ extension UIViewController : TPViewController {
             }
 
         }
+    }
+    class func windowTopController() -> UIViewController? {
+        if let root = UIApplication.shared.keyWindow?.rootViewController {
+            return root.presentedViewController
+        }
+        return nil
     }
     class func getVisible(_ rootViewController: UIViewController? = nil) -> UIViewController? {
         var root = rootViewController

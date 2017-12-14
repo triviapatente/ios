@@ -13,13 +13,31 @@ import SwiftyJSON
 class SocketManager {
     static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(false)])
     
-    class func connect(handler : @escaping () -> Void) {
+    class func onDisconnect(callback: @escaping (() -> Void)) {
+        socket.on("disconnect") { (data, ack) in
+            callback()
+        }
+    }
+    
+    class func connect(handler : @escaping () -> Void, errorHandler: @escaping () -> Void) {
         if socket.status == .connected {
             handler()
         } else {
             socket.on("connect") { (data, ack) in
                 self.socket.off("connect")
+                self.socket.off("error")
+                if let noConn = UIViewController.windowTopController() as? NoConnectionViewController {
+                    noConn.dismiss(animated: true, completion: nil)
+                }
+                
                 handler()
+            }
+            socket.on("reconnect") { (data, ack) in
+                print("a")
+            }
+            socket.on("error") { (data, ack) in
+                self.socket.off("error")
+                errorHandler()
             }
             socket.connect()
         }

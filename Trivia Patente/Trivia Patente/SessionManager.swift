@@ -42,6 +42,9 @@ class SessionManager {
         defaults.removeObject(forKey: kUserKey)
         defaults.synchronize()
     }
+    class func isLogged() -> Bool {
+        return getToken() != nil
+    }
     class func logout(from sender: UIViewController, cb : ((TPAuthResponse) -> Void)? = nil) {
         let auth = HTTPAuth()
         auth.logout { (response : TPAuthResponse) in

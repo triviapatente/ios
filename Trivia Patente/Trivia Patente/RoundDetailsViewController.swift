@@ -53,6 +53,7 @@ class RoundDetailsViewController: TPGameViewController {
             self.decideToShowEmptyView()
             self.reloadData()
             self.checkForBanner()
+            self.scrollToLastSection()
         }
     }
     var questionMap : [String: [Quiz]] = [:] {
@@ -60,6 +61,10 @@ class RoundDetailsViewController: TPGameViewController {
             self.sectionBar.questionMap = questionMap
             self.reloadData()
         }
+    }
+    func scrollToLastSection() {
+//        self.tableView.scrollToRow(at: IndexPath.init(row: 0, section: self.numberOfSections(in: self.tableView) - 1), at: .none, animated: true)
+        self.selectPage(index: self.numberOfSections(in: self.tableView) - 1, animated: true)
     }
     func reloadData() {
         if response != nil {
@@ -235,6 +240,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         let height = self.tableView.bounds.size.height
         return Int(ceil(y/height))
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page = currentPage
         if page < self.questionMap.count || (game.isEnded() && page == self.questionMap.count){
@@ -336,11 +342,15 @@ extension RoundDetailsViewController : TPSectionBarDelegate {
     }
     
     func selectPage(index: Int, animated: Bool = true) {
+        if  (self.tableView.indexPathForSelectedRow == nil) || self.tableView.indexPathForSelectedRow!.row != index {
+            self.sectionBar.tableView.selectRow(at: IndexPath.init(row: index, section: 0), animated: true, scrollPosition: .none)
+        }
         if currentPage != index {
             let indexPath = IndexPath(row: 0, section: index)
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: animated)
             self.configureHeader(page: index)
         }
+        
     }
 }
 extension RoundDetailsViewController {
@@ -386,7 +396,6 @@ extension RoundDetailsViewController {
                 self.reloadMap()
                 self.reloadData()
                 self.selectPage(index: curPage, animated: false)
-                self.sectionBar.tableView.selectRow(at: IndexPath.init(row: curPage, section: 0), animated: true, scrollPosition: .none)
             }
         }
         
