@@ -32,6 +32,7 @@ class MainViewController: TPNormalViewController {
             }
         }
     }
+    static var pushGame : Game?
     
     var buttonClickListener : ((TPMainButton) -> Void)!
     let socketAuth = SocketAuth()
@@ -65,6 +66,9 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let _ = SessionManager.currentUser {
+            FirebaseManager.register()
+        }
         
         self.playButton.initValues(imageName: "car", title: "Nuova partita", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
@@ -96,6 +100,10 @@ class MainViewController: TPNormalViewController {
             loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
         }
         SocketManager.connect {
+            if let _ = MainViewController.pushGame {
+                self.performSegue(withIdentifier: "pushGameSegue", sender: self)
+                return
+            }
             self.recentGamesView.retrieveRecentGames()
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
                 if showLoader { self.loadingView.hide(animated: true) }
@@ -162,6 +170,11 @@ class MainViewController: TPNormalViewController {
         let destination = segue.destination
         if let identifier = segue.identifier {
             switch identifier {
+            case "pushGameSegue":
+                    (destination as! WaitOpponentViewController).game = MainViewController.pushGame
+                    MainViewController.pushGame = nil
+                    
+                    break
                 case "play":
                     self.playButton = destination as! TPMainButton
                     break

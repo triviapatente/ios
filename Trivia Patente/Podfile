@@ -5,6 +5,8 @@ target 'Trivia Patente' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   # Pods for Trivia Patente
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
   pod 'Alamofire', '~> 4.0'
   pod 'Socket.IO-Client-Swift', '~> 12.0.0' # Or latest version

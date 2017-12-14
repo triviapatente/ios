@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,6 +109,7 @@
                         <segue destination="Ygw-Xp-Pcv" kind="show" identifier="start_game_segue" id="T6L-da-TBG"/>
                         <segue destination="83K-i8-TFz" kind="show" identifier="chat_segue" id="jBo-cE-f6v"/>
                         <segue destination="89w-gJ-8kN" kind="show" identifier="alpha_segue" id="GoM-GB-ghT"/>
+                        <segue destination="HuC-KX-tEA" kind="show" identifier="pushGameSegue" id="Q7r-6P-ZAj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,7 +268,7 @@ Fallo sapere ai tuoi amici 😉</string>
                 <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="WaitOpponent" id="Ygw-Xp-Pcv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qvu-0M-4Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="-50"/>
+            <point key="canvasLocation" x="1414" y="-425"/>
         </scene>
         <!--ChatViewController-->
         <scene sceneID="gFU-Cx-q46">
@@ -1286,6 +1287,14 @@ Fallo sapere ai tuoi amici 😉</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1993" y="-1920"/>
+        </scene>
+        <!--WaitOpponent-->
+        <scene sceneID="uyG-Bf-dqE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="WaitOpponent" id="HuC-KX-tEA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3bU-hu-1z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="-477"/>
         </scene>
     </scenes>
     <resources>

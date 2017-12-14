@@ -13,9 +13,12 @@ class HTTPManager {
     let REQUEST_TIMEOUT = 6.0
     
     class func getBaseURL() -> String {
-        return "http://192.168.1.244:8000"
+        return "http://192.168.1.100:8000"
     }
-    
+    func registerForPush(token : String, handler: @escaping (TPResponse) -> Void) {
+        self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": UIDevice.current.identifierForVendor!.uuidString], handler: handler)
+    }
+ 
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
         var headers = HTTPHeaders()
         if auth == true {

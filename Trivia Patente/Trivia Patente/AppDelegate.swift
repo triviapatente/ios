@@ -8,9 +8,31 @@
 
 import UIKit
 import Alamofire
+import UserNotifications
+import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        FirebaseManager.obtainToken(token: fcmToken)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if FirebaseManager.canDisplayNotification(notification: notification) && SessionManager.currentUser != nil {
+            completionHandler([.sound, .alert, .badge])
+        }
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        MainViewController.pushGame = FirebaseManager.getGameFrom(notification: response.notification)
+        MainViewController.pushGame?.opponent = FirebaseManager.getOpponentFrom(notification: response.notification)
+        let application = UIApplication.shared
+        if application.applicationState == .active || application.applicationState == .background {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let main = storyboard.instantiateInitialViewController()
+            self.changeRootViewController(with: main)
+        }
+        completionHandler()
+    }
 
     var window: UIWindow?
 
@@ -20,8 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         self.window?.rootViewController = UIViewController.root()
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+        FirebaseManager.initialize(delegate: self)
         return true
+    }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
+        if let token = Messaging.messaging().fcmToken {
+            FirebaseManager.obtainToken(token: token)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
