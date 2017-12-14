@@ -8,9 +8,12 @@
 
 import UIKit
 import MBProgressHUD
+import GoogleMobileAds
+
 class PlayRoundViewController: TPGameViewController {
     var headerView : TPGameHeader!
     @IBOutlet var quizCollectionView : UICollectionView!
+    @IBOutlet weak var bannerView : GADBannerView!
     var round : Round!
     var category : Category!
     var opponent : User!
@@ -18,6 +21,7 @@ class PlayRoundViewController: TPGameViewController {
     var selectedQuizIndex = 0
     var loadingView : MBProgressHUD!
     var gameCancelled : Bool = false
+    
     
     var gameActions : TPGameActions! {
         didSet {
@@ -29,7 +33,6 @@ class PlayRoundViewController: TPGameViewController {
     
     let BORDER_LENGTH = CGFloat(30)
     
-    @IBOutlet var bannerView : UIView!
     @IBOutlet var questionButtons : [UIButton]!
     @IBAction func presentQuiz(sender : UIButton) {
         for i in 0..<questionButtons.count {
@@ -129,6 +132,13 @@ class PlayRoundViewController: TPGameViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // AD banner load
+        self.bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        self.bannerView.rootViewController = self
+        self.bannerView.delegate = self
+        self.bannerView.load(GADRequest())
+        
         configureView()
         self.setDefaultBackgroundGradient()
         self.headerView.round = round
@@ -252,5 +262,40 @@ extension PlayRoundViewController {
             self.game.incomplete = true
             cb(response)
         }
+    }
+}
+
+extension PlayRoundViewController : GADBannerViewDelegate {
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
     }
 }

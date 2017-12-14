@@ -26,6 +26,7 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - Google-Mobile-Ads-SDK (7.24.1)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/Logger (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Charts (= 3.0.3)
   - Firebase/Core
   - Firebase/Messaging
+  - Google-Mobile-Ads-SDK
   - MBProgressHUD (~> 1.0.0)
   - SideMenu
   - Socket.IO-Client-Swift (~> 12.0.0)
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 69b1a5ac5f857ba6d5fd9d5fe794f4786dd5e579
   FirebaseInstanceID: 70c2b877e9338971b2429ea5a4293df6961aa44e
   FirebaseMessaging: 3dd86bfda2acb680b05c97f3f8ac566e9bb87b2a
+  Google-Mobile-Ads-SDK: ed8004a7265b424568dc84f3d2bbe3ea3fff958f
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -83,6 +86,6 @@ SPEC CHECKSUMS:
   StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
   SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
 
-PODFILE CHECKSUM: 351796a5afe3cf705f5970cc65ae29e89d95be37
+PODFILE CHECKSUM: a33575127a951d868e14256d80b1e9c0c6bde1e3
 
 COCOAPODS: 1.3.1

@@ -101,7 +101,7 @@ class WaitOpponentViewController: TPGameViewController {
     }
     func waitMessage(for state: RoundWaiting, opponent_online : Bool) -> String {
         guard opponent_online || state == .invite else {
-            return "Il tuo avversario è offline. Attendi che si ricolleghi per giocare!"
+            return "Il tuo avversario è offline. Spronalo a giocare 💪🏼"
         }
         switch(state) {
             case .game: return "Attendi che il tuo avversario finisca il turno!"
