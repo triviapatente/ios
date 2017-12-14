@@ -47,6 +47,7 @@ class GameEndedTableViewCell: UITableViewCell {
         didSet {
             self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString())"
             self.arrowImageView.image = self.arrowFor(increment: scoreIncrement)
+            self.titleLabel.text = self.titleFor(game: game)
         }
     }
     var users : [User]! {
