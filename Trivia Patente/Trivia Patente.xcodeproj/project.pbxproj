@@ -220,6 +220,8 @@
 		F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */; };
 		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
 		F4F335511FDEBDC00094A849 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F335501FDEBDC00094A849 /* FormViewController.swift */; };
+		F4FB497E1FE3229200DAFD92 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FB497D1FE3229200DAFD92 /* FirebaseManager.swift */; };
+		F4FB49801FE3239400DAFD92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4FB497F1FE322F000DAFD92 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -467,6 +469,8 @@
 		F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformativePopoverViewController.swift; sourceTree = "<group>"; };
 		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		F4F335501FDEBDC00094A849 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		F4FB497D1FE3229200DAFD92 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		F4FB497F1FE322F000DAFD92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +904,7 @@
 		8B5132E91DBB5D9E00143497 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				F4FB497D1FE3229200DAFD92 /* FirebaseManager.swift */,
 				8B5132F31DBB726700143497 /* responses */,
 				8B5132FB1DBB8B9500143497 /* socket */,
 				8B5132EC1DBB5EE500143497 /* http */,
@@ -1635,6 +1640,7 @@
 				8B42E8271DC63D4700C36DDA /* stats */,
 				8B5132DA1DBB5BC400143497 /* shared */,
 				A9FD52791DA16E96005DFE5D /* AppDelegate.swift */,
+				F4FB497F1FE322F000DAFD92 /* GoogleService-Info.plist */,
 				A9FD52821DA16E96005DFE5D /* LaunchScreen.storyboard */,
 				A9FD52851DA16E96005DFE5D /* Info.plist */,
 				8BA6BEB81DECCFBF00D9EB86 /* Assets.xcassets */,
@@ -1807,6 +1813,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FB49801FE3239400DAFD92 /* GoogleService-Info.plist in Resources */,
 				8B8EEA351DFC49C4003608AA /* LeftMessageTableViewCell.xib in Resources */,
 				8BE278A01DF4AD6000071DF2 /* GameEndedTableViewCell.xib in Resources */,
 				8B28D2771DCF610E00C65122 /* ShopItemTableViewCell.xib in Resources */,
@@ -1932,22 +1939,28 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2132,6 +2145,7 @@
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
 				8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */,
+				F4FB497E1FE3229200DAFD92 /* FirebaseManager.swift in Sources */,
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,
 				8B5133011DBBA69B00143497 /* SocketAuth.swift in Sources */,
 				8BDB000B1DFC543F0088E8A2 /* UITextView.swift in Sources */,

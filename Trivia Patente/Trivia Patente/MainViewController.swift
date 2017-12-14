@@ -67,6 +67,7 @@ class MainViewController: TPNormalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let _ = SessionManager.currentUser {
+            
             FirebaseManager.register()
         }
         
