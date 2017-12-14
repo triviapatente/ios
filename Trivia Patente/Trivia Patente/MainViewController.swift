@@ -35,6 +35,7 @@ class MainViewController: TPNormalViewController {
     
     var buttonClickListener : ((TPMainButton) -> Void)!
     let socketAuth = SocketAuth()
+    let socketGame = SocketGame()
     let httpGame = HTTPGame()
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,7 +76,11 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        RecentGameHandler.start(delegate: self.recentGamesView)
+        RecentGameHandler.start(delegate: self.recentGamesView, callback: { () in
+            self.socketGame.listen_recent_games(handler: { (event) in
+                self.recentGamesView.retrieveRecentGames()
+            })
+        })
 
         connectToSocket(showLoader: SocketManager.getStatus() != .connected)
         SocketManager.leave(type: "game")

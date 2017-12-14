@@ -58,12 +58,13 @@ class RecentGameHandler: TPResponse {
         delegate.add(item: game, position: index)
         self.games.insert(game, at: index)
     }
-    class func start(delegate : TPExpandableTableViewCellDelegate) {
+    class func start(delegate : TPExpandableTableViewCellDelegate, callback: (()->Void)?) {
         self.delegate = delegate
         guard started != true else {
             return
         }
         self.started = true
+        if let cb = callback { cb() }
     }
     class func stop() {
         self.started = false
