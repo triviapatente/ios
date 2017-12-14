@@ -72,7 +72,7 @@ class GameEndedTableViewCell: UITableViewCell {
         return UIImage(named: name)!
     }
     func titleFor(game : Game) -> String {
-        if isCancelled && game.ended == true && game.started == false {
+        if (isCancelled && game.ended == true && game.started == false) || (game.ended && (scoreIncrement == 0 || scoreIncrement == nil)) {
             return "Partita annullata"
         } else if isDrew && game.winnerId == nil {
             return "Hai pareggiato!"

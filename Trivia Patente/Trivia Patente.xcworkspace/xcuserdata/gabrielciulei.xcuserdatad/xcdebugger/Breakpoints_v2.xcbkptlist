@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/MainViewController.swift"
-            timestampString = "534876253.904088"
+            timestampString = "534947212.686761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "connectToSocket(showLoader:)"
             landmarkType = "7">
          </BreakpointContent>
