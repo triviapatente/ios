@@ -11,9 +11,14 @@ import UIKit
 
 class TPErrorView : UIViewController {
     @IBOutlet var errorTextView : TPTextView!
+    private var errorStringQueue : String = ""
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.view.mediumRounded()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.errorTextView.text = self.errorStringQueue
     }
     var container : UIView? {
         get {
@@ -24,6 +29,10 @@ class TPErrorView : UIViewController {
         self.container!.isHidden = true
     }
     func set(error : String) {
+        if errorTextView == nil { // view not istantiated yet
+            self.errorStringQueue = error
+            return
+        }
         errorTextView.text = error
         UIView.animate(withDuration: 0.2, animations: {
             self.container!.isHidden = false

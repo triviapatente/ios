@@ -217,6 +217,7 @@
 		F4A9B2CF1FB348F100910D20 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2CE1FB348F100910D20 /* UIImage.swift */; };
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
+		F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
 		F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */; };
 		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
@@ -466,6 +467,7 @@
 		F4A9B2CE1FB348F100910D20 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
+		F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformativePopoverViewController.swift; sourceTree = "<group>"; };
 		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -1090,6 +1092,7 @@
 				8B5EE1001DD90A6500745A54 /* cells */,
 				8B5EE0FE1DD90A5F00745A54 /* SettingsViewController.swift */,
 				8B5EE11B1DD91F1000745A54 /* models */,
+				F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -2136,6 +2139,7 @@
 				8B1CA4871FE2C748006474D1 /* FirebaseManager.swift in Sources */,
 				8BA6BEB21DECA27300D9EB86 /* TPQuizListResponse.swift in Sources */,
 				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
+				F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
 				F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,

@@ -99,7 +99,7 @@ class MainViewController: TPNormalViewController {
             loadingView.mode = .indeterminate
             loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
         }
-        SocketManager.connect {
+        SocketManager.connect(handler: {
             if let _ = MainViewController.pushGame {
                 self.performSegue(withIdentifier: "pushGameSegue", sender: self)
                 return
@@ -115,8 +115,25 @@ class MainViewController: TPNormalViewController {
                     self.setHints(candidateResponse: response)
                     let navController = self.navigationController as! TPNavigationController
                     navController.handleLegislationUpdate(serverDate: response!.privacyPolicyLastUpdate, type: .privacyUpdate)
-                    navController.handleLegislationUpdate(serverDate: response!.termsLastUpdate, type: .termsUpdate)
+                    navController.handleLegislationUpdate(serverDate:
+                        response!.termsLastUpdate, type: .termsUpdate)
                 }
+            }
+        }) {
+            MainViewController.handleSocketDisconnection()
+        }
+    }
+    
+    class func handleSocketDisconnection()
+    {
+        let noConnConntroller = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "no_connection_controller")
+        noConnConntroller.modalTransitionStyle = .crossDissolve
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            if let _ = topController as? NoConnectionViewController {} else {
+                topController.present(noConnConntroller, animated: true, completion: nil)
             }
         }
     }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -438,6 +439,53 @@
             </objects>
             <point key="canvasLocation" x="2084" y="700.29985007496259"/>
         </scene>
+        <!--No Connection View Controller-->
+        <scene sceneID="JzP-Ux-IfN">
+            <objects>
+                <viewController storyboardIdentifier="no_connection_controller" id="xyf-bh-d9Y" customClass="NoConnectionViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jts-uA-06j"/>
+                        <viewControllerLayoutGuide type="bottom" id="gO3-up-Cuz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jr4-ci-9ce">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctj-HU-OQc">
+                                <rect key="frame" x="36" y="254.5" width="303" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="E9F-uj-M3R"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Mfa-pn-7p2" kind="embed" identifier="error_view" id="h1S-jR-ODe"/>
+                                </connections>
+                            </containerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LuA-e2-3VR">
+                                <rect key="frame" x="169" y="377.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="primary_color"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ctj-HU-OQc" secondAttribute="trailing" constant="20" id="2B0-du-fuM"/>
+                            <constraint firstItem="LuA-e2-3VR" firstAttribute="top" secondItem="ctj-HU-OQc" secondAttribute="bottom" constant="35" id="Bwq-2f-PO3"/>
+                            <constraint firstItem="LuA-e2-3VR" firstAttribute="centerX" secondItem="Jr4-ci-9ce" secondAttribute="centerX" id="ESz-Qx-roE"/>
+                            <constraint firstItem="ctj-HU-OQc" firstAttribute="centerY" secondItem="Jr4-ci-9ce" secondAttribute="centerY" constant="-35" id="eI4-UX-R2v"/>
+                            <constraint firstItem="ctj-HU-OQc" firstAttribute="leading" secondItem="Jr4-ci-9ce" secondAttribute="leadingMargin" constant="20" id="hvG-dP-LL8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k2c-58-s1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2978" y="695"/>
+        </scene>
+        <!--TPErrorView-->
+        <scene sceneID="xk8-lo-V0i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FirstAccess" referencedIdentifier="TPErrorView" id="Mfa-pn-7p2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9W2-J2-dJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3603" y="694"/>
+        </scene>
         <!--TPErrorView-->
         <scene sceneID="Jyz-OL-1nf">
             <objects>
@@ -685,6 +733,9 @@
         <image name="triangle-white" width="9" height="5"/>
         <namedColor name="button_default_color">
             <color red="0.0080000003799796104" green="0.43500000238418579" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary_color">
+            <color red="0.0" green="0.66699999570846558" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
