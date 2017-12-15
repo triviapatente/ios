@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  Trivia Patente
 //
@@ -105,9 +105,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     func shareAppLink(controller: UIViewController)
     {
-        let textToShare = "Scarica anche tu TriviaPatente e prova a battermi https://shesh.com"
+        let textToShare = "Scarica anche tu TriviaPatente e prova a battermi https://www.triviapatente.it/#download"
         
-        if let myWebsite = NSURL(string: "http://www.apple.com/") {
+        if let myWebsite = NSURL(string: "https://www.triviapatente.it/#download") {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             

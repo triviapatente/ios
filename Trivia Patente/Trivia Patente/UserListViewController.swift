@@ -132,7 +132,6 @@ class UserListViewController: TPNormalViewController {
     func reloadTable() {
         self.tableView.reloadData()
         self.tableView.tableFooterView = self.footerView
-
     }
     
     var searching : Bool {
@@ -147,6 +146,8 @@ class UserListViewController: TPNormalViewController {
     
     let rankHandler = HTTPRank()
     let gameHandler = HTTPGame()
+    
+    var bottomActivityEnabled = true
     
     func showFacebookView() {
         self.friendsResponse = TPRankResponse(error: nil, statusCode: 200, success: true)
@@ -183,6 +184,16 @@ class UserListViewController: TPNormalViewController {
         }
         return nil
     }
+    func getMyInternalPosition() -> Int32?
+    {
+        if let users = getContextualUsers()
+        {
+            if let me = users.first(where: { $0.isMe() }) {
+                return me.internalPosition
+            }
+        }
+        return nil
+    }
     func scrollToMyPosition() {
         if let users = self.getContextualUsers()
         {
@@ -191,17 +202,22 @@ class UserListViewController: TPNormalViewController {
             }
         }
     }
-    func loadData() {
+    func hideFooterView(hide: Bool) {
+        if let footer = self.tableView.tableFooterView {
+            footer.isHidden = hide
+        }
+    }
+    func loadData(forceTopList : Bool = false) {
         let loadingView = MBProgressHUD.showAdded(to: self.tableView, animated: true)
-        self.tableView.tableFooterView!.isHidden = true
+        self.hideFooterView(hide: true)
         self.tableView.isUserInteractionEnabled = false
         let callback = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
-            self.tableView.tableFooterView!.isHidden = true
+            self.hideFooterView(hide: true)
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianResponse = response
-                    if let myPos = self.getMyPosition() {
+                    if let myPos = self.getMyInternalPosition() {
                         if myPos > 20 { self.enableStairs() }
                     }
                     self.scrollToMyPosition()
@@ -215,7 +231,9 @@ class UserListViewController: TPNormalViewController {
         }
         
         if self.listType == .rank {
-            rankHandler.rank(scope: self.listScope, thresold: nil, direction: nil, handler: callback)
+            let t : Int32? = forceTopList ? 1 : nil
+            let dir : RankDirection? = forceTopList ? RankDirection.up : nil
+            rankHandler.rank(scope: self.listScope, thresold: t, direction: dir, handler: callback)
         } else {
             gameHandler.suggested(scope: self.listScope, handler: callback)
         }
@@ -342,6 +360,11 @@ class UserListViewController: TPNormalViewController {
         self.searchBar.showsBookmarkButton = true
         self.searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: UIControlState.normal)
     }
+    
+    func directionalLoadersState(enabled: Bool) {
+        self.tableView.refreshControl = enabled ? self.topRefreshControl : nil
+        self.bottomActivityEnabled = enabled
+    }
 
     func search(query: String) {
         self.dismissSearch()
@@ -383,7 +406,7 @@ class UserListViewController: TPNormalViewController {
     let minBottomRefreshTime : TimeInterval = 1
     var bottomIsRefreshing = false
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard self.listType == .rank && !self.bottomIsRefreshing && !self.searching else { return }
+        guard self.listType == .rank && !self.bottomIsRefreshing && !self.searching && self.bottomActivityEnabled else { return }
         
         // Use this 'canLoadFromBottom' variable only if you want to load from bottom iff content > table size
         let contentSize = scrollView.contentSize.height
@@ -463,6 +486,7 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
         return bgLabel
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rows = 0
         self.tableView.backgroundView = nil
         self.tableView.isScrollEnabled = true
         if let list = getContextualUsers() {
@@ -470,9 +494,10 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
                 self.tableView.backgroundView = noUsersFoundLabel()
                 self.tableView.isScrollEnabled = false
             }
-            return list.count
+            rows = list.count
         }
-        return 0
+        self.directionalLoadersState(enabled : rows != 0)
+        return rows
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
@@ -491,11 +516,13 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
         if self.stairsUp {
             searchBar.setImage(UIImage(named: "stairs_down"), for: .bookmark, state: .normal)
             self.stairsHoldMyPositionResults = self.getContextualUsers()
-            self.loadData()
+            self.loadData(forceTopList:  true)
         } else {
             searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: .normal)
             self.italianResponse!.users = self.stairsHoldMyPositionResults!
+            self.reloadTable()
             self.scrollToMyPosition()
+            
         }
         self.stairsUp = !self.stairsUp
     }
