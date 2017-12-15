@@ -1704,6 +1704,7 @@
 				A9FD52741DA16E95005DFE5D /* Resources */,
 				995481357A0A90A0FE8E756F /* [CP] Embed Pods Frameworks */,
 				F7BB0F67FBA249986B9BFD30 /* [CP] Copy Pods Resources */,
+				F4E65B571FE47D9800DBF337 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2014,6 +2015,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trivia PatenteUITests/Pods-Trivia PatenteUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F4E65B571FE47D9800DBF337 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 		F7BB0F67FBA249986B9BFD30 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
