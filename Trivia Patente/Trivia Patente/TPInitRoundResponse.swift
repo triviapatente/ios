@@ -32,12 +32,14 @@ class TPInitRoundResponse: TPResponse {
     var waiting_for : User? //se è settato, bisogna andare nella wait page se l'utente non sono io, nelle pagine dedicate se sono io
     var ended : Bool!
     var category : Category?
+    var winnerId : Int32?
     var opponent_online : Bool!
     override func load(json: JSON) {
         super.load(json: json)
         
         self.waiting = RoundWaiting.from(json: json["waiting"])
         self.ended = json["ended"].boolValue
+        self.winnerId = json["winner_id"].int32
         self.opponent_online = json["opponent_online"].boolValue
         self.category = Category(json: json["category"])
         if json["round"].exists() {

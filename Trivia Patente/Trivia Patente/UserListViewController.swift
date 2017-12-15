@@ -276,10 +276,14 @@ class UserListViewController: TPNormalViewController {
         return CGFloat(count) * self.tableView.rowHeight
     }
     var availableFooterHeight : CGFloat {
+        guard self.listType == .searchOpponent else { return 0.0 }
         let margin = self.tableView.frame.origin.y - self.control.frame.size.height
         return self.view.frame.size.height - self.tableHeight - self.control.frame.size.height - self.searchBar.frame.size.height - margin
     }
-    let FOOTER_MIN_HEIGHT = CGFloat(70)
+    var FOOTER_MIN_HEIGHT : CGFloat {
+        guard self.listType == .searchOpponent else { return 0.0 }
+        return 70.0
+    }
     var footerFrame : CGRect {
         let height = max(availableFooterHeight, FOOTER_MIN_HEIGHT)
         return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
@@ -295,19 +299,21 @@ class UserListViewController: TPNormalViewController {
         let buttonHeight = CGFloat(40)
         let buttonX = (footer.frame.size.width - buttonWidth) / 2
         let buttonY = (footer.frame.size.height - buttonHeight) / 2
-        let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
-        let button = UIButton(frame: buttonFrame)
-        button.mediumRounded()
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = Colors.green_default
-        button.setTitle("Invita i tuoi amici", for: .normal)
-        button.addTarget(self, action: #selector(inviteFriends), for: .touchUpInside)
-        footer.addSubview(button)
+        if self.listType == .searchOpponent {
+            let buttonFrame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
+            let button = UIButton(frame: buttonFrame)
+            button.mediumRounded()
+            button.setTitleColor(.white, for: .normal)
+            button.backgroundColor = Colors.green_default
+            button.setTitle("Invita i tuoi amici", for: .normal)
+            button.addTarget(self, action: #selector(inviteFriends), for: .touchUpInside)
+            footer.addSubview(button)
+    }
         if self.listType == .rank {
             self.bottomActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
             self.bottomActivityIndicator!.hidesWhenStopped = true
             let indicatorCenterX = self.tableView.frame.size.width / 2
-            let indicatorCenterY = buttonY + buttonHeight + 40
+            let indicatorCenterY = self.listType == .rank ? CGFloat(50.0) : buttonY + buttonHeight + 40
             self.bottomActivityIndicator!.center = CGPoint(x: indicatorCenterX, y: indicatorCenterY)
             
             footer.addSubview(self.bottomActivityIndicator!)
@@ -369,10 +375,8 @@ class UserListViewController: TPNormalViewController {
     func search(query: String) {
         self.dismissSearch()
         let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        self.tableView.tableFooterView!.isHidden = true
         let handler = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
-            self.tableView.tableFooterView!.isHidden = true
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianSearchResponse = response
@@ -430,9 +434,9 @@ class UserListViewController: TPNormalViewController {
             
             let endRefreshing = { (timer : Timer) in
                 // Reset the bottom inset to its original value
-                self.bottomIsRefreshing = false
-                scrollView.contentInset.bottom = previousScrollViewBottomInset
                 self.bottomActivityIndicator?.stopAnimating()
+                scrollView.contentInset.bottom = previousScrollViewBottomInset
+                self.bottomIsRefreshing = false
             }
             
             // loadMoreData function call

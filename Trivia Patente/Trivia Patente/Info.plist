@@ -45,12 +45,12 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) deve accedere alla tua fotocamera per scattare la foto</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) deve accedere alla tua libreria foto per poter usare l'immagine</string>
+	<string>$(PRODUCT_NAME) deve accedere alla tua libreria foto per poter usare l&apos;immagine</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

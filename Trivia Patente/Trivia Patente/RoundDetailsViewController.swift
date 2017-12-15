@@ -180,12 +180,15 @@ class RoundDetailsViewController: TPGameViewController {
         self.showToast(text: "Il tuo avversario ha abbandonato la partita, hai vinto!")
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if !(navigationController?.viewControllers)!.contains(self) {
-            // back button was pressed
-            if self.game.ended {
-                self.navigationController?.popToRootViewController(animated: animated)
+        if let nav = navigationController {
+            if !nav.viewControllers.contains(self) {
+                // back button was pressed
+                if self.game.ended {
+                    self.navigationController?.popToRootViewController(animated: animated)
+                }
             }
         }
+        
         super.viewWillDisappear(animated)
     }
     func height(for indexPath: IndexPath, ignoreExpanded: Bool = false) -> CGFloat {
@@ -399,5 +402,40 @@ extension RoundDetailsViewController {
             }
         }
         
+    }
+}
+
+extension RoundDetailsViewController : GADInterstitialDelegate {
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        if !self.interstitial.hasBeenUsed {
+            self.interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
     }
 }

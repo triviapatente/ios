@@ -130,6 +130,7 @@ class WaitOpponentViewController: TPGameViewController {
         self.response = response
         if response.ended == true && followRedirects {
             self.game.ended = true
+            self.game.winnerId = response.winnerId
             self.redirect(identifier: "round_details")
         } else {
             guard let state = response.waiting else {
