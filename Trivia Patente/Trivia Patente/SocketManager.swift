@@ -83,7 +83,7 @@ class SocketManager {
             }
         }
         if let token = SessionManager.getToken() {
-            let body = [SessionManager.kTokenKey: token, "body": values] as [String : AnyObject]
+            let body = [SessionManager.kTokenKey: token, "body": values, SessionManager.kDeviceIdKey: UIDevice.current.identifierForVendor!.uuidString] as [String : AnyObject]
             SocketManager.socket.emit(path, body)
         }
     }

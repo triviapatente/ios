@@ -10,6 +10,8 @@ import UIKit
 
 class SessionManager {
     static let kTokenKey = "tp-session-token"
+    static let kDeviceIdKey = "tp-device-id"
+
     static let kUserKey = "tp-current-user"
 
     class func set(token : String) {
