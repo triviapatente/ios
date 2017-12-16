@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InformativePopoverViewController: UIViewController {
+class InformativePopoverViewController: BaseViewController {
     
     @IBOutlet weak var mainContainer : UIView!
     @IBOutlet weak var mainText : UILabel!

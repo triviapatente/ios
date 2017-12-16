@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FBConnectInviteViewController: UIViewController {
+class FBConnectInviteViewController: BaseViewController {
 
     @IBOutlet var exitButton : UIButton!
     @IBOutlet var containerView : UIView!

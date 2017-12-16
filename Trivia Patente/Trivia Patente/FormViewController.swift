@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FormViewController : UIViewController
+class FormViewController : BaseViewController
 {
     var costantKeyboardTranslationRef = CGFloat(0.0)
     var shouldTranslate = true

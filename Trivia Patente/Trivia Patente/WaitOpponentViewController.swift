@@ -32,18 +32,25 @@ class WaitOpponentViewController: TPGameViewController {
     var gameCanceled : Bool = false
     var response : TPInitRoundResponse! {
         didSet {
+            self.shouldShowDetailsButton(round: response.round)
             if let game_round = response.round {
                 headerView.round = game_round
-                if game_round.number! <= 1 && !game.ended {
-                    self.gameActions.detailButton.isHidden = true
-                } else {
-                    self.gameActions.detailButton.isHidden = false
-                }
             } else if let cat = self.response.category {
                 headerView.category = cat
             } else {
                 self.headerView.set(title: self.waitTitle())
             }
+        }
+    }
+    func shouldShowDetailsButton(round: Round?) {
+        if let game_round = response.round {
+            if game_round.number! <= 1 && !game.ended {
+                
+            } else {
+                self.gameActions.detailButton.isHidden = false
+            }
+        } else {
+            self.gameActions.detailButton.isHidden = true
         }
     }
     func unlisten() {

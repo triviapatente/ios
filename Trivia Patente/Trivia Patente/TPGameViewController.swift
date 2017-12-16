@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPGameViewController: UIViewController {
+class TPGameViewController: BaseViewController {
     //defaults to true (on dismiss, it goes to mainviewcontroller)
     var mainOnDismiss : Bool {
         return true

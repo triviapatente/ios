@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPNormalViewController: UIViewController {
+class TPNormalViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if let _ = SessionManager.getToken() {

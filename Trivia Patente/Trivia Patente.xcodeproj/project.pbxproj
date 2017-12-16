@@ -209,6 +209,7 @@
 		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
 		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
+		F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484730C1FE5CBE100ADA988 /* BaseViewController.swift */; };
 		F488C94F1FB72915000842AC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488C94E1FB72915000842AC /* Strings.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
@@ -458,6 +459,7 @@
 		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F484730C1FE5CBE100ADA988 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trivia Patente.entitlements"; sourceTree = "<group>"; };
 		F488C94E1FB72915000842AC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
@@ -1231,6 +1233,7 @@
 				F45C6EB71F9966CA005BECF9 /* GradientView.swift */,
 				F488C94E1FB72915000842AC /* Strings.swift */,
 				F4F335501FDEBDC00094A849 /* FormViewController.swift */,
+				F484730C1FE5CBE100ADA988 /* BaseViewController.swift */,
 			);
 			name = generals;
 			sourceTree = "<group>";
@@ -2165,6 +2168,7 @@
 				F488C94F1FB72915000842AC /* Strings.swift in Sources */,
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
+				F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */,
 				8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */,
 				F4FB497E1FE3229200DAFD92 /* FirebaseManager.swift in Sources */,
 				8B74DBFF1DE6EF9D0006EB90 /* SocketGame.swift in Sources */,

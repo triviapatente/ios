@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPScoreView: UIViewController {
+class TPScoreView: BaseViewController {
 
     @IBOutlet var firstAvatarView : UIImageView!
     @IBOutlet var secondAvatarView : UIImageView!

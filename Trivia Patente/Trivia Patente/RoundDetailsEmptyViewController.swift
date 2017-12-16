@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundDetailsEmptyViewController: UIViewController {
+class RoundDetailsEmptyViewController: BaseViewController {
     
     @IBOutlet var incrementLabel : UILabel!
     @IBOutlet var stimulationLabel : UILabel!

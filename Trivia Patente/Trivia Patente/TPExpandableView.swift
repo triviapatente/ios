@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPExpandableView: UIViewController {
+class TPExpandableView: BaseViewController {
     static let DEAFULT_CONTAINER_TOP_SPACE = CGFloat(320)
     
     @IBOutlet weak var headerView : UINavigationBar!
@@ -35,7 +35,7 @@ class TPExpandableView: UIViewController {
     
     var expandedTopConstraintCostant : CGFloat {
         let recentsHeight = (self.headerHeight + self.tableHeight)
-        var recentsTop = self.containerView.superview!.frame.height - recentsHeight
+        let recentsTop = self.containerView.superview!.frame.height - recentsHeight
         
 //        recentsTop = recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
 //        let rh = self.tableView.rowHeight

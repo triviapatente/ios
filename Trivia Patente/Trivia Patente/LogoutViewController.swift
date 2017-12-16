@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class LogoutViewController: UIViewController {
+class LogoutViewController: BaseViewController {
 
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var remainButton : UIButton!

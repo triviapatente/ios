@@ -18,7 +18,7 @@ extension UIViewController : TPViewController {
     internal func needsMenu() -> Bool {
         return true
     }
-
+    
     class func root() -> UIViewController {
         if SessionManager.isLogged() {
             return mainController()

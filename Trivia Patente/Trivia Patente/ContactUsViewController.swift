@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactUsViewController: UIViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class ContactUsViewController: BaseViewController, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
 
     @IBOutlet weak var motivationField: TPTextField!

@@ -217,7 +217,9 @@ class UserListViewController: TPNormalViewController {
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianResponse = response
-                    self.enableStairs()
+                    if let myPos = self.getMyInternalPosition() {
+                        if myPos > 20 { self.enableStairs() }
+                    }
                     self.scrollToMyPosition()
                 } else {
                     self.friendsResponse = response
@@ -393,7 +395,10 @@ class UserListViewController: TPNormalViewController {
             self.gameHandler.search(scope: self.listScope, query: query, handler: handler)
         }
     }
-    @IBAction func dismissSearch() {
+    func dismissSearch() {
+        if searching {
+            self.searchBar.text = searchedFor
+        }
         self.searchBar.resignFirstResponder()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -454,10 +459,7 @@ class UserListViewController: TPNormalViewController {
     
     var searchedFor : String?
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if searching {
-            self.searchBar.text = searchedFor
-        }
-        self.searchBar.resignFirstResponder()
+        self.dismissSearch()
     }
 }
 

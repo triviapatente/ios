@@ -142,6 +142,8 @@ class MainViewController: TPNormalViewController {
                         response!.termsLastUpdate, type: .termsUpdate)
                 }
             }
+            
+            
         }) {
             MainViewController.handleSocketDisconnection()
         }

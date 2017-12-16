@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
+class PasswordRecoveryViewController: BaseViewController, UITextFieldDelegate {
 
     var nameField : TPInputView!
     var errorView : TPErrorView!

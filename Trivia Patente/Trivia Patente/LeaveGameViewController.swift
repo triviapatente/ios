@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeaveGameViewController: UIViewController {
+class LeaveGameViewController: BaseViewController {
     @IBOutlet var containerView : UIView!
     @IBOutlet var decrementLabel : UILabel!
     @IBOutlet var dismissButton : UIButton!
@@ -42,10 +42,11 @@ class LeaveGameViewController: UIViewController {
         handler.get_leave_decrement(game_id: game.id!) { response in
             if response.success == true {
                 if response.decrement! == 0 {
-                    self.decrementLabel.isHidden = true
-                    self.arrowView.isHidden = true
                     self.mainTitle.text = "Sei sicuro di voler annullare la partita?"
                 } else {
+                    self.mainTitle.text = "Sei sicuro di volerti arrendere?"
+                    self.decrementLabel.isHidden = false
+                    self.arrowView.isHidden = false
                     self.decrementLabel.text = "\(response.decrement!)"
                 }
             }

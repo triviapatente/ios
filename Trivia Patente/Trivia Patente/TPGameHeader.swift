@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPGameHeader: UIViewController {
+class TPGameHeader: BaseViewController {
 
     @IBOutlet var roundLabel : UILabel!
     @IBOutlet var categoryImageView : UIImageView!

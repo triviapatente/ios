@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPSectionBar: UIViewController {
+class TPSectionBar: BaseViewController {
     @IBOutlet var tableView : UITableView!
     
     var questionMap : [String : [Quiz]]! {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: BaseViewController {
     
     static let kMenuActionLogout = "logoutMenuAction"
     static let kMenuActionProfile = "profileMenuAction"

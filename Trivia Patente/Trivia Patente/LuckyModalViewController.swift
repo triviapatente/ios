@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LuckyModalViewController: UIViewController {
+class LuckyModalViewController: BaseViewController {
     
     @IBOutlet var mainContainer : UIView!
     @IBOutlet var doNotShowCheckbox : UIView!

@@ -47,7 +47,7 @@ class SessionManager {
     class func isLogged() -> Bool {
         return getToken() != nil
     }
-    class func logout(from sender: UIViewController, cb : ((TPAuthResponse) -> Void)? = nil) {
+    class func logout(from sender: BaseViewController, cb : ((TPAuthResponse) -> Void)? = nil) {
         let auth = HTTPAuth()
         auth.logout { (response : TPAuthResponse) in
             if let handler = cb {

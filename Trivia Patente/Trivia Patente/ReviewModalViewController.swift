@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReviewModalViewController: UIViewController {
+class ReviewModalViewController: BaseViewController {
     
     @IBOutlet var mainContainer : UIView!
     @IBOutlet var doNotShowCheckbox : UIView!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
+class TPMenuViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     let options = [MenuAction.profile, MenuAction.settings, MenuAction.credits, MenuAction.logout]
     var callback : ((MenuAction) -> Void)!

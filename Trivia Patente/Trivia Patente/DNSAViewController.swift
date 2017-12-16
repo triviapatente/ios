@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DNSAViewController: UIViewController {
+class DNSAViewController: BaseViewController {
 
     @IBOutlet var checkbox : UIImageView!
     var DNSAChecked : Bool = false

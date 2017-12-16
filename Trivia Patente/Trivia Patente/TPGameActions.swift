@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPGameActions: UIViewController {
+class TPGameActions: BaseViewController {
     @IBOutlet var chatButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var detailButton : UIButton!
