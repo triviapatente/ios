@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/UserListViewController.swift"
-            timestampString = "535089176.333073"
+            timestampString = "535123771.330284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -378,7 +378,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/Strings.swift"
-                  timestampString = "535089178.116859"
+                  timestampString = "535124182.294454"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -393,7 +393,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/Strings.swift"
-                  timestampString = "535089178.119918"
+                  timestampString = "535124182.29584"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -408,7 +408,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/Strings.swift"
-                  timestampString = "535089178.122871"
+                  timestampString = "535124182.297196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -425,7 +425,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/UserListViewController.swift"
-            timestampString = "535089176.333414"
+            timestampString = "535123771.330357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
@@ -441,7 +441,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/UserListViewController.swift"
-            timestampString = "535089176.333476"
+            timestampString = "535123771.330401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "292"
@@ -457,7 +457,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/UserListViewController.swift"
-            timestampString = "535089176.333537"
+            timestampString = "535123771.330439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
@@ -473,7 +473,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/UserListViewController.swift"
-            timestampString = "535089176.333596"
+            timestampString = "535123771.330477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
@@ -793,7 +793,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.892132"
+            timestampString = "535124182.026563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -856,7 +856,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.892447"
+            timestampString = "535124182.026952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -904,7 +904,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.892725"
+            timestampString = "535124182.027217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -920,7 +920,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.892997"
+            timestampString = "535124182.027481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -952,12 +952,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/MainViewController.swift"
-            timestampString = "535089176.334104"
+            timestampString = "535124182.027757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "registerFirebaseSession()"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "socketStopLoading()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1000,7 +1000,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.893608"
+            timestampString = "535124182.027815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -1048,7 +1048,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/AppDelegate.swift"
-            timestampString = "535085314.893855"
+            timestampString = "535124182.028073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -1064,7 +1064,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/AppDelegate.swift"
-                  timestampString = "535076196.138052"
+                  timestampString = "535123868.079416"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -1079,7 +1079,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/AppDelegate.swift"
-                  timestampString = "535076196.139961"
+                  timestampString = "535123868.081446"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -1094,7 +1094,7 @@
                   moduleName = "Trivia Patente"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gabrielciulei/iOS/Users/gabrielciulei/Projects/TriviaPatente/ios/Trivia%20Patente/Trivia%20Patente/AppDelegate.swift"
-                  timestampString = "535076196.141757"
+                  timestampString = "535123868.083264"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"
@@ -1111,12 +1111,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/MainViewController.swift"
-            timestampString = "535089176.334477"
+            timestampString = "535124182.02833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "registerFirebaseSession()"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "socketStopLoading()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1143,12 +1143,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/MainViewController.swift"
-            timestampString = "535089176.334814"
+            timestampString = "535124182.028404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "socketStopLoading()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1159,12 +1159,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Trivia Patente/MainViewController.swift"
-            timestampString = "535089176.335145"
+            timestampString = "535124182.028454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "registerFirebaseSession()"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "socketStopLoading()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1181,6 +1181,70 @@
             startingLineNumber = "417"
             endingLineNumber = "417"
             landmarkName = "interstitialDidReceiveAd(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/MainViewController.swift"
+            timestampString = "535124182.028519"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/MainViewController.swift"
+            timestampString = "535124182.028569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/MainViewController.swift"
+            timestampString = "535124182.028617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Trivia Patente/UserListViewController.swift"
+            timestampString = "535123771.3341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "loadData(forceTopList:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

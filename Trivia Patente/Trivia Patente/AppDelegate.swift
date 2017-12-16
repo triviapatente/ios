@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         MainViewController.pushGame = FirebaseManager.getGameFrom(notification: response.notification)
         MainViewController.pushGame?.opponent = FirebaseManager.getOpponentFrom(notification: response.notification)
         let application = UIApplication.shared
-        if application.applicationState == .active || application.applicationState == .background {
+        if SessionManager.isLogged() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let main = storyboard.instantiateInitialViewController()
             self.changeRootViewController(with: main)

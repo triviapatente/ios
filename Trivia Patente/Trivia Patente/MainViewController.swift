@@ -46,16 +46,6 @@ class MainViewController: TPNormalViewController {
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: .UIApplicationDidBecomeActive, object: self)
-    }
-    @objc func didBecomeActive() {
-        if let _ = MainViewController.pushGame {
-            SocketManager.connect(handler: {
-                self.performSegue(withIdentifier: "pushGameSegue", sender: self)
-            }, errorHandler: {
-                MainViewController.handleSocketDisconnection()
-            })
-        }
     }
     func resetBackgroundGradientLocations() {
         self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesViewContainer.frame.origin.y / self.view.frame.height)))
@@ -76,7 +66,7 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.playButton.initValues(imageName: "car", title: "Nuova partita", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
@@ -90,7 +80,7 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         (self.navigationController! as! TPNavigationController).configureBar()
         self.recentGamesView.view.isUserInteractionEnabled = true
         MBProgressHUD.hide(for: self.view, animated: false)
