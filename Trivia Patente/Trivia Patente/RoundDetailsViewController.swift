@@ -180,6 +180,9 @@ class RoundDetailsViewController: TPGameViewController {
         self.showToast(text: "Il tuo avversario ha abbandonato la partita, hai vinto!")
     }
     override func viewWillDisappear(_ animated: Bool) {
+        if let timer = self.bannerTimer {
+            timer.invalidate()
+        }
         if let nav = navigationController {
             if !nav.viewControllers.contains(self) {
                 // back button was pressed
@@ -224,10 +227,12 @@ class RoundDetailsViewController: TPGameViewController {
             self.headerView.roundLabel.text = "Round \(page + 1)"
         }
     }
+    
     // banner
+    var bannerTimer : Timer?
     func checkForBanner() {
         guard game.ended && !game.incomplete && !self.gameCancelled && !interstitial.hasBeenUsed else { return }
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (t) in
+        self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (t) in
             if self.interstitial.isReady {
                 self.interstitial.present(fromRootViewController: self)
             } else {
