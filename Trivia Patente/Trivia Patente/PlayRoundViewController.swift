@@ -134,7 +134,7 @@ class PlayRoundViewController: TPGameViewController {
         super.viewDidLoad()
         
         // AD banner load
-        self.bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        self.bannerView.adUnitID = "ca-app-pub-6517751265585915/8135598443"
         self.bannerView.rootViewController = self
         self.bannerView.delegate = self
         self.bannerView.load(GADRequest())

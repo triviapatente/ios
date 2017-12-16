@@ -150,7 +150,7 @@ class RoundDetailsViewController: TPGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6517751265585915/9033747144")
         let request = GADRequest()
         interstitial.load(request)
         
