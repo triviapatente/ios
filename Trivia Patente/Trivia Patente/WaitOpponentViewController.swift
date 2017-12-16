@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import FirebaseAnalytics
 
 class WaitOpponentViewController: TPGameViewController {
     @IBOutlet var waitLabel : UILabel!
@@ -166,6 +167,7 @@ class WaitOpponentViewController: TPGameViewController {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }
         }
+        
     }
     func init_round(followRedirects : Bool = true) {
         socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
@@ -191,11 +193,17 @@ class WaitOpponentViewController: TPGameViewController {
             if response.success == true {
                 response.game.opponent = response.opponent
                 self.game = response.game
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                    AnalyticsParameterItemID: "\(self.game.id!)" as NSObject,
+                    AnalyticsParameterItemName: "game_created" as NSObject,
+                    AnalyticsParameterContentType: "game" as NSObject
+                    ])
                 self.configureView()
                 //TODO: change with processGameState for invite (in round_init response)
                 self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
                 self.join_room()
                 self.fromInvite = false
+                
             } else {
                 self.handleGenericError(message: response.message)
             }

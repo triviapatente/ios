@@ -12,6 +12,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
 
     var quiz : Quiz! {
         didSet {
+            
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
@@ -27,6 +28,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     var round : Round!
     var delegate : ShowQuizCellDelegate!
     var defaultImageFrame : CGRect!
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     @IBOutlet var quizImageView : UIImageView! {
         didSet {
             defaultImageFrame = quizImageView.frame
@@ -82,14 +84,31 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     let handler = SocketGame()
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
+        self.startLoading(button: sender)
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
             if response.success == true {
                 self.enable(button: sender)
                 self.delegate.user_answered(answer: answer, correct: response.correct)
             } else {
                 // TODO: in the future give feedback somehow
+                self.trueButton.isEnabled = true
+                self.falseButton.isEnabled = true
             }
+            self.endLoading(button: sender)
         }
+    }
+    func startLoading(button: UIButton) {
+        self.trueButton.isEnabled = false
+        self.falseButton.isEnabled = false
+        button.setTitle("", for: .normal)
+        self.activityIndicator.frame = CGRect(x: 0, y: 0, width: button.frame.width, height:button.frame.height)
+        self.activityIndicator.startAnimating()
+        button.addSubview(self.activityIndicator)
+    }
+    func endLoading(button: UIButton) {
+        button.setTitle(button == self.trueButton ? Strings.quiz_true_button_text : Strings.quiz_false_button_text , for: UIControlState.normal)
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.removeFromSuperview()
     }
     func disable(button : UIButton) {
         button.layer.borderColor = Colors.primary.cgColor
@@ -123,6 +142,8 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             self.disable(button: falseButton)
             self.disable(button: trueButton)
         }
+        self.endLoading(button: self.trueButton)
+        self.endLoading(button: self.falseButton)
     }
     func prepareView() {
         self.trueButton.circleRounded()

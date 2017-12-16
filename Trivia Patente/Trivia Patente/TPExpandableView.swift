@@ -34,9 +34,16 @@ class TPExpandableView: UIViewController {
     var emptyTitleText : String!
     
     var expandedTopConstraintCostant : CGFloat {
-        let totalRecentsHeight = self.containerView.superview!.frame.height - (self.headerHeight + self.tableHeight)
-        print(self.containerView.superview!.frame.height, totalRecentsHeight)
-        return totalRecentsHeight > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? totalRecentsHeight : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
+        let recentsHeight = (self.headerHeight + self.tableHeight)
+        var recentsTop = self.containerView.superview!.frame.height - recentsHeight
+        
+//        recentsTop = recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
+//        let rh = self.tableView.rowHeight
+//        let filledRows = ((self.containerView.superview!.frame.height - recentsTop - self.headerHeight) / rh)
+//        let optimalHeight = (rh * filledRows.rounded(FloatingPointRoundingRule.down)) + self.headerHeight
+//        recentsTop = self.containerView.superview!.frame.height - optimalHeight
+        
+        return recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
     }
     var tableViewLastScrollOffset = CGFloat(0)
     
@@ -243,7 +250,7 @@ class TPExpandableView: UIViewController {
     {
         return (self.containerView.superview!.constraints.filter{ $0.identifier == "recentsTop" }.first)
     }
-    func expand(_ thresold : CGFloat = 0) {
+    private func expand(_ thresold : CGFloat = 0) {
         self.tableView.isScrollEnabled = true
         // change top constaint
 //        self.containerView.isHidden = true
@@ -256,7 +263,7 @@ class TPExpandableView: UIViewController {
 //        self.view.frame.size.height = self.mainSize.height
 //        self.containerView.frame.size.height = self.view.frame.size.height
     }
-    func minimize(origin : Bool = true) {
+    private func minimize(origin : Bool = true) {
         self.tableView.isScrollEnabled = false
         if let constraint = self.getContainerTopConstraint() {
             constraint.constant = self.expandedTopConstraintCostant

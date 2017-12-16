@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -287,11 +287,11 @@ Fallo sapere ai tuoi amici 😉</string>
                         <viewControllerLayoutGuide type="bottom" id="LGY-YC-XK7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="erf-iF-yGr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Funzionalità non disponibile  nell'alpha 😉" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-B3-xgn">
-                                <rect key="frame" x="26" y="233.5" width="323" height="200"/>
+                                <rect key="frame" x="26" y="201.5" width="323" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="d3u-6v-Z92"/>
                                 </constraints>
@@ -1315,8 +1315,8 @@ Fallo sapere ai tuoi amici 😉</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7oL-19-qHT"/>
-        <segue reference="5II-cs-oTT"/>
+        <segue reference="NhK-dZ-dty"/>
         <segue reference="n4A-43-lvl"/>
-        <segue reference="87V-2k-7nr"/>
+        <segue reference="GoM-GB-ghT"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,4 +31,7 @@ class Strings {
     static let legislation_pop_privacy_update_2 = "Privacy Policy"
     static let legislation_pop_terms_update_1 = "Abbiamo aggiornato i " // 'Termini e Condizioni' diventa link
     static let legislation_pop_terms_update_2 = "Termini e Condizioni"
+    
+    static let quiz_true_button_text = "V"
+    static let quiz_false_button_text = "F"
 }

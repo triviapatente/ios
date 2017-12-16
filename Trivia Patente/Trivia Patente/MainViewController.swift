@@ -66,10 +66,6 @@ class MainViewController: TPNormalViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let _ = SessionManager.currentUser {
-            
-            FirebaseManager.register()
-        }
         
         self.playButton.initValues(imageName: "car", title: "Nuova partita", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
@@ -78,9 +74,14 @@ class MainViewController: TPNormalViewController {
         
         self.setDefaultBackgroundGradient()
         self.resetBackgroundGradientLocations()
+        // set Stats and Sjop as coming soon
+        self.statsButton.setComingSoon()
+        self.shopButton.setComingSoon()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        (self.navigationController! as! TPNavigationController).configureBar()
+        MBProgressHUD.hide(for: self.view, animated: false)
         RecentGameHandler.start(delegate: self.recentGamesView, callback: { () in
             self.socketGame.listen_recent_games(handler: { (event) in
                 self.recentGamesView.retrieveRecentGames()
@@ -89,16 +90,33 @@ class MainViewController: TPNormalViewController {
 
         connectToSocket(showLoader: SocketManager.getStatus() != .connected)
         SocketManager.leave(type: "game")
-        
-        // set Stats and Sjop as coming soon
-        self.statsButton.setComingSoon()
-        self.shopButton.setComingSoon()
+    }
+    func socketStartLoading() {
+        MBProgressHUD.hide(for: self.view, animated: false)
+        loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingView.mode = .indeterminate
+        loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
+        self.recentGamesView.view.isUserInteractionEnabled = false
+    }
+    func socketStopLoading() {
+        self.loadingView.hide(animated: true)
+        self.recentGamesView.view.isUserInteractionEnabled = true
+    }
+    var firstConnection = true
+    func registerFirebaseSession() {
+        if let _ = SessionManager.currentUser {
+            if firstConnection {
+                FirebaseManager.register()
+                self.firstConnection = false
+            }
+        }
     }
     func connectToSocket(showLoader: Bool = true) {
+        if SocketManager.getStatus() != .connected {
+            self.recentGamesView.traslate(up: false)
+        }
         if showLoader {
-            loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-            loadingView.mode = .indeterminate
-            loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
+            self.socketStartLoading()
         }
         SocketManager.connect(handler: {
             if let _ = MainViewController.pushGame {
@@ -107,7 +125,9 @@ class MainViewController: TPNormalViewController {
             }
             self.recentGamesView.retrieveRecentGames()
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
-                if showLoader { self.loadingView.hide(animated: true) }
+                
+                if showLoader { self.socketStopLoading() }
+                self.registerFirebaseSession()
                 //check if login was forbidden
                 if response?.statusCode == 401 {
                     SessionManager.drop()
@@ -187,8 +207,10 @@ class MainViewController: TPNormalViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         if let identifier = segue.identifier {
+            self.navigationController!.popToRootViewController(animated: true)
             switch identifier {
             case "pushGameSegue":
+                
                     (destination as! WaitOpponentViewController).game = MainViewController.pushGame
                     MainViewController.pushGame = nil
                     
