@@ -82,7 +82,7 @@ class ChangePasswordViewController: FormViewController, UITextFieldDelegate {
         return true
     }
     
-    func checkValues(vibrate : Bool) {
+    @objc func checkValues(vibrate : Bool) {
         let oldPassword = self.oldPasswordField.getText()
         let newPassword = self.newPasswordField.getText()
         let repeatPassword = self.repeatPasswordField.getText()

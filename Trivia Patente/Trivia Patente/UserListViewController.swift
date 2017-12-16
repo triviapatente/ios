@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class UserListViewController: TPNormalViewController {
     @IBOutlet var tableView : UITableView!
-    @IBOutlet var control : UISegmentedControl!
+    @IBOutlet@objc  var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     @IBOutlet var connectContainerView : UIView!
     @IBOutlet var blurImageView : UIImageView!
@@ -238,7 +238,7 @@ class UserListViewController: TPNormalViewController {
             gameHandler.suggested(scope: self.listScope, handler: callback)
         }
     }
-    func loadUp() {
+    @objc func loadUp() {
         // only called on rank
         let callback = { (response : TPUserListResponse) in
             if response.success == true {
@@ -320,7 +320,7 @@ class UserListViewController: TPNormalViewController {
         }
         return footer
     }
-    func inviteFriends() {
+    @objc func inviteFriends() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.shareAppLink(controller: self)
     }

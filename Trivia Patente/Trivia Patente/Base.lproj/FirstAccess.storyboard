@@ -27,14 +27,6 @@
             </objects>
             <point key="canvasLocation" x="575" y="37"/>
         </scene>
-        <!--TermsAndConditionsMain-->
-        <scene sceneID="TaO-Fp-Vsx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TermsAndConditions" referencedIdentifier="TermsAndConditionsMain" id="WJd-eG-N5S" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f2h-qX-r1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-609" y="1218"/>
-        </scene>
         <!--Registration View Controller-->
         <scene sceneID="UvZ-tr-GC5">
             <objects>
@@ -503,7 +495,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s62-D6-cm6">
                                         <rect key="frame" x="303" y="28" width="64" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="4tC-eX-rxx"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="4tC-eX-rxx"/>
                                             <constraint firstAttribute="height" constant="30" id="uap-jf-bnD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -523,7 +515,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MKS-j4-ITG">
-                                <rect key="frame" x="0.0" y="106" width="375" height="255"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="235"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-Rm-AA3">
                                         <rect key="frame" x="40" y="-88" width="295" height="88"/>
@@ -544,7 +536,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="username" translatesAutoresizingMaskIntoConstraints="NO" id="mm9-dC-TLa">
-                                        <rect key="frame" x="50" y="130" width="275" height="55"/>
+                                        <rect key="frame" x="50" y="120" width="275" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="6TR-dP-dGO"/>
                                         </constraints>
@@ -553,7 +545,7 @@
                                         </connections>
                                     </containerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPQ-0S-Lgr" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="215" width="275" height="40"/>
+                                        <rect key="frame" x="50" y="195" width="275" height="40"/>
                                         <color key="backgroundColor" name="button_default_color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Kgj-K6-C0T"/>
@@ -571,11 +563,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="mPQ-0S-Lgr" firstAttribute="top" secondItem="mm9-dC-TLa" secondAttribute="bottom" constant="30" id="1C8-rg-6qd"/>
                                     <constraint firstAttribute="trailing" secondItem="mm9-dC-TLa" secondAttribute="trailing" constant="50" id="LR9-7Z-5oG"/>
                                     <constraint firstItem="u7N-SS-Am4" firstAttribute="leading" secondItem="MKS-j4-ITG" secondAttribute="leading" constant="30" id="NmV-D9-fs3"/>
                                     <constraint firstItem="mPQ-0S-Lgr" firstAttribute="leading" secondItem="MKS-j4-ITG" secondAttribute="leading" constant="50" id="RSi-da-9w9"/>
-                                    <constraint firstItem="mm9-dC-TLa" firstAttribute="top" secondItem="u7N-SS-Am4" secondAttribute="bottom" constant="10" id="TS3-Zt-byZ"/>
                                     <constraint firstItem="mm9-dC-TLa" firstAttribute="leading" secondItem="MKS-j4-ITG" secondAttribute="leading" constant="50" id="UMd-Jm-try"/>
                                     <constraint firstAttribute="trailing" secondItem="mPQ-0S-Lgr" secondAttribute="trailing" constant="50" id="f5V-2D-xgR"/>
                                     <constraint firstAttribute="trailing" secondItem="u7N-SS-Am4" secondAttribute="trailing" constant="30" id="ujk-0a-LpC"/>
@@ -734,7 +724,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zdm-RU-yT4"/>
-        <segue reference="4W6-zH-o8t"/>
+        <segue reference="lhd-Vv-FuT"/>
+        <segue reference="uZM-ZA-Gxl"/>
     </inferredMetricsTieBreakers>
 </document>

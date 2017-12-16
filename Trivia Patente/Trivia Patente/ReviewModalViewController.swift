@@ -50,22 +50,22 @@ class ReviewModalViewController: UIViewController {
         if sender == self.leftButton { // negative
             self.singleButton.setTitle(Strings.review_pop_negative_btn, for: .normal)
             self.mainText.text = Strings.review_pop_negative_msg
-            self.singleButton.addTarget(self, action: "goToContactUs", for: .touchUpInside)
+            self.singleButton.addTarget(self, action: #selector(goToContactUs), for: .touchUpInside)
         } else { // positive
             self.singleButton.setTitle(Strings.review_pop_positive_btn, for: .normal)
             self.mainText.text = Strings.review_pop_positive_msg
-            self.singleButton.addTarget(self, action: "externalReview", for: .touchUpInside)
+            self.singleButton.addTarget(self, action: #selector(externalReview), for: .touchUpInside)
         }
     }
     
-    func goToContactUs() {
+    @objc func goToContactUs() {
         self.dismissModal()
         if let nav = self.navController {
             nav.goTo(ContactUsViewController.self, identifier: "contact_segue")
         }
     }
     
-    func externalReview() {
+    @objc func externalReview() {
         self.dismissModal()
         self.openURL(url: URL(string: HTTPManager.getBaseURL() + "/ws/store_page/ios")!)
     }

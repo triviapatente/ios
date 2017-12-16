@@ -20,7 +20,7 @@ class InformativePopoverViewController: UIViewController {
     }
     
     var type : PopoverType = .privacyUpdate
-    var dismissCallback : ((Void) -> Void)?
+    var dismissCallback : (() -> Void)?
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,7 +45,7 @@ class InformativePopoverViewController: UIViewController {
         case .privacyUpdate:
             message = NSMutableAttributedString(string: Strings.legislation_pop_privacy_update_1)
             if #available(iOS 11.0, *) {
-                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight")]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
             } else {
                 // Fallback on earlier versions
                 message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSForegroundColorAttributeName: Colors.text_highlight]))
@@ -53,7 +53,7 @@ class InformativePopoverViewController: UIViewController {
         case .termsUpdate:
             message = NSMutableAttributedString(string: Strings.legislation_pop_terms_update_1)
             if #available(iOS 11.0, *) {
-                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight")]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
             } else {
                 // Fallback on earlier versions
                 message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSForegroundColorAttributeName: Colors.text_highlight]))

@@ -35,8 +35,6 @@ enum PopoverType {
                 return UserDefaults.standard.value(forKey: Constants.kLastPrivacyPopTS) as? TimeInterval
             case .termsUpdate:
                 return UserDefaults.standard.value(forKey: Constants.kLastTermsPopTS) as? TimeInterval
-            default:
-                return nil
         }
     }
     
@@ -61,7 +59,6 @@ enum PopoverType {
                 return UserDefaults.standard.set(lastTS, forKey: Constants.kLastPrivacyPopTS)
             case .termsUpdate:
                 return UserDefaults.standard.set(lastTS, forKey: Constants.kLastTermsPopTS)
-            default: return
         }
     }
     
@@ -125,7 +122,6 @@ class TPNavigationController: UINavigationController {
     func checkAppVersion() {
         // if it's a new version then set the 'shouldShow' for the review popover to true
         if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            print(UserDefaults.standard.value(forKey: Constants.storedVersionKey) )
             if let storedVersion = UserDefaults.standard.value(forKey: Constants.storedVersionKey) as? String
             {
                 if storedVersion != currentVersion {
@@ -158,7 +154,7 @@ class TPNavigationController: UINavigationController {
 //        lifesItem.numberOfLifes = 5
     }
     
-    func showMenu()
+    @objc func showMenu()
     {
         self.popToRootViewController(animated: true)
         performSegue(withIdentifier: "menu_segue", sender: nil)
@@ -215,7 +211,7 @@ class TPNavigationController: UINavigationController {
         }
     }
     
-    func lifesPressed()
+    @objc func lifesPressed()
     {
         self.showLuckyPopover()
     }
