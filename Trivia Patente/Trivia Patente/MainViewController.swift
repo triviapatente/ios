@@ -46,6 +46,16 @@ class MainViewController: TPNormalViewController {
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: .UIApplicationDidBecomeActive, object: self)
+    }
+    @objc func didBecomeActive() {
+        if let _ = MainViewController.pushGame {
+            SocketManager.connect(handler: {
+                self.performSegue(withIdentifier: "pushGameSegue", sender: self)
+            }, errorHandler: {
+                MainViewController.handleSocketDisconnection()
+            })
+        }
     }
     func resetBackgroundGradientLocations() {
         self.setBackgroundGradientBounds(start: 0, end: Float(1 - (self.recentGamesViewContainer.frame.origin.y / self.view.frame.height)))
@@ -84,13 +94,6 @@ class MainViewController: TPNormalViewController {
         (self.navigationController! as! TPNavigationController).configureBar()
         self.recentGamesView.view.isUserInteractionEnabled = true
         MBProgressHUD.hide(for: self.view, animated: false)
-        if let _ = MainViewController.pushGame {
-            SocketManager.connect(handler: {
-                self.performSegue(withIdentifier: "pushGameSegue", sender: self)
-            }, errorHandler: {
-                MainViewController.handleSocketDisconnection()
-            })
-        }
         RecentGameHandler.start(delegate: self.recentGamesView, callback: { () in
             self.socketGame.listen_recent_games(handler: { (event) in
                 self.recentGamesView.retrieveRecentGames()
