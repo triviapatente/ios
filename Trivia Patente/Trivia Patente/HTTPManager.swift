@@ -18,6 +18,9 @@ class HTTPManager {
     func registerForPush(token : String, handler: @escaping (TPResponse) -> Void) {
         self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": UIDevice.current.identifierForVendor!.uuidString], handler: handler)
     }
+    func unregisterForPush(handler: @escaping (TPResponse) -> Void) {
+        self.request(url: "/ws/unregisterForPush", method: .post, params: ["os": "iOS", "deviceId": UIDevice.current.identifierForVendor!.uuidString], handler: handler)
+    }
  
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
         var headers = HTTPHeaders()

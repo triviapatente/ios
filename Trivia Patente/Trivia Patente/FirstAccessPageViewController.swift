@@ -62,6 +62,13 @@ class FirstAccessPageViewController: UIPageViewController {
         
         present()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let httpBase = HTTPManager()
+        httpBase.unregisterForPush { response in
+            print("Unregister to push successfull? \(response.success)")
+        }
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
