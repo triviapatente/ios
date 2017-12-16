@@ -21,4 +21,9 @@ class Constants {
     static let usernameMinLength = 3
     static let passwordMinLength = 7
     static let storedVersionKey = "appVersion"
+    
+    
+    // ADMOB
+    static let BannerUnitID = "ca-app-pub-3940256099942544/2934735716"// "ca-app-pub-6517751265585915/8135598443" //(official)
+    static let InterstitialUnitID = "ca-app-pub-3940256099942544/4411468910"// "ca-app-pub-6517751265585915/9033747144" //(official)
 }
