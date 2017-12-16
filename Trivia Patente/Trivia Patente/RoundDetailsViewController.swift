@@ -42,7 +42,9 @@ class RoundDetailsViewController: TPGameViewController {
     }
     var response : TPRoundDetailsResponse! {
         didSet {
-            (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
+            if let nav = self.navigationController as? TPNavigationController {
+                nav.setUser(candidate: opponent)
+            }
             self.scoreView.set(users: response.users, game: game)
             self.scoreView.add(answers: response.answers)
             self.computeMap(quizzes: response.quizzes)
@@ -50,7 +52,6 @@ class RoundDetailsViewController: TPGameViewController {
             self.sectionBar.questionMap = questionMap
             self.sectionBar.game = game
             self.scoreView.view.isHidden = false
-            self.decideToShowEmptyView()
             self.reloadData()
             self.checkForBanner()
             self.scrollToLastSection()
@@ -71,15 +72,6 @@ class RoundDetailsViewController: TPGameViewController {
             self.sectionBar.game = game
             self.tableView.reloadData()
             self.scrollViewDidEndDecelerating(self.tableView)
-        }
-    }
-    func decideToShowEmptyView() {
-        self.tableView.isHidden = questionMap.isEmpty && !game.ended
-        self.emptyContainer.isHidden = !self.tableView.isHidden
-        if self.tableView.isHidden {
-            self.headerView.roundLabel.text = "Partita"
-            self.headerView.set(title: "Devi ancora iniziare!")
-            self.emptyView.set(opponent: opponent, increment: response.scoreIncrement)
         }
     }
     @IBOutlet var tableView : UITableView!
@@ -370,7 +362,6 @@ extension RoundDetailsViewController {
                 self.scoreView.add(answers: response!.answers)
                 self.response.answers += response!.answers
                 self.computeMap(quizzes: response!.quizzes)
-                self.decideToShowEmptyView()
             } else {
                 //TODO: error handler
             }
@@ -381,7 +372,6 @@ extension RoundDetailsViewController {
                 self.game.ended = true
                 self.response.partecipations = response!.partecipations
                 self.reloadData()
-                self.decideToShowEmptyView()
                 self.gameCancelled = response!.canceled
                 if self.game.incomplete && !self.gameCancelled {
                     self.opponentLeftGame()

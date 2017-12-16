@@ -70,7 +70,9 @@ class TPScoreView: UIViewController {
     func setColor(for view : UIView) {
         let isFirst = (view == firstAvatarView)
         guard game.isNotEnded() else {
-            if isFirst {
+            if game.winnerId == nil && (firstScore == secondScore) {
+                view.layer.borderColor = Colors.orange_default.cgColor
+            } else if isFirst {
                 view.layer.borderColor = ((game.isWinner(user: users.first!)) ? Colors.green_default : Colors.red_default).cgColor
             } else {
                 view.layer.borderColor = ((game.isWinner(user: users.last!)) ? Colors.green_default : Colors.red_default).cgColor

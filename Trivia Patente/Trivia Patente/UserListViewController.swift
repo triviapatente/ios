@@ -217,9 +217,7 @@ class UserListViewController: TPNormalViewController {
             if response.success == true {
                 if self.listScope == .italian {
                     self.italianResponse = response
-                    if let myPos = self.getMyInternalPosition() {
-                        if myPos > 20 { self.enableStairs() }
-                    }
+                    self.enableStairs()
                     self.scrollToMyPosition()
                 } else {
                     self.friendsResponse = response
@@ -231,7 +229,7 @@ class UserListViewController: TPNormalViewController {
         }
         
         if self.listType == .rank {
-            let t : Int32? = forceTopList ? 1 : nil
+            let t : Int32? = forceTopList ? 0 : nil
             let dir : RankDirection? = forceTopList ? RankDirection.up : nil
             rankHandler.rank(scope: self.listScope, thresold: t, direction: dir, handler: callback)
         } else {
@@ -363,8 +361,10 @@ class UserListViewController: TPNormalViewController {
     
     func enableStairs()
     {
-        self.searchBar.showsBookmarkButton = true
-        self.searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: UIControlState.normal)
+        if self.listType == .rank && !searching {
+            self.searchBar.showsBookmarkButton = true
+            self.searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: UIControlState.normal)
+        }
     }
     
     func directionalLoadersState(enabled: Bool) {
@@ -451,11 +451,20 @@ class UserListViewController: TPNormalViewController {
             }
         }
     }
+    
+    var searchedFor : String?
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if searching {
+            self.searchBar.text = searchedFor
+        }
+        self.searchBar.resignFirstResponder()
+    }
 }
 
 extension UserListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text!.characters.count > 0 {
+            self.searchedFor = searchBar.text!
             self.search(query: searchBar.text!)
         }
         searchBar.resignFirstResponder()
@@ -467,9 +476,11 @@ extension UserListViewController : UISearchBarDelegate {
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searching {
-            self.search(query: searchBar.text!)
+//            self.search(query: searchBar.text!)
+            self.searchBar.showsBookmarkButton = false
             self.tableView.refreshControl = nil
         } else {
+            self.searchBar.showsBookmarkButton = true
             if self.listType == .rank { self.tableView.refreshControl = self.topRefreshControl }
             self.reloadTable()
         }
@@ -506,13 +517,22 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reusableCell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
         if let cell = reusableCell as? RankTableViewCell {
-            cell.user = getContextualUsers()![indexPath.row]
-            cell.position = cell.user.position
+            if let users = getContextualUsers() {
+                if indexPath.row < users.count {
+                    cell.user = users[indexPath.row]
+                    cell.position = cell.user.position
+                }
+            }
+            
             return cell
         } else {
             let cell = reusableCell as! GameOpponentTableViewCell
             cell.userChosenCallback = self.userChosenCallback
-            cell.user = getContextualUsers()![indexPath.row]
+            if let users = getContextualUsers() {
+                if indexPath.row < users.count {
+                    cell.user = users[indexPath.row]
+                }
+            }
             return cell
         }
     }
