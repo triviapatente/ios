@@ -77,6 +77,7 @@ class MainViewController: TPNormalViewController {
         // set Stats and Sjop as coming soon
         self.statsButton.setComingSoon()
         self.shopButton.setComingSoon()
+        self.recentGamesView.traslate(up: false)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

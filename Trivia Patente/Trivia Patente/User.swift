@@ -26,9 +26,21 @@ open class User: CommonPK {
 	open var username: String?
 	open var score: Int?
 	open var image: String?
-	open var surname: String?
+    open var surname: String? {
+        didSet {
+            if surname != nil && surname == "" {
+                surname = nil
+            }
+        }
+    }
     open var email: String?
-    open var name: String?
+    open var name: String? {
+        didSet {
+            if name != nil && name == "" {
+                name = nil
+            }
+        }
+    }
     open var position: Int32?
     open var internalPosition : Int32?
     open var last_game_won: Bool?
@@ -106,6 +118,8 @@ open class User: CommonPK {
         if last_game_won == nil {
             last_game_won = true
         }
+        name = name == "" ? nil : name
+        surname = surname == "" ? nil : surname
         internalPosition = json[kInternalPositionKey].int32
     }
     public init(username : String?, id : Int32?, avatar : String? = nil, name : String? = nil, surname : String? = nil, score : Int? = nil) {
@@ -115,6 +129,9 @@ open class User: CommonPK {
         self.score = score
         self.name = name
         self.surname = surname
+        self.name = name == "" ? nil : name
+        self.surname = surname == "" ? nil : surname
+
     }
 
     /**
@@ -164,6 +181,8 @@ open class User: CommonPK {
         self.position = aDecoder.decodeObject(forKey: kPositionKey) as? Int32
         self.internalPosition = aDecoder.decodeObject(forKey: kInternalPositionKey) as? Int32
         self.last_game_won = aDecoder.decodeObject(forKey: kLastGameWonKey) as? Bool
+        name = name == "" ? nil : name
+        surname = surname == "" ? nil : surname
 
     }
 

@@ -37,6 +37,8 @@ class TPExpandableView: BaseViewController {
         let recentsHeight = (self.headerHeight + self.tableHeight)
         let recentsTop = self.containerView.superview!.frame.height - recentsHeight
         
+        
+        
 //        recentsTop = recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
 //        let rh = self.tableView.rowHeight
 //        let filledRows = ((self.containerView.superview!.frame.height - recentsTop - self.headerHeight) / rh)
@@ -90,7 +92,7 @@ class TPExpandableView: BaseViewController {
         return parent!.view
     }
     var headerHeight : CGFloat {
-        return headerView.frame.size.height
+        return headerView.frame.size.height > 44.0 ? headerView.frame.size.height : 44.0
     }
     //number of items dependent: settare a items già settati
     var footerFrame : CGRect {
@@ -224,8 +226,9 @@ class TPExpandableView: BaseViewController {
         self.traslate(up: up_pan, up_thresold: up_thresold)
 
     }
-    func traslate(up : Bool, up_thresold : CGFloat = 0) {
-        UIView.animate(withDuration: 0.4, animations: {
+    func traslate(up : Bool, up_thresold : CGFloat = 0, animated: Bool = true) {
+        var duration = animated ? 0.4 : 0.0
+        UIView.animate(withDuration: duration, animations: {
             if up == true {
                 self.expand(up_thresold)
                 // set the color of the header bar when the view is minimized
