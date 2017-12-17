@@ -75,11 +75,11 @@ class RoundDetailsViewController: TPGameViewController {
         }
     }
     @IBOutlet var tableView : UITableView!
-    @IBOutlet var emptyContainer : UIView!
     
     var createGameCallback : ((TPNewGameResponse) -> Void)!
 
     func computeMap(quizzes : [Quiz]) {
+        self.questionMap = [:]
         for quiz in quizzes {
             let number = response.rounds.filter({$0.id == quiz.roundId}).first!.number!
             let key = "\(number)"
@@ -101,7 +101,9 @@ class RoundDetailsViewController: TPGameViewController {
         guard game != nil else { return }
         handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                self.round_details()
+                if self.response == nil {
+                    self.round_details()
+                }
                 self.listen()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)

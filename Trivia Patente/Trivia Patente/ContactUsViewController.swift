@@ -20,7 +20,7 @@ class ContactUsViewController: BaseViewController, UITextViewDelegate, UIPickerV
     // TODO: mettere quelli giusti
     let messageReasons = [("Suggerimento","hint"), ("Segnalazione errore","complaint"), ("Altro","other")]
     var selectedReasonIndex = 0
-    let maxMessageLength = 250
+    let maxMessageLength = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()

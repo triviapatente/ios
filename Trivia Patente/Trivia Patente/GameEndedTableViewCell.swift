@@ -92,7 +92,7 @@ class GameEndedTableViewCell: UITableViewCell {
     }
     func buttonTitleFor(game : Game) -> String {
         if game.won() {
-            return "Gioca ancora"
+            return "Sfida di nuovo"
         }
         return "Rivincita"
     }

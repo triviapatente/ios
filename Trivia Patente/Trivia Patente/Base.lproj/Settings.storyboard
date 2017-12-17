@@ -304,7 +304,7 @@
                                             <outlet property="delegate" destination="cJ8-fA-220" id="xQw-gr-VHc"/>
                                         </connections>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xud-1A-alR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xud-1A-alR">
                                         <rect key="frame" x="317" y="46" width="26" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="Rel-Uf-gyH"/>

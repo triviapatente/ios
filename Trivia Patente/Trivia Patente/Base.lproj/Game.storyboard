@@ -439,10 +439,10 @@
                                     <segue destination="shz-gG-blI" kind="embed" identifier="game_actions" id="kf4-r3-nBv"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In attesa di connessione.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
-                                <rect key="frame" x="51" y="392" width="218" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Il tuo avversario sta giocando proprio ora! Attendi che finisca il turno e scelga la categoria del prossimo round 😍" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
+                                <rect key="frame" x="51" y="337" width="218" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="R9w-sa-gbf"/>
+                                    <constraint firstAttribute="height" constant="125" id="R9w-sa-gbf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -451,8 +451,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="p9J-tu-dYZ" firstAttribute="top" secondItem="wvI-ob-9Ko" secondAttribute="bottom" constant="65" id="3SA-89-p2G"/>
-                            <constraint firstItem="Svw-ib-Q7p" firstAttribute="top" secondItem="p9J-tu-dYZ" secondAttribute="bottom" constant="40" id="8mh-Dy-WSI"/>
+                            <constraint firstItem="p9J-tu-dYZ" firstAttribute="top" secondItem="wvI-ob-9Ko" secondAttribute="bottom" constant="10" id="3SA-89-p2G"/>
+                            <constraint firstItem="Svw-ib-Q7p" firstAttribute="top" secondItem="p9J-tu-dYZ" secondAttribute="bottom" constant="10" id="8mh-Dy-WSI"/>
                             <constraint firstItem="wvI-ob-9Ko" firstAttribute="top" secondItem="cVv-7D-7r1" secondAttribute="bottom" constant="70" id="8w7-o4-dRB"/>
                             <constraint firstItem="OlA-mS-DF4" firstAttribute="top" secondItem="Svw-ib-Q7p" secondAttribute="bottom" constant="40" id="BAq-iy-Gxz"/>
                             <constraint firstAttribute="trailing" secondItem="cVv-7D-7r1" secondAttribute="trailing" id="HVd-56-rKE"/>
@@ -647,10 +647,10 @@
                         <viewControllerLayoutGuide type="bottom" id="pYT-W5-Kp7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jea-Wn-pnL">
-                        <rect key="frame" x="0.0" y="0.0" width="203" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-p8-znG">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-p8-znG">
                                 <rect key="frame" x="0.0" y="75" width="30" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -660,8 +660,8 @@
                                     <segue destination="cDR-IV-g5u" kind="embed" identifier="section_bar" id="0Ek-Eu-d1u"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
-                                <rect key="frame" x="30" y="75" width="173" height="388"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
+                                <rect key="frame" x="30" y="75" width="290" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZWh-kv-MbX" id="lcX-cX-Kjx"/>
@@ -669,7 +669,7 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
-                                <rect key="frame" x="0.0" y="10" width="203" height="35"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vKM-c5-CrP"/>
                                 </constraints>
@@ -677,8 +677,8 @@
                                     <segue destination="Pj9-5A-Y1R" kind="embed" identifier="header_view" id="xqV-nx-JeY"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXR-xc-McB">
-                                <rect key="frame" x="40" y="489" width="123" height="53"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXR-xc-McB">
+                                <rect key="frame" x="40" y="489" width="240" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="6Zu-rB-JTh"/>
                                 </constraints>
@@ -686,28 +686,15 @@
                                     <segue destination="XG7-fN-oC2" kind="embed" identifier="score_view" id="iOb-zP-x4i"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yBQ-Dl-2ml">
-                                <rect key="frame" x="27.5" y="140.5" width="265" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="GUQ-gF-iHi"/>
-                                    <constraint firstAttribute="width" constant="265" id="Se0-78-NYZ"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="lxx-3O-wh9" kind="embed" identifier="empty_view_segue" id="5CA-0B-qxR"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AUB-ex-W0C" secondAttribute="trailing" id="0wq-Nb-T3b"/>
-                            <constraint firstItem="yBQ-Dl-2ml" firstAttribute="centerX" secondItem="jea-Wn-pnL" secondAttribute="centerX" id="1bc-Rq-1EH"/>
                             <constraint firstItem="gub-eN-bWS" firstAttribute="top" secondItem="Vut-eY-DKz" secondAttribute="bottom" constant="10" id="2Sg-gH-sk3"/>
                             <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="SXR-xc-McB" secondAttribute="bottom" constant="26" id="4bF-Ld-5J4"/>
                             <constraint firstItem="Si0-p8-znG" firstAttribute="top" secondItem="gub-eN-bWS" secondAttribute="bottom" constant="10" id="Aun-4e-XKr"/>
                             <constraint firstItem="AUB-ex-W0C" firstAttribute="leading" secondItem="Si0-p8-znG" secondAttribute="trailing" id="NDE-gP-dOz"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leadingMargin" constant="24" id="NpQ-V0-lnK"/>
-                            <constraint firstItem="yBQ-Dl-2ml" firstAttribute="centerY" secondItem="jea-Wn-pnL" secondAttribute="centerY" constant="-30" id="Shc-oC-E4e"/>
                             <constraint firstAttribute="trailing" secondItem="gub-eN-bWS" secondAttribute="trailing" id="SyD-oS-AHJ"/>
                             <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="Si0-p8-znG" secondAttribute="bottom" constant="105" id="eGM-Ut-A5l"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="top" secondItem="AUB-ex-W0C" secondAttribute="bottom" constant="26" id="gEp-hf-e7r"/>
@@ -718,7 +705,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emptyContainer" destination="yBQ-Dl-2ml" id="FHe-lO-8E8"/>
                         <outlet property="tableView" destination="AUB-ex-W0C" id="ZNS-aV-lkw"/>
                         <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="iPF-Kj-XFy"/>
                     </connections>
@@ -1056,9 +1042,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NV8-od-C3s"/>
-        <segue reference="F5i-i7-toe"/>
+        <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="0L7-TT-S4h"/>
-        <segue reference="GCU-d2-vyc"/>
+        <segue reference="iPF-Kj-XFy"/>
+        <segue reference="xqV-nx-JeY"/>
     </inferredMetricsTieBreakers>
 </document>

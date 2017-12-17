@@ -108,13 +108,31 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func waitMessage(for state: RoundWaiting, opponent_online : Bool) -> String {
-        guard opponent_online || state == .invite else {
-            return "Il tuo avversario è offline. Spronalo a giocare 💪🏼"
-        }
-        switch(state) {
-            case .game: return "Attendi che il tuo avversario finisca il turno!"
-            case .category: return "Attendi che il tuo avversario scelga la categoria del turno!"
+        guard response != nil else { return "In attesa di connessione.." }
+        if let _ = response.round {
+            // round 1-4
+            guard opponent_online || state == .invite else {
+                return "Il tuo avversario è offline, ma adesso è il suo turno di scegliere la categoria! Ricordaglielo 💪🏼"
+            }
+            
+            switch(state) {
+            case .game: return "Il tuo avversario sta giocando proprio ora! Attendi che finisca il turno e scelga la categoria del prossimo round 😍"
+            case .category: return "Il tuo avversario sta scegliendo la categoria 😊"
             case .invite: return "Attendi che la partita abbia inizio!"
+            }
+        } else {
+            // round 5
+            guard opponent_online || state == .invite else {
+                return "Il tuo avversario è offline, ma per completare la partita deve giocare il suo ultimo turno! Ricordaglielo 💪🏼"
+            }
+            
+            switch(state) {
+            case .game: return "Il tuo avversario sta giocando proprio ora! Attendi che finisca il turno per sapere l'esito della partita 😍"
+                case .invite: return "Attendi che la partita abbia inizio!"
+            default: return "Attendi.."
+            
+            }
+            
         }
     }
     func color(for state : RoundWaiting, opponent_online : Bool) -> UIColor {
