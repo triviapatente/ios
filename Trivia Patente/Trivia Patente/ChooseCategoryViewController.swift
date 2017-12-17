@@ -38,14 +38,20 @@ class ChooseCategoryViewController: TPGameViewController {
         self.gameHeader.round = round
         self.gameHeader.set(title: "Scegli la categoria!")
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
-        self.join_room(round: round)
         self.setDefaultBackgroundGradient()
     }
-    func join_room(round: Round) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.join_room(round: round)
+    }
+    func join_room( round: Round? = nil) {
+        var round = round
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
-        handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
+        if round == nil { round = self.round }
+        guard round != nil else { return }
+        handler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                self.get_categories(round: round)
+                self.get_categories(round: round!)
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
             }

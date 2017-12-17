@@ -66,12 +66,7 @@ extension UIViewController : TPViewController {
 
         }
     }
-    class func windowTopController() -> UIViewController? {
-        if let root = UIApplication.shared.keyWindow?.rootViewController {
-            return root.presentedViewController
-        }
-        return nil
-    }
+
     class func getVisible(_ rootViewController: UIViewController? = nil) -> UIViewController? {
         var root = rootViewController
         if rootViewController == nil {

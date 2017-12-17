@@ -21,15 +21,16 @@ class SocketManager {
     
     class func connect(handler : @escaping () -> Void, errorHandler: @escaping () -> Void) {
         if socket.status == .connected {
+            MainViewController.handleReconnectionJoinRoom()
             handler()
         } else {
             socket.on("connect") { (data, ack) in
                 self.socket.off("connect")
                 self.socket.off("error")
-                if let noConn = UIViewController.windowTopController() as? NoConnectionViewController {
+                if let noConn = UIApplication.topViewController() as? NoConnectionViewController {
                     noConn.dismiss(animated: true, completion: nil)
                 }
-                
+                MainViewController.handleReconnectionJoinRoom()
                 handler()
             }
             socket.on("error") { (data, ack) in
@@ -44,6 +45,7 @@ class SocketManager {
         return socket.status
     }
     class func disconnect(handler : @escaping () -> Void) {
+        self.joined_rooms.removeAll(keepingCapacity: false)
         if socket.status == .disconnected {
             handler()
         } else {

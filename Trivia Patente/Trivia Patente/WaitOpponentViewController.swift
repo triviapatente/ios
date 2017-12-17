@@ -165,7 +165,8 @@ class WaitOpponentViewController: TPGameViewController {
             self.headerView.set(title: self.waitTitle(for: state))
         }
     }
-    func join_room() {
+    override func join_room() {
+        guard game != nil else { return }
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.init_round()
@@ -231,7 +232,9 @@ class WaitOpponentViewController: TPGameViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //non deve essere chiamato al primo accesso alla view, ma solo quando si torna indietro da un viewcontroller
+        self.join_room()
         if response != nil {
+            
             self.listenInRoom()
             self.init_round(followRedirects: false)
         }

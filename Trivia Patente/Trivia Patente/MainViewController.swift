@@ -126,9 +126,8 @@ class MainViewController: TPNormalViewController {
                 return
             }
             self.recentGamesView.retrieveRecentGames()
+            if showLoader { self.socketStopLoading() }
             self.socketAuth.global_infos { (response : TPConnectResponse?) in
-                
-                if showLoader { self.socketStopLoading() }
                 self.registerFirebaseSession()
                 //check if login was forbidden
                 if response?.statusCode == 401 {
@@ -206,6 +205,13 @@ class MainViewController: TPNormalViewController {
     }
     func getShopHint(response : TPConnectResponse) -> String? {
         return nil
+    }
+    
+    class func handleReconnectionJoinRoom() {
+        // se siamo su una parita di gioco allora assicurati di rietntrare nelle room
+        if let controller = UIApplication.topViewController() as? TPGameViewController {
+            controller.join_room()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

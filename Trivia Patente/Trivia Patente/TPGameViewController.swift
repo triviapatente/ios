@@ -16,5 +16,7 @@ class TPGameViewController: BaseViewController {
     override func needsMenu() -> Bool {
         return false
     }
-
+    func join_room() {
+        
+    }
 }

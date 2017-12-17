@@ -93,8 +93,9 @@ class PlayRoundViewController: TPGameViewController {
             }
         }
     }
-    func join_room() {
+    override func join_room() {
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        guard round != nil else { return }
         handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.load()
@@ -126,6 +127,8 @@ class PlayRoundViewController: TPGameViewController {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.join_room()
         if game.ended {
             self.navigationController!.popToRootViewController(animated: true)
         }
@@ -150,7 +153,6 @@ class PlayRoundViewController: TPGameViewController {
         //TODO: set category
         self.headerView.category = category
         (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
-        self.join_room()
         let nib = UINib(nibName: "ShowQuizCollectionViewCell", bundle: .main)
         //self.quizCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "quiz_cell")
         self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")

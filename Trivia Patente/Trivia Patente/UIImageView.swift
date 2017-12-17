@@ -13,6 +13,7 @@ import AlamofireImage
 extension UIImageView {
     func load(path : URL?, placeholder : String, callback: ((UIImage?) -> Void)? = nil) {
         if let url = path {
+            // NO CACHE PERCHE VIENE USATA QUELLA DI ALAMOFIRE
             let req = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
             self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) { (response) in
                 if let cb = callback {

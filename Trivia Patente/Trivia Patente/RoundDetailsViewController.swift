@@ -97,7 +97,8 @@ class RoundDetailsViewController: TPGameViewController {
         self.questionMap = [:]
         self.computeMap(quizzes: response.quizzes)
     }
-    func join_room() {
+    override func join_room() {
+        guard game != nil else { return }
         handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.round_details()
@@ -146,7 +147,6 @@ class RoundDetailsViewController: TPGameViewController {
         let request = GADRequest()
         interstitial.load(request)
         
-        self.join_room()
         let cellNib = UINib(nibName: "RoundDetailsTableViewCell", bundle: .main)
         let gameEndedNib = UINib(nibName: "GameEndedTableViewCell", bundle: .main)
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
@@ -164,6 +164,7 @@ class RoundDetailsViewController: TPGameViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.join_room()
         if game.incomplete && !gameCancelled {
             self.opponentLeftGame()
         }

@@ -217,6 +217,7 @@
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
 		F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */; };
+		F4D12CE91FE68AD1000858A8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D12CE81FE68AD1000858A8 /* UIApplication.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
 		F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */; };
 		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
@@ -468,6 +469,7 @@
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
 		F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
+		F4D12CE81FE68AD1000858A8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformativePopoverViewController.swift; sourceTree = "<group>"; };
 		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -1467,6 +1469,7 @@
 				F4E4EC501FA5E30D00162756 /* UIFont.swift */,
 				F4A9B2CE1FB348F100910D20 /* UIImage.swift */,
 				F4F3354E1FDEB4BD0094A849 /* UITextField.swift */,
+				F4D12CE81FE68AD1000858A8 /* UIApplication.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -2187,6 +2190,7 @@
 				8BCF8CA81DB6AB2700EC637C /* String.swift in Sources */,
 				8B8058D51DE3054D00C3F938 /* TPExpandableTableViewCellDelegate.swift in Sources */,
 				8BE6DE321DE6D97300DDD179 /* ChooseCategoryViewController.swift in Sources */,
+				F4D12CE91FE68AD1000858A8 /* UIApplication.swift in Sources */,
 				8BCF8CA51DB6A88700EC637C /* CommonPK.swift in Sources */,
 				F446B3B11FA7F07700FD2C79 /* DNSAViewController.swift in Sources */,
 				8BB29D8A1E278E8F00F5CFB9 /* TPRecentGameEvent.swift in Sources */,
