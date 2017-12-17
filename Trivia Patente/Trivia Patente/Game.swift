@@ -45,6 +45,9 @@ open class Game: CommonPK {
     func isWinner(user : User) -> Bool {
         return user.id == self.winnerId
     }
+    func cancelled() -> Bool {
+        return self.isEnded() && !self.started
+    }
     // MARK: SwiftyJSON Initalizers
     /**
     Initates the class based on the object

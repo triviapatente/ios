@@ -160,6 +160,7 @@
                 <outlet property="gameButton" destination="xCj-mf-GKh" id="JxJ-Y3-NN4"/>
                 <outlet property="scoreIncrementLabel" destination="3cl-2j-CIv" id="6ql-nv-TVL"/>
                 <outlet property="titleLabel" destination="Bvu-jV-wpd" id="Erx-iE-1tM"/>
+                <outlet property="usersContainer" destination="ZR6-zq-U6H" id="Tfi-56-n4J"/>
                 <outletCollection property="usersImageView" destination="cwZ-Et-s1q" collectionClass="NSMutableArray" id="T9x-Dz-adU"/>
                 <outletCollection property="usersImageView" destination="gZI-1t-L5E" collectionClass="NSMutableArray" id="rko-nn-ssP"/>
             </connections>

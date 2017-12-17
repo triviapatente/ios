@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        MainViewController.pushGame = FirebaseManager.getGameFrom(notification: response.notification)
-        MainViewController.pushGame?.opponent = FirebaseManager.getOpponentFrom(notification: response.notification)
-        let application = UIApplication.shared
         if SessionManager.isLogged() {
+            MainViewController.pushGame = FirebaseManager.getGameFrom(notification: response.notification)
+            MainViewController.pushGame?.opponent = FirebaseManager.getOpponentFrom(notification: response.notification)
+            let application = UIApplication.shared
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let main = storyboard.instantiateInitialViewController()
             self.changeRootViewController(with: main)
@@ -46,6 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         FirebaseManager.initialize(delegate: self)
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6517751265585915~9911714540")
+        
+        // clear notifications
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+//        center.removeAllPendingNotificationRequests()
+        
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

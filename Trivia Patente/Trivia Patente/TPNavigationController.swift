@@ -329,6 +329,9 @@ class TPNavigationController: UINavigationController {
                         self.goTo(AccountViewController.self, identifier: "account_segue")
                         break
                     case MenuViewController.kMenuActionLogout:
+                        if let mainController = self.topViewController as? MainViewController {
+                            mainController.recentGamesView.traslate(up: false)
+                        }
                         self.performSegue(withIdentifier: "logout_segue", sender: nil)
 //                        self.goTo(LogoutViewController.self, identifier: "logout_segue")
                         break

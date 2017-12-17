@@ -15,6 +15,7 @@ class GameEndedTableViewCell: UITableViewCell {
     @IBOutlet var arrowImageView : UIImageView!
     @IBOutlet var usersImageView : [UIImageView]!
     @IBOutlet var containerView : UIView!
+    @IBOutlet weak var usersContainer: UIView!
     
     let handler = HTTPGame()
     @IBAction func playNewGame() {
@@ -72,14 +73,21 @@ class GameEndedTableViewCell: UITableViewCell {
         let name = (increment > 0) ? "up_score_arrow" : "down_score_arrow"
         return UIImage(named: name)!
     }
+    func hasVictory(victory: Bool) {
+        usersContainer.isHidden = !victory
+    }
     func titleFor(game : Game) -> String {
         if (isCancelled && game.ended == true && game.started == false) || (game.ended && (scoreIncrement == 0 || scoreIncrement == nil)) {
+            self.hasVictory(victory: false)
             return "Partita annullata"
         } else if isDrew && game.winnerId == nil {
+            self.hasVictory(victory: false)
             return "Hai pareggiato!"
         } else if game.won() {
+            self.hasVictory(victory: true)
             return "Hai vinto!"
         }
+        self.hasVictory(victory: true)
         return "Hai perso!"
     }
     func buttonTitleFor(game : Game) -> String {
