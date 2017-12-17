@@ -12,6 +12,10 @@ import AlamofireImage
 
 extension UIImage
 {
+    class func invalidateCache() {
+        let imageDownloader = UIImageView.af_sharedImageDownloader
+        imageDownloader.imageCache?.removeAllImages()
+    }
     class func downloadImage(url: URLConvertible?, auth: Bool = true, callback: @escaping ((UIImage?)->Void)) {
         guard url != nil else { return }
         var headers : HTTPHeaders?
@@ -26,7 +30,6 @@ extension UIImage
 //                callback(nil)
 //            }
 //        })
-        
         Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseImage { response in
             if let image = response.result.value {
                 callback(image)

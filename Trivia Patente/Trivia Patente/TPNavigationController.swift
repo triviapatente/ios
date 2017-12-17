@@ -100,7 +100,6 @@ class TPNavigationController: UINavigationController {
                 SessionManager.set(user: currentUser)
                 UIImage.downloadImage(url: currentUser.avatarImageUrl, callback: { image in
                     let u = SessionManager.currentUser! // need to create a copy to update values and the copy needs to be done inside the callback
-                    u.savedImaged = image
                     SessionManager.set(user: u)
                 })
             }

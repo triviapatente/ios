@@ -13,7 +13,8 @@ import AlamofireImage
 extension UIImageView {
     func load(path : URL?, placeholder : String, callback: ((UIImage?) -> Void)? = nil) {
         if let url = path {
-            self.af_setImage(withURL: path!, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) { (response) in
+            let req = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
+            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) { (response) in
                 if let cb = callback {
                     cb(response.value)
                 }
@@ -42,16 +43,13 @@ extension UIImageView {
         self.contentMode = .scaleAspectFill
         self.layer.borderWidth = CGFloat(0) // for reausable views
         self.removeAllSubviews()
-        if let avatar = user?.savedImaged {
-            self.image = avatar
-        } else {
+
             let imagePath = user?.avatarImageUrl
             let url = getUrl(path: imagePath)
             
             if url != nil
             {
                 self.load(path: url, placeholder: "default_avatar", callback: { image in
-                    user!.savedImaged = image
                     if (user?.isMe())! {
                         SessionManager.set(user: user!)
                     }
@@ -66,7 +64,7 @@ extension UIImageView {
                 label.text = user!.initials.uppercased()
                 self.addSubview(label)
             }
-        }
+        
     }
     func labelForUserInitials() -> UILabel {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))

@@ -203,7 +203,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
                     self.finishedSaving()
                 } else {
                     nameUpdate()
-                    response.user!.savedImaged = self.newAvatarImage
+                    UIImage.invalidateCache()
                     SessionManager.set(user: response.user!)
                     self.newAvatarImage = nil
                 }
