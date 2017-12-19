@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -85,7 +84,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" name="primary_color"/>
+                        <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="fYq-fB-Vuw" secondAttribute="bottom" id="0qV-Rc-SQ4"/>
                             <constraint firstAttribute="trailing" secondItem="9Ka-ZU-snF" secondAttribute="trailing" constant="20" id="1go-0f-hEh"/>
@@ -190,7 +189,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <color key="backgroundColor" name="primary_color"/>
+                                <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KjH-m0-SIe" secondAttribute="trailing" id="1XL-S3-Cu4"/>
@@ -300,7 +299,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="primary_color"/>
+                        <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="nY5-B3-xgn" secondAttribute="trailing" constant="10" id="WEl-vd-Xk1"/>
                             <constraint firstItem="nY5-B3-xgn" firstAttribute="centerY" secondItem="erf-iF-yGr" secondAttribute="centerY" id="srA-o3-ihn"/>
@@ -1130,7 +1129,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" name="primary_color"/>
+                                <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="AxD-4h-0k0" firstAttribute="top" secondItem="hCl-3f-YnY" secondAttribute="top" constant="8" id="0v5-8v-nv1"/>
@@ -1240,7 +1239,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="primary_color"/>
+                                <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nyg-QV-KzA" secondAttribute="trailing" id="3Km-fH-YmY"/>
@@ -1309,9 +1308,6 @@ Fallo sapere ai tuoi amici 😉</string>
         <image name="review_icon" width="57" height="55"/>
         <image name="user-filled" width="38" height="41"/>
         <image name="user-logout" width="50" height="50"/>
-        <namedColor name="primary_color">
-            <color red="0.0" green="0.66699999570000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7oL-19-qHT"/>
