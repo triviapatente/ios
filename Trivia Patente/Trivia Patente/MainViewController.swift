@@ -74,10 +74,14 @@ class MainViewController: TPNormalViewController {
         
         self.setDefaultBackgroundGradient()
         self.resetBackgroundGradientLocations()
-        // set Stats and Sjop as coming soon
+        // set Stats and Shop as coming soon
+        
+        self.recentGamesView.traslate(up: false, animated: false)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.statsButton.setComingSoon()
         self.shopButton.setComingSoon()
-        self.recentGamesView.traslate(up: false, animated: false)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

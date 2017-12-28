@@ -57,8 +57,6 @@ class TPMainButton: UIViewController {
         let csImageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 5, y: 0, width: csWidth, height: self.view.frame.height + 2))
         csImageView.image = csImage
         self.view.addSubview(csImageView)
-//        let costraintAlignRight = NSLayoutConstraint(item: csImageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
-//        csImageView.addConstraint(costraintAlignRight)
         
         self.view.isUserInteractionEnabled = false
     }
