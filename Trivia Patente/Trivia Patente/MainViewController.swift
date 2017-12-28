@@ -78,6 +78,7 @@ class MainViewController: TPNormalViewController {
         
         self.recentGamesView.traslate(up: false, animated: false)
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.statsButton.setComingSoon()

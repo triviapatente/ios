@@ -45,20 +45,22 @@ class TPMainButton: UIViewController {
     }
     func setComingSoon()
     {
-        let opacity = CGFloat(0.7)
-        self.view.backgroundColor = self.view.backgroundColor!.withAlphaComponent(opacity)
-        self.titleView.alpha = opacity
-        self.imageView.alpha = opacity
-        self.hintView.alpha = opacity
-        
-        // adding coming soon image
-        let csImage = UIImage(named: "coming_soon_white")!
-        let csWidth = CGFloat(csImage.size.width)
-        let csImageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 5, y: 0, width: csWidth, height: self.view.frame.height + 2))
-        csImageView.image = csImage
-        self.view.addSubview(csImageView)
-        
-        self.view.isUserInteractionEnabled = false
+        if self.view.isUserInteractionEnabled { // if it's disables, than everything has already been done
+            let opacity = CGFloat(0.7)
+            self.view.backgroundColor = self.view.backgroundColor!.withAlphaComponent(opacity)
+            self.titleView.alpha = opacity
+            self.imageView.alpha = opacity
+            self.hintView.alpha = opacity
+            
+            // adding coming soon image
+            let csImage = UIImage(named: "coming_soon_white")!
+            let csWidth = CGFloat(csImage.size.width)
+            let csImageView = UIImageView(frame: CGRect(x: self.view.frame.width - csWidth + 5, y: 0, width: csWidth, height: self.view.frame.height + 2))
+            csImageView.image = csImage
+            self.view.addSubview(csImageView)
+            
+            self.view.isUserInteractionEnabled = false
+        }
     }
     func display(hints : [String]) {
         self.hints = hints
