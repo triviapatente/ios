@@ -54,7 +54,9 @@ class RoundDetailsViewController: TPGameViewController {
             self.scoreView.view.isHidden = false
             self.reloadData()
             self.checkForBanner()
-            self.scrollToLastSection()
+            Timer.scheduledTimer(withTimeInterval: 500, repeats: false) { (t) in
+                self.scrollToLastSection()
+            }.fire()
         }
     }
     var questionMap : [String: [Quiz]] = [:] {
