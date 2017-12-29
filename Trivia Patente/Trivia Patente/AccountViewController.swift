@@ -9,8 +9,11 @@
 import UIKit
 import AVKit
 import Photos
+import TOCropViewController
 
-class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
+    
+    
 
     @IBOutlet weak var avatarImageView: UIImageView!
     var nameField: TPInputView!
@@ -133,7 +136,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
             NSForegroundColorAttributeName : UIColor.white
         ]
         pickerController.delegate = self
-        pickerController.allowsEditing = true
+        pickerController.allowsEditing = false
         pickerController.sourceType = sourceType
         
         return pickerController
@@ -141,11 +144,23 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-        let newImage = info[UIImagePickerControllerEditedImage] as? UIImage
-        self.newAvatarImage = newImage
+        let image : UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
+        var imageCropVC : TOCropViewController!
+        imageCropVC = TOCropViewController.init(croppingStyle: .circular, image: image)
+        imageCropVC.delegate = self
+        
+        picker.pushViewController(imageCropVC, animated: true)
+    }
+    
+    func cropViewController(_ cropViewController: TOCropViewController, didFinishCancelled cancelled: Bool) {
+        cropViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func cropViewController(_ cropViewController: TOCropViewController, didCropToCircleImage image: UIImage, rect cropRect: CGRect, angle: Int) {
+        self.newAvatarImage = image
         self.avatarImageView.clear()
-        self.avatarImageView.image = newImage
-        picker.dismiss(animated: true, completion: nil)
+        self.avatarImageView.image = image
+        cropViewController.dismiss(animated: true, completion: nil)
     }
     
     

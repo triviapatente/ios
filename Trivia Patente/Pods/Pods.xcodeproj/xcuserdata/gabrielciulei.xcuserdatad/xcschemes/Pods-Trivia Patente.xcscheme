@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "732D1F23586350DC5B316EF5C2ED8970"
+               BlueprintIdentifier = "BBB115B26467CB01ABDA426F1BE26A1E"
                BuildableName = "Pods_Trivia_Patente.framework"
                BlueprintName = "Pods-Trivia Patente"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "732D1F23586350DC5B316EF5C2ED8970"
+            BlueprintIdentifier = "BBB115B26467CB01ABDA426F1BE26A1E"
             BuildableName = "Pods_Trivia_Patente.framework"
             BlueprintName = "Pods-Trivia Patente"
             ReferencedContainer = "container:Pods.xcodeproj">
