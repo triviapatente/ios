@@ -193,7 +193,7 @@ class TPExpandableView: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !expanded { self.minimize() }
+        if !expanded { self.traslate(up: false, up_thresold: 0, animated: false) }
         self.mainView.bringSubview(toFront: self.containerView)
 //        self.retrieveRecentGames()
         //enforce only the first initialization of the view position
@@ -215,7 +215,7 @@ class TPExpandableView: BaseViewController {
 //        }
         if reload {
             self.tableView.reloadData()
-            if !expanded { self.minimize() } // ensure it has the right dimension after data is loaded
+            if !expanded { self.traslate(up: false) } // ensure it has the right dimension after data is loaded
         }
     }
     
