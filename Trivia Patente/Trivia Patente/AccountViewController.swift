@@ -161,6 +161,10 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         self.avatarImageView.clear()
         self.avatarImageView.image = image
         cropViewController.dismiss(animated: true, completion: nil)
+        
+        UIApplication.shared.isStatusBarHidden = false
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     

@@ -44,13 +44,14 @@ class WaitOpponentViewController: TPGameViewController {
     }
     func shouldShowDetailsButton(round: Round?) {
         if let game_round = response.round {
-            if game_round.number! <= 1 && !game.ended {
+            if game_round.number! <= 2 && !game.ended {
                 
             } else {
                 self.gameActions.detailButton.isHidden = false
             }
         } else {
-            self.gameActions.detailButton.isHidden = true
+            // round 5
+            self.gameActions.detailButton.isHidden = false                          
         }
     }
     func unlisten() {

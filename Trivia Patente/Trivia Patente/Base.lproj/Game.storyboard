@@ -383,8 +383,8 @@
                         <constraints>
                             <constraint firstItem="2i0-CD-aml" firstAttribute="leading" secondItem="bcc-R2-G37" secondAttribute="leading" id="7zF-kU-0WX"/>
                             <constraint firstItem="2i0-CD-aml" firstAttribute="top" secondItem="bcc-R2-G37" secondAttribute="top" id="DdI-T3-sBp"/>
+                            <constraint firstAttribute="bottom" secondItem="2i0-CD-aml" secondAttribute="bottom" id="IYI-nH-2VS"/>
                             <constraint firstAttribute="trailing" secondItem="2i0-CD-aml" secondAttribute="trailing" id="MOY-Qg-IQy"/>
-                            <constraint firstItem="gOZ-yD-swI" firstAttribute="top" secondItem="2i0-CD-aml" secondAttribute="bottom" id="jVz-e4-oiZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -439,7 +439,7 @@
                                     <segue destination="shz-gG-blI" kind="embed" identifier="game_actions" id="kf4-r3-nBv"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Il tuo avversario sta giocando proprio ora! Attendi che finisca il turno e scelga la categoria del prossimo round 😍" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In attesa di connessione.." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-tu-dYZ">
                                 <rect key="frame" x="51" y="337" width="218" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="R9w-sa-gbf"/>
@@ -1041,10 +1041,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NV8-od-C3s"/>
-        <segue reference="DiI-hO-ske"/>
+        <segue reference="kf4-r3-nBv"/>
+        <segue reference="HCl-2p-GQX"/>
         <segue reference="d1s-Rz-ALU"/>
         <segue reference="iPF-Kj-XFy"/>
-        <segue reference="xqV-nx-JeY"/>
+        <segue reference="yys-8T-GtN"/>
     </inferredMetricsTieBreakers>
 </document>
