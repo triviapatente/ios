@@ -35,9 +35,10 @@ class TPExpandableView: BaseViewController {
     
     var expandedTopConstraintCostant : CGFloat {
         let recentsHeight = (self.headerHeight + self.tableHeight)
-        let recentsTop = self.containerView.superview!.frame.height - recentsHeight
-        
-        
+        var recentsTop = self.containerView.superview!.frame.height - recentsHeight
+        if #available(iOS 11.0, *) {
+            recentsTop -= self.view.safeAreaInsets.bottom
+        }
         
 //        recentsTop = recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
 //        let rh = self.tableView.rowHeight
