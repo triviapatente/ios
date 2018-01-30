@@ -98,7 +98,8 @@ class PlayRoundViewController: TPGameViewController {
         guard round != nil else { return }
         handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                self.load()
+                if self.questions.isEmpty { self.load() }
+                else { self.loadingView.hide(animated: true) }
                 self.listen()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)

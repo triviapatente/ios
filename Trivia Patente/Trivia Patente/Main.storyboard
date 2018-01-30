@@ -85,6 +85,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.43921568630000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="fYq-fB-Vuw" secondAttribute="bottom" id="0qV-Rc-SQ4"/>
                             <constraint firstAttribute="trailing" secondItem="9Ka-ZU-snF" secondAttribute="trailing" constant="20" id="1go-0f-hEh"/>
@@ -97,6 +98,9 @@
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="320" identifier="recentsTop" id="dQb-zW-KYO"/>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="zQ5-Kc-uoa"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WFL-LY-HYs" appends="YES" id="FF4-U6-xJV"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Trivia Patente" id="12x-rm-0HG"/>
                     <connections>
@@ -112,6 +116,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="WFL-LY-HYs">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="showMenu" destination="XeD-ax-umb" id="Ukq-0Q-I59"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="774" y="-152"/>
         </scene>

@@ -259,5 +259,12 @@ class MainViewController: TPNormalViewController {
             }
         }
     }
+    
+    @IBAction func showMenu()
+    {
+        if let nav = self.navigationController as? TPNavigationController {
+            nav.showMenu()
+        }
+    }
 
 }
