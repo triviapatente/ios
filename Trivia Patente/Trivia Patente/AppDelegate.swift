@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if FirebaseManager.canDisplayNotification(notification: notification) && SessionManager.currentUser != nil {
             completionHandler([.sound, .alert, .badge])
+            if let mainCon = UIApplication.topViewController() as? MainViewController {
+                mainCon.recentGamesView.retrieveRecentGames()
+            }
         }
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
