@@ -229,6 +229,19 @@ class RoundDetailsViewController: TPGameViewController {
     var bannerTimer : Timer?
     func checkForBanner() {
         guard game.ended && !game.incomplete && !self.gameCancelled && !interstitial.hasBeenUsed else { return }
+        
+        // game is ended here
+        if let lastUpdateDate = game.updatedAt
+        {
+            let currentTS = Date().timeIntervalSince1970
+            let lastUpdateTS = lastUpdateDate.timeIntervalSince1970
+            print(currentTS - lastUpdateTS)
+            if currentTS - lastUpdateTS > 60
+            {
+                return
+            }
+        }
+        
         self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (t) in
             if self.interstitial.isReady {
                 self.interstitial.present(fromRootViewController: self)
