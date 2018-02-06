@@ -15,8 +15,6 @@ class TPScoreView: BaseViewController {
     @IBOutlet var firstScoreView : UILabel!
     @IBOutlet var secondScoreView : UILabel!
     
-    let handler = SocketGame()
-    
     var firstScore : Int = 0 {
         didSet {
             self.firstScoreView.text = "\(firstScore)"

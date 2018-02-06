@@ -21,8 +21,6 @@ class RoundDetailsViewController: TPGameViewController {
         return false
     }
     
-    let handler = SocketGame()
-    
     var headerView : TPGameHeader!
     var scoreView : TPScoreView!
     var sectionBar : TPSectionBar!
@@ -101,7 +99,7 @@ class RoundDetailsViewController: TPGameViewController {
     }
     override func join_room() {
         guard game != nil else { return }
-        handler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 if self.response == nil {
                     self.round_details()
@@ -113,7 +111,7 @@ class RoundDetailsViewController: TPGameViewController {
         }
     }
     func round_details() {
-        handler.round_details(game_id: game.id!) { response in
+        socketHandler.round_details(game_id: game.id!) { response in
             if response.success == true {
                 self.response = response
             } else {
@@ -374,7 +372,7 @@ extension RoundDetailsViewController : TPSectionBarDelegate {
 extension RoundDetailsViewController {
     
     func listen() {
-        handler.listen_round_started { (response : TPRoundStartedEvent?) in
+        socketHandler.listen_round_started { (response : TPRoundStartedEvent?) in
             if response?.success == true {
                 self.response.categories.append(response!.category)
                 self.scoreView.add(answers: response!.answers)
@@ -398,13 +396,13 @@ extension RoundDetailsViewController {
                 //TODO: error handler
             }
         }
-        handler.listen_game_left(handler: cb)
-        handler.listen_game_ended(handler: cb)
-        handler.listen_user_left_game { (response) in
+        socketHandler.listen_game_left(handler: cb)
+        socketHandler.listen_game_ended(handler: cb)
+        socketHandler.listen_user_left_game { (response) in
             self.game.incomplete = true
             cb(response)
         }
-        handler.listen_user_answered { (response : TPQuestionAnsweredEvent?) in
+        socketHandler.listen_user_answered { (response : TPQuestionAnsweredEvent?) in
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])
                 self.response.answers.append(answer)

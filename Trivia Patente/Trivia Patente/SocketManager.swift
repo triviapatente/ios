@@ -59,23 +59,33 @@ class SocketManager {
     class func unlisten(event : String) {
         SocketManager.socket.off(event)
     }
+    class func unlisten(handlerId : UUID) {
+        SocketManager.socket.off(id: handlerId)
+    }
     class func unlisten(events : [String]) {
         for event in events {
             SocketManager.unlisten(event: event)
         }
     }
-    class func listen<T: TPResponse>(event : String, handler : @escaping (T) -> Void) {
+    class func unlisten(handlerIds : [UUID]) {
+        for id in handlerIds {
+            SocketManager.unlisten(handlerId: id)
+        }
+    }
+    class func listen<T: TPResponse>(event : String, handler : @escaping (T) -> Void) -> UUID{
         SocketManager.unlisten(event: event)
-        SocketManager.socket.on(event) { (data, ack) in
+        return SocketManager.socket.on(event) { (data, ack) in
+            
             if let object = data.first as? [String : AnyObject] {
                 let json = JSON.fromDict(dict: object)
                 let response = T(json: json)
+                
                 handler(response)
             }
         }
     }
     class func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T) -> Void) {
-        listen(event: path) { (response:  T) in
+        _ = listen(event: path) { (response:  T) in
             SocketManager.socket.off(path)
             if response.statusCode == 401 {
                 SessionManager.drop()

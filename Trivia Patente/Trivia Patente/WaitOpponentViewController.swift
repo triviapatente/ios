@@ -55,7 +55,7 @@ class WaitOpponentViewController: TPGameViewController {
         }
     }
     func unlisten() {
-        socketHandler.unlisten(events: "category_chosen", "round_ended", "user_joined", "user_game_left", "user_left")
+        socketHandler.unlistenAllEvents()
     }
     func listenInRoom() {
         socketHandler.listen(event: "category_chosen") { response in
@@ -97,7 +97,7 @@ class WaitOpponentViewController: TPGameViewController {
             self.headerView.roundLabel.text = "Partita"
         }
     }
-    let socketHandler = SocketGame()
+    
     let httpHandler = HTTPGame()
     
     

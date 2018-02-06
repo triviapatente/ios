@@ -27,7 +27,6 @@ class ChooseCategoryViewController: TPGameViewController {
             self.tableView.reloadData()
         }
     }
-    var handler = SocketGame()
     var loadingView : MBProgressHUD!
     
     override func viewDidLoad() {
@@ -49,7 +48,7 @@ class ChooseCategoryViewController: TPGameViewController {
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         if round == nil { round = self.round }
         guard round != nil else { return }
-        handler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.get_categories(round: round!)
             } else {
@@ -58,7 +57,7 @@ class ChooseCategoryViewController: TPGameViewController {
         }
     }
     func get_categories(round : Round) {
-        self.handler.get_categories(round: round) { categoryResponse in
+        self.socketHandler.get_categories(round: round) { categoryResponse in
             self.loadingView.hide(animated: true)
             if categoryResponse.success == true {
                 self.categories = categoryResponse.categories
@@ -105,7 +104,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = self.categories[indexPath.row]
-        handler.choose_category(cat: category, round: self.round) { (response : TPResponse?) in
+        socketHandler.choose_category(cat: category, round: self.round) { (response : TPResponse?) in
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {

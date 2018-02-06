@@ -8,11 +8,9 @@
 
 import UIKit
 
-class ChatViewController: TPGameViewController {
+class ChatViewController: UIViewController {
     //not returning to main on dismiss, but on PlayRoundViewController/WaitOpponentViewController
-    override var mainOnDismiss: Bool {
-        return false
-    }
+
     let MAX_NUMBER_OF_GROW_LINES = 5
     @IBOutlet var tableView : UITableView!
     @IBOutlet var textInputView : UITextView!

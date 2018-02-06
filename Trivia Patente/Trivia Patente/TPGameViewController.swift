@@ -10,6 +10,8 @@ import UIKit
 
 class TPGameViewController: BaseViewController {
     //defaults to true (on dismiss, it goes to mainviewcontroller)
+    var socketHandler = SocketGame()
+    
     var mainOnDismiss : Bool {
         return true
     }
@@ -18,5 +20,12 @@ class TPGameViewController: BaseViewController {
     }
     func join_room() {
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.isMovingFromParentViewController {
+            socketHandler.unlistenAllEvents()
+        }
+        super.viewWillDisappear(animated)
     }
 }

@@ -17,7 +17,6 @@ class PlayRoundViewController: TPGameViewController {
     var round : Round!
     var category : Category!
     var opponent : User!
-    let handler = SocketGame()
     var selectedQuizIndex = 0
     var loadingView : MBProgressHUD!
     var gameCancelled : Bool = false
@@ -84,7 +83,7 @@ class PlayRoundViewController: TPGameViewController {
         }
     }
     func load() {
-        handler.get_questions(round: round) { (response : TPQuizListResponse?) in
+        socketHandler.get_questions(round: round) { (response : TPQuizListResponse?) in
             self.loadingView.hide(animated: true)
             if response?.success == true {
                 self.questions = response!.questions
@@ -96,7 +95,7 @@ class PlayRoundViewController: TPGameViewController {
     override func join_room() {
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         guard round != nil else { return }
-        handler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 if self.questions.isEmpty { self.load() }
                 else { self.loadingView.hide(animated: true) }
@@ -261,7 +260,7 @@ extension PlayRoundViewController {
                 //TODO: error handler
             }
         }
-        handler.listen_user_left_game { (response) in
+        socketHandler.listen_user_left_game { (response) in
             self.game.incomplete = true
             cb(response)
         }

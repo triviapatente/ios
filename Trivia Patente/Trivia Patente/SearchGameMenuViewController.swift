@@ -14,7 +14,6 @@ class SearchGameMenuViewController: TPNormalViewController {
     @IBOutlet var randomButton : UIButton!
     @IBOutlet var tournamentButton : UIButton!
     let handler = HTTPGame()
-    let socketHandler = SocketGame()
     
     var destinationGame : Game?
     
