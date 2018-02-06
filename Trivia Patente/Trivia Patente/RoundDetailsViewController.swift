@@ -255,6 +255,10 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         let y = self.tableView.contentOffset.y
         let height = self.tableView.bounds.size.height
         return Int(ceil(y/height))
+//        if let i = self.sectionBar.tableView.indexPathForSelectedRow {
+//            return i.row
+//        }
+//        return 0
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -406,10 +410,12 @@ extension RoundDetailsViewController {
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])
                 self.response.answers.append(answer)
-                let curPage = self.currentPage
+                let curPage = self.sectionBar.tableView.indexPathForSelectedRow
                 self.reloadMap()
                 self.reloadData()
-                self.selectPage(index: curPage, animated: false)
+                if let i = curPage {
+                    self.selectPage(index: i.row , animated: false)
+                }
             }
         }
         
