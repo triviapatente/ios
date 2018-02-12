@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class ChooseCategoryViewController: TPGameViewController {
+class ChooseCategoryViewController: TPGameViewController, GameControllerRequired {
 
     var gameHeader : TPGameHeader!
     @IBOutlet var tableView : UITableView!
@@ -43,7 +43,10 @@ class ChooseCategoryViewController: TPGameViewController {
         super.viewDidAppear(animated)
         self.join_room(round: round)
     }
-    func join_room( round: Round? = nil) {
+    func join_room() {
+        self.join_room(round: nil)
+    }
+    func join_room(round: Round? = nil) {
         var round = round
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         if round == nil { round = self.round }
@@ -108,7 +111,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {
-                self.handleGenericError(message: (response?.message!)!, dismiss: false)
+                self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }
         }
     }

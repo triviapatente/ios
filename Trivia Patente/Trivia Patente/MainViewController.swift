@@ -215,7 +215,7 @@ class MainViewController: TPNormalViewController {
     
     class func handleReconnectionJoinRoom() {
         // se siamo su una parita di gioco allora assicurati di rietntrare nelle room
-        if let controller = UIApplication.topViewController() as? TPGameViewController {
+        if let controller = UIApplication.topViewController() as? GameControllerRequired {
             controller.join_room()
         }
     }

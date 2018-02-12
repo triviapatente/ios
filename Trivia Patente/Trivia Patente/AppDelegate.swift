@@ -49,11 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6517751265585915~9911714540")
         
-        // clear notifications
-        let center = UNUserNotificationCenter.current()
-        center.removeAllDeliveredNotifications() // To remove all delivered notifications
-//        center.removeAllPendingNotificationRequests()
-        
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -97,6 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 }
             }
         }
+        // clear notifications
+        let center = UNUserNotificationCenter.current()
+        center.removeAllDeliveredNotifications() // To remove all delivered notifications
+        //        center.removeAllPendingNotificationRequests()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

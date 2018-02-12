@@ -10,9 +10,9 @@ import UIKit
 import MBProgressHUD
 import GoogleMobileAds
 
-class PlayRoundViewController: TPGameViewController {
+class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     var headerView : TPGameHeader!
-    @IBOutlet var quizCollectionView : UICollectionView!
+    @IBOutlet weak var quizCollectionView : UICollectionView!
     @IBOutlet weak var bannerView : GADBannerView!
     var round : Round!
     var category : Category!
@@ -92,7 +92,7 @@ class PlayRoundViewController: TPGameViewController {
             }
         }
     }
-    override func join_room() {
+    func join_room() {
         self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
         guard round != nil else { return }
         socketHandler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
@@ -157,6 +157,7 @@ class PlayRoundViewController: TPGameViewController {
         //self.quizCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "quiz_cell")
         self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

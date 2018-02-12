@@ -89,7 +89,8 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         
         switch cameraAuthorizationStatus {
         case .authorized, .notDetermined:
-            self.present(self.getImagePiker(sourceType: UIImagePickerControllerSourceType.camera), animated: true, completion: nil)
+            let cameraPicker = self.getImagePiker(sourceType: UIImagePickerControllerSourceType.camera)
+            self.present(cameraPicker, animated: true, completion: nil)
             break
         case .denied, .restricted:
             let alert = UIAlertController(title: "Accesso alla fotocamera", message: "Permetti a Trivia Patente di accedere alla fotocamera nelle impostazioni del tuo dispositivo e poi riprova", preferredStyle: UIAlertControllerStyle.alert)
@@ -126,12 +127,16 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         }
     }
     
+    let pickerController = UIImagePickerController()
     func getImagePiker(sourceType: UIImagePickerControllerSourceType) -> UIImagePickerController
     {
-        let pickerController = UIImagePickerController()
+        
         pickerController.navigationBar.barTintColor = Colors.primary
         pickerController.navigationBar.tintColor = UIColor.white
         pickerController.navigationBar.isTranslucent = false
+        pickerController.modalPresentationStyle = .overCurrentContext
+        pickerController.view.alpha = 1.0
+        
         pickerController.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : UIColor.white
         ]
@@ -147,24 +152,20 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         let image : UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         var imageCropVC : TOCropViewController!
         imageCropVC = TOCropViewController.init(croppingStyle: .circular, image: image)
-        imageCropVC.delegate = self
         
-        picker.pushViewController(imageCropVC, animated: true)
+        imageCropVC.delegate = self
+        imageCropVC.presentAnimatedFrom(picker, view: picker.view, frame: picker.view.frame, setup: { picker.view.alpha = 0.0 }, completion: nil)
     }
     
     func cropViewController(_ cropViewController: TOCropViewController, didFinishCancelled cancelled: Bool) {
-        cropViewController.dismiss(animated: true, completion: nil)
+        cropViewController.dismissAnimatedFrom(pickerController, toView: nil, toFrame: CGRect.zero, setup: nil, completion: { self.pickerController.dismiss(animated: false, completion: nil) })
     }
     
     func cropViewController(_ cropViewController: TOCropViewController, didCropToCircleImage image: UIImage, rect cropRect: CGRect, angle: Int) {
         self.newAvatarImage = image
         self.avatarImageView.clear()
         self.avatarImageView.image = image
-        cropViewController.dismiss(animated: true, completion: nil)
-        
-        UIApplication.shared.isStatusBarHidden = false
-        UIApplication.shared.statusBarStyle = .lightContent
-        self.setNeedsStatusBarAppearanceUpdate()
+        cropViewController.dismissAnimatedFrom(pickerController, croppedImage: image, toView: self.avatarImageView, toFrame: self.avatarImageView.frame, setup: nil, completion: { self.pickerController.dismiss(animated: false, completion: nil) })
     }
     
     

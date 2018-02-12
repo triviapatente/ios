@@ -9,16 +9,15 @@
 import UIKit
 import GoogleMobileAds
 
-class RoundDetailsViewController: TPGameViewController {
+class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     var game : Game! {
         didSet {
             self.reloadData()
         }
     }
     
-    //not returning to main on dismiss, but on PlayRoundViewController/WaitOpponentViewController
     override var mainOnDismiss: Bool {
-        return false
+        return self.gameCancelled || game.ended
     }
     
     var headerView : TPGameHeader!
@@ -97,7 +96,7 @@ class RoundDetailsViewController: TPGameViewController {
         self.questionMap = [:]
         self.computeMap(quizzes: response.quizzes)
     }
-    override func join_room() {
+    func join_room() {
         guard game != nil else { return }
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
@@ -271,6 +270,11 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if let selectedPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectedPath, animated: false)
+        }
+    }
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         if let selectedPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: selectedPath, animated: false)
@@ -307,9 +311,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return UIView()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.beginUpdates()
+        //self.tableView.beginUpdates()
         //triggers heightForRowAt: on every visible cell
-        self.tableView.endUpdates()
+        //self.tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.tableView(tableView, didSelectRowAt: indexPath)

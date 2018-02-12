@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol GameControllerRequired {
+    func join_room()
+}
+
 class TPGameViewController: BaseViewController {
     //defaults to true (on dismiss, it goes to mainviewcontroller)
     var socketHandler = SocketGame()
@@ -17,9 +21,6 @@ class TPGameViewController: BaseViewController {
     }
     override func needsMenu() -> Bool {
         return false
-    }
-    func join_room() {
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

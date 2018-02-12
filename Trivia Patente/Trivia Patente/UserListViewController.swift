@@ -482,8 +482,10 @@ extension UserListViewController : UISearchBarDelegate {
             self.searchBar.showsBookmarkButton = false
             self.tableView.refreshControl = nil
         } else {
-            self.searchBar.showsBookmarkButton = true
-            if self.listType == .rank { self.tableView.refreshControl = self.topRefreshControl }
+            if self.listType == .rank {
+                self.searchBar.showsBookmarkButton = true
+                self.tableView.refreshControl = self.topRefreshControl
+            }
             self.reloadTable()
         }
     }

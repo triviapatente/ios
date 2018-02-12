@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 import FirebaseAnalytics
 
-class WaitOpponentViewController: TPGameViewController {
+class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     @IBOutlet var waitLabel : UILabel!
     @IBOutlet var opponentImageView : UIImageView!
     
@@ -184,7 +184,7 @@ class WaitOpponentViewController: TPGameViewController {
             self.headerView.set(title: self.waitTitle(for: state))
         }
     }
-    override func join_room() {
+    func join_room() {
         guard game != nil else { return }
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
