@@ -104,15 +104,19 @@ class SocketManager {
         return joined_rooms[type] == value
     }
     class func join(id : Int32, type : String, handler : @escaping (TPResponse) -> Void) {
+        var cb : ((TPResponse) -> Void) = { (response) in
+            FirebaseManager.removeNotifications(id: id)
+            handler(response)
+        }
         if id == joined_rooms[type] {
             let response = TPResponse(error: nil, statusCode: 200, success: true)
-            handler(response)
+            cb(response)
         } else {
             emit(path: "join_room", values: ["id": id as AnyObject, "type": type as AnyObject]) { response in
                 if response.success == true {
                     joined_rooms[type] = id
                 }
-                handler(response)
+                cb(response)
             }
         }
     }
