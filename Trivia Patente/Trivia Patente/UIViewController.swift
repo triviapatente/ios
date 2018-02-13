@@ -140,7 +140,7 @@ extension UIViewController : TPViewController {
     func showToast(text: String)
     {
         self.view.endEditing(true)
-        let toast = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let toast = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         toast.mode = .text
         toast.label.text = text
         toast.label.numberOfLines = 0

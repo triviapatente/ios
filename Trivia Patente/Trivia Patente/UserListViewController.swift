@@ -208,7 +208,7 @@ class UserListViewController: TPNormalViewController {
         }
     }
     func loadData(forceTopList : Bool = false) {
-        let loadingView = MBProgressHUD.showAdded(to: self.tableView, animated: true)
+        let loadingView = MBProgressHUD.clearAndShow(to: self.tableView, animated: true)
         self.hideFooterView(hide: true)
         self.tableView.isUserInteractionEnabled = false
         let callback = { (response : TPUserListResponse) in
@@ -376,7 +376,7 @@ class UserListViewController: TPNormalViewController {
 
     func search(query: String) {
         self.dismissSearch()
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         let handler = { (response : TPUserListResponse) in
             loadingView.hide(animated: true)
             if response.success == true {

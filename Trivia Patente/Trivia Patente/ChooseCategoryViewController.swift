@@ -48,7 +48,7 @@ class ChooseCategoryViewController: TPGameViewController, GameControllerRequired
     }
     func join_room(round: Round? = nil) {
         var round = round
-        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         if round == nil { round = self.round }
         guard round != nil else { return }
         socketHandler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in

@@ -64,7 +64,7 @@ class ShopViewController: TPNormalViewController {
     }
     func preparePurchaseView() {
         self.tableView.rowHeight = MIN_CELL_HEIGHT
-        loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         loadingView.mode = .indeterminate
         handler.shop_items { response in
             self.loadingView.hide(animated: true)

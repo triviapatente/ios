@@ -93,7 +93,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func join_room() {
-        self.loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         guard round != nil else { return }
         socketHandler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {

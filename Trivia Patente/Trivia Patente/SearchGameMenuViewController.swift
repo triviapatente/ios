@@ -49,7 +49,7 @@ class SearchGameMenuViewController: TPNormalViewController {
         }
     }
     func load() {
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         handler.invites { response in
             loadingView.hide(animated: true)
             if response.success == true {

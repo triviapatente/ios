@@ -17,7 +17,7 @@ class LogoutViewController: BaseViewController {
     var loadingView : MBProgressHUD!
     
     @IBAction func leave() {
-        loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         loadingView.mode = .indeterminate
         SessionManager.logout(from: self) { response in
             self.loadingView.hide(animated: true)

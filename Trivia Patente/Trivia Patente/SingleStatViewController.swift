@@ -56,7 +56,7 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         configureChart()
     }
     func loadData() {
-        let loadingView = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         handler.category_stats(category: category) { response in
             loadingView.hide(animated: true)
             if response.success == true {
