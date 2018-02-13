@@ -92,10 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 }
             }
         }
-        // clear notifications
-        let center = UNUserNotificationCenter.current()
-        center.removeAllDeliveredNotifications() // To remove all delivered notifications
-        //        center.removeAllPendingNotificationRequests()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

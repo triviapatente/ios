@@ -25,18 +25,40 @@ class FirebaseManager {
         UNUserNotificationCenter.current().delegate = delegate
     }
     class func getGameFrom(notification : UNNotification) -> Game? {
-        let game = notification.request.content.userInfo[AnyHashable("game")] as! String
+        return getGameFrom(request: notification.request)
+    }
+    class func getGameFrom(request : UNNotificationRequest) -> Game? {
+        let game = request.content.userInfo[AnyHashable("game")] as! String
         if let json = JSON.fromData(data: game.data(using: .utf8)) {
             return Game(json: json)
         }
         return nil
     }
     class func getOpponentFrom(notification : UNNotification) -> User? {
-        let game = notification.request.content.userInfo[AnyHashable("opponent")] as! String
+        return getOpponentFrom(request: notification.request)
+    }
+    class func getOpponentFrom(request : UNNotificationRequest) -> User? {
+        let game = request.content.userInfo[AnyHashable("opponent")] as! String
         if let json = JSON.fromData(data: game.data(using: .utf8)) {
             return User(json: json)
         }
         return nil
+    }
+    class func getRequestsForGameId(notifications: [UNNotification], gameId : Int32) -> [UNNotification] {
+        var output : [UNNotification] = []
+        for notification in notifications {
+            if let game = getGameFrom(notification: notification), game.id == gameId {
+                output.append(notification)
+            }
+        }
+        return output
+    }
+    class func removeNotifications(id : Int32) {
+        let center = UNUserNotificationCenter.current()
+        center.getDeliveredNotifications { (notifications) in
+            let identifiers = getRequestsForGameId(notifications: notifications, gameId: id).map({$0.request.identifier})
+            center.removeDeliveredNotifications(withIdentifiers: identifiers)
+        }
     }
     class func canDisplayNotification(notification : UNNotification) -> Bool {
         guard let game = getGameFrom(notification: notification) else { return false }
