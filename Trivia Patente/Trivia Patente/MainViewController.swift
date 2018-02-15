@@ -92,7 +92,9 @@ class MainViewController: TPNormalViewController {
         MBProgressHUD.hide(for: self.view, animated: false)
         RecentGameHandler.start(delegate: self.recentGamesView, callback: { [unowned self] () in
             self.socketGame.listen_recent_games(handler: {[unowned self] (event) in
-                self.recentGamesView.retrieveRecentGames()
+                if self.recentGamesView != nil {
+                    self.recentGamesView.retrieveRecentGames()
+                }
             })
         })
 
