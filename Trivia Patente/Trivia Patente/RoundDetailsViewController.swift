@@ -311,9 +311,9 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return UIView()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.tableView.beginUpdates()
+        self.tableView.beginUpdates()
         //triggers heightForRowAt: on every visible cell
-        //self.tableView.endUpdates()
+        self.tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         self.tableView(tableView, didSelectRowAt: indexPath)
