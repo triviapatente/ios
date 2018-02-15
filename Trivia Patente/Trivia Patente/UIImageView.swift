@@ -15,7 +15,7 @@ extension UIImageView {
         if let url = path {
             // NO CACHE PERCHE VIENE USATA QUELLA DI ALAMOFIRE
             let req = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
-            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) { (response) in
+            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) {[unowned self] (response) in
                 if let cb = callback {
                     cb(response.value)
                 }

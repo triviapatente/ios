@@ -20,7 +20,7 @@ class InviteTableViewCell: TPExpandableTableViewCell {
     
     @IBAction func process(sender : UIButton) {
         let accept = (sender == acceptButton)
-        handler.process_invite(game_id: invite.gameId!, accepted: accept) { response in
+        handler.process_invite(game_id: invite.gameId!, accepted: accept) { [unowned self] response in
             if response.success == true {
                 self.delegate.remove(item: self.item)
                 if accept == true {

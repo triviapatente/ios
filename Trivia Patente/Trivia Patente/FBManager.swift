@@ -19,7 +19,7 @@ class FBManager {
     }
     class func request(sender : UIViewController, cb : @escaping (FBSDKLoginManagerRequestTokenHandler)) {
         let manager = FBSDKLoginManager()
-        manager.logIn(withReadPermissions: permissions, from: sender) { (handler, error) in
+        manager.logIn(withReadPermissions: permissions, from: sender) {(handler, error) in
             if let fbHandler = handler {
                 guard error == nil else {
                     //TODO: handle error
@@ -38,7 +38,7 @@ class FBManager {
         }
     }
     class func link(sender : UIViewController, cb : @escaping (TPFBResponse) -> Void) {
-        self.request(sender: sender) { (handler, error) in
+        self.request(sender: sender) {(handler, error) in
             if let token = handler?.token {
                 HTTPAuth().link_to_fb(token: token.tokenString, handler: cb)
             }

@@ -104,7 +104,7 @@ class SocketManager {
         return joined_rooms[type] == value
     }
     class func join(id : Int32, type : String, handler : @escaping (TPResponse) -> Void) {
-        var cb : ((TPResponse) -> Void) = { (response) in
+        var cb : ((TPResponse) -> Void) = {(response) in
             FirebaseManager.removeNotifications(id: id)
             handler(response)
         }

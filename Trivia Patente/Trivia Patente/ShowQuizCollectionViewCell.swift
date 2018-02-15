@@ -57,7 +57,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             UIView.animate(withDuration: 0.2, delay: 0, options: .allowAnimatedContent, animations: {
                 self.quizImageView.frame = self.defaultImageFrame
                 self.quizImageView.center.y = superview.frame.size.height / 2
-            }, completion: { (c) in
+            }, completion: { [unowned self] (c) in
                 UIView.animate(withDuration: 0.1) {
                     self.quizNameView.alpha = 1
                 }
@@ -73,7 +73,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             let y = superview.frame.size.height / 2
             UIView.animate(withDuration: 0.1, delay: 0, options: .allowAnimatedContent, animations: {
                 self.quizNameView.alpha = 0
-            }, completion: { (c) in
+            }, completion: { [unowned self] (c) in
                 UIView.animate(withDuration: 0.2) {
                     self.quizImageView.frame.size = CGSize(width: dimension, height: dimension)
                     self.quizImageView.center = CGPoint(x: x, y: y)

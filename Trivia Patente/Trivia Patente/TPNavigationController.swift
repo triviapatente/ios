@@ -190,7 +190,7 @@ class TPNavigationController: UINavigationController {
             {
                 // show popover
                 type.setLastDate(lastTS: currentTS)
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (t) in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: {[unowned self] (t) in
                     DispatchQueue.main.async {
                         switch type {
                         case .lucky:
@@ -319,7 +319,7 @@ class TPNavigationController: UINavigationController {
                 break
             case "menu_segue":
                 let menuController = (segue.destination as! UISideMenuNavigationController).topViewController! as! MenuViewController
-                menuController.actionCallback = {(action) in
+                menuController.actionCallback = {[unowned self] (action) in
                     switch action {
                     case MenuViewController.kMenuActionContact:
                         self.goTo(ContactUsViewController.self, identifier: "contact_segue")

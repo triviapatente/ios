@@ -187,7 +187,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func join_room() {
         guard game != nil else { return }
-        socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: game.id!) {[unowned self] (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.init_round()
                 self.listenInRoom()
@@ -198,7 +198,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         
     }
     func init_round(followRedirects : Bool = true) {
-        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+        socketHandler.init_round(game_id: game.id!) {[unowned self] (response : TPInitRoundResponse?) in
             if response?.success == true {
                 self.processResponse(response: response!, followRedirects: followRedirects)
             } else {
@@ -218,7 +218,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         self.gameActions.leaveButttonEnabled(enabled: false)
     }
     func createInvite() {
-        let handler = { (response : TPNewGameResponse) in
+        let handler = { [unowned self] (response : TPNewGameResponse) in
             if response.success == true {
                 response.game.opponent = response.opponent
                 self.game = response.game

@@ -85,7 +85,7 @@ class RegistrationViewController: FormViewController, UITextFieldDelegate {
         }
         self.disableForm()
         registerButton.load()
-        http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { (response : TPAuthResponse) in
+        http.register(username: nameField.getText(), email: emailField.getText(), password: passwordField.getText()) { [unowned self] (response : TPAuthResponse) in
             self.enableForm()
             self.registerButton.stopLoading()
             self.handleResponse(response: response)

@@ -83,7 +83,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func load() {
-        socketHandler.get_questions(round: round) { (response : TPQuizListResponse?) in
+        socketHandler.get_questions(round: round) {[unowned self] (response : TPQuizListResponse?) in
             self.loadingView.hide(animated: true)
             if response?.success == true {
                 self.questions = response!.questions
@@ -95,7 +95,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     func join_room() {
         self.loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         guard round != nil else { return }
-        socketHandler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: round.gameId!) { [unowned self] (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
 //                if self.questions.isEmpty { self.load() }
 //                else { self.loadingView.hide(animated: true) }
@@ -108,7 +108,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func checkGameState() {
-        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+        socketHandler.init_round(game_id: game.id!) { [unowned self] (response : TPInitRoundResponse?) in
             if response?.success == true {
                 if response!.ended == true {
                     self.dismiss(animated: true, completion: nil)
@@ -269,7 +269,7 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
 extension PlayRoundViewController {
     
     func listen() {
-        let cb = { (response : TPGameEndedEvent?) in
+        let cb = {[unowned self] (response : TPGameEndedEvent?) in
             if response?.success == true {
                 self.game.winnerId = response!.winner_id
                 self.game.ended = true
@@ -279,7 +279,7 @@ extension PlayRoundViewController {
                 //TODO: error handler
             }
         }
-        socketHandler.listen_user_left_game { (response) in
+        socketHandler.listen_user_left_game {[unowned self] (response) in
             self.game.incomplete = true
             cb(response)
         }

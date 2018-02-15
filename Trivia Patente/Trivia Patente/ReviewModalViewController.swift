@@ -91,7 +91,7 @@ class ReviewModalViewController: BaseViewController {
             switch identifier {
             case "dnsa":
                 self.dnsaController = destination as! DNSAViewController
-                self.dnsaController.toggleCallback = { (checked) -> Void in
+                self.dnsaController.toggleCallback = { [unowned self] (checked) -> Void in
                     PopoverType.review.setShoudShow(show: !self.dnsaController.DNSAChecked)
                 }
                 break

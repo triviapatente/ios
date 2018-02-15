@@ -51,7 +51,7 @@ class ChooseCategoryViewController: TPGameViewController, GameControllerRequired
         self.loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         if round == nil { round = self.round }
         guard round != nil else { return }
-        socketHandler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: round!.gameId!) {[unowned self] (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.get_categories(round: round!)
                 self.checkGameState()
@@ -61,7 +61,7 @@ class ChooseCategoryViewController: TPGameViewController, GameControllerRequired
         }
     }
     func checkGameState() {
-        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+        socketHandler.init_round(game_id: game.id!) {[unowned self] (response : TPInitRoundResponse?) in
             if response?.success == true {
                 if response!.ended == true {
                     self.dismiss(animated: true, completion: nil)
@@ -78,7 +78,7 @@ class ChooseCategoryViewController: TPGameViewController, GameControllerRequired
         }
     }
     func get_categories(round : Round) {
-        self.socketHandler.get_categories(round: round) { categoryResponse in
+        self.socketHandler.get_categories(round: round) { [unowned self] categoryResponse in
             self.loadingView.hide(animated: true)
             if categoryResponse.success == true {
                 self.categories = categoryResponse.categories
@@ -125,7 +125,7 @@ extension ChooseCategoryViewController : UITableViewDelegate, UITableViewDataSou
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = self.categories[indexPath.row]
-        socketHandler.choose_category(cat: category, round: self.round) { (response : TPResponse?) in
+        socketHandler.choose_category(cat: category, round: self.round) {[unowned self] (response : TPResponse?) in
             if response?.success == true {
                 self.performSegue(withIdentifier: "play_round", sender: self)
             } else {

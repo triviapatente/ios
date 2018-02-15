@@ -32,7 +32,7 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
 
         toggleMenuState(visible: false)
         controller.navController = self.navController
-        controller.callback = { action in
+        controller.callback = { [unowned self] action in
             callback(action)
 //            self.toggleMenuState(visible: false)
         }
