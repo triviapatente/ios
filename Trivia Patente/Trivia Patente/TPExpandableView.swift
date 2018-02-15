@@ -126,8 +126,8 @@ class TPExpandableView: BaseViewController {
     @IBAction func retrieveRecentGames() {
         self.reloadWillStart()
         RecentGameHandler.refresh { response, games in
-            if response.success == true {
-                let sortFn = { (f: Game, s: Game) -> Bool in
+            if let items = games, response.success == true {
+                /*let sortFn = { (f: Game, s: Game) -> Bool in
                     return f.updatedAt! > s.updatedAt!
                 }
                 let my_turn_games = games!.filter({ (g: Game) -> Bool in
@@ -140,7 +140,8 @@ class TPExpandableView: BaseViewController {
                     return g.ended
                 }).sorted(by: sortFn)
                 
-                self.items = my_turn_games + your_turn_games + ended_games
+                self.items = my_turn_games + your_turn_games + ended_games*/
+                self.items = items;
             }
         }
     }
