@@ -45,8 +45,15 @@ class TPGameActions: BaseViewController {
         leaveButton.darkerBorder(of: 0.10, width: 5)
         detailButton.circleRounded()
         detailButton.darkerBorder(of: 0.10, width: 5)
+        
+//        self.leaveButttonEnabled(enabled: false)
 
     }
+    
+    func leaveButttonEnabled(enabled: Bool) {
+        leaveButton.isEnabled = enabled
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier!
         switch identifier {

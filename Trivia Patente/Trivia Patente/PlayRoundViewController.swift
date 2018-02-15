@@ -97,11 +97,29 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         guard round != nil else { return }
         socketHandler.join(game_id: round.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                if self.questions.isEmpty { self.load() }
-                else { self.loadingView.hide(animated: true) }
+//                if self.questions.isEmpty { self.load() }
+//                else { self.loadingView.hide(animated: true) }
+                self.load()
+                self.checkGameState()
                 self.listen()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
+            }
+        }
+    }
+    func checkGameState() {
+        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+            if response?.success == true {
+                if response!.ended == true {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                if let r = response!.round {
+                    if r.number != self.round.number {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }
         }
     }

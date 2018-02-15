@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ShowQuizCollectionViewCell: UICollectionViewCell {
 
@@ -86,14 +87,14 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         let answer = (sender == trueButton)
         self.startLoading(button: sender)
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
-            if response.success == true {
-                self.enable(button: sender)
-                self.delegate.user_answered(answer: answer, correct: response.correct)
-            } else {
-                // TODO: in the future give feedback somehow
+//            if response.success == true {
+//                self.enable(button: sender)
+//                self.delegate.user_answered(answer: answer, correct: response.correct)
+//            } else {
                 self.trueButton.isEnabled = true
                 self.falseButton.isEnabled = true
-            }
+                UIViewController.showToast(text: "Errore durante il salvataggio della risposta", view: self.contentView)
+//            }
             self.endLoading(button: sender)
         }
     }

@@ -139,14 +139,18 @@ extension UIViewController : TPViewController {
     
     func showToast(text: String)
     {
-        self.view.endEditing(true)
-        let toast = MBProgressHUD.clearAndShow(to: self.view, animated: true)
+        UIViewController.showToast(text: text, view: self.view)
+    }
+    
+    class func showToast(text: String, view: UIView)
+    {
+        view.endEditing(true)
+        let toast = MBProgressHUD.clearAndShow(to: view, animated: true)
         toast.mode = .text
         toast.label.text = text
         toast.label.numberOfLines = 0
         toast.removeFromSuperViewOnHide = true
         
         toast.hide(animated: true, afterDelay: Constants.toastDuration)
-        
     }
 }

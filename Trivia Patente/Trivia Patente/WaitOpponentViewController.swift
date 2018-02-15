@@ -155,6 +155,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
+        self.gameActions.leaveButttonEnabled(enabled: true)
         if response.ended == true && followRedirects {
             self.game.ended = true
             self.game.winnerId = response.winnerId
@@ -214,6 +215,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             self.join_room()
             self.configureView()
         }
+        self.gameActions.leaveButttonEnabled(enabled: false)
     }
     func createInvite() {
         let handler = { (response : TPNewGameResponse) in

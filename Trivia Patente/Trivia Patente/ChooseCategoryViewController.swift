@@ -54,8 +54,26 @@ class ChooseCategoryViewController: TPGameViewController, GameControllerRequired
         socketHandler.join(game_id: round!.gameId!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
                 self.get_categories(round: round!)
+                self.checkGameState()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
+            }
+        }
+    }
+    func checkGameState() {
+        socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
+            if response?.success == true {
+                if response!.ended == true {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                if let state = response?.waiting
+                {
+                    if state != .category {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }
         }
     }

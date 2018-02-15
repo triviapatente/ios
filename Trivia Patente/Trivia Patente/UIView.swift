@@ -166,5 +166,10 @@ extension UIView {
             self.layer.cornerRadius = radius
         }
     }
-
+    func parentView<T: UIView>(of type: T.Type) -> T? {
+        guard let view = self.superview else {
+            return nil
+        }
+        return (view as? T) ?? view.parentView(of: T.self)
+    }
 }

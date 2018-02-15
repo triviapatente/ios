@@ -209,6 +209,7 @@
 		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
 		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
+		F47555732035F7260015FF06 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47555722035F7260015FF06 /* UITableViewCell.swift */; };
 		F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484730C1FE5CBE100ADA988 /* BaseViewController.swift */; };
 		F488C94F1FB72915000842AC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488C94E1FB72915000842AC /* Strings.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
@@ -460,6 +461,7 @@
 		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F47555722035F7260015FF06 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		F484730C1FE5CBE100ADA988 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trivia Patente.entitlements"; sourceTree = "<group>"; };
 		F488C94E1FB72915000842AC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -1470,6 +1472,7 @@
 				F4A9B2CE1FB348F100910D20 /* UIImage.swift */,
 				F4F3354E1FDEB4BD0094A849 /* UITextField.swift */,
 				F4D12CE81FE68AD1000858A8 /* UIApplication.swift */,
+				F47555722035F7260015FF06 /* UITableViewCell.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -2113,6 +2116,7 @@
 				8BAD1C451DF9795D0051AC4A /* Int.swift in Sources */,
 				F446B3B41FA80C5D00FD2C79 /* MenuViewController.swift in Sources */,
 				8BE6DE371DE6DD1300DDD179 /* ProposedCategoryTableViewCell.swift in Sources */,
+				F47555732035F7260015FF06 /* UITableViewCell.swift in Sources */,
 				A9D1D34C1DA556FD00557DC9 /* FirstAccessPageViewController.swift in Sources */,
 				8B5EE1091DD913E700745A54 /* DropdownSettingsTableViewCell.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,

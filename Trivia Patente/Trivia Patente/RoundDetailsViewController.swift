@@ -37,6 +37,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         }
         return response.partecipations.first(where: {$0.userId == SessionManager.currentUser?.id})!
     }
+    var shouldScrollToLastSectionAfterLoad = true
     var response : TPRoundDetailsResponse! {
         didSet {
             if let nav = self.navigationController as? TPNavigationController {
@@ -52,7 +53,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             self.reloadData()
             self.checkForBanner()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(500)) {
-                self.scrollToLastSection()
+                self.scrollToLastSection(animated: self.shouldScrollToLastSectionAfterLoad)
             }
         }
     }
@@ -62,9 +63,8 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             self.reloadData()
         }
     }
-    func scrollToLastSection() {
-//        self.tableView.scrollToRow(at: IndexPath.init(row: 0, section: self.numberOfSections(in: self.tableView) - 1), at: .none, animated: true)
-        self.selectPage(index: self.numberOfSections(in: self.tableView) - 1, animated: true)
+    func scrollToLastSection(animated: Bool = true) {
+        self.selectPage(index: self.numberOfSections(in: self.tableView) - 1, animated: animated)
     }
     func reloadData() {
         if response != nil {
@@ -100,9 +100,8 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         guard game != nil else { return }
         socketHandler.join(game_id: game.id!) { (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                if self.response == nil {
-                    self.round_details()
-                }
+                self.shouldScrollToLastSectionAfterLoad = self.response == nil
+                self.round_details()
                 self.listen()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
