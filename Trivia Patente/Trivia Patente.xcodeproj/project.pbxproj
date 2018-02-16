@@ -13,6 +13,7 @@
 		8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */; };
 		8B19E0291DE9815C00304FF3 /* PlayRoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */; };
 		8B1DC63D1E026D5C00F7BEE0 /* UserListMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DC63C1E026D5C00F7BEE0 /* UserListMode.swift */; };
+		8B25D9FC2036F5010047E679 /* TokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B25D9FB2036F5010047E679 /* TokenRequest.swift */; };
 		8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D26D1DCDEA7100C65122 /* Constants.swift */; };
 		8B28D2701DCDED9E00C65122 /* LifesButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */; };
 		8B28D2721DCF5F8B00C65122 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */; };
@@ -258,6 +259,7 @@
 		8B1057D51DD4A7770081B25E /* TPRankSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRankSearchResponse.swift; sourceTree = "<group>"; };
 		8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayRoundViewController.swift; sourceTree = "<group>"; };
 		8B1DC63C1E026D5C00F7BEE0 /* UserListMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListMode.swift; sourceTree = "<group>"; };
+		8B25D9FB2036F5010047E679 /* TokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequest.swift; sourceTree = "<group>"; };
 		8B28D26D1DCDEA7100C65122 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B28D26F1DCDED9E00C65122 /* LifesButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifesButtonItem.xib; sourceTree = "<group>"; };
 		8B28D2711DCF5F8B00C65122 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
@@ -917,6 +919,7 @@
 				8B5132EC1DBB5EE500143497 /* http */,
 				8B5133231DBC027000143497 /* SessionManager.swift */,
 				8B4551D91E068BA8008285D4 /* FBManager.swift */,
+				8B25D9FB2036F5010047E679 /* TokenRequest.swift */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -2071,6 +2074,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B25D9FC2036F5010047E679 /* TokenRequest.swift in Sources */,
 				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				8B2A2A871DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift in Sources */,

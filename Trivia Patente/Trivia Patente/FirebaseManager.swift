@@ -23,6 +23,15 @@ class FirebaseManager {
     class func initialize(delegate: UNUserNotificationCenterDelegate) {
         FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = delegate
+        refreshToken()
+    }
+    class func refreshToken() {
+        if let token = Messaging.messaging().fcmToken {
+            sendToken(token: token)
+        } else {
+            self.register()
+        }
+
     }
     class func getGameFrom(notification : UNNotification) -> Game? {
         return getGameFrom(request: notification.request)
@@ -65,10 +74,44 @@ class FirebaseManager {
         guard let joinedRoom = SocketManager.joined_rooms["game"] else { return true }
         return joinedRoom != game.id!
     }
-    class func obtainToken(token : String) {
+    private static let LAST_TOKEN_REQUEST_KEY = "last_token_request"
+    class func getLastTokenRequest() -> TokenRequest? {
+        let value = UserDefaults.standard.string(forKey: LAST_TOKEN_REQUEST_KEY)
+        return TokenRequest.from(input: value) ?? nil;
+    }
+    class func saveTokenRequest(token : String, user : User) {
+        let request = TokenRequest(token: token, deviceId: SessionManager.getDeviceId(), userId: user.id!)
+        saveTokenRequest(request: request)
+    }
+    class func saveTokenRequest(request : TokenRequest) {
+        let output = request.serialize()
+        let defaults = UserDefaults.standard
+        defaults.set(output, forKey: LAST_TOKEN_REQUEST_KEY)
+        defaults.synchronize()
+    }
+    class func dropTokenRequest() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: LAST_TOKEN_REQUEST_KEY)
+        defaults.synchronize()
+    }
+    class func alreadySent(token : String) -> Bool? {
+        guard let user = SessionManager.currentUser else {
+            return nil
+        }
+        let deviceId = SessionManager.getDeviceId()
+        let request = FirebaseManager.getLastTokenRequest()
+        return request?.hasValues(deviceId: deviceId, token: token, userId: user.id!) ?? false
+    }
+    class func sendToken(token : String) {
+        guard let sent = alreadySent(token: token), !sent else {
+            return
+        }
         let provider = HTTPManager()
-        provider.registerForPush(token: token) { success in
-            print("Token registration response: \(success.json)")
+        provider.registerForPush(token: token) { response in
+            if response.success == true {
+                FirebaseManager.saveTokenRequest(token: token, user: SessionManager.currentUser!)
+            }
+            print("Token registration response: \(response.json)")
         }
     }
 }

@@ -19,6 +19,7 @@ class HTTPAuth : HTTPManager {
             if let user = response.user {
                 SessionManager.set(user: user)
             }
+            FirebaseManager.refreshToken()
             handler(response)
         }
     }
@@ -59,6 +60,13 @@ class HTTPAuth : HTTPManager {
     func logout(handler : @escaping (TPAuthResponse) -> Void) {
 //        request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in
 //            if response.success == true {
+        
+            HTTPManager().unregisterForPush { response in
+                print("Unregistered?", response.success)
+                if response.success {
+                    FirebaseManager.dropTokenRequest()
+                }
+            }
                 SessionManager.drop()
                 SocketManager.disconnect {}
                 handler(TPAuthResponse(error: nil, statusCode: 200, success: true))
@@ -76,6 +84,7 @@ class HTTPAuth : HTTPManager {
             if let user = response.user {
                 SessionManager.set(user: user)
             }
+            FirebaseManager.refreshToken()
             handler(response)
         }
     }

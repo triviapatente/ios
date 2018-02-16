@@ -25,6 +25,9 @@ class SessionManager {
         defaults.set(object, forKey: kUserKey)
         defaults.synchronize()
     }
+    class func getDeviceId() -> String {
+        return UIDevice.current.identifierForVendor!.uuidString
+    }
     static var currentUser : User? {
         let defaults = UserDefaults.standard
         if let object = defaults.data(forKey: kUserKey) {

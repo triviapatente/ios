@@ -16,10 +16,10 @@ class HTTPManager {
         return "https://triviapatente.it:8000"
     }
     func registerForPush(token : String, handler: @escaping (TPResponse) -> Void) {
-        self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": UIDevice.current.identifierForVendor!.uuidString], handler: handler)
+        self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
     }
     func unregisterForPush(handler: @escaping (TPResponse) -> Void) {
-        self.request(url: "/ws/unregisterForPush", method: .post, params: ["os": "iOS", "deviceId": UIDevice.current.identifierForVendor!.uuidString], handler: handler)
+        self.request(url: "/ws/unregisterForPush", method: .post, params: ["os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
     }
  
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
