@@ -11,6 +11,7 @@ import MBProgressHUD
 import FirebaseAnalytics
 
 class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
+    
     @IBOutlet var waitLabel : UILabel!
     @IBOutlet var opponentImageView : UIImageView!
     
@@ -65,7 +66,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             self.init_round()
         }
         socketHandler.listen(event: "user_joined") { response in
-            self.join_room()
+            self.join_room(followRedirects: false)
         }
         socketHandler.listen(event: "user_left_game") { response in
             self.gameCanceled = response.canceled
@@ -186,10 +187,13 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func join_room() {
+        self.join_room(followRedirects: true)
+    }
+    func join_room(followRedirects : Bool = true) {
         guard game != nil else { return }
         socketHandler.join(game_id: game.id!) {[unowned self] (joinResponse : TPResponse?) in
             if joinResponse?.success == true {
-                self.init_round()
+                self.init_round(followRedirects: followRedirects)
                 self.listenInRoom()
             } else {
                 self.handleGenericError(message: (joinResponse?.message!)!, dismiss: true)
