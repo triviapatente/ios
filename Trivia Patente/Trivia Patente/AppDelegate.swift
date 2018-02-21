@@ -41,13 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        //SessionManager.drop()
         UIApplication.shared.statusBarStyle = .lightContent
         self.window?.rootViewController = UIViewController.root()
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseManager.initialize(delegate: self)
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6517751265585915~9911714540")
+        
+        // Configure cache
+//        URLCache.shared = URLCache(memoryCapacity: 2 * 1024 * 1024, diskCapacity: 200 * 1024 * 1024, diskPath: nil)
+//        UIImageView.af_sharedImageDownloader = ImageDownloader(
+//            configuration: ImageDownloader.defaultURLSessionConfiguration(),
+//            downloadPrioritization: .fifo,
+//            maximumActiveDownloads: 5,
+//            imageCache: nil
+//        )
         
         return true
     }

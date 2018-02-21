@@ -8,34 +8,29 @@
 
 import Foundation
 import Alamofire
-import AlamofireImage
 
 extension UIImage
 {
-    class func invalidateCache() {
-        let imageDownloader = UIImageView.af_sharedImageDownloader
-        imageDownloader.imageCache?.removeAllImages()
-    }
-    class func downloadImage(url: URLConvertible?, auth: Bool = true, callback: @escaping ((UIImage?)->Void)) {
-        guard url != nil else { return }
-        var headers : HTTPHeaders?
-        if auth {
-            headers = HTTPManager.getAuthHeaders(auth: true)
-        }
-//        Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseData(completionHandler: { response in
-//            if let data = response.result.value {
-//                let image = UIImage(data: data)
+//    class func downloadImage(url: URLConvertible?, auth: Bool = true, callback: @escaping ((UIImage?)->Void)) {
+//        guard url != nil else { return }
+//        var headers : HTTPHeaders?
+//        if auth {
+//            headers = HTTPManager.getAuthHeaders(auth: true)
+//        }
+////        Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseData(completionHandler: { response in
+////            if let data = response.result.value {
+////                let image = UIImage(data: data)
+////                callback(image)
+////            } else {
+////                callback(nil)
+////            }
+////        })
+//        Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseImage { response in
+//            if let image = response.result.value {
 //                callback(image)
 //            } else {
 //                callback(nil)
 //            }
-//        })
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseImage { response in
-            if let image = response.result.value {
-                callback(image)
-            } else {
-                callback(nil)
-            }
-        }
-    }
+//        }
+//    }
 }

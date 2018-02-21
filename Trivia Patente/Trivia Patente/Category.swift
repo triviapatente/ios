@@ -27,9 +27,10 @@ open class Category: CommonPK {
     open var correct_answers: Int!
     open var total_answers: Int!
     
+    var categoryImagesDirectory = "/category/image/"
     var imagePath : String? {
         if let id = self.id {
-            return HTTPManager.getBaseURL() + "/category/image/\(id)"
+            return HTTPManager.getBaseURL() + categoryImagesDirectory + "\(id)"
         }
         return nil
     }

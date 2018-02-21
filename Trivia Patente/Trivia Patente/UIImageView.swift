@@ -8,20 +8,42 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
+import SDWebImage
 
 extension UIImageView {
     func load(path : URL?, placeholder : String, callback: ((UIImage?) -> Void)? = nil) {
         if let url = path {
-            // NO CACHE PERCHE VIENE USATA QUELLA DI ALAMOFIRE
-            let req = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
-            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) {[unowned self] (response) in
-                if let cb = callback {
-                    cb(response.value)
+//            URLCache.shared.removeAllCachedResponses()
+//            if let cache = UIImageView.af_sharedImageDownloader.imageCache {
+//                cache.removeAllImages()
+//            }
+//            self.image = UIImage(named: placeholder)
+//            let task = URLSession.shared.dataTask(with: req, completionHandler: { (data : Data?, response : URLResponse?, error : Error?) in
+//                if let bytes = data, let httpResponse = response as? HTTPURLResponse {
+//                    print(httpResponse.allHeaderFields)
+//                    DispatchQueue.main.async {
+//                        self.image = UIImage(data: bytes)
+//                        if let cb = callback {
+//                            cb(self.image)
+//                        }
+//                    }
+//                }
+//            })
+//            task.resume()
+//            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) {[unowned self] (response) in
+//                if let cache = UIImageView.af_sharedImageDownloader.imageCache, let image = response.value {
+//                    cache.add(image, for: req, withIdentifier: nil)
+//                }
+//            }
+            self.sd_setImage(with: url, placeholderImage: UIImage(named: placeholder), completed: { (image, error, cacheType, url) in
+                if error != nil, let _ = image {
+                    if let cb = callback {
+                        cb(image!)
+                    }
                 }
-            }
+            })
+            
         }
-        
     }
     func getUrl(path : String?) -> URL? {
         var url : URL? = nil

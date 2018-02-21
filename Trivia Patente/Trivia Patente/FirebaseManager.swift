@@ -108,8 +108,8 @@ class FirebaseManager {
         }
         let provider = HTTPManager()
         provider.registerForPush(token: token) { response in
-            if response.success == true {
-                FirebaseManager.saveTokenRequest(token: token, user: SessionManager.currentUser!)
+            if response.success == true, let user = SessionManager.currentUser {
+                FirebaseManager.saveTokenRequest(token: token, user: user)
             }
             print("Token registration response: \(response.json)")
         }
