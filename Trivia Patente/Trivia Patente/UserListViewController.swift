@@ -218,7 +218,10 @@ class UserListViewController: TPNormalViewController {
                 if self.listScope == .italian {
                     self.italianResponse = response
                     if let myPos = self.getMyInternalPosition() {
-                        if myPos > 20 { self.enableStairs() }
+                        // First solution: shows the "stairs" only if it is not in the 20es
+                        //if myPos > 20 { self.enableStairs() }
+                        // Second solution: show the "stairs" only if the the user is shown in the first visible table rows
+                        if myPos > self.tableView.visibleCells.count { self.enableStairs() }
                     }
                     self.scrollToMyPosition()
                 } else {
