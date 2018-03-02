@@ -289,7 +289,12 @@ class UserListViewController: TPNormalViewController {
     }
     var footerFrame : CGRect {
         let height = max(availableFooterHeight, FOOTER_MIN_HEIGHT)
-        return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
+        if #available(iOS 11.0, *) {
+            return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height + self.view.safeAreaInsets.bottom)
+        } else {
+            // Fallback on earlier versions
+            return CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: height)
+        }
     }
     var footerView : UIView {
         let frame = footerFrame
