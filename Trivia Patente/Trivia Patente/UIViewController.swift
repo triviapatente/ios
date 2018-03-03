@@ -107,8 +107,12 @@ extension UIViewController : TPViewController {
         }
     }
     
-    func handleGenericError(message: String, dismiss: Bool = false) {
-        self.showToast(text: message)
+    func handleGenericError( message: String?, dismiss: Bool = false) {
+        var m = message
+        if message == nil || message == "" {
+            m = Strings.generic_error
+        }
+        self.showToast(text: m!)
         if dismiss {
             Timer.scheduledTimer(withTimeInterval: Constants.toastDuration, repeats: false, block: { t in
                 DispatchQueue.main.async {

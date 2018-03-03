@@ -49,7 +49,7 @@ class HTTPManager {
         }, to: destination, headers: headers, encodingCompletion: { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
-                upload.responseModel {[unowned self] (response : DataResponse<T>) in
+                upload.responseModel {(response : DataResponse<T>) in
                     if let result = response.result.value {
                         handler(result)
                     } else if response.response == nil {
@@ -93,7 +93,7 @@ class HTTPManager {
         Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
-                     .responseModel(completionHandler: {[unowned self] (response : DataResponse<T>) in
+                     .responseModel(completionHandler: { (response : DataResponse<T>) in
                         if let result = response.result.value {
                             handler(result)
                         } else if response.response == nil {

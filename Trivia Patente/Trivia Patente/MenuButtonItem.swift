@@ -33,6 +33,7 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
         toggleMenuState(visible: false)
         controller.navController = self.navController
         controller.callback = { [unowned self] action in
+            guard self != nil else { return }
             callback(action)
 //            self.toggleMenuState(visible: false)
         }

@@ -22,6 +22,7 @@ class FBConnectInviteViewController: BaseViewController {
     var delegate : FBConnectInviteDelegate!
     @IBAction func connect() {
         FBManager.link(sender: self) {[unowned self] (response) in
+            guard self != nil else { return }
             if response.success == true {
                 self.delegate.connected()
             }

@@ -212,6 +212,7 @@ class UserListViewController: TPNormalViewController {
         self.hideFooterView(hide: true)
         self.tableView.isUserInteractionEnabled = false
         let callback = {[unowned self] (response : TPUserListResponse) in
+            guard self != nil else { return }
             loadingView.hide(animated: true)
             self.hideFooterView(hide: true)
             if response.success == true {
@@ -244,6 +245,7 @@ class UserListViewController: TPNormalViewController {
     @objc func loadUp() {
         // only called on rank
         let callback = {[unowned self] (response : TPUserListResponse) in
+            guard self != nil else { return }
             if response.success == true {
                 self.italianResponse?.users.insert(contentsOf: response.users, at: 0)
                 self.tableView.refreshControl!.endRefreshing()
@@ -261,6 +263,7 @@ class UserListViewController: TPNormalViewController {
     func loadDown(endRefreshing: @escaping (() -> Void)) {
          // only called on rank
         let callback = {[unowned self] (response : TPUserListResponse) in
+            guard self != nil else { return }
             if response.success == true {
                 self.italianResponse?.users.append(contentsOf: response.users)
                 endRefreshing()
@@ -386,6 +389,7 @@ class UserListViewController: TPNormalViewController {
         self.dismissSearch()
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         let handler = {[unowned self] (response : TPUserListResponse) in
+            guard self != nil else { return }
             loadingView.hide(animated: true)
             if response.success == true {
                 if self.listScope == .italian {
@@ -446,6 +450,7 @@ class UserListViewController: TPNormalViewController {
             scrollView.contentInset.bottom = previousScrollViewBottomInset + 50
             
             let endRefreshing = {[unowned self] (timer : Timer) in
+                guard self != nil else { return }
                 // Reset the bottom inset to its original value
                 self.bottomActivityIndicator?.stopAnimating()
                 scrollView.contentInset.bottom = previousScrollViewBottomInset

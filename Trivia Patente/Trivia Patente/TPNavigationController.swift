@@ -111,8 +111,8 @@ class TPNavigationController: UINavigationController {
     
     func handleLegislationUpdate(serverDate: Date?, type: PopoverType) {
         if let last = type.lastTS {
-            if last != serverDate?.timeIntervalSince1970 {
-                self.performSegue(withIdentifier: "legislation_segue", sender: ["type": type, "date": serverDate!.timeIntervalSince1970])
+            if last != serverDate?.timeIntervalSince1970, let date = serverDate {
+                self.performSegue(withIdentifier: "legislation_segue", sender: ["type": type, "date": date.timeIntervalSince1970])
             }
         } else {
             type.setLastDate(lastTS: serverDate!.timeIntervalSince1970)
@@ -192,6 +192,7 @@ class TPNavigationController: UINavigationController {
                 // show popover
                 type.setLastDate(lastTS: currentTS)
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: {[unowned self] (t) in
+                    guard self != nil else { return }
                     DispatchQueue.main.async {
                         switch type {
                         case .lucky:
@@ -321,6 +322,7 @@ class TPNavigationController: UINavigationController {
             case "menu_segue":
                 let menuController = (segue.destination as! UISideMenuNavigationController).topViewController! as! MenuViewController
                 menuController.actionCallback = {[unowned self] (action) in
+                    guard self != nil else { return }
                     switch action {
                     case MenuViewController.kMenuActionContact:
                         self.goTo(ContactUsViewController.self, identifier: "contact_segue")

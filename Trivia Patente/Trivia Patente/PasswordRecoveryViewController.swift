@@ -55,6 +55,7 @@ class PasswordRecoveryViewController: BaseViewController, UITextFieldDelegate {
         self.resignResponder()
         self.resetButton.load()
         httpAuth.forgotPassword(usernameOrEmail: nameField.getText()) { [unowned self] (response : TPForgotResponse) in
+            guard self != nil else { return }
             self.resetButton.stopLoading()
             self.enableForm()
             self.handleResponse(response: response)

@@ -31,6 +31,7 @@ extension UIImageView {
 //            })
 //            task.resume()
 //            self.af_setImage(withURLRequest: req, placeholderImage: UIImage(named: placeholder), runImageTransitionIfCached: false) {[unowned self] (response) in
+//            guard self != nil else { return }
 //                if let cache = UIImageView.af_sharedImageDownloader.imageCache, let image = response.value {
 //                    cache.add(image, for: req, withIdentifier: nil)
 //                }

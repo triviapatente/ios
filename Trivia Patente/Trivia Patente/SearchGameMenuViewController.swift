@@ -32,6 +32,7 @@ class SearchGameMenuViewController: TPNormalViewController {
             recentInvitesView.separatorColor = Colors.primary
             recentInvitesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentInvitesView.selectedCellHandler = { [unowned self] item in
+                guard self != nil else { return }
                 let invite = item as! Invite
                 self.destinationGame = Game(id: invite.gameId)
                 self.destinationGame!.opponent = invite.sender

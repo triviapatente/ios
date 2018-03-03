@@ -27,6 +27,7 @@ class MainViewController: TPNormalViewController {
             recentGamesView.separatorColor = Colors.primary
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = { [unowned self] item in
+                guard self != nil else { return }
                 self.selectedGame = item as! Game
                 self.performSegue(withIdentifier: "start_game_segue", sender: self)
             }
@@ -42,6 +43,7 @@ class MainViewController: TPNormalViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.buttonClickListener = { [unowned self] button in
+            guard self != nil else { return }
             if let identifier = self.getSegueIdentifier(for: button) {
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
@@ -91,7 +93,9 @@ class MainViewController: TPNormalViewController {
         self.recentGamesView.view.isUserInteractionEnabled = true
         MBProgressHUD.hide(for: self.view, animated: false)
         RecentGameHandler.start(delegate: self.recentGamesView, callback: { [unowned self] () in
+            guard self != nil else { return }
             self.socketGame.listen_recent_games(handler: {[unowned self] (event) in
+                guard self != nil else { return }
                 if self.recentGamesView != nil {
                     self.recentGamesView.retrieveRecentGames()
                 }
@@ -136,17 +140,20 @@ class MainViewController: TPNormalViewController {
             self.recentGamesView.retrieveRecentGames()
             if showLoader { self.socketStopLoading() }
             self.socketAuth.global_infos { [unowned self] (response : TPConnectResponse?) in
+                guard self != nil else { return }
                 self.registerFirebaseSession()
                 //check if login was forbidden
                 if response?.statusCode == 401 {
                     SessionManager.drop()
                     UIViewController.goToFirstAccess(from: self)
-                } else {
-                    self.setHints(candidateResponse: response)
-                    let navController = self.navigationController as! TPNavigationController
-                    navController.handleLegislationUpdate(serverDate: response!.privacyPolicyLastUpdate, type: .privacyUpdate)
-                    navController.handleLegislationUpdate(serverDate:
-                        response!.termsLastUpdate, type: .termsUpdate)
+                } else if let success = response?.success {
+                    if success {
+                        self.setHints(candidateResponse: response)
+                        let navController = self.navigationController as! TPNavigationController
+                        navController.handleLegislationUpdate(serverDate: response!.privacyPolicyLastUpdate, type: .privacyUpdate)
+                        navController.handleLegislationUpdate(serverDate:
+                            response!.termsLastUpdate, type: .termsUpdate)
+                    }
                 }
             }
             

@@ -99,6 +99,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     func join_room() {
         guard game != nil else { return }
         socketHandler.join(game_id: game.id!) { [unowned self] (joinResponse : TPResponse?) in
+            guard self != nil else { return }
             if joinResponse?.success == true {
                 self.shouldScrollToLastSectionAfterLoad = self.response == nil
                 self.round_details()
@@ -110,6 +111,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     }
     func round_details() {
         socketHandler.round_details(game_id: game.id!) { [unowned self] response in
+            guard self != nil else { return }
             if response.success == true {
                 self.response = response
             } else {
@@ -153,6 +155,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
         self.sectionBar.delegate = self
         self.createGameCallback = { [unowned self] response in
+            guard self != nil else { return }
             if response.success {
                 self.newGameResponse = response
                 self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
@@ -239,6 +242,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         }
         
         self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {[unowned self] (t) in
+            guard self != nil else { return }
             if self.interstitial.isReady {
                 self.interstitial.present(fromRootViewController: self)
             } else {
@@ -380,6 +384,7 @@ extension RoundDetailsViewController {
     
     func listen() {
         socketHandler.listen_round_started { [unowned self] (response : TPRoundStartedEvent?) in
+            guard self != nil else { return }
             if response?.success == true {
                 self.response.categories.append(response!.category)
                 self.scoreView.add(answers: response!.answers)
@@ -390,6 +395,7 @@ extension RoundDetailsViewController {
             }
         }
         let cb = { [unowned self] (response : TPGameEndedEvent?) in
+            guard self != nil else { return }
             if response?.success == true {
                 self.game.winnerId = response!.winner_id
                 self.game.ended = true
@@ -406,10 +412,12 @@ extension RoundDetailsViewController {
         socketHandler.listen_game_left(handler: cb)
         socketHandler.listen_game_ended(handler: cb)
         socketHandler.listen_user_left_game { [unowned self] (response) in
+            guard self != nil else { return }
             self.game.incomplete = true
             cb(response)
         }
         socketHandler.listen_user_answered { [unowned self] (response : TPQuestionAnsweredEvent?) in
+            guard self != nil else { return }
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])
                 self.response.answers.append(answer)

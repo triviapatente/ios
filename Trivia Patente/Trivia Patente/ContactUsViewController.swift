@@ -84,6 +84,7 @@ class ContactUsViewController: BaseViewController, UITextViewDelegate, UIPickerV
         let httpManager = HTTPManager()
         self.showToast(text: "Invio...")
         httpManager.request(url: "/ws/contact", method: .post, params: ["message":self.messageTextView.text!, "scope":self.messageReasons[selectedReasonIndex].1], auth: true) {[unowned self] (response: TPResponse) in
+            guard self != nil else { return }
             if response.success && response.statusCode == 200 {
                 self.showToast(text: "Messaggio inviato")
                 self.clearForm()

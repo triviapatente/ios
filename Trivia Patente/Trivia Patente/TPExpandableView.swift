@@ -142,6 +142,9 @@ class TPExpandableView: BaseViewController {
                 
                 self.items = my_turn_games + your_turn_games + ended_games*/
                 self.items = items;
+            } else {
+                self.parent!.handleGenericError(message: response.message)
+                self.reloadDidEnd()
             }
         }
     }

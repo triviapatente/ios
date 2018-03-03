@@ -58,6 +58,7 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
         self.resignResponder()
         loginButton.load()
         httpAuth.login(user: nameField.getText(), password: passwordField.getText()) { [unowned self] (response : TPAuthResponse) in
+            guard self != nil else { return }
             self.loginButton.stopLoading()
             self.enableForm()
             self.forgotPasswordButton.isHidden = response.success
@@ -104,6 +105,7 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
 //        self.resignResponder()
 //        facebookButton.load()
 //        FBManager.login(sender: self) { [unowned self] response in
+//            guard self != nil else { return }
 //            self.facebookButton.stopLoading()
 //            self.handleResponse(response: response)
 //        }

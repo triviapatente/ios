@@ -11,6 +11,7 @@ import SocketIO
 import SwiftyJSON
 
 class SocketManager {
+    static let RequestTimeout : TimeInterval = 10
     static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!, config: [.log(false)])
     
     class func onDisconnect(callback: @escaping (() -> Void)) {
@@ -72,21 +73,23 @@ class SocketManager {
             SocketManager.unlisten(handlerId: id)
         }
     }
-    class func listen<T: TPResponse>(event : String, handler : @escaping (T) -> Void) -> UUID{
+    class func listen<T: TPResponse>(event : String, once: Bool = false, handler : @escaping (T) -> Void) -> UUID{
         SocketManager.unlisten(event: event)
-        return SocketManager.socket.on(event) { (data, ack) in
-            
+        let normalCallback : (([Any], SocketAckEmitter) -> Void) = { (data, ack) in
             if let object = data.first as? [String : AnyObject] {
                 let json = JSON.fromDict(dict: object)
                 let response = T(json: json)
-                
                 handler(response)
             }
         }
+        if once {
+            return SocketManager.socket.once(event, callback: normalCallback)
+        } else {
+            return SocketManager.socket.on(event, callback: normalCallback)
+        }
     }
     class func emit<T: TPResponse>(path : String, values : [String : AnyObject], handler : @escaping (T) -> Void) {
-        _ = listen(event: path) { (response:  T) in
-            SocketManager.socket.off(path)
+        let reqId = listen(event: path, once: true) { (response:  T) in
             if response.statusCode == 401 {
                 SessionManager.drop()
                 UIViewController.goToFirstAccess()
@@ -94,10 +97,24 @@ class SocketManager {
                 handler(response)
             }
         }
+        
         if let token = SessionManager.getToken() {
             let body = [SessionManager.kTokenKey: token, "body": values, SessionManager.kDeviceIdKey: SessionManager.getDeviceId()] as [String : AnyObject]
-            SocketManager.socket.emit(path, body)
+            let cb = SocketManager.socket.emitWithAck(path, body)
+            cb.timingOut(after: SocketManager.RequestTimeout, callback: { (data) in
+                if let ack = data.first as? String {
+                    if ack == SocketAckStatus.noAck.rawValue {
+                        socket.off(id: reqId)
+                        handler(T(error: "La richiesta non è andata a buon fine. Riprova."));
+                    }
+                }
+            })
         }
+    }
+    @objc class func reuqestTimedOut(timer: Timer) {
+        let req = timer.userInfo as! UUID
+        SocketManager.socket.off(id: req)
+        
     }
     static var joined_rooms : [String : Int32] = [:]
     class func joined(to value: Int32, type: String) -> Bool {
