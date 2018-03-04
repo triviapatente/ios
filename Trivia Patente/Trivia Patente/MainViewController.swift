@@ -26,7 +26,7 @@ class MainViewController: TPNormalViewController {
             recentGamesView.title = "Partite recenti"
             recentGamesView.separatorColor = Colors.primary
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            recentGamesView.selectedCellHandler = { [unowned self] item in
+            recentGamesView.selectedCellHandler = {   item in
                 guard self != nil else { return }
                 self.selectedGame = item as! Game
                 self.performSegue(withIdentifier: "start_game_segue", sender: self)
@@ -42,7 +42,7 @@ class MainViewController: TPNormalViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.buttonClickListener = { [unowned self] button in
+        self.buttonClickListener = {   button in
             guard self != nil else { return }
             if let identifier = self.getSegueIdentifier(for: button) {
                 self.performSegue(withIdentifier: identifier, sender: self)
@@ -92,9 +92,9 @@ class MainViewController: TPNormalViewController {
         (self.navigationController! as! TPNavigationController).configureBar()
         self.recentGamesView.view.isUserInteractionEnabled = true
         MBProgressHUD.hide(for: self.view, animated: false)
-        RecentGameHandler.start(delegate: self.recentGamesView, callback: { [unowned self] () in
+        RecentGameHandler.start(delegate: self.recentGamesView, callback: {   () in
             guard self != nil else { return }
-            self.socketGame.listen_recent_games(handler: {[unowned self] (event) in
+            self.socketGame.listen_recent_games(handler: {  (event) in
                 guard self != nil else { return }
                 if self.recentGamesView != nil {
                     self.recentGamesView.retrieveRecentGames()
@@ -139,7 +139,7 @@ class MainViewController: TPNormalViewController {
             }
             self.recentGamesView.retrieveRecentGames()
             if showLoader { self.socketStopLoading() }
-            self.socketAuth.global_infos { [unowned self] (response : TPConnectResponse?) in
+            self.socketAuth.global_infos {   (response : TPConnectResponse?) in
                 guard self != nil else { return }
                 self.registerFirebaseSession()
                 //check if login was forbidden

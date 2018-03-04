@@ -191,7 +191,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func join_room(followRedirects : Bool = true) {
         guard game != nil else { return }
-        socketHandler.join(game_id: game.id!) {[unowned self] (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: game.id!) {  (joinResponse : TPResponse?) in
             guard self != nil else { return }
             if joinResponse?.success == true {
                 self.init_round(followRedirects: followRedirects)
@@ -223,7 +223,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         self.gameActions.leaveButttonEnabled(enabled: false)
     }
     func createInvite() {
-        let handler = { [unowned self] (response : TPNewGameResponse) in
+        let handler = {   (response : TPNewGameResponse) in
             guard self != nil else { return }
             if response.success == true {
                 response.game.opponent = response.opponent

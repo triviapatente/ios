@@ -85,7 +85,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             if questionMap.index(forKey: key) == nil {
                 questionMap[key] = []
             }
-            quiz.answers = response.answers.filter({$0.quizId == quiz.id}).map { [unowned self] (question : Question) -> Question in
+            quiz.answers = response.answers.filter({$0.quizId == quiz.id}).map {   (question : Question) -> Question in
                 question.user = self.response.users.first(where: {$0.id == question.userId})
                 return question
             }
@@ -98,7 +98,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     }
     func join_room() {
         guard game != nil else { return }
-        socketHandler.join(game_id: game.id!) { [unowned self] (joinResponse : TPResponse?) in
+        socketHandler.join(game_id: game.id!) {   (joinResponse : TPResponse?) in
             guard self != nil else { return }
             if joinResponse?.success == true {
                 self.shouldScrollToLastSectionAfterLoad = self.response == nil
@@ -110,7 +110,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func round_details() {
-        socketHandler.round_details(game_id: game.id!) { [unowned self] response in
+        socketHandler.round_details(game_id: game.id!) {   response in
             guard self != nil else { return }
             if response.success == true {
                 self.response = response
@@ -154,7 +154,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
         self.tableView.register(gameEndedNib, forCellReuseIdentifier: winnerCellKey)
         self.sectionBar.delegate = self
-        self.createGameCallback = { [unowned self] response in
+        self.createGameCallback = {   response in
             guard self != nil else { return }
             if response.success {
                 self.newGameResponse = response
@@ -241,7 +241,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             }
         }
         
-        self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {[unowned self] (t) in
+        self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {  (t) in
             guard self != nil else { return }
             if self.interstitial.isReady {
                 self.interstitial.present(fromRootViewController: self)
@@ -383,7 +383,7 @@ extension RoundDetailsViewController : TPSectionBarDelegate {
 extension RoundDetailsViewController {
     
     func listen() {
-        socketHandler.listen_round_started { [unowned self] (response : TPRoundStartedEvent?) in
+        socketHandler.listen_round_started {   (response : TPRoundStartedEvent?) in
             guard self != nil else { return }
             if response?.success == true {
                 self.response.categories.append(response!.category)
@@ -394,7 +394,7 @@ extension RoundDetailsViewController {
                 //TODO: error handler
             }
         }
-        let cb = { [unowned self] (response : TPGameEndedEvent?) in
+        let cb = {   (response : TPGameEndedEvent?) in
             guard self != nil else { return }
             if response?.success == true {
                 self.game.winnerId = response!.winner_id
@@ -411,12 +411,12 @@ extension RoundDetailsViewController {
         }
         socketHandler.listen_game_left(handler: cb)
         socketHandler.listen_game_ended(handler: cb)
-        socketHandler.listen_user_left_game { [unowned self] (response) in
+        socketHandler.listen_user_left_game {   (response) in
             guard self != nil else { return }
             self.game.incomplete = true
             cb(response)
         }
-        socketHandler.listen_user_answered { [unowned self] (response : TPQuestionAnsweredEvent?) in
+        socketHandler.listen_user_answered {   (response : TPQuestionAnsweredEvent?) in
             guard self != nil else { return }
             if let answer = response?.answer {
                 self.scoreView.add(answers: [answer])

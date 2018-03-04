@@ -218,7 +218,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         }
         self.startSaving()
         if self.newAvatarImage != nil {
-            httpManager.upload(url: "/account/image/edit", method: .post, data: UIImageJPEGRepresentation(self.newAvatarImage!, Constants.avatarImageRapresentationQuality)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: {[unowned self] (response: TPAuthResponse) in
+            httpManager.upload(url: "/account/image/edit", method: .post, data: UIImageJPEGRepresentation(self.newAvatarImage!, Constants.avatarImageRapresentationQuality)!, forHttpParam: "image", fileName: "avatar.png", mimeType: "image/png", parameters: nil, handler: {  (response: TPAuthResponse) in
                 guard self != nil else { return }
                 if !response.success {
                     self.errorView.set(error: Strings.contact_us_error_toast)

@@ -215,7 +215,7 @@ class UserListViewController: TPNormalViewController {
         let loadingView = MBProgressHUD.clearAndShow(to: self.tableView, animated: true)
         self.hideFooterView(hide: true)
         self.tableView.isUserInteractionEnabled = false
-        let callback = {[unowned self] (response : TPUserListResponse) in
+        let callback = {  (response : TPUserListResponse) in
             guard self != nil else { return }
             loadingView.hide(animated: true)
             self.hideFooterView(hide: true)
@@ -252,7 +252,7 @@ class UserListViewController: TPNormalViewController {
     }
     @objc func loadUp() {
         // only called on rank
-        let callback = {[unowned self] (response : TPUserListResponse) in
+        let callback = {  (response : TPUserListResponse) in
             guard self != nil else { return }
             if response.success == true {
                 self.italianResponse?.users.insert(contentsOf: response.users, at: 0)
@@ -270,7 +270,7 @@ class UserListViewController: TPNormalViewController {
     
     func loadDown(endRefreshing: @escaping (() -> Void)) {
          // only called on rank
-        let callback = {[unowned self] (response : TPUserListResponse) in
+        let callback = {  (response : TPUserListResponse) in
             guard self != nil else { return }
             if response.success == true {
                 self.italianResponse?.users.append(contentsOf: response.users)
@@ -395,7 +395,7 @@ class UserListViewController: TPNormalViewController {
     func search(query: String) {
         self.dismissSearch()
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
-        let handler = {[unowned self] (response : TPUserListResponse) in
+        let handler = {  (response : TPUserListResponse) in
             guard self != nil else { return }
             loadingView.hide(animated: true)
             if response.success == true {
@@ -456,7 +456,7 @@ class UserListViewController: TPNormalViewController {
             // Add 50 points to bottom inset, avoiding it from laying over the refresh control.
             scrollView.contentInset.bottom = previousScrollViewBottomInset + 50
             
-            let endRefreshing = {[unowned self] (timer : Timer) in
+            let endRefreshing = {  (timer : Timer) in
                 guard self != nil else { return }
                 // Reset the bottom inset to its original value
                 self.bottomActivityIndicator?.stopAnimating()

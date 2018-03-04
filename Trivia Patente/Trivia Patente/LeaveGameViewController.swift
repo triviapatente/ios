@@ -26,7 +26,7 @@ class LeaveGameViewController: BaseViewController {
         if button == dismissButton {
             self.fade()
         } else if button == leaveButton {
-            handler.leave_game(game_id: game.id!) { [unowned self] response in
+            handler.leave_game(game_id: game.id!) {   response in
                 guard self != nil else { return }
                 if response.success == true {
                     self.fade()
@@ -40,7 +40,7 @@ class LeaveGameViewController: BaseViewController {
         }
     }
     func getDecrement() {
-        handler.get_leave_decrement(game_id: game.id!) { [unowned self] response in
+        handler.get_leave_decrement(game_id: game.id!) {   response in
             guard self != nil else { return }
             if response.success == true {
                 if response.decrement! == 0 {
