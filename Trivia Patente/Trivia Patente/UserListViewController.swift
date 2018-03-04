@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class UserListViewController: TPNormalViewController {
     @IBOutlet var tableView : UITableView!
-    @IBOutlet@objc  var control : UISegmentedControl!
+    @IBOutlet @objc  var control : UISegmentedControl!
     @IBOutlet var searchBar : UISearchBar!
     @IBOutlet var connectContainerView : UIView!
     @IBOutlet var blurImageView : UIImageView!
@@ -40,6 +40,10 @@ class UserListViewController: TPNormalViewController {
     var isLinkedToFB : Bool {
         return FBManager.getInfos().hasToken == true
     }
+    
+    // Image names used for the automated scroll button
+    static let ImageGoToFirstInRank = UIImage(named: "stairs_up")
+    static let ImageGoToUserInRank = UIImage(named: "stairs_down")
     
     @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()
@@ -224,7 +228,11 @@ class UserListViewController: TPNormalViewController {
                         // Second solution: show the "stairs" only if the the user is shown in the first visible table rows
                         if myPos > self.tableView.visibleCells.count { self.enableStairs() }
                     }
-                    self.scrollToMyPosition()
+                    if forceTopList {
+                        self.tableView.scrollToTop()
+                    } else {
+                        self.scrollToMyPosition()
+                    }
                 } else {
                     self.friendsResponse = response
                 }
@@ -340,7 +348,6 @@ class UserListViewController: TPNormalViewController {
     var userChosenCallback : ((User) -> Void)!
     var chosenUser : User!
     
-    var stairsUp = true
     var stairsHoldMyPositionResults : [User]?
     
     override func viewDidLoad() {
@@ -376,7 +383,7 @@ class UserListViewController: TPNormalViewController {
     {
         if self.listType == .rank && !searching {
             self.searchBar.showsBookmarkButton = true
-            self.searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: UIControlState.normal)
+            changeRankScrollButton(image: UserListViewController.ImageGoToFirstInRank)
         }
     }
     
@@ -470,9 +477,32 @@ class UserListViewController: TPNormalViewController {
         }
     }
     
+    // autoRankScrollLastImage used in scrollViewDidScroll
+    var autoRankScrollLastImage : UIImage?
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // if button enabled
+        guard self.searchBar.showsBookmarkButton else { return }
+        if let firstCellVisible = self.tableView.visibleCells.first as? RankTableViewCell {
+            if let i = firstCellVisible.user.internalPosition, let j = self.getMyInternalPosition(), i > j {
+                self.autoRankScrollLastImage = self.searchBar.image(for: .bookmark, state: .normal)
+                changeRankScrollButton(image: UserListViewController.ImageGoToUserInRank)
+                return
+            }
+        }
+        // show go to first
+        if let image = self.autoRankScrollLastImage {
+            changeRankScrollButton(image: image)
+        }
+    }
+    
     var searchedFor : String?
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.dismissSearch()
+    }
+    
+    func changeRankScrollButton(image: UIImage?)
+    {
+        self.searchBar.setImage(image, for: .bookmark, state: .normal)
     }
 }
 
@@ -554,18 +584,19 @@ extension UserListViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        if self.stairsUp {
-            searchBar.setImage(UIImage(named: "stairs_down"), for: .bookmark, state: .normal)
+        if self.searchBar.image(for: .bookmark, state: .normal) == UserListViewController.ImageGoToFirstInRank {
+            changeRankScrollButton(image: UserListViewController.ImageGoToUserInRank)
+            self.autoRankScrollLastImage = UserListViewController.ImageGoToUserInRank
             self.stairsHoldMyPositionResults = self.getContextualUsers()
-            self.loadData(forceTopList:  true)
+            self.loadData(forceTopList: true)
         } else {
-            searchBar.setImage(UIImage(named: "stairs_up"), for: .bookmark, state: .normal)
+            changeRankScrollButton(image: UserListViewController.ImageGoToFirstInRank)
+            self.autoRankScrollLastImage = UserListViewController.ImageGoToFirstInRank
             self.italianResponse!.users = self.stairsHoldMyPositionResults!
             self.reloadTable()
             self.scrollToMyPosition()
             
         }
-        self.stairsUp = !self.stairsUp
     }
     
 }
