@@ -11,9 +11,10 @@ import Alamofire
 import UserNotifications
 import Firebase
 import GoogleMobileAds
-
+ 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
+    
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         FirebaseManager.sendToken(token: fcmToken)
     }
@@ -56,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 //            maximumActiveDownloads: 5,
 //            imageCache: nil
 //        )
-        
+    
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

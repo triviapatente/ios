@@ -18,6 +18,8 @@ class Strings {
     static let generic_error = "Abbiamo riscontrato un errore. Riprova"
     static let contact_us_error_toast = "Errore durante il salvataggio delle modifiche. Riprova"
     static let no_user_found = "Nessun utente trovato 😔"
+    static let request_timout_error = "La richiesta non è andata a buon fine. Riprova."
+    static let unknown_error = "C'è stato un problema. Riprova."
     
     // Review popover
     static let review_pop_first_msg = "Come ti trovi con\nTriviaPatente?"
@@ -25,6 +27,7 @@ class Strings {
     static let review_pop_positive_msg = "Ti va di comunicarlo ai dubbiosi?"
     static let review_pop_positive_btn = "Certo! 😍"
     static let review_pop_negative_btn = "Certo! 💪🏻"
+    
     
     // Legislation update popover
     static let legislation_pop_privacy_update_1 = "Abbiamo aggiornato la " // 'Privacy Policy' diventa link

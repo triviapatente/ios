@@ -105,7 +105,7 @@ class SocketManager {
                 if let ack = data.first as? String {
                     if ack == SocketAckStatus.noAck.rawValue {
                         socket.off(id: reqId)
-                        handler(T(error: "La richiesta non è andata a buon fine. Riprova."));
+                        handler(T(error: Strings.request_timout_error));
                     }
                 }
             })

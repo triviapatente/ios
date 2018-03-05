@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.0)
   - Charts (3.0.3):
     - Charts/Core (= 3.0.3)
   - Charts/Core (3.0.3)
@@ -78,7 +78,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BaiduHiDeviOS/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Charts: bcde37724c161958c1438dd4883971fcb2d50c06
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CropViewController: 73a095de5605b017afdf34c6f2604569e147bcbd

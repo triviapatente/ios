@@ -10,7 +10,15 @@ import UIKit
 import Alamofire
 
 class HTTPManager {
-    let REQUEST_TIMEOUT = 6.0
+    static let REQUEST_TIMEOUT = 15.0
+    var manager = Alamofire.SessionManager.default
+    
+    init() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = HTTPManager.REQUEST_TIMEOUT
+        configuration.timeoutIntervalForResource = HTTPManager.REQUEST_TIMEOUT
+        manager = Alamofire.SessionManager(configuration: configuration)
+    }
     
     class func getBaseURL() -> String {
         return "https://triviapatente.it:8000"
@@ -37,9 +45,7 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = REQUEST_TIMEOUT
-        Alamofire.upload(multipartFormData: { multipartData in
+        manager.upload(multipartFormData: { multipartData in
             multipartData.append(data, withName: forHttpParam, fileName: fileName, mimeType: mimeType)
             if parameters != nil   {
                 for (key, value) in parameters! {
@@ -64,13 +70,18 @@ class HTTPManager {
                             handler(response)
                         }
                     } else {
-                        let response = T(error: "Errore sconosciuto. Riprova più tardi!")
-                        handler(response)
+                        handler(T(error: Strings.unknown_error))
                     }
 
                 }
-            case .failure(let encodingError):
-                print("encodingError:\(encodingError)")
+            case .failure(let error):
+                if error._code == 1 {
+                    //HANDLE TIMEOUT HERE
+                    handler(T(error: Strings.request_timout_error))
+                } else {
+                    handler(T(error: Strings.unknown_error))
+                }
+                print("encodingError:\(error)")
             }
         })
         
@@ -87,30 +98,41 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-//        let AFManager = Alamofire.SessionManager(configuration: self.ALConfiguration())
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForRequest = REQUEST_TIMEOUT
-        Alamofire.SessionManager.default.session.configuration.timeoutIntervalForResource = REQUEST_TIMEOUT
-        Alamofire.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
+        manager.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in
-                        if let result = response.result.value {
-                            handler(result)
-                        } else if response.response == nil {
-                            let response = T(error: Strings.no_connection_toast)
-                            handler(response)
-                        } else if let message = (response.result.error as? BackendError)?.message {
-                            let response = T(error: message, statusCode: response.response?.statusCode)
-                            if response.statusCode == 401 && auth {
-                                SessionManager.drop()
-                                UIViewController.goToFirstAccess()
-                            } else {
+                        switch (response.result) {
+                        case .success:
+                            //do json stuff
+                            if let result = response.result.value {
+                                handler(result)
+                            } else if response.response == nil {
+                                let response = T(error: Strings.no_connection_toast)
                                 handler(response)
+                            } else if let message = (response.result.error as? BackendError)?.message {
+                                let response = T(error: message, statusCode: response.response?.statusCode)
+                                if response.statusCode == 401 && auth {
+                                    SessionManager.drop()
+                                    UIViewController.goToFirstAccess()
+                                } else {
+                                    handler(response)
+                                }
+                            } else {
+                                handler(T(error: Strings.unknown_error))
                             }
-                        } else {
-                            let response = T(error: "Errore sconosciuto. Riprova più tardi!")
-                            handler(response)
+                            break
+                        case .failure(let error):
+                            if error._code == 1 {
+                                //HANDLE TIMEOUT HERE
+                                handler(T(error: Strings.request_timout_error))
+                            } else {
+                                handler(T(error: Strings.unknown_error))
+                            }
+                            print("\n\nAuth request failed with error:\n \(error._code) \(error)")
+                            break
                         }
+                        
                      })
     }
 }
