@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class HTTPManager {
-    static let REQUEST_TIMEOUT = 15.0
+    static let REQUEST_TIMEOUT : TimeInterval = 15.0
     var manager = Alamofire.SessionManager.default
     
     init() {
