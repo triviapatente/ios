@@ -8,6 +8,8 @@
 
 import UIKit
 import MBProgressHUD
+import SDWebImage
+
 class MainViewController: TPNormalViewController {
     
     var loadingView : MBProgressHUD!
@@ -275,5 +277,7 @@ class MainViewController: TPNormalViewController {
             nav.showMenu()
         }
     }
-
+    override func didReceiveMemoryWarning() {
+        SDImageCache.shared().clearMemory()
+    }
 }
