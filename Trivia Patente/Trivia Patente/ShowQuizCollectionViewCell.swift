@@ -95,7 +95,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             } else {
                 self.trueButton.isEnabled = true
                 self.falseButton.isEnabled = true
-                UIViewController.showToast(text: "Errore durante il salvataggio della risposta", view: self.contentView)
+                UIViewController.showToast(text: Strings.request_timout_error, view: self.contentView)
             }
             self.endLoading(button: sender)
         }
