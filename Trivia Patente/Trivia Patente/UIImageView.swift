@@ -62,11 +62,11 @@ extension UIImageView {
     func clear() {
         self.layer.borderWidth = 0.0
         self.removeAllSubviews()
+        self.sd_cancelCurrentImageLoad()
     }
     func load(user: User?) {
         self.contentMode = .scaleAspectFill
-        self.layer.borderWidth = CGFloat(0) // for reausable views
-        self.removeAllSubviews()
+        self.clear()
 
             let imagePath = user?.avatarImageUrl
             let url = getUrl(path: imagePath)

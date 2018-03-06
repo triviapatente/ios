@@ -14,8 +14,16 @@ class GameEndedTableViewCell: UITableViewCell {
     @IBOutlet var scoreIncrementLabel : UILabel!
     @IBOutlet var arrowImageView : UIImageView!
     @IBOutlet var usersImageView : [UIImageView]!
+    @IBOutlet var iconLabels : [UILabel]!
     @IBOutlet var containerView : UIView!
-    @IBOutlet weak var usersContainer: UIView!
+    @IBOutlet weak var usersContainer: UIStackView!
+    
+    // useful variables for graphic changes
+    @IBOutlet weak var secondUserContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var secondUserContainerHeight: NSLayoutConstraint!
+    let AVATAR_SIDE_LENGTH_SMALL = CGFloat(45)
+    let AVATAR_SIDE_LENGTH_BIG = CGFloat(60)
+    
     
     let handler = HTTPGame()
     @IBAction func playNewGame() {
@@ -73,9 +81,6 @@ class GameEndedTableViewCell: UITableViewCell {
         let name = (increment > 0) ? "up_score_arrow" : "down_score_arrow"
         return UIImage(named: name)!
     }
-    func hasVictory(victory: Bool) {
-        usersContainer.isHidden = !victory
-    }
     func titleFor(game : Game) -> String {
         if (isCancelled && game.ended == true && game.started == false) || (game.ended && (scoreIncrement == 0 || scoreIncrement == nil)) {
             self.hasVictory(victory: false)
@@ -102,6 +107,20 @@ class GameEndedTableViewCell: UITableViewCell {
         self.gameButton.setTitle(buttonTitle, for: .normal)
         self.gameButton.backgroundColor = (won) ? Colors.green_default : Colors.red_default
         self.gameButton.setTitleColor(.white, for: .normal)
+    }
+    
+    func hasVictory(victory: Bool)
+    {
+        let sideLength = victory ? AVATAR_SIDE_LENGTH_SMALL : AVATAR_SIDE_LENGTH_BIG
+        let emoticons = victory ? "🏆😡":"🙄🙄"
+        self.secondUserContainerWidth.constant = sideLength
+        self.secondUserContainerHeight.constant = sideLength
+        self.iconLabels[0].text = emoticons[0]
+        self.iconLabels[1].text = emoticons[1]
+        self.layoutIfNeeded()
+        for imageView in usersImageView {
+            imageView.circleRounded()
+        }
     }
     
     override func awakeFromNib() {

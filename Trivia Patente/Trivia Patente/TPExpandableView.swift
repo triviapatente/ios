@@ -341,10 +341,8 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
         }
     }
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! RecentGameTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPExpandableTableViewCell
         cell.delegate = self
-        cell.avatarView.layer.borderWidth = CGFloat(0) // for reausable views
-        cell.avatarView.removeAllSubviews()
         cell.item = items[indexPath.row]
         if indexPath.row != self.items.count - 1 {
             cell.addSubview(separatorView)
