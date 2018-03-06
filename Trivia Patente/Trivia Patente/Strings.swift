@@ -18,8 +18,8 @@ class Strings {
     static let generic_error = "Abbiamo riscontrato un errore. Riprova"
     static let contact_us_error_toast = "Errore durante il salvataggio delle modifiche. Riprova"
     static let no_user_found = "Nessun utente trovato 😔"
-    static let request_timout_error = "La richiesta non è andata a buon fine. Riprova."
-    static let unknown_error = "C'è stato un problema. Riprova."
+    static let request_timout_error = "Errore di connessione, riprova."
+    static let unknown_error = "Abbiamo riscontrato un problema, riprova."
     
     // Review popover
     static let review_pop_first_msg = "Come ti trovi con\nTriviaPatente?"
