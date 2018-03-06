@@ -299,7 +299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-8W-xtN">
-                                <rect key="frame" x="0.0" y="195.5" width="375" height="176"/>
+                                <rect key="frame" x="0.0" y="176" width="375" height="215"/>
                                 <subviews>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14Y-Gw-Zgt">
                                         <rect key="frame" x="40" y="-88" width="295" height="88"/>
@@ -334,7 +334,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nxm-Dn-LTj">
-                                        <rect key="frame" x="0.0" y="136" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="136" width="375" height="79"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-jQ-2nk" customClass="TPButton" customModule="Trivia_Patente" customModuleProvider="target">
                                                 <rect key="frame" x="50" y="0.0" width="275" height="40"/>
@@ -351,8 +351,8 @@
                                                     <action selector="normalRegistration" destination="fLU-4u-cEV" eventType="touchUpInside" id="zhn-FI-cV7"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
-                                                <rect key="frame" x="50" y="-331.5" width="275" height="0.0"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDz-cq-bBM">
+                                                <rect key="frame" x="50" y="46" width="275" height="33"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="15"/>
                                                 <state key="normal" title="Hai dimenticato la password?">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -458,7 +458,6 @@
                     </view>
                     <connections>
                         <outlet property="errorViewContainer" destination="14Y-Gw-Zgt" id="zmj-wg-uxk"/>
-                        <outlet property="forgotPasswordButton" destination="kDz-cq-bBM" id="6Az-Hd-d9c"/>
                         <outlet property="loginButton" destination="JDy-jQ-2nk" id="lrH-HV-H6j"/>
                     </connections>
                 </viewController>
@@ -576,7 +575,7 @@
                         <color key="backgroundColor" red="0.0" green="0.69803921570000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="i0z-Fr-zPz" firstAttribute="top" secondItem="g7s-Pt-D0k" secondAttribute="top" id="YM0-bd-RAg"/>
+                            <constraint firstItem="i0z-Fr-zPz" firstAttribute="top" secondItem="IO2-8U-CTR" secondAttribute="bottom" constant="-20" id="YM0-bd-RAg"/>
                             <constraint firstAttribute="trailing" secondItem="i0z-Fr-zPz" secondAttribute="trailing" id="bMP-A3-6cK"/>
                             <constraint firstItem="i0z-Fr-zPz" firstAttribute="leading" secondItem="g7s-Pt-D0k" secondAttribute="leading" id="fQf-T2-v9H"/>
                             <constraint firstAttribute="trailing" secondItem="MKS-j4-ITG" secondAttribute="trailing" id="gwl-aF-5v6"/>

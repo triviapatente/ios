@@ -15,9 +15,7 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
     var errorView : TPErrorView!
 
     @IBOutlet var loginButton : TPButton!
-//    @IBOutlet var facebookButton : TPButton!
     @IBOutlet var errorViewContainer : UIView!
-    @IBOutlet var forgotPasswordButton : UIButton!
     
     let httpAuth = HTTPAuth()
     
@@ -61,7 +59,6 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
             guard self != nil else { return }
             self.loginButton.stopLoading()
             self.enableForm()
-            self.forgotPasswordButton.isHidden = response.success
             self.handleResponse(response: response)
         }
     }
