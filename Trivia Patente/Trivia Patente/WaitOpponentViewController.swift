@@ -14,6 +14,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     
     @IBOutlet var waitLabel : UILabel!
     @IBOutlet var opponentImageView : UIImageView!
+    @IBOutlet var timerLabel : UILabel!
     
     var headerView : TPGameHeader!
     var gameActions : TPGameActions! {
@@ -157,6 +158,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
         self.gameActions.leaveButttonEnabled(enabled: true)
+        self.gameActions.timerButttonEnabled(enabled: true)
         if response.ended == true && followRedirects {
             self.game.ended = true
             self.game.winnerId = response.winnerId
@@ -171,8 +173,28 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             guard let user = response.waiting_for else {
                 return
             }
+            
             self.processGameState(state: state, user: user, opponent_online: response.opponent_online, followRedirects: followRedirects)
+            
         }
+    }
+    func timerActionPressed() {
+        // set text for label
+        //self.timerLabel.text =
+        self.timerLabel.isHidden = false
+        // send request
+        //if (not active)
+            SocketManager.emit(path: "/activate-bell", values: [:]) { (response) in
+                if response.success == true {
+                    // nothing
+                } else {
+                    self.handleGenericError(message: (response.message)!, dismiss: true)
+                    self.timerLabel.isHidden = true
+                    self.gameActions.setTimerActionState(active: false)
+                }
+            }
+//        }
+        self.gameActions.setTimerActionState(active: true)
     }
     func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false, followRedirects : Bool = true) {
         if user.isMe() && followRedirects {
@@ -180,6 +202,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
                 self.redirect(identifier: identifier)
             }
         } else {
+            self.gameActions.timerActionPressed = timerActionPressed
             let color = self.color(for: state, opponent_online: opponent_online)
             self.opponentImageView.set(rotatingBorderColor: color)
             self.waitLabel.text = self.waitMessage(for: state, opponent_online: opponent_online)
@@ -221,6 +244,9 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             self.configureView()
         }
         self.gameActions.leaveButttonEnabled(enabled: false)
+        self.gameActions.timerButttonEnabled(enabled: false)
+            // set text for the timer label
+            // send request if necessary to server
     }
     func createInvite() {
         let handler = {   (response : TPNewGameResponse) in

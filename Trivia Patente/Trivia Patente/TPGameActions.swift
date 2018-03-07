@@ -12,8 +12,17 @@ class TPGameActions: BaseViewController {
     @IBOutlet var chatButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var detailButton : UIButton!
+    @IBOutlet var timerButton : UIButton!
+    @IBOutlet weak var timerImageView: UIImageView!
+    @IBOutlet weak var timerContainer : UIView!
     var game : Game!
     var gameCancelled : Bool = false
+    
+    var timerActionPressed : (() -> Void)? {
+        didSet {
+            self.timerContainer.isHidden = false
+        }
+    }
     
     func identifier(for button : UIButton) -> String? {
         switch button {
@@ -36,6 +45,15 @@ class TPGameActions: BaseViewController {
             self.performSegue(withIdentifier: identifier, sender: self)
         }
     }
+    @IBAction func timerAction() {
+        if let cb = self.timerActionPressed {
+            cb()
+        }
+        self.timerImageView.swing()
+    }
+    func setTimerActionState(active: Bool) {
+        self.timerImageView.image = active ? UIImage(named: "action_bell_rang") : UIImage(named: "action_bell")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,13 +63,21 @@ class TPGameActions: BaseViewController {
         leaveButton.darkerBorder(of: 0.10, width: 5)
         detailButton.circleRounded()
         detailButton.darkerBorder(of: 0.10, width: 5)
-        
-//        self.leaveButttonEnabled(enabled: false)
-
+        timerButton.circleRounded()
+        timerButton.darkerBorder(of: 0.10, width: 5)
     }
     
     func leaveButttonEnabled(enabled: Bool) {
         leaveButton.isEnabled = enabled
+    }
+    
+    func timerButttonEnabled(enabled: Bool) {
+        timerButton.isEnabled = enabled
+        timerImageView.alpha = enabled ? 1.0 : 0.8
+    }
+    
+    func buttonShake(button : UIButton) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
