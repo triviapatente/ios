@@ -18,6 +18,7 @@ class MainViewController: TPNormalViewController {
     var rankButton : TPMainButton!
     var statsButton : TPMainButton!
     var shopButton : TPMainButton!
+    var trainingButton : TPMainButton!
     var selectedGame : Game!
     @IBOutlet var recentGamesViewContainer : UIView!
     var recentGamesView : TPExpandableView! {
@@ -64,7 +65,7 @@ class MainViewController: TPNormalViewController {
             case self.rankButton: return "rank_segue"
             case self.statsButton: return "alpha_segue"
             case self.shopButton: return "alpha_segue"
-
+            case self.trainingButton: return "training_segue"
             default: return nil
         }
     }
@@ -75,6 +76,7 @@ class MainViewController: TPNormalViewController {
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
         self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
+        self.trainingButton.initValues(imageName: "gym", title: "Allenamento", color: Colors.trainingColor, clickListener: buttonClickListener)
         
         self.setDefaultBackgroundGradient()
         self.resetBackgroundGradientLocations()
@@ -254,6 +256,8 @@ class MainViewController: TPNormalViewController {
                 case "shop":
                     self.shopButton = destination as! TPMainButton
                     break
+                case "training":
+                    self.trainingButton = destination as! TPMainButton
                 case "recent_view":
                     self.recentGamesView = destination as! TPExpandableView
                     break

@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9Ka-ZU-snF">
-                                <rect key="frame" x="20" y="20" width="335" height="245"/>
+                                <rect key="frame" x="20" y="20" width="335" height="310"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhW-kG-2tD">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -41,8 +41,17 @@
                                             <segue destination="O44-px-sm6" kind="embed" identifier="play" id="B6J-yy-Imj"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwY-yn-XAG">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b53-hG-nFS">
                                         <rect key="frame" x="0.0" y="65" width="335" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5wi-RS-fi7"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="O44-px-sm6" kind="embed" identifier="training" id="bmL-ZC-3g6"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwY-yn-XAG">
+                                        <rect key="frame" x="0.0" y="130" width="335" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5BJ-za-JfA"/>
                                         </constraints>
@@ -51,7 +60,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5A-mF-NZn">
-                                        <rect key="frame" x="0.0" y="130" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="195" width="335" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="h8S-Gp-Dqz"/>
                                         </constraints>
@@ -60,7 +69,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZB-Yu-P7Q">
-                                        <rect key="frame" x="0.0" y="195" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="260" width="335" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gQu-M8-9T3"/>
                                         </constraints>
@@ -71,14 +80,14 @@
                                 </subviews>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-fB-Vuw">
-                                <rect key="frame" x="0.0" y="319" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="354" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lXt-FH-NoE"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-SX-xhq">
-                                <rect key="frame" x="0.0" y="320" width="375" height="283"/>
+                                <rect key="frame" x="0.0" y="355" width="375" height="248"/>
                                 <connections>
                                     <segue destination="3Zs-38-1kc" kind="embed" identifier="recent_view" id="NUt-j3-gk3"/>
                                 </connections>
@@ -95,7 +104,7 @@
                             <constraint firstItem="fYq-fB-Vuw" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="OIp-JT-icV"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="20" id="RgR-sa-fLX"/>
                             <constraint firstItem="9Ka-ZU-snF" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" constant="20" id="TFw-Q2-md3"/>
-                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="320" identifier="recentsTop" id="dQb-zW-KYO"/>
+                            <constraint firstItem="vpA-SX-xhq" firstAttribute="top" secondItem="Uxm-yK-nEt" secondAttribute="bottom" constant="355" identifier="recentsTop" id="dQb-zW-KYO"/>
                             <constraint firstItem="vpA-SX-xhq" firstAttribute="leading" secondItem="7Nf-wm-jer" secondAttribute="leading" id="zQ5-Kc-uoa"/>
                         </constraints>
                         <connections>
@@ -113,6 +122,7 @@
                         <segue destination="83K-i8-TFz" kind="show" identifier="chat_segue" id="jBo-cE-f6v"/>
                         <segue destination="89w-gJ-8kN" kind="show" identifier="alpha_segue" id="GoM-GB-ghT"/>
                         <segue destination="HuC-KX-tEA" kind="show" identifier="pushGameSegue" id="Q7r-6P-ZAj"/>
+                        <segue destination="j9M-ug-FAN" kind="show" identifier="training_segue" id="AV0-FY-HV2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-MY-Zki" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,7 +133,7 @@
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="774" y="-152"/>
+            <point key="canvasLocation" x="711" y="-164"/>
         </scene>
         <!--Lucky Modal View Controller-->
         <scene sceneID="cWn-Mn-QLv">
@@ -1297,6 +1307,14 @@ Fallo sapere ai tuoi amici 😉</string>
             </objects>
             <point key="canvasLocation" x="1993" y="-1920"/>
         </scene>
+        <!--TrainingListing-->
+        <scene sceneID="WZT-yC-2W9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Training" referencedIdentifier="TrainingListing" id="j9M-ug-FAN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oav-gl-N0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="-556"/>
+        </scene>
         <!--WaitOpponent-->
         <scene sceneID="uyG-Bf-dqE">
             <objects>
@@ -1322,7 +1340,7 @@ Fallo sapere ai tuoi amici 😉</string>
     <inferredMetricsTieBreakers>
         <segue reference="7oL-19-qHT"/>
         <segue reference="NhK-dZ-dty"/>
-        <segue reference="n4A-43-lvl"/>
+        <segue reference="bmL-ZC-3g6"/>
         <segue reference="GoM-GB-ghT"/>
     </inferredMetricsTieBreakers>
 </document>

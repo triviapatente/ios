@@ -76,7 +76,7 @@ class UserListViewController: TPNormalViewController {
         if listType == .rank {
             return "Classifica"
         } else {
-            return "Ricerca avversario"
+            return "Cerca avversario"
         }
     }
 

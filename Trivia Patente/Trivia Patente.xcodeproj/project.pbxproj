@@ -211,6 +211,9 @@
 		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 		F47555732035F7260015FF06 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47555722035F7260015FF06 /* UITableViewCell.swift */; };
+		F478FA2820515FCE00324FED /* Training.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F478FA2720515FCE00324FED /* Training.storyboard */; };
+		F478FA2B2051709700324FED /* TrainingListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478FA2A2051709700324FED /* TrainingListingViewController.swift */; };
+		F478FA2D20517D3A00324FED /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478FA2C20517D3A00324FED /* NSLayoutConstraint.swift */; };
 		F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484730C1FE5CBE100ADA988 /* BaseViewController.swift */; };
 		F488C94F1FB72915000842AC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488C94E1FB72915000842AC /* Strings.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
@@ -464,6 +467,9 @@
 		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F47555722035F7260015FF06 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		F478FA2720515FCE00324FED /* Training.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Training.storyboard; sourceTree = "<group>"; };
+		F478FA2A2051709700324FED /* TrainingListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListingViewController.swift; sourceTree = "<group>"; };
+		F478FA2C20517D3A00324FED /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		F484730C1FE5CBE100ADA988 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trivia Patente.entitlements"; sourceTree = "<group>"; };
 		F488C94E1FB72915000842AC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -1476,6 +1482,7 @@
 				F4F3354E1FDEB4BD0094A849 /* UITextField.swift */,
 				F4D12CE81FE68AD1000858A8 /* UIApplication.swift */,
 				F47555722035F7260015FF06 /* UITableViewCell.swift */,
+				F478FA2C20517D3A00324FED /* NSLayoutConstraint.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -1642,6 +1649,7 @@
 		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
 			isa = PBXGroup;
 			children = (
+				F478FA2520515F9B00324FED /* training */,
 				F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */,
 				F49716A11F9FE09400ED4D7B /* terms */,
 				8B5132D61DBB5B8700143497 /* auth */,
@@ -1694,6 +1702,31 @@
 				F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */,
 			);
 			name = passRecovery;
+			sourceTree = "<group>";
+		};
+		F478FA2520515F9B00324FED /* training */ = {
+			isa = PBXGroup;
+			children = (
+				F478FA2620515FAD00324FED /* ui */,
+			);
+			name = training;
+			sourceTree = "<group>";
+		};
+		F478FA2620515FAD00324FED /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				F478FA2920515FE200324FED /* listing */,
+				F478FA2720515FCE00324FED /* Training.storyboard */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		F478FA2920515FE200324FED /* listing */ = {
+			isa = PBXGroup;
+			children = (
+				F478FA2A2051709700324FED /* TrainingListingViewController.swift */,
+			);
+			name = listing;
 			sourceTree = "<group>";
 		};
 		F49716A11F9FE09400ED4D7B /* terms */ = {
@@ -1848,6 +1881,7 @@
 				8BE278981DF4AD2B00071DF2 /* RoundDetailsTableViewCell.xib in Resources */,
 				8BE6DE381DE6DD1300DDD179 /* ProposedCategoryTableViewCell.xib in Resources */,
 				A9FD52841DA16E96005DFE5D /* LaunchScreen.storyboard in Resources */,
+				F478FA2820515FCE00324FED /* Training.storyboard in Resources */,
 				8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */,
 				8B51330A1DBBAC3000143497 /* Settings.storyboard in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
@@ -2096,6 +2130,7 @@
 				8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,
 				8BBDFE0C1DEB87E500C6A53B /* FBConnectInviteViewController.swift in Sources */,
+				F478FA2D20517D3A00324FED /* NSLayoutConstraint.swift in Sources */,
 				F417CA111FBA768900B494C9 /* AppDelegate.swift in Sources */,
 				F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */,
 				8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */,
@@ -2231,6 +2266,7 @@
 				8BAD1C431DF967540051AC4A /* Partecipation.swift in Sources */,
 				8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */,
 				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
+				F478FA2B2051709700324FED /* TrainingListingViewController.swift in Sources */,
 				8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
