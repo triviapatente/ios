@@ -37,4 +37,5 @@ class Strings {
     
     static let quiz_true_button_text = "V"
     static let quiz_false_button_text = "F"
+    
 }

@@ -8,13 +8,18 @@
 
 import UIKit
 
-class TrainingListingViewController: BaseViewController {
+class TrainingListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var newQuizButton: UIButton!
     
     @IBOutlet weak var proportionalBarContainer: UIView!
     @IBOutlet var bottomBarCostraint : [NSLayoutConstraint]!
     @IBOutlet var waveStatsLabel : [UILabel]!
+    @IBOutlet var collectionView : UIView!
+    @IBOutlet var emptyListLabel : UILabel!
+    
+    var temporaryDataset = [1, 0, 2, 5, 3, 3, 2, 3, 1, 6, 15, 0, 2, 3, 2, 3, 1, 0]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,9 +27,8 @@ class TrainingListingViewController: BaseViewController {
         self.setDefaultBackgroundGradient()
         self.newQuizButton.mediumRounded()
         
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (t) in
-            self.loadStats(values: [12, 2, 4, 10])
-        }
+        
+        self.loadStats(values: [12, 2, 4, 10])
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,14 +61,55 @@ class TrainingListingViewController: BaseViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "quiz_details", let destination = segue.destination as? QuizDetailsViewController {
+            destination.item = sender as! Int
+        }
     }
-    */
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        
+        self.emptyListLabel.isHidden = self.temporaryDataset.count != 0
+        return self.temporaryDataset.count
+    }
+    
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! TrainingQuizCollectionViewCell
+        cell.setItem(value: self.temporaryDataset[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                viewForSupplementaryElementOfKind kind: String,
+                                at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,withReuseIdentifier: "mainHeader", for: indexPath)
+            return headerView
+        default:
+            //4
+            assert(false, "Unexpected element kind")
+        }
+    }
+    public func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "quiz_details", sender: self.temporaryDataset[indexPath.row])
+    }
 
 }

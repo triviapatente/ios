@@ -210,6 +210,8 @@
 		F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */; };
 		F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */; };
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
+		F45DFC9B2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */; };
+		F45DFC9D2051EBA3003E4F4E /* QuizDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */; };
 		F47555732035F7260015FF06 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47555722035F7260015FF06 /* UITableViewCell.swift */; };
 		F478FA2820515FCE00324FED /* Training.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F478FA2720515FCE00324FED /* Training.storyboard */; };
 		F478FA2B2051709700324FED /* TrainingListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478FA2A2051709700324FED /* TrainingListingViewController.swift */; };
@@ -466,6 +468,8 @@
 		F4477E351FA0854300ED5319 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		F4477E371FA0A30F00ED5319 /* TBForgotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBForgotResponse.swift; sourceTree = "<group>"; };
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingQuizCollectionViewCell.swift; sourceTree = "<group>"; };
+		F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetailsViewController.swift; sourceTree = "<group>"; };
 		F47555722035F7260015FF06 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		F478FA2720515FCE00324FED /* Training.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Training.storyboard; sourceTree = "<group>"; };
 		F478FA2A2051709700324FED /* TrainingListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListingViewController.swift; sourceTree = "<group>"; };
@@ -1725,6 +1729,8 @@
 			isa = PBXGroup;
 			children = (
 				F478FA2A2051709700324FED /* TrainingListingViewController.swift */,
+				F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */,
+				F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */,
 			);
 			name = listing;
 			sourceTree = "<group>";
@@ -2111,6 +2117,7 @@
 				8B25D9FC2036F5010047E679 /* TokenRequest.swift in Sources */,
 				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
+				F45DFC9B2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift in Sources */,
 				8B2A2A871DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift in Sources */,
 				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
@@ -2126,6 +2133,7 @@
 				F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */,
 				8B5EE0E81DD5C92C00745A54 /* Shared.swift in Sources */,
 				8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */,
+				F45DFC9D2051EBA3003E4F4E /* QuizDetailsViewController.swift in Sources */,
 				8B8EEA251DFB373C003608AA /* TPGameLeftEvent.swift in Sources */,
 				8B8EEA211DFB283C003608AA /* HTTPChat.swift in Sources */,
 				8B28D27D1DCF62B200C65122 /* HTTPShop.swift in Sources */,

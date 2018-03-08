@@ -18,11 +18,11 @@ class Colors {
     static let rankColor = UIColor(red: 255/255, green: 144/255, blue: 0/255, alpha: 1)
     static let trainingColor = UIColor(red: 230/255, green: 199/255, blue: 35/255, alpha: 1)
     static let shopColor = UIColor(red: 255/255, green: 55/255, blue: 39/255, alpha: 1)
-    static let statsColor = UIColor(red: 222/255, green: 66/255, blue: 253/255, alpha: 1)
+    static let statsColor = UIColor(red: 185/255, green: 80/255, blue: 255/255, alpha: 1)
     
-    static let green_default = UIColor(red: 28/255, green: 221/255, blue: 109/255, alpha: 1)
-    static let yellow_default = UIColor(red: 210/255, green: 199/255, blue: 68/255, alpha: 1)
-    static let red_default = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
+    static let green_default = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+    static let yellow_default = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)
+    static let red_default = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
     static let orange_default = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
     static let gray_default = UIColor(red: 91/255, green: 91/255, blue: 91/255, alpha: 1)
     
