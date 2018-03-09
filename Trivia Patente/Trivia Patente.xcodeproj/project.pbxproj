@@ -1661,6 +1661,7 @@
 		A9FD52781DA16E96005DFE5D /* Trivia Patente */ = {
 			isa = PBXGroup;
 			children = (
+				F4CFDB5D2052E48C0084917B /* StackViewController */,
 				F478FA2520515F9B00324FED /* training */,
 				F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */,
 				F49716A11F9FE09400ED4D7B /* terms */,
@@ -1762,6 +1763,13 @@
 				F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */,
 			);
 			name = QuestionCell;
+			sourceTree = "<group>";
+		};
+		F4CFDB5D2052E48C0084917B /* StackViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = StackViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,6 +8,11 @@
 
 import UIKit
 
-protocol ShowQuizCellDelegate {
+protocol ShowQuizCellDelegate  {
     func user_answered(answer : Bool, correct : Bool)
+    func textForMainLabel() -> String
+    func opponentUser() -> User
+    func headerRightSideData() -> Category
+    func presentImage(image: UIImage?, target: UIView)
+    func gotoQuiz(i : Int)
 }

@@ -9,9 +9,9 @@
 import UIKit
 import MBProgressHUD
 import GoogleMobileAds
+import CollieGallery
 
 class PlayRoundViewController: TPGameViewController, GameControllerRequired {
-    var headerView : TPGameHeader!
     @IBOutlet weak var quizCollectionView : UICollectionView!
     @IBOutlet weak var bannerView : GADBannerView!
     var round : Round!
@@ -21,6 +21,8 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     var loadingView : MBProgressHUD!
     var gameCancelled : Bool = false
     
+    var imageAnimationStartView : UIView?
+    
     
     var gameActions : TPGameActions! {
         didSet {
@@ -29,22 +31,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     var game : Game!
-    
-    let BORDER_LENGTH = CGFloat(30)
-    
-    @IBOutlet var questionButtons : [UIButton]!
-    @IBAction func presentQuiz(sender : UIButton) {
-        for i in 0..<questionButtons.count {
-            let button = questionButtons[i]
-            if sender == button {
-                selectedQuizIndex = i
-                button.shadowSelect()
-                gotoQuiz(i: i)
-            } else {
-                button.shadowDeselect()
-            }
-        }
-    }
+    let BORDER_LENGTH = CGFloat(10)
     var currentPage : Int {
         let x = self.quizCollectionView.contentOffset.x
         let w = self.quizCollectionView.bounds.size.width
@@ -73,13 +60,13 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             for i in 0..<questions.count {
                 let question = questions[i]
                 if let _ = question.my_answer {
-                    let button = self.questionButtons[i]
-                    self.setQuizButtonColor(of: button, correct: question.answeredCorrectly!)
+//                    self.setQuizButtonColor(of: button, correct: question.answeredCorrectly!)
+                    
                 } else if unansweredIndex == nil {
                     unansweredIndex = i
                 }
             }
-            presentQuiz(sender: self.questionButtons[unansweredIndex != nil ? unansweredIndex! : 0])
+            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
         }
     }
     func load() {
@@ -127,6 +114,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     
+    
     func setQuizButtonColor(of button : UIButton, correct : Bool? = nil) {
         if let correctness = correct {
             let color = correctness ? Colors.correct_default : Colors.error_default
@@ -136,16 +124,6 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     }
     func getQuestionNumber(for i : Int) -> Int {
         return (i + 1) + (round.number! - 1) * 4
-    }
-    func configureView() {
-        for i in 0..<questionButtons.count {
-            let button = questionButtons[i]
-            button.circleRounded()
-            button.shadow(radius: 4, color: .white)
-            let title = "\(getQuestionNumber(for: i))"
-            button.setTitle(title, for: .normal)
-            self.setQuizButtonColor(of: button)
-        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -163,21 +141,14 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         self.bannerView.delegate = self
         self.bannerView.load(GADRequest())
         
-        configureView()
         self.setDefaultBackgroundGradient()
-        self.headerView.round = round
         if round.number! == 1 {
             self.gameActions.detailButton.isHidden = true
         } else {
             self.gameActions.detailButton.isHidden = false
         }
-        //TODO: set category
-        self.headerView.category = category
-        (self.navigationController as! TPNavigationController).setUser(candidate: opponent)
         let nib = UINib(nibName: "ShowQuizCollectionViewCell", bundle: .main)
-        //self.quizCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "quiz_cell")
         self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")
-        // Do any additional setup after loading the view.
         
     }
 
@@ -188,9 +159,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
-        if identifier == "header_segue" {
-            self.headerView = segue.destination as! TPGameHeader
-        } else if identifier == "wait_opponent_segue" {
+        if identifier == "wait_opponent_segue" {
             let destination = segue.destination as! WaitOpponentViewController
             destination.game = game
             destination.gameCanceled = self.gameCancelled
@@ -233,13 +202,14 @@ extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDa
         return self.questions.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width - BORDER_LENGTH * 2, height: collectionView.frame.size.height)
+        return CGSize(width: collectionView.frame.size.width - BORDER_LENGTH * 2, height: collectionView.frame.size.height - BORDER_LENGTH)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! ShowQuizCollectionViewCell
         cell.quiz = self.questions[indexPath.row]
         cell.round = round
         cell.delegate = self
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -250,22 +220,63 @@ extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDa
         let margin = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section) / 2
         return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let button = self.questionButtons[currentPage]
-        self.presentQuiz(sender: button)
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+            if let cell = cell as? ShowQuizCollectionViewCell {
+                cell.selectButton(i: indexPath.row)
+            }
+            self.gotoQuiz(i: indexPath.row)
+            selectedQuizIndex = indexPath.row
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+}
+extension PlayRoundViewController : CollieGalleryZoomTransitionDelegate {
+    
+    func zoomTransitionContainerBounds() -> CGRect {
+        return self.view.frame
+    }
+    func zoomTransitionViewToDismissForIndex(_ index: Int) -> UIView? {
+        return self.imageAnimationStartView
     }
 }
+
 extension PlayRoundViewController : ShowQuizCellDelegate {
+    
+    func presentImage(image: UIImage?, target: UIView) {
+        if let i = image {
+            self.imageAnimationStartView = target
+            let picture = CollieGalleryPicture(image: i)
+            let gallery = CollieGallery(pictures: [picture])
+            let zoomTransition = CollieGalleryTransitionType.zoom(fromView: target, zoomTransitionDelegate: self)
+            gallery.presentInViewController(self, transitionType: zoomTransition)
+        }
+    }
+    
+    
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
-        let button = self.questionButtons[selectedQuizIndex]
-        self.setQuizButtonColor(of: button, correct: correct)
         if let quizIndex = nextQuiz() {
-            let nextButton = self.questionButtons[quizIndex]
-            self.presentQuiz(sender: nextButton)
+            gotoQuiz(i: selectedQuizIndex + 1)
         } else {
             self.roundEnded()
         }
+    }
+    func textForMainLabel() -> String {
+        return "Round \(round.number!)"
+    }
+    
+    func headerRightSideData() -> Category {
+        return category
+    }
+    
+    func opponentUser() -> User {
+        return opponent
     }
 }
 

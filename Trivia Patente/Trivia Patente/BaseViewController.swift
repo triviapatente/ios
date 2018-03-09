@@ -14,7 +14,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let backBarButtonItem = UIBarButtonItem(title: "Indietro", style: .plain, target: nil, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
     }
 

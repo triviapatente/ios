@@ -17,73 +17,45 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
-                self.quizNameView.textAlignment = .left
             } else {
-                self.quizNameView.textAlignment = .center
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
-            self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
             self.prepareQuiz()
         }
     }
     var round : Round!
-    var delegate : ShowQuizCellDelegate!
-    var defaultImageFrame : CGRect!
-    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    @IBOutlet var quizImageView : UIImageView! {
+    var delegate : ShowQuizCellDelegate! {
         didSet {
-            defaultImageFrame = quizImageView.frame
+            self.loadData()
         }
     }
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
+    /* MAIN */
+    @IBOutlet var quizImageView : UIImageView!
     @IBOutlet var quizNameView : TPTextView!
-    @IBOutlet var separatorView : UIView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     @IBOutlet var shapeView : UIView!
-    @IBOutlet var titleCostraint : NSLayoutConstraint!
-
+    @IBOutlet weak var mainImageHeightCostraint: NSLayoutConstraint!
+    
+    /* HEADER */
+    @IBOutlet weak var mainHeaderLabel: UILabel!
+    @IBOutlet weak var headerUserImageView: UIImageView!
+    @IBOutlet weak var headerUserNameLabel: UILabel!
+    @IBOutlet weak var headerRightImage: UIImageView!
+    @IBOutlet weak var headerRightLabel: UILabel!
+    
+    /* FOOTER */
+    @IBOutlet var bottomButtons : [UIButton]!
     
     var imageExpanded = false
-    func imageClicked() {
-        if imageExpanded == true {
-            minimizeImage()
-        } else {
-            expandImage()
+    @objc func imageClicked() {
+        if let d = self.delegate {
+            d.presentImage(image: self.quizImageView.image, target: self.quizImageView)
         }
-        self.imageExpanded = !self.imageExpanded
     }
-    func minimizeImage() {
-        if let superview = quizImageView.superview {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .allowAnimatedContent, animations: {
-                self.quizImageView.frame = self.defaultImageFrame
-                self.quizImageView.center.y = superview.frame.size.height / 2
-            }, completion: {   (c) in
-                guard self != nil else { return }
-                UIView.animate(withDuration: 0.1) {
-                    self.quizNameView.alpha = 1
-                }
-            })
-            
-        }
-        
-    }
-    func expandImage() {
-        if let superview = self.quizImageView.superview {
-            let dimension = superview.frame.size.height - 20
-            let x = superview.frame.size.width / 2
-            let y = superview.frame.size.height / 2
-            UIView.animate(withDuration: 0.1, delay: 0, options: .allowAnimatedContent, animations: {
-                self.quizNameView.alpha = 0
-            }, completion: {   (c) in
-                guard self != nil else { return }
-                UIView.animate(withDuration: 0.2) {
-                    self.quizImageView.frame.size = CGSize(width: dimension, height: dimension)
-                    self.quizImageView.center = CGPoint(x: x, y: y)
-                }
-            })
-        }
-        
-    }
+    
     let handler = SocketGame()
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
@@ -114,14 +86,12 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.activityIndicator.removeFromSuperview()
     }
     func disable(button : UIButton) {
-        button.layer.borderColor = Colors.primary.cgColor
         button.setTitleColor(Colors.primary, for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = Colors.light_button_blue
     }
     func enable(button : UIButton) {
         let otherButton = (button == trueButton) ? falseButton : trueButton
         self.disable(button: otherButton!)
-        button.layer.borderColor = Colors.primary.cgColor
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Colors.primary
         button.isEnabled = false
@@ -130,9 +100,6 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     func prepareQuiz() {
         self.trueButton.isEnabled = true
         self.falseButton.isEnabled = true
-        if self.imageExpanded {
-            self.minimizeImage()
-        }
         if let previousAnswer = quiz?.my_answer {
             if previousAnswer == true {
                 self.disable(button: falseButton)
@@ -149,10 +116,14 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.endLoading(button: self.falseButton)
     }
     func prepareView() {
-        self.trueButton.circleRounded()
-        self.trueButton.layer.borderWidth = 2
-        self.falseButton.circleRounded()
-        self.falseButton.layer.borderWidth = 2
+        self.headerUserImageView.circleRounded()
+        self.headerRightImage.circleRounded()
+        self.trueButton.bigRounded()
+        self.trueButton.layer.borderWidth = 1
+        self.trueButton.layer.borderColor = Colors.light_gray.cgColor
+        self.falseButton.bigRounded()
+        self.falseButton.layer.borderWidth = 1
+        self.falseButton.layer.borderColor = Colors.light_gray.cgColor
         self.quizImageView.shadow(radius: 1)
         let imageRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
         self.quizImageView.addGestureRecognizer(imageRecognizer)
@@ -162,9 +133,43 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.prepareView()
+
         self.shapeView.mediumRounded()
-        // Do any additional setup after loading the view.
+        self.prepareView()
+        
+        // shadow
+//        self.shapeView.shadow(radius: 1.0)
+        self.shapeView.layer.shadowColor = Colors.dark_shadow.cgColor
+        self.shapeView.layer.shadowOffset = CGSize(width: 0, height: 4.0)
+        self.shapeView.layer.shadowRadius = 5.0
+        self.shapeView.layer.shadowOpacity = 1.0
+        self.shapeView.layer.masksToBounds = false
+//        self.shapeView.layer.shadowPath = UIBezierPath(roundedRect: self.shapeView.frame, cornerRadius: self.shapeView.layer.cornerRadius).cgPath as CGPath
+        
+       self.loadData()
+    }
+    
+    @IBAction func presentQuiz(sender : UIButton) {
+        guard delegate != nil else { return }
+        delegate.gotoQuiz(i: sender.tag)
+        self.selectButton(i: sender.tag)
+    }
+    func selectButton(i: Int) {
+        for j in 0..<bottomButtons.count {
+            bottomButtons[j].shadowDeselect()
+        }
+        bottomButtons[i].shadowSelect()
     }
 
+    func loadData() {
+        if let d = self.delegate {
+            self.mainHeaderLabel.text = d.textForMainLabel()
+            let user = d.opponentUser()
+            self.headerUserImageView.load(user: user)
+            self.headerUserNameLabel.text = user.displayName
+            let cat = d.headerRightSideData()
+            self.headerRightLabel.text = cat.hint
+            self.headerRightImage.load(category: cat)
+        }
+    }
 }

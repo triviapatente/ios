@@ -144,9 +144,9 @@ extension UIView {
         animation.values = [0.785, -0.785, 0.785, -0.785, 0]
         self.layer.add(animation, forKey: "swing")
     }
-    func shadow(radius : CGFloat, color : UIColor = .black) {
+    func shadow(radius : CGFloat, color : UIColor = .black, yOffset: CGFloat = 0.0) {
         self.layer.shadowColor = color.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowOffset = CGSize(width: 0, height: yOffset)
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = 1
         self.layer.masksToBounds = false

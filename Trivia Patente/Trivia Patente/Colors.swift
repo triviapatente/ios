@@ -13,6 +13,7 @@ class Colors {
     static let secondary = UIColor(red: 1/255, green: 112/255, blue: 255/255, alpha: 1)
     
     static let alpha_white = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.67)
+    static let dark_shadow = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 0.5)
     
     static let playColor = UIColor(red: 0/255, green: 213/255, blue: 101/255, alpha: 1)
     static let rankColor = UIColor(red: 255/255, green: 144/255, blue: 0/255, alpha: 1)
@@ -25,6 +26,10 @@ class Colors {
     static let red_default = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
     static let orange_default = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
     static let gray_default = UIColor(red: 91/255, green: 91/255, blue: 91/255, alpha: 1)
+    
+    static let light_gray = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1)
+    static let light_blue = UIColor(red: 237/255, green: 249/255, blue: 254/255, alpha: 1)
+    static let light_button_blue = UIColor(red: 223/255, green: 250/255, blue: 254/255, alpha: 1)
     
     static let stats_perfect = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let stats_good = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)
