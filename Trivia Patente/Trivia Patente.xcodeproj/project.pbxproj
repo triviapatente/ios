@@ -223,6 +223,10 @@
 		F4A9B2CF1FB348F100910D20 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2CE1FB348F100910D20 /* UIImage.swift */; };
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
+		F4C399A1205268B900383CBD /* QuizSummaryHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A0205268B900383CBD /* QuizSummaryHeaderViewController.swift */; };
+		F4C399A320526E7200383CBD /* QuizScoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A220526E7200383CBD /* QuizScoreButton.swift */; };
+		F4C399A72052773200383CBD /* QuizQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A52052773200383CBD /* QuizQuestionTableViewCell.swift */; };
+		F4C399A82052773200383CBD /* QuizQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */; };
 		F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */; };
 		F4D12CE91FE68AD1000858A8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D12CE81FE68AD1000858A8 /* UIApplication.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
@@ -482,6 +486,10 @@
 		F4A9B2CE1FB348F100910D20 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
+		F4C399A0205268B900383CBD /* QuizSummaryHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSummaryHeaderViewController.swift; sourceTree = "<group>"; };
+		F4C399A220526E7200383CBD /* QuizScoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScoreButton.swift; sourceTree = "<group>"; };
+		F4C399A52052773200383CBD /* QuizQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		F4D12CE81FE68AD1000858A8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
@@ -1728,9 +1736,12 @@
 		F478FA2920515FE200324FED /* listing */ = {
 			isa = PBXGroup;
 			children = (
+				F4C399A4205276FF00383CBD /* QuestionCell */,
 				F478FA2A2051709700324FED /* TrainingListingViewController.swift */,
 				F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */,
 				F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */,
+				F4C399A0205268B900383CBD /* QuizSummaryHeaderViewController.swift */,
+				F4C399A220526E7200383CBD /* QuizScoreButton.swift */,
 			);
 			name = listing;
 			sourceTree = "<group>";
@@ -1742,6 +1753,15 @@
 				F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */,
 			);
 			name = terms;
+			sourceTree = "<group>";
+		};
+		F4C399A4205276FF00383CBD /* QuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				F4C399A52052773200383CBD /* QuizQuestionTableViewCell.swift */,
+				F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */,
+			);
+			name = QuestionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1890,6 +1910,7 @@
 				F478FA2820515FCE00324FED /* Training.storyboard in Resources */,
 				8BBBE8561DC77BEF00B433F2 /* RecentGameTableViewCell.xib in Resources */,
 				8B51330A1DBBAC3000143497 /* Settings.storyboard in Resources */,
+				F4C399A82052773200383CBD /* QuizQuestionTableViewCell.xib in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */,
 				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
@@ -1998,6 +2019,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -2014,6 +2036,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollieGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -2122,6 +2145,7 @@
 				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
+				F4C399A320526E7200383CBD /* QuizScoreButton.swift in Sources */,
 				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
 				F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */,
 				8BB29D901E2790BF00F5CFB9 /* RecentGameHandler.swift in Sources */,
@@ -2275,6 +2299,7 @@
 				8BA6BEB71DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift in Sources */,
 				8B74DC041DE6F4B90006EB90 /* TPRoundCategoryListResponse.swift in Sources */,
 				F478FA2B2051709700324FED /* TrainingListingViewController.swift in Sources */,
+				F4C399A1205268B900383CBD /* QuizSummaryHeaderViewController.swift in Sources */,
 				8B4551DA1E068BA8008285D4 /* FBManager.swift in Sources */,
 				8B8058C81DE2F90C00C3F938 /* TPInviteListResponse.swift in Sources */,
 				8B28D2761DCF610E00C65122 /* ShopItemTableViewCell.swift in Sources */,
@@ -2294,6 +2319,7 @@
 				8B5EE1071DD913BC00745A54 /* SettingsTableViewCell.swift in Sources */,
 				F4F335511FDEBDC00094A849 /* FormViewController.swift in Sources */,
 				8BCF8CA21DB6A6BA00EC637C /* User.swift in Sources */,
+				F4C399A72052773200383CBD /* QuizQuestionTableViewCell.swift in Sources */,
 				F4477E361FA0854300ED5319 /* PasswordRecoveryViewController.swift in Sources */,
 				8BDEDEEC1E1AAB7000063FB2 /* TPQuestionAnsweredEvent.swift in Sources */,
 				8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */,

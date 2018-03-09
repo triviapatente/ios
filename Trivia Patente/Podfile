@@ -19,6 +19,7 @@ target 'Trivia Patente' do
   pod 'Crashlytics', '~> 3.9.3'
   # pod 'RSKImageCropper', '2.0.0'
   pod 'CropViewController', '2.3.5'
+  pod "CollieGallery", skip_update:true
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths

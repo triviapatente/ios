@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5A5871BCE5A97896471FB2E9009141C5'
-               BlueprintName = 'StarscreamSocketIO'
+               BlueprintIdentifier = '5DED89E16B5CF6BAEB29F6AF613D5E26'
+               BlueprintName = 'CollieGallery'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'StarscreamSocketIO.framework'>
+               BuildableName = 'CollieGallery.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -16,9 +16,9 @@ class Colors {
     
     static let playColor = UIColor(red: 0/255, green: 213/255, blue: 101/255, alpha: 1)
     static let rankColor = UIColor(red: 255/255, green: 144/255, blue: 0/255, alpha: 1)
-    static let trainingColor = UIColor(red: 230/255, green: 199/255, blue: 35/255, alpha: 1)
+    static let trainingColor = UIColor(red: 238/255, green: 206/255, blue: 41/255, alpha: 1)
     static let shopColor = UIColor(red: 255/255, green: 55/255, blue: 39/255, alpha: 1)
-    static let statsColor = UIColor(red: 185/255, green: 80/255, blue: 255/255, alpha: 1)
+    static let statsColor = UIColor(red: 251/255, green: 99/255, blue: 253/255, alpha: 1)
     
     static let green_default = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let yellow_default = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)
@@ -43,6 +43,8 @@ class Colors {
     
     static let button_highlighted_color = UIColor(red: 3/255, green: 97/255, blue: 188/255, alpha: 1)
     static let text_highlight = UIColor(red: 132/255, green: 249/255, blue: 182/255, alpha: 1)
+    
+    static let passive_red = UIColor(red: 237/255, green: 97/255, blue: 89/255, alpha: 1)
     
     // get gradient for access controllers
     static func accessGradientLayer(view: UIView) -> CAGradientLayer

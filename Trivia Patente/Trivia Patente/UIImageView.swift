@@ -36,6 +36,8 @@ extension UIImageView {
 //                    cache.add(image, for: req, withIdentifier: nil)
 //                }
 //            }
+            self.sd_cancelCurrentImageLoad()
+            self.sd_cancelCurrentAnimationImagesLoad()
             self.sd_setImage(with: url, placeholderImage: UIImage(named: placeholder), completed: { (image, error, cacheType, url) in
                 if error != nil, let _ = image {
                     if let cb = callback {

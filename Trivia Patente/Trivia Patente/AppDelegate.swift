@@ -11,6 +11,7 @@ import Alamofire
 import UserNotifications
 import Firebase
 import GoogleMobileAds
+import CollieGallery
  
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -49,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6517751265585915~9911714540")
     
+        CollieGalleryOptions.sharedOptions.showProgress = false
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

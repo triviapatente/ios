@@ -3,6 +3,7 @@ PODS:
   - Charts (3.0.3):
     - Charts/Core (= 3.0.3)
   - Charts/Core (3.0.3)
+  - CollieGallery (0.6.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - CropViewController (2.3.5):
@@ -55,6 +56,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Charts (= 3.0.3)
+  - CollieGallery
   - Crashlytics (~> 3.9.3)
   - CropViewController (= 2.3.5)
   - Fabric (~> 1.7.2)
@@ -80,6 +82,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Charts: bcde37724c161958c1438dd4883971fcb2d50c06
+  CollieGallery: b8fcf63af6b31add2f435f5aee4742ae3b84cb3b
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CropViewController: 73a095de5605b017afdf34c6f2604569e147bcbd
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
@@ -100,6 +103,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
   TOCropViewController: a21b39c910d161600a26b6e3f89a58707afaa4f8
 
-PODFILE CHECKSUM: d9778a7e08a7b2671f6cfb1a62eaabbe2822538e
+PODFILE CHECKSUM: 4352b8c95fa97d26b933f794bc053b63a0ce15ab
 
 COCOAPODS: 1.3.1
