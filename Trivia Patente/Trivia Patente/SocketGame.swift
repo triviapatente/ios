@@ -56,10 +56,18 @@ class SocketGame: SocketManager {
         self.listen(event: "game_ended", handler: handler)
     }
     func listen_game_left(handler: @escaping (TPGameLeftEvent) -> Void) {
-        self.listen(event: "game_left", handler: handler)
+        self.listen(event: "game_left") { (event : TPGameLeftEvent) in
+            if let gameId = event.game?.id, SocketManager.joined(to: gameId, type: "game") {
+                handler(event)
+            }
+        }
     }
     func listen_user_left_game(handler: @escaping (TPGameEndedEvent) -> Void) {
-        self.listen(event: "user_left_game", handler: handler)
+        self.listen(event: "user_left_game") { (event : TPGameEndedEvent) in
+            if let gameId = event.game?.id, SocketManager.joined(to: gameId, type: "game") {
+                handler(event)
+            }
+        }
     }
     func listen_recent_games(handler: @escaping (TPRecentGameEvent) -> Void) {
         self.listen(event: "recent_game", handler: handler)
