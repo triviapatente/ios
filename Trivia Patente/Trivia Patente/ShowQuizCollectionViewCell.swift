@@ -143,11 +143,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         
         // shadow
 //        self.shapeView.shadow(radius: 1.0)
-        self.shapeView.layer.shadowColor = Colors.dark_shadow.cgColor
-        self.shapeView.layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        self.shapeView.layer.shadowRadius = 5.0
-        self.shapeView.layer.shadowOpacity = 1.0
-        self.shapeView.layer.masksToBounds = false
+
 //        self.shapeView.layer.shadowPath = UIBezierPath(roundedRect: self.shapeView.frame, cornerRadius: self.shapeView.layer.cornerRadius).cgPath as CGPath
         
        self.loadData()
@@ -188,58 +184,47 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
     var hasElementBehind = false
     var ausiliaryCopy : UIView?
     @IBAction func panGestureRecognized(gestureRecognizer: UIPanGestureRecognizer) {
-        let xDistanceFromCenter = gestureRecognizer.translation(in: self).x
-        let yDistanceFromCenter = gestureRecognizer.translation(in: self).y
-        
-        let touchLocation = gestureRecognizer.location(in: self)
-        switch gestureRecognizer.state {
-        case .began:
-            // load immediatly new cell behind
-            self.hasElementBehind = delegate.scroll_to_next()
-            
-            originalLocation = center
-            
-            animationDirection = touchLocation.y >= frame.size.height / 2 ? -1.0 : 1.0
-            layer.shouldRasterize = true
-            break
-            
-        case .changed:
-            
-            let rotationStrength = min(xDistanceFromCenter / self.frame.size.width, rotationMax)
-            let rotationAngle = animationDirection * defaultRotationAngle * rotationStrength
-            let scaleStrength = 1 - ((1 - scaleMin) * fabs(rotationStrength))
-            let scale = max(scaleStrength, scaleMin)
-            
-            layer.rasterizationScale = scale * UIScreen.main.scale
-            
-            let transform = CGAffineTransform(rotationAngle: rotationAngle)
-            let scaleTransform = transform.scaledBy(x: scale, y: scale)
-            
-            self.transform = scaleTransform
-            center = CGPoint(x: originalLocation.x + xDistanceFromCenter, y: originalLocation.y + yDistanceFromCenter)
-//            delegate?.cardDraggedWithFinishPercent(self, percent: min(fabs(xDistanceFromCenter! * 100 / frame.size.width), 100))
-            
-            break
-        case .ended:
-            panEnded(percentage: xDistanceFromCenter / frame.size.width)
-            layer.shouldRasterize = false
-        default :
-            break
-        }
+//        let xDistanceFromCenter = gestureRecognizer.translation(in: self).x
+//        let yDistanceFromCenter = gestureRecognizer.translation(in: self).y
+//
+//        let touchLocation = gestureRecognizer.location(in: self)
+//        switch gestureRecognizer.state {
+//        case .began:
+//            // load immediatly new cell behind
+//            self.hasElementBehind = delegate.scroll_to_next()
+//
+//            originalLocation = center
+//
+//            animationDirection = touchLocation.y >= frame.size.height / 2 ? -1.0 : 1.0
+//            layer.shouldRasterize = true
+//            break
+//
+//        case .changed:
+//
+//            let rotationStrength = min(xDistanceFromCenter / self.frame.size.width, rotationMax)
+//            let rotationAngle = animationDirection * defaultRotationAngle * rotationStrength
+//            let scaleStrength = 1 - ((1 - scaleMin) * fabs(rotationStrength))
+//            let scale = max(scaleStrength, scaleMin)
+//
+//            layer.rasterizationScale = scale * UIScreen.main.scale
+//
+//            let transform = CGAffineTransform(rotationAngle: rotationAngle)
+//            let scaleTransform = transform.scaledBy(x: scale, y: scale)
+//
+//            self.transform = scaleTransform
+//            center = CGPoint(x: originalLocation.x + xDistanceFromCenter, y: originalLocation.y + yDistanceFromCenter)
+////            delegate?.cardDraggedWithFinishPercent(self, percent: min(fabs(xDistanceFromCenter! * 100 / frame.size.width), 100))
+//
+//            break
+//        case .ended:
+//            panEnded(percentage: xDistanceFromCenter / frame.size.width, target: target)
+//            layer.shouldRasterize = false
+//        default :
+//            break
+//        }
     }
     
-    func panEnded(percentage: CGFloat)
-    {
-        if abs(percentage) > PlayRoundViewController.SWIPE_DRAG_PERCENTAGE {
-            if hasElementBehind {
-                animateAway()
-            } else {
-                resetCard(animated: true)
-            }
-        } else {
-            resetCard(animated: true)
-        }
-    }
+    
     
     func resetCard(animated: Bool = true) {
         UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0) {

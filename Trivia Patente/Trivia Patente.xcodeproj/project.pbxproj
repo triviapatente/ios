@@ -220,7 +220,10 @@
 		F488C94F1FB72915000842AC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488C94E1FB72915000842AC /* Strings.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
-		F49B64B520543135006CFEF2 /* CardCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B64B420543135006CFEF2 /* CardCollectionViewLayout.swift */; };
+		F49B64B820543DFF006CFEF2 /* GCStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B64B620543DFF006CFEF2 /* GCStackViewController.swift */; };
+		F49B64BC20543E54006CFEF2 /* StackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49B64BB20543E54006CFEF2 /* StackViewController.storyboard */; };
+		F49B64BE20543F01006CFEF2 /* GCStackViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B64BD20543F01006CFEF2 /* GCStackViewDelegate.swift */; };
+		F49B64C020543F34006CFEF2 /* GCStackViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B64BF20543F34006CFEF2 /* GCStackViewDataSource.swift */; };
 		F4A9B2CF1FB348F100910D20 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2CE1FB348F100910D20 /* UIImage.swift */; };
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
@@ -484,7 +487,10 @@
 		F488C94E1FB72915000842AC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
-		F49B64B420543135006CFEF2 /* CardCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewLayout.swift; sourceTree = "<group>"; };
+		F49B64B620543DFF006CFEF2 /* GCStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCStackViewController.swift; sourceTree = "<group>"; };
+		F49B64BB20543E54006CFEF2 /* StackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StackViewController.storyboard; sourceTree = "<group>"; };
+		F49B64BD20543F01006CFEF2 /* GCStackViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCStackViewDelegate.swift; sourceTree = "<group>"; };
+		F49B64BF20543F34006CFEF2 /* GCStackViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCStackViewDataSource.swift; sourceTree = "<group>"; };
 		F4A9B2CE1FB348F100910D20 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
@@ -589,7 +595,6 @@
 			children = (
 				8B19E0281DE9815C00304FF3 /* PlayRoundViewController.swift */,
 				8B2A2A891DF1DD2000830028 /* cell */,
-				F49B64B420543135006CFEF2 /* CardCollectionViewLayout.swift */,
 			);
 			name = play_round;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 				8BBBE8491DC7690200B433F2 /* http */,
 				8B5132E21DBB5C7500143497 /* ui */,
 				8B5132E11DBB5C7100143497 /* models */,
+				F49B64BA20543E05006CFEF2 /* StackView */,
 			);
 			name = game;
 			sourceTree = "<group>";
@@ -1759,6 +1765,17 @@
 			name = terms;
 			sourceTree = "<group>";
 		};
+		F49B64BA20543E05006CFEF2 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				F49B64B620543DFF006CFEF2 /* GCStackViewController.swift */,
+				F49B64BB20543E54006CFEF2 /* StackViewController.storyboard */,
+				F49B64BD20543F01006CFEF2 /* GCStackViewDelegate.swift */,
+				F49B64BF20543F34006CFEF2 /* GCStackViewDataSource.swift */,
+			);
+			name = StackView;
+			sourceTree = "<group>";
+		};
 		F4C399A4205276FF00383CBD /* QuestionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1924,6 +1941,7 @@
 				F4C399A82052773200383CBD /* QuizQuestionTableViewCell.xib in Resources */,
 				8B5133041DBBAC1800143497 /* Game.storyboard in Resources */,
 				8B8058E21DE337FB00C3F938 /* GameOpponentTableViewCell.xib in Resources */,
+				F49B64BC20543E54006CFEF2 /* StackViewController.storyboard in Resources */,
 				8B5EE0E01DD5C23100745A54 /* StatsTableViewCell.xib in Resources */,
 				A9FD527F1DA16E96005DFE5D /* FirstAccess.storyboard in Resources */,
 				8BDCEA2E1DD124AC0099C3E2 /* RankTableViewCell.xib in Resources */,
@@ -2158,7 +2176,6 @@
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
 				F4C399A320526E7200383CBD /* QuizScoreButton.swift in Sources */,
 				8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */,
-				F49B64B520543135006CFEF2 /* CardCollectionViewLayout.swift in Sources */,
 				F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */,
 				8BB29D901E2790BF00F5CFB9 /* RecentGameHandler.swift in Sources */,
 				8BE278941DF477CC00071DF2 /* TPRoundDetailsResponse.swift in Sources */,
@@ -2204,6 +2221,7 @@
 				8B5EE1091DD913E700745A54 /* DropdownSettingsTableViewCell.swift in Sources */,
 				8B51332E1DBCD52900143497 /* MBProgressHUD.swift in Sources */,
 				8B5EE1101DD914F600745A54 /* ProfileSettingsTableViewCell.swift in Sources */,
+				F49B64BE20543F01006CFEF2 /* GCStackViewDelegate.swift in Sources */,
 				8B5EE0F01DD655C000745A54 /* CategoryStatus.swift in Sources */,
 				8B5133221DBBEB4600143497 /* TPButton.swift in Sources */,
 				8B5EE0EC1DD5DF3A00745A54 /* SingleStatViewController.swift in Sources */,
@@ -2236,6 +2254,7 @@
 				8BDB00131DFDA2920088E8A2 /* TPLeaveDecrementResponse.swift in Sources */,
 				8B51331E1DBBE80100143497 /* UIView.swift in Sources */,
 				8BCF8C961DB6A6BA00EC637C /* Invite.swift in Sources */,
+				F49B64B820543DFF006CFEF2 /* GCStackViewController.swift in Sources */,
 				8B1057D61DD4A7770081B25E /* TPRankSearchResponse.swift in Sources */,
 				8BBAB4941DCA1D0A004AB6B0 /* AvatarButtonItem.swift in Sources */,
 				8B5133241DBC027000143497 /* SessionManager.swift in Sources */,
@@ -2262,6 +2281,7 @@
 				F488C94F1FB72915000842AC /* Strings.swift in Sources */,
 				8B5EE1031DD90BDF00745A54 /* PreferenceItem.swift in Sources */,
 				8B8058C61DE2F85000C3F938 /* TPInviteResponse.swift in Sources */,
+				F49B64C020543F34006CFEF2 /* GCStackViewDataSource.swift in Sources */,
 				F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */,
 				8B4551D21E03BF31008285D4 /* TPNormalViewController.swift in Sources */,
 				F4FB497E1FE3229200DAFD92 /* FirebaseManager.swift in Sources */,

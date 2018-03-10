@@ -526,28 +526,19 @@ casuale</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Cg-TeA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                 <subviews>
-                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qg0-1G-L27">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8af-d9-LAS">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dif-SO-j8W">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
                                         <connections>
-                                            <outlet property="dataSource" destination="uXd-5a-fhz" id="cA7-yA-UHP"/>
-                                            <outlet property="delegate" destination="uXd-5a-fhz" id="VEC-Eq-anP"/>
+                                            <segue destination="jnB-ny-6nH" kind="embed" identifier="stack_view" id="ZZb-OH-mbj"/>
                                         </connections>
-                                    </collectionView>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Qg0-1G-L27" firstAttribute="top" secondItem="3dy-Cg-TeA" secondAttribute="top" id="79C-wU-Dxf"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qg0-1G-L27" secondAttribute="trailing" id="LbG-tJ-0Ga"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qg0-1G-L27" secondAttribute="bottom" id="dan-pl-3fa"/>
-                                    <constraint firstItem="Qg0-1G-L27" firstAttribute="leading" secondItem="3dy-Cg-TeA" secondAttribute="leading" id="iYR-Y6-6rY"/>
+                                    <constraint firstAttribute="trailing" secondItem="8af-d9-LAS" secondAttribute="trailing" id="A3G-kT-4as"/>
+                                    <constraint firstItem="8af-d9-LAS" firstAttribute="leading" secondItem="3dy-Cg-TeA" secondAttribute="leading" id="aOg-Gp-PtZ"/>
+                                    <constraint firstItem="8af-d9-LAS" firstAttribute="top" secondItem="3dy-Cg-TeA" secondAttribute="top" id="ajJ-YO-8KV"/>
+                                    <constraint firstAttribute="bottom" secondItem="8af-d9-LAS" secondAttribute="bottom" id="t1f-dD-Uto"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16d-v4-sx0">
@@ -577,13 +568,20 @@ casuale</string>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="bannerView" destination="Kcq-Fu-XUP" id="x9q-AU-gb2"/>
-                        <outlet property="quizCollectionView" destination="Qg0-1G-L27" id="tLg-R0-OTB"/>
                         <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="0L7-TT-S4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaV-UR-tow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3472.5" y="-1418.661971830986"/>
+        </scene>
+        <!--StackMainView-->
+        <scene sceneID="4dF-HU-Aq0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StackViewController" referencedIdentifier="StackMainView" id="jnB-ny-6nH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tao-nG-qMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4182" y="-1448"/>
         </scene>
         <!--Round Details View Controller-->
         <scene sceneID="pt1-UX-bmG">
