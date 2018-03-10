@@ -12,6 +12,9 @@ import GoogleMobileAds
 import CollieGallery
 
 class PlayRoundViewController: TPGameViewController, GameControllerRequired {
+    static let SWIPE_DRAG_PERCENTAGE = CGFloat(0.3)
+    static let SWIPE_DRAG_ANIMATION_DURATION : TimeInterval = 0.2
+    
     @IBOutlet weak var quizCollectionView : UICollectionView!
     @IBOutlet weak var bannerView : GADBannerView!
     var round : Round!
@@ -131,10 +134,16 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         if game.ended {
             self.navigationController!.popToRootViewController(animated: true)
         }
+        
+        self.navigationController!.navigationBar.layer.zPosition = -1
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        self.navigationController!.navigationBar.layer.zPosition = 100
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // AD banner load
         self.bannerView.adUnitID = Constants.BannerUnitID
         self.bannerView.rootViewController = self
@@ -192,7 +201,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     func roundEnded() {
         self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
     }
-
+    
 }
 extension PlayRoundViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -262,10 +271,17 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
         if let quizIndex = nextQuiz() {
-            gotoQuiz(i: selectedQuizIndex + 1)
+            gotoQuiz(i: quizIndex)
         } else {
             self.roundEnded()
         }
+    }
+    func scroll_to_next() -> Bool {
+        if selectedQuizIndex < self.collectionView(quizCollectionView, numberOfItemsInSection: 0) - 1 {
+            gotoQuiz(i: selectedQuizIndex + 1)
+            return true
+        }
+        return false
     }
     func textForMainLabel() -> String {
         return "Round \(round.number!)"

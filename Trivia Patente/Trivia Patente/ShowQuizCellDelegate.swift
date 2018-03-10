@@ -15,4 +15,5 @@ protocol ShowQuizCellDelegate  {
     func headerRightSideData() -> Category
     func presentImage(image: UIImage?, target: UIView)
     func gotoQuiz(i : Int)
+    func scroll_to_next() -> Bool
 }

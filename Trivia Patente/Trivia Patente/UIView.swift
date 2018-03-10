@@ -180,4 +180,7 @@ extension UIView {
         }
         return (view as? T) ?? view.parentView(of: T.self)
     }
+    func copyView<T: UIView>() -> T {
+        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
+    }
 }

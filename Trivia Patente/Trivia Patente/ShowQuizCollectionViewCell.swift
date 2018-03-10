@@ -116,6 +116,7 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.endLoading(button: self.falseButton)
     }
     func prepareView() {
+        self.layer.zPosition = 10
         self.headerUserImageView.circleRounded()
         self.headerRightImage.circleRounded()
         self.trueButton.bigRounded()
@@ -127,6 +128,9 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
         self.quizImageView.shadow(radius: 1)
         let imageRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
         self.quizImageView.addGestureRecognizer(imageRecognizer)
+        let cellPan = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognized(gestureRecognizer:)))
+        cellPan.cancelsTouchesInView = false
+        self.addGestureRecognizer(cellPan)
         self.quizNameView.textContainerInset = .zero
         self.quizNameView.textContainer.lineFragmentPadding = 0
         self.prepareQuiz()
@@ -171,5 +175,84 @@ class ShowQuizCollectionViewCell: UICollectionViewCell {
             self.headerRightLabel.text = cat.hint
             self.headerRightImage.load(category: cat)
         }
+    }
+    
+    // CARD animations
+    var originalLocation : CGPoint = CGPoint.zero
+    //conf
+    var rotationMax = CGFloat(1.0)
+    var defaultRotationAngle = CGFloat(1.0)
+    var rotationStrength = CGFloat(1.0)
+    var scaleMin = CGFloat(1.0)
+    var animationDirection : CGFloat = 1.0
+    var hasElementBehind = false
+    var ausiliaryCopy : UIView?
+    @IBAction func panGestureRecognized(gestureRecognizer: UIPanGestureRecognizer) {
+        let xDistanceFromCenter = gestureRecognizer.translation(in: self).x
+        let yDistanceFromCenter = gestureRecognizer.translation(in: self).y
+        
+        let touchLocation = gestureRecognizer.location(in: self)
+        switch gestureRecognizer.state {
+        case .began:
+            // load immediatly new cell behind
+            self.hasElementBehind = delegate.scroll_to_next()
+            
+            originalLocation = center
+            
+            animationDirection = touchLocation.y >= frame.size.height / 2 ? -1.0 : 1.0
+            layer.shouldRasterize = true
+            break
+            
+        case .changed:
+            
+            let rotationStrength = min(xDistanceFromCenter / self.frame.size.width, rotationMax)
+            let rotationAngle = animationDirection * defaultRotationAngle * rotationStrength
+            let scaleStrength = 1 - ((1 - scaleMin) * fabs(rotationStrength))
+            let scale = max(scaleStrength, scaleMin)
+            
+            layer.rasterizationScale = scale * UIScreen.main.scale
+            
+            let transform = CGAffineTransform(rotationAngle: rotationAngle)
+            let scaleTransform = transform.scaledBy(x: scale, y: scale)
+            
+            self.transform = scaleTransform
+            center = CGPoint(x: originalLocation.x + xDistanceFromCenter, y: originalLocation.y + yDistanceFromCenter)
+//            delegate?.cardDraggedWithFinishPercent(self, percent: min(fabs(xDistanceFromCenter! * 100 / frame.size.width), 100))
+            
+            break
+        case .ended:
+            panEnded(percentage: xDistanceFromCenter / frame.size.width)
+            layer.shouldRasterize = false
+        default :
+            break
+        }
+    }
+    
+    func panEnded(percentage: CGFloat)
+    {
+        if abs(percentage) > PlayRoundViewController.SWIPE_DRAG_PERCENTAGE {
+            if hasElementBehind {
+                animateAway()
+            } else {
+                resetCard(animated: true)
+            }
+        } else {
+            resetCard(animated: true)
+        }
+    }
+    
+    func resetCard(animated: Bool = true) {
+        UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0) {
+            self.transform = CGAffineTransform.identity
+            self.center = self.originalLocation
+        }
+    }
+    private func animateAway() {
+//        UIView.animate(withDuration: 0.6, animations: {
+//            let direction = self.center.x > self.originalLocation.x ? 1.0 : -1.0
+//            self.center = CGPoint(x: self.originalLocation.x * CGFloat(3.5) * CGFloat(direction), y: self.center.y)
+//        }) { (a) in
+//            self.resetCard(animated: false)
+//        }
     }
 }
