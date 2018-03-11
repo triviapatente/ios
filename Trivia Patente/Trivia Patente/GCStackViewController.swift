@@ -40,11 +40,17 @@ class GCStackViewController: UIViewController {
     
     var lastElementSelected : Bool {
         get {
-            return currentIndex == dataSource!.numberOfItems() - 1 // TODO
+            return currentIndex == dataSource!.numberOfItems() - 1
         }
     }
     
-    var fastAnimationDuration : TimeInterval = 0.2
+    var firstElementSelected : Bool {
+        get {
+            return currentIndex == 0
+        }
+    }
+    
+    var fastAnimationDuration : TimeInterval = 0.4
     var slowAnimationDuration : TimeInterval = 0.5
     
     private var stackEffectDeepDegreeFixed = CGFloat(6)
@@ -138,12 +144,18 @@ class GCStackViewController: UIViewController {
     func scrollToNext(fastAnimation: Bool = true) -> Bool {
         if !lastElementSelected
         {
-            animateAway(target: getTopItemView(), fastAnimation: fastAnimation) { (view) in
-//                self.resetCard(target: view, animated: false)
-                view.loaded = false
-                self.currentIndex = self.currentIndex + 1
-                
-            }
+            scrollTo(index: currentIndex + 1, animated: true, fastAnimation: fastAnimation)
+
+            return true
+        }
+        return false
+    }
+    
+    func scrollToPrevious(fastAnimation: Bool = true) -> Bool {
+        if !lastElementSelected
+        {
+            scrollTo(index: currentIndex - 1, animated: true, fastAnimation: fastAnimation)
+            
             return true
         }
         return false
@@ -164,7 +176,30 @@ class GCStackViewController: UIViewController {
     }
     
     func scrollTo(index: Int, animated: Bool, fastAnimation: Bool = true) {
-        scrollToNext(fastAnimation: fastAnimation)
+        let diff = index - currentIndex
+        if diff == 1 {
+            animateAway(target: getTopItemView(), fastAnimation: fastAnimation) { (view) in
+                //                self.resetCard(target: view, animated: false)
+                view.loaded = false
+                self.currentIndex = self.currentIndex + 1
+            }
+        } else if diff == -1 {
+            animateLastBackIn(target: getBottomItemView(), fastAnimation: fastAnimation, completedCB: { (view) in
+                view.loaded = false
+                self.currentIndex = self.currentIndex - 1
+            })
+        } else if diff > 1 {
+            // scroll forward
+            for i in 0..<diff {
+                DispatchQueue.main.asyncAfter(deadline: .now() + (slowAnimationDuration+0.05)*Double(i)) {
+                    self.scrollToNext(fastAnimation: false)
+                }
+            }
+        } else {
+            //scroll backward
+            unloadAllItemViews()
+        }
+
     }
     
     private func loadContentForVisibleItems() {
@@ -228,7 +263,7 @@ class GCStackViewController: UIViewController {
             target.center = CGPoint(x: originalLocation.x + xDistanceFromCenter, y: originalLocation.y + yDistanceFromCenter + yDiff)
             
 //            updateSecondaryAnimations(percentage: )
-            updateFrames(percentage: xDistanceFromCenter / target.frame.size.width, includeTop: false)
+            updateFrames(percentage: abs(xDistanceFromCenter / target.frame.size.width), includeTop: false)
             
             break
         case .ended:
@@ -254,11 +289,12 @@ class GCStackViewController: UIViewController {
 //        }
 //    }
     private var lastPercentageUsed : CGFloat = 0.0
-    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true) {
+    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true, cb : ((UIView) -> Void)? = nil, includeBottom: Bool = true) {
         lastPercentageUsed = percentage
         let size = cardSize()
-        let completionPercentage = min(abs(percentage) / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1)
-        for i in 0..<numberOfVisibleItems-(includeTop ? 0 : 1) {
+        let completionPercentage = min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1)
+        print("C: \(completionPercentage)")
+        for i in (includeBottom ? 0 : 1)..<numberOfVisibleItems-(includeTop ? 0 : 1) {
             let itemView = self.view.subviews[Int(i)]
             let iCompl = CGFloat(numberOfVisibleItems-1-i)
 //            itemView.transform = CGAffineTransform.identity
@@ -266,34 +302,51 @@ class GCStackViewController: UIViewController {
                 print(itemView.alpha)
                 itemView.alpha = itemView.alpha == 0.0 ? 0.0 : 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1-i) + self.stackEffectOpacityStep*completionPercentage
                 let scaleX = (size.width - (self.stackEffectSqueezeDegreeFixed*iCompl - self.stackEffectSqueezeDegreeFixed*completionPercentage)*CGFloat(2))/size.width
-//                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*iCompl)*CGFloat(2))/size.height
-                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*CGFloat((self.numberOfVisibleItems-1))))/size.height
-
+                //                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*iCompl)*CGFloat(2))/size.height
+                let (scaleY, yOffset) = self.computeYAxisTransformations(position: i)
+                
                 let transform = CGAffineTransform(translationX: 0, y:0)
-                print(scaleY)
-                print(size.height, scaleY*size.height, scaleY*size.height+(size.height*scaleY)/2+self.stackEffectDeepDegreeFixed*CGFloat(i)+self.stackEffectDeepDegreeFixed*completionPercentage)
                 itemView.transform = transform.scaledBy(x: scaleX, y: scaleY)
-                itemView.center = CGPoint(x: itemView.center.x, y: (size.height*scaleY)/2+self.stackEffectDeepDegreeFixed*CGFloat(i)+self.stackEffectDeepDegreeFixed*completionPercentage)
+                itemView.center = CGPoint(x: itemView.center.x, y: yOffset+self.stackEffectDeepDegreeFixed*completionPercentage)
+            }, completion: { (success) in
+                if let callback = cb {
+                    callback(itemView)
+                }
             })
             
         }
+    }
+    private func computeYAxisTransformations(position: Int) -> (CGFloat, CGFloat) {
+        let size = self.cardSize()
+        let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*CGFloat((self.numberOfVisibleItems-1))))/size.height
+        let yOffset = (size.height*scaleY)/2+self.stackEffectDeepDegreeFixed*CGFloat(position)
+        return (scaleY, yOffset)
     }
     
     private func getTopItemView() -> GCStackItemContainerView {
         return self.view.subviews.last! as! GCStackItemContainerView
     }
     
+    private func getBottomItemView() -> GCStackItemContainerView {
+        return self.view.subviews.last! as! GCStackItemContainerView
+    }
+    
     func panEnded(percentage: CGFloat, target: GCStackItemContainerView)
     {
         if abs(percentage) > PlayRoundViewController.SWIPE_DRAG_PERCENTAGE && !lastElementSelected {
-            
             scrollToNext()
+//            scrollToPrevious()
         } else {
             resetCard(target: target, animated: true)
             updateFrames(percentage: 0, includeTop: true)
         }
     }
-    
+    private func outsideOffsetXForAnimations() -> CGFloat {
+        return (UIScreen.main.bounds.width + UIScreen.main.bounds.height)
+    }
+    private func itemViewCenterX() -> CGFloat {
+        return self.cardSize().width / 2 + contentInset.left
+    }
     private func animateAway(target: GCStackItemContainerView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
         updateFrames(percentage: 1.0, includeTop: false)
         UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
@@ -308,9 +361,9 @@ class GCStackViewController: UIViewController {
                 additional = -60.0
                 target.transform = CGAffineTransform.init(rotationAngle: angle)
             }
-            target.center = CGPoint(x: (UIScreen.main.bounds.width + UIScreen.main.bounds.height) * CGFloat(direction), y: target.center.y + additional)
-            target.alpha = 0.0
+            target.center = CGPoint(x: self.outsideOffsetXForAnimations() * CGFloat(direction), y: target.center.y + additional)
         }) { (a) in
+            target.alpha = 0.0
             DispatchQueue.main.async {
                 self.view.sendSubview(toBack: target)
                             target.center = self.originalLocation
@@ -328,6 +381,54 @@ class GCStackViewController: UIViewController {
                 })
             }
 
+        }
+    }
+    
+    private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
+        self.view.bringSubview(toFront: target)
+        // bottom is now top
+        updateFrames(percentage: -1.0, includeTop: false, animated: true)
+
+        // place view outside
+        target.center = CGPoint(x: self.outsideOffsetXForAnimations(), y: target.center.y)
+        UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
+//            var direction = target.center.x >= self.originalLocation.x ? 1.0 : -1.0
+//            var angle : CGFloat = 0.0
+//            var additional : CGFloat = 0.0
+//            // if it's an automated swipe then
+//            if self.originalLocation.y == 0.0 {
+//                // automated
+//                direction = 1.0
+//                angle = 0.7
+//                additional = -60.0
+//                target.transform = CGAffineTransform.init(rotationAngle: angle)
+//            }
+            let (scaleY, yOffset) = self.computeYAxisTransformations(position: self.numberOfVisibleItems-1)
+            target.center = CGPoint(x: self.itemViewCenterX(), y: yOffset)
+            let t = CGAffineTransform(scaleX: 1, y: scaleY)
+            target.transform = t.rotated(by: 0.0)
+        }) { (a) in
+//            target.alpha = 0.0
+            DispatchQueue.main.async {
+                if let cb = completedCB {
+                    cb(target as! GCStackItemContainerView)
+                }
+//                self.view.sendSubview(toBack: target)
+//                target.center = self.originalLocation
+//                target.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.9)
+//
+//                self.view.layoutSubviews()
+//
+//                if let cb = completedCB {
+//                    cb(target)
+//                }
+//
+//                self.updateFrames(percentage: 0.0, includeTop: true, animated: false)
+//                UIView.animate(withDuration: 0.1, animations: {
+//                    target.alpha = 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1)
+//                })
+            }
+//
         }
     }
     

@@ -63,7 +63,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
                     unansweredIndex = i
                 }
             }
-//            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
+            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
         }
     }
     func load() {
@@ -283,7 +283,7 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
         if !self.stackViewController.lastElementSelected {
-            gotoQuiz(i: 1)
+            gotoQuiz(i: self.stackViewController.currentIndex + 1)
         } else {
             self.roundEnded()
         }
