@@ -43,13 +43,8 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         self.performSegue(withIdentifier: segue, sender: self)
     }
     func gotoQuiz(i : Int) {
-        guard i != currentPage else {
-            return
-        }
-        let indexPath = IndexPath(item: i, section: 0)
         DispatchQueue.main.async {
-//            self.quizCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.stackViewController.scrollTo(index : UInt(indexPath.row), animated: true);
+            self.stackViewController.scrollTo(index : i, animated: true, fastAnimation: false);
         }
     }
     var questions : [Quiz] = [] {
@@ -68,7 +63,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
                     unansweredIndex = i
                 }
             }
-            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
+//            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
         }
     }
     func load() {
@@ -252,11 +247,13 @@ extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
 //        return false
 //    }
     func numberOfItems() -> Int {
-        return 10
+        return self.questions.count
     }
     func configureViewForItem(itemView: UIView, index: Int) {
-        if let v = itemView as? ShowQuizStackItemView {
-            
+        if let card = itemView as? ShowQuizStackItemView {
+            card.quiz = self.questions[index]
+            card.round = round
+            card.delegate = self
         }
     }
 }
@@ -285,8 +282,8 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
     
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
-        if let quizIndex = nextQuiz() {
-            gotoQuiz(i: quizIndex)
+        if !self.stackViewController.lastElementSelected {
+            gotoQuiz(i: 1)
         } else {
             self.roundEnded()
         }
