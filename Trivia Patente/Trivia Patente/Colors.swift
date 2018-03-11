@@ -51,6 +51,7 @@ class Colors {
     
     static let passive_red = UIColor(red: 237/255, green: 97/255, blue: 89/255, alpha: 1)
     
+    
     // get gradient for access controllers
     static func accessGradientLayer(view: UIView) -> CAGradientLayer
     {

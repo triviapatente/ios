@@ -12,13 +12,13 @@ class GCStackViewController: UIViewController {
     
     var delegate : GCStackViewDelegate?
     var dataSource : GCStackViewDataSource?
-    var itemNib : UINib?
+    var itemViewNibName : String?
     var contentInset : UIEdgeInsets = UIEdgeInsets.zero {
         didSet {
             self.reloadGraphics()
         }
     }
-    var itemBackgroundColor : UIColor = UIColor.white {
+    var itemBackgroundColor : UIColor = Colors.light_blue {
         didSet {
             for v in self.itemViews {
                 v.backgroundColor = itemBackgroundColor
@@ -34,6 +34,7 @@ class GCStackViewController: UIViewController {
     var currentIndex : Int = 0 {
         didSet {
             orderChanged()
+            loadContentForVisibleItems()
         }
     }
     
@@ -47,9 +48,9 @@ class GCStackViewController: UIViewController {
     private var stackEffectSqueezeDegreeFixed = CGFloat(6)
     private var stackEffectOpacityStep = CGFloat(0.15)
     
-    var itemViews : [UIView] {
+    var itemViews : [GCStackItemContainerView] {
         get {
-            return self.view.subviews
+            return self.view.subviews as! [GCStackItemContainerView]
         }
     }
 
@@ -57,6 +58,7 @@ class GCStackViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         createVisibleViewContainers()
+        self.reloadData()
     }
     
     private func reloadGraphics() {
@@ -67,8 +69,9 @@ class GCStackViewController: UIViewController {
         // Create the views
         self.view.removeAllSubviews()
         for i in 0..<numberOfVisibleItems {
-            let itemView = UIView()
+            let itemView = GCStackItemContainerView()
             self.view.addSubview(itemView)
+            itemView.loadLayout(from: itemViewNibName!)
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             self.view.addConstraint(NSLayoutConstraint(item: itemView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0))
@@ -88,7 +91,7 @@ class GCStackViewController: UIViewController {
             let itemView = self.view.subviews[Int(i)]
             itemView.transform = CGAffineTransform.identity
             for c in self.view.constraints {
-                if let v = c.firstItem as? UIView, v == itemView {
+                if let v = c.firstItem as? GCStackItemContainerView, v == itemView {
                     switch c.firstAttribute {
                     case .top: c.constant = contentInset.top + stackEffectDeepDegreeFixed * CGFloat(i)
                     case .bottom: c.constant = -(contentInset.bottom + stackEffectDeepDegreeFixed * iCompl)
@@ -103,20 +106,18 @@ class GCStackViewController: UIViewController {
             if i == numberOfVisibleItems - 1 {
                 itemView.gestureRecognizers!.first!.isEnabled = true
             }
+//            itemView.transform = CGAffineTransform.init(scaleX: itemView.frame.width/(itemView.frame.width - stackEffectSqueezeDegreeFixed*iCompl*CGFloat(2)), y: 1)
         }
         checkRemaingItems()
     }
     
-    private func customizeItemViewContainer(view: UIView) {
+    private func customizeItemViewContainer(view: GCStackItemContainerView) {
         view.mediumRounded()
-//        view.backgroundColor = itemBackgroundColor
-        view.backgroundColor = UIColor(red:   CGFloat(arc4random()) / CGFloat(UInt32.max),
-                       green: CGFloat(arc4random()) / CGFloat(UInt32.max),
-                       blue:  CGFloat(arc4random()) / CGFloat(UInt32.max),
-                       alpha: 1.0)
+        view.backgroundColor = itemBackgroundColor
         
-        let cellPan = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognized(gestureRecognizer:)))
-        view.addGestureRecognizer(cellPan)
+        let itemPan = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognized(gestureRecognizer:)))
+        itemPan.cancelsTouchesInView = false
+        view.addGestureRecognizer(itemPan)
 
         // shadow
         view.layer.shadowColor = Colors.dark_shadow.cgColor
@@ -133,18 +134,26 @@ class GCStackViewController: UIViewController {
     
     func reloadData() {
         
+        loadContentForVisibleItems()
     }
     
     func scrollToNext() -> Bool {
         if !lastElementSelected
         {
-            animateAway(target: getTopItemView()) {
+            animateAway(target: getTopItemView()) { (view) in
+                view.loaded = false
                 self.currentIndex = self.currentIndex + 1
                 
             }
             return true
         }
         return false
+    }
+    
+    private func unloadAllItemViews() {
+        for view in self.itemViews {
+            view.loaded = false
+        }
     }
     
     private func checkRemaingItems() {
@@ -159,6 +168,17 @@ class GCStackViewController: UIViewController {
         
     }
     
+    private func loadContentForVisibleItems() {
+        for i in (0..<itemViews.count).reversed() {
+            let itemView = itemViews[i]
+            if !itemView.loaded {
+                dataSource!.configureViewForItem(itemView: itemView.contentView!, index: currentIndex + (numberOfVisibleItems-1-i))
+                itemView.loaded = true
+            }
+        }
+    }
+    
+    
     
     // CARD animations
     var originalLocation : CGPoint = CGPoint.zero
@@ -169,9 +189,8 @@ class GCStackViewController: UIViewController {
     var scaleMin = CGFloat(1.0)
     var animationDirection : CGFloat = 1.0
     var hasElementBehind = false
-    var ausiliaryCopy : UIView?
     @IBAction func panGestureRecognized(gestureRecognizer: UIPanGestureRecognizer) {
-        let target = gestureRecognizer.view!
+        let target = gestureRecognizer.view! as! GCStackItemContainerView
         let xDistanceFromCenter = gestureRecognizer.translation(in: target).x
         let yDistanceFromCenter = gestureRecognizer.translation(in: target).y
         
@@ -179,6 +198,7 @@ class GCStackViewController: UIViewController {
         switch gestureRecognizer.state {
         case .began:
             originalLocation = target.center
+            
             animationDirection = touchLocation.y >= target.frame.size.height / 2 ? -1.0 : 1.0
             target.layer.shouldRasterize = true
             break
@@ -223,11 +243,11 @@ class GCStackViewController: UIViewController {
         }
     }
     
-    private func getTopItemView() -> UIView {
-        return self.view.subviews.last!
+    private func getTopItemView() -> GCStackItemContainerView {
+        return self.view.subviews.last! as! GCStackItemContainerView
     }
     
-    func panEnded(percentage: CGFloat, target: UIView)
+    func panEnded(percentage: CGFloat, target: GCStackItemContainerView)
     {
         if abs(percentage) > PlayRoundViewController.SWIPE_DRAG_PERCENTAGE {
             if !lastElementSelected {
@@ -242,7 +262,7 @@ class GCStackViewController: UIViewController {
         }
     }
     
-    private func animateAway(target: UIView, completedCB: (()->Void)? = nil) {
+    private func animateAway(target: GCStackItemContainerView, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
         UIView.animate(withDuration: 0.2, animations: {
             let direction = target.center.x > self.originalLocation.x ? 1.0 : -1.0
             target.center = CGPoint(x: self.originalLocation.x * CGFloat(3.5) *
@@ -253,18 +273,31 @@ class GCStackViewController: UIViewController {
             target.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.9)
             self.resetCard(target: target, animated: true)
             if let cb = completedCB {
-                cb()
+                cb(target)
             }
         }
     }
     
-    func resetCard(target: UIView, animated: Bool = true) {
+    func resetCard(target: GCStackItemContainerView, animated: Bool = true) {
         UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0) {
             target.transform = CGAffineTransform.identity
             target.center = self.originalLocation
         }
     }
     
+    private func getViewLeftRightMarginConstraints(itemView: UIView, parent: UIView) -> (NSLayoutConstraint?, NSLayoutConstraint?) {
+        var left : NSLayoutConstraint? = nil
+        var right : NSLayoutConstraint? = nil
+        for c in parent.constraints {
+            if let item = c.firstItem as? UIView, item == itemView && c.firstAttribute == .leadingMargin {
+                left = c
+            }
+            if let item = c.firstItem as? UIView, item == itemView && c.firstAttribute == .trailingMargin {
+                right = c
+            }
+        }
+        return (left, right)
+    }
     
 
     /*

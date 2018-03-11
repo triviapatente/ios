@@ -181,6 +181,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             self.stackViewController = segue.destination as! GCStackViewController
             self.stackViewController.delegate = self
             self.stackViewController.dataSource = self
+            self.stackViewController.itemViewNibName = "ShowQuizStackItemView"
         } else if identifier == "round_details" {
             if let destination = segue.destination as? RoundDetailsViewController {
                 destination.game = game
@@ -253,12 +254,10 @@ extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
     func numberOfItems() -> Int {
         return 10
     }
-    func configureViewForItem(itemView: UIView, index: Int) -> UIView {
-        if let v = itemView as? UIView {
-
-            return v
+    func configureViewForItem(itemView: UIView, index: Int) {
+        if let v = itemView as? ShowQuizStackItemView {
+            
         }
-        return itemView
     }
 }
 extension PlayRoundViewController : CollieGalleryZoomTransitionDelegate {

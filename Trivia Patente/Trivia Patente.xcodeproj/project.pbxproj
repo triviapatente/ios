@@ -24,7 +24,7 @@
 		8B28D27F1DCF8CBE00C65122 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */; };
 		8B28D2811DD0770800C65122 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28D2801DD0770800C65122 /* UserListViewController.swift */; };
 		8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A2A831DF1D82300830028 /* RoundDetailsViewController.swift */; };
-		8B2A2A871DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A2A851DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift */; };
+		8B2A2A871DF1DD1C00830028 /* ShowQuizStackItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A2A851DF1DD1C00830028 /* ShowQuizStackItemView.swift */; };
 		8B3877F21DBFE0F700FBE4EF /* TPErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */; };
 		8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C72351DC391F800C83273 /* TPConnectResponse.swift */; };
 		8B3E3A8E1E12C34D0062AF32 /* AlphaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */; };
@@ -177,7 +177,7 @@
 		8BE273431DC0D0390094F0F6 /* TPMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273421DC0D0390094F0F6 /* TPMainButton.swift */; };
 		8BE273451DC0D6FA0094F0F6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273441DC0D6FA0094F0F6 /* UILabel.swift */; };
 		8BE273471DC0DEA40094F0F6 /* TPTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE273461DC0DEA40094F0F6 /* TPTextView.swift */; };
-		8BE2788E1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE2788C1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib */; };
+		8BE2788E1DF1FFB700071DF2 /* ShowQuizStackItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE2788C1DF1FFB700071DF2 /* ShowQuizStackItemView.xib */; };
 		8BE278901DF2124B00071DF2 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */; };
 		8BE278921DF4733A00071DF2 /* TPScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE278911DF4733A00071DF2 /* TPScoreView.swift */; };
 		8BE278941DF477CC00071DF2 /* TPRoundDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE278931DF477CC00071DF2 /* TPRoundDetailsResponse.swift */; };
@@ -212,6 +212,7 @@
 		F45C6EB81F9966CA005BECF9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45C6EB71F9966CA005BECF9 /* GradientView.swift */; };
 		F45DFC9B2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */; };
 		F45DFC9D2051EBA3003E4F4E /* QuizDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */; };
+		F46228E22055131C00B8A50D /* GCStackItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46228E12055131C00B8A50D /* GCStackItemContainerView.swift */; };
 		F47555732035F7260015FF06 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47555722035F7260015FF06 /* UITableViewCell.swift */; };
 		F478FA2820515FCE00324FED /* Training.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F478FA2720515FCE00324FED /* Training.storyboard */; };
 		F478FA2B2051709700324FED /* TrainingListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478FA2A2051709700324FED /* TrainingListingViewController.swift */; };
@@ -283,7 +284,7 @@
 		8B28D27E1DCF8CBE00C65122 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		8B28D2801DD0770800C65122 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		8B2A2A831DF1D82300830028 /* RoundDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundDetailsViewController.swift; sourceTree = "<group>"; };
-		8B2A2A851DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B2A2A851DF1DD1C00830028 /* ShowQuizStackItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowQuizStackItemView.swift; sourceTree = "<group>"; };
 		8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPErrorView.swift; sourceTree = "<group>"; };
 		8B3C72351DC391F800C83273 /* TPConnectResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPConnectResponse.swift; sourceTree = "<group>"; };
 		8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaViewController.swift; sourceTree = "<group>"; };
@@ -438,7 +439,7 @@
 		8BE273421DC0D0390094F0F6 /* TPMainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPMainButton.swift; sourceTree = "<group>"; };
 		8BE273441DC0D6FA0094F0F6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8BE273461DC0DEA40094F0F6 /* TPTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPTextView.swift; sourceTree = "<group>"; };
-		8BE2788C1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowQuizCollectionViewCell.xib; sourceTree = "<group>"; };
+		8BE2788C1DF1FFB700071DF2 /* ShowQuizStackItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowQuizStackItemView.xib; sourceTree = "<group>"; };
 		8BE2788F1DF2124B00071DF2 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		8BE278911DF4733A00071DF2 /* TPScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPScoreView.swift; sourceTree = "<group>"; };
 		8BE278931DF477CC00071DF2 /* TPRoundDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPRoundDetailsResponse.swift; sourceTree = "<group>"; };
@@ -478,6 +479,7 @@
 		F45C6EB71F9966CA005BECF9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F45DFC9A2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingQuizCollectionViewCell.swift; sourceTree = "<group>"; };
 		F45DFC9C2051EBA3003E4F4E /* QuizDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDetailsViewController.swift; sourceTree = "<group>"; };
+		F46228E12055131C00B8A50D /* GCStackItemContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCStackItemContainerView.swift; sourceTree = "<group>"; };
 		F47555722035F7260015FF06 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		F478FA2720515FCE00324FED /* Training.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Training.storyboard; sourceTree = "<group>"; };
 		F478FA2A2051709700324FED /* TrainingListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingListingViewController.swift; sourceTree = "<group>"; };
@@ -667,8 +669,8 @@
 			isa = PBXGroup;
 			children = (
 				8BA6BEB61DECC4FA00D9EB86 /* ShowQuizCellDelegate.swift */,
-				8B2A2A851DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift */,
-				8BE2788C1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib */,
+				8B2A2A851DF1DD1C00830028 /* ShowQuizStackItemView.swift */,
+				8BE2788C1DF1FFB700071DF2 /* ShowQuizStackItemView.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1772,6 +1774,7 @@
 				F49B64BB20543E54006CFEF2 /* StackViewController.storyboard */,
 				F49B64BD20543F01006CFEF2 /* GCStackViewDelegate.swift */,
 				F49B64BF20543F34006CFEF2 /* GCStackViewDataSource.swift */,
+				F46228E12055131C00B8A50D /* GCStackItemContainerView.swift */,
 			);
 			name = StackView;
 			sourceTree = "<group>";
@@ -1952,7 +1955,7 @@
 				8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */,
 				F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
-				8BE2788E1DF1FFB700071DF2 /* ShowQuizCollectionViewCell.xib in Resources */,
+				8BE2788E1DF1FFB700071DF2 /* ShowQuizStackItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2170,7 +2173,7 @@
 				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				F45DFC9B2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift in Sources */,
-				8B2A2A871DF1DD1C00830028 /* ShowQuizCollectionViewCell.swift in Sources */,
+				8B2A2A871DF1DD1C00830028 /* ShowQuizStackItemView.swift in Sources */,
 				8BA6BEB41DECC0E700D9EB86 /* TPGameAnswerResponse.swift in Sources */,
 				8B5EE0FF1DD90A5F00745A54 /* SettingsViewController.swift in Sources */,
 				8B2A2A841DF1D82300830028 /* RoundDetailsViewController.swift in Sources */,
@@ -2210,6 +2213,7 @@
 				8BBAB49F1DCBBD9C004AB6B0 /* MenuAction.swift in Sources */,
 				8BFC94F61DD28CAE00D4CE86 /* UINavigationBar.swift in Sources */,
 				8B5133151DBBB55300143497 /* TPInputView.swift in Sources */,
+				F46228E22055131C00B8A50D /* GCStackItemContainerView.swift in Sources */,
 				F406F5B21FDFE6E700AF1621 /* ReviewModalViewController.swift in Sources */,
 				8BAD1C551DF9CA050051AC4A /* TPGameEndedEvent.swift in Sources */,
 				8B28D26E1DCDEA7100C65122 /* Constants.swift in Sources */,

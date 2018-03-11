@@ -10,5 +10,5 @@ import Foundation
 
 protocol GCStackViewDataSource {
     func numberOfItems() -> Int
-    func configureViewForItem(itemView: UIView, index: Int) -> UIView
+    func configureViewForItem(itemView: UIView, index: Int)
 }
