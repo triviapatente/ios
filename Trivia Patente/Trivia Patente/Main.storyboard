@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="x85-ip-iaX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -151,11 +151,12 @@
                                 <rect key="frame" x="37.5" y="161" width="300" height="345"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxA-hz-itL">
-                                        <rect key="frame" x="267" y="8" width="25" height="25"/>
+                                        <rect key="frame" x="263" y="4" width="33" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="Rbg-Kf-nM0"/>
-                                            <constraint firstAttribute="height" constant="25" id="k3h-Qu-p14"/>
+                                            <constraint firstAttribute="width" constant="33" id="Rbg-Kf-nM0"/>
+                                            <constraint firstAttribute="height" constant="33" id="k3h-Qu-p14"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <state key="normal" image="ic_clear_white_36pt">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -217,7 +218,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <constraint firstItem="ygv-PK-i3T" firstAttribute="top" secondItem="KjH-m0-SIe" secondAttribute="bottom" id="GyY-Ku-Aig"/>
                                     <constraint firstItem="jhZ-ob-wGF" firstAttribute="top" secondItem="iI7-u5-sXh" secondAttribute="top" constant="40" id="HJe-e9-70x"/>
                                     <constraint firstItem="ygv-PK-i3T" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" id="J3y-0O-VkU"/>
-                                    <constraint firstAttribute="trailing" secondItem="rxA-hz-itL" secondAttribute="trailing" constant="8" id="MSr-ez-aDM"/>
+                                    <constraint firstAttribute="trailing" secondItem="rxA-hz-itL" secondAttribute="trailing" constant="4" id="MSr-ez-aDM"/>
                                     <constraint firstItem="KjH-m0-SIe" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" id="NL6-wA-JVB"/>
                                     <constraint firstAttribute="height" constant="345" id="PgU-3d-dkp"/>
                                     <constraint firstAttribute="width" constant="300" id="cfJ-S4-T8g"/>
@@ -225,7 +226,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <constraint firstAttribute="trailing" secondItem="v1N-me-dvo" secondAttribute="trailing" id="gW7-eI-Fys"/>
                                     <constraint firstAttribute="bottom" secondItem="v1N-me-dvo" secondAttribute="bottom" id="koX-Th-WBi"/>
                                     <constraint firstItem="v1N-me-dvo" firstAttribute="top" secondItem="ygv-PK-i3T" secondAttribute="bottom" id="lSO-Tb-uBq"/>
-                                    <constraint firstItem="rxA-hz-itL" firstAttribute="top" secondItem="iI7-u5-sXh" secondAttribute="top" constant="8" id="mhy-bm-Evi"/>
+                                    <constraint firstItem="rxA-hz-itL" firstAttribute="top" secondItem="iI7-u5-sXh" secondAttribute="top" constant="4" id="mhy-bm-Evi"/>
                                     <constraint firstAttribute="trailing" secondItem="ygv-PK-i3T" secondAttribute="trailing" id="q4N-rL-73y"/>
                                     <constraint firstItem="v1N-me-dvo" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" id="s8t-BU-dDB"/>
                                     <constraint firstAttribute="trailing" secondItem="RLq-hO-CLt" secondAttribute="trailing" constant="30" id="uX1-I9-SQr"/>
@@ -1058,11 +1059,12 @@ Fallo sapere ai tuoi amici 😉</string>
                                 <rect key="frame" x="37.5" y="198.5" width="300" height="270"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxD-4h-0k0">
-                                        <rect key="frame" x="267" y="8" width="25" height="25"/>
+                                        <rect key="frame" x="263" y="4" width="33" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="2s3-RA-q9Z"/>
-                                            <constraint firstAttribute="width" constant="25" id="556-B9-ws5"/>
+                                            <constraint firstAttribute="height" constant="33" id="2s3-RA-q9Z"/>
+                                            <constraint firstAttribute="width" constant="33" id="556-B9-ws5"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <state key="normal" image="ic_clear_white_36pt">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1152,7 +1154,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                 <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="AxD-4h-0k0" firstAttribute="top" secondItem="hCl-3f-YnY" secondAttribute="top" constant="8" id="0v5-8v-nv1"/>
+                                    <constraint firstItem="AxD-4h-0k0" firstAttribute="top" secondItem="hCl-3f-YnY" secondAttribute="top" constant="4" id="0v5-8v-nv1"/>
                                     <constraint firstAttribute="height" constant="270" id="5sk-ST-XkJ"/>
                                     <constraint firstItem="7gf-eO-GhG" firstAttribute="centerX" secondItem="hCl-3f-YnY" secondAttribute="centerX" id="Bfp-Hu-evP"/>
                                     <constraint firstItem="2B0-ZD-9CX" firstAttribute="leading" secondItem="hCl-3f-YnY" secondAttribute="leading" id="CuK-br-DIL"/>
@@ -1164,7 +1166,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <constraint firstItem="uPD-eU-D7M" firstAttribute="leading" secondItem="hCl-3f-YnY" secondAttribute="leading" id="PWI-OU-Ujz"/>
                                     <constraint firstAttribute="trailing" secondItem="uPD-eU-D7M" secondAttribute="trailing" id="Q0y-qB-q8K"/>
                                     <constraint firstItem="91c-YC-IPc" firstAttribute="top" secondItem="2B0-ZD-9CX" secondAttribute="bottom" id="RDg-wM-DXO"/>
-                                    <constraint firstAttribute="trailing" secondItem="AxD-4h-0k0" secondAttribute="trailing" constant="8" id="ROW-61-HGl"/>
+                                    <constraint firstAttribute="trailing" secondItem="AxD-4h-0k0" secondAttribute="trailing" constant="4" id="ROW-61-HGl"/>
                                     <constraint firstItem="HHh-eQ-1lw" firstAttribute="leading" secondItem="hCl-3f-YnY" secondAttribute="leading" id="YdY-mJ-LWU"/>
                                     <constraint firstItem="91c-YC-IPc" firstAttribute="leading" secondItem="hCl-3f-YnY" secondAttribute="leading" id="ZdX-TW-2OC"/>
                                     <constraint firstItem="7gf-eO-GhG" firstAttribute="top" secondItem="hCl-3f-YnY" secondAttribute="top" constant="40" id="grD-ng-Fl7"/>

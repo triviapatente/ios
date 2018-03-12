@@ -29,7 +29,7 @@ class Colors {
     
     static let light_gray = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1)
     static let light_blue = UIColor(red: 237/255, green: 249/255, blue: 254/255, alpha: 1)
-    static let light_button_blue = UIColor(red: 223/255, green: 250/255, blue: 254/255, alpha: 1)
+    static let light_button_blue = UIColor(red: 237/255, green: 249/255, blue: 254/255, alpha: 1)
     
     static let stats_perfect = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let stats_good = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)

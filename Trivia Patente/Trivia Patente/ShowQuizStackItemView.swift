@@ -10,6 +10,8 @@ import UIKit
 import MBProgressHUD
 
 class ShowQuizStackItemView: UIView {
+    
+//    static let QUIZ_IMAGE_HEIGHT = CGFloat(125)
 
     var quiz : Quiz! {
         didSet {
@@ -17,9 +19,11 @@ class ShowQuizStackItemView: UIView {
             self.quizNameView.text = quiz.question
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
+                
             } else {
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
+//            self.mainImageHeightConstraint.constant = (quiz.imageId == nil) ? 0 : ShowQuizStackItemView.QUIZ_IMAGE_HEIGHT
             self.prepareQuiz()
         }
     }
@@ -37,6 +41,7 @@ class ShowQuizStackItemView: UIView {
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     @IBOutlet var shapeView : UIView!
+//    @IBOutlet weak var mainImageHeightConstraint: NSLayoutConstraint!
     
     /* HEADER */
     @IBOutlet weak var mainHeaderLabel: UILabel!
@@ -124,7 +129,9 @@ class ShowQuizStackItemView: UIView {
         self.falseButton.bigRounded()
         self.falseButton.layer.borderWidth = 1
         self.falseButton.layer.borderColor = Colors.light_gray.cgColor
-        self.quizImageView.shadow(radius: 1)
+        self.headerRightImage.layer.borderWidth = 1
+        self.headerRightImage.layer.borderColor = Colors.light_gray.cgColor
+//        self.quizImageView.shadow(radius: 1)
         let imageRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageClicked))
         self.quizImageView.addGestureRecognizer(imageRecognizer)
         self.quizNameView.textContainerInset = .zero

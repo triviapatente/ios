@@ -41,7 +41,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwd-wP-VOG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwd-wP-VOG">
                                 <rect key="frame" x="20" y="111" width="280" height="110"/>
                                 <color key="backgroundColor" red="0.26584070920944214" green="0.85808372497558594" blue="0.3677983283996582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -49,9 +49,7 @@
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment>
-                                            <string key="content">Cerca
-avversario</string>
+                                        <fragment content="Cerca avversario">
                                             <attributes>
                                                 <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <font key="NSFont" size="20" name="AvenirNext-Regular"/>
@@ -72,9 +70,7 @@ avversario</string>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment>
-                                            <string key="content">Avversario 
-casuale</string>
+                                        <fragment content="Avversario casuale">
                                             <attributes>
                                                 <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <font key="NSFont" size="20" name="AvenirNext-Regular"/>
@@ -613,7 +609,7 @@ casuale</string>
                                     <outlet property="delegate" destination="ZWh-kv-MbX" id="rpF-Hr-LNJ"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
                                 <rect key="frame" x="0.0" y="10" width="203" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vKM-c5-CrP"/>
@@ -1020,7 +1016,7 @@ casuale</string>
         <segue reference="NV8-od-C3s"/>
         <segue reference="F5i-i7-toe"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="0L7-TT-S4h"/>
+        <segue reference="sSs-jh-fhW"/>
         <segue reference="ygJ-H6-qBG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -63,7 +63,9 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
                     unansweredIndex = i
                 }
             }
-            gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
+            DispatchQueue.main.async {
+                self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
+            }
         }
     }
     func load() {

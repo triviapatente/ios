@@ -136,8 +136,8 @@ class GCStackViewController: UIViewController {
     }
     
     func reloadData() {
-        loadContentForVisibleItems()
         orderChanged()
+        loadContentForVisibleItems()
 //        self.updateFrames()
     }
     
@@ -293,13 +293,11 @@ class GCStackViewController: UIViewController {
         lastPercentageUsed = percentage
         let size = cardSize()
         let completionPercentage = min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1)
-        print("C: \(completionPercentage)")
         for i in (includeBottom ? 0 : 1)..<numberOfVisibleItems-(includeTop ? 0 : 1) {
             let itemView = self.view.subviews[Int(i)]
             let iCompl = CGFloat(numberOfVisibleItems-1-i)
 //            itemView.transform = CGAffineTransform.identity
             UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0, animations: {
-                print(itemView.alpha)
                 itemView.alpha = itemView.alpha == 0.0 ? 0.0 : 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1-i) + self.stackEffectOpacityStep*completionPercentage
                 let scaleX = (size.width - (self.stackEffectSqueezeDegreeFixed*iCompl - self.stackEffectSqueezeDegreeFixed*completionPercentage)*CGFloat(2))/size.width
                 //                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*iCompl)*CGFloat(2))/size.height
@@ -366,8 +364,8 @@ class GCStackViewController: UIViewController {
             target.alpha = 0.0
             DispatchQueue.main.async {
                 self.view.sendSubview(toBack: target)
-                            target.center = self.originalLocation
-                            target.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.9)
+                target.center = self.originalLocation
+                target.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.9)
                 
                 self.view.layoutSubviews()
                 
@@ -386,6 +384,7 @@ class GCStackViewController: UIViewController {
     
     private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
         self.view.bringSubview(toFront: target)
+        self.view.layoutSubviews()
         // bottom is now top
         updateFrames(percentage: -1.0, includeTop: false, animated: true)
 
