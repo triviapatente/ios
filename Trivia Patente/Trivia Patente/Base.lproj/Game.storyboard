@@ -519,6 +519,16 @@
                                     <constraint firstAttribute="height" constant="50" id="sCA-cK-k3l"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16d-v4-sx0">
+                                <rect key="frame" x="59" y="452" width="203" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="qMm-3F-T7B"/>
+                                    <constraint firstAttribute="height" constant="56" id="rnd-A3-HNL"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="shz-gG-blI" kind="embed" identifier="game_actions" id="NV8-od-C3s"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Cg-TeA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                 <subviews>
@@ -537,16 +547,6 @@
                                     <constraint firstAttribute="bottom" secondItem="8af-d9-LAS" secondAttribute="bottom" id="t1f-dD-Uto"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16d-v4-sx0">
-                                <rect key="frame" x="59" y="452" width="203" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="203" id="qMm-3F-T7B"/>
-                                    <constraint firstAttribute="height" constant="56" id="rnd-A3-HNL"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="shz-gG-blI" kind="embed" identifier="game_actions" id="NV8-od-C3s"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1016,7 +1016,7 @@
         <segue reference="NV8-od-C3s"/>
         <segue reference="F5i-i7-toe"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="sSs-jh-fhW"/>
+        <segue reference="0L7-TT-S4h"/>
         <segue reference="ygJ-H6-qBG"/>
     </inferredMetricsTieBreakers>
 </document>

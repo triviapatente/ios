@@ -156,8 +156,6 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         } else {
             self.gameActions.detailButton.isHidden = false
         }
-//        let nib = UINib(nibName: "ShowQuizCollectionViewCell", bundle: .main)
-//        self.quizCollectionView.register(nib, forCellWithReuseIdentifier: "quiz_cell")
         
     }
 
