@@ -35,7 +35,6 @@ class GCStackViewController: UIViewController {
         didSet {
             orderChanged()
             loadContentForVisibleItems()
-            delegate!.stackView(stackViewController: self, didDisplayItemAt: currentIndex)
         }
     }
     
@@ -138,20 +137,22 @@ class GCStackViewController: UIViewController {
 //        self.updateFrames()
     }
     
-    func scrollToNext(fastAnimation: Bool = true) -> Bool {
+    func scrollToNext(fastAnimation: Bool = true, propagate: Bool = true) -> Bool {
         if !lastElementSelected
         {
-            scrollTo(index: currentIndex + 1, animated: true, fastAnimation: fastAnimation)
+            scrollTo(index: currentIndex + 1, animated: true, fastAnimation: fastAnimation, propagate:
+                propagate)
 
             return true
         }
         return false
     }
     
-    func scrollToPrevious(fastAnimation: Bool = true) -> Bool {
+    func scrollToPrevious(fastAnimation: Bool = true,  propagate: Bool = true) -> Bool {
         if !lastElementSelected
         {
-            scrollTo(index: currentIndex - 1, animated: true, fastAnimation: fastAnimation)
+            scrollTo(index: currentIndex - 1, animated: true, fastAnimation: fastAnimation, propagate:
+                propagate)
             
             return true
         }
@@ -172,18 +173,30 @@ class GCStackViewController: UIViewController {
         }
     }
     
-    func scrollTo(index: Int, animated: Bool, fastAnimation: Bool = true) {
+    func scrollTo(index: Int, animated: Bool, fastAnimation: Bool = true, propagate: Bool = true) {
         let diff = index - currentIndex
         if diff == 1 {
+            if propagate {
+                self.dispatchNotificationWillDisplay(index: currentIndex+1)
+            }
             animateAway(target: getTopItemView(), fastAnimation: fastAnimation) { (view) in
                 //                self.resetCard(target: view, animated: false)
                 view.loaded = false
                 self.currentIndex = self.currentIndex + 1
+                if propagate {
+                    self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+                }
             }
         } else if diff == -1 {
+            if propagate {
+                self.dispatchNotificationWillDisplay(index: currentIndex+1)
+            }
             animateLastBackIn(target: getBottomItemView(), fastAnimation: fastAnimation, completedCB: { (view) in
                 view.loaded = false
                 self.currentIndex = self.currentIndex - 1
+                if propagate {
+                    self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+                }
             })
         } else if diff > 1 {
             // scroll forward
@@ -343,7 +356,6 @@ class GCStackViewController: UIViewController {
         return self.cardSize().width / 2 + contentInset.left
     }
     private func animateAway(target: GCStackItemContainerView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
-        self.dispatchNotificationWillDisplay(index: currentIndex+1)
         updateFrames(percentage: 1.0, includeTop: false)
         UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
             var direction = target.center.x >= self.originalLocation.x ? 1.0 : -1.0
@@ -381,7 +393,6 @@ class GCStackViewController: UIViewController {
     }
     
     private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
-        self.dispatchNotificationWillDisplay(index: currentIndex-1)
         self.view.bringSubview(toFront: target)
         self.view.layoutSubviews()
         // bottom is now top

@@ -217,7 +217,7 @@ extension PlayRoundViewController : CGPageControlDelegate {
         }
     }
     func indexSelected(index: Int) {
-        self.stackViewController.scrollTo(index: index, animated: true)
+        self.stackViewController.scrollTo(index: index, animated: true, propagate: false)
     }
 }
 extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
