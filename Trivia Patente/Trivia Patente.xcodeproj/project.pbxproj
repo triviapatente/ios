@@ -201,6 +201,9 @@
 		A9FD528F1DA16E96005DFE5D /* Trivia_PatenteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD528E1DA16E96005DFE5D /* Trivia_PatenteTests.swift */; };
 		A9FD529A1DA16E96005DFE5D /* Trivia_PatenteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */; };
 		E48B4ADE9FA8E1E03DAD3302 /* Pods_Trivia_PatenteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6DBC26F7EC0275BE43E1 /* Pods_Trivia_PatenteUITests.framework */; };
+		F402828F2056C57C00A649A2 /* GCPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402828E2056C57C00A649A2 /* GCPageControlView.swift */; };
+		F40282912056C5AF00A649A2 /* GCPageControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40282902056C5AF00A649A2 /* GCPageControl.storyboard */; };
+		F40282932056CA9D00A649A2 /* PageControlCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40282922056CA9D00A649A2 /* PageControlCollectionViewCell.swift */; };
 		F406F5B21FDFE6E700AF1621 /* ReviewModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */; };
 		F417CA111FBA768900B494C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FD52791DA16E96005DFE5D /* AppDelegate.swift */; };
 		F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */; };
@@ -469,6 +472,9 @@
 		A9FD52951DA16E96005DFE5D /* Trivia PatenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trivia PatenteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FD52991DA16E96005DFE5D /* Trivia_PatenteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trivia_PatenteUITests.swift; sourceTree = "<group>"; };
 		A9FD529B1DA16E96005DFE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F402828E2056C57C00A649A2 /* GCPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPageControlView.swift; sourceTree = "<group>"; };
+		F40282902056C5AF00A649A2 /* GCPageControl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GCPageControl.storyboard; sourceTree = "<group>"; };
+		F40282922056CA9D00A649A2 /* PageControlCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlCollectionViewCell.swift; sourceTree = "<group>"; };
 		F406F5B11FDFE6E700AF1621 /* ReviewModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModalViewController.swift; sourceTree = "<group>"; };
 		F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
@@ -876,6 +882,7 @@
 		8B5132E21DBB5C7500143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F40282872056A83100A649A2 /* PageControl */,
 				8B8058CD1DE2FC6200C3F938 /* search game */,
 				8BE6DE301DE6D95B00DDD179 /* round */,
 				8B5133021DBBAC1800143497 /* Game.storyboard */,
@@ -1712,6 +1719,16 @@
 			path = "Trivia PatenteUITests";
 			sourceTree = "<group>";
 		};
+		F40282872056A83100A649A2 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				F402828E2056C57C00A649A2 /* GCPageControlView.swift */,
+				F40282902056C5AF00A649A2 /* GCPageControl.storyboard */,
+				F40282922056CA9D00A649A2 /* PageControlCollectionViewCell.swift */,
+			);
+			name = PageControl;
+			sourceTree = "<group>";
+		};
 		F446B3B21FA80C4C00FD2C79 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,6 +1971,7 @@
 				8B5EE11A1DD91E8900745A54 /* SettingsHeaderView.xib in Resources */,
 				8B8EEA391DFC49CF003608AA /* RightMessageTableViewCell.xib in Resources */,
 				F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */,
+				F40282912056C5AF00A649A2 /* GCPageControl.storyboard in Resources */,
 				8BCF8C291DB6A3C900EC637C /* Main.storyboard in Resources */,
 				8BE2788E1DF1FFB700071DF2 /* ShowQuizStackItemView.xib in Resources */,
 			);
@@ -2204,6 +2222,7 @@
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,
 				8B5EE0F21DD65E2300745A54 /* TPStatsDetailResponse.swift in Sources */,
 				8B8EEA231DFB292A003608AA /* TPMessageListResponse.swift in Sources */,
+				F40282932056CA9D00A649A2 /* PageControlCollectionViewCell.swift in Sources */,
 				F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */,
 				8BBBE84C1DC7695600B433F2 /* HTTPGame.swift in Sources */,
 				8BDEDEEF1E1D5BF600063FB2 /* HeaderTableViewCell.swift in Sources */,
@@ -2274,6 +2293,7 @@
 				8BDB00101DFDA1550088E8A2 /* LeaveGameViewController.swift in Sources */,
 				F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */,
 				8B8662641DBD5D38004D266E /* TPTextField.swift in Sources */,
+				F402828F2056C57C00A649A2 /* GCPageControlView.swift in Sources */,
 				F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */,
 				8B8058CA1DE2F97100C3F938 /* TPUserListResponse.swift in Sources */,
 				F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */,

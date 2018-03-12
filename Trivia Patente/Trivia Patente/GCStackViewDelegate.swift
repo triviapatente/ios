@@ -9,5 +9,6 @@
 import Foundation
 
 protocol GCStackViewDelegate {
-//    func stackView(stackViewController: GCStackViewController, didDisplayItemAt index: Int)
+    func stackView(stackViewController: GCStackViewController, didDisplayItemAt index: Int)
+    func stackView(stackViewController: GCStackViewController, willDisplayItemAt index: Int)
 }

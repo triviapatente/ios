@@ -17,6 +17,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     
     @IBOutlet weak var bannerView : GADBannerView!
     var stackViewController : GCStackViewController!
+    var pageControl : GCPageControlView!
     var round : Round!
     var category : Category!
     var opponent : User!
@@ -57,13 +58,13 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             for i in 0..<questions.count {
                 let question = questions[i]
                 if let _ = question.my_answer {
-//                    self.setQuizButtonColor(of: button, correct: question.answeredCorrectly!)
-                    
                 } else if unansweredIndex == nil {
                     unansweredIndex = i
                 }
             }
             DispatchQueue.main.async {
+                self.pageControl.reloadData()
+                self.pageControl.setIndex(to: 0, propagate: false)
                 self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
             }
         }
@@ -113,16 +114,12 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         }
     }
     
-    
-    func setQuizButtonColor(of button : UIButton, correct : Bool? = nil) {
-        if let correctness = correct {
-            let color = correctness ? Colors.correct_default : Colors.error_default
-            button.backgroundColor = color
-        }
-        button.darkerBorder(of: 0.1, width: 2.5)
-    }
     func getQuestionNumber(for i : Int) -> Int {
         return (i + 1) + (round.number! - 1) * 4
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -130,20 +127,22 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         if game.ended {
             self.navigationController!.popToRootViewController(animated: true)
         }
-        
-        self.navigationController!.navigationBar.layer.zPosition = -1
+//        self.navigationController!.navigationBar.layer.zPosition = -1
+    }
+    @IBAction func exitPlaying() {
+        self.navigationController!.popViewController(animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        
-        self.navigationController!.navigationBar.layer.zPosition = 100
+        self.navigationController!.setNavigationBarHidden(false, animated: true)
+
+//        self.navigationController!.navigationBar.layer.zPosition = 100
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
 //        self.stackViewController.itemNib = UINib(nibName: "", bundle: nil)
         self.stackViewController.contentInset = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
-    
+        
         // AD banner load
         self.bannerView.adUnitID = Constants.BannerUnitID
         self.bannerView.rootViewController = self
@@ -172,6 +171,9 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             destination.gameCanceled = self.gameCancelled
         } else if identifier == "game_actions" {
             self.gameActions = segue.destination as! TPGameActions
+        } else if identifier == "page_control" {
+            self.pageControl = segue.destination as! GCPageControlView
+            self.pageControl.delegate = self
         } else if identifier == "stack_view" {
             self.stackViewController = segue.destination as! GCStackViewController
             self.stackViewController.delegate = self
@@ -205,6 +207,18 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
         self.performSegue(withIdentifier: "wait_opponent_segue", sender: self)
     }
     
+}
+
+extension PlayRoundViewController : CGPageControlDelegate {
+    func customizeCellAt(index: Int, cell: PageControlCollectionViewCell) {
+        cell.layer.borderColor = Colors.light_gray.cgColor
+        if index < questions.count, let _ = self.questions[index].my_answer {
+            cell.layer.borderColor = self.questions[index].answeredCorrectly! ? Colors.green_default.cgColor : Colors.red_default.cgColor
+        }
+    }
+    func indexSelected(index: Int) {
+        self.stackViewController.scrollTo(index: index, animated: true)
+    }
 }
 extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -256,6 +270,12 @@ extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
             card.delegate = self
         }
     }
+    func stackView(stackViewController: GCStackViewController, didDisplayItemAt index: Int) {
+//        self.pageControl.setIndex(to: index, propagate: false)
+    }
+    func stackView(stackViewController: GCStackViewController, willDisplayItemAt index: Int) {
+        self.pageControl.setIndex(to: index, propagate: false)
+    }
 }
 extension PlayRoundViewController : CollieGalleryZoomTransitionDelegate {
     
@@ -282,6 +302,7 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
     
     func user_answered(answer: Bool, correct: Bool) {
         self.questions[selectedQuizIndex].my_answer = answer
+        self.questions[selectedQuizIndex].answeredCorrectly = correct
         if !self.stackViewController.lastElementSelected {
             gotoQuiz(i: self.stackViewController.currentIndex + 1)
         } else {

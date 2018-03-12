@@ -27,7 +27,7 @@ class Colors {
     static let orange_default = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
     static let gray_default = UIColor(red: 91/255, green: 91/255, blue: 91/255, alpha: 1)
     
-    static let light_gray = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1)
+    static let light_gray = UIColor(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
     static let light_blue = UIColor(red: 237/255, green: 249/255, blue: 254/255, alpha: 1)
     static let light_button_blue = UIColor(red: 237/255, green: 249/255, blue: 254/255, alpha: 1)
     

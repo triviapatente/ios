@@ -35,6 +35,7 @@ class GCStackViewController: UIViewController {
         didSet {
             orderChanged()
             loadContentForVisibleItems()
+            delegate!.stackView(stackViewController: self, didDisplayItemAt: currentIndex)
         }
     }
     
@@ -123,11 +124,7 @@ class GCStackViewController: UIViewController {
         view.addGestureRecognizer(itemPan)
 
         // shadow
-        view.layer.shadowColor = Colors.dark_shadow.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        view.layer.shadowRadius = 5.0
-        view.layer.shadowOpacity = 1.0
-        view.layer.masksToBounds = false
+        self.view.d3Shadow()
     }
 
     override func didReceiveMemoryWarning() {
@@ -346,6 +343,7 @@ class GCStackViewController: UIViewController {
         return self.cardSize().width / 2 + contentInset.left
     }
     private func animateAway(target: GCStackItemContainerView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
+        self.dispatchNotificationWillDisplay(index: currentIndex+1)
         updateFrames(percentage: 1.0, includeTop: false)
         UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
             var direction = target.center.x >= self.originalLocation.x ? 1.0 : -1.0
@@ -383,6 +381,7 @@ class GCStackViewController: UIViewController {
     }
     
     private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
+        self.dispatchNotificationWillDisplay(index: currentIndex-1)
         self.view.bringSubview(toFront: target)
         self.view.layoutSubviews()
         // bottom is now top
@@ -427,11 +426,14 @@ class GCStackViewController: UIViewController {
 //                    target.alpha = 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1)
 //                })
             }
-//
         }
     }
     
-    func resetCard(target: GCStackItemContainerView, animated: Bool = true) {
+    private func dispatchNotificationWillDisplay(index: Int) {
+        delegate!.stackView(stackViewController: self, willDisplayItemAt: index)
+    }
+    
+    private func resetCard(target: GCStackItemContainerView, animated: Bool = true) {
         UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0) {
             target.transform = CGAffineTransform.identity
             target.center = self.originalLocation

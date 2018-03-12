@@ -174,6 +174,18 @@ extension UIView {
             self.layer.cornerRadius = radius
         }
     }
+    func d3Shadow() {
+        layer.shadowColor = Colors.dark_shadow.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        layer.shadowRadius = 5.0
+        layer.shadowOpacity = 1.0
+        layer.masksToBounds = false
+    }
+    func removeShadow() {
+        layer.shadowOffset = CGSize(width: 0, height: 0.0)
+        layer.shadowRadius = 0
+        layer.shadowOpacity = 0
+    }
     func parentView<T: UIView>(of type: T.Type) -> T? {
         guard let view = self.superview else {
             return nil

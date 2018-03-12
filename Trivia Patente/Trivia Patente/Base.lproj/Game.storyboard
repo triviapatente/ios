@@ -512,6 +512,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBU-mj-dtH">
+                                <rect key="frame" x="16" y="28" width="40" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Mqm-64-sAA"/>
+                                    <constraint firstAttribute="width" constant="40" id="xgs-4D-4Ao"/>
+                                </constraints>
+                                <state key="normal" image="chevron-white"/>
+                                <connections>
+                                    <action selector="exitPlaying" destination="uXd-5a-fhz" eventType="touchUpInside" id="3Bz-JZ-61L"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-Xx-Yyl">
+                                <rect key="frame" x="76" y="30" width="168" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1ch-hm-XAn"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="FuT-rf-6GA" kind="embed" identifier="page_control" id="4Fg-Ly-ajE"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kcq-Fu-XUP" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -530,10 +551,10 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Cg-TeA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="353.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8af-d9-LAS">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="353.5"/>
                                         <connections>
                                             <segue destination="jnB-ny-6nH" kind="embed" identifier="stack_view" id="ZZb-OH-mbj"/>
                                         </connections>
@@ -550,18 +571,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wCg-Xx-Yyl" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" constant="10" id="0NQ-Ik-wnI"/>
                             <constraint firstAttribute="trailing" secondItem="3dy-Cg-TeA" secondAttribute="trailing" id="5ta-Bb-M7k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wCg-Xx-Yyl" secondAttribute="trailing" constant="60" id="9pc-55-Hxl"/>
                             <constraint firstItem="3dy-Cg-TeA" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="Ccp-YQ-kVP"/>
                             <constraint firstItem="16d-v4-sx0" firstAttribute="centerX" secondItem="3Lf-dZ-AXE" secondAttribute="centerX" id="D2g-WJ-CMc"/>
                             <constraint firstItem="qpr-b7-54K" firstAttribute="top" secondItem="Kcq-Fu-XUP" secondAttribute="bottom" id="L7B-BN-Jz8"/>
+                            <constraint firstItem="uBU-mj-dtH" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" constant="16" id="LI5-1M-Xbn"/>
+                            <constraint firstItem="uBU-mj-dtH" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" constant="8" id="M3g-2D-qca"/>
                             <constraint firstAttribute="trailing" secondItem="Kcq-Fu-XUP" secondAttribute="trailing" id="QPT-JZ-oae"/>
+                            <constraint firstItem="wCg-Xx-Yyl" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leadingMargin" constant="60" id="U8b-kq-lwh"/>
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="fcY-A6-Nz8"/>
-                            <constraint firstItem="16d-v4-sx0" firstAttribute="top" secondItem="3dy-Cg-TeA" secondAttribute="bottom" constant="20" id="gZq-2H-l8Q"/>
-                            <constraint firstItem="3dy-Cg-TeA" firstAttribute="top" secondItem="3Lf-dZ-AXE" secondAttribute="top" id="vZd-c0-ykq"/>
+                            <constraint firstItem="16d-v4-sx0" firstAttribute="top" secondItem="3dy-Cg-TeA" secondAttribute="bottom" constant="32" id="gZq-2H-l8Q"/>
+                            <constraint firstItem="3dy-Cg-TeA" firstAttribute="top" secondItem="3Lf-dZ-AXE" secondAttribute="top" constant="66" id="vZd-c0-ykq"/>
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="16d-v4-sx0" secondAttribute="bottom" constant="10" id="yzw-wS-hH6"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bannerView" destination="Kcq-Fu-XUP" id="x9q-AU-gb2"/>
                         <segue destination="TQZ-Na-Gga" kind="show" identifier="wait_opponent_segue" id="0L7-TT-S4h"/>
@@ -571,13 +598,21 @@
             </objects>
             <point key="canvasLocation" x="3472.5" y="-1418.661971830986"/>
         </scene>
+        <!--page_control-->
+        <scene sceneID="hpn-ka-hpY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GCPageControl" referencedIdentifier="page_control" id="FuT-rf-6GA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="987-aq-ouP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4299" y="-1642"/>
+        </scene>
         <!--StackMainView-->
         <scene sceneID="4dF-HU-Aq0">
             <objects>
                 <viewControllerPlaceholder storyboardName="StackViewController" referencedIdentifier="StackMainView" id="jnB-ny-6nH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tao-nG-qMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4182" y="-1448"/>
+            <point key="canvasLocation" x="4178" y="-1250"/>
         </scene>
         <!--Round Details View Controller-->
         <scene sceneID="pt1-UX-bmG">
@@ -609,7 +644,7 @@
                                     <outlet property="delegate" destination="ZWh-kv-MbX" id="rpF-Hr-LNJ"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
                                 <rect key="frame" x="0.0" y="10" width="203" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vKM-c5-CrP"/>
@@ -1006,6 +1041,7 @@
     <resources>
         <image name="action_bell" width="19" height="22"/>
         <image name="action_bell_rang" width="22" height="22"/>
+        <image name="chevron-white" width="13" height="21"/>
         <image name="coming_soon_white_big" width="154" height="96"/>
         <image name="down_score_arrow" width="80" height="150"/>
         <image name="ic_chat_white" width="24" height="24"/>
