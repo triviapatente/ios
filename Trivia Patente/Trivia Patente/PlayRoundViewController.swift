@@ -21,7 +21,6 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     var round : Round!
     var category : Category!
     var opponent : User!
-    var selectedQuizIndex = 0
     var loadingView : MBProgressHUD!
     var gameCancelled : Bool = false
     
@@ -64,7 +63,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             }
             DispatchQueue.main.async {
                 self.pageControl.reloadData()
-                self.pageControl.setIndex(to: 0, propagate: false)
+//                self.pageControl.setIndex(to: 0, propagate: false)
                 self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
             }
         }
@@ -196,7 +195,7 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
     }
     func nextQuiz() -> Int? {
         for i in 1...4 {
-            let candidate = (selectedQuizIndex + i) % 4
+            let candidate = (self.stackViewController.currentIndex + i) % 4
             if self.questions[candidate].my_answer == nil {
                 return candidate
             }
@@ -300,11 +299,11 @@ extension PlayRoundViewController : ShowQuizCellDelegate {
     }
     
     
-    func user_answered(answer: Bool, correct: Bool) {
-        self.questions[selectedQuizIndex].my_answer = answer
-        self.questions[selectedQuizIndex].answeredCorrectly = correct
-        if !self.stackViewController.lastElementSelected {
-            gotoQuiz(i: self.stackViewController.currentIndex + 1)
+    func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
+        quiz.my_answer = answer
+        quiz.answeredCorrectly = correct
+        if let next = nextQuiz() {
+            gotoQuiz(i: next)
         } else {
             self.roundEnded()
         }

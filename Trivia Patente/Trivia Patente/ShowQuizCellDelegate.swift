@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShowQuizCellDelegate  {
-    func user_answered(answer : Bool, correct : Bool)
+    func user_answered(answer : Bool, correct : Bool, quiz: Quiz)
     func textForMainLabel() -> String
     func opponentUser() -> User
     func headerRightSideData() -> Category

@@ -551,10 +551,10 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dy-Cg-TeA">
-                                <rect key="frame" x="0.0" y="66" width="320" height="353.5"/>
+                                <rect key="frame" x="0.0" y="75" width="320" height="344.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8af-d9-LAS">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="353.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="344.5"/>
                                         <connections>
                                             <segue destination="jnB-ny-6nH" kind="embed" identifier="stack_view" id="ZZb-OH-mbj"/>
                                         </connections>
@@ -583,7 +583,7 @@
                             <constraint firstItem="wCg-Xx-Yyl" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leadingMargin" constant="60" id="U8b-kq-lwh"/>
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="fcY-A6-Nz8"/>
                             <constraint firstItem="16d-v4-sx0" firstAttribute="top" secondItem="3dy-Cg-TeA" secondAttribute="bottom" constant="32" id="gZq-2H-l8Q"/>
-                            <constraint firstItem="3dy-Cg-TeA" firstAttribute="top" secondItem="3Lf-dZ-AXE" secondAttribute="top" constant="66" id="vZd-c0-ykq"/>
+                            <constraint firstItem="3dy-Cg-TeA" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" constant="55" id="vZd-c0-ykq"/>
                             <constraint firstItem="Kcq-Fu-XUP" firstAttribute="top" secondItem="16d-v4-sx0" secondAttribute="bottom" constant="10" id="yzw-wS-hH6"/>
                         </constraints>
                     </view>

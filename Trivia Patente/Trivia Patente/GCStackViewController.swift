@@ -25,6 +25,7 @@ class GCStackViewController: UIViewController {
             }
         }
     }
+    var quickMultipleScroll : Bool = true
     var numberOfVisibleItems : Int = 4 {
         didSet {
             self.createVisibleViewContainers()
@@ -50,7 +51,7 @@ class GCStackViewController: UIViewController {
         }
     }
     
-    var fastAnimationDuration : TimeInterval = 0.4
+    var fastAnimationDuration : TimeInterval = 0.5
     var slowAnimationDuration : TimeInterval = 0.5
     
     private var stackEffectDeepDegreeFixed = CGFloat(6)
@@ -123,7 +124,12 @@ class GCStackViewController: UIViewController {
         view.addGestureRecognizer(itemPan)
 
         // shadow
-        self.view.d3Shadow()
+//        self.view.d3Shadow()
+        view.layer.shadowColor = Colors.dark_shadow.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 4.0)
+        view.layer.shadowRadius = 5.0
+        view.layer.shadowOpacity = 1.0
+        view.layer.masksToBounds = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -149,7 +155,7 @@ class GCStackViewController: UIViewController {
     }
     
     func scrollToPrevious(fastAnimation: Bool = true,  propagate: Bool = true) -> Bool {
-        if !lastElementSelected
+        if !firstElementSelected
         {
             scrollTo(index: currentIndex - 1, animated: true, fastAnimation: fastAnimation, propagate:
                 propagate)
@@ -169,45 +175,68 @@ class GCStackViewController: UIViewController {
         let totalItems = dataSource!.numberOfItems()
         let toDisplayNext = totalItems - currentIndex
         for i in 0..<itemViews.count {
-            self.itemViews[i].isHidden = toDisplayNext < numberOfVisibleItems - i
+            // for correct alpha fadings in animations
+            self.itemViews[i].alpha = self.itemViews[i].isHidden ? 0.0 : self.itemViews[i].alpha
+            self.itemViews[i].isHidden = false
+            self.view.layoutSubviews()
+            UIView.animate(withDuration: 0.2, animations: {
+                self.itemViews[i].alpha = (toDisplayNext < self.numberOfVisibleItems - i) ? 0.0 : self.alphaForItemAtIndex(i: i)
+            }, completion: { (c) in
+                self.itemViews[i].isHidden = toDisplayNext < self.numberOfVisibleItems - i
+            })
         }
     }
     
     func scrollTo(index: Int, animated: Bool, fastAnimation: Bool = true, propagate: Bool = true) {
         let diff = index - currentIndex
+        
+        let animationCB : ((GCStackItemContainerView) -> Void) = { (view) in
+            view.loaded = false
+            if propagate {
+                self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+            }
+            
+        }
+    
+        // CODE CAN BE WRITTEN BETTER BUT THIS STRUCTURE IS PREFERRED FOR EASIER DEBUG
         if diff == 1 {
             if propagate {
                 self.dispatchNotificationWillDisplay(index: currentIndex+1)
             }
             animateAway(target: getTopItemView(), fastAnimation: fastAnimation) { (view) in
-                //                self.resetCard(target: view, animated: false)
-                view.loaded = false
                 self.currentIndex = self.currentIndex + 1
-                if propagate {
-                    self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
-                }
+                animationCB(view)
             }
         } else if diff == -1 {
             if propagate {
-                self.dispatchNotificationWillDisplay(index: currentIndex+1)
+                self.dispatchNotificationWillDisplay(index: currentIndex-1)
             }
-            animateLastBackIn(target: getBottomItemView(), fastAnimation: fastAnimation, completedCB: { (view) in
-                view.loaded = false
+            animateLastBackIn(target: getBottomItemView(), fastAnimation: fastAnimation) { (view) in
                 self.currentIndex = self.currentIndex - 1
-                if propagate {
-                    self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+                animationCB(view)
+            }
+        } else if diff > 1 || diff < -1 {
+            if self.quickMultipleScroll {
+                self.unloadAllItemViews()
+                self.currentIndex = index
+                if diff < -1 {
+                    checkRemaingItems()
                 }
-            })
-        } else if diff > 1 {
-            // scroll forward
-            for i in 0..<diff {
-                DispatchQueue.main.asyncAfter(deadline: .now() + (slowAnimationDuration+0.05)*Double(i)) {
-                    self.scrollToNext(fastAnimation: false)
+                self.animateShake(backward: diff < -1) {
+                    
+                }
+            } else {
+                for i in 0..<diff {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (slowAnimationDuration+0.05)*Double(i)) {
+                        if diff > 1 {
+                            _ = self.scrollToNext(fastAnimation: false)
+                        } else {
+                            _ = self.scrollToPrevious(fastAnimation: false)
+                        }
+                    }
                 }
             }
-        } else {
-            //scroll backward
-            unloadAllItemViews()
+            
         }
 
     }
@@ -299,16 +328,19 @@ class GCStackViewController: UIViewController {
 //        }
 //    }
     private var lastPercentageUsed : CGFloat = 0.0
-    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true, cb : ((UIView) -> Void)? = nil, includeBottom: Bool = true) {
+    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true, cb : (() -> Void)? = nil, includeBottom: Bool = true, computeAlpha: Bool = true) {
         lastPercentageUsed = percentage
         let size = cardSize()
-        let completionPercentage = min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1)
-        for i in (includeBottom ? 0 : 1)..<numberOfVisibleItems-(includeTop ? 0 : 1) {
-            let itemView = self.view.subviews[Int(i)]
-            let iCompl = CGFloat(numberOfVisibleItems-1-i)
-//            itemView.transform = CGAffineTransform.identity
-            UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0, animations: {
-                itemView.alpha = itemView.alpha == 0.0 ? 0.0 : 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1-i) + self.stackEffectOpacityStep*completionPercentage
+        let completionPercentage = max(min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1), -1)
+        UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0, animations: {
+            for i in (includeBottom ? 0 : 1)..<self.numberOfVisibleItems-(includeTop ? 0 : 1) {
+                let itemView = self.view.subviews[Int(i)]
+                let iCompl = CGFloat(self.numberOfVisibleItems-1-i)
+    //            itemView.transform = CGAffineTransform.identity
+            
+                if computeAlpha {
+                    itemView.alpha = itemView.alpha == 0.0 ? 0.0 : self.alphaForItemAtIndex(i: i) + self.stackEffectOpacityStep*completionPercentage
+                }
                 let scaleX = (size.width - (self.stackEffectSqueezeDegreeFixed*iCompl - self.stackEffectSqueezeDegreeFixed*completionPercentage)*CGFloat(2))/size.width
                 //                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*iCompl)*CGFloat(2))/size.height
                 let (scaleY, yOffset) = self.computeYAxisTransformations(position: i)
@@ -316,13 +348,15 @@ class GCStackViewController: UIViewController {
                 let transform = CGAffineTransform(translationX: 0, y:0)
                 itemView.transform = transform.scaledBy(x: scaleX, y: scaleY)
                 itemView.center = CGPoint(x: itemView.center.x, y: yOffset+self.stackEffectDeepDegreeFixed*completionPercentage)
-            }, completion: { (success) in
-                if let callback = cb {
-                    callback(itemView)
-                }
-            })
-            
-        }
+            }
+        }, completion: { (success) in
+            if let callback = cb {
+                callback()
+            }
+        })
+    }
+    private func alphaForItemAtIndex(i: Int) -> CGFloat {
+        return 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1-i)
     }
     private func computeYAxisTransformations(position: Int) -> (CGFloat, CGFloat) {
         let size = self.cardSize()
@@ -336,7 +370,7 @@ class GCStackViewController: UIViewController {
     }
     
     private func getBottomItemView() -> GCStackItemContainerView {
-        return self.view.subviews.last! as! GCStackItemContainerView
+        return self.view.subviews.first! as! GCStackItemContainerView
     }
     
     func panEnded(percentage: CGFloat, target: GCStackItemContainerView)
@@ -393,51 +427,46 @@ class GCStackViewController: UIViewController {
     }
     
     private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
+        print("S \(self.view.subviews)")
         self.view.bringSubview(toFront: target)
-        self.view.layoutSubviews()
+        // place view outside
+        target.isHidden = false
+        let angle : CGFloat = 0.7
+        let additional : CGFloat = -60.0
+        target.transform = CGAffineTransform.init(rotationAngle: angle)
+        target.center = CGPoint(x: self.outsideOffsetXForAnimations(), y: target.center.y + additional)
+//        self.view.layoutSubviews()
         // bottom is now top
         updateFrames(percentage: -1.0, includeTop: false, animated: true)
 
-        // place view outside
-        target.center = CGPoint(x: self.outsideOffsetXForAnimations(), y: target.center.y)
         UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
-//            var direction = target.center.x >= self.originalLocation.x ? 1.0 : -1.0
-//            var angle : CGFloat = 0.0
-//            var additional : CGFloat = 0.0
-//            // if it's an automated swipe then
-//            if self.originalLocation.y == 0.0 {
-//                // automated
-//                direction = 1.0
-//                angle = 0.7
-//                additional = -60.0
-//                target.transform = CGAffineTransform.init(rotationAngle: angle)
-//            }
+
             let (scaleY, yOffset) = self.computeYAxisTransformations(position: self.numberOfVisibleItems-1)
             target.center = CGPoint(x: self.itemViewCenterX(), y: yOffset)
             let t = CGAffineTransform(scaleX: 1, y: scaleY)
             target.transform = t.rotated(by: 0.0)
+            self.updateFrames(percentage: 0.0, includeTop: true, animated: true)
         }) { (a) in
-//            target.alpha = 0.0
             DispatchQueue.main.async {
                 if let cb = completedCB {
                     cb(target as! GCStackItemContainerView)
                 }
-//                self.view.sendSubview(toBack: target)
-//                target.center = self.originalLocation
-//                target.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.9)
-//
-//                self.view.layoutSubviews()
-//
-//                if let cb = completedCB {
-//                    cb(target)
-//                }
-//
-//                self.updateFrames(percentage: 0.0, includeTop: true, animated: false)
-//                UIView.animate(withDuration: 0.1, animations: {
-//                    target.alpha = 1.0 - self.stackEffectOpacityStep*CGFloat(self.numberOfVisibleItems-1)
-//                })
             }
         }
+    }
+    
+    private func animateShake(backward: Bool = true, middleCB: (()->Void)? = nil, endCB: (()->Void)? = nil) {
+        updateFrames(percentage: backward ? -1.0 : 1.0, includeTop: true, animated: true, cb: { () in
+            if let middle = middleCB {
+                middle()
+            }
+            self.updateFrames(percentage: 0.0, includeTop: true, animated: true, cb: { () in
+                if let end = endCB {
+                    self.updateFrames(percentage: 0.0, includeTop: true, animated: false) // reset correct alphas
+                    end()
+                }
+            }, includeBottom: true, computeAlpha: false)
+        }, includeBottom: true, computeAlpha: false)
     }
     
     private func dispatchNotificationWillDisplay(index: Int) {

@@ -23,18 +23,21 @@ class PageControlCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             DispatchQueue.main.async {
-                if self.isSelected
-                {
-                    self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    self.d3Shadow()
-                    self.alpha = 1.0
-                }
-                else
-                {
-                    self.transform = CGAffineTransform.identity
-                    self.removeShadow()
-                    self.alpha = GCPageControlView.UNSELECTED_OPACITY
-                }
+                UIView.animate(withDuration: 0.2, animations: {
+                    if self.isSelected
+                    {
+                        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        self.d3Shadow()
+                        self.alpha = 1.0
+                    }
+                    else
+                    {
+                        self.transform = CGAffineTransform.identity
+                        self.removeShadow()
+                        self.alpha = GCPageControlView.UNSELECTED_OPACITY
+                    }
+                })
+                
             }
             
         }

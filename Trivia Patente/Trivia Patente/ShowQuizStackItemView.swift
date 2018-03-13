@@ -67,7 +67,7 @@ class ShowQuizStackItemView: UIView {
         handler.answer(answer: answer, round: round, quiz: quiz) { response in
             if response.success == true {
                 self.enable(button: sender)
-                self.delegate.user_answered(answer: answer, correct: response.correct)
+                self.delegate.user_answered(answer: answer, correct: response.correct, quiz: self.quiz)
             } else {
                 self.trueButton.isEnabled = true
                 self.falseButton.isEnabled = true
@@ -143,11 +143,6 @@ class ShowQuizStackItemView: UIView {
         self.prepareView()
     }
     
-    @IBAction func presentQuiz(sender : UIButton) {
-        guard delegate != nil else { return }
-        delegate.gotoQuiz(i: sender.tag)
-        self.selectButton(i: sender.tag)
-    }
     func selectButton(i: Int) {
         for j in 0..<bottomButtons.count {
             bottomButtons[j].shadowDeselect()

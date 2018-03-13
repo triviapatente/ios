@@ -58,7 +58,12 @@ class GCPageControlView: UICollectionViewController {
     }
     
     func reloadData() {
+        let selected = self.selectedIndex()
         self.collectionView!.reloadData()
+        if let index = selected {
+            self.collectionView!.selectItem(at: IndexPath.init(row: index, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        }
+        
 //        self.setIndex(to: 0, propagate: false)
     }
 
@@ -102,6 +107,7 @@ class GCPageControlView: UICollectionViewController {
             let row = self.collectionView!.indexPath(for: visible)!.row
             delegate!.customizeCellAt(index: row, cell: visible as! PageControlCollectionViewCell)
         }
+//        self.collectionView!.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -112,6 +118,12 @@ class GCPageControlView: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.setIndex(to: indexPath.row, propagate: true)
+        collectionView.isUserInteractionEnabled = true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        collectionView.isUserInteractionEnabled = false
+        return true
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -141,7 +153,6 @@ class GCPageControlView: UICollectionViewController {
     
     }
     */
-    
     /* INTERFACE */
     func setIndex(to: Int, propagate: Bool = true) {
         if to < numberOfPages {
@@ -159,6 +170,12 @@ class GCPageControlView: UICollectionViewController {
             
         }
         reloadViewsCustomization()
+    }
+    
+    func selectedIndex() -> Int? {
+        guard self.collectionView!.indexPathsForSelectedItems != nil else { return nil }
+        guard self.collectionView!.indexPathsForSelectedItems!.first != nil else { return nil }
+        return self.collectionView!.indexPathsForSelectedItems!.first!.row
     }
 }
 
