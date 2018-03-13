@@ -199,7 +199,12 @@ class GCStackViewController: UIViewController {
         }
     
         // CODE CAN BE WRITTEN BETTER BUT THIS STRUCTURE IS PREFERRED FOR EASIER DEBUG
-        if diff == 1 {
+        if diff == 0 {
+            if propagate {
+                self.dispatchNotificationWillDisplay(index: currentIndex)
+                self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+            }
+        } else if diff == 1 {
             if propagate {
                 self.dispatchNotificationWillDisplay(index: currentIndex+1)
             }
@@ -216,6 +221,9 @@ class GCStackViewController: UIViewController {
                 animationCB(view)
             }
         } else if diff > 1 || diff < -1 {
+            if propagate {
+                self.dispatchNotificationWillDisplay(index: index)
+            }
             if self.quickMultipleScroll {
                 self.unloadAllItemViews()
                 self.currentIndex = index
@@ -223,7 +231,9 @@ class GCStackViewController: UIViewController {
                     checkRemaingItems()
                 }
                 self.animateShake(backward: diff < -1) {
-                    
+                    if propagate {
+                        self.delegate!.stackView(stackViewController: self, didDisplayItemAt: self.currentIndex)
+                    }
                 }
             } else {
                 for i in 0..<diff {

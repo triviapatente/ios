@@ -63,7 +63,6 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
             }
             DispatchQueue.main.async {
                 self.pageControl.reloadData()
-//                self.pageControl.setIndex(to: 0, propagate: false)
                 self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
             }
         }
