@@ -61,8 +61,10 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
                     unansweredIndex = i
                 }
             }
+            self.pageControl.numberTitleOffset = getQuestionNumber(for: 0)
             DispatchQueue.main.async {
                 self.pageControl.reloadData()
+                self.pageControl.view.isHidden = false
                 self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
             }
         }
@@ -140,6 +142,8 @@ class PlayRoundViewController: TPGameViewController, GameControllerRequired {
 
 //        self.stackViewController.itemNib = UINib(nibName: "", bundle: nil)
         self.stackViewController.contentInset = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
+        
+        self.pageControl.view.isHidden = true
         
         // AD banner load
         self.bannerView.adUnitID = Constants.BannerUnitID
@@ -219,45 +223,6 @@ extension PlayRoundViewController : CGPageControlDelegate {
     }
 }
 extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.questions.count
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: collectionView.frame.size.width - BORDER_LENGTH * 2, height: collectionView.frame.size.height - BORDER_LENGTH)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! ShowQuizCollectionViewCell
-//        cell.quiz = self.questions[indexPath.row]
-//        cell.round = round
-//        cell.delegate = self
-//
-//        return cell
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        let size = self.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: IndexPath())
-//        return (self.view.frame.size.width - size.width)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let margin = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section) / 2
-//        return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//            if let cell = cell as? ShowQuizCollectionViewCell {
-//                cell.selectButton(i: indexPath.row)
-//            }
-//            self.gotoQuiz(i: indexPath.row)
-//            selectedQuizIndex = indexPath.row
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
-//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-//        return false
-//    }
     func numberOfItems() -> Int {
         return self.questions.count
     }
