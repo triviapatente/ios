@@ -118,11 +118,9 @@ class GCPageControlView: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.setIndex(to: indexPath.row, propagate: true)
-        collectionView.isUserInteractionEnabled = true
     }
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        collectionView.isUserInteractionEnabled = false
         return true
     }
     /*

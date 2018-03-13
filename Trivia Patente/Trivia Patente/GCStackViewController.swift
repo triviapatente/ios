@@ -216,7 +216,9 @@ class GCStackViewController: UIViewController {
             if propagate {
                 self.dispatchNotificationWillDisplay(index: currentIndex-1)
             }
-            animateLastBackIn(target: getBottomItemView(), fastAnimation: fastAnimation) { (view) in
+            let bottomView = getBottomItemView()
+            dataSource!.configureViewForItem(itemView: bottomView.contentView!, index: self.currentIndex - 1)
+            animateLastBackIn(target: bottomView, fastAnimation: fastAnimation) { (view) in
                 self.currentIndex = self.currentIndex - 1
                 animationCB(view)
             }
@@ -251,14 +253,18 @@ class GCStackViewController: UIViewController {
 
     }
     
-    private func loadContentForVisibleItems() {
+    // using newIndex might be dangerous and create desynchronization, so avoid
+    private func loadContentForVisibleItems(customIndex: Int? = nil) {
+        let index = customIndex != nil ? customIndex! : currentIndex
+        
         for i in (0..<itemViews.count).reversed() {
-            let newIndex = currentIndex + (numberOfVisibleItems-1-i)
+            let newIndex = index + (numberOfVisibleItems-1-i)
             if newIndex < dataSource!.numberOfItems() {
                 let itemView = itemViews[i]
                 if !itemView.loaded {
                     dataSource!.configureViewForItem(itemView: itemView.contentView!, index:newIndex)
                     itemView.loaded = true
+                    itemView.layoutSubviews()
                 }
             }
         }
@@ -338,7 +344,7 @@ class GCStackViewController: UIViewController {
 //        }
 //    }
     private var lastPercentageUsed : CGFloat = 0.0
-    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true, cb : (() -> Void)? = nil, includeBottom: Bool = true, computeAlpha: Bool = true) {
+    private func updateFrames(percentage: CGFloat = 0.0, includeTop: Bool = true, animated: Bool = true, cb : (() -> Void)? = nil, includeBottom: Bool = true, computeAlpha: Bool = true, alphaPositionOffset: Int = 0) {
         lastPercentageUsed = percentage
         let size = cardSize()
         let completionPercentage = max(min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1), -1)
@@ -349,7 +355,7 @@ class GCStackViewController: UIViewController {
     //            itemView.transform = CGAffineTransform.identity
             
                 if computeAlpha {
-                    itemView.alpha = itemView.alpha == 0.0 ? 0.0 : self.alphaForItemAtIndex(i: i) + self.stackEffectOpacityStep*completionPercentage
+                    itemView.alpha = itemView.alpha == 0.0 ? 0.0 : self.alphaForItemAtIndex(i: i + alphaPositionOffset) + self.stackEffectOpacityStep*completionPercentage
                 }
                 let scaleX = (size.width - (self.stackEffectSqueezeDegreeFixed*iCompl - self.stackEffectSqueezeDegreeFixed*completionPercentage)*CGFloat(2))/size.width
                 //                let scaleY = (size.height - (self.stackEffectDeepDegreeFixed*iCompl)*CGFloat(2))/size.height
@@ -437,17 +443,17 @@ class GCStackViewController: UIViewController {
     }
     
     private func animateLastBackIn(target: UIView, fastAnimation: Bool = true, completedCB: ((GCStackItemContainerView)->Void)? = nil) {
-        print("S \(self.view.subviews)")
         self.view.bringSubview(toFront: target)
         // place view outside
+//        target.layoutSubviews()
         target.isHidden = false
         let angle : CGFloat = 0.7
         let additional : CGFloat = -60.0
         target.transform = CGAffineTransform.init(rotationAngle: angle)
         target.center = CGPoint(x: self.outsideOffsetXForAnimations(), y: target.center.y + additional)
-//        self.view.layoutSubviews()
+        target.alpha = 1.0
         // bottom is now top
-        updateFrames(percentage: -1.0, includeTop: false, animated: true)
+        updateFrames(percentage: -1.0, includeTop: false, animated: true, cb: nil, includeBottom: true, computeAlpha: true, alphaPositionOffset: 1)
 
         UIView.animate(withDuration: fastAnimation ? fastAnimationDuration : slowAnimationDuration, animations: {
 

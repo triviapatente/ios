@@ -235,9 +235,11 @@ extension PlayRoundViewController : GCStackViewDataSource, GCStackViewDelegate {
     }
     func stackView(stackViewController: GCStackViewController, didDisplayItemAt index: Int) {
 //        self.pageControl.setIndex(to: index, propagate: false)
+        self.pageControl.view.isUserInteractionEnabled = true
     }
     func stackView(stackViewController: GCStackViewController, willDisplayItemAt index: Int) {
         self.pageControl.setIndex(to: index, propagate: false)
+        self.pageControl.view.isUserInteractionEnabled = false
     }
 }
 extension PlayRoundViewController : CollieGalleryZoomTransitionDelegate {

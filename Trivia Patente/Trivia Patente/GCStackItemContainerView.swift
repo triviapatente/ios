@@ -24,13 +24,19 @@ class GCStackItemContainerView: UIView {
         contentView = Bundle.main.loadNibNamed(nibName, owner: self, options: nil)?.first! as? UIView
         contentView!.translatesAutoresizingMaskIntoConstraints = false
         contentView?.mediumRounded()
+//        self.contentSize = self.frame.size
+//        self.contentInset = UIEdgeInsets.zero
         self.addSubview(contentView!)
+        
         self.addConstraint(NSLayoutConstraint(item: contentView!, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: contentView!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute:.bottom, multiplier: 1, constant: 0))
         
         self.addConstraint(NSLayoutConstraint(item: contentView!, attribute: .leadingMargin, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1, constant: 0))
         self.addConstraint(NSLayoutConstraint(item: contentView!, attribute: .trailingMargin, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1, constant: 0))
         self.layoutIfNeeded()
+//        self.layoutSubviews()
+        
+        
     }
 
 }
