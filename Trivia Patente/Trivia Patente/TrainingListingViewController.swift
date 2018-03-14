@@ -52,8 +52,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     {
         let total = CGFloat(values.reduce(0, +))
         for c in 0..<self.bottomBarCostraint.count {
-            print(CGFloat(values[c]) / total)
-            self.bottomBarCostraint[c].constant = CGFloat(values[c]) / total * self.proportionalBarContainer.frame.width
+            self.bottomBarCostraint[c].constant = CGFloat(values[c]) / total * UIScreen.main.bounds.width
         }
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
             self.view.layoutIfNeeded()
