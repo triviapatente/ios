@@ -12,6 +12,8 @@ import SDWebImage
 
 class MainViewController: TPNormalViewController {
     
+    static var trainings_stats : TrainingStats?
+    
     var loadingView : MBProgressHUD!
     
     var playButton : TPMainButton!
@@ -152,6 +154,7 @@ class MainViewController: TPNormalViewController {
                     UIViewController.goToFirstAccess(from: self)
                 } else if let success = response?.success {
                     if success {
+                        MainViewController.trainings_stats = response!.training_stats
                         self.setHints(candidateResponse: response)
                         let navController = self.navigationController as! TPNavigationController
                         navController.handleLegislationUpdate(serverDate: response!.privacyPolicyLastUpdate, type: .privacyUpdate)

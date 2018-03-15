@@ -18,6 +18,7 @@ class TPConnectResponse: TPResponse {
     var preferences : Preferences!
     var stats : [Category] = []
     var fbInfos : FBInfos!
+    var training_stats : TrainingStats!
     
     override func load(json: JSON) {
         super.load(json: json)
@@ -32,8 +33,9 @@ class TPConnectResponse: TPResponse {
                 stats.append(Category(json: item))
             }
         }
-        fbInfos = FBInfos(json: json["fb"])
-        FBManager.set(infos: fbInfos)
+        training_stats = TrainingStats(json: json["training_stats"])
+//        fbInfos = FBInfos(json: json["fb"])
+//        FBManager.set(infos: fbInfos)
         Shared.preferences = preferences
         Shared.categories = stats
     }
