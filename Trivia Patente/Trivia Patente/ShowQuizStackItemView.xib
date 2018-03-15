@@ -28,13 +28,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="502" height="393"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zAd-QM-502">
-                            <rect key="frame" x="0.0" y="5" width="502" height="378"/>
+                            <rect key="frame" x="0.0" y="5" width="502" height="368"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktr-Z5-fZa">
-                                    <rect key="frame" x="0.0" y="0.0" width="502" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="502" height="50"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="SSl-9R-8PD">
-                                            <rect key="frame" x="8" y="0.0" width="486" height="59"/>
+                                            <rect key="frame" x="8" y="0.0" width="486" height="50"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rnv-MP-coN">
                                                     <rect key="frame" x="0.0" y="0.0" width="243" height="42.5"/>
@@ -99,38 +99,67 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="SSl-9R-8PD" firstAttribute="top" secondItem="Ktr-Z5-fZa" secondAttribute="top" id="9Kd-Vw-Jvy"/>
+                                        <constraint firstAttribute="height" constant="50" id="FeE-mb-nMH"/>
                                         <constraint firstItem="SSl-9R-8PD" firstAttribute="leading" secondItem="Ktr-Z5-fZa" secondAttribute="leading" constant="8" id="YiW-Jt-mHi"/>
                                         <constraint firstAttribute="trailing" secondItem="SSl-9R-8PD" secondAttribute="trailing" constant="8" id="baN-SN-Phf"/>
                                         <constraint firstAttribute="bottom" secondItem="SSl-9R-8PD" secondAttribute="bottom" id="nO8-c6-RdT"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-9V-ZKK">
-                                    <rect key="frame" x="0.0" y="69" width="502" height="38"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-hN-Uhs">
-                                    <rect key="frame" x="0.0" y="117" width="502" height="213"/>
+                                    <rect key="frame" x="0.0" y="60" width="502" height="308"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3aU-dv-Sfy">
-                                            <rect key="frame" x="0.0" y="0.0" width="502" height="213"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3aU-dv-Sfy">
+                                            <rect key="frame" x="0.0" y="0.0" width="502" height="263"/>
                                             <subviews>
                                                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bOk-ck-hL0">
-                                                    <rect key="frame" x="188.5" y="0.0" width="125" height="125"/>
+                                                    <rect key="frame" x="198.5" y="0.0" width="105" height="104.5"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="125" id="dHt-Eb-3Jk"/>
-                                                        <constraint firstAttribute="width" constant="125" id="kQX-YW-yb4"/>
+                                                        <constraint firstAttribute="width" secondItem="bOk-ck-hL0" secondAttribute="height" multiplier="1:1" id="H79-lb-nhQ"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="125" id="dHt-Eb-3Jk"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="gUK-sy-5cG"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" editable="NO" text="Label" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5n-zS-jil" customClass="TPTextView" customModule="Trivia_Patente" customModuleProvider="target">
-                                                    <rect key="frame" x="30" y="125" width="442" height="50"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHc-TW-eGD">
+                                                    <rect key="frame" x="30" y="104.5" width="442" height="150.5"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" editable="NO" text="Label" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5n-zS-jil">
+                                                            <rect key="frame" x="0.0" y="12" width="442" height="139"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="B5n-zS-jil" secondAttribute="bottom" id="aYa-Rp-KTd"/>
+                                                        <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="mHc-TW-eGD" secondAttribute="leading" id="dAF-ax-zUr"/>
+                                                        <constraint firstAttribute="trailing" secondItem="B5n-zS-jil" secondAttribute="trailing" id="nFK-LP-VmH"/>
+                                                        <constraint firstItem="B5n-zS-jil" firstAttribute="top" secondItem="mHc-TW-eGD" secondAttribute="top" constant="12" id="yAA-X3-vUV"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krS-pF-7ro">
+                                                    <rect key="frame" x="131" y="255" width="240" height="8"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="8" id="FYJ-QJ-KgV"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="mHc-TW-eGD" secondAttribute="trailing" constant="30" id="2uz-mv-wmQ"/>
+                                                <constraint firstItem="mHc-TW-eGD" firstAttribute="top" secondItem="bOk-ck-hL0" secondAttribute="bottom" id="V8h-2e-gok"/>
+                                                <constraint firstItem="mHc-TW-eGD" firstAttribute="leading" secondItem="3aU-dv-Sfy" secondAttribute="leading" constant="30" id="id6-dH-paG"/>
+                                                <constraint firstItem="mHc-TW-eGD" firstAttribute="top" secondItem="bOk-ck-hL0" secondAttribute="bottom" id="p5L-pt-Qee"/>
+                                                <constraint firstItem="bOk-ck-hL0" firstAttribute="height" secondItem="3aU-dv-Sfy" secondAttribute="height" multiplier="0.4" id="xYf-EY-ezK"/>
+                                            </constraints>
+                                        </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-7s-5ni">
+                                            <rect key="frame" x="0.0" y="263" width="502" height="45"/>
+                                            <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="FXX-LB-HSE">
-                                                    <rect key="frame" x="122" y="175" width="258" height="38"/>
+                                                    <rect key="frame" x="122" y="3.5" width="258" height="38"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qi6-lr-PlA">
                                                             <rect key="frame" x="0.0" y="0.0" width="114" height="38"/>
@@ -168,82 +197,23 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="B5n-zS-jil" firstAttribute="top" secondItem="bOk-ck-hL0" secondAttribute="bottom" id="RvW-A1-NsT"/>
-                                                <constraint firstAttribute="trailing" secondItem="B5n-zS-jil" secondAttribute="trailing" constant="30" id="pwA-R2-Tvq"/>
-                                                <constraint firstItem="FXX-LB-HSE" firstAttribute="top" secondItem="B5n-zS-jil" secondAttribute="bottom" id="qtn-k8-hVr"/>
-                                                <constraint firstItem="B5n-zS-jil" firstAttribute="leading" secondItem="3aU-dv-Sfy" secondAttribute="leading" constant="30" id="z0v-gs-sir"/>
+                                                <constraint firstAttribute="height" constant="45" id="C7n-wB-cz3"/>
+                                                <constraint firstItem="FXX-LB-HSE" firstAttribute="centerY" secondItem="FFc-7s-5ni" secondAttribute="centerY" id="afh-2U-RUt"/>
+                                                <constraint firstItem="FXX-LB-HSE" firstAttribute="centerX" secondItem="FFc-7s-5ni" secondAttribute="centerX" id="oB1-Tn-2fu"/>
                                             </constraints>
-                                        </stackView>
+                                        </view>
                                     </subviews>
-                                </stackView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZJ-Rn-J2q">
-                                    <rect key="frame" x="0.0" y="340" width="502" height="38"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
-                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIl-f3-CLv">
-                                    <rect key="frame" x="0.0" y="378" width="502" height="25"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7E-p0-leT">
-                                            <rect key="frame" x="0.0" y="0.0" width="126" height="25"/>
-                                            <color key="backgroundColor" red="0.0" green="0.83529411760000005" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                            <state key="normal" title="1">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="presentQuizWithSender:" destination="VM5-ln-US5" eventType="touchUpInside" id="adx-yE-PPP"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxJ-QU-R6a">
-                                            <rect key="frame" x="126" y="0.0" width="125" height="25"/>
-                                            <color key="backgroundColor" red="0.0" green="0.83529411760000005" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                            <state key="normal" title="2">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="presentQuizWithSender:" destination="VM5-ln-US5" eventType="touchUpInside" id="8vf-ED-uds"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geD-Tc-luL">
-                                            <rect key="frame" x="251" y="0.0" width="126" height="25"/>
-                                            <color key="backgroundColor" red="0.0" green="0.83529411760000005" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                            <state key="normal" title="3">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="presentQuizWithSender:" destination="VM5-ln-US5" eventType="touchUpInside" id="kVM-jd-tqm"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-zK-An4">
-                                            <rect key="frame" x="377" y="0.0" width="125" height="25"/>
-                                            <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                            <state key="normal" title="4">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="presentQuizWithSender:" destination="VM5-ln-US5" eventType="touchUpInside" id="iwW-cV-i42"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="l7E-p0-leT" firstAttribute="width" secondItem="UIl-f3-CLv" secondAttribute="width" multiplier="0.25" id="E43-3B-O2J"/>
-                                        <constraint firstAttribute="height" constant="25" id="OzT-QR-tm5"/>
-                                        <constraint firstItem="GxJ-QU-R6a" firstAttribute="width" secondItem="UIl-f3-CLv" secondAttribute="width" multiplier="0.25" id="isR-xH-qqg"/>
-                                        <constraint firstItem="geD-Tc-luL" firstAttribute="width" secondItem="UIl-f3-CLv" secondAttribute="width" multiplier="0.25" id="nHA-yC-Sdj"/>
-                                        <constraint firstItem="SbA-zK-An4" firstAttribute="width" secondItem="UIl-f3-CLv" secondAttribute="width" multiplier="0.25" id="z3w-Tb-ALV"/>
+                                        <constraint firstItem="3aU-dv-Sfy" firstAttribute="leading" secondItem="KXd-hN-Uhs" secondAttribute="leading" id="0dA-LU-IdH"/>
+                                        <constraint firstAttribute="trailing" secondItem="3aU-dv-Sfy" secondAttribute="trailing" id="bOD-cF-DX9"/>
                                     </constraints>
                                 </stackView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="Ktr-Z5-fZa" firstAttribute="top" secondItem="zAd-QM-502" secondAttribute="top" id="3c9-i4-NYQ"/>
                                 <constraint firstItem="Ktr-Z5-fZa" firstAttribute="leading" secondItem="zAd-QM-502" secondAttribute="leading" id="Kef-QX-yAJ"/>
-                                <constraint firstItem="uZJ-Rn-J2q" firstAttribute="height" secondItem="zAd-QM-502" secondAttribute="height" multiplier="0.1" id="suB-sS-Qs3"/>
-                                <constraint firstItem="7dg-9V-ZKK" firstAttribute="height" secondItem="zAd-QM-502" secondAttribute="height" multiplier="0.1" id="vdJ-2s-4cW"/>
                                 <constraint firstAttribute="trailing" secondItem="Ktr-Z5-fZa" secondAttribute="trailing" id="xbT-cv-8ep"/>
                             </constraints>
                         </stackView>
@@ -252,7 +222,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="zAd-QM-502" secondAttribute="trailing" id="5ED-KK-CKm"/>
                         <constraint firstItem="zAd-QM-502" firstAttribute="top" secondItem="63l-cU-FB8" secondAttribute="top" constant="5" id="E7b-6q-3K7"/>
-                        <constraint firstAttribute="bottom" secondItem="zAd-QM-502" secondAttribute="bottom" constant="10" id="QsR-Do-sEj"/>
+                        <constraint firstAttribute="bottom" secondItem="zAd-QM-502" secondAttribute="bottom" constant="20" id="QsR-Do-sEj"/>
                         <constraint firstItem="zAd-QM-502" firstAttribute="leading" secondItem="63l-cU-FB8" secondAttribute="leading" id="utG-pI-I4y"/>
                     </constraints>
                 </view>
@@ -274,12 +244,9 @@
                 <outlet property="mainHeaderLabel" destination="wpY-ab-eDU" id="o3F-FS-pVg"/>
                 <outlet property="quizImageView" destination="bOk-ck-hL0" id="jvE-R2-nRi"/>
                 <outlet property="quizNameView" destination="B5n-zS-jil" id="6XY-s7-R8A"/>
+                <outlet property="quizTextContainer" destination="mHc-TW-eGD" id="Kc7-VC-YEP"/>
                 <outlet property="shapeView" destination="63l-cU-FB8" id="saI-5Q-AOG"/>
                 <outlet property="trueButton" destination="Qi6-lr-PlA" id="2Jm-D8-q80"/>
-                <outletCollection property="bottomButtons" destination="l7E-p0-leT" collectionClass="NSMutableArray" id="ssN-Sk-a1z"/>
-                <outletCollection property="bottomButtons" destination="GxJ-QU-R6a" collectionClass="NSMutableArray" id="8wz-B8-EDe"/>
-                <outletCollection property="bottomButtons" destination="geD-Tc-luL" collectionClass="NSMutableArray" id="0ym-f8-mwq"/>
-                <outletCollection property="bottomButtons" destination="SbA-zK-An4" collectionClass="NSMutableArray" id="Wv7-tf-tvm"/>
             </connections>
             <point key="canvasLocation" x="607" y="109.5"/>
         </view>

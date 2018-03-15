@@ -15,15 +15,20 @@ class ShowQuizStackItemView: UIView {
 
     var quiz : Quiz! {
         didSet {
-            
+//            self.quizNameView.translatesAutoresizingMaskIntoConstraints = false
             self.quizNameView.text = quiz.question
+//            mainTextViewHeightConstraint.constant = self.quizNameView.size
+//            let size = self.quizNameView.sizeThatFits(CGSize.init(width: Double(self.quizTextContainer.frame.width), height: Double.infinity))
+//            self.quizNameView.frame = CGRect(x: (self.quizTextContainer.frame.width - size.width) / 2.0, y: (self.quizTextContainer.frame.height - size.height) / 2.0, width: size.width, height: size.height)
+//            self.layoutIfNeeded()
+//            self.quizNameView.transform = CGAffineTransform.init(translationX: 0, y: -self.quizNameView.frame.height.divided(by: 2.0))
+//            self.quizNameView.center = quizTextContainer.center
             if let _ = quiz.imageId {
                 self.quizImageView.load(quiz: quiz)
                 
             } else {
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
-//            self.mainImageHeightConstraint.constant = (quiz.imageId == nil) ? 0 : ShowQuizStackItemView.QUIZ_IMAGE_HEIGHT
             self.prepareQuiz()
         }
     }
@@ -37,10 +42,12 @@ class ShowQuizStackItemView: UIView {
     
     /* MAIN */
     @IBOutlet var quizImageView : UIImageView!
-    @IBOutlet var quizNameView : TPTextView!
+    @IBOutlet var quizNameView : UITextView!
     @IBOutlet var trueButton : UIButton!
     @IBOutlet var falseButton : UIButton!
     @IBOutlet var shapeView : UIView!
+    @IBOutlet weak var quizTextContainer: UIView!
+    @IBOutlet weak var mainTextViewTopConstraint: NSLayoutConstraint!
 //    @IBOutlet weak var mainImageHeightConstraint: NSLayoutConstraint!
     
     /* HEADER */
@@ -50,8 +57,6 @@ class ShowQuizStackItemView: UIView {
     @IBOutlet weak var headerRightImage: UIImageView!
     @IBOutlet weak var headerRightLabel: UILabel!
     
-    /* FOOTER */
-    @IBOutlet var bottomButtons : [UIButton]!
     
     var imageExpanded = false
     @objc func imageClicked() {
@@ -141,13 +146,6 @@ class ShowQuizStackItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.prepareView()
-    }
-    
-    func selectButton(i: Int) {
-        for j in 0..<bottomButtons.count {
-            bottomButtons[j].shadowDeselect()
-        }
-        bottomButtons[i].shadowSelect()
     }
 
     func loadData() {
