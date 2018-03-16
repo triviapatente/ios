@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BulletinBoard
 
 class TrainingListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -15,10 +16,25 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     @IBOutlet weak var proportionalBarContainer: UIView!
     @IBOutlet var bottomBarCostraint : [NSLayoutConstraint]!
     @IBOutlet var waveStatsLabel : [UILabel]!
-    @IBOutlet var collectionView : UIView!
+    @IBOutlet var collectionView : UICollectionView!
     @IBOutlet var emptyListLabel : UILabel!
+
     
-    var temporaryDataset = [1, 0, 2, 5, 3, 3, 2, 3, 1, 6, 15, 0, 2, 3, 2, 3, 1, 0]
+    let httpTraining = HTTPTraining()
+    
+    var trainings : [Training]?
+    var summaryStats : TrainingStats? = MainViewController.trainings_stats
+    
+    lazy var bulletinManager: BulletinManager = {
+        let page = ChooserBulletinItem(title: "Nuovo questionario")
+        
+        page.descriptionText = "Scegli come vuoi che venga creato il questionario"
+        page.actionButtonTitle = "Chiudi"
+        page.alternativeButtonTitle = ["Domande a random", "Domande precedentemente sbagliate"]
+        
+        return BulletinManager(rootItem: page)
+        
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +43,15 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         self.setDefaultBackgroundGradient()
         self.newQuizButton.mediumRounded()
         
+        self.collectionView.alwaysBounceVertical = true
+        let refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.white
+        refresher.addTarget(self, action: #selector(refreshData), for: UIControlEvents.valueChanged)
+        self.collectionView.refreshControl = refresher
+//        self.collectionView.addSubview(refresher)
         
-        self.loadStats(values: [12, 2, 4, 10])
+        self.refreshData()
+        self.loadStats()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,23 +59,49 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func loadStats(values: [UInt])
-    {
-        self.loadProportionalBar(values: values)
-        self.loadExplicativeStats(values: values)
+    func refreshData() {
+        httpTraining.list_trainings { (response) in
+            self.collectionView.refreshControl!.endRefreshing()
+            if response.success == true {
+                // stats
+                if let stats = response.stats {
+                    self.summaryStats = stats
+                    MainViewController.trainings_stats = self.summaryStats
+                    self.loadStats()
+                }
+                // trainings
+                self.trainings = response.trainings
+                self.collectionView.reloadData()
+            } else {
+                self.handleGenericError(message: response.message, dismiss: true)
+            }
+        }
     }
-    private func loadExplicativeStats(values: [UInt])
+    
+    @IBAction func startNewTest() {
+        bulletinManager.prepare()
+        bulletinManager.presentBulletin(above: self)
+    }
+    
+    func loadStats()
+    {
+        if let stats = summaryStats {
+            let values : [Int32] = [stats.correct, stats.errors1_2, stats.errors3_4, stats.moreErrors]
+            self.loadProportionalBar(total: stats.total, values: values)
+            self.loadExplicativeStats(values: values)
+        }
+    }
+    private func loadExplicativeStats(values: [Int32])
     {
         for i in 0..<self.bottomBarCostraint.count {
             self.waveStatsLabel[i].text = "\(values[i])"
         }
     }
-    private func loadProportionalBar(values: [UInt])
+    private func loadProportionalBar(total: Int32, values: [Int32])
     {
-        let total = CGFloat(values.reduce(0, +))
+        guard total != 0 else { return }
         for c in 0..<self.bottomBarCostraint.count {
-            self.bottomBarCostraint[c].constant = CGFloat(values[c]) / total * UIScreen.main.bounds.width
+            self.bottomBarCostraint[c].constant = CGFloat(values[c]) / CGFloat(total) * UIScreen.main.bounds.width
         }
         UIView.animate(withDuration: 0.5, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
             self.view.layoutIfNeeded()
@@ -68,15 +117,20 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "quiz_details", let destination = segue.destination as? QuizDetailsViewController {
-            destination.loadItem(item: sender as! Int)
+            destination.item = sender as? Training
         }
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        
-        self.emptyListLabel.isHidden = self.temporaryDataset.count != 0
-        return self.temporaryDataset.count
+        guard trainings != nil else {
+            self.emptyListLabel.isHidden = false
+            self.emptyListLabel.text = "Caricamento.."
+            return 0
+        }
+        self.emptyListLabel.text = Strings.no_trainings_mesage
+        self.emptyListLabel.isHidden = self.trainings!.count != 0
+        return self.trainings!.count
     }
     
     
@@ -85,7 +139,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quiz_cell", for: indexPath) as! TrainingQuizCollectionViewCell
-        cell.setItem(value: self.temporaryDataset[indexPath.row])
+        cell.item = self.trainings![indexPath.row]
         return cell
     }
     
@@ -108,7 +162,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "quiz_details", sender: self.temporaryDataset[indexPath.row])
+        self.performSegue(withIdentifier: "quiz_details", sender: self.trainings![indexPath.row])
     }
 
 }

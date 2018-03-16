@@ -8,14 +8,20 @@
 
 import UIKit
 import CollieGallery
+import MBProgressHUD
 
 class QuizDetailsViewController: BaseViewController, QuizSummaryHeaderViewDelegate {
     
     /* HEADER */
     var quizStaticHeader: QuizSummaryHeaderViewController!
     
-    internal var item : Int = -1
-    internal var questions = [1, 2, 3]
+    internal var item : Training? {
+        didSet {
+            loadQuestions()
+        }
+    }
+    
+    let httpTraining = HTTPTraining()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,9 +51,16 @@ class QuizDetailsViewController: BaseViewController, QuizSummaryHeaderViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func loadItem(item: Int) {
-        self.item = item
-//        quizStaticHeader.setItem(item: item)
+    private func loadQuestions() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        httpTraining.get_training(training_id: self.item!.id!) { (response) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if response.success {
+                self.item!.questions = response.training.questions
+            } else {
+                self.handleGenericError(message: response.message, dismiss: true)
+            }
+        }
     }
     
 
@@ -83,11 +96,14 @@ extension QuizDetailsViewController : CollieGalleryZoomTransitionDelegate {
 extension QuizDetailsViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.questions.count
+        guard item != nil else {
+            return 0
+        }
+        return self.item!.questions!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "questionCell") as! QuizQuestionTableViewCell
-        cell.setQuestion(question: self.questions[indexPath.row])
+        cell.setQuestion(question: self.item!.questions![indexPath.row])
         cell.parentController = self
         return cell
     }

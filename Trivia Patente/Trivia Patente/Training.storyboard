@@ -21,10 +21,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--I tuoi risultatti-->
+        <!--I tuoi risultati-->
         <scene sceneID="tN4-yf-JW7">
             <objects>
-                <viewController storyboardIdentifier="TrainingListing" title="I tuoi risultatti" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Giz-d9-BmT" customClass="TrainingListingViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrainingListing" title="I tuoi risultati" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Giz-d9-BmT" customClass="TrainingListingViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kce-Px-riA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-eC-bM2">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="32.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-CUo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-oh-CUo">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="hoe-hP-WpV"/>
@@ -64,7 +64,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-n8-Aa8">
                                                 <rect key="frame" x="90" y="0.0" width="90" height="32.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-4x-mkp">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-4x-mkp">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="IiC-N1-tJL"/>
@@ -84,7 +84,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L6C-T9-Sjd">
                                                 <rect key="frame" x="180" y="0.0" width="90" height="32.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbw-et-8al">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbw-et-8al">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="Aoy-dT-Psy"/>
@@ -104,7 +104,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xr8-OB-u4o">
                                                 <rect key="frame" x="270" y="0.0" width="90" height="32.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-ST-TTX">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcc-ST-TTX">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="dbU-Gu-goq"/>
@@ -154,6 +154,9 @@
                                 <state key="normal" title="Nuovo questionario">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startNewTest" destination="Giz-d9-BmT" eventType="touchUpInside" id="1Ln-44-RCb"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtO-hc-PTy">
                                 <rect key="frame" x="0.0" y="647" width="375" height="20"/>
@@ -429,6 +432,7 @@ Svolto il 12 Agosto 2017</string>
                             <constraint firstItem="f8N-dr-Qvp" firstAttribute="centerY" secondItem="ZkA-E6-oe6" secondAttribute="centerY" id="rlp-VH-rZU"/>
                             <constraint firstItem="u2w-JV-Xut" firstAttribute="leading" secondItem="f8N-dr-Qvp" secondAttribute="trailing" constant="12" id="sqf-bd-fJg"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="heB-oW-u3a"/>
                     </view>
                     <connections>
                         <outlet property="mainLabel" destination="u2w-JV-Xut" id="Md7-UH-fap"/>

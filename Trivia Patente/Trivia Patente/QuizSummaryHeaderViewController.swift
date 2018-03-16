@@ -9,7 +9,7 @@
 import UIKit
 
 protocol QuizSummaryHeaderViewDelegate {
-    var item : Int {get}
+    var item : Training? { get }
 }
 
 class QuizSummaryHeaderViewController: UIViewController {
@@ -34,9 +34,11 @@ class QuizSummaryHeaderViewController: UIViewController {
         }
     }
     
-    func setItem(item: Int) {
-        scoreButton.setScore(score: item)
-        mainLabel.text = "In questo questionario hai fatto \(item) errori\nSvolto il 12 Agosto 2017"
+    func setItem(item: Training?) {
+        if let training = item {
+            scoreButton.setScore(scoreNumber: training.numberOfErrors)
+            mainLabel.text = "In questo questionario hai fatto \(training.numberOfErrors) errori\nSvolto il 12 Agosto 2017"
+        }
     }
 
     override func didReceiveMemoryWarning() {

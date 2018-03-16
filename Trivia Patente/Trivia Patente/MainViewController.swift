@@ -99,9 +99,7 @@ class MainViewController: TPNormalViewController {
         self.recentGamesView.view.isUserInteractionEnabled = true
         MBProgressHUD.hide(for: self.view, animated: false)
         RecentGameHandler.start(delegate: self.recentGamesView, callback: {   () in
-            guard self != nil else { return }
             self.socketGame.listen_recent_games(handler: {  (event) in
-                guard self != nil else { return }
                 if self.recentGamesView != nil {
                     self.recentGamesView.retrieveRecentGames()
                 }

@@ -28,6 +28,9 @@ class Strings {
     static let review_pop_positive_btn = "Certo! 😍"
     static let review_pop_negative_btn = "Certo! 💪🏻"
     
+    // Training
+    static let no_trainings_mesage = "In questa modalità puoi simulare una prova d’esame, e vedere a che punto sei con la preparazione, così puoi continuare a giocare mentre aspetti i tuoi amici!\nDopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di apprendimento 😻"
+    
     
     // Legislation update popover
     static let legislation_pop_privacy_update_1 = "Abbiamo aggiornato la " // 'Privacy Policy' diventa link

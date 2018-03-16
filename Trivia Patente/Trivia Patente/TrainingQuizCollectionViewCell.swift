@@ -15,10 +15,14 @@ class TrainingQuizCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
     }
     
-    private var item : Int = 0
+    var item : Training? {
+        didSet {
+            loadView()
+        }
+    }
     
-    func setItem(value: Int) {
-        self.mainButton.setScore(score: value)
+    func loadView() {
+        self.mainButton.setScore(scoreNumber: item!.numberOfErrors)
     }
     
 

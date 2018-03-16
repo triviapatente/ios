@@ -243,6 +243,7 @@
 		F4C399A82052773200383CBD /* QuizQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */; };
 		F4C7E4651FE2EA9100AA1B45 /* NoConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */; };
 		F4D12CE91FE68AD1000858A8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D12CE81FE68AD1000858A8 /* UIApplication.swift */; };
+		F4E342E0205BB19000DE9D7C /* BulletinChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E342DF205BB19000DE9D7C /* BulletinChooser.swift */; };
 		F4E4EC511FA5E30D00162756 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4EC501FA5E30D00162756 /* UIFont.swift */; };
 		F4E8553D1FE12B860076538F /* InformativePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */; };
 		F4F3354F1FDEB4BD0094A849 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F3354E1FDEB4BD0094A849 /* UITextField.swift */; };
@@ -520,6 +521,7 @@
 		F4C399A62052773200383CBD /* QuizQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		F4C7E4641FE2EA9100AA1B45 /* NoConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionViewController.swift; sourceTree = "<group>"; };
 		F4D12CE81FE68AD1000858A8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		F4E342DF205BB19000DE9D7C /* BulletinChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinChooser.swift; sourceTree = "<group>"; };
 		F4E4EC501FA5E30D00162756 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		F4E8553C1FE12B860076538F /* InformativePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformativePopoverViewController.swift; sourceTree = "<group>"; };
 		F4F3354E1FDEB4BD0094A849 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -1800,6 +1802,7 @@
 			children = (
 				F478FA2920515FE200324FED /* listing */,
 				F478FA2720515FCE00324FED /* Training.storyboard */,
+				F4E342DF205BB19000DE9D7C /* BulletinChooser.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -2110,6 +2113,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
@@ -2127,6 +2131,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollieGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
@@ -2307,6 +2312,7 @@
 				8BDCEA281DD121A00099C3E2 /* UserListScope.swift in Sources */,
 				8BAD1C4C1DF9A0130051AC4A /* TPSectionBarTableViewCell.swift in Sources */,
 				8B5EE0DF1DD5C23100745A54 /* StatsTableViewCell.swift in Sources */,
+				F4E342E0205BB19000DE9D7C /* BulletinChooser.swift in Sources */,
 				8BDCEA301DD12A580099C3E2 /* RankTableViewCell.swift in Sources */,
 				8BCF8CA01DB6A6BA00EC637C /* Shopitem.swift in Sources */,
 				8B5133281DBCBEF200143497 /* UIStoryboard.swift in Sources */,

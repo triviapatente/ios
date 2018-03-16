@@ -216,7 +216,6 @@ class UserListViewController: TPNormalViewController {
         self.hideFooterView(hide: true)
         self.tableView.isUserInteractionEnabled = false
         let callback = {  (response : TPUserListResponse) in
-            guard self != nil else { return }
             loadingView.hide(animated: true)
             self.hideFooterView(hide: true)
             if response.success == true {

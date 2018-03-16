@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class TPTrainingsListResponse : TPResponse {
     var trainings : [Training] = []
+    var stats : TrainingStats?
     
     override func load(json: JSON) {
         super.load(json: json)
@@ -19,5 +20,6 @@ class TPTrainingsListResponse : TPResponse {
                 trainings.append(Training(json: item))
             }
         }
+        stats = TrainingStats(json: json["stats"])
     }
 }

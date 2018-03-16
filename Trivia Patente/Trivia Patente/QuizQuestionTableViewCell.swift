@@ -37,19 +37,19 @@ class QuizQuestionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setQuestion(question: Int) {
+    func setQuestion(question: Quiz) {
         self.questionImageWidthConstraint.constant = 0.0
-        if question%2 == 0 {
+        if question.imageId != nil {
             // has imaage
-//            self.quizImageView.load()
+            self.quizImageView.load(quiz: question)
             self.questionImageWidthConstraint.constant = QuizQuestionTableViewCell.imageWidth
-            self.mainLabel.text = self.mainLabel.text! + " fheui hfurie hfuire fuire hfui reuifh reuif huier fuierh fuireh fuier hfuihr euifh reuifhreui gyutrh"
+
         }
-        self.set(label: self.trueValue, selected: question%2 == 0)
-        self.set(label: self.falseValue, selected: question%2 != 0)
+        self.mainLabel.text = question.question!
+        self.set(label: self.trueValue, selected: question.answer!)
+        self.set(label: self.falseValue, selected: question.answer!)
         
-        self.answered(correct: question != 2)
-//        self.mainLabel.text = ""
+        self.answered(correct: question.answeredCorrectly!)
     }
     
     func answered(correct: Bool) {

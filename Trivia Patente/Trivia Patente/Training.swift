@@ -12,8 +12,10 @@ import SwiftyJSON
 open class Training : CommonPK {
     
     internal let kQuestionsKey: String = "questions"
+    internal let kStatsKey: String = "stats"
     
     open var questions : [Quiz]?
+    open var numberOfErrors : Int32?
     
     convenience public init(object: AnyObject) {
         self.init(json: JSON(object))
@@ -32,7 +34,7 @@ open class Training : CommonPK {
                 self.questions!.append(Quiz(json: questionsJSON))
             }
         }
-        
+        numberOfErrors = json[kStatsKey].int32
     }
     
     open override func dictionaryRepresentation() -> [String : AnyObject ] {
@@ -42,6 +44,10 @@ open class Training : CommonPK {
         if questions != nil {
             dictionary.updateValue(questions! as AnyObject, forKey: kQuestionsKey)
         }
+        if numberOfErrors != nil {
+            dictionary.updateValue(numberOfErrors! as AnyObject, forKey: kStatsKey)
+        }
+        
         
         return dictionary
     }
@@ -50,11 +56,13 @@ open class Training : CommonPK {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.questions = aDecoder.decodeObject(forKey: kQuestionsKey) as? [Quiz]
+        self.numberOfErrors = aDecoder.decodeObject(forKey: kStatsKey) as? Int32
     }
     
     open override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(questions, forKey: kQuestionsKey)
+        aCoder.encode(numberOfErrors, forKey: kStatsKey)
     }
 }
 
