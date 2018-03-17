@@ -152,12 +152,16 @@ class ShowQuizStackItemView: UIView {
 //        self.prepareQuiz()
         if let d = self.delegate {
             self.mainHeaderLabel.text = d.textForMainLabel()
-            let user = d.opponentUser()
-            self.headerUserImageView.load(user: user)
-            self.headerUserNameLabel.text = user.displayName
-            let cat = d.headerRightSideData()
-            self.headerRightLabel.text = cat.hint
-            self.headerRightImage.load(category: cat)
+            if let user = d.opponentUser() {
+                self.headerUserImageView.load(user: user)
+                self.headerUserNameLabel.text = user.displayName
+            }
+            
+            if let cat = d.headerRightSideData() {
+                self.headerRightLabel.text = cat.hint
+                self.headerRightImage.load(category: cat)
+            }
+            
         }
     }
 }

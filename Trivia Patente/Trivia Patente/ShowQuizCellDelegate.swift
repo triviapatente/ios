@@ -11,8 +11,8 @@ import UIKit
 protocol ShowQuizCellDelegate  {
     func user_answered(answer : Bool, correct : Bool, quiz: Quiz)
     func textForMainLabel() -> String
-    func opponentUser() -> User
-    func headerRightSideData() -> Category
+    func opponentUser() -> User?
+    func headerRightSideData() -> Category?
     func presentImage(image: UIImage?, target: UIView)
     func gotoQuiz(i : Int)
     func scroll_to_next() -> Bool

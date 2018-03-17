@@ -247,6 +247,9 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                                                     <state key="normal" image="simple_tick">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="3CN-CU-sEA" kind="show" id="j6b-8J-Xz3"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -443,8 +446,112 @@ Svolto il 12 Agosto 2017</string>
             </objects>
             <point key="canvasLocation" x="1589.5999999999999" y="-278.86056971514245"/>
         </scene>
+        <!--Training Quiz View Controller-->
+        <scene sceneID="RYW-h2-zYq">
+            <objects>
+                <viewController id="3CN-CU-sEA" customClass="TrainingQuizViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9FR-gs-8yM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZf-Hb-PmA">
+                                <rect key="frame" x="16" y="28" width="40" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="5nb-fA-nwy"/>
+                                    <constraint firstAttribute="width" constant="40" id="m63-G0-LtX"/>
+                                </constraints>
+                                <state key="normal" image="chevron-white"/>
+                                <connections>
+                                    <action selector="exitPlaying" destination="3CN-CU-sEA" eventType="touchUpInside" id="Zk3-7o-Ba6"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D37-SV-GeM">
+                                <rect key="frame" x="64" y="30" width="295" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BnJ-Fe-UVh"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="eWd-iS-5vJ" kind="embed" identifier="page_control" id="mTu-pp-xr1"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsW-FX-h4n">
+                                <rect key="frame" x="0.0" y="75" width="375" height="444"/>
+                                <connections>
+                                    <segue destination="ymc-gi-wir" kind="embed" identifier="stack_view" id="yeL-wg-qs3"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fns-5j-2WD">
+                                <rect key="frame" x="86" y="551" width="203" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="bFp-bK-Ki2"/>
+                                    <constraint firstAttribute="width" constant="203" id="zXG-sA-8Ws"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="bmN-gJ-Ku6" kind="embed" identifier="game_actions" id="Fyi-rv-klG"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcD-x6-wG2" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BI7-Zr-jfD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qcD-x6-wG2" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="LVv-0b-OIr"/>
+                            <constraint firstItem="D37-SV-GeM" firstAttribute="leading" secondItem="nZf-Hb-PmA" secondAttribute="trailing" constant="8" id="T89-W6-87J"/>
+                            <constraint firstItem="qcD-x6-wG2" firstAttribute="top" secondItem="fns-5j-2WD" secondAttribute="bottom" constant="10" id="U3Q-18-hxV"/>
+                            <constraint firstItem="BsW-FX-h4n" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="55" id="VkS-WH-vtI"/>
+                            <constraint firstItem="BsW-FX-h4n" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="da4-Oi-Xva"/>
+                            <constraint firstItem="nZf-Hb-PmA" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" constant="16" id="fZH-bO-2fI"/>
+                            <constraint firstItem="nZf-Hb-PmA" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="fig-Xe-5e5"/>
+                            <constraint firstItem="fns-5j-2WD" firstAttribute="centerX" secondItem="9FR-gs-8yM" secondAttribute="centerX" id="g93-Gi-rjO"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="D37-SV-GeM" secondAttribute="trailing" constant="16" id="gYT-qd-XRG"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="qcD-x6-wG2" secondAttribute="trailing" id="jNZ-lz-8gn"/>
+                            <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="10" id="kfh-0i-fXb"/>
+                            <constraint firstItem="fns-5j-2WD" firstAttribute="top" secondItem="BsW-FX-h4n" secondAttribute="bottom" constant="32" id="rrQ-Tw-GaT"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="BsW-FX-h4n" secondAttribute="trailing" id="w8P-mQ-cpV"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="bottom" secondItem="qcD-x6-wG2" secondAttribute="bottom" id="wEC-WB-z5D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mzx-wy-Qt3"/>
+                    </view>
+                    <connections>
+                        <outlet property="bannerView" destination="qcD-x6-wG2" id="OII-ud-dfW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wav-u5-TlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="885"/>
+        </scene>
+        <!--page_control-->
+        <scene sceneID="FiM-3R-Ef8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GCPageControl" referencedIdentifier="page_control" id="eWd-iS-5vJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yna-g8-gOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1458" y="626"/>
+        </scene>
+        <!--StackMainView-->
+        <scene sceneID="f4N-qS-dtk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StackViewController" referencedIdentifier="StackMainView" id="ymc-gi-wir" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkH-K4-RKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="958"/>
+        </scene>
+        <!--game_actions-->
+        <scene sceneID="wGV-9p-bl2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Game" referencedIdentifier="game_actions" id="bmN-gJ-Ku6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFh-wk-n60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="1271"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chevron-white" width="13" height="21"/>
         <image name="simple_tick" width="23" height="22"/>
         <image name="waves" width="374" height="81"/>
     </resources>

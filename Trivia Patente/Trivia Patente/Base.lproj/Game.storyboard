@@ -692,7 +692,7 @@
         <!--Game Actions-->
         <scene sceneID="Nmu-cx-qHz">
             <objects>
-                <viewController id="shz-gG-blI" customClass="TPGameActions" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="game_actions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="shz-gG-blI" customClass="TPGameActions" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BwZ-M8-EoR"/>
                         <viewControllerLayoutGuide type="bottom" id="PtA-5b-nWT"/>
