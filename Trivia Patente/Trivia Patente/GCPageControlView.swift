@@ -14,10 +14,12 @@ protocol CGPageControlDelegate {
     func customizeCellAt(index: Int, cell: PageControlCollectionViewCell)
     func indexSelected(index: Int)
     func numberOfPages() -> Int
+    func showImmediateResult() -> Bool
 }
 
 class GCPageControlView: UICollectionViewController {
     var numberTitleOffset : Int = 0
+    var fullWidth : Bool = false
     var itemEdgeSize : Int = 24 // change also the property in IB of the collection view
     
     static let UNSELECTED_OPACITY : CGFloat = 0.7 // change also in IB
@@ -47,8 +49,10 @@ class GCPageControlView: UICollectionViewController {
     
     internal func sizeBackgroundView(edges : UIEdgeInsets) {
         let spaceAround = CGFloat(1)
-        self.backgroundView.frame = CGRect.init(x: self.collectionView!.frame.origin.x + edges.left - spaceAround, y: self.collectionView!.frame.origin.y + edges.top - spaceAround, width: self.collectionView!.frame.width - edges.left - edges.right + spaceAround.multiplied(by: 2.0), height: CGFloat(itemEdgeSize) + spaceAround.multiplied(by: 2.0))
-        self.backgroundView.circleRounded()
+        self.backgroundView.frame = CGRect.init(x: fullWidth ? 0.0 : self.collectionView!.frame.origin.x + edges.left - spaceAround, y: self.collectionView!.frame.origin.y + edges.top - spaceAround, width: fullWidth ? self.collectionView!.frame.width : self.collectionView!.frame.width - edges.left - edges.right + spaceAround.multiplied(by: 2.0), height: CGFloat(itemEdgeSize) + spaceAround.multiplied(by: 2.0))
+        if !fullWidth {
+            self.backgroundView.circleRounded()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -185,7 +189,7 @@ extension GCPageControlView : UICollectionViewDelegateFlowLayout {
         let totalCellWidth = itemEdgeSize * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 12 * (collectionView.numberOfItems(inSection: 0) - 1)
 
-        let leftInset = max((collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2, 7.0)
+        let leftInset = max((collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2, 10.0)
         let rightInset = leftInset
         let topInset = (collectionView.layer.frame.size.height - CGFloat(itemEdgeSize)) / 2
         let edges = UIEdgeInsetsMake(topInset, leftInset, topInset, rightInset)

@@ -15,13 +15,34 @@ class TrainingQuizViewController: BasePlayViewController {
     var randomQuestions : Bool = true
     var training : Training! = Training()
     
+    @IBOutlet weak var timerLabel : UILabel!
+    @IBOutlet weak var completionCircularProgress : RPCircularProgress!
+    
     let httpTraining = HTTPTraining()
+    
+    var trainingStartTime : TimeInterval? = nil
+    let trainingDuration : TimeInterval = 40*60 // 40 minute
+    var timer : Timer?
+    
+    override var mainOnDismiss: Bool {
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.pageControl.fullWidth = true
         self.getQuestions()
+        
+    }
+    
+    private func updateTrainingProgress() {
+        let answered = self.training.questions!.filter { (q) -> Bool in
+            return q.my_answer != nil
+        }.count
+        self.completionCircularProgress.updateProgress(CGFloat(answered)/CGFloat(training.questions!.count), animated: true, initialDelay: 0, duration: 0.1, completion: nil)
+
     }
     
     private func getQuestions(animated: Bool = true) {
@@ -33,10 +54,32 @@ class TrainingQuizViewController: BasePlayViewController {
             if response.success {
                 self.training.questions = response.training!.questions!
                 self.questions = response.training!.questions!
+                self.startTimer()
             } else {
                 self.handleGenericError(message: response.message, dismiss: true)
             }
         }
+    }
+    
+    /* Timer handling */
+    private func startTimer() {
+        self.trainingStartTime = Date().timeIntervalSince1970
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (t) in
+            let elapsed = Date().timeIntervalSince1970 - self.trainingStartTime!
+            let remaining = self.trainingDuration - elapsed
+            self.timerLabel.text = String(format: "%02d:%02d", Int(remaining/60), Int(remaining.truncatingRemainder(dividingBy: 60.0)))
+            if remaining <= 0 {
+                self.timeFinished()
+            }
+        }
+    }
+    private func stopTimer() {
+        if let t = timer {
+            t.invalidate()
+        }
+    }
+    private func timeFinished() {
+        stopTimer()
     }
     
     override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
@@ -44,11 +87,16 @@ class TrainingQuizViewController: BasePlayViewController {
         quiz.my_answer = answer
         quiz.answeredCorrectly = correct
         self.pageControl.reloadData()
+        updateTrainingProgress()
         if let next = nextQuiz() {
             gotoQuiz(i: next)
         } else {
             self.trainingEnded()
         }
+    }
+    
+    override func showImmediateResult() -> Bool {
+        return false
     }
     
     override func trainMode() -> Bool {

@@ -26,15 +26,22 @@ class LeaveGameViewController: BaseViewController {
         if button == dismissButton {
             self.fade()
         } else if button == leaveButton {
-            handler.leave_game(game_id: game.id!) {   response in
-                guard self != nil else { return }
-                if response.success == true {
-                    self.fade()
-                    self.game.ended = true
-                    self.sender.gameCancelled = true
-                    self.sender.performSegue(withIdentifier: "round_details", sender: self)
-                } else {
-                    self.showGenericError()
+            // TODO: remove specific code from here, use delegate
+            if game == nil {
+                // training
+                self.fade()
+                sender.sender.exitPlaying()
+            } else {
+                handler.leave_game(game_id: game.id!) {   response in
+                    guard self != nil else { return }
+                    if response.success == true {
+                        self.fade()
+                        self.game.ended = true
+                        self.sender.gameCancelled = true
+                        self.sender.performSegue(withIdentifier: "round_details", sender: self)
+                    } else {
+                        self.showGenericError()
+                    }
                 }
             }
         }
@@ -54,13 +61,23 @@ class LeaveGameViewController: BaseViewController {
             }
         }
     }
+    
+    func handleExitTraining() {
+        self.mainTitle.text = "Tutti i progressi del questionario verranno persi. Sei sicuro di voler uscire?"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissButton.mediumRounded()
         self.leaveButton.mediumRounded()
         self.containerView.mediumRounded()
-        self.getDecrement()
+
+        if game == nil {
+            // training
+            handleExitTraining()
+        } else {
+            self.getDecrement()
+        }
     }
     
 

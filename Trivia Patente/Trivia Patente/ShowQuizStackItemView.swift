@@ -110,8 +110,10 @@ class ShowQuizStackItemView: UIView {
         self.disable(button: otherButton!)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Colors.primary
-        button.isEnabled = false
-        otherButton!.isEnabled = false
+        if  delegate != nil, !delegate.trainMode() {
+            button.isEnabled = false
+            otherButton!.isEnabled = false
+        }
     }
     func prepareQuiz() {
         self.trueButton.isEnabled = true

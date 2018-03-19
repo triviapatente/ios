@@ -209,6 +209,7 @@
 		F41F7AAE205ACEBE005B63A3 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41F7AAD205ACEBE005B63A3 /* Training.swift */; };
 		F41F7AB1205AD5B1005B63A3 /* HTTPTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41F7AB0205AD5B1005B63A3 /* HTTPTraining.swift */; };
 		F41F7AB4205AD63A005B63A3 /* TPTrainingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41F7AB3205AD63A005B63A3 /* TPTrainingResponse.swift */; };
+		F42CBD092060489800D761BC /* CircularLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CBD082060489800D761BC /* CircularLoaderView.swift */; };
 		F42D8D1B1FAA96CE00610B99 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */; };
 		F42D8D1E1FAABE1A00610B99 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */; };
 		F446B3B11FA7F07700FD2C79 /* DNSAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */; };
@@ -488,6 +489,7 @@
 		F41F7AAD205ACEBE005B63A3 /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
 		F41F7AB0205AD5B1005B63A3 /* HTTPTraining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTraining.swift; sourceTree = "<group>"; };
 		F41F7AB3205AD63A005B63A3 /* TPTrainingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPTrainingResponse.swift; sourceTree = "<group>"; };
+		F42CBD082060489800D761BC /* CircularLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLoaderView.swift; sourceTree = "<group>"; };
 		F42D8D1A1FAA96CE00610B99 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F42D8D1C1FAABE1A00610B99 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		F446B3B01FA7F07700FD2C79 /* DNSAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSAViewController.swift; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 				8B4551D51E043513008285D4 /* TPGameViewController.swift */,
 				8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */,
 				8B4814731E16FE9300AD0834 /* TPPlayButton.swift */,
+				F42CBD082060489800D761BC /* CircularLoaderView.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -2334,6 +2337,7 @@
 				8B8142C91DC0C5B200E60B06 /* TPNavigationController.swift in Sources */,
 				8BBBE8551DC77BEF00B433F2 /* RecentGameTableViewCell.swift in Sources */,
 				8B5133261DBCBA6900143497 /* MainViewController.swift in Sources */,
+				F42CBD092060489800D761BC /* CircularLoaderView.swift in Sources */,
 				F4642EBA205D55E300689B88 /* TrainingQuizViewController.swift in Sources */,
 				8BE20C601DD9DEA10048DA0A /* PreferenceVisibility.swift in Sources */,
 				8BDCEA241DD120940099C3E2 /* TPRankResponse.swift in Sources */,

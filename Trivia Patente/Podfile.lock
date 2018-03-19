@@ -58,7 +58,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.0)
   - BulletinBoard
   - Charts (= 3.0.3)
-  - CollieGallery
+  - CollieGallery (= 0.6.0)
   - Crashlytics (~> 3.9.3)
   - CropViewController (= 2.3.5)
   - Fabric (~> 1.7.2)
@@ -106,6 +106,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
   TOCropViewController: a21b39c910d161600a26b6e3f89a58707afaa4f8
 
-PODFILE CHECKSUM: de928affa29b12ea0e791f03579147ab457ad0b3
+PODFILE CHECKSUM: 5b8384403917dcdc44a6002e0aa95a2c8d9c9273
 
 COCOAPODS: 1.3.1

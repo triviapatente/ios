@@ -452,7 +452,7 @@ Svolto il 12 Agosto 2017</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZf-Hb-PmA">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZf-Hb-PmA">
                                 <rect key="frame" x="16" y="28" width="40" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="5nb-fA-nwy"/>
@@ -464,7 +464,7 @@ Svolto il 12 Agosto 2017</string>
                                 </connections>
                             </button>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D37-SV-GeM">
-                                <rect key="frame" x="64" y="20" width="295" height="45"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="BnJ-Fe-UVh"/>
                                 </constraints>
@@ -473,7 +473,7 @@ Svolto il 12 Agosto 2017</string>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsW-FX-h4n">
-                                <rect key="frame" x="0.0" y="75" width="375" height="444"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="394"/>
                                 <connections>
                                     <segue destination="ymc-gi-wir" kind="embed" identifier="stack_view" id="yeL-wg-qs3"/>
                                 </connections>
@@ -495,20 +495,56 @@ Svolto il 12 Agosto 2017</string>
                                     <constraint firstAttribute="height" constant="50" id="BI7-Zr-jfD"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWs-xV-ynK">
+                                <rect key="frame" x="287" y="28" width="72" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="9of-v8-R9p"/>
+                                    <constraint firstAttribute="height" constant="30" id="cSa-o6-71m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bct-7v-ytI">
+                                <rect key="frame" x="257" y="28" width="30" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="EHG-Au-FKw"/>
+                                    <constraint firstAttribute="width" constant="30" id="Li0-wL-mtP"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-gi-5tW" customClass="RPCircularProgress" customModule="Trivia_Patente" customModuleProvider="target">
+                                <rect key="frame" x="16" y="28" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="dm4-Yf-FkD"/>
+                                    <constraint firstAttribute="height" constant="30" id="nfH-i5-acT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.65000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="kWs-xV-ynK" firstAttribute="leading" secondItem="Bct-7v-ytI" secondAttribute="trailing" id="FmW-di-NVt"/>
                             <constraint firstItem="qcD-x6-wG2" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="LVv-0b-OIr"/>
-                            <constraint firstItem="D37-SV-GeM" firstAttribute="leading" secondItem="nZf-Hb-PmA" secondAttribute="trailing" constant="8" id="T89-W6-87J"/>
+                            <constraint firstItem="Hzd-gi-5tW" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" constant="16" id="QG9-B6-7MI"/>
                             <constraint firstItem="qcD-x6-wG2" firstAttribute="top" secondItem="fns-5j-2WD" secondAttribute="bottom" constant="10" id="U3Q-18-hxV"/>
-                            <constraint firstItem="BsW-FX-h4n" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="55" id="VkS-WH-vtI"/>
+                            <constraint firstItem="BsW-FX-h4n" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="105" id="VkS-WH-vtI"/>
+                            <constraint firstItem="Bct-7v-ytI" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="dZ9-iO-MVc"/>
                             <constraint firstItem="BsW-FX-h4n" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="da4-Oi-Xva"/>
+                            <constraint firstItem="kWs-xV-ynK" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="dkb-wA-zdU"/>
                             <constraint firstItem="nZf-Hb-PmA" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" constant="16" id="fZH-bO-2fI"/>
                             <constraint firstItem="nZf-Hb-PmA" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="fig-Xe-5e5"/>
                             <constraint firstItem="fns-5j-2WD" firstAttribute="centerX" secondItem="9FR-gs-8yM" secondAttribute="centerX" id="g93-Gi-rjO"/>
-                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="D37-SV-GeM" secondAttribute="trailing" constant="16" id="gYT-qd-XRG"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="kWs-xV-ynK" secondAttribute="trailing" constant="16" id="gO8-Ru-4me"/>
+                            <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="D37-SV-GeM" secondAttribute="trailing" id="gYT-qd-XRG"/>
+                            <constraint firstItem="D37-SV-GeM" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="jEC-N5-JYZ"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="qcD-x6-wG2" secondAttribute="trailing" id="jNZ-lz-8gn"/>
-                            <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" id="kfh-0i-fXb"/>
+                            <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="50" id="kfh-0i-fXb"/>
+                            <constraint firstItem="Hzd-gi-5tW" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="qdV-6G-GfK"/>
                             <constraint firstItem="fns-5j-2WD" firstAttribute="top" secondItem="BsW-FX-h4n" secondAttribute="bottom" constant="32" id="rrQ-Tw-GaT"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="BsW-FX-h4n" secondAttribute="trailing" id="w8P-mQ-cpV"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="bottom" secondItem="qcD-x6-wG2" secondAttribute="bottom" id="wEC-WB-z5D"/>
@@ -517,11 +553,13 @@ Svolto il 12 Agosto 2017</string>
                     </view>
                     <connections>
                         <outlet property="bannerView" destination="qcD-x6-wG2" id="OII-ud-dfW"/>
+                        <outlet property="completionCircularProgress" destination="Hzd-gi-5tW" id="3yg-88-9aK"/>
+                        <outlet property="timerLabel" destination="kWs-xV-ynK" id="1hR-L9-BzS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wav-u5-TlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="885"/>
+            <point key="canvasLocation" x="784.79999999999995" y="884.70764617691157"/>
         </scene>
         <!--page_control-->
         <scene sceneID="FiM-3R-Ef8">
@@ -551,6 +589,7 @@ Svolto il 12 Agosto 2017</string>
     <resources>
         <image name="chevron-white" width="13" height="21"/>
         <image name="simple_tick" width="23" height="22"/>
+        <image name="timer-icon" width="96" height="96"/>
         <image name="waves" width="374" height="81"/>
     </resources>
 </document>

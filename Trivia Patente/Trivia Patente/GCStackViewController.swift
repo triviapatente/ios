@@ -348,9 +348,11 @@ class GCStackViewController: UIViewController {
         lastPercentageUsed = percentage
         let size = cardSize()
         let completionPercentage = max(min(percentage / PlayRoundViewController.SWIPE_DRAG_PERCENTAGE, 1), -1)
+        let loopRange = (includeBottom ? 0 : 1)..<self.numberOfVisibleItems-(includeTop ? 0 : 1)
         UIView.animate(withDuration: animated ? PlayRoundViewController.SWIPE_DRAG_ANIMATION_DURATION : 0, animations: {
-            for i in (includeBottom ? 0 : 1)..<self.numberOfVisibleItems-(includeTop ? 0 : 1) {
+            for i in loopRange {
                 let itemView = self.view.subviews[Int(i)]
+                itemView.isUserInteractionEnabled = false
                 let iCompl = CGFloat(self.numberOfVisibleItems-1-i)
     //            itemView.transform = CGAffineTransform.identity
             
@@ -366,6 +368,7 @@ class GCStackViewController: UIViewController {
                 itemView.center = CGPoint(x: itemView.center.x, y: yOffset+self.stackEffectDeepDegreeFixed*completionPercentage)
             }
         }, completion: { (success) in
+            self.view.subviews.last!.isUserInteractionEnabled = true
             if let callback = cb {
                 callback()
             }

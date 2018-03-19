@@ -106,6 +106,7 @@ class BasePlayViewController: TPGameViewController {
         let identifier = segue.identifier
         if identifier == "game_actions" {
             self.gameActions = segue.destination as! TPGameActions
+            self.gameActions.sender = self
         } else if identifier == "page_control" {
             self.pageControl = segue.destination as! GCPageControlView
             self.pageControl.delegate = self
@@ -208,7 +209,10 @@ extension BasePlayViewController : CollieGalleryZoomTransitionDelegate {
 extension BasePlayViewController : CGPageControlDelegate {
     func customizeCellAt(index: Int, cell: PageControlCollectionViewCell) {
         cell.mainLabel.layer.borderColor = Colors.light_gray.cgColor
-        if index < questions.count, let _ = self.questions[index].my_answer {
+        if trainMode(), let _ = self.questions[index].my_answer {
+            cell.mainLabel.layer.borderColor = Colors.orange_default.cgColor
+        } else
+        if index < questions.count, let _ = self.questions[index].my_answer, self.showImmediateResult() {
             cell.mainLabel.layer.borderColor = self.questions[index].answeredCorrectly! ? Colors.green_default.cgColor : Colors.red_default.cgColor
         }
     }
@@ -218,6 +222,10 @@ extension BasePlayViewController : CGPageControlDelegate {
     func numberOfPages() -> Int {
         return self.questions.count
     }
+    func showImmediateResult() -> Bool {
+        return true
+    }
+    
 }
 
 extension BasePlayViewController : GADBannerViewDelegate {

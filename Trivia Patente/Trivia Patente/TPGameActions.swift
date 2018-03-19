@@ -17,6 +17,7 @@ class TPGameActions: BaseViewController {
     @IBOutlet weak var timerContainer : UIView!
     var game : Game!
     var gameCancelled : Bool = false
+    var sender : BasePlayViewController!
     
     var timerActionPressed : (() -> Void)? {
         didSet {
