@@ -33,6 +33,7 @@ class TrainingQuizViewController: BasePlayViewController {
 
         // Do any additional setup after loading the view.
         self.pageControl.fullWidth = true
+        self.pageControl.numberTitleOffset = 1
         self.getQuestions()
         
     }
