@@ -32,6 +32,15 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         page.actionButtonTitle = "Chiudi"
         page.alternativeButtonTitle = ["Domande a random", "Domande precedentemente sbagliate"]
         
+        page.alternativeHandler = { (button: UIButton, index: Int) in
+            page.manager!.dismissBulletin()
+            self.performSegue(withIdentifier: "quiz_view", sender: index == 0)
+        }
+        
+        page.actionHandler = { (bulletin: ChooserBulletinItem) in
+            bulletin.manager!.dismissBulletin()
+        }
+        
         return BulletinManager(rootItem: page)
         
     }()
@@ -118,6 +127,8 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         // Pass the selected object to the new view controller.
         if segue.identifier == "quiz_details", let destination = segue.destination as? QuizDetailsViewController {
             destination.item = sender as? Training
+        } else if segue.identifier == "quiz_view", let destination = segue.destination as? TrainingQuizViewController {
+            destination.randomQuestions = sender as! Bool
         }
     }
     

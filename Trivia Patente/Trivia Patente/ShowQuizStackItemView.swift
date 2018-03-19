@@ -68,18 +68,25 @@ class ShowQuizStackItemView: UIView {
     let handler = SocketGame()
     @IBAction func answer(sender : UIButton) {
         let answer = (sender == trueButton)
-        self.startLoading(button: sender)
-        handler.answer(answer: answer, round: round, quiz: quiz) { response in
-            if response.success == true {
-                self.enable(button: sender)
-                self.delegate.user_answered(answer: answer, correct: response.correct, quiz: self.quiz)
-            } else {
-                self.trueButton.isEnabled = true
-                self.falseButton.isEnabled = true
-                UIViewController.showToast(text: Strings.request_timout_error, view: self)
+        // TODO: remove this code from here and place it in a delegate
+        // play mode
+        if !delegate!.trainMode() {
+            self.startLoading(button: sender)
+            handler.answer(answer: answer, round: round, quiz: quiz) { response in
+                if response.success == true {
+                    self.enable(button: sender)
+                    self.delegate.user_answered(answer: answer, correct: response.correct, quiz: self.quiz)
+                } else {
+                    self.trueButton.isEnabled = true
+                    self.falseButton.isEnabled = true
+                    UIViewController.showToast(text: Strings.request_timout_error, view: self)
+                }
+                self.endLoading(button: sender)
             }
-            self.endLoading(button: sender)
+        } else {
+            self.delegate.user_answered(answer: answer, correct: answer == quiz.answer!, quiz: self.quiz)
         }
+        // train mode
     }
     func startLoading(button: UIButton) {
         self.trueButton.isEnabled = false

@@ -247,9 +247,6 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                                                     <state key="normal" image="simple_tick">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
-                                                    <connections>
-                                                        <segue destination="3CN-CU-sEA" kind="show" id="j6b-8J-Xz3"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -325,6 +322,7 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                         <outletCollection property="bottomBarCostraint" destination="fL8-0p-PN5" collectionClass="NSMutableArray" id="kly-1V-K4W"/>
                         <outletCollection property="bottomBarCostraint" destination="9Sg-3g-jLZ" collectionClass="NSMutableArray" id="16z-7J-Vei"/>
                         <segue destination="4Bx-6V-Jd3" kind="show" identifier="quiz_details" id="Xjy-xw-X3o"/>
+                        <segue destination="3CN-CU-sEA" kind="show" identifier="quiz_view" id="Wnh-5Q-0ua"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D21-Rq-u5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -465,10 +463,10 @@ Svolto il 12 Agosto 2017</string>
                                     <action selector="exitPlaying" destination="3CN-CU-sEA" eventType="touchUpInside" id="Zk3-7o-Ba6"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D37-SV-GeM">
-                                <rect key="frame" x="64" y="30" width="295" height="35"/>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D37-SV-GeM">
+                                <rect key="frame" x="64" y="20" width="295" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="BnJ-Fe-UVh"/>
+                                    <constraint firstAttribute="height" constant="45" id="BnJ-Fe-UVh"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="eWd-iS-5vJ" kind="embed" identifier="page_control" id="mTu-pp-xr1"/>
@@ -510,7 +508,7 @@ Svolto il 12 Agosto 2017</string>
                             <constraint firstItem="fns-5j-2WD" firstAttribute="centerX" secondItem="9FR-gs-8yM" secondAttribute="centerX" id="g93-Gi-rjO"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="D37-SV-GeM" secondAttribute="trailing" constant="16" id="gYT-qd-XRG"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="qcD-x6-wG2" secondAttribute="trailing" id="jNZ-lz-8gn"/>
-                            <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="10" id="kfh-0i-fXb"/>
+                            <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" id="kfh-0i-fXb"/>
                             <constraint firstItem="fns-5j-2WD" firstAttribute="top" secondItem="BsW-FX-h4n" secondAttribute="bottom" constant="32" id="rrQ-Tw-GaT"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="BsW-FX-h4n" secondAttribute="trailing" id="w8P-mQ-cpV"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="bottom" secondItem="qcD-x6-wG2" secondAttribute="bottom" id="wEC-WB-z5D"/>

@@ -21,6 +21,10 @@ open class Training : CommonPK {
         self.init(json: JSON(object))
     }
     
+    convenience init() {
+        self.init(json: JSON([]))
+    }
+    
     /**
      Initates the class based on the JSON that was passed.
      - parameter json: JSON object from SwiftyJSON.

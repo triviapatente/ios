@@ -523,11 +523,11 @@
                                     <action selector="exitPlaying" destination="uXd-5a-fhz" eventType="touchUpInside" id="3Bz-JZ-61L"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-Xx-Yyl">
-                                <rect key="frame" x="76" y="30" width="168" height="35"/>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-Xx-Yyl">
+                                <rect key="frame" x="76" y="20" width="168" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="1ch-hm-XAn"/>
+                                    <constraint firstAttribute="height" constant="45" id="1ch-hm-XAn"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="FuT-rf-6GA" kind="embed" identifier="page_control" id="4Fg-Ly-ajE"/>
@@ -571,7 +571,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wCg-Xx-Yyl" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" constant="10" id="0NQ-Ik-wnI"/>
+                            <constraint firstItem="wCg-Xx-Yyl" firstAttribute="top" secondItem="zWQ-7A-z9F" secondAttribute="bottom" id="0NQ-Ik-wnI"/>
                             <constraint firstAttribute="trailing" secondItem="3dy-Cg-TeA" secondAttribute="trailing" id="5ta-Bb-M7k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wCg-Xx-Yyl" secondAttribute="trailing" constant="60" id="9pc-55-Hxl"/>
                             <constraint firstItem="3dy-Cg-TeA" firstAttribute="leading" secondItem="3Lf-dZ-AXE" secondAttribute="leading" id="Ccp-YQ-kVP"/>
@@ -644,7 +644,7 @@
                                     <outlet property="delegate" destination="ZWh-kv-MbX" id="rpF-Hr-LNJ"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
                                 <rect key="frame" x="0.0" y="10" width="203" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vKM-c5-CrP"/>

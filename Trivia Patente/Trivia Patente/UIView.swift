@@ -176,8 +176,8 @@ extension UIView {
     }
     func d3Shadow() {
         layer.shadowColor = Colors.dark_shadow.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        layer.shadowRadius = 5.0
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowRadius = 1.0
         layer.shadowOpacity = 1.0
         layer.masksToBounds = false
     }

@@ -77,6 +77,7 @@ class BasePlayViewController: TPGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.pageControl.view.clipsToBounds = true
         self.stackViewController.contentInset = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         self.pageControl.view.isHidden = true
         
@@ -126,8 +127,8 @@ class BasePlayViewController: TPGameViewController {
     }
     
     func nextQuiz() -> Int? {
-        for i in 1...4 {
-            let candidate = (self.stackViewController.currentIndex + i) % 4
+        for i in 1...self.questions.count {
+            let candidate = (self.stackViewController.currentIndex + i) % questions.count
             if self.questions[candidate].my_answer == nil {
                 return candidate
             }
@@ -160,6 +161,10 @@ extension BasePlayViewController : GCStackViewDataSource, GCStackViewDelegate {
 extension BasePlayViewController : ShowQuizCellDelegate {
     func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
         
+    }
+    
+    func trainMode() -> Bool {
+        return false
     }
     
     func textForMainLabel() -> String {
@@ -202,13 +207,16 @@ extension BasePlayViewController : CollieGalleryZoomTransitionDelegate {
 
 extension BasePlayViewController : CGPageControlDelegate {
     func customizeCellAt(index: Int, cell: PageControlCollectionViewCell) {
-        cell.layer.borderColor = Colors.light_gray.cgColor
+        cell.mainLabel.layer.borderColor = Colors.light_gray.cgColor
         if index < questions.count, let _ = self.questions[index].my_answer {
-            cell.layer.borderColor = self.questions[index].answeredCorrectly! ? Colors.green_default.cgColor : Colors.red_default.cgColor
+            cell.mainLabel.layer.borderColor = self.questions[index].answeredCorrectly! ? Colors.green_default.cgColor : Colors.red_default.cgColor
         }
     }
     func indexSelected(index: Int) {
         self.stackViewController.scrollTo(index: index, animated: true, propagate: false)
+    }
+    func numberOfPages() -> Int {
+        return self.questions.count
     }
 }
 

@@ -28,13 +28,13 @@ class PageControlCollectionViewCell: UICollectionViewCell {
                     {
                         self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
                         self.d3Shadow()
-                        self.alpha = 1.0
+                        self.contentView.alpha = 1.0
                     }
                     else
                     {
                         self.transform = CGAffineTransform.identity
                         self.removeShadow()
-                        self.alpha = GCPageControlView.UNSELECTED_OPACITY
+                        self.contentView.alpha = GCPageControlView.UNSELECTED_OPACITY
                     }
                 })
                 
@@ -45,9 +45,10 @@ class PageControlCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.alpha = 0.9
-        self.layer.borderWidth = CGFloat(3)
-        self.layer.borderColor = Colors.passive_red.cgColor
-        self.circleRounded()
+        self.mainLabel.layer.borderWidth = CGFloat(3)
+        self.mainLabel.layer.borderColor = Colors.light_gray.cgColor
+        self.mainLabel.circleRounded()
+        self.mainLabel.clipsToBounds = true
+        self.contentView.alpha = GCPageControlView.UNSELECTED_OPACITY
     }
 }

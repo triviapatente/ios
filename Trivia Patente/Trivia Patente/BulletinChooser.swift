@@ -114,7 +114,7 @@ open class ChooserBulletinItem: BulletinItem {
      * The code to execute when the alternative button is tapped.
      */
     
-    public var alternativeHandler: ((ChooserBulletinItem) -> Void)? = nil
+    public var alternativeHandler: ((UIButton, Int) -> Void)? = nil
     
     /**
      * Handles a tap on the action button.
@@ -135,7 +135,8 @@ open class ChooserBulletinItem: BulletinItem {
      */
     
     @objc open func alternativeButtonTapped(sender: UIButton) {
-        alternativeHandler?(self)
+        let index = self.alternativeButton!.index(of: sender)
+        alternativeHandler?(sender, index!)
     }
     
     

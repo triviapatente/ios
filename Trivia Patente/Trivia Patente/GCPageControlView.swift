@@ -13,15 +13,14 @@ private let reuseIdentifier = "item_cell"
 protocol CGPageControlDelegate {
     func customizeCellAt(index: Int, cell: PageControlCollectionViewCell)
     func indexSelected(index: Int)
+    func numberOfPages() -> Int
 }
 
 class GCPageControlView: UICollectionViewController {
-    
-    var numberOfPages : Int = 4
     var numberTitleOffset : Int = 0
     var itemEdgeSize : Int = 24 // change also the property in IB of the collection view
     
-    static let UNSELECTED_OPACITY : CGFloat = 0.6
+    static let UNSELECTED_OPACITY : CGFloat = 0.7 // change also in IB
     
     var delegate : CGPageControlDelegate?
     
@@ -48,7 +47,7 @@ class GCPageControlView: UICollectionViewController {
     
     internal func sizeBackgroundView(edges : UIEdgeInsets) {
         let spaceAround = CGFloat(1)
-        self.backgroundView.frame = CGRect.init(x: self.view.frame.origin.x + edges.left - spaceAround, y: self.view.frame.origin.y + edges.top - spaceAround, width: self.view.frame.width - edges.left - edges.right + spaceAround.multiplied(by: 2.0), height: CGFloat(itemEdgeSize) + spaceAround.multiplied(by: 2))
+        self.backgroundView.frame = CGRect.init(x: self.collectionView!.frame.origin.x + edges.left - spaceAround, y: self.collectionView!.frame.origin.y + edges.top - spaceAround, width: self.collectionView!.frame.width - edges.left - edges.right + spaceAround.multiplied(by: 2.0), height: CGFloat(itemEdgeSize) + spaceAround.multiplied(by: 2.0))
         self.backgroundView.circleRounded()
     }
 
@@ -87,7 +86,7 @@ class GCPageControlView: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.numberOfPages
+        return self.delegate!.numberOfPages()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -123,6 +122,10 @@ class GCPageControlView: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -153,7 +156,7 @@ class GCPageControlView: UICollectionViewController {
     */
     /* INTERFACE */
     func setIndex(to: Int, propagate: Bool = true) {
-        if to < numberOfPages {
+        if to < delegate!.numberOfPages() {
             var skipSelect = false
             if let s = self.collectionView!.indexPathsForSelectedItems, let f = s.first, f.row == to {
                 skipSelect = true
@@ -181,11 +184,15 @@ extension GCPageControlView : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let totalCellWidth = itemEdgeSize * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 12 * (collectionView.numberOfItems(inSection: 0) - 1)
-        
-        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+
+        let leftInset = max((collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2, 7.0)
         let rightInset = leftInset
-        let edges = UIEdgeInsetsMake(2, leftInset, 2, rightInset)
+        let topInset = (collectionView.layer.frame.size.height - CGFloat(itemEdgeSize)) / 2
+        let edges = UIEdgeInsetsMake(topInset, leftInset, topInset, rightInset)
         sizeBackgroundView(edges: edges)
         return edges
     }
+
 }
+
+

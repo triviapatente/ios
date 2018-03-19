@@ -158,7 +158,9 @@ extension PlayRoundViewController {
     override func opponentUser() -> User {
         return opponent
     }
-    
+    override func trainMode() -> Bool {
+        return false
+    }
 
 }
 
