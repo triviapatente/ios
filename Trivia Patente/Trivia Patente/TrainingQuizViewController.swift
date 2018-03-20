@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import SwiftyJSON
+import BulletinBoard
 
 class TrainingQuizViewController: BasePlayViewController {
 
@@ -17,33 +18,137 @@ class TrainingQuizViewController: BasePlayViewController {
     
     @IBOutlet weak var timerLabel : UILabel!
     @IBOutlet weak var completionCircularProgress : RPCircularProgress!
+    @IBOutlet weak var exitButton: UIButton!
     
     let httpTraining = HTTPTraining()
     
     var trainingStartTime : TimeInterval? = nil
-    let trainingDuration : TimeInterval = 40*60 // 40 minute
+    let trainingDuration : TimeInterval = 2*60 // 40 minute
+    var elapsedTime : TimeInterval = 0
     var timer : Timer?
     
     override var mainOnDismiss: Bool {
         return false
     }
     
+    var numberOfAnsweredItems : Int {
+        guard self.training.questions != nil else { return 0 }
+        return self.training.questions!.filter { (q) -> Bool in
+            return q.my_answer != nil
+            }.count
+    }
+    
+    lazy var bulletinManager: BulletinManager = {
+        let page = PageBulletinItem(title: "Tempo scaduto")
+        page.interfaceFactory.tintColor = Colors.primary
+        //        factory.alternativeButtonColor = Colors.secondary
+        page.interfaceFactory.actionButtonTitleColor = .white
+        page.shouldCompactDescriptionText = true
+        
+        page.image = UIImage(named: "timer-icon-dark")
+        
+        let answered = self.numberOfAnsweredItems
+        page.descriptionText = "Il tempo a tua disposizione per completare il questionario è finito. " + (answered < 40 ? "Hai risposto a \(answered) \((answered==1 ? "domanda." : "domande."))." : "Hai risposto a tutte le domande.")
+        page.actionButtonTitle = "Concludi questionario"
+        page.alternativeButtonTitle = "Cancella"
+        
+        page.actionHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: true, manager: self.bulletinManager)
+        }
+        
+        page.alternativeHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: false, manager: self.bulletinManager)
+        }
+        
+        return BulletinManager(rootItem: page)
+        
+    }()
+    
+    lazy var bulletinEndTraining: BulletinManager = {
+        let page = PageBulletinItem(title: "Concludi allenamento")
+        page.interfaceFactory.tintColor = Colors.primary
+        page.interfaceFactory.actionButtonTitleColor = .white
+        page.isDismissable = true
+        page.shouldCompactDescriptionText = true
+        
+        let answered = self.numberOfAnsweredItems
+        page.descriptionText = "Sei sicuro di voler uscire dall'allenamento? " + (answered < 40 ? "Hai risposto a \(answered) \((answered==1 ? "domanda." : "domande."))" : "Hai risposto a tutte le domande.")
+        page.actionButtonTitle = "Esci e salva"
+        page.alternativeButtonTitle = "Esci e annulla"
+        
+        page.actionHandler = { (item: PageBulletinItem) in
+//            self.bulletinEndTraining.rootItem.isDismissable = false
+            self.closeTraining(save: true, manager: self.bulletinEndTraining)
+        }
+        
+        page.alternativeHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: false, manager: self.bulletinEndTraining)
+        }
+        
+        return BulletinManager(rootItem: page)
+        
+    }()
+    
+    lazy var bulletinTrainingDone: BulletinManager = {
+        let page = PageBulletinItem(title: "Allenamento completato")
+        page.interfaceFactory.tintColor = Colors.primary
+        page.interfaceFactory.actionButtonTitleColor = .white
+        page.image = UIImage(named: "completed-icon")
+        
+        let answered = self.numberOfAnsweredItems
+        page.descriptionText = "Hai risposto a tutte le domande dell'allenamento 👏"
+        page.actionButtonTitle = "Vedi i risultati"
+        page.alternativeButtonTitle = "Rivedi le domande"
+        
+        page.actionHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: true, manager: self.bulletinTrainingDone)
+        }
+        
+        page.alternativeHandler = { (item: PageBulletinItem) in
+            self.bulletinTrainingDone.dismissBulletin(animated: true)
+        }
+        
+        return BulletinManager(rootItem: page)
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        exitButton.circleRounded()
+        exitButton.darkerBorder(of: 0.10, width: 5)
         self.pageControl.fullWidth = true
         self.pageControl.numberTitleOffset = 1
         self.getQuestions()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(appChangedStatusToInactive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appChangedStatusToActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+
     }
     
+    @IBAction func userWantsToExit() {
+        self.bulletinEndTraining.prepare()
+        self.bulletinEndTraining.presentBulletin(above: self)
+    }
+    
+    @objc private func appChangedStatusToActive() {
+        self.restartTimer()
+    }
+    @objc private func appChangedStatusToInactive() {
+        self.stopTimer()
+    }
+    
+    func closeTraining(save: Bool, manager: BulletinManager) {
+        if save {
+            manager.displayActivityIndicator()
+        } else {
+            manager.dismissBulletin(animated: true)
+            self.exitPlaying()
+        }
+        
+    }
     private func updateTrainingProgress() {
-        let answered = self.training.questions!.filter { (q) -> Bool in
-            return q.my_answer != nil
-        }.count
-        self.completionCircularProgress.updateProgress(CGFloat(answered)/CGFloat(training.questions!.count), animated: true, initialDelay: 0, duration: 0.1, completion: nil)
-
+        self.completionCircularProgress.updateProgress(CGFloat(numberOfAnsweredItems)/CGFloat(training.questions!.count), animated: true, initialDelay: 0, duration: 0.1, completion: nil)
     }
     
     private func getQuestions(animated: Bool = true) {
@@ -55,7 +160,7 @@ class TrainingQuizViewController: BasePlayViewController {
             if response.success {
                 self.training.questions = response.training!.questions!
                 self.questions = response.training!.questions!
-                self.startTimer()
+                self.initiateTimer()
             } else {
                 self.handleGenericError(message: response.message, dismiss: true)
             }
@@ -63,11 +168,14 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     
     /* Timer handling */
-    private func startTimer() {
+    private func initiateTimer() {
         self.trainingStartTime = Date().timeIntervalSince1970
+        self.startTimer()
+    }
+    private func startTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (t) in
-            let elapsed = Date().timeIntervalSince1970 - self.trainingStartTime!
-            let remaining = self.trainingDuration - elapsed
+            self.elapsedTime = Date().timeIntervalSince1970 - self.trainingStartTime!
+            let remaining = self.trainingDuration - self.elapsedTime
             self.timerLabel.text = String(format: "%02d:%02d", Int(remaining/60), Int(remaining.truncatingRemainder(dividingBy: 60.0)))
             if remaining <= 0 {
                 self.timeFinished()
@@ -81,6 +189,23 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     private func timeFinished() {
         stopTimer()
+        showTimeOut()
+    }
+    private func restartTimer() {
+        self.trainingStartTime = Date().timeIntervalSince1970 - self.elapsedTime
+        self.startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.stopTimer()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    private func showTimeOut() {
+        self.bulletinManager.prepare()
+        self.bulletinManager.presentBulletin(above: self)
     }
     
     override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
@@ -105,7 +230,8 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     
     func trainingEnded() {
-        
+        self.bulletinTrainingDone.prepare()
+        self.bulletinTrainingDone.presentBulletin(above: self)
     }
 
     override func didReceiveMemoryWarning() {

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -478,16 +479,6 @@ Svolto il 12 Agosto 2017</string>
                                     <segue destination="ymc-gi-wir" kind="embed" identifier="stack_view" id="yeL-wg-qs3"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fns-5j-2WD">
-                                <rect key="frame" x="86" y="551" width="203" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="bFp-bK-Ki2"/>
-                                    <constraint firstAttribute="width" constant="203" id="zXG-sA-8Ws"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="bmN-gJ-Ku6" kind="embed" identifier="game_actions" id="Fyi-rv-klG"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcD-x6-wG2" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -513,7 +504,7 @@ Svolto il 12 Agosto 2017</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-gi-5tW" customClass="RPCircularProgress" customModule="Trivia_Patente" customModuleProvider="target">
-                                <rect key="frame" x="16" y="28" width="30" height="30"/>
+                                <rect key="frame" x="16" y="27" width="30" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="dm4-Yf-FkD"/>
@@ -525,27 +516,41 @@ Svolto il 12 Agosto 2017</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyt-Ro-eU2">
+                                <rect key="frame" x="159.5" y="551" width="56" height="56"/>
+                                <color key="backgroundColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qyt-Ro-eU2" secondAttribute="height" multiplier="1:1" id="JsJ-dS-S9R"/>
+                                    <constraint firstAttribute="width" constant="56" id="nOn-a3-RsW"/>
+                                </constraints>
+                                <state key="normal" image="ic_clear_white">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="userWantsToExit" destination="3CN-CU-sEA" eventType="touchUpInside" id="vef-9M-gbg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qyt-Ro-eU2" firstAttribute="centerX" secondItem="9FR-gs-8yM" secondAttribute="centerX" id="DRd-Es-bCO"/>
                             <constraint firstItem="kWs-xV-ynK" firstAttribute="leading" secondItem="Bct-7v-ytI" secondAttribute="trailing" id="FmW-di-NVt"/>
                             <constraint firstItem="qcD-x6-wG2" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="LVv-0b-OIr"/>
                             <constraint firstItem="Hzd-gi-5tW" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" constant="16" id="QG9-B6-7MI"/>
-                            <constraint firstItem="qcD-x6-wG2" firstAttribute="top" secondItem="fns-5j-2WD" secondAttribute="bottom" constant="10" id="U3Q-18-hxV"/>
+                            <constraint firstItem="qcD-x6-wG2" firstAttribute="top" secondItem="qyt-Ro-eU2" secondAttribute="bottom" constant="10" id="VZz-pW-7is"/>
                             <constraint firstItem="BsW-FX-h4n" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="105" id="VkS-WH-vtI"/>
                             <constraint firstItem="Bct-7v-ytI" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="dZ9-iO-MVc"/>
                             <constraint firstItem="BsW-FX-h4n" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="da4-Oi-Xva"/>
                             <constraint firstItem="kWs-xV-ynK" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="dkb-wA-zdU"/>
                             <constraint firstItem="nZf-Hb-PmA" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" constant="16" id="fZH-bO-2fI"/>
                             <constraint firstItem="nZf-Hb-PmA" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="fig-Xe-5e5"/>
-                            <constraint firstItem="fns-5j-2WD" firstAttribute="centerX" secondItem="9FR-gs-8yM" secondAttribute="centerX" id="g93-Gi-rjO"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="kWs-xV-ynK" secondAttribute="trailing" constant="16" id="gO8-Ru-4me"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="D37-SV-GeM" secondAttribute="trailing" id="gYT-qd-XRG"/>
+                            <constraint firstItem="qyt-Ro-eU2" firstAttribute="top" secondItem="BsW-FX-h4n" secondAttribute="bottom" constant="32" id="gfV-9X-GCc"/>
                             <constraint firstItem="D37-SV-GeM" firstAttribute="leading" secondItem="Mzx-wy-Qt3" secondAttribute="leading" id="jEC-N5-JYZ"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="qcD-x6-wG2" secondAttribute="trailing" id="jNZ-lz-8gn"/>
                             <constraint firstItem="D37-SV-GeM" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="50" id="kfh-0i-fXb"/>
-                            <constraint firstItem="Hzd-gi-5tW" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="8" id="qdV-6G-GfK"/>
-                            <constraint firstItem="fns-5j-2WD" firstAttribute="top" secondItem="BsW-FX-h4n" secondAttribute="bottom" constant="32" id="rrQ-Tw-GaT"/>
+                            <constraint firstItem="Hzd-gi-5tW" firstAttribute="top" secondItem="Mzx-wy-Qt3" secondAttribute="top" constant="7" id="qdV-6G-GfK"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="trailing" secondItem="BsW-FX-h4n" secondAttribute="trailing" id="w8P-mQ-cpV"/>
                             <constraint firstItem="Mzx-wy-Qt3" firstAttribute="bottom" secondItem="qcD-x6-wG2" secondAttribute="bottom" id="wEC-WB-z5D"/>
                         </constraints>
@@ -554,6 +559,7 @@ Svolto il 12 Agosto 2017</string>
                     <connections>
                         <outlet property="bannerView" destination="qcD-x6-wG2" id="OII-ud-dfW"/>
                         <outlet property="completionCircularProgress" destination="Hzd-gi-5tW" id="3yg-88-9aK"/>
+                        <outlet property="exitButton" destination="qyt-Ro-eU2" id="qeZ-IG-3hv"/>
                         <outlet property="timerLabel" destination="kWs-xV-ynK" id="1hR-L9-BzS"/>
                     </connections>
                 </viewController>
@@ -588,8 +594,9 @@ Svolto il 12 Agosto 2017</string>
     </scenes>
     <resources>
         <image name="chevron-white" width="13" height="21"/>
+        <image name="ic_clear_white" width="24" height="24"/>
         <image name="simple_tick" width="23" height="22"/>
-        <image name="timer-icon" width="96" height="96"/>
+        <image name="timer-icon" width="75" height="83"/>
         <image name="waves" width="374" height="81"/>
     </resources>
 </document>
