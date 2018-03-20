@@ -132,6 +132,10 @@ class ShowQuizStackItemView: UIView {
         }
         self.endLoading(button: self.trueButton)
         self.endLoading(button: self.falseButton)
+        if delegate != nil {
+            self.trueButton.isEnabled = delegate.canAnswerQuiz(index: 0) // incomplete
+            self.falseButton.isEnabled = delegate.canAnswerQuiz(index: 0) // incomplete
+        }
         loadData()
     }
     func prepareView() {

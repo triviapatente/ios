@@ -184,6 +184,11 @@ extension BasePlayViewController : ShowQuizCellDelegate {
         return self.stackViewController.scrollToNext()
     }
     
+    // INCOMPLETE
+    func canAnswerQuiz(index: Int) -> Bool {
+        return true
+    }
+    
     
     func presentImage(image: UIImage?, target: UIView) {
         if let i = image {

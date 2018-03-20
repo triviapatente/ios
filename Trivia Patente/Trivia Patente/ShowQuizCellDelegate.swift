@@ -17,4 +17,5 @@ protocol ShowQuizCellDelegate  {
     func gotoQuiz(i : Int)
     func scroll_to_next() -> Bool
     func trainMode() -> Bool
+    func canAnswerQuiz(index: Int) -> Bool // INCOMPLETE
 }

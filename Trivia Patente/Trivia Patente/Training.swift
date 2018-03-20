@@ -68,5 +68,16 @@ open class Training : CommonPK {
         aCoder.encode(questions, forKey: kQuestionsKey)
         aCoder.encode(numberOfErrors, forKey: kStatsKey)
     }
+    
+    func getQuestionsAnswerAsDictionary() -> [String : Bool] {
+        guard self.questions != nil else { return [:] }
+        var dict : [String : Bool] = [:]
+        for question in self.questions! {
+            if let answer = question.my_answer {
+                dict["\(question.id!)"] = answer
+            }
+        }
+        return dict
+    }
 }
 

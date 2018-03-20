@@ -9,7 +9,7 @@
 import UIKit
 import BulletinBoard
 
-class TrainingListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TrainingListingViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, TrainingQuizViewControllerDelegate {
 
     @IBOutlet weak var newQuizButton: UIButton!
     
@@ -19,7 +19,6 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     @IBOutlet var collectionView : UICollectionView!
     @IBOutlet var emptyListLabel : UILabel!
 
-    
     let httpTraining = HTTPTraining()
     
     var trainings : [Training]?
@@ -129,6 +128,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
             destination.item = sender as? Training
         } else if segue.identifier == "quiz_view", let destination = segue.destination as? TrainingQuizViewController {
             destination.randomQuestions = sender as! Bool
+            destination.delegate = self
         }
     }
     
@@ -174,6 +174,10 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "quiz_details", sender: self.trainings![indexPath.row])
+    }
+    
+    func saveTraining(training: Training, addToList: Bool) {
+        print("To save")
     }
 
 }

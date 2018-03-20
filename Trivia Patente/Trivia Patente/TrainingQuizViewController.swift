@@ -11,6 +11,10 @@ import MBProgressHUD
 import SwiftyJSON
 import BulletinBoard
 
+protocol TrainingQuizViewControllerDelegate {
+    func saveTraining(training: Training, addToList: Bool)
+}
+
 class TrainingQuizViewController: BasePlayViewController {
 
     var randomQuestions : Bool = true
@@ -26,6 +30,10 @@ class TrainingQuizViewController: BasePlayViewController {
     let trainingDuration : TimeInterval = 2*60 // 40 minute
     var elapsedTime : TimeInterval = 0
     var timer : Timer?
+    
+    var delegate : TrainingQuizViewControllerDelegate!
+    
+    var trainingCompleted = false
     
     override var mainOnDismiss: Bool {
         return false
@@ -86,7 +94,22 @@ class TrainingQuizViewController: BasePlayViewController {
         }
         
         return BulletinManager(rootItem: page)
+    }()
+    
+    lazy var savingErrorBulletin : PageBulletinItem = {
+        let page = PageBulletinItem(title: "Errore salvataggio")
+        page.interfaceFactory.tintColor = Colors.primary
+        page.interfaceFactory.actionButtonTitleColor = .white
         
+        page.isDismissable = false
+        page.shouldCompactDescriptionText = true
+        
+        page.image = UIImage(named: "crying-face")
+        page.descriptionText = "C'è stato un problema durante il salvataggio dell'allenamento."
+        page.actionButtonTitle = "Riprova"
+        page.alternativeButtonTitle = "Esci senza salvare"
+        
+        return page
     }()
     
     lazy var bulletinTrainingDone: BulletinManager = {
@@ -105,6 +128,7 @@ class TrainingQuizViewController: BasePlayViewController {
         }
         
         page.alternativeHandler = { (item: PageBulletinItem) in
+            self.prepareSubmitButton()
             self.bulletinTrainingDone.dismissBulletin(animated: true)
         }
         
@@ -115,8 +139,7 @@ class TrainingQuizViewController: BasePlayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        exitButton.circleRounded()
-        exitButton.darkerBorder(of: 0.10, width: 5)
+        self.prepareActionButton(button: exitButton)
         self.pageControl.fullWidth = true
         self.pageControl.numberTitleOffset = 1
         self.getQuestions()
@@ -124,6 +147,11 @@ class TrainingQuizViewController: BasePlayViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(appChangedStatusToInactive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appChangedStatusToActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
 
+    }
+    
+    private func prepareActionButton(button: UIButton) {
+        button.circleRounded()
+        button.darkerBorder(of: 0.10, width: 5)
     }
     
     @IBAction func userWantsToExit() {
@@ -139,16 +167,43 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     
     func closeTraining(save: Bool, manager: BulletinManager) {
+        self.stopTimer()
+        self.trainingCompleted = false
         if save {
+            delegate.saveTraining(training: self.training, addToList: true)
             manager.displayActivityIndicator()
+            httpTraining.new_game(answers: self.training.getQuestionsAnswerAsDictionary(), handler: { (response) in
+                
+//                if response.success {
+//                    manager.dismissBulletin(animated: true)
+//                    self.exitPlaying()
+//                } else {
+                self.showErrorMessage(manager: manager)
+//                }
+            })
         } else {
             manager.dismissBulletin(animated: true)
             self.exitPlaying()
         }
-        
     }
     private func updateTrainingProgress() {
         self.completionCircularProgress.updateProgress(CGFloat(numberOfAnsweredItems)/CGFloat(training.questions!.count), animated: true, initialDelay: 0, duration: 0.1, completion: nil)
+    }
+    
+    private func prepareSubmitButton() {
+        self.exitButton.setImage(UIImage(named: "simple_tick"), for: .normal)
+        self.exitButton.backgroundColor = Colors.green_default
+        self.prepareActionButton(button: self.exitButton)
+    }
+    
+    private func showErrorMessage(manager: BulletinManager) {
+        self.savingErrorBulletin.actionHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: true, manager: manager)
+        }
+        self.savingErrorBulletin.alternativeHandler = { (item: PageBulletinItem) in
+            self.closeTraining(save: false, manager: manager)
+        }
+        manager.push(item: self.savingErrorBulletin)
     }
     
     private func getQuestions(animated: Bool = true) {
@@ -213,11 +268,14 @@ class TrainingQuizViewController: BasePlayViewController {
         quiz.my_answer = answer
         quiz.answeredCorrectly = correct
         self.pageControl.reloadData()
-        updateTrainingProgress()
+        
         if let next = nextQuiz() {
             gotoQuiz(i: next)
         } else {
-            self.trainingEnded()
+            // to improve someday
+            let topQuizCard = self.stackViewController.getTopItemView().contentView! as! ShowQuizStackItemView
+            topQuizCard.enable(button: answer ? topQuizCard.trueButton : topQuizCard.falseButton)
+            self.completedAllQuestions()
         }
     }
     
@@ -229,9 +287,13 @@ class TrainingQuizViewController: BasePlayViewController {
         return true
     }
     
-    func trainingEnded() {
-        self.bulletinTrainingDone.prepare()
-        self.bulletinTrainingDone.presentBulletin(above: self)
+    var completedAllQuestionsMessageShown = false
+    func completedAllQuestions() {
+        if !completedAllQuestionsMessageShown {
+            self.bulletinTrainingDone.prepare()
+            self.bulletinTrainingDone.presentBulletin(above: self)
+            completedAllQuestionsMessageShown = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -239,6 +301,9 @@ class TrainingQuizViewController: BasePlayViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func canAnswerQuiz(index: Int) -> Bool {
+        return !self.trainingCompleted
+    }
 
     /*
     // MARK: - Navigation

@@ -143,6 +143,11 @@ class GCStackViewController: UIViewController {
 //        self.updateFrames()
     }
     
+    func reloadTopItemContent() {
+        
+        dataSource!.configureViewForItem(itemView: getTopItemView(), index: currentIndex)
+    }
+    
     func scrollToNext(fastAnimation: Bool = true, propagate: Bool = true) -> Bool {
         if !lastElementSelected
         {
@@ -384,7 +389,7 @@ class GCStackViewController: UIViewController {
         return (scaleY, yOffset)
     }
     
-    private func getTopItemView() -> GCStackItemContainerView {
+    func getTopItemView() -> GCStackItemContainerView {
         return self.view.subviews.last! as! GCStackItemContainerView
     }
     
