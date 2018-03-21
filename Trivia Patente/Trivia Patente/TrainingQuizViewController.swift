@@ -93,6 +93,10 @@ class TrainingQuizViewController: BasePlayViewController {
             self.closeTraining(save: false, manager: self.bulletinEndTraining)
         }
         
+        page.dismissalHandler = { (item) in
+            self.restartTimer()
+            }
+        
         return BulletinManager(rootItem: page)
     }()
     
@@ -108,6 +112,10 @@ class TrainingQuizViewController: BasePlayViewController {
         page.descriptionText = "C'è stato un problema durante il salvataggio dell'allenamento."
         page.actionButtonTitle = "Riprova"
         page.alternativeButtonTitle = "Esci senza salvare"
+        
+        page.dismissalHandler = { (item) in
+            self.restartTimer()
+            }
         
         return page
     }()
@@ -130,6 +138,10 @@ class TrainingQuizViewController: BasePlayViewController {
         page.alternativeHandler = { (item: PageBulletinItem) in
             self.prepareSubmitButton()
             self.bulletinTrainingDone.dismissBulletin(animated: true)
+        }
+        
+        page.dismissalHandler = { (item) in
+            self.restartTimer()
         }
         
         return BulletinManager(rootItem: page)
@@ -156,6 +168,7 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     
     @IBAction func userWantsToExit() {
+        self.stopTimer()
         self.bulletinEndTraining.prepare()
         self.bulletinEndTraining.presentBulletin(above: self)
     }
@@ -261,6 +274,7 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     
     private func showTimeOut() {
+        self.stopTimer()
         self.bulletinManager.prepare()
         self.bulletinManager.presentBulletin(above: self)
     }
@@ -292,6 +306,7 @@ class TrainingQuizViewController: BasePlayViewController {
     var completedAllQuestionsMessageShown = false
     func completedAllQuestions() {
         if !completedAllQuestionsMessageShown {
+            self.stopTimer()
             self.bulletinTrainingDone.prepare()
             self.bulletinTrainingDone.presentBulletin(above: self)
             completedAllQuestionsMessageShown = true
@@ -307,6 +322,7 @@ class TrainingQuizViewController: BasePlayViewController {
         return !self.trainingCompleted
     }
 
+    
     /*
     // MARK: - Navigation
 
