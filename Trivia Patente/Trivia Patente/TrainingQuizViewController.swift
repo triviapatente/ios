@@ -172,14 +172,14 @@ class TrainingQuizViewController: BasePlayViewController {
         if save {
             delegate.saveTraining(training: self.training, addToList: true)
             manager.displayActivityIndicator()
-            httpTraining.new_game(answers: self.training.getQuestionsAnswerAsDictionary(), handler: { (response) in
+            httpTraining.new_training(answers: self.training.getQuestionsAnswerAsDictionary(), handler: { (response) in
                 
-//                if response.success {
-//                    manager.dismissBulletin(animated: true)
-//                    self.exitPlaying()
-//                } else {
-                self.showErrorMessage(manager: manager)
-//                }
+                if response.success {
+                    manager.dismissBulletin(animated: true)
+                    self.exitPlaying()
+                } else {
+                    self.showErrorMessage(manager: manager)
+                }
             })
         } else {
             manager.dismissBulletin(animated: true)

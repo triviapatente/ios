@@ -37,6 +37,9 @@ class TPResponse : CustomStringConvertible {
         }
         if let code = statusCode {
             self.statusCode = code
+            if self.statusCode != 200 {
+                self.success = false
+            }
         }
 
     }

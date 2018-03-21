@@ -216,7 +216,7 @@
                                 </constraints>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCB-EP-Oup">
-                                <rect key="frame" x="20" y="160" width="335" height="507"/>
+                                <rect key="frame" x="20" y="184" width="335" height="483"/>
                                 <string key="text">In questa modalità puoi simulare una prova d’esame, e vedere a che punto sei con la preparazione, così puoi continuare a giocare mentre aspetti i tuoi amici!
 Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di apprendimento 😻</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
@@ -224,17 +224,17 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b6R-Pb-7fC">
-                                <rect key="frame" x="0.0" y="160" width="375" height="507"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="483"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="1tH-Ks-5V0">
                                     <size key="itemSize" width="45" height="45"/>
-                                    <size key="headerReferenceSize" width="50" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="16" minY="5" maxX="16" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="quiz_cell" id="7tQ-Pw-Y6l" customClass="TrainingQuizCollectionViewCell" customModule="Trivia_Patente" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="35" width="45" height="45"/>
+                                        <rect key="frame" x="16" y="5" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
@@ -262,32 +262,24 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="mainHeader" id="81z-tq-x7B">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allenamenti svolti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-16-nPY">
-                                            <rect key="frame" x="20" y="8" width="335" height="14"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="JXz-16-nPY" secondAttribute="bottom" id="67P-UA-ESx"/>
-                                        <constraint firstAttribute="trailing" secondItem="JXz-16-nPY" secondAttribute="trailing" constant="20" id="Ojc-tS-PWW"/>
-                                        <constraint firstItem="JXz-16-nPY" firstAttribute="top" secondItem="81z-tq-x7B" secondAttribute="topMargin" id="OyU-bG-qZl"/>
-                                        <constraint firstItem="JXz-16-nPY" firstAttribute="leading" secondItem="81z-tq-x7B" secondAttribute="leading" constant="20" id="ccj-6w-a8n"/>
-                                    </constraints>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="Giz-d9-BmT" id="c8S-A2-xs5"/>
                                     <outlet property="delegate" destination="Giz-d9-BmT" id="ZHR-53-n5z"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allenamenti svolti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-16-nPY">
+                                <rect key="frame" x="16" y="160" width="343" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="K3u-DO-yI3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.50980392159999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="JXz-16-nPY" firstAttribute="top" secondItem="He8-IJ-aWm" secondAttribute="bottom" constant="12" id="02q-HF-6yo"/>
                             <constraint firstItem="jtO-hc-PTy" firstAttribute="top" secondItem="MlM-GS-n6f" secondAttribute="bottom" constant="-20" id="BDe-RY-QgW"/>
                             <constraint firstItem="OQn-2I-rf9" firstAttribute="leading" secondItem="MlM-GS-n6f" secondAttribute="leading" id="CcX-57-eEg"/>
                             <constraint firstItem="MlM-GS-n6f" firstAttribute="trailing" secondItem="He8-IJ-aWm" secondAttribute="trailing" constant="16" id="DT4-zW-iXj"/>
@@ -295,13 +287,15 @@ Dopodiché continua a sfidarli, prepararsi con un amico aumenta la velocità di 
                             <constraint firstItem="He8-IJ-aWm" firstAttribute="top" secondItem="OQn-2I-rf9" secondAttribute="bottom" constant="8" id="M6s-AA-fff"/>
                             <constraint firstAttribute="bottom" secondItem="jtO-hc-PTy" secondAttribute="bottom" id="OB4-dj-nqv"/>
                             <constraint firstItem="OQn-2I-rf9" firstAttribute="trailing" secondItem="MlM-GS-n6f" secondAttribute="trailing" id="R8P-eH-yht"/>
+                            <constraint firstItem="JXz-16-nPY" firstAttribute="leading" secondItem="MlM-GS-n6f" secondAttribute="leading" constant="16" id="RNS-db-Upk"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="top" secondItem="BCB-EP-Oup" secondAttribute="top" id="RSZ-8b-aKS"/>
                             <constraint firstItem="jtO-hc-PTy" firstAttribute="trailing" secondItem="MlM-GS-n6f" secondAttribute="trailing" id="WpW-EK-Baa"/>
                             <constraint firstItem="OQn-2I-rf9" firstAttribute="top" secondItem="Kce-Px-riA" secondAttribute="top" id="Ybu-Q5-s6n"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="bottom" secondItem="MlM-GS-n6f" secondAttribute="bottom" id="Ykw-Sb-Iou"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="leading" secondItem="BCB-EP-Oup" secondAttribute="leading" constant="-20" id="d1A-oe-6Ib"/>
-                            <constraint firstItem="b6R-Pb-7fC" firstAttribute="top" secondItem="He8-IJ-aWm" secondAttribute="bottom" constant="12" id="hTZ-7i-sGh"/>
+                            <constraint firstItem="b6R-Pb-7fC" firstAttribute="top" secondItem="JXz-16-nPY" secondAttribute="bottom" constant="8" id="kRA-1Q-6p6"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="bottom" secondItem="BCB-EP-Oup" secondAttribute="bottom" id="kr6-Ft-lz5"/>
+                            <constraint firstItem="MlM-GS-n6f" firstAttribute="trailing" secondItem="JXz-16-nPY" secondAttribute="trailing" constant="16" id="oAL-ru-jxf"/>
                             <constraint firstItem="jtO-hc-PTy" firstAttribute="leading" secondItem="MlM-GS-n6f" secondAttribute="leading" id="oFc-ue-2JQ"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="leading" secondItem="MlM-GS-n6f" secondAttribute="leading" id="paf-Tw-izc"/>
                             <constraint firstItem="b6R-Pb-7fC" firstAttribute="trailing" secondItem="MlM-GS-n6f" secondAttribute="trailing" id="t2d-bP-agk"/>
