@@ -34,9 +34,9 @@ open class Category: CommonPK {
         }
         return nil
     }
-    public init(name: String, id: Int32) {
+    public init(hint: String, id: Int32) {
         super.init(id: id)
-        self.name = name
+        self.hint = hint
     }
     var nativeColor : UIColor {
         return UIColor(hex: color!)
