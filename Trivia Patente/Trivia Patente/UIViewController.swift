@@ -107,12 +107,12 @@ extension UIViewController : TPViewController {
         }
     }
     
-    func handleGenericError( message: String?, dismiss: Bool = false) {
+    func handleGenericError( message: String?, dismiss: Bool = false, traslateUp: Bool = false) {
         var m = message
         if message == nil || message == "" {
             m = Strings.generic_error
         }
-        self.showToast(text: m!)
+        self.showToast(text: m!, traslateUp: traslateUp)
         if dismiss {
             Timer.scheduledTimer(withTimeInterval: Constants.toastDuration, repeats: false, block: { t in
                 DispatchQueue.main.async {
@@ -141,12 +141,12 @@ extension UIViewController : TPViewController {
         }
     }
     
-    func showToast(text: String)
+    func showToast(text: String, traslateUp: Bool = false)
     {
-        UIViewController.showToast(text: text, view: self.view)
+        UIViewController.showToast(text: text, view: self.view, traslateUp: traslateUp)
     }
     
-    class func showToast(text: String, view: UIView)
+    class func showToast(text: String, view: UIView, traslateUp: Bool = false)
     {
         view.endEditing(true)
         let toast = MBProgressHUD.clearAndShow(to: view, animated: true)
@@ -154,6 +154,9 @@ extension UIViewController : TPViewController {
         toast.label.text = text
         toast.label.numberOfLines = 0
         toast.removeFromSuperViewOnHide = true
+        if traslateUp {
+            toast.center = CGPoint(x: toast.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
+        }
         
         toast.hide(animated: true, afterDelay: Constants.toastDuration)
     }
