@@ -15,8 +15,8 @@ class HTTPTraining : HTTPManager {
     func list_trainings(handler : @escaping (TPTrainingsListResponse) -> Void) {
         self.request(url: "/training/all", method: .get, params: nil, handler: handler)
     }
-    func new_training(answers: [String: Bool], handler : @escaping (TPNewTrainingResponse) -> Void) {
-        self.request(url: "/training/new", method: .post, params: answers, handler: handler)
+    func new_training(answers: [String: Any], handler : @escaping (TPNewTrainingResponse) -> Void) {
+        self.request(url: "/training/new", method: .post, params: ["answers" : answers], jsonBody: true, handler: handler)
     }
     func get_new_training_questions(random: Bool, handler : @escaping (TPTrainingResponse) -> Void) {
         self.request(url: "/training/new", method: .get, params: ["random": random], handler: handler)

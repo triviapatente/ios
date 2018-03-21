@@ -37,7 +37,7 @@ class QuizSummaryHeaderViewController: UIViewController {
     func setItem(item: Training?) {
         if let training = item {
             scoreButton.setScore(scoreNumber: training.numberOfErrors)
-            mainLabel.text = "In questo questionario hai fatto \(training.numberOfErrors) errori\nSvolto il 12 Agosto 2017"
+            mainLabel.text = "In questo questionario hai fatto \(training.numberOfErrors!) errori\nCompletato: \(training.createdAt!.prettyDate.lowercased())"
         }
     }
 

@@ -58,8 +58,12 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         self.collectionView.refreshControl = refresher
 //        self.collectionView.addSubview(refresher)
         
-        self.refreshData()
+        
         self.loadStats()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.refreshData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,7 +82,9 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
                     self.loadStats()
                 }
                 // trainings
-                self.trainings = response.trainings
+                self.trainings = response.trainings.sorted(by: { (a, b) -> Bool in
+                    return a.createdAt! < b.createdAt!
+                })
                 self.collectionView.reloadData()
             } else {
                 self.handleGenericError(message: response.message, dismiss: true)

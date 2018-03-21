@@ -46,8 +46,13 @@ class QuizQuestionTableViewCell: UITableViewCell {
 
         }
         self.mainLabel.text = question.question!
-        self.set(label: self.trueValue, selected: question.answer!)
-        self.set(label: self.falseValue, selected: question.answer!)
+        self.set(label: self.trueValue, selected: false)
+        self.set(label: self.falseValue, selected: false)
+        
+        if let user_answer = question.my_answer {
+            self.set(label: user_answer ? self.trueValue : self.falseValue, selected: true)
+        }
+        question.answeredCorrectly = question.answer! == question.my_answer
         
         self.answered(correct: question.answeredCorrectly!)
     }

@@ -34,7 +34,6 @@ class QuizDetailsViewController: BaseViewController, QuizSummaryHeaderViewDelega
         self.quizStaticHeader.delegate = self
         self.tableView.register(UINib(nibName: "QuizQuestionTableViewCell", bundle: nil), forCellReuseIdentifier: "questionCell")
         
-        self.tableView.reloadData()
     }
     
     func presentImage(image: UIImage?) {
@@ -57,6 +56,7 @@ class QuizDetailsViewController: BaseViewController, QuizSummaryHeaderViewDelega
             MBProgressHUD.hide(for: self.view, animated: true)
             if response.success {
                 self.item!.questions = response.training.questions
+                self.tableView.reloadData()
             } else {
                 self.handleGenericError(message: response.message, dismiss: true)
             }
@@ -96,7 +96,7 @@ extension QuizDetailsViewController : CollieGalleryZoomTransitionDelegate {
 extension QuizDetailsViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard item != nil else {
+        guard item != nil && self.item!.questions != nil else {
             return 0
         }
         return self.item!.questions!.count

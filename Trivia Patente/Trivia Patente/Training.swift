@@ -13,6 +13,7 @@ open class Training : CommonPK {
     
     internal let kQuestionsKey: String = "questions"
     internal let kStatsKey: String = "stats"
+    internal let kNumberOfErrors : String = "numberOfErrors"
     
     open var questions : [Quiz]?
     open var numberOfErrors : Int32?
@@ -38,7 +39,7 @@ open class Training : CommonPK {
                 self.questions!.append(Quiz(json: questionsJSON))
             }
         }
-        numberOfErrors = json[kStatsKey].int32
+        numberOfErrors = json[kNumberOfErrors].int32
     }
     
     open override func dictionaryRepresentation() -> [String : AnyObject ] {
@@ -49,7 +50,7 @@ open class Training : CommonPK {
             dictionary.updateValue(questions! as AnyObject, forKey: kQuestionsKey)
         }
         if numberOfErrors != nil {
-            dictionary.updateValue(numberOfErrors! as AnyObject, forKey: kStatsKey)
+            dictionary.updateValue(numberOfErrors! as AnyObject, forKey: kNumberOfErrors)
         }
         
         
@@ -60,22 +61,20 @@ open class Training : CommonPK {
     required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.questions = aDecoder.decodeObject(forKey: kQuestionsKey) as? [Quiz]
-        self.numberOfErrors = aDecoder.decodeObject(forKey: kStatsKey) as? Int32
+        self.numberOfErrors = aDecoder.decodeObject(forKey: kNumberOfErrors) as? Int32
     }
     
     open override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(questions, forKey: kQuestionsKey)
-        aCoder.encode(numberOfErrors, forKey: kStatsKey)
+        aCoder.encode(numberOfErrors, forKey: kNumberOfErrors)
     }
     
-    func getQuestionsAnswerAsDictionary() -> [String : Bool] {
+    func getQuestionsAnswerAsDictionary() -> [String : Any] { // Used for saving a new training
         guard self.questions != nil else { return [:] }
-        var dict : [String : Bool] = [:]
-        for question in self.questions! {
-            if let answer = question.my_answer {
-                dict["\(question.id!)"] = answer
-            }
+        var dict : [String : Any] = [:]
+        for (i,question) in self.questions!.enumerated() {
+            dict["\(question.id!)"] = ["index": i, "answer" : question.my_answer]
         }
         return dict
     }

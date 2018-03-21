@@ -94,11 +94,11 @@ class HTTPManager {
 //            })
     }
     
-    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, handler: @escaping (T) -> Void) {
+    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, jsonBody : Bool = false, handler: @escaping (T) -> Void) {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        manager.request(destination, method: method, parameters: params, encoding: URLEncoding.default, headers: headers)
+        manager.request(destination, method: method, parameters: params, encoding: jsonBody ? JSONEncoding.default : URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in
