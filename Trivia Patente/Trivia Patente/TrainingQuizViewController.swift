@@ -142,6 +142,7 @@ class TrainingQuizViewController: BasePlayViewController {
         self.prepareActionButton(button: exitButton)
         self.pageControl.fullWidth = true
         self.pageControl.numberTitleOffset = 1
+        self.exitButton.isEnabled  = false
         self.getQuestions()
         
         NotificationCenter.default.addObserver(self, selector: #selector(appChangedStatusToInactive), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
@@ -216,6 +217,7 @@ class TrainingQuizViewController: BasePlayViewController {
                 self.training.questions = response.training!.questions!
                 self.questions = response.training!.questions!
                 self.initiateTimer()
+                self.exitButton.isEnabled  = true
             } else {
                 self.handleGenericError(message: response.message, dismiss: true)
             }
@@ -268,7 +270,7 @@ class TrainingQuizViewController: BasePlayViewController {
         quiz.my_answer = answer
         quiz.answeredCorrectly = correct
         self.pageControl.reloadData()
-        
+        updateTrainingProgress()
         if let next = nextQuiz() {
             gotoQuiz(i: next)
         } else {

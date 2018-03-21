@@ -83,7 +83,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
                 }
                 // trainings
                 self.trainings = response.trainings.sorted(by: { (a, b) -> Bool in
-                    return a.createdAt! < b.createdAt!
+                    return a.createdAt! > b.createdAt!
                 })
                 self.collectionView.reloadData()
             } else {

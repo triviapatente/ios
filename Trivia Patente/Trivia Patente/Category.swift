@@ -22,10 +22,10 @@ open class Category: CommonPK {
     // MARK: Properties
     open var name: String!
 
-    open var color: String!
-    open var hint: String!
-    open var correct_answers: Int!
-    open var total_answers: Int!
+    open var color: String?
+    open var hint: String?
+    open var correct_answers: Int?
+    open var total_answers: Int?
     
     var categoryImagesDirectory = "/category/image/"
     var imagePath : String? {
@@ -34,13 +34,17 @@ open class Category: CommonPK {
         }
         return nil
     }
+    public init(name: String, id: Int32) {
+        super.init(id: id)
+        self.name = name
+    }
     var nativeColor : UIColor {
-        return UIColor(hex: color)
+        return UIColor(hex: color!)
     }
     var progress : Int {
         get {
             guard total_answers != 0 else { return 0 }
-            return correct_answers * 100 / total_answers
+            return correct_answers! * 100 / total_answers!
         }
     }
     var status : CategoryStatus {

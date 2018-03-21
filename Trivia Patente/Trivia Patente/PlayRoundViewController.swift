@@ -151,7 +151,7 @@ extension PlayRoundViewController {
         return "Round \(round.number!)"
     }
     
-    override func headerRightSideData() -> Category {
+    override func headerRightSideData(quiz: Quiz) -> Category {
         return category
     }
     

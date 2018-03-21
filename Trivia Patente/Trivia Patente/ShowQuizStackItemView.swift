@@ -170,7 +170,7 @@ class ShowQuizStackItemView: UIView {
                 self.headerUserNameLabel.text = user.displayName
             }
             
-            if let cat = d.headerRightSideData() {
+            if let cat = d.headerRightSideData(quiz: quiz) {
                 self.headerRightLabel.text = cat.hint
                 self.headerRightImage.load(category: cat)
             }
