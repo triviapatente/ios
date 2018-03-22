@@ -18,7 +18,7 @@ open class Quiz: CommonPK {
     internal let kQuizCategoryIdKey: String = "category_id"
     internal let kQuizAnsweredCorrectlyKey: String = "answered_correctly"
     internal let kQuizRoundIdKey : String = "round_id"
-    internal let kQuizCategoryName : String = "category_name"
+    internal let kQuizCategoryHint : String = "category_hint"
 
 
     // MARK: Properties
@@ -29,7 +29,7 @@ open class Quiz: CommonPK {
 	open var categoryId: Int32?
     open var answeredCorrectly : Bool?
     open var roundId : Int32?
-    open var categoryName : String?
+    open var categoryHint : String?
 
     var imagePath : String? {
         get {
@@ -65,7 +65,7 @@ open class Quiz: CommonPK {
 		categoryId = json[kQuizCategoryIdKey].int32
         answeredCorrectly = json[kQuizAnsweredCorrectlyKey].bool
         roundId = json[kQuizRoundIdKey].int32
-        categoryName = json[kQuizCategoryName].string
+        categoryHint = json[kQuizCategoryHint].string
     }
 
 
@@ -92,8 +92,8 @@ open class Quiz: CommonPK {
         if roundId != nil {
             dictionary.updateValue(roundId! as AnyObject, forKey: kQuizRoundIdKey)
         }
-        if categoryName != nil {
-            dictionary.updateValue(roundId! as AnyObject, forKey: kQuizCategoryName)
+        if categoryHint != nil {
+            dictionary.updateValue(categoryHint! as AnyObject, forKey: kQuizCategoryHint)
         }
         dictionary.updateValue(answeredCorrectly as AnyObject, forKey: kQuizAnsweredCorrectlyKey)
 
@@ -110,7 +110,7 @@ open class Quiz: CommonPK {
 		self.categoryId = aDecoder.decodeObject(forKey: kQuizCategoryIdKey) as? Int32
         self.answeredCorrectly = aDecoder.decodeBool(forKey: kQuizAnsweredCorrectlyKey)
         self.roundId = aDecoder.decodeInt32(forKey: kQuizRoundIdKey)
-        self.categoryName = aDecoder.decodeObject(forKey: kQuizCategoryName) as? String
+        self.categoryHint = aDecoder.decodeObject(forKey: kQuizCategoryHint) as? String
     }
 
     open override func encode(with aCoder: NSCoder) {
@@ -122,7 +122,7 @@ open class Quiz: CommonPK {
 		aCoder.encode(categoryId, forKey: kQuizCategoryIdKey)
         aCoder.encode(answeredCorrectly, forKey: kQuizAnsweredCorrectlyKey)
         aCoder.encode(roundId, forKey: kQuizRoundIdKey)
-        aCoder.encode(categoryName, forKey: kQuizCategoryName)
+        aCoder.encode(categoryHint, forKey: kQuizCategoryHint)
     }
 
 }

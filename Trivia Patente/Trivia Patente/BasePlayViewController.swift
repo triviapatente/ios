@@ -177,8 +177,8 @@ extension BasePlayViewController : ShowQuizCellDelegate {
     }
     
     func headerRightSideData(quiz: Quiz) -> Category? {
-        if let catName = quiz.categoryName, let catId = quiz.categoryId {
-            return Category(hint: catName, id: catId)
+        if let hint = quiz.categoryHint, let catId = quiz.categoryId {
+            return Category(hint: hint, id: catId)
         }
         return nil
     }

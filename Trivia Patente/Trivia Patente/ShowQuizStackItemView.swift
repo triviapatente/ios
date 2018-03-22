@@ -116,6 +116,16 @@ class ShowQuizStackItemView: UIView {
         }
     }
     func prepareQuiz() {
+        
+        // calculate quation textview top content inset
+//        let tvHeight = self.quizNameView.frame.height
+//        let questionLabel = UILabel()
+//        questionLabel.text = quiz.question
+//        let questionTextHeight =  questionLabel.sizeThatFits(CGSize(width: self.quizNameView.frame.width, height: CGFloat.infinity)).height
+//        let textViewHeight = self.quizImageView.frame.
+//        let topSpace = (textViewHeight - questionTextHeight) / 2
+//        self.quizNameView.contentInset.top = topSpace
+        
         self.trueButton.isEnabled = true
         self.falseButton.isEnabled = true
         if let previousAnswer = quiz?.my_answer {
