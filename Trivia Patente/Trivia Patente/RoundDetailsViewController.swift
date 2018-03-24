@@ -218,7 +218,6 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         page.interfaceFactory.tintColor = Colors.primary
         page.interfaceFactory.actionButtonTitleColor = .white
         page.shouldCompactDescriptionText = true
-        page.isDismissable = true
         let imageLoader =  UIImageView()
         imageLoader.load(quiz: quiz)
         page.image = imageLoader.image
