@@ -12,7 +12,18 @@ import MBProgressHUD
 class ShowQuizStackItemView: UIView {
     
 //    static let QUIZ_IMAGE_HEIGHT = CGFloat(125)
-
+    var viewOnly : Bool = false {
+        didSet {
+            self.layoutForVisualizazioneType()
+        }
+    }
+    
+    func layoutForVisualizazioneType() {
+        guard headerContainer != nil, footerContainer != nil else { return }
+        self.headerContainer.isHidden = viewOnly
+        self.footerContainer.isHidden = viewOnly
+    }
+    
     var quiz : Quiz! {
         didSet {
 //            self.quizNameView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +67,10 @@ class ShowQuizStackItemView: UIView {
     @IBOutlet weak var headerUserNameLabel: UILabel!
     @IBOutlet weak var headerRightImage: UIImageView!
     @IBOutlet weak var headerRightLabel: UILabel!
+    @IBOutlet weak var headerContainer: UIView!
+    @IBOutlet weak var footerContainer: UIView!
     
+    @IBOutlet weak var bodyContainer: UIStackView!
     
     var imageExpanded = false
     @objc func imageClicked() {

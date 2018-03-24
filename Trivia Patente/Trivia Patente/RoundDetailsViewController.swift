@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import BulletinBoard
 
 class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     var game : Game! {
@@ -70,7 +71,6 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         if response != nil {
             self.sectionBar.game = game
             self.tableView.reloadData()
-            self.scrollViewDidEndDecelerating(self.tableView)
         }
     }
     @IBOutlet var tableView : UITableView!
@@ -149,6 +149,8 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         let request = GADRequest()
         interstitial.load(request)
         
+//        self.edgesForExtendedLayout = UIRectEdge.
+        
         let cellNib = UINib(nibName: "RoundDetailsTableViewCell", bundle: .main)
         let gameEndedNib = UINib(nibName: "GameEndedTableViewCell", bundle: .main)
         self.tableView.register(cellNib, forCellReuseIdentifier: detailsCellKey)
@@ -190,21 +192,6 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         
         super.viewWillDisappear(animated)
     }
-    func height(for indexPath: IndexPath, ignoreExpanded: Bool = false) -> CGFloat {
-        if indexPath.section == self.questionMap.count {
-            return END_ROW_HEIGHT
-        }
-        guard let selectedPath = self.tableView.indexPathForSelectedRow  else {
-            return DETAILS_ROW_HEIGHT
-        }
-        if !ignoreExpanded && (indexPath == selectedPath) {
-            let cell = self.tableView(tableView, cellForRowAt: selectedPath) as! RoundDetailsTableViewCell
-            let requiredHeight = cell.requiredHeight
-            return max(requiredHeight, DETAILS_ROW_HEIGHT)
-        } else {
-            return DETAILS_ROW_HEIGHT
-        }
-    }
     func rows(for section: Int) -> Int {
         if section == self.questionMap.count {
             return 1
@@ -221,6 +208,37 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             let round = self.response.rounds.filter({$0.number == page + 1}).first!
             self.headerView.category = self.response.categories.filter({$0.id == round.catId}).first!
             self.headerView.roundLabel.text = "Round \(page + 1)"
+        }
+    }
+    
+    // expanding single question
+    var quizDetailsBulletin : BulletinManager?
+    internal func showItemDetails(quiz: Quiz) {
+        let page = PageBulletinItem(title: "")
+        page.interfaceFactory.tintColor = Colors.primary
+        page.interfaceFactory.actionButtonTitleColor = .white
+        page.shouldCompactDescriptionText = true
+        page.isDismissable = true
+        let imageLoader =  UIImageView()
+        imageLoader.load(quiz: quiz)
+        page.image = imageLoader.image
+        
+        page.descriptionText = quiz.question
+        
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(dismissBulletin))
+        
+        
+        quizDetailsBulletin = BulletinManager(rootItem: page)
+        
+        quizDetailsBulletin!.prepare()
+        quizDetailsBulletin!.presentBulletin(above: self)
+        quizDetailsBulletin!.controller().view.addGestureRecognizer(tapper)
+
+    }
+    
+    func dismissBulletin() {
+        if let manager = self.quizDetailsBulletin {
+            manager.dismissBulletin(animated: true)
         }
     }
     
@@ -257,10 +275,6 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         let y = self.tableView.contentOffset.y
         let height = self.tableView.bounds.size.height
         return Int(ceil(y/height))
-//        if let i = self.sectionBar.tableView.indexPathForSelectedRow {
-//            return i.row
-//        }
-//        return 0
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -268,19 +282,6 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         if page < self.questionMap.count || (game.isEnded() && page == self.questionMap.count){
             self.configureHeader(page: page)
             self.sectionBar.currentPage = page
-        }
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if let selectedPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: selectedPath, animated: false)
-        }
-    }
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        if let selectedPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: selectedPath, animated: false)
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -293,42 +294,15 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return self.questionMap.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rows(for: section)
+        return 4
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.height(for: indexPath)
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let firstRowPath = IndexPath(row: 0, section: section)
-        let rowHeight =  self.height(for: firstRowPath, ignoreExpanded: true)
-        let count = self.rows(for: section)
-        return (self.tableView.frame.size.height - rowHeight * CGFloat(count)) / 2
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.tableView(tableView, heightForHeaderInSection: section)
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        return (self.tableView.frame.height) / 4
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.beginUpdates()
-        //triggers heightForRowAt: on every visible cell
-        self.tableView.endUpdates()
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self.tableView(tableView, didSelectRowAt: indexPath)
-    }
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        let cell = self.tableView.cellForRow(at: indexPath)
-        if cell?.isSelected == true {
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.tableView(tableView, didDeselectRowAt: indexPath)
-            return nil
-        }
-        return indexPath
+        let keys = self.keys()
+        let key = keys[indexPath.section]
+        self.showItemDetails(quiz: self.questionMap[key]![indexPath.row])
     }
     func keys() -> [String] {
         return self.questionMap.keys.sorted {

@@ -236,7 +236,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bodyContainer" destination="KXd-hN-Uhs" id="Vi8-gX-6pA"/>
                 <outlet property="falseButton" destination="4y1-Gp-ap6" id="3uA-oq-fH0"/>
+                <outlet property="footerContainer" destination="FFc-7s-5ni" id="lzj-b7-LJd"/>
+                <outlet property="headerContainer" destination="Ktr-Z5-fZa" id="d6R-vS-acK"/>
                 <outlet property="headerRightImage" destination="HaH-VX-wAr" id="ORv-mW-kgf"/>
                 <outlet property="headerRightLabel" destination="bqR-va-8Rk" id="OL8-rB-VF5"/>
                 <outlet property="headerUserImageView" destination="UA0-Sp-Rx9" id="Ecx-mv-8uY"/>

@@ -617,16 +617,22 @@
         <!--Round Details View Controller-->
         <scene sceneID="pt1-UX-bmG">
             <objects>
-                <viewController storyboardIdentifier="RoundDetailsViewController" id="ZWh-kv-MbX" customClass="RoundDetailsViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RoundDetailsViewController" automaticallyAdjustsScrollViewInsets="NO" id="ZWh-kv-MbX" customClass="RoundDetailsViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vut-eY-DKz"/>
                         <viewControllerLayoutGuide type="bottom" id="pYT-W5-Kp7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jea-Wn-pnL">
-                        <rect key="frame" x="0.0" y="0.0" width="203" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-p8-znG">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JfU-9T-EBL">
+                                <rect key="frame" x="16" y="220" width="288" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Io8-nV-HKW"/>
+                                </constraints>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-p8-znG">
                                 <rect key="frame" x="0.0" y="75" width="30" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -636,16 +642,17 @@
                                     <segue destination="cDR-IV-g5u" kind="embed" identifier="section_bar" id="0Ek-Eu-d1u"/>
                                 </connections>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
-                                <rect key="frame" x="30" y="75" width="173" height="388"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="20" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUB-ex-W0C">
+                                <rect key="frame" x="30" y="75" width="290" height="388"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ZWh-kv-MbX" id="lcX-cX-Kjx"/>
                                     <outlet property="delegate" destination="ZWh-kv-MbX" id="rpF-Hr-LNJ"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
-                                <rect key="frame" x="0.0" y="10" width="203" height="35"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gub-eN-bWS">
+                                <rect key="frame" x="0.0" y="30" width="320" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vKM-c5-CrP"/>
                                 </constraints>
@@ -653,8 +660,8 @@
                                     <segue destination="Pj9-5A-Y1R" kind="embed" identifier="header_view" id="xqV-nx-JeY"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXR-xc-McB">
-                                <rect key="frame" x="40" y="489" width="123" height="53"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXR-xc-McB">
+                                <rect key="frame" x="40" y="489" width="240" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="6Zu-rB-JTh"/>
                                 </constraints>
@@ -669,13 +676,17 @@
                             <constraint firstItem="gub-eN-bWS" firstAttribute="top" secondItem="Vut-eY-DKz" secondAttribute="bottom" constant="10" id="2Sg-gH-sk3"/>
                             <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="SXR-xc-McB" secondAttribute="bottom" constant="26" id="4bF-Ld-5J4"/>
                             <constraint firstItem="Si0-p8-znG" firstAttribute="top" secondItem="gub-eN-bWS" secondAttribute="bottom" constant="10" id="Aun-4e-XKr"/>
+                            <constraint firstItem="JfU-9T-EBL" firstAttribute="centerX" secondItem="jea-Wn-pnL" secondAttribute="centerX" id="FPs-Pe-V4R"/>
                             <constraint firstItem="AUB-ex-W0C" firstAttribute="leading" secondItem="Si0-p8-znG" secondAttribute="trailing" id="NDE-gP-dOz"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leadingMargin" constant="24" id="NpQ-V0-lnK"/>
                             <constraint firstAttribute="trailing" secondItem="gub-eN-bWS" secondAttribute="trailing" id="SyD-oS-AHJ"/>
+                            <constraint firstAttribute="trailing" secondItem="JfU-9T-EBL" secondAttribute="trailing" constant="16" id="WN1-As-Mdo"/>
+                            <constraint firstItem="JfU-9T-EBL" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" constant="16" id="dJB-tg-xSQ"/>
                             <constraint firstItem="pYT-W5-Kp7" firstAttribute="top" secondItem="Si0-p8-znG" secondAttribute="bottom" constant="105" id="eGM-Ut-A5l"/>
                             <constraint firstItem="SXR-xc-McB" firstAttribute="top" secondItem="AUB-ex-W0C" secondAttribute="bottom" constant="26" id="gEp-hf-e7r"/>
                             <constraint firstItem="Si0-p8-znG" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" id="lWw-Vz-aE0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SXR-xc-McB" secondAttribute="trailing" constant="24" id="nH4-U0-o6V"/>
+                            <constraint firstItem="JfU-9T-EBL" firstAttribute="centerY" secondItem="jea-Wn-pnL" secondAttribute="centerY" id="rKr-iH-kf4"/>
                             <constraint firstItem="gub-eN-bWS" firstAttribute="leading" secondItem="jea-Wn-pnL" secondAttribute="leading" id="t6M-wM-b4d"/>
                             <constraint firstItem="AUB-ex-W0C" firstAttribute="top" secondItem="gub-eN-bWS" secondAttribute="bottom" constant="10" id="uBJ-n1-OLn"/>
                         </constraints>
@@ -687,7 +698,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhK-Wp-YH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1419" y="397"/>
+            <point key="canvasLocation" x="1417.5" y="396.12676056338029"/>
         </scene>
         <!--Game Actions-->
         <scene sceneID="Nmu-cx-qHz">
@@ -1049,10 +1060,10 @@
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NV8-od-C3s"/>
-        <segue reference="F5i-i7-toe"/>
+        <segue reference="kf4-r3-nBv"/>
+        <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
-        <segue reference="0L7-TT-S4h"/>
-        <segue reference="ygJ-H6-qBG"/>
+        <segue reference="iPF-Kj-XFy"/>
+        <segue reference="xqV-nx-JeY"/>
     </inferredMetricsTieBreakers>
 </document>

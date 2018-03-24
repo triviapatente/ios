@@ -21,7 +21,7 @@ import UIKit
 
 public final class BulletinManager {
 
-    private var viewController: BulletinViewController!
+    var viewController: BulletinViewController!
 
     // MARK: - Configuration
 
@@ -61,6 +61,10 @@ public final class BulletinManager {
         self.itemsStack = []
         self.currentItem = rootItem
 
+    }
+    
+    public func controller() -> UIViewController {
+        return viewController
     }
 
 
