@@ -102,7 +102,7 @@ class TPExpandableView: BaseViewController {
             return .zero
         }
         let rect = CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: height)
-        return rect
+        return CGRect.zero//rect
     }
     var previousContainerHeight : CGFloat!
     

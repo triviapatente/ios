@@ -26,7 +26,7 @@ class MainViewController: TPNormalViewController {
     var recentGamesView : TPExpandableView! {
         didSet {
             recentGamesView.cellNibName = "RecentGameTableViewCell"
-            recentGamesView.footerText = "Non ci sono altre partite.. \nIniziane un’altra 😉"
+            recentGamesView.footerText = ""//"Non ci sono altre partite.. \nIniziane un’altra 😉"
             recentGamesView.emptyTitleText = "Nessuna partita recente"
             recentGamesView.title = "Partite recenti"
             recentGamesView.separatorColor = Colors.primary
