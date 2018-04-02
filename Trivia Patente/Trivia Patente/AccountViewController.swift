@@ -38,7 +38,6 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         let changePasswordButton = UIBarButtonItem(image: UIImage(named: "key-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(changePassword))
         self.navigationItem.rightBarButtonItems = [changePasswordButton]
         
-        self.avatarImageView.circleRounded()
         self.submitButton.smallRounded()
         
         self.nameField.initValues(hint: "Nome", delegate: self)
@@ -56,6 +55,10 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         } else {
             // TODO: handler nel caso l'utente sia scollegato
         }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.avatarImageView.circleRounded()
     }
     func checkValues(vibrate : Bool = false) {
         let name = nameField.getText()
