@@ -293,13 +293,52 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
         return self.questionMap.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let keys = self.keys()
+        if section >= keys.count {
+            return 1
+        }
         return 4
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let keys = self.keys()
+        if indexPath.section >= keys.count {
+            return END_ROW_HEIGHT
+        }
         return (self.tableView.frame.height) / 4
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return heightForAccesoryView(section: section)
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return heightForAccesoryView(section: section)
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return viewForAccesoryView(section: section)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return viewForAccesoryView(section: section)
+    }
+    func viewForAccesoryView(section: Int) -> UIView? {
+        let keys = self.keys()
+        if section >= keys.count {
+            let v = UIView()
+            v.backgroundColor = UIColor.clear
+            return v
+        }
+        return nil
+    }
+    func heightForAccesoryView(section: Int) -> CGFloat {
+        let keys = self.keys()
+        if section >= keys.count {
+        return (self.tableView.frame.height - END_ROW_HEIGHT).divided(by: 2.0)
+        }
+        return 0.0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let keys = self.keys()
+        if indexPath.section >= keys.count {
+            return
+        }
         let key = keys[indexPath.section]
         self.showItemDetails(quiz: self.questionMap[key]![indexPath.row])
     }

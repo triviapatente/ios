@@ -12,7 +12,6 @@ class GameEndedTableViewCell: UITableViewCell {
     @IBOutlet var gameButton : UIButton!
     @IBOutlet var titleLabel : UILabel!
     @IBOutlet var scoreIncrementLabel : UILabel!
-    @IBOutlet var arrowImageView : UIImageView!
     @IBOutlet var usersImageView : [UIImageView]!
     @IBOutlet var iconLabels : [UILabel]!
     @IBOutlet var containerView : UIView!
@@ -54,8 +53,7 @@ class GameEndedTableViewCell: UITableViewCell {
     }
     var scoreIncrement : Int! {
         didSet {
-            self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString())"
-            self.arrowImageView.image = self.arrowFor(increment: scoreIncrement)
+            self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString()) \(abs(scoreIncrement) == 1 ? "punto" : "punti")"
             self.titleLabel.text = self.titleFor(game: game)
         }
     }
@@ -76,10 +74,6 @@ class GameEndedTableViewCell: UITableViewCell {
             self.titleLabel.text = self.titleFor(game: game)
             self.configureButton(game: game)
         }
-    }
-    func arrowFor(increment : Int) -> UIImage {
-        let name = (increment > 0) ? "up_score_arrow" : "down_score_arrow"
-        return UIImage(named: name)!
     }
     func titleFor(game : Game) -> String {
         if (isCancelled && game.ended == true && game.started == false) || (game.ended && (scoreIncrement == 0 || scoreIncrement == nil)) {

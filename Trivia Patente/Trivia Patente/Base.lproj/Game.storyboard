@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -334,7 +333,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1T-H1-iyg">
                                                             <rect key="frame" x="105" y="0.0" width="95" height="30"/>
                                                             <color key="backgroundColor" red="0.82515770196914673" green="0.0" blue="0.050240688025951385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Esci">
+                                                            <state key="normal" title="Arrenditi">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -351,21 +350,14 @@
                                                     <rect key="frame" x="125" y="121" width="0.0" height="35"/>
                                                     <subviews>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM6-QS-Jd7">
-                                                            <rect key="frame" x="-101.5" y="-36" width="60" height="150"/>
+                                                            <rect key="frame" x="-101.5" y="-36" width="0.0" height="27.5"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                             <color key="textColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_score_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ur8-XV-rVN">
-                                                            <rect key="frame" x="-101.5" y="-36" width="20" height="150"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="20" id="omE-3f-tvz"/>
-                                                            </constraints>
-                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="nng-Bq-u6Q"/>
-                                                        <constraint firstItem="Ur8-XV-rVN" firstAttribute="width" secondItem="DM6-QS-Jd7" secondAttribute="width" multiplier="10:30" id="u37-ec-83l"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -401,7 +393,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="arrowView" destination="Ur8-XV-rVN" id="AGw-w3-qrZ"/>
                         <outlet property="containerView" destination="wRs-Y1-xy3" id="Rbj-kF-kET"/>
                         <outlet property="decrementLabel" destination="DM6-QS-Jd7" id="hhI-8f-Uzs"/>
                         <outlet property="dismissButton" destination="htI-s9-dCw" id="DJ9-M2-ZGr"/>
@@ -1056,14 +1047,13 @@
         <image name="action_bell_rang" width="22" height="22"/>
         <image name="chevron-white" width="13" height="21"/>
         <image name="coming_soon_white_big" width="154" height="96"/>
-        <image name="down_score_arrow" width="80" height="150"/>
         <image name="flag-icon" width="16" height="19"/>
         <image name="ic_chat_white" width="24" height="24"/>
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kf4-r3-nBv"/>
-        <segue reference="F5i-i7-toe"/>
+        <segue reference="HCl-2p-GQX"/>
         <segue reference="d1s-Rz-ALU"/>
         <segue reference="iPF-Kj-XFy"/>
         <segue reference="xqV-nx-JeY"/>

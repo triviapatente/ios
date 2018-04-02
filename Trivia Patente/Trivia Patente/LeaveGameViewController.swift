@@ -14,7 +14,6 @@ class LeaveGameViewController: BaseViewController {
     @IBOutlet var dismissButton : UIButton!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet weak var mainTitle: UILabel!
-    @IBOutlet weak var arrowView: UIImageView!
     
     var game : Game!
     
@@ -55,8 +54,7 @@ class LeaveGameViewController: BaseViewController {
                 } else {
                     self.mainTitle.text = "Sei sicuro di volerti arrendere?"
                     self.decrementLabel.isHidden = false
-                    self.arrowView.isHidden = false
-                    self.decrementLabel.text = "\(response.decrement!)"
+                    self.decrementLabel.text = "\(response.decrement!) \(abs(response.decrement) == 1 ? "punto" : "punti")"
                 }
             }
         }
