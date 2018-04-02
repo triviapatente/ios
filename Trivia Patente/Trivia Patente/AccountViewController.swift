@@ -35,7 +35,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         self.setDefaultBackgroundGradient()
         
         // set bar button item for password change
-        let changePasswordButton = UIBarButtonItem(image: UIImage(named: "gear-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(changePassword))
+        let changePasswordButton = UIBarButtonItem(image: UIImage(named: "key-icon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(changePassword))
         self.navigationItem.rightBarButtonItems = [changePasswordButton]
         
         self.avatarImageView.circleRounded()
