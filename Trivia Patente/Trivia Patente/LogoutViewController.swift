@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 class LogoutViewController: BaseViewController {
-
+    @IBOutlet var modalView : UIView!
     @IBOutlet var leaveButton : UIButton!
     @IBOutlet var remainButton : UIButton!
     
@@ -34,6 +34,7 @@ class LogoutViewController: BaseViewController {
         super.viewDidLoad()
         self.leaveButton.mediumRounded()
         self.remainButton.mediumRounded()
+        self.modalView.mediumRounded()
         // Do any additional setup after loading the view.
     }
 

@@ -392,7 +392,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-oG-LgY">
-                                            <rect key="frame" x="-19" y="259" width="413" height="150"/>
+                                            <rect key="frame" x="40" y="259" width="413" height="150"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sei sicuro di voler disconnettere il tuo account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-hA-HHQ">
                                                     <rect key="frame" x="30" y="10" width="353" height="80"/>
@@ -400,11 +400,11 @@ Fallo sapere ai tuoi amici 😉</string>
                                                         <constraint firstAttribute="height" constant="80" id="a9N-vq-T7K"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.0" green="0.66666666669999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-3K-3Jz">
-                                                    <rect key="frame" x="114.5" y="110" width="185" height="30"/>
+                                                    <rect key="frame" x="114" y="110" width="185" height="30"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43h-Gj-FlC">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
@@ -439,6 +439,7 @@ Fallo sapere ai tuoi amici 😉</string>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="413" id="4wd-xc-Pkd"/>
                                                 <constraint firstItem="Xfe-3K-3Jz" firstAttribute="centerX" secondItem="TqG-oG-LgY" secondAttribute="centerX" id="9vW-BU-0N9"/>
@@ -452,7 +453,9 @@ Fallo sapere ai tuoi amici 😉</string>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="TqG-oG-LgY" firstAttribute="centerX" secondItem="gYp-g0-Uea" secondAttribute="centerX" id="NHU-Lo-Gcb"/>
+                                        <constraint firstItem="TqG-oG-LgY" firstAttribute="leading" secondItem="gYp-g0-Uea" secondAttribute="leading" constant="40" id="Q12-2F-EBQ"/>
                                         <constraint firstItem="TqG-oG-LgY" firstAttribute="centerY" secondItem="gYp-g0-Uea" secondAttribute="centerY" id="Ua8-XC-Skc"/>
+                                        <constraint firstAttribute="trailing" secondItem="TqG-oG-LgY" secondAttribute="trailing" constant="40" id="dry-7Q-q7e"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -467,12 +470,13 @@ Fallo sapere ai tuoi amici 😉</string>
                     </view>
                     <connections>
                         <outlet property="leaveButton" destination="FcH-cr-l8v" id="BOp-vX-UYI"/>
+                        <outlet property="modalView" destination="TqG-oG-LgY" id="x9D-9P-ilC"/>
                         <outlet property="remainButton" destination="43h-Gj-FlC" id="Ybg-vG-qbs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaL-9e-Qi7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3070" y="-151"/>
+            <point key="canvasLocation" x="3069.5999999999999" y="-151.57421289355324"/>
         </scene>
         <!--Main Button-->
         <scene sceneID="vZS-eu-Izu">
