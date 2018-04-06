@@ -12,7 +12,6 @@ import MBProgressHUD
 class SearchGameMenuViewController: TPNormalViewController {
     @IBOutlet var searchButton : UIButton!
     @IBOutlet var randomButton : UIButton!
-    @IBOutlet var tournamentButton : UIButton!
     let handler = HTTPGame()
     
     var destinationGame : Game?
@@ -65,7 +64,6 @@ class SearchGameMenuViewController: TPNormalViewController {
         super.viewDidLoad()
         searchButton.mediumRounded()
         randomButton.mediumRounded()
-        tournamentButton.mediumRounded()
         // ATTENTION: siccome sono stati tolti gli inviti si possono togliere queste due cose
 //        self.load()
 //        self.listen()

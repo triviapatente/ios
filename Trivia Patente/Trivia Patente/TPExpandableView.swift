@@ -9,7 +9,7 @@
 import UIKit
 
 class TPExpandableView: BaseViewController {
-    static let DEAFULT_CONTAINER_TOP_SPACE = CGFloat(355)
+    static let DEAFULT_CONTAINER_TOP_SPACE = CGFloat(305)
     
     @IBOutlet weak var headerView : UINavigationBar!
 //    @IBOutlet var counterLabel : UILabel!

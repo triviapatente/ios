@@ -19,7 +19,6 @@ class MainViewController: TPNormalViewController {
     var playButton : TPMainButton!
     var rankButton : TPMainButton!
     var statsButton : TPMainButton!
-    var shopButton : TPMainButton!
     var trainingButton : TPMainButton!
     var selectedGame : Game!
     @IBOutlet var recentGamesViewContainer : UIView!
@@ -65,8 +64,7 @@ class MainViewController: TPNormalViewController {
         switch(button) {
             case self.playButton: return "play_segue"
             case self.rankButton: return "rank_segue"
-            case self.statsButton: return "alpha_segue"
-            case self.shopButton: return "alpha_segue"
+            case self.statsButton: return "stats_segue"
             case self.trainingButton: return "training_segue"
             default: return nil
         }
@@ -77,7 +75,6 @@ class MainViewController: TPNormalViewController {
         self.playButton.initValues(imageName: "car", title: "Nuova partita", color: Colors.playColor, clickListener: buttonClickListener)
         self.rankButton.initValues(imageName: "trophy", title: "Classifica", color: Colors.rankColor, clickListener: buttonClickListener)
         self.statsButton.initValues(imageName: "chart-line", title: "Statistiche", color: Colors.statsColor, clickListener: buttonClickListener)
-        self.shopButton.initValues(imageName: "heart", title: "Negozio", color: Colors.shopColor, clickListener: buttonClickListener)
         self.trainingButton.initValues(imageName: "gym", title: "Allenamento", color: Colors.trainingColor, clickListener: buttonClickListener)
         
         self.setDefaultBackgroundGradient()
@@ -89,8 +86,6 @@ class MainViewController: TPNormalViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.statsButton.setComingSoon()
-        self.shopButton.setComingSoon()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -192,9 +187,9 @@ class MainViewController: TPNormalViewController {
             let statsHints = getStatsHints(response: response)
             self.statsButton.display(hints: statsHints)
             
-            if let shopHint = getShopHint(response: response) {
+            /*if let shopHint = getShopHint(response: response) {
                 self.shopButton.display(hint: shopHint)
-            }
+            }*/
         }
     }
     func getPlayHint(response : TPConnectResponse) -> String? {
@@ -254,9 +249,9 @@ class MainViewController: TPNormalViewController {
                 case "stats":
                     self.statsButton = destination as! TPMainButton
                     break
-                case "shop":
+                /*case "shop":
                     self.shopButton = destination as! TPMainButton
-                    break
+                    break*/
                 case "training":
                     self.trainingButton = destination as! TPMainButton
                 case "recent_view":
