@@ -27,9 +27,9 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
     lazy var bulletinManager: BulletinManager = {
         let page = ChooserBulletinItem(title: "Nuovo questionario")
         
-        page.descriptionText = "Scegli come vuoi che venga creato il questionario"
+        page.descriptionText = "Vuoi un questionario personalizzato in base alle tue precedenti prestazioni oppure casuale?"
         page.actionButtonTitle = "Chiudi"
-        page.alternativeButtonTitle = ["Domande a random", "Domande precedentemente sbagliate"]
+        page.alternativeButtonTitle = ["Questionario personalizzato", "Questionario casuale"]
         
         page.alternativeHandler = { (button: UIButton, index: Int) in
             page.manager!.dismissBulletin()

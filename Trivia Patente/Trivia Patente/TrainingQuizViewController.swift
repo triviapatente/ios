@@ -27,7 +27,7 @@ class TrainingQuizViewController: BasePlayViewController {
     let httpTraining = HTTPTraining()
     
     var trainingStartTime : TimeInterval? = nil
-    let trainingDuration : TimeInterval = 2*60 // 40 minute
+    let trainingDuration : TimeInterval = 40*60 // 40 minute
     var elapsedTime : TimeInterval = 0
     var timer : Timer?
     
@@ -129,7 +129,7 @@ class TrainingQuizViewController: BasePlayViewController {
         let answered = self.numberOfAnsweredItems
         page.descriptionText = "Hai risposto a tutte le domande dell'allenamento 👏"
         page.actionButtonTitle = "Vedi i risultati"
-        page.alternativeButtonTitle = "Rivedi le domande"
+        page.alternativeButtonTitle = "Riguarda le domande"
         
         page.actionHandler = { (item: PageBulletinItem) in
             self.closeTraining(save: true, manager: self.bulletinTrainingDone)
