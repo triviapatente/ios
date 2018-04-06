@@ -21,7 +21,11 @@ extension DataRequest {
                     return .failure(BackendError(message: tpResponse.message))
                 }
             } else {
-                return .failure(BackendError(message: "No response from server"))
+                if let mError = error, mError._code == NSURLErrorCancelled {
+                    return .failure(BackendError(cancelled: true))
+                } else {
+                    return .failure(BackendError(message: "No response from server"))
+                }
             }
         }
         return response(responseSerializer: serializer, completionHandler: completionHandler)
@@ -29,7 +33,10 @@ extension DataRequest {
 }
 class BackendError : Error {
     var message : String?
-    
+    var cancelled : Bool = false
+    init(cancelled : Bool) {
+        self.cancelled = cancelled
+    }
     init(message : String) {
         self.message = message
     }

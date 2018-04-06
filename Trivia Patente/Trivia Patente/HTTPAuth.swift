@@ -12,7 +12,7 @@ import Alamofire
 class HTTPAuth : HTTPManager {
     func login(user : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["user": user, "password": password]
-        request(url: "/auth/login", method: .post, params: parameters, auth: false) {   (response : TPAuthResponse) in
+        _ = request(url: "/auth/login", method: .post, params: parameters, auth: false) {   (response : TPAuthResponse) in
             guard self != nil else { return }
             if let token = response.token {
                 SessionManager.set(token: token)
@@ -26,14 +26,14 @@ class HTTPAuth : HTTPManager {
     }
     func forgotPassword(usernameOrEmail : String, handler : @escaping (TPForgotResponse) -> Void) {
         let parameters = ["usernameOrEmail": usernameOrEmail]
-        request(url: "/auth/password/request", method: .post, params: parameters, auth: false) {   (response : TPForgotResponse) in
+        _ = request(url: "/auth/password/request", method: .post, params: parameters, auth: false) {   (response : TPForgotResponse) in
             guard self != nil else { return }
             handler(response)
         }
     }
     func fb_auth(token : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["token": token]
-        request(url: "/fb/auth", method: .post, params: parameters, auth: false) {  (response : TPAuthResponse) in
+        _ = request(url: "/fb/auth", method: .post, params: parameters, auth: false) {  (response : TPAuthResponse) in
             guard self != nil else { return }
             if let token = response.token {
                 SessionManager.set(token: token)
@@ -47,7 +47,7 @@ class HTTPAuth : HTTPManager {
     }
     func link_to_fb(token : String, handler : @escaping (TPFBResponse) -> Void) {
         let parameters = ["token": token]
-        request(url: "/fb/link", method: .post, params: parameters) {  (response : TPFBResponse) in
+        _ = request(url: "/fb/link", method: .post, params: parameters) {  (response : TPFBResponse) in
             guard self != nil else { return }
             if let user = response.user {
                 SessionManager.set(user: user)
@@ -59,7 +59,7 @@ class HTTPAuth : HTTPManager {
         }
     }
     func user(handler : @escaping (TPUserResponse) -> Void) {
-        request(url: "/account/user", method: .get, params: nil, handler: handler)
+        _ = request(url: "/account/user", method: .get, params: nil, handler: handler)
     }
     func logout(handler : @escaping (TPAuthResponse) -> Void) {
 //        request(url: "/auth/logout", method: .post, params: nil) { (response : TPAuthResponse) in
@@ -81,7 +81,7 @@ class HTTPAuth : HTTPManager {
     
     func register(username : String, email : String, password : String, handler : @escaping (TPAuthResponse) -> Void) {
         let parameters = ["username": username, "password": password, "email": email]
-        request(url: "/auth/register", method: .post, params: parameters, auth: false) {   (response : TPAuthResponse) in
+        _ = request(url: "/auth/register", method: .post, params: parameters, auth: false) {   (response : TPAuthResponse) in
             guard self != nil else { return }
             if let token = response.token {
                 SessionManager.set(token: token)

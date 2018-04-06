@@ -14,6 +14,6 @@ class HTTPStats: HTTPManager {
         if let id = category.id {
             url += "\(id)"
         }
-        self.request(url: url, method: .get, params: nil, handler: handler)
+        _ = self.request(url: url, method: .get, params: nil, handler: handler)
     }
 }

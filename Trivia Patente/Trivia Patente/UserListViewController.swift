@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import Alamofire
 
 class UserListViewController: TPNormalViewController {
     @IBOutlet var tableView : UITableView!
@@ -390,9 +391,14 @@ class UserListViewController: TPNormalViewController {
         self.tableView.refreshControl = enabled ? self.topRefreshControl : nil
         self.bottomActivityEnabled = enabled
     }
-
-    func search(query: String) {
-        self.dismissSearch()
+    var searchRequest : DataRequest?
+    func search(query: String, dismiss : Bool = true) {
+        if let request = searchRequest {
+            request.cancel()
+        }
+        if dismiss {
+            self.dismissSearch()
+        }
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         let handler = {  (response : TPUserListResponse) in
             guard self != nil else { return }
@@ -408,9 +414,9 @@ class UserListViewController: TPNormalViewController {
             }
         }
         if self.listType == .rank {
-            self.rankHandler.search(scope: self.listScope, query: query, handler: handler)
+            searchRequest = self.rankHandler.search(scope: self.listScope, query: query, handler: handler)
         } else {
-            self.gameHandler.search(scope: self.listScope, query: query, handler: handler)
+            searchRequest = self.gameHandler.search(scope: self.listScope, query: query, handler: handler)
         }
     }
     func dismissSearch() {
@@ -516,6 +522,9 @@ extension UserListViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             self.reloadTable()
+        } else {
+            self.searchedFor = searchBar.text!
+            self.search(query: searchBar.text!, dismiss: false)
         }
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

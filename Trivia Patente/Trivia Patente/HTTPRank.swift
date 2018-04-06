@@ -16,7 +16,7 @@ enum RankDirection : String {
 
 class HTTPRank: HTTPManager {
     func italian_rank(thresold: Int32?, direction: RankDirection?, handler : @escaping (TPRankResponse) -> Void) {
-        self.request(url: "/rank/global", method: .get, params: self.paramsFor(thresold: thresold, direction: direction), handler: handler)
+        _ = self.request(url: "/rank/global", method: .get, params: self.paramsFor(thresold: thresold, direction: direction), handler: handler)
     }
     func friends_rank(thresold: Int32?, direction: RankDirection?, handler : @escaping (TPRankResponse) -> Void) {
         italian_rank(thresold: thresold, direction: direction, handler: handler)
@@ -28,18 +28,18 @@ class HTTPRank: HTTPManager {
             self.italian_rank(thresold: thresold, direction: direction, handler: handler)
         }
     }
-    func search(scope : UserListScope, query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
+    func search(scope : UserListScope, query : String, handler : @escaping (TPRankSearchResponse) -> Void) -> DataRequest {
         if scope == .friends {
-            self.search_friends(query: query, handler: handler)
+            return self.search_friends(query: query, handler: handler)
         } else {
-            self.search_users(query: query, handler: handler)
+            return self.search_users(query: query, handler: handler)
         }
     }
-    func search_friends(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
-        self.search_users(query: query, handler: handler)
+    func search_friends(query : String, handler : @escaping (TPRankSearchResponse) -> Void) -> DataRequest {
+        return self.search_users(query: query, handler: handler)
     }
-    func search_users(query : String, handler : @escaping (TPRankSearchResponse) -> Void) {
-        self.request(url: "/rank/search", method: .get, params: ["query": query], handler: handler)
+    func search_users(query : String, handler : @escaping (TPRankSearchResponse) -> Void) -> DataRequest {
+        return self.request(url: "/rank/search", method: .get, params: ["query": query], handler: handler)
     }
     func paramsFor(thresold: Int32?, direction: RankDirection?) -> Parameters?
     {

@@ -24,10 +24,10 @@ class HTTPManager {
         return "https://triviapatente.it:8000"
     }
     func registerForPush(token : String, handler: @escaping (TPResponse) -> Void) {
-        self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
+        _ = self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
     }
     func unregisterForPush(handler: @escaping (TPResponse) -> Void) {
-        self.request(url: "/ws/unregisterForPush", method: .post, params: ["os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
+        _ = self.request(url: "/ws/unregisterForPush", method: .post, params: ["os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)
     }
  
     class func getAuthHeaders(auth : Bool) -> HTTPHeaders {
@@ -55,7 +55,7 @@ class HTTPManager {
         }, to: destination, headers: headers, encodingCompletion: { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
-                upload.responseModel {(response : DataResponse<T>) in
+                _ = upload.responseModel {(response : DataResponse<T>) in
                     if let result = response.result.value {
                         handler(result)
                     } else if response.response == nil {
@@ -94,11 +94,10 @@ class HTTPManager {
 //            })
     }
     
-    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, jsonBody : Bool = false, handler: @escaping (T) -> Void) {
+    func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, jsonBody : Bool = false, handler: @escaping (T) -> Void) -> DataRequest {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
-        
-        manager.request(destination, method: method, parameters: params, encoding: jsonBody ? JSONEncoding.default : URLEncoding.default, headers: headers)
+        let request = manager.request(destination, method: method, parameters: params, encoding: jsonBody ? JSONEncoding.default : URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in
@@ -123,7 +122,9 @@ class HTTPManager {
                             }
                             break
                         case .failure(let error):
-                            if error._code == 1 {
+                            if let mError = error as? BackendError, mError.cancelled == true {
+                                
+                            } else if error._code == NSURLErrorTimedOut {
                                 //HANDLE TIMEOUT HERE
                                 handler(T(error: Strings.request_timout_error))
                             } else {
@@ -134,5 +135,6 @@ class HTTPManager {
                         }
                         
                      })
+        return request
     }
 }

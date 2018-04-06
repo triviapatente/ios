@@ -11,6 +11,6 @@ import UIKit
 
 class HTTPShop: HTTPManager {
     func shop_items(handler : @escaping (TPShopItemsResponse) -> Void) {
-        self.request(url: "/shop/list", method: .get, params: nil, handler: handler)
+        _ = self.request(url: "/shop/list", method: .get, params: nil, handler: handler)
     }
 }

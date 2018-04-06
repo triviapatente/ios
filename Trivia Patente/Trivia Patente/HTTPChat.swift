@@ -11,6 +11,6 @@ import Alamofire
 
 class HTTPChat: HTTPManager {
     func get_messages(game : Game, timestamp : TimeInterval, handler: @escaping (TPMessageListResponse) -> Void) {
-        self.request(url: "/message/list/\(game.id!)", method: .get, params: ["timestamp": timestamp], handler: handler)
+        _ = self.request(url: "/message/list/\(game.id!)", method: .get, params: ["timestamp": timestamp], handler: handler)
     }
 }
