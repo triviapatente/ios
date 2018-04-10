@@ -29,7 +29,7 @@ class MainViewController: TPNormalViewController {
             recentGamesView.emptyTitleText = "Nessuna partita recente"
             recentGamesView.title = "Partite recenti"
             recentGamesView.rowHeight = 110
-            recentGamesView.separatorColor = Colors.primary
+            recentGamesView.separatorColor = Colors.primary.darker(offset: 0.1).alpha(offset: 0.7)
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = {   item in
                 guard self != nil else { return }
