@@ -9,29 +9,51 @@
 import UIKit
 import Charts
 import MBProgressHUD
+import BulletinBoard
 
 class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
     @IBOutlet var chartView : LineChartView!
     @IBOutlet var descriptionLabel : UILabel!
     
-    @IBAction func test() {
-        print("test")
-    }
     var fakeCell : WrongAnswerTableViewCell!
     var errorsView : TPExpandableView! {
         didSet {
             errorsView.cellNibName = "WrongAnswerTableViewCell"
             errorsView.rowHeight = 100
             errorsView.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-            errorsView.cellExpandHandler = { index in
-                self.fakeCell.quiz = self.errorsView.items[index] as! Quiz
-                let labelNewHeight = self.fakeCell.questionView.requiredHeight
-                let labelOldHeight = self.fakeCell.questionView.frame.size.height
-                let output = self.fakeCell.frame.size.height + (labelNewHeight - labelOldHeight)
-                print("Before", self.fakeCell.frame.size.height)
-                print("After", output)
-                return output
+            errorsView.DEAFULT_CONTAINER_TOP_SPACE = CGFloat(443)
+            errorsView.cellSelectedCallback = { (quiz: Quiz) in
+                self.showItemDetails(quiz: quiz)
             }
+        }
+    }
+    // TODO: THIS CODE IS DUPLICATED IN ROUNDEDETAILS
+    // expanding single question
+    var quizDetailsBulletin : BulletinManager?
+    internal func showItemDetails(quiz: Quiz) {
+        let page = PageBulletinItem(title: "")
+        page.interfaceFactory.tintColor = Colors.primary
+        page.interfaceFactory.actionButtonTitleColor = .white
+        page.shouldCompactDescriptionText = true
+        let imageLoader =  UIImageView()
+        imageLoader.load(quiz: quiz)
+        page.image = imageLoader.image
+        
+        page.descriptionText = quiz.question
+        
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(dismissBulletin))
+        
+        
+        quizDetailsBulletin = BulletinManager(rootItem: page)
+        
+        quizDetailsBulletin!.prepare()
+        quizDetailsBulletin!.presentBulletin(above: self)
+        quizDetailsBulletin!.controller().view.addGestureRecognizer(tapper)
+    }
+    
+    func dismissBulletin() {
+        if let manager = self.quizDetailsBulletin {
+            manager.dismissBulletin(animated: true)
         }
     }
     var category : Category!
@@ -62,7 +84,7 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
             if response.success == true {
                 self.populateViews(response: response)
             } else {
-                //TODO: handle error
+                self.handleGenericError(message: response.message, dismiss: true, traslateUp: false)
             }
         }
     }
@@ -150,6 +172,8 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         let nib = UINib(nibName: "WrongAnswerTableViewCell", bundle: Bundle.main)
         fakeCell = nib.instantiate(withOwner: self, options: nil)[0] as! WrongAnswerTableViewCell
         fakeCell.frame = frame
+        
+        errorsView.setTopBarLabelContent(string: "")
         // Do any additional setup after loading the view.
     }
 

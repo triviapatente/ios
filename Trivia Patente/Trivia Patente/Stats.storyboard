@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E4p-xQ-18Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="E4p-xQ-18Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="K9I-cg-GPv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="E4p-xQ-18Z" id="VX3-v3-Y9M"/>
                             <outlet property="delegate" destination="E4p-xQ-18Z" id="JsM-oI-QN8"/>
@@ -52,10 +52,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Cb-f71">
-                                <rect key="frame" x="0.0" y="335" width="375" height="288"/>
+                                <rect key="frame" x="0.0" y="335" width="375" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How deep is your love? How deep is your love?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD2-80-VhM">
-                                        <rect key="frame" x="8" y="89" width="359" height="110"/>
+                                        <rect key="frame" x="16" y="5" width="343" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="8ZX-M9-vOK"/>
                                         </constraints>
@@ -67,29 +67,27 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="jD2-80-VhM" firstAttribute="centerY" secondItem="Omx-Cb-f71" secondAttribute="centerY" id="1xk-xY-vOQ"/>
-                                    <constraint firstItem="jD2-80-VhM" firstAttribute="leading" secondItem="Omx-Cb-f71" secondAttribute="leadingMargin" id="Tpw-vT-nqy"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="jD2-80-VhM" secondAttribute="trailing" id="ljN-LB-iGl"/>
+                                    <constraint firstAttribute="height" constant="120" id="O6b-Bu-R8E"/>
+                                    <constraint firstItem="jD2-80-VhM" firstAttribute="leading" secondItem="Omx-Cb-f71" secondAttribute="leadingMargin" constant="8" id="Tpw-vT-nqy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jD2-80-VhM" secondAttribute="trailing" constant="8" id="ljN-LB-iGl"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FC-0h-Nw0">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="hYl-JT-bDv"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="463" width="375" height="204"/>
                                 <connections>
                                     <segue destination="PV1-ps-mTo" kind="embed" identifier="errors_view" id="ISA-Pf-Ly8"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.91774743800000003" green="0.2929156423" blue="0.2060605288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.91545593739999997" green="0.29308891300000001" blue="0.20751205089999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Omx-Cb-f71" secondAttribute="trailing" id="3rY-EH-2po"/>
                             <constraint firstItem="BPl-0i-HAc" firstAttribute="centerX" secondItem="yV9-Nb-Ifj" secondAttribute="centerX" id="4CA-XX-XrY"/>
-                            <constraint firstItem="0FC-0h-Nw0" firstAttribute="top" secondItem="Omx-Cb-f71" secondAttribute="bottom" id="84f-UU-iXo"/>
                             <constraint firstItem="0FC-0h-Nw0" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="DAJ-9M-st0"/>
                             <constraint firstItem="Omx-Cb-f71" firstAttribute="top" secondItem="BPl-0i-HAc" secondAttribute="bottom" id="L1P-pt-JcT"/>
+                            <constraint firstItem="0FC-0h-Nw0" firstAttribute="top" secondItem="mIx-g0-HR7" secondAttribute="bottom" constant="443" identifier="recentsTop" id="OeA-DZ-9l8"/>
                             <constraint firstAttribute="trailing" secondItem="0FC-0h-Nw0" secondAttribute="trailing" id="aOy-gs-67o"/>
-                            <constraint firstItem="wt6-ZJ-ZrG" firstAttribute="top" secondItem="0FC-0h-Nw0" secondAttribute="bottom" id="ija-dK-jx8"/>
+                            <constraint firstAttribute="bottom" secondItem="0FC-0h-Nw0" secondAttribute="bottom" id="ija-dK-jx8"/>
                             <constraint firstItem="Omx-Cb-f71" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="mEm-tF-rPb"/>
                             <constraint firstItem="BPl-0i-HAc" firstAttribute="top" secondItem="mIx-g0-HR7" secondAttribute="bottom" constant="15" id="wWI-xh-gaN"/>
                         </constraints>

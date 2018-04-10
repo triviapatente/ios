@@ -27,11 +27,12 @@ class WrongAnswerTableViewCell: TPExpandableTableViewCell {
     }
     var quiz : Quiz! {
         didSet {
-            self.imageContainerView.isHidden = (quiz.imageId == nil)
-            if let _ = quiz.imageId {
+            self.imageContainerView.isHidden = (quiz.imagePath == nil)
+            self.quizImageView.isHidden = self.imageContainerView.isHidden
+            if let _ = quiz.imagePath {
                 self.quizImageView.load(quiz: quiz)
             }
-            self.questionView.text = quiz.question! + quiz.question!
+            self.questionView.text = quiz.question!
             if quiz.answer == true {
                 setEnabled(button: self.trueButton)
                 setDisabled(button: self.falseButton)
@@ -48,26 +49,25 @@ class WrongAnswerTableViewCell: TPExpandableTableViewCell {
     func setEnabled(button : UIButton) {
         button.backgroundColor = .white
         button.layer.borderWidth = 1
+        button.alpha = 1.0
         button.layer.borderColor = UIColor.white.cgColor
         button.setTitleColor(Colors.red_default, for: .normal)
     }
     func setDisabled(button : UIButton) {
         button.backgroundColor = .clear
         button.layer.borderWidth = 1
+        button.alpha = 0.5
         button.layer.borderColor = UIColor.white.cgColor
         button.setTitleColor(.white, for: .normal)
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.quizImageView.shadow(radius: 1.5)
-        // Initialization code
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        self.quizImageView.shadow(radius: 1, color: Colors.dark_shadow)
         self.trueAvatar.circleRounded()
         self.falseAvatar.circleRounded()
         self.trueButton.circleRounded()
         self.falseButton.circleRounded()
+        // Initialization code
     }
     
 }

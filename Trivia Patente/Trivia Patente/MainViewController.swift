@@ -109,7 +109,7 @@ class MainViewController: TPNormalViewController {
         MBProgressHUD.hide(for: self.view, animated: false)
         loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         loadingView.mode = .indeterminate
-        loadingView.center = CGPoint(x: loadingView.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
+        loadingView.center = CGPoint(x: loadingView.center.x, y: recentGamesView.DEAFULT_CONTAINER_TOP_SPACE / 2)
         self.recentGamesView.view.isUserInteractionEnabled = false
     }
     func socketStopLoading() {

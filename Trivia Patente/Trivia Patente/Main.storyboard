@@ -584,6 +584,16 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <constraint firstAttribute="height" constant="20" id="afd-pA-Sgs"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qk-EH-vNM">
+                                <rect key="frame" x="280" y="7.5" width="42" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Rhw-3b-QgF"/>
+                                    <constraint firstAttribute="width" constant="42" id="kfR-va-z1g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686274509803" green="0.4392156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -595,8 +605,10 @@ Fallo sapere ai tuoi amici 😉</string>
                             <constraint firstAttribute="trailing" secondItem="EI8-w6-YFR" secondAttribute="trailing" id="fXx-He-TJ9"/>
                             <constraint firstAttribute="bottom" secondItem="EI8-w6-YFR" secondAttribute="bottom" id="jdl-mC-IAC"/>
                             <constraint firstItem="EI8-w6-YFR" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="sB3-IZ-Q7M"/>
+                            <constraint firstAttribute="trailing" secondItem="8Qk-EH-vNM" secondAttribute="trailing" constant="7" id="uPb-Rq-4e7"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="top" secondItem="Q3N-y5-gRN" secondAttribute="top" id="weh-xj-QuE"/>
                             <constraint firstItem="yAL-s7-7YC" firstAttribute="leading" secondItem="Q3N-y5-gRN" secondAttribute="leading" id="wzo-Cy-yRH"/>
+                            <constraint firstItem="8Qk-EH-vNM" firstAttribute="top" secondItem="fLM-nx-AY0" secondAttribute="bottom" constant="8" id="zHZ-5Y-41O"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XhF-lm-a05" appends="YES" id="Pa8-QR-oDg"/>
@@ -606,8 +618,10 @@ Fallo sapere ai tuoi amici 😉</string>
                     <size key="freeformSize" width="329" height="219"/>
                     <connections>
                         <outlet property="headerView" destination="yAL-s7-7YC" id="2t2-Mq-e5B"/>
+                        <outlet property="navigationBar" destination="yAL-s7-7YC" id="HDt-OI-HyK"/>
                         <outlet property="reloadBarButton" destination="7mx-JD-Fe3" id="HUv-HO-eZN"/>
                         <outlet property="reloadingActivityIndicator" destination="AFX-vO-gKH" id="75h-uq-mkT"/>
+                        <outlet property="rightBarItem" destination="8Qk-EH-vNM" id="whZ-jv-UJq"/>
                         <outlet property="scrollRecognizer" destination="XhF-lm-a05" id="pYg-fH-RuI"/>
                         <outlet property="tableView" destination="EI8-w6-YFR" id="T4Y-Fe-dVs"/>
                     </connections>
@@ -620,7 +634,7 @@ Fallo sapere ai tuoi amici 😉</string>
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="505" y="642"/>
+            <point key="canvasLocation" x="504.80000000000001" y="641.82908545727139"/>
         </scene>
         <!--Purchases-->
         <scene sceneID="1Dj-eA-fmk">

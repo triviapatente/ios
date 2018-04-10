@@ -90,10 +90,14 @@ extension UIViewController : TPViewController {
         }
     }
     func set(backgroundGradientColors colors: [CGColor]) {
+        
+        self.view.layer.insertSublayer(self.gradientLayer(colors: colors), at: 0)
+    }
+    func gradientLayer(colors: [CGColor] = [Colors.primary.cgColor, Colors.secondary.cgColor]) -> CAGradientLayer {
         let layer = CAGradientLayer()
         layer.frame = self.view.bounds
         layer.colors = colors
-        self.view.layer.insertSublayer(layer, at: 0)
+        return layer
     }
     func setDefaultBackgroundGradient() {
         self.set(backgroundGradientColors: [Colors.primary.cgColor, Colors.secondary.cgColor])
@@ -155,7 +159,7 @@ extension UIViewController : TPViewController {
         toast.label.numberOfLines = 0
         toast.removeFromSuperViewOnHide = true
         if traslateUp {
-            toast.center = CGPoint(x: toast.center.x, y: TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE / 2)
+            toast.center = CGPoint(x: toast.center.x, y: 305.0 / 2)
         }
         
         toast.hide(animated: true, afterDelay: Constants.toastDuration)

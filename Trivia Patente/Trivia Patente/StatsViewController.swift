@@ -15,6 +15,12 @@ class StatsViewController: TPNormalTableViewController {
         let nib = UINib(nibName: "StatsTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "stats_cell")
         // Do any additional setup after loading the view.
+        let gradientLayer = self.gradientLayer()
+        gradientLayer.frame = self.tableView.bounds
+        let backgroundView = UIView(frame: self.tableView.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        self.tableView.backgroundView = backgroundView
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
