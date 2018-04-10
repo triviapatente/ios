@@ -28,6 +28,7 @@ class MainViewController: TPNormalViewController {
             recentGamesView.footerText = ""//"Non ci sono altre partite.. \nIniziane un’altra 😉"
             recentGamesView.emptyTitleText = "Nessuna partita recente"
             recentGamesView.title = "Partite recenti"
+            recentGamesView.rowHeight = 110
             recentGamesView.separatorColor = Colors.primary
             recentGamesView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             recentGamesView.selectedCellHandler = {   item in

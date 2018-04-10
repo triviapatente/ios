@@ -22,6 +22,9 @@ open class Game: CommonPK {
     internal let kGameOpponentSurnameKey: String = "opponent_surname"
     internal let kGameOpponentAvatarKey: String = "opponent_image"
     internal let kGameOpponentKey: String = "opponent"
+    internal let kGameRemainingAnswersCountKey: String = "remaining_answers_count"
+    internal let kGameMyScoreKey: String = "my_score"
+    internal let kGameOpponentScoreKey: String = "opponent_score"
 
 
     // MARK: Properties
@@ -32,6 +35,9 @@ open class Game: CommonPK {
     open var my_turn : Bool = false
     open var opponent : User!
     open var incomplete : Bool = false
+    open var remainingAnswersCount : Int!
+    open var myScore : Int!
+    open var opponentScore : Int!
 
     func won() -> Bool {
         return winnerId == SessionManager.currentUser?.id
@@ -70,6 +76,9 @@ open class Game: CommonPK {
         ended = json[kGameEndedKey].boolValue
         my_turn = json[kGameMyTurnKey].boolValue
         started = json[kGameStartedKey].boolValue
+        myScore = json[kGameMyScoreKey].intValue
+        opponentScore = json[kGameOpponentScoreKey].intValue
+        remainingAnswersCount = json[kGameRemainingAnswersCountKey].intValue
         opponent = User(username: json[kGameOpponentUsernameKey].string, id: json[kGameOpponentIdKey].int32, avatar: json[kGameOpponentAvatarKey].string, name: json[kGameOpponentNameKey].string, surname: json[kGameOpponentSurnameKey].string)
     }
 
@@ -94,6 +103,9 @@ open class Game: CommonPK {
         dictionary.updateValue(my_turn as AnyObject, forKey: kGameMyTurnKey)
         dictionary.updateValue(opponent.dictionaryRepresentation() as AnyObject, forKey: kGameOpponentKey)
         dictionary.updateValue(started as AnyObject, forKey: kGameStartedKey)
+        dictionary.updateValue(myScore as AnyObject, forKey: kGameMyScoreKey)
+        dictionary.updateValue(opponentScore as AnyObject, forKey: kGameOpponentScoreKey)
+        dictionary.updateValue(remainingAnswersCount as AnyObject, forKey: kGameRemainingAnswersCountKey)
         
         return dictionary
     }
@@ -107,6 +119,9 @@ open class Game: CommonPK {
         self.started = aDecoder.decodeBool(forKey: kGameStartedKey)
         self.my_turn = aDecoder.decodeBool(forKey: kGameMyTurnKey)
         self.opponent = aDecoder.decodeObject(forKey: kGameOpponentKey) as? User
+        self.remainingAnswersCount = aDecoder.decodeObject(forKey: kGameRemainingAnswersCountKey) as? Int
+        self.myScore = aDecoder.decodeObject(forKey: kGameMyScoreKey) as? Int
+        self.opponentScore = aDecoder.decodeObject(forKey: kGameOpponentScoreKey) as? Int
 
     }
 
@@ -118,6 +133,9 @@ open class Game: CommonPK {
         aCoder.encode(my_turn, forKey: kGameMyTurnKey)
         aCoder.encode(opponent, forKey: kGameOpponentKey)
         aCoder.encode(started, forKey: kGameStartedKey)
+        aCoder.encode(remainingAnswersCount, forKey: kGameRemainingAnswersCountKey)
+        aCoder.encode(myScore, forKey: kGameMyScoreKey)
+        aCoder.encode(opponentScore, forKey: kGameOpponentScoreKey)
     }
 
 }

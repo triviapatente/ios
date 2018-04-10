@@ -14,6 +14,11 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     @IBOutlet var usernameView : UILabel!
     @IBOutlet var hintView : UILabel!
     @IBOutlet var buttonView : TPPlayButton!
+    @IBOutlet var opponentNameView : UILabel!
+    @IBOutlet var myNameView : UILabel!
+    @IBOutlet var opponentScoreView : UILabel!
+    @IBOutlet var myScoreView : UILabel!
+    @IBOutlet var progressView : UIProgressView!
     
     override var item : Base! {
         didSet {
@@ -29,7 +34,27 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
             usernameView.text = game.opponent.displayName
             //TODO: load async with cache
             avatarView.load(user: game.opponent)
+            opponentNameView.text = game.opponent.name ?? game.opponent.username
+            myNameView.text = "Tu"
+            opponentScoreView.text = "\(game.opponentScore!)"
+            myScoreView.text = "\(game.myScore!)"
+            progressView.progress = getProgress()
+            handleWinning()
         }
+    }
+    func handleWinning() {
+        guard let winnerId = game.winnerId, game.started else {
+            return
+        }
+        if winnerId == SessionManager.currentUser?.id {
+            myNameView.text = "🏆" + myNameView.text!
+        } else {
+            opponentNameView.text! += "🏆"
+        }
+    }
+    func getProgress() -> Float {
+        let myAnswers = 20 - game.remainingAnswersCount
+        return Float(myAnswers) / 20
     }
     
     override func layoutIfNeeded() {
@@ -44,11 +69,24 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     }
     func hint(for game : Game) -> String {
         if game.ended {
-            return "Partita terminata"
-        } else if game.my_turn {
-            return "È il tuo turno!"
+            if !game.started {
+                return "Partita annullata"
+            } else if let winner = game.winnerId {
+                if winner == SessionManager.currentUser?.id {
+                    return "Hai vinto!"
+                } else {
+                    return "Hai perso!"
+                }
+            } else {
+                return "Pareggio!"
+            }
         } else {
-            return "È il suo turno.."
+            let remainingAnswers = game.remainingAnswersCount!
+            if remainingAnswers == 1 {
+                return "1 domanda rimasta"
+            } else {
+                return "\(remainingAnswers) domande rimaste"
+            }
         }
     }
     func lightsImage(for game : Game) -> UIImage {
