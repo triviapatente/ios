@@ -72,11 +72,7 @@ class StatsViewController: TPNormalTableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let categories = Shared.categories {
-            if categories[indexPath.row].progress > 0 {
-                self.performSegue(withIdentifier: "single_view_segue", sender: self)
-            }
-        }
+        self.performSegue(withIdentifier: "single_view_segue", sender: self)
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

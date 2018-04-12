@@ -7,21 +7,22 @@
 //
 
 import UIKit
-import Charts
 import MBProgressHUD
 import BulletinBoard
 
-class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
-    @IBOutlet var chartView : LineChartView!
+class SingleStatViewController: TPNormalViewController {
+    @IBOutlet var chartView : BeautifulBarChart!
     @IBOutlet var descriptionLabel : UILabel!
+    @IBOutlet weak var detailsContainer: UIView!
     
+    @IBOutlet weak var detailsLabel: UILabel!
     var fakeCell : WrongAnswerTableViewCell!
     var errorsView : TPExpandableView! {
         didSet {
             errorsView.cellNibName = "WrongAnswerTableViewCell"
             errorsView.rowHeight = 100
             errorsView.separatorInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-            errorsView.DEAFULT_CONTAINER_TOP_SPACE = CGFloat(443)
+            errorsView.DEAFULT_CONTAINER_TOP_SPACE = CGFloat(450)
             errorsView.cellSelectedCallback = { (quiz: Quiz) in
                 self.showItemDetails(quiz: quiz)
             }
@@ -69,13 +70,11 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
     let handler = HTTPStats()
     
     func setupView() {
-        self.view.backgroundColor = category.status.color
         self.descriptionLabel.text = category.status.rawValue
-        self.chartView.mediumRounded()
+        self.chartView.smallRounded()
+    
         //Se la categoria è complessivo, non li mostro
         self.errorsView.isHidden = category.isOverall
-        
-        configureChart()
     }
     func loadData() {
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
@@ -93,85 +92,52 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         if !category.isOverall {
             errorsView.items = response.wrong_answers
         }
-        let data = LineChartData(dataSet: chartDataSet)
-        chartView.data = data
+        
+        let dataEntries = generateDataEntries()
+        chartView.dataEntries = dataEntries
+    
         self.chartView.isHidden = false
         
-        let data2 = BarChartData(dataSets: chartDataSet)
-    }
-    func configureChart() {
-        chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeInOutBack)
-        chartView.legend.enabled = false
-        chartView.drawGridBackgroundEnabled = false
-        chartView.chartDescription?.enabled = false
-        configure(x: chartView.xAxis)
-        configure(left: chartView.leftAxis)
-        configure(right: chartView.rightAxis)
-    }
-    func configure(x : XAxis) {
-        x.drawGridLinesEnabled = false
-        x.labelPosition = .bottom
-        x.valueFormatter = self
-        x.labelTextColor = .white
-        x.labelRotationAngle = 60
-        x.axisLineColor = UIColor.white
-    }
-    func configure(left: YAxis) {
-        left.axisMaximum = 101
-        left.axisMinimum = 0
-        left.labelCount = 10
-        left.labelTextColor = .white
-        left.drawGridLinesEnabled = false
-        left.axisLineColor = UIColor.white
-    }
-    func configure(right : YAxis) {
-        right.enabled = false
     }
     
-    var chartDataEntries : [ChartDataEntry] {
-        get {
-            guard !response.percentages.isEmpty else { return [] }
-            var entries : [ChartDataEntry] = []
-            let sum = response.percentages.values.reduce(0) {$0 + $1}
-            var i = 0, currentValue = category.progress - sum
-            let progresses = response.percentages.sorted { (first, second) -> Bool in
-                return first.key < second.key
-            }
-            for (_, value) in progresses {
-                currentValue += value
-                let dataEntry = ChartDataEntry(x: Double(i), y: Double(currentValue))
-                entries.append(dataEntry)
-                i += 1
-            }
-            return entries
-        }
-    }
-    var chartDataSet : LineChartDataSet {
-        get {
-            let dataSet = LineChartDataSet(values: chartDataEntries, label: "Progresso")
-            dataSet.drawFilledEnabled = false
-            dataSet.drawCirclesEnabled = false
-            dataSet.mode = .linear
-            dataSet.drawValuesEnabled = false
-            dataSet.setColor(category.status.color)
-            dataSet.fillColor = category.status.color
-            return dataSet
-        }
-    }
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let keys = self.response.percentages.keys.sorted()
-        let index = Int(value)
-        if let date = keys[index].dateFromISO8601 {
-            return self.dateFormatter.string(from: date)
-        }
-        return ""
+    func generateDataEntries() -> [BarEntry] {
+        var result: [BarEntry] = []
         
+//        guard !response.percentages.isEmpty else { return [] }
+        for i in 0..<20 {
+            let value1 = (arc4random() % 90) + 10
+            let value2 = (arc4random() % 90) + 10
+            let height: Float = Float(max(value1, value2)) / 100.0
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d MMM"
+            var date = Date()
+            date.addTimeInterval(TimeInterval(24*60*60*i))
+            result.append(BarEntry(color: colorForDay(total: Int(max(value1, value2)), correct: Int(min(value1, value2))), height: height, textValue: "\(Int(max(value1, value2)))", title: formatter.string(from: date)))
+        }
+        return result
+    }
+    
+    func colorForDay(total: Int, correct: Int) -> UIColor {
+        let perc = Double(correct).divided(by: Double(total))
+        if perc <= 0.25 {
+            return Colors.stats_bad
+        } else if perc <= 0.5 {
+            return Colors.stats_medium
+        } else if perc <= 0.75 {
+            return Colors.stats_good
+        } else {
+            return Colors.stats_perfect
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         loadData()
+        self.detailsContainer.mediumRounded()
+        self.setDefaultBackgroundGradient()
+        self.chartView.chartStartsAtEnd = true 
         let frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
         let nib = UINib(nibName: "WrongAnswerTableViewCell", bundle: Bundle.main)
         fakeCell = nib.instantiate(withOwner: self, options: nil)[0] as! WrongAnswerTableViewCell
@@ -179,6 +145,11 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         
         errorsView.setTopBarLabelContent(string: "")
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.title = self.category.name
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

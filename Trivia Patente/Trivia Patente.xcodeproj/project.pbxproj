@@ -231,6 +231,9 @@
 		F478FA2D20517D3A00324FED /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F478FA2C20517D3A00324FED /* NSLayoutConstraint.swift */; };
 		F484730D1FE5CBE100ADA988 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F484730C1FE5CBE100ADA988 /* BaseViewController.swift */; };
 		F488C94F1FB72915000842AC /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488C94E1FB72915000842AC /* Strings.swift */; };
+		F491C18F207F8B1300FCDD39 /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491C18C207F8B1200FCDD39 /* BarEntry.swift */; };
+		F491C190207F8B1300FCDD39 /* BeautifulBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491C18D207F8B1200FCDD39 /* BeautifulBarChart.swift */; };
+		F491C191207F8B1300FCDD39 /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491C18E207F8B1200FCDD39 /* BasicBarChart.swift */; };
 		F49716A31F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */; };
 		F49716A51F9FE12400ED4D7B /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */; };
 		F49B64B820543DFF006CFEF2 /* GCStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B64B620543DFF006CFEF2 /* GCStackViewController.swift */; };
@@ -512,6 +515,9 @@
 		F484730C1FE5CBE100ADA988 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F487B5631FE4BF4C006EA20C /* Trivia Patente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Trivia Patente.entitlements"; sourceTree = "<group>"; };
 		F488C94E1FB72915000842AC /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		F491C18C207F8B1200FCDD39 /* BarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
+		F491C18D207F8B1200FCDD39 /* BeautifulBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeautifulBarChart.swift; sourceTree = "<group>"; };
+		F491C18E207F8B1200FCDD39 /* BasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicBarChart.swift; sourceTree = "<group>"; };
 		F49716A21F9FE10D00ED4D7B /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		F49716A41F9FE12400ED4D7B /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
 		F49B64B620543DFF006CFEF2 /* GCStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCStackViewController.swift; sourceTree = "<group>"; };
@@ -845,6 +851,7 @@
 		8B5132DE1DBB5C3700143497 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F491C18B207F8AF100FCDD39 /* BarChart */,
 				8B5133141DBBB55300143497 /* TPInputView.swift */,
 				8B3877F11DBFE0F700FBE4EF /* TPErrorView.swift */,
 				8B5133211DBBEB4600143497 /* TPButton.swift */,
@@ -1837,6 +1844,16 @@
 			name = listing;
 			sourceTree = "<group>";
 		};
+		F491C18B207F8AF100FCDD39 /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				F491C18C207F8B1200FCDD39 /* BarEntry.swift */,
+				F491C18E207F8B1200FCDD39 /* BasicBarChart.swift */,
+				F491C18D207F8B1200FCDD39 /* BeautifulBarChart.swift */,
+			);
+			name = BarChart;
+			sourceTree = "<group>";
+		};
 		F49716A11F9FE09400ED4D7B /* terms */ = {
 			isa = PBXGroup;
 			children = (
@@ -2131,7 +2148,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Trivia Patente/Pods-Trivia Patente-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BulletinBoard.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/CollieGallery/CollieGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -2149,7 +2165,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BulletinBoard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollieGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -2252,6 +2267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B25D9FC2036F5010047E679 /* TokenRequest.swift in Sources */,
+				F491C191207F8B1300FCDD39 /* BasicBarChart.swift in Sources */,
 				8BBBE84E1DC769C800B433F2 /* TPGameListResponse.swift in Sources */,
 				8B5132F01DBB5F1500143497 /* DataRequest.swift in Sources */,
 				F45DFC9B2051B899003E4F4E /* TrainingQuizCollectionViewCell.swift in Sources */,
@@ -2319,6 +2335,7 @@
 				8BDCEA261DD121180099C3E2 /* HTTPRank.swift in Sources */,
 				F470D17E205AD9FA00481F7F /* TPNewTrainingResponse.swift in Sources */,
 				8B3C72361DC391F800C83273 /* TPConnectResponse.swift in Sources */,
+				F491C190207F8B1300FCDD39 /* BeautifulBarChart.swift in Sources */,
 				8B8058CC1DE2FA1F00C3F938 /* TPNewGameResponse.swift in Sources */,
 				8B0D88FB1DDC5D27001B4C3A /* ChangePasswordViewController.swift in Sources */,
 				8B0D88FD1DDC638D001B4C3A /* TPTokenResponse.swift in Sources */,
@@ -2406,6 +2423,7 @@
 				8B5132FD1DBB8E6F00143497 /* SocketManager.swift in Sources */,
 				8BF289301E01CE6400214DED /* TPInviteProcessedEvent.swift in Sources */,
 				8BA6BEBE1DEEEA9600D9EB86 /* WaitOpponentViewController.swift in Sources */,
+				F491C18F207F8B1300FCDD39 /* BarEntry.swift in Sources */,
 				8B5133121DBBADEB00143497 /* Datasource.swift in Sources */,
 				8BCF8C921DB6A6BA00EC637C /* Category.swift in Sources */,
 				8B4814791E170A3400AD0834 /* UIButton.swift in Sources */,
