@@ -43,12 +43,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPl-0i-HAc" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="38" y="35" width="300" height="300"/>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPl-0i-HAc" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="35" width="343" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="6kj-T7-54C"/>
-                                    <constraint firstAttribute="width" constant="300" id="A2m-4g-O9t"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Cb-f71">
@@ -85,9 +84,11 @@
                             <constraint firstItem="BPl-0i-HAc" firstAttribute="centerX" secondItem="yV9-Nb-Ifj" secondAttribute="centerX" id="4CA-XX-XrY"/>
                             <constraint firstItem="0FC-0h-Nw0" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="DAJ-9M-st0"/>
                             <constraint firstItem="Omx-Cb-f71" firstAttribute="top" secondItem="BPl-0i-HAc" secondAttribute="bottom" id="L1P-pt-JcT"/>
+                            <constraint firstItem="BPl-0i-HAc" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leadingMargin" id="OSY-pW-aMH"/>
                             <constraint firstItem="0FC-0h-Nw0" firstAttribute="top" secondItem="mIx-g0-HR7" secondAttribute="bottom" constant="443" identifier="recentsTop" id="OeA-DZ-9l8"/>
                             <constraint firstAttribute="trailing" secondItem="0FC-0h-Nw0" secondAttribute="trailing" id="aOy-gs-67o"/>
                             <constraint firstAttribute="bottom" secondItem="0FC-0h-Nw0" secondAttribute="bottom" id="ija-dK-jx8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BPl-0i-HAc" secondAttribute="trailing" id="kzw-XJ-dXK"/>
                             <constraint firstItem="Omx-Cb-f71" firstAttribute="leading" secondItem="yV9-Nb-Ifj" secondAttribute="leading" id="mEm-tF-rPb"/>
                             <constraint firstItem="BPl-0i-HAc" firstAttribute="top" secondItem="mIx-g0-HR7" secondAttribute="bottom" constant="15" id="wWI-xh-gaN"/>
                         </constraints>

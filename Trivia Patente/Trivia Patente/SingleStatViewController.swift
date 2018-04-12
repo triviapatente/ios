@@ -95,7 +95,9 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         }
         let data = LineChartData(dataSet: chartDataSet)
         chartView.data = data
-
+        self.chartView.isHidden = false
+        
+        let data2 = BarChartData(dataSets: chartDataSet)
     }
     func configureChart() {
         chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeInOutBack)
@@ -110,15 +112,17 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         x.drawGridLinesEnabled = false
         x.labelPosition = .bottom
         x.valueFormatter = self
-        x.labelTextColor = .lightGray
+        x.labelTextColor = .white
         x.labelRotationAngle = 60
+        x.axisLineColor = UIColor.white
     }
     func configure(left: YAxis) {
         left.axisMaximum = 101
         left.axisMinimum = 0
         left.labelCount = 10
-        left.labelTextColor = .lightGray
+        left.labelTextColor = .white
         left.drawGridLinesEnabled = false
+        left.axisLineColor = UIColor.white
     }
     func configure(right : YAxis) {
         right.enabled = false
@@ -181,6 +185,7 @@ class SingleStatViewController: TPNormalViewController, IAxisValueFormatter {
         if segue.identifier == "errors_view" {
             self.errorsView = segue.destination as! TPExpandableView
             self.errorsView.title = "Quiz sbagliati"
+            self.errorsView.emptyTitleText = "Nessun quiz sbagliato"
         }
     }
 
