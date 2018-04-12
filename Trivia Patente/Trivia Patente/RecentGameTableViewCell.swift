@@ -59,7 +59,6 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        avatarView.circleRounded()
     }
     
     func changeState(for game : Game) {
@@ -97,6 +96,11 @@ class RecentGameTableViewCell: TPExpandableTableViewCell {
         } else {
             return UIImage(named: "traffic_lights_yellow")!
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.circleRounded()
     }
     
 }
