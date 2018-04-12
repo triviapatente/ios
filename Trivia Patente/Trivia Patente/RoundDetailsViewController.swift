@@ -211,6 +211,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         }
     }
     
+    // TODO: THIS CODE IS DUPLICATED IN SINGLESTATSCONTROLLER
     // expanding single question
     var quizDetailsBulletin : BulletinManager?
     internal func showItemDetails(quiz: Quiz) {
@@ -232,7 +233,6 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         quizDetailsBulletin!.prepare()
         quizDetailsBulletin!.presentBulletin(above: self)
         quizDetailsBulletin!.controller().view.addGestureRecognizer(tapper)
-
     }
     
     func dismissBulletin() {

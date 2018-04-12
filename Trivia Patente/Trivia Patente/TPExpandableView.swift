@@ -9,7 +9,7 @@
 import UIKit
 
 class TPExpandableView: BaseViewController {
-    static let DEAFULT_CONTAINER_TOP_SPACE = CGFloat(305)
+    var DEAFULT_CONTAINER_TOP_SPACE = CGFloat(305)
     
     @IBOutlet weak var headerView : UINavigationBar!
 //    @IBOutlet var counterLabel : UILabel!
@@ -17,7 +17,10 @@ class TPExpandableView: BaseViewController {
     @IBOutlet weak var reloadingActivityIndicator : UIActivityIndicatorView!
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var scrollRecognizer : UIPanGestureRecognizer!
-
+    @IBOutlet weak var rightBarItem: UILabel!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    
+    
     var items : [Base] = [] {
         didSet {
             adaptToItems()
@@ -33,6 +36,8 @@ class TPExpandableView: BaseViewController {
     var emptyFooterText : String!
     var emptyTitleText : String!
     
+    var cellSelectedCallback : ((Quiz) -> Void)?
+    
     var expandedTopConstraintCostant : CGFloat {
         let recentsHeight = (self.headerHeight + self.tableHeight)
         var recentsTop = self.containerView.superview!.frame.height - recentsHeight
@@ -46,7 +51,7 @@ class TPExpandableView: BaseViewController {
 //        let optimalHeight = (rh * filledRows.rounded(FloatingPointRoundingRule.down)) + self.headerHeight
 //        recentsTop = self.containerView.superview!.frame.height - optimalHeight
         
-        return recentsTop > TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : TPExpandableView.DEAFULT_CONTAINER_TOP_SPACE
+        return recentsTop > self.DEAFULT_CONTAINER_TOP_SPACE ? recentsTop : self.DEAFULT_CONTAINER_TOP_SPACE
     }
     var tableViewLastScrollOffset = CGFloat(0)
     
@@ -188,6 +193,7 @@ class TPExpandableView: BaseViewController {
         if let height = rowHeight {
             self.tableView.rowHeight = height
         }
+        self.rightBarItem.isHidden = true
         headerView.topItem?.title = headerTitle
         self.headerView.barTintColor = Colors.secondary
         self.view.addSubview(self.topViewSeparator)
@@ -340,6 +346,10 @@ extension TPExpandableView : UITableViewDataSource, UITableViewDelegate {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         }
+        
+        if let cb = cellSelectedCallback {
+            cb(self.items[indexPath.row] as! Quiz)
+        }
     }
     @objc(tableView:cellForRowAtIndexPath:) func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recent_cell") as! TPExpandableTableViewCell
@@ -375,6 +385,13 @@ extension TPExpandableView : TPExpandableTableViewCellDelegate {
         if !expanded {
             adaptToItems(reload: false)
         }
+    }
+    
+    func setTopBarLabelContent(string: String) {
+        self.reloadBarButton.isEnabled = false
+        self.reloadBarButton.tintColor = UIColor.clear
+        self.rightBarItem.text = string
+        self.rightBarItem.isHidden = false
     }
     
     func remove(item: Base) {

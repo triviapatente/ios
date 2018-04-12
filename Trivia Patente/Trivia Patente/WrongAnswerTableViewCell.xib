@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,16 +16,16 @@
             <rect key="frame" x="0.0" y="0.0" width="442" height="109"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="442" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="442" height="108.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="AJE-2D-BEa">
-                        <rect key="frame" x="18" y="10" width="340" height="88.5"/>
+                        <rect key="frame" x="20" y="10" width="338" height="88.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-Oy-9N7">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-Oy-9N7">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="88.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hN-Zh-viS">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hN-Zh-viS">
                                         <rect key="frame" x="3" y="22" width="45" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXS-M2-LXq">
-                                <rect key="frame" x="63" y="34.5" width="277" height="19.5"/>
+                                <rect key="frame" x="0.0" y="34.5" width="338" height="19.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -60,12 +60,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8j0-za-Qti">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="25"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-4A-ndS">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-4A-ndS">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="D8M-gz-UXx"/>
                                             <constraint firstAttribute="height" constant="25" id="a37-ma-Bzh"/>
                                         </constraints>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="V">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -97,12 +98,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jru-Sh-bdv">
                                 <rect key="frame" x="0.0" y="37" width="60" height="25"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-4n-mSd">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-4n-mSd">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Nzt-mD-Uow"/>
                                             <constraint firstAttribute="width" constant="25" id="Wvs-nS-ZTB"/>
                                         </constraints>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="F">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -147,7 +149,7 @@
                 <constraints>
                     <constraint firstItem="AJE-2D-BEa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="EQd-vW-7dF"/>
                     <constraint firstAttribute="trailing" secondItem="C2P-Iu-h7N" secondAttribute="trailing" constant="14" id="Jl6-VM-nvE"/>
-                    <constraint firstItem="AJE-2D-BEa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="OBk-ur-BSF"/>
+                    <constraint firstItem="AJE-2D-BEa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="OBk-ur-BSF"/>
                     <constraint firstItem="C2P-Iu-h7N" firstAttribute="leading" secondItem="AJE-2D-BEa" secondAttribute="trailing" constant="10" id="awi-s8-dfx"/>
                     <constraint firstAttribute="bottom" secondItem="AJE-2D-BEa" secondAttribute="bottom" constant="10" id="bQ5-B7-Vvx"/>
                     <constraint firstItem="C2P-Iu-h7N" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f55-uo-Sw5"/>
