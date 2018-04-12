@@ -43,8 +43,8 @@ class UserListViewController: TPNormalViewController {
     }
     
     // Image names used for the automated scroll button
-    static let ImageGoToFirstInRank = UIImage(named: "stairs_up")
-    static let ImageGoToUserInRank = UIImage(named: "stairs_down")
+    static let ImageGoToFirstInRank = UIImage(named: "stairs_up")?.withRenderingMode(.alwaysTemplate)
+    static let ImageGoToUserInRank = UIImage(named: "stairs_down")?.withRenderingMode(.alwaysTemplate)
     
     @IBAction func changeRankType(sender : UISegmentedControl) {
         self.searchBar.resignFirstResponder()
