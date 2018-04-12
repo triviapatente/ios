@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class StatsViewController: TPNormalTableViewController {
 
+    let socketAuth = SocketAuth()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "StatsTableViewCell", bundle: Bundle.main)
@@ -21,6 +24,33 @@ class StatsViewController: TPNormalTableViewController {
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         self.tableView.backgroundView = backgroundView
         
+        self.tableView.refreshControl = UIRefreshControl(frame: CGRect.zero)
+        self.tableView.refreshControl!.tintColor = UIColor.white
+        self.tableView.refreshControl!.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        self.loadData(loadAnimation: Shared.categories == nil)
+    }
+    
+    func refreshData() {
+        self.loadData(loadAnimation: false)
+    }
+    
+    func loadData(loadAnimation: Bool) {
+        if loadAnimation {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
+        self.socketAuth.global_infos {   (response : TPConnectResponse?) in
+            guard self != nil else { return }
+            if let success = response?.success {
+                if success {
+//                    MainViewController.trainings_stats = response!.traini ng_stats
+                    self.tableView.reloadData()
+                }
+            }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +72,12 @@ class StatsViewController: TPNormalTableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "single_view_segue", sender: self)
+        if let categories = Shared.categories {
+            if categories[indexPath.row].progress > 0 {
+                self.performSegue(withIdentifier: "single_view_segue", sender: self)
+            }
+        }
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "single_view_segue" {
