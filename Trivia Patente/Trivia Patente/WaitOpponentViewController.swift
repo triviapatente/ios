@@ -266,7 +266,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
                 self.fromInvite = false
                 
             } else {
-                self.handleGenericError(message: response.message)
+                self.handleGenericError(message: response.message, dismiss: true)
             }
         }
         if let opponent = userToInvite {

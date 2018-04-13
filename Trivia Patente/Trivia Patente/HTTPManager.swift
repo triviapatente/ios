@@ -122,8 +122,10 @@ class HTTPManager {
                             }
                             break
                         case .failure(let error):
-                            if let mError = error as? BackendError, mError.cancelled == true {
-                                
+                            if let mError = error as? BackendError{
+                                if mError.cancelled == false {
+                                    handler(T(error: mError.message))
+                                }
                             } else if error._code == NSURLErrorTimedOut {
                                 //HANDLE TIMEOUT HERE
                                 handler(T(error: Strings.request_timout_error))
