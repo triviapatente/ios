@@ -15,6 +15,7 @@ open class Category: CommonPK {
     internal let kCategoryHintKey: String = "hint"
     internal let kCategoryTotalAnswersKey: String = "total_answers"
     internal let kCategoryCorrectAnswersKey: String = "correct_answers"
+    internal let kCategoryTotalQuizzesKey : String = "total_quizzes"
 
     internal let kCategoryColorKey: String = "color"
 
@@ -26,6 +27,7 @@ open class Category: CommonPK {
     open var hint: String?
     open var correct_answers: Int?
     open var total_answers: Int?
+    open var total_quizzes : Int?
     
     var categoryImagesDirectory = "/category/image/"
     var imagePath : String? {
@@ -85,6 +87,7 @@ open class Category: CommonPK {
         total_answers = json[kCategoryTotalAnswersKey].intValue
         correct_answers = json[kCategoryCorrectAnswersKey].intValue
         color = json[kCategoryColorKey].string
+        total_quizzes = json[kCategoryTotalQuizzesKey].intValue
     }
 
 
@@ -107,6 +110,9 @@ open class Category: CommonPK {
         if correct_answers != nil {
             dictionary.updateValue(progress as AnyObject, forKey: kCategoryCorrectAnswersKey)
         }
+        if total_quizzes != nil {
+            dictionary.updateValue(total_quizzes as AnyObject, forKey: kCategoryTotalQuizzesKey)
+        }
         if color != nil {
             dictionary.updateValue(color as AnyObject, forKey: kCategoryColorKey)
         }
@@ -120,6 +126,7 @@ open class Category: CommonPK {
         self.hint = aDecoder.decodeObject(forKey: kCategoryHintKey) as? String
         self.total_answers = aDecoder.decodeObject(forKey: kCategoryTotalAnswersKey) as! Int
         self.correct_answers = aDecoder.decodeObject(forKey: kCategoryCorrectAnswersKey) as! Int
+        self.total_quizzes = aDecoder.decodeObject(forKey: kCategoryTotalQuizzesKey) as! Int
         self.color = aDecoder.decodeObject(forKey: kCategoryColorKey) as? String
     }
 
@@ -129,6 +136,7 @@ open class Category: CommonPK {
         aCoder.encode(hint, forKey: kCategoryHintKey)
         aCoder.encode(total_answers, forKey: kCategoryTotalAnswersKey)
         aCoder.encode(correct_answers, forKey: kCategoryCorrectAnswersKey)
+        aCoder.encode(total_quizzes, forKey: kCategoryTotalQuizzesKey)
         aCoder.encode(color, forKey: kCategoryColorKey)
 
     }

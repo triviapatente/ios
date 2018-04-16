@@ -91,6 +91,8 @@ class BeautifulBarChart: UIView {
         
         /// Draw text below the bar
         drawTitle(xPos: xPos, yPos: yPos + 10, title: entry.title, color: UIColor.white)
+        /// Draw text below the bar 2
+        drawTitle(xPos: xPos, yPos: yPos + 30, title: entry.subtitle, color: UIColor.white, fontSize: 10)
         
     }
     
@@ -183,7 +185,7 @@ class BeautifulBarChart: UIView {
         mainLayer.addSublayer(textLayer)
     }
     
-    private func drawTitle(xPos: CGFloat, yPos: CGFloat, title: String, color: UIColor) {
+    private func drawTitle(xPos: CGFloat, yPos: CGFloat, title: String, color: UIColor, fontSize : CGFloat = 14) {
         let textLayer = CATextLayer()
         textLayer.frame = CGRect(x: xPos, y: yPos, width: barWidth, height: 22)
         textLayer.foregroundColor = color.cgColor
@@ -191,7 +193,7 @@ class BeautifulBarChart: UIView {
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.contentsScale = UIScreen.main.scale
         textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
-        textLayer.fontSize = 14
+        textLayer.fontSize = fontSize
         textLayer.string = title
         mainLayer.addSublayer(textLayer)
     }

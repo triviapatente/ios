@@ -78,6 +78,7 @@ class SingleStatViewController: TPNormalViewController {
     }
     func loadData() {
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
+        
         handler.category_stats(category: category) { response in
             loadingView.hide(animated: true)
             if response.success == true {
@@ -93,27 +94,39 @@ class SingleStatViewController: TPNormalViewController {
             errorsView.items = response.wrong_answers
         }
         
-        let dataEntries = generateDataEntries()
+        let dataEntries = generateDataEntries(response: response)
         chartView.dataEntries = dataEntries
     
         self.chartView.isHidden = false
         
     }
     
-    func generateDataEntries() -> [BarEntry] {
+    func generateDataEntries(response: TPStatsDetailResponse) -> [BarEntry] {
         var result: [BarEntry] = []
         
-//        guard !response.percentages.isEmpty else { return [] }
-        for i in 0..<20 {
-            let value1 = (arc4random() % 90) + 10
-            let value2 = (arc4random() % 90) + 10
-            let height: Float = Float(max(value1, value2)) / 100.0
+        guard !response.percentages.isEmpty else { return [] }
+        let sorted = response.percentages.sorted { $0.key < $1.key }
+        var maxValue = -1
+        for element in response.percentages.values {
+            if element.0 > maxValue {
+                maxValue = element.0
+            }
+        }
+        for (dateString, p) in sorted {
+            let height: Float = Float(p.0) / Float(max(5, maxValue))
             
             let formatter = DateFormatter()
             formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(24*60*60*i))
-            result.append(BarEntry(color: colorForDay(total: Int(max(value1, value2)), correct: Int(min(value1, value2))), height: height, textValue: "\(Int(max(value1, value2)))", title: formatter.string(from: date)))
+            let date = dateString.dateFromISO8601
+            let errors = p.0 - p.1
+            
+            // error string
+            var errorString = "\(errors) " + (errors == 1 ? "errore" : "errori")
+            if p.0 == 0 {
+                errorString = ""
+            }
+            
+            result.append(BarEntry(color: colorForDay(total: p.0, correct: p.1), height: height, textValue: "\(p.0)", title: formatter.string(from: date!), subtitle: errorString))
         }
         return result
     }
@@ -137,7 +150,10 @@ class SingleStatViewController: TPNormalViewController {
         loadData()
         self.detailsContainer.mediumRounded()
         self.setDefaultBackgroundGradient()
-        self.chartView.chartStartsAtEnd = true 
+        self.chartView.chartStartsAtEnd = true
+        let progressString = NSMutableAttributedString(string: "\(category.progress)%", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 20.0)!])
+        progressString.append(NSMutableAttributedString(string: " su \(category.total_quizzes!)", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 14.0)!]))
+        detailsLabel.attributedText = progressString
         let frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
         let nib = UINib(nibName: "WrongAnswerTableViewCell", bundle: Bundle.main)
         fakeCell = nib.instantiate(withOwner: self, options: nil)[0] as! WrongAnswerTableViewCell
