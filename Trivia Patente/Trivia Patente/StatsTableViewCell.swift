@@ -13,10 +13,12 @@ class StatsTableViewCell: UITableViewCell {
     @IBOutlet var nameView : UILabel!
     @IBOutlet var percentageView : UILabel!
     
+    @IBOutlet weak var secondaryLabel: UILabel!
     var category : Category! {
         didSet {
             self.nameView.text = category.hint!
             self.percentageView.text = "\(category.progress)%"
+            self.secondaryLabel.text = "su \(category.total_quizzes!) quiz totali"
             self.backgroundLayer.backgroundColor = category.status.color
         }
     }
