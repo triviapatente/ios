@@ -103,9 +103,6 @@ class FirebaseManager {
         return request?.hasValues(deviceId: deviceId, token: token, userId: user.id!) ?? false
     }
     class func sendToken(token : String) {
-        guard let sent = alreadySent(token: token), !sent else {
-            return
-        }
         let provider = HTTPManager()
         provider.registerForPush(token: token) { response in
             if response.success == true, let user = SessionManager.currentUser {
