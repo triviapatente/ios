@@ -16,6 +16,8 @@ class GameEndedTableViewCell: UITableViewCell {
     @IBOutlet var iconLabels : [UILabel]!
     @IBOutlet var containerView : UIView!
     @IBOutlet weak var usersContainer: UIStackView!
+    @IBOutlet var footerLabel : UILabel!
+    @IBOutlet var footerContainerHeight: NSLayoutConstraint!
     
     // useful variables for graphic changes
     @IBOutlet weak var secondUserContainerWidth: NSLayoutConstraint!
@@ -73,6 +75,16 @@ class GameEndedTableViewCell: UITableViewCell {
         didSet {
             self.titleLabel.text = self.titleFor(game: game)
             self.configureButton(game: game)
+            self.configureFooter(game: game)
+        }
+    }
+    func configureFooter(game: Game) {
+        if game.expired {
+            self.footerLabel.text = "La partita è stata conclusa in automatico"
+            self.footerContainerHeight.constant = RoundDetailsViewController.ENDED_CELL_FOOTER_HEIGHT
+        } else
+        {
+            self.footerContainerHeight.constant = 0
         }
     }
     func titleFor(game : Game) -> String {
@@ -120,6 +132,7 @@ class GameEndedTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.containerView.bigRounded()
+        self.footerLabel.text = ""
         self.gameButton.mediumRounded()
         for imageView in usersImageView {
             imageView.circleRounded()

@@ -140,6 +140,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     let winnerCellKey = "game_ended_cell"
     let DETAILS_ROW_HEIGHT = CGFloat(90)
     let END_ROW_HEIGHT = CGFloat(250)
+    static let ENDED_CELL_FOOTER_HEIGHT = CGFloat(50)
     
     var newGameResponse : TPNewGameResponse!
     override func viewDidLoad() {
@@ -302,7 +303,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let keys = self.keys()
         if indexPath.section >= keys.count {
-            return END_ROW_HEIGHT
+            return END_ROW_HEIGHT + (self.game.expired ?  RoundDetailsViewController.ENDED_CELL_FOOTER_HEIGHT : 0)
         }
         return (self.tableView.frame.height) / 4
     }

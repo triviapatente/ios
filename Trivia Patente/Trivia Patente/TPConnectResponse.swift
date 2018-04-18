@@ -20,12 +20,14 @@ class TPConnectResponse: TPResponse {
     var fbInfos : FBInfos!
     var training_stats : TrainingStats!
     
+    
     override func load(json: JSON) {
         super.load(json: json)
         invitesCount = json["invites"].int
         globalRankPosition = json["global_rank_position"].int
         friendsRankPosition = json["friends_rank_position"].int
         privacyPolicyLastUpdate = json["privacy_policy_last_update"].stringValue.dateFromGMT
+        
         termsLastUpdate = json["terms_and_conditions_last_update"].stringValue.dateFromGMT
         preferences = Preferences(json: json["preferences"])
         if let rawStats = json["stats"].array {

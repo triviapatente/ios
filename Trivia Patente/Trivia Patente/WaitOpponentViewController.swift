@@ -12,9 +12,18 @@ import FirebaseAnalytics
 
 class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     
+    static let TIME_BETWEEN_TIMER_UPDATES : TimeInterval = 5
+    static let TIMER_UPDATE_DELAY_DURATION : TimeInterval = 2
+    
     @IBOutlet var waitLabel : UILabel!
     @IBOutlet var opponentImageView : UIImageView!
     @IBOutlet var timerLabel : UILabel!
+    
+    var MATCH_MAX_AGE : TimeInterval?
+    
+    var timerUpdateTimer : Timer?
+    
+    var httpGame = HTTPGame();
     
     var headerView : TPGameHeader!
     var gameActions : TPGameActions! {
@@ -157,8 +166,13 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
+        self.MATCH_MAX_AGE = 2131434//response!.matchMaxAge
         self.gameActions.leaveButttonEnabled(enabled: true)
         self.gameActions.timerButttonEnabled(enabled: true)
+        if let round = self.response.round {
+            self.gameActions.setTimerActionState(active: round.tickled)
+        }
+        
         if response.ended == true && followRedirects {
             self.game.ended = true
             self.game.winnerId = response.winnerId
@@ -179,22 +193,49 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func timerActionPressed() {
-        // set text for label
-        //self.timerLabel.text =
-        self.timerLabel.isHidden = false
-        // send request
-        //if (not active)
-            SocketManager.emit(path: "/activate-bell", values: [:]) { (response) in
+        guard self.headerView!.round.id != nil else { return }
+        let roundId = self.headerView!.round.id!
+        
+        if self.headerView!.round.tickled != true
+        {
+            
+            self.gameActions.setTimerActionState(active: true)
+            httpGame.tickleRound(roundId: roundId) { (response) in
                 if response.success == true {
                     // nothing
+                    self.timerLabel.fadeTransition(0.5)
+                    self.timerLabel.text = "Avversario notificato!"
+                    self.headerView!.round.tickled = true
                 } else {
-                    self.handleGenericError(message: (response.message)!, dismiss: true)
-                    self.timerLabel.isHidden = true
                     self.gameActions.setTimerActionState(active: false)
+                    self.timerLabel.text = "Errore durante la notifica! Riprova"
                 }
+                self.timerUpdateTimer!.invalidate()
+                Timer.scheduledTimer(timeInterval: WaitOpponentViewController.TIMER_UPDATE_DELAY_DURATION, target: self, selector: #selector(self.restartTimerUpdates), userInfo: nil, repeats: false)
             }
-//        }
-        self.gameActions.setTimerActionState(active: true)
+        } else {
+            self.timerLabel.text = "Avversario già notificato!"
+            self.timerUpdateTimer!.invalidate()
+            Timer.scheduledTimer(timeInterval: WaitOpponentViewController.TIMER_UPDATE_DELAY_DURATION, target: self, selector: #selector(self.restartTimerUpdates), userInfo: nil, repeats: false)
+        }
+    }
+    @objc func restartTimerUpdates() {
+        self.updateTimer(animate: true)
+        self.prepareTimerForTimerUpdates()
+    }
+    @objc func updateTimer(animate: Bool = false) {
+        
+        if animate {
+            self.timerLabel.fadeTransition(0.5)
+        }
+        self.timerLabel.text = timerRemaining(remaining: self.MATCH_MAX_AGE! - (self.game.createdAt!.timeIntervalSince1970 - Date().timeIntervalSince1970))
+    }
+    func timerRemaining(remaining: TimeInterval) -> String {
+        if (remaining < 60) {
+            return "La partità verrà chiusa in meno di un'ora"
+        }
+        let hours = Int(remaining/(60*60))
+        return "La partità verrà chiusa tra \(hours) " + (hours == 1 ? "ora" : "ore");
     }
     func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false, followRedirects : Bool = true) {
         if user.isMe() && followRedirects {
@@ -203,11 +244,19 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             }
         } else {
             self.gameActions.timerActionPressed = timerActionPressed
+            self.prepareTimerForTimerUpdates()
             let color = self.color(for: state, opponent_online: opponent_online)
             self.opponentImageView.set(rotatingBorderColor: color)
             self.waitLabel.text = self.waitMessage(for: state, opponent_online: opponent_online)
             self.headerView.set(title: self.waitTitle(for: state))
         }
+    }
+    func prepareTimerForTimerUpdates() {
+        if let t = self.timerUpdateTimer {
+            t.invalidate()
+        }
+        self.timerUpdateTimer = Timer.scheduledTimer(timeInterval: WaitOpponentViewController.TIMER_UPDATE_DELAY_DURATION, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        self.timerUpdateTimer!.fire()
     }
     func join_room() {
         self.join_room(followRedirects: true)
@@ -229,6 +278,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         socketHandler.init_round(game_id: game.id!) { (response : TPInitRoundResponse?) in
             if response?.success == true {
                 self.processResponse(response: response!, followRedirects: followRedirects)
+                
             } else {
                 self.handleGenericError(message: (response?.message!)!, dismiss: true)
             }

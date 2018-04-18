@@ -39,6 +39,9 @@ class HTTPGame: HTTPManager {
     func newGame(id : Int32, handler : @escaping (TPNewGameResponse) -> Void) {
         _ = self.request(url: "/game/new", method: .post, params: ["opponent": id], handler: handler)
     }
+    func tickleRound(roundId : Int32, handler : @escaping (TPResponse) -> Void) {
+        _ = self.request(url: "/game/tickle", method: .post, params: ["round": roundId], handler: handler)
+    }
     func suggested_users(handler : @escaping (TPUserListResponse) -> Void) {
         _ = self.request(url: "/game/users/suggested", method: .get, params: nil, handler: handler)
     }

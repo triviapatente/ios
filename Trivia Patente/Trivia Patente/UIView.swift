@@ -174,6 +174,14 @@ extension UIView {
             self.layer.cornerRadius = radius
         }
     }
+    func fadeTransition(_ duration:CFTimeInterval) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade
+        animation.duration = duration
+        layer.add(animation, forKey: kCATransitionFade)
+    }
     func d3Shadow() {
         layer.shadowColor = Colors.dark_shadow.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1.0)

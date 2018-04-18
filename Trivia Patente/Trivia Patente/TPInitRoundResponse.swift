@@ -34,6 +34,8 @@ class TPInitRoundResponse: TPResponse {
     var category : Category?
     var winnerId : Int32?
     var opponent_online : Bool!
+    var matchMaxAge : TimeInterval!
+    
     override func load(json: JSON) {
         super.load(json: json)
         
@@ -42,6 +44,7 @@ class TPInitRoundResponse: TPResponse {
         self.winnerId = json["winner_id"].int32
         self.opponent_online = json["opponent_online"].boolValue
         self.category = Category(json: json["category"])
+        matchMaxAge = json["match_max_age"].doubleValue
         if json["round"].exists() {
             self.round = Round(json: json["round"])
         }

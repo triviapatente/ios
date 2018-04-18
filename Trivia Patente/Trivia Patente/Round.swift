@@ -15,13 +15,14 @@ open class Round: CommonPK {
 	internal let kRoundGameIdKey: String = "game_id"
 	internal let kRoundCatIdKey: String = "cat_id"
 	internal let kRoundDealerIdKey: String = "dealer_id"
-
+    internal let kRoundTickledKey: String = "alreadyTickled"
 
     // MARK: Properties
 	open var number: Int?
 	open var gameId: Int32?
 	open var catId: Int32?
 	open var dealerId: Int32?
+    open var tickled: Bool = false
 
 
     // MARK: SwiftyJSON Initalizers
@@ -45,7 +46,9 @@ open class Round: CommonPK {
 		gameId = json[kRoundGameIdKey].int32
 		catId = json[kRoundCatIdKey].int32
 		dealerId = json[kRoundDealerIdKey].int32
-
+        if (json[kRoundTickledKey].bool !=  nil) {
+            tickled = json[kRoundTickledKey].boolValue
+        }
     }
 
 
@@ -62,6 +65,8 @@ open class Round: CommonPK {
 		if gameId != nil {
 			dictionary.updateValue(gameId! as AnyObject, forKey: kRoundGameIdKey)
 		}
+        
+        dictionary.updateValue(tickled as AnyObject, forKey: kRoundTickledKey)
 		if catId != nil {
 			dictionary.updateValue(catId! as AnyObject, forKey: kRoundCatIdKey)
 		}
@@ -78,6 +83,7 @@ open class Round: CommonPK {
 		self.number = aDecoder.decodeObject(forKey: kRoundNumberKey) as? Int
 		self.gameId = aDecoder.decodeObject(forKey: kRoundGameIdKey) as? Int32
 		self.catId = aDecoder.decodeObject(forKey: kRoundCatIdKey) as? Int32
+        self.tickled = aDecoder.decodeBool(forKey: kRoundTickledKey) as! Bool
 		self.dealerId = aDecoder.decodeObject(forKey: kRoundDealerIdKey) as? Int32
 
     }
@@ -88,7 +94,7 @@ open class Round: CommonPK {
 		aCoder.encode(gameId, forKey: kRoundGameIdKey)
 		aCoder.encode(catId, forKey: kRoundCatIdKey)
 		aCoder.encode(dealerId, forKey: kRoundDealerIdKey)
-
+        aCoder.encode(tickled, forKey: kRoundTickledKey)
     }
 
 }
