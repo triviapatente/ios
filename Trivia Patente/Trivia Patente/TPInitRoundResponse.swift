@@ -44,7 +44,7 @@ class TPInitRoundResponse: TPResponse {
         self.winnerId = json["winner_id"].int32
         self.opponent_online = json["opponent_online"].boolValue
         self.category = Category(json: json["category"])
-        matchMaxAge = json["match_max_age"].doubleValue
+        matchMaxAge = json["max_age"].doubleValue
         if json["round"].exists() {
             self.round = Round(json: json["round"])
         }

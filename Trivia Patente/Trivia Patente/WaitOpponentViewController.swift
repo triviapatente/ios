@@ -166,7 +166,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func processResponse(response : TPInitRoundResponse, followRedirects: Bool = true) {
         self.response = response
-        self.MATCH_MAX_AGE = 2131434//response!.matchMaxAge
+        self.MATCH_MAX_AGE = response.matchMaxAge
         self.gameActions.leaveButttonEnabled(enabled: true)
         self.gameActions.timerButttonEnabled(enabled: true)
         if let round = self.response.round {
@@ -232,10 +232,10 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func timerRemaining(remaining: TimeInterval) -> String {
         if (remaining < 60) {
-            return "La partità verrà chiusa in meno di un'ora"
+            return "La partità scadrà automaticamente in meno di un'ora"
         }
         let hours = Int(remaining/(60*60))
-        return "La partità verrà chiusa tra \(hours) " + (hours == 1 ? "ora" : "ore");
+        return "La partità scadrà automaticamente tra \(hours) " + (hours == 1 ? "ora" : "ore");
     }
     func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false, followRedirects : Bool = true) {
         if user.isMe() && followRedirects {

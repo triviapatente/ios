@@ -80,7 +80,7 @@ class GameEndedTableViewCell: UITableViewCell {
     }
     func configureFooter(game: Game) {
         if game.expired {
-            self.footerLabel.text = "La partita è stata conclusa in automatico"
+            self.footerLabel.text = "Il tempo per completare la partita è scaduto"
             self.footerContainerHeight.constant = RoundDetailsViewController.ENDED_CELL_FOOTER_HEIGHT
         } else
         {
