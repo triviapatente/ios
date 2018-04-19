@@ -228,13 +228,15 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         if animate {
             self.timerLabel.fadeTransition(0.5)
         }
-        self.timerLabel.text = timerRemaining(remaining: self.MATCH_MAX_AGE! - (self.game.createdAt!.timeIntervalSince1970 - Date().timeIntervalSince1970))
+        self.timerLabel.text = timerRemaining(remaining: self.game.getRemainingTime(maxAge: self.MATCH_MAX_AGE!))
     }
     func timerRemaining(remaining: TimeInterval) -> String {
-        if (remaining < 60) {
+        //remaining - secondi
+        let hour = Double(60 * 60)
+        if (remaining < hour) {
             return "La partità scadrà automaticamente in meno di un'ora"
         }
-        let hours = Int(remaining/(60*60))
+        let hours = Int(remaining / hour)
         return "La partità scadrà automaticamente tra \(hours) " + (hours == 1 ? "ora" : "ore");
     }
     func processGameState(state : RoundWaiting, user: User, opponent_online : Bool = false, followRedirects : Bool = true) {

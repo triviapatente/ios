@@ -56,6 +56,11 @@ open class Game: CommonPK {
     func cancelled() -> Bool {
         return self.isEnded() && !self.started
     }
+    
+    func getRemainingTime(maxAge : TimeInterval) -> TimeInterval {
+        return maxAge - (Date().timeIntervalSince1970 - self.createdAt!.timeIntervalSince1970)
+        
+    }
     // MARK: SwiftyJSON Initalizers
     /**
     Initates the class based on the object
