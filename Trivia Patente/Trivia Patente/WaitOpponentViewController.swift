@@ -121,6 +121,11 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func waitMessage(for state: RoundWaiting, opponent_online : Bool) -> String {
         guard response != nil else { return "In attesa di connessione.." }
+        if let max_age = self.MATCH_MAX_AGE {
+            if max_age < 0 {
+                return "La partita è scaduta";
+            }
+        }
         if let _ = response.round {
             // round 1-4
             guard opponent_online || state == .invite else {
@@ -232,6 +237,9 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func timerRemaining(remaining: TimeInterval) -> String {
         //remaining - secondi
+        if (remaining < 0) {
+            return "";
+        }
         let hour = Double(60 * 60)
         if (remaining < hour) {
             return "La partità scadrà automaticamente in meno di un'ora"
