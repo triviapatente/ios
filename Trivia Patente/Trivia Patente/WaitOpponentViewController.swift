@@ -320,8 +320,6 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
                     AnalyticsParameterContentType: "game" as NSObject
                     ])
                 self.configureView()
-                //TODO: change with processGameState for invite (in round_init response)
-                self.processGameState(state: .invite, user: self.game.opponent, opponent_online: true)
                 self.join_room()
                 self.fromInvite = false
                 
