@@ -33,7 +33,7 @@ class NoConnectionViewController: BaseViewController {
         if let identifier = segue.identifier {
             if identifier == "error_view" {
                 if let destination = segue.destination as? TPErrorView {
-                    destination.set(error: "Spiacenti, impossibile connetersi al server 😔")
+                    destination.set(error: Strings.unable_to_connect_error)
                 }
             }
         }

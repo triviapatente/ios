@@ -20,6 +20,7 @@ class Strings {
     static let no_user_found = "Nessun utente trovato 😔"
     static let request_timout_error = "Errore di connessione, riprova."
     static let unknown_error = "Abbiamo riscontrato un problema, riprova."
+    static let unable_to_connect_error = "Spiacenti, impossibile connettersi al server 😔"
     
     // Review popover
     static let review_pop_first_msg = "Come ti trovi con\nTriviaPatente?"
