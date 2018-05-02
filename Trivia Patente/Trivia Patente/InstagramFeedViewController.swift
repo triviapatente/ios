@@ -15,7 +15,7 @@ class InstagramFeedViewController: UIViewController {
     @IBOutlet var rightButton : UIButton!
     @IBOutlet var closeButton : UIButton!
     
-    var pictures : [String]? = ["https://scontent.cdninstagram.com/vp/864f3bfec281359689f7643c0979ad73/5B8FF7DA/t51.2885-15/s320x320/e35/30841590_1667429793336347_5224128018166841344_n.jpg", "https://scontent.cdninstagram.com/vp/da98f19b2bb9a6c53b3acada45e618f1/5AEB7467/t51.2885-15/e15/p320x320/30917971_1233163293486315_5083115643314634752_n.jpg"] // nil = not loaded
+    var pictures : [InstaPost]? = nil// nil = not loaded
     
     var timer : Timer? = nil
     var currentIndex : Int = 0
@@ -41,7 +41,15 @@ class InstagramFeedViewController: UIViewController {
 //        httpManager.request(url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=7547904163.2fef49b.06b60bdfda3348f49ff13020d87c5d34", method: .post, params: [:], auth: false) {  (response: TPResponse) in
         
         // set pictures to retrieved values, then
-        self.startShowingFeed()
+        httpManager.request(url: "/ws/instagram", method: .get, params: nil) { (response:TPInstaFeedResponse) in
+            if response.success {
+                if let images = response.posts {
+                    self.pictures = images
+                    self.startShowingFeed()
+                }
+            }
+        }
+        
 //        }
         
         
@@ -49,11 +57,12 @@ class InstagramFeedViewController: UIViewController {
     
     @IBAction func openInstaPost() {
         // url for image at currentIndex
-//        if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        } else {
-//            UIApplication.shared.openURL(url)
-//        }
+        let url = URL(string: getCurrentPost().postLink)!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,8 +88,12 @@ class InstagramFeedViewController: UIViewController {
             t.invalidate()
         }
         currentIndex = index
-        mainImageView.load(path: URL(string: self.pictures![abs(currentIndex%self.pictures!.count)])!, placeholder: "insta-post")
+        mainImageView.load(path: URL(string: getCurrentPost().url)!, placeholder: "insta-post")
         self.startTimer()
+    }
+    
+    func getCurrentPost() -> InstaPost {
+        return self.pictures![abs(currentIndex%self.pictures!.count)]
     }
     
     @IBAction func nextPictureAction() {

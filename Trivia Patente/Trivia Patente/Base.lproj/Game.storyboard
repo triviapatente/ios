@@ -1054,24 +1054,27 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhh-cn-1HW">
-                                <rect key="frame" x="256" y="129.5" width="24" height="24"/>
+                                <rect key="frame" x="248" y="125.5" width="32" height="32"/>
                                 <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                 <state key="normal" image="ic_chevron_right_white"/>
                                 <connections>
                                     <action selector="nextPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="uha-Wa-XPK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwr-cM-2Mm">
-                                <rect key="frame" x="8" y="129.5" width="24" height="24"/>
+                                <rect key="frame" x="8" y="125.5" width="32" height="32"/>
                                 <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                 <state key="normal" image="ic_chevron_left_white"/>
                                 <connections>
                                     <action selector="prevoiusPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="P3D-WJ-6R5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waN-43-P0h">
-                                <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                <rect key="frame" x="8" y="8" width="28" height="28"/>
                                 <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                 <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                 <state key="normal" image="ic_clear_white"/>
                                 <connections>
