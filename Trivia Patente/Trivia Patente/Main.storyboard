@@ -156,12 +156,11 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLq-hO-CLt">
-                                        <rect key="frame" x="30" y="125" width="240" height="140"/>
+                                        <rect key="frame" x="20" y="125" width="260" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="CRJ-cl-7e3"/>
                                         </constraints>
-                                        <string key="text">Un anno nuovo sta cominciando, per questo abbiamo pensato di regalare a chi si iscrive in questo periodo un’esperienza di gioco senza limitazioni!
-Fallo sapere ai tuoi amici 😉</string>
+                                        <string key="text">Goditi l’esperienza gratuita di TriviaPatente! Il servizio ti permette di usufruire di tutte le modalità di gioco in maniera gratuita, in modo da permetterti di prepararti al meglio senza spendere! 😉</string>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -206,14 +205,14 @@ Fallo sapere ai tuoi amici 😉</string>
                                     <constraint firstItem="KjH-m0-SIe" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" id="NL6-wA-JVB"/>
                                     <constraint firstAttribute="height" constant="345" id="PgU-3d-dkp"/>
                                     <constraint firstAttribute="width" constant="300" id="cfJ-S4-T8g"/>
-                                    <constraint firstItem="RLq-hO-CLt" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" constant="30" id="g69-jh-YDT"/>
+                                    <constraint firstItem="RLq-hO-CLt" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" constant="20" id="g69-jh-YDT"/>
                                     <constraint firstAttribute="trailing" secondItem="v1N-me-dvo" secondAttribute="trailing" id="gW7-eI-Fys"/>
                                     <constraint firstAttribute="bottom" secondItem="v1N-me-dvo" secondAttribute="bottom" id="koX-Th-WBi"/>
                                     <constraint firstItem="v1N-me-dvo" firstAttribute="top" secondItem="ygv-PK-i3T" secondAttribute="bottom" id="lSO-Tb-uBq"/>
                                     <constraint firstItem="rxA-hz-itL" firstAttribute="top" secondItem="iI7-u5-sXh" secondAttribute="top" constant="4" id="mhy-bm-Evi"/>
                                     <constraint firstAttribute="trailing" secondItem="ygv-PK-i3T" secondAttribute="trailing" id="q4N-rL-73y"/>
                                     <constraint firstItem="v1N-me-dvo" firstAttribute="leading" secondItem="iI7-u5-sXh" secondAttribute="leading" id="s8t-BU-dDB"/>
-                                    <constraint firstAttribute="trailing" secondItem="RLq-hO-CLt" secondAttribute="trailing" constant="30" id="uX1-I9-SQr"/>
+                                    <constraint firstAttribute="trailing" secondItem="RLq-hO-CLt" secondAttribute="trailing" constant="20" id="uX1-I9-SQr"/>
                                     <constraint firstItem="RLq-hO-CLt" firstAttribute="top" secondItem="jhZ-ob-wGF" secondAttribute="bottom" constant="15" id="xc8-jJ-9Kp"/>
                                 </constraints>
                                 <connections>
