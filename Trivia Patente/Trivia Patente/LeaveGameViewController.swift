@@ -54,7 +54,7 @@ class LeaveGameViewController: BaseViewController {
                 } else {
                     self.mainTitle.text = "Sei sicuro di volerti arrendere?"
                     self.decrementLabel.isHidden = false
-                    self.decrementLabel.text = "\(response.decrement!) \(abs(response.decrement) == 1 ? "punto" : "punti")"
+                    self.decrementLabel.text = "\(response.decrement!) \(abs(response.decrement) == 1 ? "km" : "km")"
                 }
             }
         }

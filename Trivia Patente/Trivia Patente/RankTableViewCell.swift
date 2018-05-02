@@ -34,7 +34,7 @@ class RankTableViewCell: UITableViewCell {
         didSet {
             self.setAppearance(for: user)
             self.nameView.text = user.displayName
-            self.scoreView.text = "\(user.score!)"
+            self.scoreView.text = "\(user.score!) km percorsi"
             self.avatarView.load(user: user)
         }
     }

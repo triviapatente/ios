@@ -55,7 +55,7 @@ class GameEndedTableViewCell: UITableViewCell {
     }
     var scoreIncrement : Int! {
         didSet {
-            self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString()) \(abs(scoreIncrement) == 1 ? "punto" : "punti")"
+            self.scoreIncrementLabel.text = "\(scoreIncrement.toSignedString()) \(abs(scoreIncrement) == 1 ? "km" : "km")"
             self.titleLabel.text = self.titleFor(game: game)
         }
     }
