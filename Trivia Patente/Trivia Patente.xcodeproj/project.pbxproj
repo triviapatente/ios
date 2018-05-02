@@ -243,6 +243,7 @@
 		F4A9B2CF1FB348F100910D20 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2CE1FB348F100910D20 /* UIImage.swift */; };
 		F4A9B2D11FB35CE100910D20 /* TPUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */; };
 		F4B3E4B21FA6DA2E00EE7B2A /* LuckyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */; };
+		F4BC88542099508100EBF87A /* InstagramFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC88532099508100EBF87A /* InstagramFeedViewController.swift */; };
 		F4C399A1205268B900383CBD /* QuizSummaryHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A0205268B900383CBD /* QuizSummaryHeaderViewController.swift */; };
 		F4C399A320526E7200383CBD /* QuizScoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A220526E7200383CBD /* QuizScoreButton.swift */; };
 		F4C399A72052773200383CBD /* QuizQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C399A52052773200383CBD /* QuizQuestionTableViewCell.swift */; };
@@ -527,6 +528,7 @@
 		F4A9B2CE1FB348F100910D20 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F4A9B2D01FB35CE100910D20 /* TPUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPUserResponse.swift; sourceTree = "<group>"; };
 		F4B3E4B11FA6DA2D00EE7B2A /* LuckyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyModalViewController.swift; sourceTree = "<group>"; };
+		F4BC88532099508100EBF87A /* InstagramFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramFeedViewController.swift; sourceTree = "<group>"; };
 		F4C399A0205268B900383CBD /* QuizSummaryHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSummaryHeaderViewController.swift; sourceTree = "<group>"; };
 		F4C399A220526E7200383CBD /* QuizScoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizScoreButton.swift; sourceTree = "<group>"; };
 		F4C399A52052773200383CBD /* QuizQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionTableViewCell.swift; sourceTree = "<group>"; };
@@ -869,6 +871,7 @@
 				8B3E3A8D1E12C34D0062AF32 /* AlphaViewController.swift */,
 				8B4814731E16FE9300AD0834 /* TPPlayButton.swift */,
 				F42CBD082060489800D761BC /* CircularLoaderView.swift */,
+				F4BC88532099508100EBF87A /* InstagramFeedViewController.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -2297,6 +2300,7 @@
 				F4477E381FA0A30F00ED5319 /* TBForgotResponse.swift in Sources */,
 				8B4551D61E043513008285D4 /* TPGameViewController.swift in Sources */,
 				8BE6DE3A1DE6E0AC00DDD179 /* UIColor.swift in Sources */,
+				F4BC88542099508100EBF87A /* InstagramFeedViewController.swift in Sources */,
 				8B5EE0FA1DD76F1100745A54 /* WrongAnswerTableViewCell.swift in Sources */,
 				8B5132FA1DBB75CE00143497 /* HTTPAuth.swift in Sources */,
 				8BCF8C9D1DB6A6BA00EC637C /* Question.swift in Sources */,

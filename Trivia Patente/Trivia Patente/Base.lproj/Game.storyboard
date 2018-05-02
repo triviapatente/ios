@@ -414,12 +414,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M67-gY-BgA">
+                                <rect key="frame" x="16" y="34" width="288" height="283"/>
+                                <connections>
+                                    <segue destination="Noy-P9-cyM" kind="embed" id="tZG-On-9NL"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="p9J-tu-dYZ" firstAttribute="top" secondItem="wvI-ob-9Ko" secondAttribute="bottom" constant="10" id="3SA-89-p2G"/>
                             <constraint firstItem="Svw-ib-Q7p" firstAttribute="top" secondItem="p9J-tu-dYZ" secondAttribute="bottom" constant="10" id="8mh-Dy-WSI"/>
                             <constraint firstItem="wvI-ob-9Ko" firstAttribute="top" secondItem="cVv-7D-7r1" secondAttribute="bottom" constant="60" id="8w7-o4-dRB"/>
+                            <constraint firstItem="wvI-ob-9Ko" firstAttribute="bottom" secondItem="M67-gY-BgA" secondAttribute="bottom" id="Axc-0j-IXg"/>
                             <constraint firstItem="OlA-mS-DF4" firstAttribute="top" secondItem="Svw-ib-Q7p" secondAttribute="bottom" constant="50" id="BAq-iy-Gxz"/>
                             <constraint firstAttribute="trailing" secondItem="cVv-7D-7r1" secondAttribute="trailing" id="HVd-56-rKE"/>
                             <constraint firstItem="cVv-7D-7r1" firstAttribute="leading" secondItem="GeJ-Tj-WeM" secondAttribute="leading" id="Ldn-lM-1F1"/>
@@ -429,9 +436,12 @@
                             <constraint firstItem="6n5-2g-J4N" firstAttribute="leading" secondItem="GeJ-Tj-WeM" secondAttribute="leadingMargin" id="Sis-gI-RY6"/>
                             <constraint firstItem="p9J-tu-dYZ" firstAttribute="leading" secondItem="GeJ-Tj-WeM" secondAttribute="leadingMargin" constant="35" id="UjN-vx-vrR"/>
                             <constraint firstItem="cVv-7D-7r1" firstAttribute="top" secondItem="8k7-f1-aTz" secondAttribute="bottom" constant="15" id="Xju-EN-BH3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M67-gY-BgA" secondAttribute="trailing" id="dlT-9j-Ee3"/>
                             <constraint firstItem="Svw-ib-Q7p" firstAttribute="centerX" secondItem="GeJ-Tj-WeM" secondAttribute="centerX" id="h2C-Zg-YJr"/>
+                            <constraint firstItem="M67-gY-BgA" firstAttribute="leading" secondItem="GeJ-Tj-WeM" secondAttribute="leadingMargin" id="ipc-8O-kmt"/>
                             <constraint firstItem="6n5-2g-J4N" firstAttribute="top" secondItem="Svw-ib-Q7p" secondAttribute="bottom" constant="4" id="ugE-cG-GWI"/>
                             <constraint firstItem="wvI-ob-9Ko" firstAttribute="centerX" secondItem="GeJ-Tj-WeM" secondAttribute="centerX" id="zAB-3Z-7IJ"/>
+                            <constraint firstItem="M67-gY-BgA" firstAttribute="top" secondItem="8k7-f1-aTz" secondAttribute="bottom" constant="14" id="zLf-Ok-pJt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -997,6 +1007,89 @@
             </objects>
             <point key="canvasLocation" x="1523" y="1272"/>
         </scene>
+        <!--Instagram Feed View Controller-->
+        <scene sceneID="obb-lg-KD9">
+            <objects>
+                <viewController id="Noy-P9-cyM" customClass="InstagramFeedViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FpX-of-tIr">
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="283"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="insta-sample" translatesAutoresizingMaskIntoConstraints="NO" id="kYs-EP-c90">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="283"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te8-cO-q9E">
+                                <rect key="frame" x="162.5" y="8" width="117.5" height="30"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wrz-8A-zeK">
+                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@triviapatente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IY-aI-oQt">
+                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="30"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram" translatesAutoresizingMaskIntoConstraints="NO" id="PJP-XQ-aUf">
+                                                <rect key="frame" x="87.5" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="1ON-E5-XaC"/>
+                                                    <constraint firstAttribute="width" constant="30" id="OEo-ke-80k"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9qo-30-tuJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wrz-8A-zeK" secondAttribute="bottom" id="Aez-UT-K2E"/>
+                                    <constraint firstItem="Wrz-8A-zeK" firstAttribute="leading" secondItem="Te8-cO-q9E" secondAttribute="leading" id="Hfq-zY-KT9"/>
+                                    <constraint firstItem="Wrz-8A-zeK" firstAttribute="top" secondItem="Te8-cO-q9E" secondAttribute="top" id="oEa-Bz-vb6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wrz-8A-zeK" secondAttribute="trailing" id="p8l-vF-LpX"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhh-cn-1HW">
+                                <rect key="frame" x="256" y="129.5" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="ic_chevron_right_white"/>
+                                <connections>
+                                    <action selector="nextPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="uha-Wa-XPK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwr-cM-2Mm">
+                                <rect key="frame" x="8" y="129.5" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="ic_chevron_left_white"/>
+                                <connections>
+                                    <action selector="prevoiusPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="P3D-WJ-6R5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kYs-EP-c90" firstAttribute="top" secondItem="FpX-of-tIr" secondAttribute="top" id="4GH-8f-aVe"/>
+                            <constraint firstAttribute="trailing" secondItem="Te8-cO-q9E" secondAttribute="trailing" constant="8" id="5kq-EX-N8E"/>
+                            <constraint firstItem="kYs-EP-c90" firstAttribute="leading" secondItem="FpX-of-tIr" secondAttribute="leading" id="5yj-zJ-OiC"/>
+                            <constraint firstAttribute="trailing" secondItem="kYs-EP-c90" secondAttribute="trailing" id="759-ZD-ZuE"/>
+                            <constraint firstItem="Te8-cO-q9E" firstAttribute="top" secondItem="FpX-of-tIr" secondAttribute="top" constant="8" id="Ajj-Qi-La8"/>
+                            <constraint firstAttribute="bottom" secondItem="kYs-EP-c90" secondAttribute="bottom" id="b5L-Ir-DGe"/>
+                            <constraint firstItem="Bhh-cn-1HW" firstAttribute="centerY" secondItem="FpX-of-tIr" secondAttribute="centerY" id="bUl-gi-gMQ"/>
+                            <constraint firstItem="Fwr-cM-2Mm" firstAttribute="centerY" secondItem="FpX-of-tIr" secondAttribute="centerY" id="cqt-Bp-4yI"/>
+                            <constraint firstItem="Fwr-cM-2Mm" firstAttribute="leading" secondItem="FpX-of-tIr" secondAttribute="leading" constant="8" id="f9T-Fb-ABg"/>
+                            <constraint firstAttribute="trailing" secondItem="Bhh-cn-1HW" secondAttribute="trailing" constant="8" id="z7M-Yo-d7m"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="leftButton" destination="Fwr-cM-2Mm" id="tz8-Ly-kfH"/>
+                        <outlet property="mainImageView" destination="kYs-EP-c90" id="qnN-Wd-y4d"/>
+                        <outlet property="rightButton" destination="Bhh-cn-1HW" id="Ql4-di-2NJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qZl-fw-hbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158.75" y="-1035.7394366197184"/>
+        </scene>
     </scenes>
     <resources>
         <image name="action_bell" width="19" height="22"/>
@@ -1004,7 +1097,11 @@
         <image name="chevron-white" width="13" height="21"/>
         <image name="flag-icon" width="16" height="19"/>
         <image name="ic_chat_white" width="24" height="24"/>
+        <image name="ic_chevron_left_white" width="24" height="24"/>
+        <image name="ic_chevron_right_white" width="24" height="24"/>
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
+        <image name="insta-sample" width="1000" height="1000"/>
+        <image name="instagram" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kf4-r3-nBv"/>
