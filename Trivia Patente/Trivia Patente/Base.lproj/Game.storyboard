@@ -1015,8 +1015,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="288" height="283"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="insta-sample" translatesAutoresizingMaskIntoConstraints="NO" id="kYs-EP-c90">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="insta-sample" translatesAutoresizingMaskIntoConstraints="NO" id="kYs-EP-c90">
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="283"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jyu-Af-UHt" appends="YES" id="gr3-gh-QQB"/>
+                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te8-cO-q9E">
                                 <rect key="frame" x="162.5" y="8" width="117.5" height="30"/>
@@ -1065,6 +1069,16 @@
                                     <action selector="prevoiusPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="P3D-WJ-6R5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waN-43-P0h">
+                                <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.33000000000000002" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                <state key="normal" image="ic_clear_white"/>
+                                <connections>
+                                    <action selector="closeInstaFeed" destination="Noy-P9-cyM" eventType="touchUpInside" id="whd-xT-0St"/>
+                                    <action selector="prevoiusPictureAction" destination="Noy-P9-cyM" eventType="touchUpInside" id="aYo-7S-JpL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1073,20 +1087,28 @@
                             <constraint firstItem="kYs-EP-c90" firstAttribute="leading" secondItem="FpX-of-tIr" secondAttribute="leading" id="5yj-zJ-OiC"/>
                             <constraint firstAttribute="trailing" secondItem="kYs-EP-c90" secondAttribute="trailing" id="759-ZD-ZuE"/>
                             <constraint firstItem="Te8-cO-q9E" firstAttribute="top" secondItem="FpX-of-tIr" secondAttribute="top" constant="8" id="Ajj-Qi-La8"/>
+                            <constraint firstItem="waN-43-P0h" firstAttribute="top" secondItem="FpX-of-tIr" secondAttribute="topMargin" constant="8" id="Kwd-BT-uRY"/>
                             <constraint firstAttribute="bottom" secondItem="kYs-EP-c90" secondAttribute="bottom" id="b5L-Ir-DGe"/>
                             <constraint firstItem="Bhh-cn-1HW" firstAttribute="centerY" secondItem="FpX-of-tIr" secondAttribute="centerY" id="bUl-gi-gMQ"/>
                             <constraint firstItem="Fwr-cM-2Mm" firstAttribute="centerY" secondItem="FpX-of-tIr" secondAttribute="centerY" id="cqt-Bp-4yI"/>
                             <constraint firstItem="Fwr-cM-2Mm" firstAttribute="leading" secondItem="FpX-of-tIr" secondAttribute="leading" constant="8" id="f9T-Fb-ABg"/>
+                            <constraint firstItem="waN-43-P0h" firstAttribute="leading" secondItem="FpX-of-tIr" secondAttribute="leading" constant="8" id="hip-oP-thX"/>
                             <constraint firstAttribute="trailing" secondItem="Bhh-cn-1HW" secondAttribute="trailing" constant="8" id="z7M-Yo-d7m"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="waN-43-P0h" id="O4i-Gp-d9X"/>
                         <outlet property="leftButton" destination="Fwr-cM-2Mm" id="tz8-Ly-kfH"/>
                         <outlet property="mainImageView" destination="kYs-EP-c90" id="qnN-Wd-y4d"/>
                         <outlet property="rightButton" destination="Bhh-cn-1HW" id="Ql4-di-2NJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZl-fw-hbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jyu-Af-UHt">
+                    <connections>
+                        <action selector="openInstaPost" destination="Noy-P9-cyM" id="BFv-xy-Mau"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1158.75" y="-1035.7394366197184"/>
         </scene>
@@ -1099,6 +1121,7 @@
         <image name="ic_chat_white" width="24" height="24"/>
         <image name="ic_chevron_left_white" width="24" height="24"/>
         <image name="ic_chevron_right_white" width="24" height="24"/>
+        <image name="ic_clear_white" width="24" height="24"/>
         <image name="ic_format_list_bulleted_white" width="24" height="24"/>
         <image name="insta-sample" width="1000" height="1000"/>
         <image name="instagram" width="40" height="40"/>

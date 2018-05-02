@@ -13,6 +13,7 @@ class InstagramFeedViewController: UIViewController {
     @IBOutlet var mainImageView : UIImageView!
     @IBOutlet var leftButton : UIButton!
     @IBOutlet var rightButton : UIButton!
+    @IBOutlet var closeButton : UIButton!
     
     var pictures : [String]? = ["https://scontent.cdninstagram.com/vp/864f3bfec281359689f7643c0979ad73/5B8FF7DA/t51.2885-15/s320x320/e35/30841590_1667429793336347_5224128018166841344_n.jpg", "https://scontent.cdninstagram.com/vp/da98f19b2bb9a6c53b3acada45e618f1/5AEB7467/t51.2885-15/e15/p320x320/30917971_1233163293486315_5083115643314634752_n.jpg"] // nil = not loaded
     
@@ -27,6 +28,7 @@ class InstagramFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.leftButton.circleRounded()
         self.rightButton.circleRounded()
+        self.closeButton.circleRounded()
 //        self.mainImageView.mediumRounded()
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (t) in
             DispatchQueue.main.async {
@@ -43,6 +45,15 @@ class InstagramFeedViewController: UIViewController {
 //        }
         
         
+    }
+    
+    @IBAction func openInstaPost() {
+        // url for image at currentIndex
+//        if #available(iOS 10.0, *) {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        } else {
+//            UIApplication.shared.openURL(url)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +89,13 @@ class InstagramFeedViewController: UIViewController {
 
     @IBAction func prevoiusPictureAction() {
         self.showPictureAtIndex(index: currentIndex - 1)
+    }
+    
+    @IBAction func closeInstaFeed() {
+        if let t = timer {
+            t.invalidate()
+        }
+        self.view.isHidden = true
     }
     
     
