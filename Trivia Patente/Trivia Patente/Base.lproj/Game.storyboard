@@ -1083,7 +1083,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kYs-EP-c90" firstAttribute="top" secondItem="FpX-of-tIr" secondAttribute="top" id="4GH-8f-aVe"/>
                             <constraint firstAttribute="trailing" secondItem="Te8-cO-q9E" secondAttribute="trailing" constant="8" id="5kq-EX-N8E"/>
