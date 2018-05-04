@@ -386,8 +386,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqG-oG-LgY">
                                             <rect key="frame" x="40" y="259" width="413" height="150"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sei sicuro di voler disconnettere il tuo account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-hA-HHQ">
-                                                    <rect key="frame" x="30" y="10" width="353" height="80"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sei sicuro di voler disconnettere il tuo account?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMv-hA-HHQ">
+                                                    <rect key="frame" x="30" y="10" width="310" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="a9N-vq-T7K"/>
                                                     </constraints>
