@@ -15,7 +15,7 @@ extension DataRequest {
             if let _ = response {
                 let json = JSON.fromData(data: data)
                 let tpResponse = T(json: json, statusCode: response!.statusCode)
-                if tpResponse.success == true {
+                if tpResponse.statusCode == 200 && tpResponse.success == true {
                     return .success(tpResponse)
                 } else {
                     return .failure(BackendError(message: tpResponse.message))
@@ -24,7 +24,7 @@ extension DataRequest {
                 if let mError = error, mError._code == NSURLErrorCancelled {
                     return .failure(BackendError(cancelled: true))
                 } else {
-                    return .failure(BackendError(message: "No response from server"))
+                    return .failure(BackendError(message: "Nessuna risposta dal server"))
                 }
             }
         }
