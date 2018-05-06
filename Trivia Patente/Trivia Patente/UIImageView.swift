@@ -89,11 +89,13 @@ extension UIImageView {
                 let label = self.labelForUserInitials()
                 label.text = user!.initials.uppercased()
                 self.addSubview(label)
+                self.layoutIfNeeded()
+                label.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
             }
         
     }
     func labelForUserInitials() -> UILabel {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        let label = UILabel()
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.font = UIFont(name: "Avenir Next", size: self.frame.width * 0.4)
