@@ -11,13 +11,13 @@ import Alamofire
 
 class HTTPManager {
     static let REQUEST_TIMEOUT : TimeInterval = 15.0
-    var manager = Alamofire.SessionManager.default
+    static var shared = Alamofire.SessionManager.default
     
-    init() {
+    class func initialize() {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = HTTPManager.REQUEST_TIMEOUT
         configuration.timeoutIntervalForResource = HTTPManager.REQUEST_TIMEOUT
-        manager = Alamofire.SessionManager(configuration: configuration)
+        shared = Alamofire.SessionManager(configuration: configuration)
     }
     
     class func getBaseURL() -> String {
@@ -45,7 +45,7 @@ class HTTPManager {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
         
-        manager.upload(multipartFormData: { multipartData in
+        HTTPManager.shared.upload(multipartFormData: { multipartData in
             multipartData.append(data, withName: forHttpParam, fileName: fileName, mimeType: mimeType)
             if parameters != nil   {
                 for (key, value) in parameters! {
@@ -97,7 +97,7 @@ class HTTPManager {
     func request<T: TPResponse>(url : String, method : HTTPMethod, params : Parameters?, auth : Bool = true, jsonBody : Bool = false, handler: @escaping (T) -> Void) -> DataRequest {
         let headers = HTTPManager.getAuthHeaders(auth: auth)
         let destination = HTTPManager.getBaseURL() + url
-        let request = manager.request(destination, method: method, parameters: params, encoding: jsonBody ? JSONEncoding.default : URLEncoding.default, headers: headers)
+        let request = HTTPManager.shared.request(destination, method: method, parameters: params, encoding: jsonBody ? JSONEncoding.default : URLEncoding.default, headers: headers)
                      .validate(statusCode: 200..<300)
                      .validate(contentType: ["application/json"])
                      .responseModel(completionHandler: { (response : DataResponse<T>) in
@@ -123,9 +123,7 @@ class HTTPManager {
                             break
                         case .failure(let error):
                             if let mError = error as? BackendError{
-                                if mError.cancelled == false {
-                                    handler(T(error: mError.message))
-                                }
+                                handler(T(error: mError.message))
                             } else if error._code == NSURLErrorTimedOut {
                                 //HANDLE TIMEOUT HERE
                                 handler(T(error: Strings.request_timout_error))

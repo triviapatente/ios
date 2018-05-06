@@ -183,7 +183,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         let surnameUpdate : (() -> Void) = { _ in
 //            self.startSaving()
             if ((SessionManager.currentUser!.surname == nil && self.surnameField.getText() != "")||(SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)) {
-                httpManager.request(url: "/account/surname/edit", method: .post, params: ["surname":self.surnameField.getText()], auth: true, handler: { response in
+                _ = httpManager.request(url: "/account/surname/edit", method: .post, params: ["surname":self.surnameField.getText()], auth: true, handler: { response in
                     self.finishedSaving()
                     if !response.success {
                         self.errorView.set(error: Strings.contact_us_error_toast)
@@ -201,7 +201,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         let nameUpdate : (() -> Void) = { _ in
 //            self.startSaving()
             if (SessionManager.currentUser!.name == nil && self.nameField.getText() != "") || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) {
-                httpManager.request(url: "/account/name/edit", method: .post, params: ["name":self.nameField.getText()], auth: true, handler: { response in
+                _ = httpManager.request(url: "/account/name/edit", method: .post, params: ["name":self.nameField.getText()], auth: true, handler: { response in
                     if !response.success {
                         self.errorView.set(error: Strings.contact_us_error_toast)
                         self.finishedSaving()

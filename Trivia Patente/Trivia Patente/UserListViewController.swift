@@ -402,6 +402,7 @@ class UserListViewController: TPNormalViewController {
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         let handler = {  (response : TPUserListResponse) in
             guard self != nil else { return }
+            guard response.canceled == false else { return }
             loadingView.hide(animated: true)
             if response.success == true {
                 if self.listScope == .italian {

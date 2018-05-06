@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         UIApplication.shared.statusBarStyle = .lightContent
         self.window?.rootViewController = UIViewController.root()
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        HTTPManager.initialize()
         FirebaseManager.initialize(delegate: self)
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6517751265585915~9911714540")
