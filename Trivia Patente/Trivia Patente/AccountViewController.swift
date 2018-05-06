@@ -56,6 +56,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
             // TODO: handler nel caso l'utente sia scollegato
         }
     }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.avatarImageView.circleRounded()
