@@ -154,6 +154,7 @@ class SingleStatViewController: TPNormalViewController {
         let progressString = NSMutableAttributedString(string: "\(category.progress)%", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 20.0)!])
         progressString.append(NSMutableAttributedString(string: " su \(category.total_quizzes!)", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 14.0)!]))
         detailsLabel.attributedText = progressString
+        self.detailsContainer.backgroundColor = category.status.color
         let frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)
         let nib = UINib(nibName: "WrongAnswerTableViewCell", bundle: Bundle.main)
         fakeCell = nib.instantiate(withOwner: self, options: nil)[0] as! WrongAnswerTableViewCell
