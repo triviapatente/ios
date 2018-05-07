@@ -58,6 +58,7 @@ open class Game: CommonPK {
     }
     
     func getRemainingTime(maxAge : TimeInterval) -> TimeInterval {
+        guard maxAge != nil && self.createdAt != nil else { return 60*60 }
         return maxAge - (Date().timeIntervalSince1970 - self.createdAt!.timeIntervalSince1970)
         
     }
