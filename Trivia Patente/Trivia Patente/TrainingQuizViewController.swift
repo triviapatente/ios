@@ -45,8 +45,8 @@ class TrainingQuizViewController: BasePlayViewController {
             return q.my_answer != nil
             }.count
     }
-    
-    lazy var bulletinManager: BulletinManager = {
+    var bulletinManager : BulletinManager?
+    func bulletinManagerMake() -> BulletinManager {
         let page = PageBulletinItem(title: "Tempo scaduto")
         page.interfaceFactory.tintColor = Colors.primary
         //        factory.alternativeButtonColor = Colors.secondary
@@ -61,18 +61,19 @@ class TrainingQuizViewController: BasePlayViewController {
         page.alternativeButtonTitle = "Cancella"
         
         page.actionHandler = { (item: PageBulletinItem) in
-            self.closeTraining(save: true, manager: self.bulletinManager)
+            self.closeTraining(save: true, manager: self.bulletinManager!)
         }
         
         page.alternativeHandler = { (item: PageBulletinItem) in
-            self.closeTraining(save: false, manager: self.bulletinManager)
+            self.closeTraining(save: false, manager: self.bulletinManager!)
         }
         
         return BulletinManager(rootItem: page)
         
-    }()
+    }
     
-    lazy var bulletinEndTraining: BulletinManager = {
+    var bulletinEndTraining : BulletinManager?
+    func bulletinEndTrainingMake() -> BulletinManager  {
         let page = PageBulletinItem(title: "Concludi allenamento")
         page.interfaceFactory.tintColor = Colors.primary
         page.interfaceFactory.actionButtonTitleColor = .white
@@ -86,11 +87,11 @@ class TrainingQuizViewController: BasePlayViewController {
         
         page.actionHandler = { (item: PageBulletinItem) in
 //            self.bulletinEndTraining.rootItem.isDismissable = false
-            self.closeTraining(save: true, manager: self.bulletinEndTraining)
+            self.closeTraining(save: true, manager: self.bulletinEndTraining!)
         }
         
         page.alternativeHandler = { (item: PageBulletinItem) in
-            self.closeTraining(save: false, manager: self.bulletinEndTraining)
+            self.closeTraining(save: false, manager: self.bulletinEndTraining!)
         }
         
         page.dismissalHandler = { (item) in
@@ -98,7 +99,7 @@ class TrainingQuizViewController: BasePlayViewController {
             }
         
         return BulletinManager(rootItem: page)
-    }()
+    }
     
     lazy var savingErrorBulletin : PageBulletinItem = {
         let page = PageBulletinItem(title: "Errore salvataggio")
@@ -169,8 +170,9 @@ class TrainingQuizViewController: BasePlayViewController {
     
     @IBAction func userWantsToExit() {
         self.stopTimer()
-        self.bulletinEndTraining.prepare()
-        self.bulletinEndTraining.presentBulletin(above: self)
+        self.bulletinEndTraining = self.bulletinEndTrainingMake()
+        self.bulletinEndTraining!.prepare()
+        self.bulletinEndTraining!.presentBulletin(above: self)
     }
     
     @objc private func appChangedStatusToActive() {
@@ -275,8 +277,9 @@ class TrainingQuizViewController: BasePlayViewController {
     
     private func showTimeOut() {
         self.stopTimer()
-        self.bulletinManager.prepare()
-        self.bulletinManager.presentBulletin(above: self)
+        self.bulletinManager = bulletinManagerMake()
+        self.bulletinManager!.prepare()
+        self.bulletinManager!.presentBulletin(above: self)
     }
     
     override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
