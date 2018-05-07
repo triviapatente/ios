@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>100</string>
+	<string>10</string>
 	<key>FacebookAppID</key>
 	<string>170873569983444</string>
 	<key>FacebookDisplayName</key>
@@ -50,7 +50,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) deve accedere alla tua fotocamera per scattare la foto</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) deve accedere alla tua libreria foto per poter usare l&apos;immagine</string>
+	<string>$(PRODUCT_NAME) deve accedere alla tua libreria foto per poter usare l'immagine</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
