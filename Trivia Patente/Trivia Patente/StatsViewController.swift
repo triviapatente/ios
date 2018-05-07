@@ -39,8 +39,10 @@ class StatsViewController: TPNormalTableViewController {
         if loadAnimation {
             MBProgressHUD.hide(for: self.view, animated: true)
             MBProgressHUD.showAdded(to: self.view, animated: true)
+            self.tableView.isUserInteractionEnabled = false
         }
         self.socketAuth.global_infos {   (response : TPConnectResponse?) in
+            self.tableView.isUserInteractionEnabled = true
             guard self != nil else { return }
             if let success = response?.success {
                 if success {
