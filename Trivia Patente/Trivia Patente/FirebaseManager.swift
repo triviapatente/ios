@@ -37,10 +37,12 @@ class FirebaseManager {
         return getGameFrom(request: notification.request)
     }
     class func getGameFrom(request : UNNotificationRequest) -> Game? {
-        let game = request.content.userInfo[AnyHashable("game")] as! String
-        if let json = JSON.fromData(data: game.data(using: .utf8)) {
-            return Game(json: json)
+        if let game = request.content.userInfo[AnyHashable("game")] as? String {
+            if let json = JSON.fromData(data: game.data(using: .utf8)) {
+                return Game(json: json)
+            }
         }
+        
         return nil
     }
     class func getOpponentFrom(notification : UNNotification) -> User? {
