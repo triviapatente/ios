@@ -34,7 +34,7 @@ class Colors {
     static let stats_perfect = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
     static let stats_good = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1)
     static let stats_medium = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1)
-    static let stats_bad = UIColor(red: 234/255, green: 75/255, blue: 53/255, alpha: 1)
+    static let stats_bad = Colors.primary //UIColor(red: 234/255, green: 75/255, blue: 53/255, alpha: 1)
     
     static let correct_default = UIColor(red: 46/255, green: 204/255, blue: 113/255, alpha: 1)
     static let error_default = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
