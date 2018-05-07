@@ -48,6 +48,8 @@ class StatsViewController: TPNormalTableViewController {
                 if success {
 //                    MainViewController.trainings_stats = response!.traini ng_stats
                     self.tableView.reloadData()
+                } else {
+                    self.handleGenericError(message: response!.message, dismiss: true)
                 }
             }
             MBProgressHUD.hide(for: self.view, animated: true)
