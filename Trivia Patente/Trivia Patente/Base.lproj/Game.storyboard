@@ -1011,6 +1011,10 @@
         <scene sceneID="obb-lg-KD9">
             <objects>
                 <viewController id="Noy-P9-cyM" customClass="InstagramFeedViewController" customModule="Trivia_Patente" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bTD-nn-hU8"/>
+                        <viewControllerLayoutGuide type="bottom" id="BXF-cJ-WjY"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FpX-of-tIr">
                         <rect key="frame" x="0.0" y="0.0" width="288" height="283"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1130,7 +1134,7 @@
         <image name="instagram" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NV8-od-C3s"/>
+        <segue reference="kf4-r3-nBv"/>
         <segue reference="DiI-hO-ske"/>
         <segue reference="d1s-Rz-ALU"/>
         <segue reference="0L7-TT-S4h"/>

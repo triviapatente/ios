@@ -84,6 +84,7 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
         if game.ended {
             self.navigationController!.popToRootViewController(animated: true)
         }
+        self.navigationController!.navigationBar.isHidden = true
     }
 
 
@@ -139,13 +140,17 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
 extension PlayRoundViewController {
     
     override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
-        quiz.my_answer = answer
-        quiz.answeredCorrectly = correct
-        if let next = nextQuiz() {
-            gotoQuiz(i: next)
-        } else {
-            self.roundEnded()
+        if let i = self.questions.index(where: { $0.id! == quiz.id! }) {
+            let q = self.questions[i]
+            q.my_answer = answer
+            q.answeredCorrectly = correct
+            if let next = nextQuiz() {
+                gotoQuiz(i: next)
+            } else {
+                self.roundEnded()
+            }
         }
+        
     }
     override func textForMainLabel() -> String {
         return "Round \(round.number!)"

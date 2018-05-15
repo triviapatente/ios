@@ -172,6 +172,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
             //4
             assert(false, "Unexpected element kind")
         }
+        return UICollectionReusableView()
     }
     public func numberOfSections(in collectionView: UICollectionView) -> Int
     {

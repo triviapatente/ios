@@ -30,9 +30,11 @@ class InstagramFeedViewController: UIViewController {
         self.rightButton.circleRounded()
         self.closeButton.circleRounded()
 //        self.mainImageView.mediumRounded()
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (t) in
-            DispatchQueue.main.async {
-                self.downloadContent()
+        if self.shouldShowInstaFeed() {
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (t) in
+                DispatchQueue.main.async {
+                    self.downloadContent()
+                }
             }
         }
     }
@@ -72,6 +74,7 @@ class InstagramFeedViewController: UIViewController {
     
     func startShowingFeed() {
         // all images have been downloaded
+        self.registerDisplayTime()
         self.view.isHidden = false
         self.startTimer()
     }
@@ -109,6 +112,23 @@ class InstagramFeedViewController: UIViewController {
             t.invalidate()
         }
         self.view.isHidden = true
+    }
+    
+    /* Insta timing */
+    func shouldShowInstaFeed() -> Bool {
+        if let lastTime = UserDefaults.standard.value(forKey: "instaLastFeed") as? TimeInterval {
+            let now = Date().timeIntervalSince1970
+            let diff = (now - lastTime)/60
+            if Int(diff) > 8 {
+                return true
+            }
+            return false
+        }
+        return true
+    }
+    
+    func registerDisplayTime() {
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "instaLastFeed")
     }
     
     

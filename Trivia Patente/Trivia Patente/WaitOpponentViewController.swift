@@ -55,7 +55,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
     }
     func shouldShowDetailsButton(round: Round?) {
         if let game_round = response.round {
-            if game_round.number! <= 2 && !game.ended {
+            if game_round.number! <= 2 && !game.ended && self.headerView!.round != nil {
                 
             } else {
                 self.gameActions.detailButton.isHidden = false
@@ -65,6 +65,9 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
             self.gameActions.detailButton.isHidden = false                          
         }
     }
+    
+
+    
     func unlisten() {
         socketHandler.unlistenAllEvents()
     }
@@ -198,6 +201,7 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         }
     }
     func timerActionPressed() {
+        guard self.headerView!.round != nil else { return }
         guard self.headerView!.round.id != nil else { return }
         let roundId = self.headerView!.round.id!
         

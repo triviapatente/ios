@@ -45,7 +45,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
                 nav.setUser(candidate: opponent)
             }
             self.scoreView.set(users: response.users, game: game)
-            self.scoreView.add(answers: response.answers)
+            self.scoreView.add(answers: response.answers, emptyAnswersFirst: true)
             self.computeMap(quizzes: response.quizzes)
             game = self.response.game
             self.sectionBar.questionMap = questionMap

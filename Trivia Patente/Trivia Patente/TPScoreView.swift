@@ -50,7 +50,10 @@ class TPScoreView: BaseViewController {
         }
         return output
     }
-    func add(answers : [Question]) {
+    func add(answers : [Question], emptyAnswersFirst: Bool = false) {
+        if emptyAnswersFirst {
+            self.questions.removeAll()
+        }
         self.questions += answers
         let scores = self.scores
         self.firstScore = scores.first!
