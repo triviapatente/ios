@@ -88,14 +88,14 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let navCont = self.navigationController {
-            navCont.navigationBar.isHidden = true
+            navCont.setNavigationBarHidden(true, animated: true)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let navCont = self.navigationController {
-            navCont.navigationBar.isHidden = true
+            navCont.setNavigationBarHidden(false, animated: true)
         }
     }
 
