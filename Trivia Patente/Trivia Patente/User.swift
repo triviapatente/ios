@@ -63,6 +63,7 @@ open class User: CommonPK {
             if (self.name != nil) && (self.surname != nil) {
                 return self.name![0] + self.surname![0]
             } else {
+                guard username != nil else { return "" } // ERROR
                 if username!.characters.count > 2
                 {
                     return self.username![0...1]
