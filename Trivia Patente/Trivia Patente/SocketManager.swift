@@ -15,8 +15,8 @@ class SocketManager {
     static let RequestTimeout : TimeInterval = 10
     static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!,
                                        config: [.log(false),
-                                                .secure(true),
-                                                .security(SSLSecurity(usePublicKeys: false)),
+                                                .forceWebsockets(true),
+                                                //.security(SSLSecurity(usePublicKeys: false)),
                                                 .reconnectWait(6)])
     
     class func onDisconnect(callback: @escaping (() -> Void)) {
