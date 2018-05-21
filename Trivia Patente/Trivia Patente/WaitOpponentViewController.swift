@@ -344,15 +344,20 @@ class WaitOpponentViewController: TPGameViewController, GameControllerRequired {
         super.viewDidDisappear(animated)
         self.unlisten()
     }
+    
+    
+    // QUICK FIX:
+    var sholdFollowRedirectOnAppear = false
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //non deve essere chiamato al primo accesso alla view, ma solo quando si torna indietro da un viewcontroller
         self.join_room()
         if response != nil {
-            
             self.listenInRoom()
-            self.init_round(followRedirects: false)
+            self.init_round(followRedirects: false || self.sholdFollowRedirectOnAppear)
         }
+        self.sholdFollowRedirectOnAppear = false
     }
     
 

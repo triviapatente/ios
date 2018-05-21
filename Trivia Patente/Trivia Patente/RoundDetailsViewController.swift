@@ -183,6 +183,9 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
             timer.invalidate()
         }
         if let nav = navigationController {
+            if let waitingController = nav.viewControllers.last! as? WaitOpponentViewController {
+                waitingController.sholdFollowRedirectOnAppear = true
+            }
             if !nav.viewControllers.contains(self) {
                 // back button was pressed
                 if self.game.ended {
