@@ -402,6 +402,7 @@ class UserListViewController: TPNormalViewController {
         let loadingView = MBProgressHUD.clearAndShow(to: self.view, animated: true)
         let handler = {  (response : TPUserListResponse) in
             guard self != nil else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
             guard response.canceled == false else { return }
             loadingView.hide(animated: true)
             if response.success == true {
