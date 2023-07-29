@@ -12,14 +12,14 @@ protocol GameControllerRequired {
     func join_room()
 }
 
-class TPGameViewController: BaseViewController {
+class TPGameViewController: BaseViewController, TPViewController {
     //defaults to true (on dismiss, it goes to mainviewcontroller)
     var socketHandler = SocketGame()
     
     var mainOnDismiss : Bool {
         return true
     }
-    override func needsMenu() -> Bool {
+    func needsMenu() -> Bool {
         return false
     }
     

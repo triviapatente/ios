@@ -31,7 +31,7 @@ class TPScoreView: BaseViewController {
     var game : Game!
     var questions : [Question] = []
     func set(users: [User], game : Game) {
-        let temp = users.sorted(by: { $0.0.isMe()}) // don't know why but it dowsn't work
+        let temp = users.sorted(by: { (a, b) in a.isMe()}) // don't know why but it dowsn't work
 //        if users.first!.isMe()
         self.users = temp
         self.game = game

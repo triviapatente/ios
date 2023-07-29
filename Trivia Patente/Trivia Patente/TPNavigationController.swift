@@ -90,9 +90,9 @@ class TPNavigationController: UINavigationController {
     }
     
     override func viewDidLoad() {
-        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.default.menuFadeStatusBar = false
         // 240 grandezza minima, 300 grandezza massima
-        SideMenuManager.menuWidth = min(max(UIScreen.main.bounds.width * 0.80, 240), 300)
+        SideMenuManager.default.menuWidth = min(max(UIScreen.main.bounds.width * 0.80, 240), 300)
         
         // download user data so that the app has a new copy of them
         HTTPAuth().user { response in

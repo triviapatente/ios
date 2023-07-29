@@ -49,7 +49,7 @@ class GCPageControlView: UICollectionViewController {
     
     internal func sizeBackgroundView(edges : UIEdgeInsets) {
         let spaceAround = CGFloat(1)
-        self.backgroundView.frame = CGRect.init(x: fullWidth ? 0.0 : self.collectionView!.frame.origin.x + edges.left - spaceAround, y: self.collectionView!.frame.origin.y + edges.top - spaceAround, width: fullWidth ? self.collectionView!.frame.width : self.collectionView!.frame.width - edges.left - edges.right + spaceAround.multiplied(by: 2.0), height: CGFloat(itemEdgeSize) + spaceAround.multiplied(by: 2.0))
+        self.backgroundView.frame = CGRect.init(x: fullWidth ? 0.0 : self.collectionView!.frame.origin.x + edges.left - spaceAround, y: self.collectionView!.frame.origin.y + edges.top - spaceAround, width: fullWidth ? self.collectionView!.frame.width : self.collectionView!.frame.width - edges.left - edges.right + spaceAround * CGFloat(2.0), height: CGFloat(itemEdgeSize) + spaceAround * CGFloat(2.0))
         if !fullWidth {
             self.backgroundView.circleRounded()
         }

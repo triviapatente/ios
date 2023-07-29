@@ -21,7 +21,7 @@ class FormViewController : BaseViewController
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
-    func keyboardWillShow(notification:NSNotification){
+    @objc func keyboardWillShow(notification:NSNotification){
         guard self.shouldTranslate else { return }
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         var userInfo = notification.userInfo!
@@ -31,7 +31,7 @@ class FormViewController : BaseViewController
         self.view.transform = CGAffineTransform(translationX: 0, y: -self.costantKeyboardTranslationRef)
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    @objc func keyboardWillHide(notification:NSNotification){
         self.view.transform = CGAffineTransform(translationX: 0, y: 0)
 //        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
 //        theScrollView.contentInset = contentInset

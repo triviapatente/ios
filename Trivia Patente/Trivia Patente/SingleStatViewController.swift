@@ -36,27 +36,21 @@ class SingleStatViewController: TPNormalViewController {
         page.interfaceFactory.tintColor = Colors.primary
         page.interfaceFactory.actionButtonTitleColor = .white
         page.shouldCompactDescriptionText = true
+        page.isDismissable = true
         let imageLoader =  UIImageView()
         imageLoader.load(quiz: quiz)
         page.image = imageLoader.image
         
         page.descriptionText = quiz.question
         
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(dismissBulletin))
         
         
         quizDetailsBulletin = BulletinManager(rootItem: page)
         
         quizDetailsBulletin!.prepare()
         quizDetailsBulletin!.presentBulletin(above: self)
-        quizDetailsBulletin!.controller().view.addGestureRecognizer(tapper)
     }
     
-    func dismissBulletin() {
-        if let manager = self.quizDetailsBulletin {
-            manager.dismissBulletin(animated: true)
-        }
-    }
     var category : Category!
     var response : TPStatsDetailResponse!
     var dateFormatter : DateFormatter {
@@ -132,7 +126,7 @@ class SingleStatViewController: TPNormalViewController {
     }
     
     func colorForDay(total: Int, correct: Int) -> UIColor {
-        let perc = Double(correct).divided(by: Double(total))
+        let perc = Double(correct) / Double(total)
         if perc <= 0.25 {
             return Colors.stats_bad
         } else if perc <= 0.5 {
@@ -151,8 +145,8 @@ class SingleStatViewController: TPNormalViewController {
         self.detailsContainer.mediumRounded()
         self.setDefaultBackgroundGradient()
         self.chartView.chartStartsAtEnd = true
-        let progressString = NSMutableAttributedString(string: "\(category.progress)%", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 20.0)!])
-        progressString.append(NSMutableAttributedString(string: " su \(category.total_answers!) quiz affrontati", attributes: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Avenir Next", size: 14.0)!]))
+        let progressString = NSMutableAttributedString(string: "\(category.progress)%", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 20.0)!])
+        progressString.append(NSMutableAttributedString(string: " su \(category.total_answers!) quiz affrontati", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "Avenir Next", size: 14.0)!]))
         detailsLabel.attributedText = progressString
         self.detailsContainer.backgroundColor = category.status.color
         let frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 100)

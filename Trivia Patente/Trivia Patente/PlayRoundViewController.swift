@@ -102,6 +102,7 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.playDelegate = self
 
         if round.number! == 1 {
             self.gameActions.detailButton.isHidden = true
@@ -151,7 +152,29 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
 
 extension PlayRoundViewController {
     
-    override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
+    
+    
+
+}
+
+extension PlayRoundViewController : ShowQuizCellDelegate {
+    
+    func presentImage(image: UIImage?, target: UIView) {
+        self.playDelegate.presentImage(image: image, target: target)
+    }
+    
+    func scroll_to_next() -> Bool {
+        self.playDelegate.scroll_to_next()
+    }
+    
+    func canAnswerQuiz(index: Int) -> Bool {
+        self.playDelegate.canAnswerQuiz(index: index)
+    }
+    
+    func gotoQuiz(i: Int) {
+        self.playDelegate.gotoQuiz(i: i)
+    }
+    func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
         if let i = self.questions.index(where: { $0.id! == quiz.id! }) {
             let q = self.questions[i]
             q.my_answer = answer
@@ -164,21 +187,20 @@ extension PlayRoundViewController {
         }
         
     }
-    override func textForMainLabel() -> String {
+    func textForMainLabel() -> String {
         return "Round \(round.number!)"
     }
     
-    override func headerRightSideData(quiz: Quiz) -> Category {
+    func headerRightSideData(quiz: Quiz) -> Category? {
         return category
     }
     
-    override func opponentUser() -> User {
+    func opponentUser() -> User? {
         return opponent
     }
-    override func trainMode() -> Bool {
+    func trainMode() -> Bool {
         return false
     }
-
 }
 
 extension PlayRoundViewController {

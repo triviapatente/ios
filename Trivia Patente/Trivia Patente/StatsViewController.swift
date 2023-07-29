@@ -31,7 +31,7 @@ class StatsViewController: TPNormalTableViewController {
         self.loadData(loadAnimation: Shared.categories == nil)
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         self.loadData(loadAnimation: false)
     }
     

@@ -61,7 +61,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         super.viewDidLayoutSubviews()
         self.avatarImageView.circleRounded()
     }
-    func checkValues(vibrate : Bool = false) {
+    @objc func checkValues(vibrate : Bool = false) {
         let name = nameField.getText()
         let surname = surnameField.getText()
         
@@ -76,7 +76,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
     }
     
     
-    func changePassword()
+    @objc func changePassword()
     {
         self.performSegue(withIdentifier: "change_password_segue", sender: nil)
         
@@ -89,8 +89,8 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
     
     @IBAction func takePhoto()
     {
-        let cameraMediaType = AVMediaTypeVideo
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        let cameraMediaType = AVMediaType.video
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: cameraMediaType)
         
         switch cameraAuthorizationStatus {
         case .authorized, .notDetermined:
@@ -129,6 +129,8 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
             alert.addAction(settingsAction)
             self.present(alert, animated: true, completion: nil)
             break
+            
+        default: break
         }
     }
     
@@ -143,7 +145,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         pickerController.view.alpha = 1.0
         
         pickerController.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.white
+            NSAttributedStringKey.foregroundColor : UIColor.white
         ]
         pickerController.delegate = self
         pickerController.allowsEditing = false
@@ -180,7 +182,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
         // TODO: LA FUNZIONE PIù BRUTTA CHE ESISTA NEL MONDO
         let u = SessionManager.currentUser!
         self.view.endEditing(true)
-        let surnameUpdate : (() -> Void) = { _ in
+        let surnameUpdate : (() -> Void) = {
 //            self.startSaving()
             if ((SessionManager.currentUser!.surname == nil && self.surnameField.getText() != "")||(SessionManager.currentUser!.surname != nil && self.surnameField.getText() != SessionManager.currentUser!.surname!)) {
                 _ = httpManager.request(url: "/account/surname/edit", method: .post, params: ["surname":self.surnameField.getText()], auth: true, handler: { response in
@@ -198,7 +200,7 @@ class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePic
                 self.navigationController!.popViewController(animated: true)
             }
         }
-        let nameUpdate : (() -> Void) = { _ in
+        let nameUpdate : (() -> Void) = {
 //            self.startSaving()
             if (SessionManager.currentUser!.name == nil && self.nameField.getText() != "") || (SessionManager.currentUser!.name != nil && self.nameField.getText() != SessionManager.currentUser!.name!) {
                 _ = httpManager.request(url: "/account/name/edit", method: .post, params: ["name":self.nameField.getText()], auth: true, handler: { response in

@@ -18,6 +18,7 @@ class BasePlayViewController: TPGameViewController {
     @IBOutlet weak var bannerView : GADBannerView!
     var stackViewController : GCStackViewController!
     var pageControl : GCPageControlView!
+    var isShowingImmediateResult : Bool { true }
     
     var imageAnimationStartView : UIView?
     
@@ -26,6 +27,8 @@ class BasePlayViewController: TPGameViewController {
             
         }
     }
+    
+    var playDelegate : ShowQuizCellDelegate!
     
     var questions : [Quiz] = [] {
         didSet {
@@ -44,7 +47,7 @@ class BasePlayViewController: TPGameViewController {
             DispatchQueue.main.async {
                 self.pageControl.reloadData()
                 self.pageControl.view.isHidden = false
-                self.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
+                self.playDelegate.gotoQuiz(i: unansweredIndex != nil ? unansweredIndex! : 0)
             }
         }
     }
@@ -52,12 +55,6 @@ class BasePlayViewController: TPGameViewController {
     let BORDER_LENGTH = CGFloat(10)
     var currentPage : Int {
         return self.stackViewController.currentIndex
-    }
-
-    func gotoQuiz(i : Int) {
-        DispatchQueue.main.async {
-            self.stackViewController.scrollTo(index : i, animated: true, fastAnimation: false);
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,11 +77,10 @@ class BasePlayViewController: TPGameViewController {
         self.pageControl.view.clipsToBounds = true
         self.stackViewController.contentInset = UIEdgeInsets(top: 2, left: 6, bottom: 2, right: 6)
         self.pageControl.view.isHidden = true
-        
+        self.playDelegate = BasePlayDelegate(vc: self)
         // AD banner load
         self.bannerView.adUnitID = Constants.BannerUnitID
         self.bannerView.rootViewController = self
-        self.bannerView.delegate = self
         self.bannerView.load(GADRequest())
         self.setDefaultBackgroundGradient()
     }
@@ -136,18 +132,19 @@ class BasePlayViewController: TPGameViewController {
         }
         return nil
     }
+    
+    func configureViewForItem(itemView: UIView, index: Int) {
+        if let card = itemView as? ShowQuizStackItemView {
+            card.quiz = self.questions[index]
+            card.delegate = self.playDelegate
+        }
+    }
 
 }
 
 extension BasePlayViewController : GCStackViewDataSource, GCStackViewDelegate {
     func numberOfItems() -> Int {
         return self.questions.count
-    }
-    func configureViewForItem(itemView: UIView, index: Int) {
-        if let card = itemView as? ShowQuizStackItemView {
-            card.quiz = self.questions[index]
-            card.delegate = self
-        }
     }
     func stackView(stackViewController: GCStackViewController, didDisplayItemAt index: Int) {
         //        self.pageControl.setIndex(to: index, propagate: false)
@@ -159,7 +156,18 @@ extension BasePlayViewController : GCStackViewDataSource, GCStackViewDelegate {
     }
 }
 
-extension BasePlayViewController : ShowQuizCellDelegate {
+class BasePlayDelegate : ShowQuizCellDelegate {
+    func gotoQuiz(i: Int) {
+        DispatchQueue.main.async {
+            self.vc.stackViewController.scrollTo(index : i, animated: true, fastAnimation: false);
+        }
+    }
+    
+    
+    private let vc : BasePlayViewController
+    init(vc : BasePlayViewController) {
+        self.vc = vc
+    }
     func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
         
     }
@@ -184,7 +192,7 @@ extension BasePlayViewController : ShowQuizCellDelegate {
     }
     
     func scroll_to_next() -> Bool {
-        return self.stackViewController.scrollToNext()
+        return self.vc.stackViewController.scrollToNext()
     }
     
     // INCOMPLETE
@@ -195,11 +203,11 @@ extension BasePlayViewController : ShowQuizCellDelegate {
     
     func presentImage(image: UIImage?, target: UIView) {
         if let i = image {
-            self.imageAnimationStartView = target
+            self.vc.imageAnimationStartView = target
             let picture = CollieGalleryPicture(image: i)
             let gallery = CollieGallery(pictures: [picture])
-            let zoomTransition = CollieGalleryTransitionType.zoom(fromView: target, zoomTransitionDelegate: self)
-            gallery.presentInViewController(self, transitionType: zoomTransition)
+            let zoomTransition = CollieGalleryTransitionType.zoom(fromView: target, zoomTransitionDelegate: vc)
+            gallery.presentInViewController(self.vc, transitionType: zoomTransition)
         }
     }
 }
@@ -217,7 +225,7 @@ extension BasePlayViewController : CollieGalleryZoomTransitionDelegate {
 extension BasePlayViewController : CGPageControlDelegate {
     func customizeCellAt(index: Int, cell: PageControlCollectionViewCell) {
         cell.mainLabel.layer.borderColor = Colors.light_gray.cgColor
-        if trainMode(), let _ = self.questions[index].my_answer {
+        if self.playDelegate.trainMode(), let _ = self.questions[index].my_answer {
             cell.mainLabel.layer.borderColor = Colors.orange_default.cgColor
         } else
         if index < questions.count, let _ = self.questions[index].my_answer, self.showImmediateResult() {
@@ -231,42 +239,7 @@ extension BasePlayViewController : CGPageControlDelegate {
         return self.questions.count
     }
     func showImmediateResult() -> Bool {
-        return true
+        return isShowingImmediateResult
     }
     
-}
-
-extension BasePlayViewController : GADBannerViewDelegate {
-    /// Tells the delegate an ad request loaded an ad.
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("adViewDidReceiveAd")
-    }
-    
-    /// Tells the delegate an ad request failed.
-    func adView(_ bannerView: GADBannerView,
-                didFailToReceiveAdWithError error: GADRequestError) {
-        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-    
-    /// Tells the delegate that a full-screen view will be presented in response
-    /// to the user clicking on an ad.
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-        print("adViewWillPresentScreen")
-    }
-    
-    /// Tells the delegate that the full-screen view will be dismissed.
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-        print("adViewWillDismissScreen")
-    }
-    
-    /// Tells the delegate that the full-screen view has been dismissed.
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-        print("adViewDidDismissScreen")
-    }
-    
-    /// Tells the delegate that a user click will open another app (such as
-    /// the App Store), backgrounding the current app.
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-        print("adViewWillLeaveApplication")
-    }
 }

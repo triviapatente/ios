@@ -71,7 +71,7 @@ class TrainingListingViewController: BaseViewController, UICollectionViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshData() {
+    @objc func refreshData() {
         httpTraining.list_trainings { (response) in
             self.collectionView.refreshControl!.endRefreshing()
             if response.success == true {

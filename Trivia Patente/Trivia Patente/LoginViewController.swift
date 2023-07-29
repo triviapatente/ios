@@ -75,7 +75,7 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
             self.errorView.set(error: response.message)
         }
     }
-    func checkValues(vibrate : Bool) {
+    @objc func checkValues(vibrate : Bool) {
         let username = nameField.getText()
         let password = passwordField.getText()
         nameField.normalState()
@@ -126,7 +126,7 @@ class LoginViewController: FormViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(handleForgotNotification), name: Notification.Name("forgotMessage"), object: nil)
     }
     
-    func handleForgotNotification(notification: Notification)
+    @objc func handleForgotNotification(notification: Notification)
     {
         self.errorViewContainer.isHidden = false
         self.errorView.set(error: notification.userInfo!["message"] as! String)

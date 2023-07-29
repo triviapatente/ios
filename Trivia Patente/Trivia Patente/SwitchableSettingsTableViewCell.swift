@@ -31,7 +31,7 @@ class SwitchableSettingsTableViewCell: SettingsTableViewCell {
     func removeTarget() {
         self.switchView.removeTarget(self, action: #selector(switchChange(sender:)), for: .valueChanged)
     }
-    func switchChange(sender : UISwitch) {
+    @objc func switchChange(sender : UISwitch) {
         removeTarget()
         self.accessoryView = loadingView
         self.loadingView.startAnimating()

@@ -61,7 +61,7 @@ class GameEndedTableViewCell: UITableViewCell {
     }
     var users : [User]! {
         didSet {
-            self.users.sort(by: {$0.0.id == game.winnerId})
+            self.users.sort(by: { (a, b) in a.id == game.winnerId})
             for i in 0..<usersImageView.count {
                 let user = self.users[i]
                 self.usersImageView[i].load(user: user)

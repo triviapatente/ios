@@ -8,7 +8,11 @@
 
 import UIKit
 
-class TPNormalViewController: BaseViewController {
+class TPNormalViewController: BaseViewController, TPViewController {
+    
+    func needsMenu() -> Bool {
+        return false
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         if let _ = SessionManager.getToken() {

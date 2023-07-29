@@ -472,7 +472,7 @@ class UserListViewController: TPNormalViewController {
             }
             
             // loadMoreData function call
-            loadDown() { _ in
+            loadDown {
                 print(bottomRefreshShowedAt)
                 let timeDiff = NSDate().timeIntervalSince1970 - bottomRefreshShowedAt
                 if timeDiff >= self.minBottomRefreshTime {

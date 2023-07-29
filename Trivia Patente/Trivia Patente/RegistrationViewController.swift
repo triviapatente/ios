@@ -44,7 +44,7 @@ class RegistrationViewController: FormViewController, UITextFieldDelegate {
         self.emailField.disable()
     }
     
-    func checkValues(vibrate : Bool = false) {
+    @objc func checkValues(vibrate : Bool = false) {
         let username = nameField.getText()
         let email = emailField.getText()
         let password = passwordField.getText()

@@ -151,7 +151,7 @@ class TrainingQuizViewController: BasePlayViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.playDelegate = BasePlayDelegate(vc: self)
         self.prepareActionButton(button: exitButton)
         self.pageControl.fullWidth = true
         self.pageControl.numberTitleOffset = 1
@@ -282,30 +282,6 @@ class TrainingQuizViewController: BasePlayViewController {
         self.bulletinManager!.presentBulletin(above: self)
     }
     
-    override func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
-        let index = self.questions.index(of: quiz)
-        quiz.my_answer = answer
-        quiz.answeredCorrectly = correct
-        self.pageControl.reloadData()
-        updateTrainingProgress()
-        if let next = nextQuiz() {
-            gotoQuiz(i: next)
-        } else {
-            // to improve someday
-            let topQuizCard = self.stackViewController.getTopItemView().contentView! as! ShowQuizStackItemView
-            topQuizCard.enable(button: answer ? topQuizCard.trueButton : topQuizCard.falseButton)
-            self.completedAllQuestions()
-        }
-    }
-    
-    override func showImmediateResult() -> Bool {
-        return false
-    }
-    
-    override func trainMode() -> Bool {
-        return true
-    }
-    
     var completedAllQuestionsMessageShown = false
     func completedAllQuestions() {
         if !completedAllQuestionsMessageShown {
@@ -321,9 +297,8 @@ class TrainingQuizViewController: BasePlayViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func canAnswerQuiz(index: Int) -> Bool {
-        return !self.trainingCompleted
-    }
+    override var isShowingImmediateResult: Bool { false }
+    
 
     
     /*
@@ -336,4 +311,56 @@ class TrainingQuizViewController: BasePlayViewController {
     }
     */
 
+}
+
+extension TrainingQuizViewController : ShowQuizCellDelegate {
+    func textForMainLabel() -> String {
+        self.playDelegate.textForMainLabel()
+    }
+    
+    func opponentUser() -> User? {
+        self.playDelegate.opponentUser()
+    }
+    
+    func headerRightSideData(quiz: Quiz) -> Category? {
+        self.playDelegate.headerRightSideData(quiz: quiz)
+    }
+    
+    func presentImage(image: UIImage?, target: UIView) {
+        self.playDelegate.presentImage(image: image, target: target)
+    }
+    
+    func gotoQuiz(i: Int) {
+        self.playDelegate.gotoQuiz(i: i)
+    }
+    
+    func scroll_to_next() -> Bool {
+        self.playDelegate.scroll_to_next()
+    }
+    
+    
+    
+    
+    func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
+        let index = self.questions.index(of: quiz)
+        quiz.my_answer = answer
+        quiz.answeredCorrectly = correct
+        self.pageControl.reloadData()
+        updateTrainingProgress()
+        if let next = nextQuiz() {
+            gotoQuiz(i: next)
+        } else {
+            // to improve someday
+            let topQuizCard = self.stackViewController.getTopItemView().contentView! as! ShowQuizStackItemView
+            topQuizCard.enable(button: answer ? topQuizCard.trueButton : topQuizCard.falseButton)
+            self.completedAllQuestions()
+        }
+    }
+    func trainMode() -> Bool {
+        return true
+    }
+    
+    func canAnswerQuiz(index: Int) -> Bool {
+        return !self.trainingCompleted
+    }
 }

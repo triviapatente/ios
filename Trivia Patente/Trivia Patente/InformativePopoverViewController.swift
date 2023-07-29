@@ -45,18 +45,18 @@ class InformativePopoverViewController: BaseViewController {
         case .privacyUpdate:
             message = NSMutableAttributedString(string: Strings.legislation_pop_privacy_update_1)
             if #available(iOS 11.0, *) {
-                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSAttributedStringKey.foregroundColor: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
             } else {
                 // Fallback on earlier versions
-                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSForegroundColorAttributeName: Colors.text_highlight]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_privacy_update_2, attributes: [NSAttributedStringKey.foregroundColor: Colors.text_highlight]))
             }
         case .termsUpdate:
             message = NSMutableAttributedString(string: Strings.legislation_pop_terms_update_1)
             if #available(iOS 11.0, *) {
-                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSForegroundColorAttributeName: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSAttributedStringKey.foregroundColor: UIColor(named: "text-highlight") ?? Colors.text_highlight]))
             } else {
                 // Fallback on earlier versions
-                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSForegroundColorAttributeName: Colors.text_highlight]))
+                message.append(NSAttributedString(string: Strings.legislation_pop_terms_update_2, attributes: [NSAttributedStringKey.foregroundColor: Colors.text_highlight]))
             }
         default:
             message = NSMutableAttributedString(string: "") // never happens

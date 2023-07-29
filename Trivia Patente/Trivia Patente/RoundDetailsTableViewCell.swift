@@ -42,7 +42,7 @@ class RoundDetailsTableViewCell: UITableViewCell {
                 self.quizImageView.isHidden = true
             }
             self.quizImageView.isHidden = (quiz.imageId == nil)
-            self.titleCostraint.priority = (quiz.imageId == nil) ? 999 : 250
+            self.titleCostraint.priority = .init(quiz.imageId == nil ? 999 : 250)
             if quiz.imageId != nil {
                 self.quizNameView.frame.size.width -= self.quizImageView.frame.size.width
             }

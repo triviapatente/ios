@@ -41,7 +41,7 @@ class ChatViewController: UIViewController {
         guard let output = self.tableView.refreshControl else {
             let control = UIRefreshControl()
             control.tintColor = .white
-            let attributes = [NSForegroundColorAttributeName: UIColor.white]
+            let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
             control.attributedTitle = NSAttributedString(string: "Caricamento..", attributes: attributes)
             control.addTarget(self, action: #selector(load), for: .valueChanged)
             return control
@@ -145,13 +145,13 @@ class ChatViewController: UIViewController {
             self.view.frame.size.height += offset
         }
     }
-    func keyboardWillShow(notification : NSNotification) {
+    @objc func keyboardWillShow(notification : NSNotification) {
         let keyboardFrame = notification.keyboardFrame(in: self.view)!
         if self.view.frame.height == originalViewFrame.height {
             self.animateView(offset: -keyboardFrame.height)
         }
     }
-    func keyboardWillHide(notification : NSNotification) {
+    @objc func keyboardWillHide(notification : NSNotification) {
         let offset = self.originalViewFrame.height - self.view.frame.height
         self.animateView(offset: offset)
     }
@@ -175,7 +175,7 @@ class ChatViewController: UIViewController {
             }
         }
     }
-    func load() {
+    @objc func load() {
         self.refreshControl.beginRefreshing()
         let date = self.cachedMessages.first?.updatedAt ?? Date()
         HTTPHandler.get_messages(game: game, timestamp: date.timeIntervalSince1970) { response in

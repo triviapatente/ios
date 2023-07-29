@@ -12,14 +12,14 @@ import SwiftyJSON
 extension JSON {
     static func fromData(data: Data?) -> JSON? {
         if let candidate = data {
-            return JSON(data: candidate)
+            return try? JSON(data: candidate)
         }
         return nil
     }
     
     static func fromDict(dict: [String : AnyObject]?) -> JSON? {
         if let candidate = dict {
-            return JSON(json: candidate)
+            return try? JSON(candidate)
         }
         return nil
     }

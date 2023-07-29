@@ -31,7 +31,7 @@ class FirstAccessPageViewController: UIPageViewController {
     private func instantiateController(_ name: String) -> UIViewController {
         return self.storyboard!.instantiateViewController(withIdentifier: name)
     }
-    func gotoLogin() {
+    @objc func gotoLogin() {
         self.viewControllerToPresent = loginController
         setViewControllers([loginController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }

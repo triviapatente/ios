@@ -14,10 +14,7 @@ protocol TPViewController {
     func needsMenu() -> Bool
 }
 
-extension UIViewController : TPViewController {
-    internal func needsMenu() -> Bool {
-        return true
-    }
+extension UIViewController {
     
     class func root() -> UIViewController {
         if SessionManager.isLogged() {
@@ -33,9 +30,9 @@ extension UIViewController : TPViewController {
     class func mainController() -> UINavigationController {
         return UIStoryboard.getFirstController(storyboard: "Main") as! UINavigationController
     }
-    @objc func fade(duration durationValue: Double? = nil) {
-        if let duration = durationValue {
-            self.view.fade(duration: duration)
+    @objc func fade(duration durationValue: Double = 0.0) {
+        if durationValue != 0.0 {
+            self.view.fade(duration: durationValue)
         } else {
             self.view.fade()
         }

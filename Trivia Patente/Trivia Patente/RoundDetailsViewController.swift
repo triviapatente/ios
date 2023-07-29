@@ -27,7 +27,7 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     var emptyView : RoundDetailsEmptyViewController!
     var gameCancelled : Bool = false
     
-    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitialAd?
     
     var opponent : User {
         return self.response.users.first(where: {$0.id != SessionManager.currentUser?.id})!
@@ -145,10 +145,14 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
     var newGameResponse : TPNewGameResponse!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        interstitial = GADInterstitial(adUnitID: Constants.InterstitialUnitID)
         let request = GADRequest()
-        interstitial.load(request)
+        
+        GADInterstitialAd.load(withAdUnitID: Constants.InterstitialUnitID, request: request) { ad, error in
+            if let ad = ad {
+                self.interstitial = ad
+                ad.present(fromRootViewController: self)
+            }
+        }
         
 //        self.edgesForExtendedLayout = UIRectEdge.
         
@@ -226,29 +230,21 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         let imageLoader =  UIImageView()
         imageLoader.load(quiz: quiz)
         page.image = imageLoader.image
-        
+        page.isDismissable = true
         page.descriptionText = quiz.question
         
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(dismissBulletin))
         
         
         quizDetailsBulletin = BulletinManager(rootItem: page)
         
         quizDetailsBulletin!.prepare()
         quizDetailsBulletin!.presentBulletin(above: self)
-        quizDetailsBulletin!.controller().view.addGestureRecognizer(tapper)
-    }
-    
-    func dismissBulletin() {
-        if let manager = self.quizDetailsBulletin {
-            manager.dismissBulletin(animated: true)
-        }
     }
     
     // banner
     var bannerTimer : Timer?
     func checkForBanner() {
-        guard game.ended && !game.incomplete && !self.gameCancelled && !interstitial.hasBeenUsed else { return }
+        guard game.ended && !game.incomplete && !self.gameCancelled && interstitial == nil else { return }
         
         // game is ended here
         if let lastUpdateDate = game.updatedAt
@@ -264,8 +260,8 @@ class RoundDetailsViewController: TPGameViewController, GameControllerRequired {
         
         self.bannerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {  (t) in
             guard self != nil else { return }
-            if self.interstitial.isReady {
-                self.interstitial.present(fromRootViewController: self)
+            if let interstitial = self.interstitial {
+                interstitial.present(fromRootViewController: self)
             } else {
                 print("Ad wasn't ready")
             }
@@ -334,7 +330,7 @@ extension RoundDetailsViewController : UITableViewDelegate, UITableViewDataSourc
     func heightForAccesoryView(section: Int) -> CGFloat {
         let keys = self.keys()
         if section >= keys.count {
-        return (self.tableView.frame.height - END_ROW_HEIGHT).divided(by: 2.0)
+        return (self.tableView.frame.height - END_ROW_HEIGHT) /  2.0
         }
         return 0.0
     }
@@ -446,40 +442,5 @@ extension RoundDetailsViewController {
             }
         }
         
-    }
-}
-
-extension RoundDetailsViewController : GADInterstitialDelegate {
-    /// Tells the delegate an ad request succeeded.
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        if !self.interstitial.hasBeenUsed {
-            self.interstitial.present(fromRootViewController: self)
-        }
-    }
-    
-    /// Tells the delegate an ad request failed.
-    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-    
-    /// Tells the delegate that an interstitial will be presented.
-    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
-        print("interstitialWillPresentScreen")
-    }
-    
-    /// Tells the delegate the interstitial is to be animated off the screen.
-    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialWillDismissScreen")
-    }
-    
-    /// Tells the delegate the interstitial had been animated off the screen.
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialDidDismissScreen")
-    }
-    
-    /// Tells the delegate that a user click will open another app
-    /// (such as the App Store), backgrounding the current app.
-    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
-        print("interstitialWillLeaveApplication")
     }
 }
