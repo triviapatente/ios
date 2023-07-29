@@ -1,4 +1,4 @@
-# Trivia Patente - IOS
+# Trivia Patente - iOS
 ##### Table of Contents
 1. [Introduction](#intro)
 2. [Getting started](#getstarted)
@@ -8,25 +8,21 @@
 
 <a name="intro"></a>
 ## Introduction
-TriviaPatente is a mobile application that makes it easier and funnier to learn the theory of the driving license, connecting you with your friends.
-This repository contains the native IOS application.
-|Screenshoots|||
+[TriviaPatente](https://triviapatente.github.io) is a mobile application that makes it easier and funnier to learn the theory of the driving license, connecting you with your friends.
+This repository contains the native iOS application.
+|Screenshots|||
 |:----- |:----- |:----- |
 |<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen1.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen2.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen3.png" alt="drawing" width="300"/>|
 
 <a name="getstarted"><a/>
 ## Getting started
-This project was a fun side hustle developed by us back in 2017. 
-
-We recently recover the code and make it buildable again in order to showcase it in this repository.
-
-This means obviously that it uses some old technologies, not the standard we are used to in 2023.
+This project was a fun pet project developed by us back in 2017. We managed to exhume the code and make it run again in order, but the technologies are quite old! Yet, cool.
 
 ### Prerequisites
 The code was recently converted to Swift 4.0 in order to make it buildable from XCode 14, and uses the following technologies:
 ||Version|
 |:----- |:----- |
-|IOS| Minimum: 11.0, Maximum: 17.0|
+|iOS| Minimum: 11.0, Maximum: 17.0|
 |Swift| 4.0 |
 |XCode| 14.3 |
 |CocoaPods| 1.12.1 |
@@ -70,9 +66,9 @@ can drop an [email](mailto:luigi.donadel@gmail.com) to help us:
 This project was developed with ❤️ and a giant dose of curiosity and passion from some very young folks (we were 20 at the time), in 2017 as a side project.
 ||Authors|
 |:----- |:----- |
-|<img src="https://avatars.githubusercontent.com/u/7453120?v=4" alt="drawing" width="50"/>|[Luigi Donadel](https://github.com/donadev)|
+|<img src="https://avatars.githubusercontent.com/u/7453120?v=4" alt="drawing" width="50"/>|[Luigi Donadel](https://luigidonadel.com)|
 |<img src="https://media.licdn.com/dms/image/C4D03AQGvkKpgIYl6jg/profile-displayphoto-shrink_200_200/0/1517931535631?e=1695859200&v=beta&t=uiddasmwI5VnP5TYdeuWd57geP_DArgR7vONoI901hk" alt="drawing" width="50"/>|[Gabriel Ciulei](https://www.linkedin.com/in/gabriel-ciulei)|
-|<img src="https://avatars.githubusercontent.com/u/20773447?v=4" alt="drawing" width="50"/>|[Antonio Terpin](https://github.com/antonioterpin)|
+|<img src="https://avatars.githubusercontent.com/u/20773447?v=4" alt="drawing" width="50"/>|[Antonio Terpin](https://antonioterpin.com)|
 
 <a name="license"><a/>
 ## License
