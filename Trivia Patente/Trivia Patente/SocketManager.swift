@@ -8,16 +8,17 @@
 
 import Foundation
 import SocketIO
-import StarscreamSocketIO
+import Starscream
 import SwiftyJSON
 
 class SocketManager {
     static let RequestTimeout : TimeInterval = 10
-    static let socket = SocketIOClient(socketURL: URL(string: HTTPManager.getBaseURL())!,
+    static let manager = SocketIO.SocketManager(socketURL: URL(string: HTTPManager.getBaseURL())!,
                                        config: [.log(false),
                                                 .forceWebsockets(true),
                                                 //.security(SSLSecurity(usePublicKeys: false)),
                                                 .reconnectWait(6)])
+    static let socket = manager.defaultSocket
     
     class func onDisconnect(callback: @escaping (() -> Void)) {
         socket.on("disconnect") { (data, ack) in
@@ -46,7 +47,7 @@ class SocketManager {
             socket.connect()
         }
     }
-    class func getStatus() -> SocketIOClientStatus
+    class func getStatus() -> SocketIOStatus
     {
         return socket.status
     }

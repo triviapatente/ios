@@ -21,7 +21,7 @@ class HTTPManager {
     }
     
     class func getBaseURL() -> String {
-        return "https://triviapatente.it:8080"
+        return "http://192.168.2.65:8080"
     }
     func registerForPush(token : String, handler: @escaping (TPResponse) -> Void) {
         _ = self.request(url: "/ws/registerForPush", method: .post, params: ["token": token, "os": "iOS", "deviceId": SessionManager.getDeviceId()], handler: handler)

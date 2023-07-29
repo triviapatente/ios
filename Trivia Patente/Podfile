@@ -9,7 +9,7 @@ target 'Trivia Patente' do
   pod 'Firebase/Messaging'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.0'
-  pod 'Socket.IO-Client-Swift', '~> 12.0.0' # Or latest version
+  pod 'Socket.IO-Client-Swift', '~> 16.0.0' # Or latest version
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'SideMenu'
   pod 'SDWebImage', '~> 4.0'

@@ -110,9 +110,9 @@ PODS:
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
   - SideMenu (6.5.0)
-  - Socket.IO-Client-Swift (12.0.0):
-    - StarscreamSocketIO (~> 8.0.7)
-  - StarscreamSocketIO (8.0.7)
+  - Socket.IO-Client-Swift (16.0.1):
+    - Starscream (~> 4.0)
+  - Starscream (4.0.4)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -128,7 +128,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - SDWebImage (~> 4.0)
   - SideMenu
-  - Socket.IO-Client-Swift (~> 12.0.0)
+  - Socket.IO-Client-Swift (~> 16.0.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -156,7 +156,7 @@ SPEC REPOS:
     - SDWebImage
     - SideMenu
     - Socket.IO-Client-Swift
-    - StarscreamSocketIO
+    - Starscream
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -182,10 +182,10 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
-  Socket.IO-Client-Swift: 5b0154b42b3892bfb4c44fa138cbeb8afec4f6ef
-  StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
+  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 0ff67abb87ea365518cbdd55637c551acfca8d79
+PODFILE CHECKSUM: ffe2b3e99b116f4cea6845434f6d1b9ba2d487f3
 
 COCOAPODS: 1.12.1
