@@ -1,4 +1,4 @@
-# Trivia Patente - IOS
+# Trivia Patente - iOS
 ##### Table of Contents
 1. [Introduction](#intro)
 2. [Getting started](#getstarted)
@@ -9,7 +9,7 @@
 <a name="intro"></a>
 ## Introduction
 TriviaPatente is a mobile application that makes it easier and funnier to learn the theory of the driving license, connecting you with your friends.
-This repository contains the native IOS application.
+This repository contains the native iOS application.
 |Screenshoots|||
 |:----- |:----- |:----- |
 |<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen1.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen2.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen3.png" alt="drawing" width="300"/>|
@@ -22,7 +22,7 @@ This project was a fun pet project developed by us back in 2017. We managed to e
 The code was recently converted to Swift 4.0 in order to make it buildable from XCode 14, and uses the following technologies:
 ||Version|
 |:----- |:----- |
-|IOS| Minimum: 11.0, Maximum: 17.0|
+|iOS| Minimum: 11.0, Maximum: 17.0|
 |Swift| 4.0 |
 |XCode| 14.3 |
 |CocoaPods| 1.12.1 |
