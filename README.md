@@ -16,11 +16,7 @@ This repository contains the native IOS application.
 
 <a name="getstarted"><a/>
 ## Getting started
-This project was a fun side hustle developed by us back in 2017. 
-
-We recently recover the code and make it buildable again in order to showcase it in this repository.
-
-This means obviously that it uses some old technologies, not the standard we are used to in 2023.
+This project was a fun pet project developed by us back in 2017. We managed to exhume the code and make it run again in order, but the technologies are quite old! Yet, cool.
 
 ### Prerequisites
 The code was recently converted to Swift 4.0 in order to make it buildable from XCode 14, and uses the following technologies:
