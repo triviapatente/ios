@@ -4,16 +4,16 @@
 2. [Getting started](#getstarted)
 3. [Use cases](#usecases)
 4. [Contributing](#contribute)
-5. [License](#license)
-6. [Acknowledgments](#acknowledgments)
+5. [Authors](#authors)
+6. [License](#license)
 
 <a name="intro"></a>
 ## Introduction
 TriviaPatente is a mobile application that makes it easier and funnier to learn the theory of the driving license, connecting you with your friends.
 This repository contains the native IOS application.
-|TODO SOME SCREENSHOTS|TODO SOME SCREENSHOTS|TODO SOME SCREENSHOTS|
+|Screenshoots|||
 |:----- |:----- |:----- |
-||||
+|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen1.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen2.png" alt="drawing" width="300"/>|<img src="https://github.com/triviapatente/triviapatente.github.io/blob/main/images/screen3.png" alt="drawing" width="300"/>|
 
 <a name="getstarted"><a/>
 ## Getting started
@@ -70,6 +70,7 @@ can drop an [email](mailto:luigi.donadel@gmail.com) to help us:
 + Wiki
 + Documentation
 + Set up contribution workflow
+<a name="authors"><a/>
 ### Authors
 This project was developed with ❤️ and a giant dose of curiosity and passion from some very young folks (we were 20 at the time), in 2017 as a side project.
 ||Authors|
