@@ -2,10 +2,9 @@
 ##### Table of Contents
 1. [Introduction](#intro)
 2. [Getting started](#getstarted)
-3. [Use cases](#usecases)
-4. [Contributing](#contribute)
-5. [Authors](#authors)
-6. [License](#license)
+3. [Contributing](#contribute)
+4. [Authors](#authors)
+5. [License](#license)
 
 <a name="intro"></a>
 ## Introduction
@@ -57,10 +56,6 @@ So, in order to execute the application on a simulator, follow this instructions
 - Follow ```Destination/Destination Architectures```;
 - Choose 'Show Both', on the multiple choice form that appears;
 - You can now see on the simulator destinations the 'Rosetta' simulators, choose one and you are ready to go!
-
-<a name="usecases"><a/>
-## Use cases
-TODO Screenshots of main things, games, etc. -> need to run the app
 
 <a name="contribute"><a/>
 ## Contribute
