@@ -28,7 +28,7 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     
     // MARK: - Private properties
     fileprivate let transitionManager = CollieGalleryTransitionManager()
-    fileprivate var theme = CollieGalleryTheme.custom(appearance: CollieGalleryAppearance.sharedAppearance)
+    fileprivate var theme = CollieGalleryTheme.dark
     fileprivate var pictures: [CollieGalleryPicture] = []
     fileprivate var pictureViews: [CollieGalleryView] = []
     fileprivate var isShowingLandscapeView: Bool {
@@ -665,7 +665,6 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
     open func presentInViewController(_ sourceViewController: UIViewController, transitionType: CollieGalleryTransitionType? = nil) {
         
         let type = transitionType == nil ? CollieGalleryTransitionType.defaultType : transitionType!
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         
         transitionManager.enableInteractiveTransition = options.enableInteractiveDismiss
         transitionManager.transitionType = type
@@ -675,10 +674,6 @@ open class CollieGallery: UIViewController, UIScrollViewDelegate, CollieGalleryV
         modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         transitioningDelegate = transitionManager
         
-        sourceViewController.present(self, animated:
-            
-            type.animated){
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        }
+        sourceViewController.present(self, animated: type.animated, completion: nil)
     }
 }

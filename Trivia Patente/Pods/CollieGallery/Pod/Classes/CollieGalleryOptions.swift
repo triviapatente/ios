@@ -39,7 +39,7 @@ open class CollieGalleryOptions: NSObject {
     open var maximumZoomScale: CGFloat = 5.0
     
     /// Indicates weather the progress should be displayed or not
-    open var showProgress: Bool = false
+    open var showProgress: Bool = true
     
     /// Indicates weather the caption view should be displayed or not
     open var showCaptionView: Bool = false

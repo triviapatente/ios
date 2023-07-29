@@ -50,7 +50,7 @@ class MenuButtonItem: UIBarButtonItem, UIPopoverPresentationControllerDelegate {
     func isVisible() -> Bool {
         return controller.isBeingPresented
     }
-    func imagePressed() {
+    @objc func imagePressed() {
         toggleMenuState(visible: !isVisible())
     }
     

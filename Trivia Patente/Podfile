@@ -7,7 +7,7 @@ target 'Trivia Patente' do
   # Pods for Trivia Patente
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
+  pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.0'
   pod 'Socket.IO-Client-Swift', '~> 12.0.0' # Or latest version
   pod 'MBProgressHUD', '~> 1.0.0'
@@ -17,9 +17,9 @@ target 'Trivia Patente' do
   pod 'Fabric', '~> 1.7.2'
   pod 'Crashlytics', '~> 3.9.3'
   # pod 'RSKImageCropper', '2.0.0'
-  pod 'CropViewController', '2.3.5'
+  pod 'CropViewController', '2.6.1'
   pod "CollieGallery", '0.6.0' #no updates
-  pod 'BulletinBoard'
+  pod 'BulletinBoard', '1.3.0'
 
   target 'Trivia PatenteTests' do
     inherit! :search_paths
@@ -31,4 +31,12 @@ target 'Trivia Patente' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "11.0";
+    end
+  end
 end

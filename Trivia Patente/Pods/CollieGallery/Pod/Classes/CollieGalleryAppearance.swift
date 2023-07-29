@@ -30,7 +30,7 @@ open class CollieGalleryAppearance: NSObject {
     open static var sharedAppearance = CollieGalleryAppearance()
     
     /// The background color of the gallery
-    public var backgroundColor = UIColor.black.withAlphaComponent(0.7)
+    var backgroundColor = UIColor.black
     
     /// The color of current progress in the progress bar
     var progressBarColor = UIColor.white

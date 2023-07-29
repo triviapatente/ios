@@ -81,7 +81,7 @@ open class CollieGalleryZoomTransition: CollieGalleryTransitionProtocol {
         
         UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .allowUserInteraction, animations: {
             
-            presentedController.view.backgroundColor = presentedController.view.backgroundColor?.withAlphaComponent(0.7)
+            presentedController.view.backgroundColor = presentedController.view.backgroundColor?.withAlphaComponent(1.0)
             presentedController.closeButton.center.x += self.offStage
             presentedController.actionButton?.center.x -= self.offStage
             presentedController.progressTrackView?.center.y -= self.offStage

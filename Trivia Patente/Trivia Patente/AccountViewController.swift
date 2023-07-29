@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 import Photos
-import TOCropViewController
+import CropViewController
 import SDWebImage
 
 class AccountViewController: FormViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {

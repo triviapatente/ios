@@ -28,7 +28,7 @@ class AvatarButtonItem: UIBarButtonItem {
         return UITapGestureRecognizer(target: self, action: #selector(pressAvatar))
     }()
     
-    func pressAvatar() {
+    @objc func pressAvatar() {
         self.callback()
     }
     init(user : User?, callback : @escaping () -> ()) {

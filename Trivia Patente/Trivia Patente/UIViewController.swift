@@ -33,7 +33,7 @@ extension UIViewController : TPViewController {
     class func mainController() -> UINavigationController {
         return UIStoryboard.getFirstController(storyboard: "Main") as! UINavigationController
     }
-    func fade(duration durationValue: Double? = nil) {
+    @objc func fade(duration durationValue: Double? = nil) {
         if let duration = durationValue {
             self.view.fade(duration: duration)
         } else {
