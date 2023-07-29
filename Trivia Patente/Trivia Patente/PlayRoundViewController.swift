@@ -102,7 +102,7 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.playDelegate = self
+        self.playDelegate = PlayRoundDelegate(vc: self)
 
         if round.number! == 1 {
             self.gameActions.detailButton.isHidden = true
@@ -140,7 +140,7 @@ class PlayRoundViewController: BasePlayViewController, GameControllerRequired {
         if let card = itemView as? ShowQuizStackItemView {
             card.quiz = self.questions[index]
             card.round = round
-            card.delegate = self
+            card.delegate = self.playDelegate
         }
     }
     
@@ -157,46 +157,54 @@ extension PlayRoundViewController {
 
 }
 
-extension PlayRoundViewController : ShowQuizCellDelegate {
+class PlayRoundDelegate : ShowQuizCellDelegate {
+    
+    var baseDelegate : BasePlayDelegate
+    var vc : PlayRoundViewController
+    
+    init(vc : PlayRoundViewController) {
+        self.vc = vc
+        self.baseDelegate = BasePlayDelegate(vc: vc)
+    }
     
     func presentImage(image: UIImage?, target: UIView) {
-        self.playDelegate.presentImage(image: image, target: target)
+        self.baseDelegate.presentImage(image: image, target: target)
     }
     
     func scroll_to_next() -> Bool {
-        self.playDelegate.scroll_to_next()
+        self.baseDelegate.scroll_to_next()
     }
     
     func canAnswerQuiz(index: Int) -> Bool {
-        self.playDelegate.canAnswerQuiz(index: index)
+        self.baseDelegate.canAnswerQuiz(index: index)
     }
     
     func gotoQuiz(i: Int) {
-        self.playDelegate.gotoQuiz(i: i)
+        self.baseDelegate.gotoQuiz(i: i)
     }
     func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
-        if let i = self.questions.index(where: { $0.id! == quiz.id! }) {
-            let q = self.questions[i]
+        if let i = self.vc.questions.index(where: { $0.id! == quiz.id! }) {
+            let q = self.vc.questions[i]
             q.my_answer = answer
             q.answeredCorrectly = correct
-            if let next = nextQuiz() {
+            if let next = self.vc.nextQuiz() {
                 gotoQuiz(i: next)
             } else {
-                self.roundEnded()
+                self.vc.roundEnded()
             }
         }
         
     }
     func textForMainLabel() -> String {
-        return "Round \(round.number!)"
+        return "Round \(vc.round.number!)"
     }
     
     func headerRightSideData(quiz: Quiz) -> Category? {
-        return category
+        return vc.category
     }
     
     func opponentUser() -> User? {
-        return opponent
+        return vc.opponent
     }
     func trainMode() -> Bool {
         return false
