@@ -151,7 +151,7 @@ class TrainingQuizViewController: BasePlayViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.playDelegate = BasePlayDelegate(vc: self)
+        self.playDelegate = TrainingDelegate(vc: self)
         self.prepareActionButton(button: exitButton)
         self.pageControl.fullWidth = true
         self.pageControl.numberTitleOffset = 1
@@ -202,7 +202,7 @@ class TrainingQuizViewController: BasePlayViewController {
             self.exitPlaying()
         }
     }
-    private func updateTrainingProgress() {
+    fileprivate func updateTrainingProgress() {
         self.completionCircularProgress.updateProgress(CGFloat(numberOfAnsweredItems)/CGFloat(training.questions!.count), animated: true, initialDelay: 0, duration: 0.1, completion: nil)
     }
     
@@ -313,47 +313,54 @@ class TrainingQuizViewController: BasePlayViewController {
 
 }
 
-extension TrainingQuizViewController : ShowQuizCellDelegate {
+class TrainingDelegate : ShowQuizCellDelegate {
+    var vc : TrainingQuizViewController
+    var classicDelegate : BasePlayDelegate
+    
+    init(vc: TrainingQuizViewController) {
+        self.vc = vc
+        self.classicDelegate = BasePlayDelegate(vc: vc)
+    }
     func textForMainLabel() -> String {
-        self.playDelegate.textForMainLabel()
+        self.classicDelegate.textForMainLabel()
     }
     
     func opponentUser() -> User? {
-        self.playDelegate.opponentUser()
+        self.classicDelegate.opponentUser()
     }
     
     func headerRightSideData(quiz: Quiz) -> Category? {
-        self.playDelegate.headerRightSideData(quiz: quiz)
+        self.classicDelegate.headerRightSideData(quiz: quiz)
     }
     
     func presentImage(image: UIImage?, target: UIView) {
-        self.playDelegate.presentImage(image: image, target: target)
+        self.classicDelegate.presentImage(image: image, target: target)
     }
     
     func gotoQuiz(i: Int) {
-        self.playDelegate.gotoQuiz(i: i)
+        self.classicDelegate.gotoQuiz(i: i)
     }
     
     func scroll_to_next() -> Bool {
-        self.playDelegate.scroll_to_next()
+        self.classicDelegate.scroll_to_next()
     }
     
     
     
     
     func user_answered(answer: Bool, correct: Bool, quiz: Quiz) {
-        let index = self.questions.index(of: quiz)
+        let index = self.vc.questions.index(of: quiz)
         quiz.my_answer = answer
         quiz.answeredCorrectly = correct
-        self.pageControl.reloadData()
-        updateTrainingProgress()
-        if let next = nextQuiz() {
+        self.vc.pageControl.reloadData()
+        vc.updateTrainingProgress()
+        if let next = vc.nextQuiz() {
             gotoQuiz(i: next)
         } else {
             // to improve someday
-            let topQuizCard = self.stackViewController.getTopItemView().contentView! as! ShowQuizStackItemView
+            let topQuizCard = self.vc.stackViewController.getTopItemView().contentView! as! ShowQuizStackItemView
             topQuizCard.enable(button: answer ? topQuizCard.trueButton : topQuizCard.falseButton)
-            self.completedAllQuestions()
+            self.vc.completedAllQuestions()
         }
     }
     func trainMode() -> Bool {
@@ -361,6 +368,6 @@ extension TrainingQuizViewController : ShowQuizCellDelegate {
     }
     
     func canAnswerQuiz(index: Int) -> Bool {
-        return !self.trainingCompleted
+        return !self.vc.trainingCompleted
     }
 }
